@@ -5,14 +5,7 @@ NOTE THAT YOU CAN NOT USE THIS AS A PACKAGE VIA LIBRARY() OR REQUIRE() AS OF YET
 This set of functions/package is an R interface to the National Phenology Network API. 
 
 
-Get your National Phenology Network API here: 
-??????
-
-
-Put your API in your .Rprofile file using e.g., 
-options(BioHerLibKey = "YOURNPNAPIKEY"), 
-and the functions within this package will be able to use your API key without you having to enter it every time you run a search. 
-
-
 National Phenology Network API documentation here: 
 https://docs.google.com/document/d/1yNjupricKOAXn6tY1sI7-EwkcfwdGUZ7lxYv7fcPjO8/edit?hl=en_US
+
+Note that there is no need for an API key to grab data from the National Phenology Network, but I think there is for writing data through the API. But the functions written in this package are only for grabbing data. 
