@@ -6,7 +6,7 @@ getobsspindloc <-
 #   stationid: use e.g., c(4881, 4882, etc.) if more than one species desired (numeric)
 #   speciesid: species id number (numeric)
 # Examples:
-#   getobsspindloc(2009,  c(4881, 4882), 3)
+#   getobsspindloc(2009, c(4881, 4882), 3)
 
 function(year = NA, stationid = NA, speciesid = NA,
   url = 'http://www-dev.usanpn.org/npn_portal/observations/',

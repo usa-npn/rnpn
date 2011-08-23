@@ -1,17 +1,17 @@
-# getallobssp.R
+# getobsspbyday.R
 
-getallobssp <- 
+getobsspbyday <- 
 # Args:
 #   speciesid: species id numbers, from 1 to infinity, potentially, 
 #     use e.g., c(52, 53, etc.) if more than one species desired (numeric)
 #   startdate: start date of data period desired, see format in examples (character)
 #   enddate: end date of data period desired, see format in examples (character)
 # Examples:
-#   getallobssp(c(52, 53), '2008-01-01', '2011-12-31')
+#   getobsspbyday(c(1, 2), '2008-01-01', '2011-12-31')
 
 function(speciesid = NA, startdate = NA, enddate = NA,
   url = 'http://www-dev.usanpn.org/npn_portal/observations/',
-  method = 'getAllObservationsForSpecies',
+  method = 'getObservationsForSpeciesByDay',
   ..., 
   curl = getCurlHandle() ) 
 {
