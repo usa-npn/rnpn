@@ -25,5 +25,10 @@ function(year = NA, stationid = NA, speciesid = NA,
   url3 <- paste(url2, yearr, stationss, speciesidd, sep = '')  
   
   out <- fromJSON(getURLContent(url3))  
-  return(out)
+  funcx <- function(lst1) {
+    temp <- lapply(lapply(lst1$dates, function(x) unlist(x)), function(x) c(lst1[1:4], x)) 
+    as.data.frame(Map(f(temp), names(temp[[1]])))
+  }
+  outt <- ldply(out, funcx)
+  return(outt)
 }

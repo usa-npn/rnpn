@@ -20,5 +20,6 @@ function(stationid = NA,
   stationss <- str_c(laply(stationidlist, paste), collapse = '&')
   url3 <- paste(url2, stationss, sep = '')  
   out <- fromJSON(getURLContent(url3))
-  return(out)
+  outt <- ldply(out, function(x) as.data.frame(x))
+  return(outt)
 }

@@ -24,5 +24,7 @@ function(speciesid = NA, startdate = NA, enddate = NA,
   dates <- paste('start_date=', startdate, '&', 'end_date=', enddate, sep='')
   url3 <- paste(url2, speciess, dates, sep = '')  
   out <- fromJSON(getURLContent(url3))
-  return(out)
+  df <- ldply(out[[1]][[1]], function(x) ldply(x$count_list, function(x) as.data.frame(x)))
+  df$species <- rep(paste('species', c(1,2)), times = sapply(out[[1]][[1]], function(x) length(x$count_list)))
+  return(df)
 }

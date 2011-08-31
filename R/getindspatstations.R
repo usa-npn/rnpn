@@ -29,5 +29,6 @@ function(speciesid = NA, stationid = NA, year = NA,
   yearr <- paste('year=', year, '&', sep = '')
   url3 <- paste(url2, speciess, stationss, yearr, sep = '')  
   out <- fromJSON(getURLContent(url3))
-  return(out)
+  outt <- ldply(out, function(x) as.data.frame(x))
+  return(outt)
 }
