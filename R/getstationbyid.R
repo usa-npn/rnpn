@@ -12,7 +12,7 @@ getstationbyid <-
 #   getstationbyid(5122)
 
 function(station, 
-  url = 'http://www-dev.usanpn.org/npn_portal/stations/',
+  url = 'http://www.usanpn.org/npn_portal/stations/',
   method = 'getStationById',
   ..., 
   curl = getCurlHandle() ) 

@@ -10,7 +10,7 @@ getobsspbyday <-
 #   getobsspbyday(c(1, 2), '2008-01-01', '2011-12-31')
 
 function(speciesid = NA, startdate = NA, enddate = NA,
-  url = 'http://www-dev.usanpn.org/npn_portal/observations/',
+  url = 'http://www.usanpn.org/npn_portal/observations/',
   method = 'getObservationsForSpeciesByDay',
   ..., 
   curl = getCurlHandle() ) 

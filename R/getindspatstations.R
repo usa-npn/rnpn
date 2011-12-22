@@ -10,7 +10,7 @@ getindspatstations <-
 #   getindspatstations(35, c(60, 259), 2009)
 
 function(speciesid = NA, stationid = NA, year = NA,
-  url = 'http://www-dev.usanpn.org/npn_portal/individuals/',
+  url = 'http://www.usanpn.org/npn_portal/individuals/',
   method = 'getIndividualsOfSpeciesAtStations',
   ..., 
   curl = getCurlHandle() ) 

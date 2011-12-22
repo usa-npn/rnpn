@@ -7,7 +7,7 @@ getindsatstations <-
 #   getindsatstations(c(507, 523))
 
 function(stationid = NA,
-  url = 'http://www-dev.usanpn.org/npn_portal/individuals/',
+  url = 'http://www.usanpn.org/npn_portal/individuals/',
   method = 'getIndividualsAtStations',
   ..., 
   curl = getCurlHandle() ) 

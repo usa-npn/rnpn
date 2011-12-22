@@ -7,7 +7,7 @@ getstationsbystate <-
 #   getstationsbystate()
 
 function(
-  url = 'http://www-dev.usanpn.org/npn_portal/stations/',
+  url = 'http://www.usanpn.org/npn_portal/stations/',
   method = 'getStationCountByState',
   ..., 
   curl = getCurlHandle() ) 

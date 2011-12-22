@@ -9,7 +9,7 @@ getobsspindloc <-
 #   getobsspindloc(2009, c(4881, 4882), 3)
 
 function(year = NA, stationid = NA, speciesid = NA,
-  url = 'http://www-dev.usanpn.org/npn_portal/observations/',
+  url = 'http://www.usanpn.org/npn_portal/observations/',
   method = 'getObservationsForSpeciesIndividualAtLocation',
   ..., 
   curl = getCurlHandle() ) 

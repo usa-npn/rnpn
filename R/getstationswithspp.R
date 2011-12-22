@@ -8,7 +8,7 @@ getstationswithspp <-
 #   getstationswithspp(c(52,53))
 
 function(speciesid = NA, 
-  url = 'http://www-dev.usanpn.org/npn_portal/stations/',
+  url = 'http://www.usanpn.org/npn_portal/stations/',
   method = 'getStationsWithSpecies',
   ..., 
   curl = getCurlHandle() ) 

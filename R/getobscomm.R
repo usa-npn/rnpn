@@ -7,7 +7,7 @@ getobscomm <-
 #   getobscomm(1938)
 
 function(observationid = NA,
-  url = 'http://www-dev.usanpn.org/npn_portal/observations/',
+  url = 'http://www.usanpn.org/npn_portal/observations/',
   method = 'getObservationComment',
   ..., 
   curl = getCurlHandle() ) 

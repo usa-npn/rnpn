@@ -7,7 +7,7 @@ getpartners <-
 #   getpartners()
 
 function(
-  url = 'http://www-dev.usanpn.org/npn_portal/networks/',
+  url = 'http://www.usanpn.org/npn_portal/networks/',
   method = 'getPartnerNetworks',
   ..., 
   curl = getCurlHandle() ) 
