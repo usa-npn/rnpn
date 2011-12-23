@@ -11,8 +11,7 @@
 #' }
 getpartners <- 
 
-function(
-  url = 'http://www.usanpn.org/npn_portal/networks/getPartnerNetworks',
+function(url = 'http://www.usanpn.org/npn_portal/networks/getPartnerNetworks',
   ..., 
   curl = getCurlHandle() ) 
 {
