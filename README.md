@@ -9,7 +9,7 @@ Note that there is no need for an API key to grab data from the National Phenolo
 
 Note to Windows users when installing using install_github in Hadley's devtools package:
 
-* Rtools is required, and can be installed from this site ().  After installation the following should install `rnpn`:
+* Rtools is required, and can be installed from this site (http://www.murdoch-sutherland.com/Rtools/).  After installation the following should install `rnpn`:
 
 ```R 
 install.packages("devtools")
