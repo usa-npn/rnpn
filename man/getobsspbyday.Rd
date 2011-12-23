@@ -43,7 +43,7 @@
 \examples{
 \dontrun{
 getobsspbyday(c(1, 2), '2011-11-01', '2011-12-31')
-getobsspbyday(c(1, 2), '2011-11-01', '2011-12-31', printdf = F)
+getobsspbyday(c(1, 2), '2011-11-01', '2011-12-31', printdf = FALSE)
 getobsspbyday(c(1, 2), '2011-11-01', '2011-12-31', downform = 'xml')
 }
 }

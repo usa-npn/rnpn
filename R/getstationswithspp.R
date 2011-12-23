@@ -13,7 +13,7 @@
 #' @export
 #' @examples \dontrun{
 #' getstationswithspp(c(52,53,54))
-#' getstationswithspp(c(52,53), printdf = F)
+#' getstationswithspp(c(52,53), printdf = FALSE)
 #' }
 getstationswithspp <- 
 

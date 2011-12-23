@@ -14,7 +14,7 @@
 #' @export
 #' @examples \dontrun{
 #' getobsspbyday(c(1, 2), '2011-11-01', '2011-12-31')
-#' getobsspbyday(c(1, 2), '2011-11-01', '2011-12-31', printdf = F)
+#' getobsspbyday(c(1, 2), '2011-11-01', '2011-12-31', printdf = FALSE)
 #' getobsspbyday(c(1, 2), '2011-11-01', '2011-12-31', downform = 'xml')
 #' }
 getobsspbyday <- 
@@ -40,7 +40,7 @@ function(speciesid = NA, startdate = NA, enddate = NA, downform = 'json', printd
     curl = curl)
   if(downform == 'json'){
     if(printdf == TRUE){
-      df <- llply(m$all_species$species, function(x) ldply(x[2]$count_list, identity))
+      df <- llply(fromJSON(tt)$all_species$species, function(x) ldply(x[2]$count_list, identity))
       names(df) <- speciesid
       df
     } else 

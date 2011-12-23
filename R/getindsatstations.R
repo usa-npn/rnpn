@@ -2,6 +2,7 @@
 #' @import RJSONIO RCurl plyr XML
 #' @param stationid use e.g., c(4881, 4882, etc.) if more than one species desired (numeric)
 #' @param downform Download format, one of 'json' or 'xml'.
+#' @param printdf print data.frame (default, TRUE) or not (FALSE)
 #' @param url the PLoS API url for the function (should be left to default)
 #' @param ... optional additional curl options (debugging tools mostly)
 #' @param curl If using in a loop, call getCurlHandle() first and pass

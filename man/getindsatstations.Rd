@@ -13,6 +13,9 @@
 
   \item{downform}{Download format, one of 'json' or 'xml'.}
 
+  \item{printdf}{print data.frame (default, TRUE) or not
+  (FALSE)}
+
   \item{url}{the PLoS API url for the function (should be
   left to default)}
 
