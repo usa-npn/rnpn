@@ -1,9 +1,10 @@
 \name{getobsspindloc}
 \alias{getobsspindloc}
-\title{Get a list of all stations which have an individual whom is a member of a
-   set of species.}
+\title{Return all of the data, positive or negative, for an individual or a group
+   of individuals, which are of a common species, at any number of locations..}
 \usage{
   getobsspindloc(year = NA, stationid = NA, speciesid = NA,
+    downform = "json", printdf = TRUE,
     url = "http://www.usanpn.org/npn_portal/observations/getObservationsForSpeciesIndividualAtLocation",
     ..., curl = getCurlHandle())
 }
@@ -31,15 +32,18 @@
   unnecessary footprint)}
 }
 \value{
-  Stations' latitude and longitude, names, and ids.
+  Data frame/json/xml of phenophas id's, phenophase names,
+  sequence numbers, color, date, and observation id's.
 }
 \description{
-  Get a list of all stations which have an individual whom
-  is a member of a set of species.
+  Return all of the data, positive or negative, for an
+  individual or a group of individuals, which are of a
+  common species, at any number of locations..
 }
 \examples{
 \dontrun{
 getobsspindloc(2009, c(4881, 4882), 3)
+getobsspindloc(2009, c(4881, 4882), 3, 'xml')
 }
 }
 
