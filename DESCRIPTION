@@ -20,6 +20,5 @@ Collate:
     'getobsspbyday.R'
     'getobsspindloc.R'
     'getpartnernets.R'
-    'getstationbyid.R'
     'getstationsbystate.R'
     'getstationswithspp.R'
