@@ -1,7 +1,7 @@
+export(getallobssp)
+export(getindsatstations)
 import(RCurl)
-import(stringr)
 import(RJSONIO)
 import(XML)
 import(plyr)
-
-export(getallobssp, getindsatstations, getindspatstations, getobscomm, getobsspbyday, getobsspindloc, getpublicobs)
+import(stringr)
