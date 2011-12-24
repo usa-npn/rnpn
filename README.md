@@ -13,7 +13,7 @@ Note to Windows users when installing using install_github in Hadley's devtools 
 
 ```R 
 install.packages("devtools")
-require(devtools
+require(devtools)
 install_github("rnpn", "ropensci")
 require(rnpn)
 ```
