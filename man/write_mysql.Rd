@@ -38,7 +38,9 @@ dat <- data.frame(a=rnorm(10^2), b=rnorm(10^2))
 write_mysql(dat, 'dat230', 'asdfaf', 'test', 'localhost', TRUE)
 
 # Use this function within another function
-getobsspbyday()
+getobsspbyday(c(1, 2), '2011-11-01', '2011-12-31', printdf = FALSE,
+ writemysql=TRUE, tablename='rnpntest', user='asdfaf', dbname='test',
+ host='localhost', addprimkey=TRUE)
 }
 }
 
