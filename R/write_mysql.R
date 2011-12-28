@@ -7,8 +7,8 @@
 #' @param host Your host name (e.g., ). 
 #' @param addprimkey Add primary key or not (default = TRUE). 
 #' @return Data written to MySQL, and prints message saying so.
-#' @details Use this function wrapped with suppressMessages() to suppress 
-#'    messages.
+#' @details Remember to turn on your MySQL server before using this function.  
+#'    Use this function wrapped with suppressMessages() to suppress messages. 
 #' @export
 #' @examples \dontrun{
 #' # Use this function on its own

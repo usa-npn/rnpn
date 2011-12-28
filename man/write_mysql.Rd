@@ -28,8 +28,9 @@
   Write data to MySQL.
 }
 \details{
-  Use this function wrapped with suppressMessages() to
-  suppress messages.
+  Remember to turn on your MySQL server before using this
+  function.  Use this function wrapped with
+  suppressMessages() to suppress messages.
 }
 \examples{
 \dontrun{

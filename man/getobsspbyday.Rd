@@ -52,6 +52,10 @@
   Get observations by day for a particular species or set
   of species.
 }
+\details{
+  Remember to turn on your MySQL server before using the
+  'mysql' in the format argument.
+}
 \examples{
 \dontrun{
 getobsspbyday(c(1, 2), '2011-11-01', '2011-12-31')

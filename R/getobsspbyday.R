@@ -13,6 +13,8 @@
 #' @param ... optional additional curl options (debugging tools mostly)
 #' @param curl If using in a loop, call getCurlHandle() first and pass
 #'  the returned value in here (avoids unnecessary footprint)
+#' @details Remember to turn on your MySQL server before using the 'mysql'
+#'    in the format argument. 
 #' @return Number of observations by day.
 #' @export
 #' @examples \dontrun{
