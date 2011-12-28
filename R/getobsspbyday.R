@@ -4,9 +4,8 @@
 #'     use e.g., c(52, 53, etc.) if more than one species desired (numeric)
 #' @param startdate start date of data period desired, see format in examples (character)
 #' @param enddate end date of data period desired, see format in examples (character)
-#' @param downform Download format, one of 'json' or 'xml'.
+#' @param format Output format, one of 'json', 'xml', or 'mysql'.
 #' @param printdf Print data.frame (default, TRUE) or not (FALSE)
-#' @param writemysql Write data to a mysql table (default = FALSE)
 #' @param user If writemysql == TRUE, specify username for your MySQL login.
 #' @param dbname If writemysql == TRUE, specify the database name in MySQL.
 #' @param user If writemysql == TRUE, specify username for your MySQL login.
@@ -18,22 +17,23 @@
 #' @export
 #' @examples \dontrun{
 #' getobsspbyday(c(1, 2), '2011-11-01', '2011-12-31')
-#' getobsspbyday(c(1, 2), '2011-11-01', '2011-12-31', printdf = FALSE)
-#' getobsspbyday(c(1, 2), '2011-11-01', '2011-12-31', downform = 'xml')
+#' getobsspbyday(c(1, 2), '2011-11-01', '2011-12-31', printdf = TRUE)
+#' getobsspbyday(c(1, 2), '2011-11-01', '2011-12-31', format = 'xml')
 #' 
 #' # Write to MySQL database. 
-#' getobsspbyday(c(1, 2), '2011-11-01', '2011-12-31', printdf = FALSE, 
-#'  writemysql=TRUE, tablename='rnpntest', user='yourusername', dbname='yourdatabasename', 
+#' getobsspbyday(c(1, 2), '2011-11-01', '2011-12-31', format = 'mysql', 
+#'  tablename='rnpntest', user='yourusername', dbname='yourdatabasename', 
 #'  host='yourhostname', addprimkey=TRUE)
 #' }
 getobsspbyday <- 
 
-function(speciesid = NA, startdate = NA, enddate = NA, downform = 'json', printdf = TRUE,
-  writemysql = FALSE, tablename, user, dbname, host, addprimkey,
+function(speciesid = NA, startdate = NA, enddate = NA, format = 'json', printdf = FALSE,
+  tablename = NA, user = NA, dbname = NA, host = NA, addprimkey = NA,
   url = 'http://www.usanpn.org/npn_portal/observations/getObservationsForSpeciesByDay',
   ..., 
   curl = getCurlHandle() ) 
 {
+  if(format == 'mysql'){ downform <- 'json' } else { downform <- format }
   url2 <- paste(url, '.', downform, sep='')
   args <- list()
   if(!is.na(speciesid[1]))
@@ -48,20 +48,24 @@ function(speciesid = NA, startdate = NA, enddate = NA, downform = 'json', printd
     .params = args,
     ...,
     curl = curl)
-  if(writemysql == TRUE){ 
-      df <- llply(fromJSON(tt)$all_species$species, function(x) ldply(x[2]$count_list, identity))
+  df <- llply(fromJSON(tt)$all_species$species, function(x) ldply(x[2]$count_list, identity))
+  if(format == 'mysql'){ 
       names(df) <- speciesid
       dfsql <- ldply(df, identity)
       names(dfsql)[1] <- "species" 
       write_mysql(dat2write=dfsql, tablename=tablename, user=user, 
                   dbname=dbname, host=host, addprimkey=addprimkey) 
-    } else
-      {NULL}
-  if(downform == 'json'){
+  } 
+    else
+  if(format == 'json'){
     if(printdf == TRUE){
       df
-    } else 
-      {fromJSON(tt)}
-  } else 
-    {xmlTreeParse(tt)}
+    } 
+      else 
+    {fromJSON(tt)}
+  } 
+    else
+  if(format == 'xml') { 
+    xmlParse(tt) 
+  }
 }

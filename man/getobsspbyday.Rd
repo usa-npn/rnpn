@@ -3,9 +3,9 @@
 \title{Get observations by day for a particular species or set of species.}
 \usage{
   getobsspbyday(speciesid = NA, startdate = NA,
-    enddate = NA, downform = "json", printdf = TRUE,
-    writemysql = FALSE, tablename, user, dbname, host,
-    addprimkey,
+    enddate = NA, format = "json", printdf = FALSE,
+    tablename = NA, user = NA, dbname = NA, host = NA,
+    addprimkey = NA,
     url = "http://www.usanpn.org/npn_portal/observations/getObservationsForSpeciesByDay",
     ..., curl = getCurlHandle())
 }
@@ -20,13 +20,11 @@
   \item{enddate}{end date of data period desired, see
   format in examples (character)}
 
-  \item{downform}{Download format, one of 'json' or 'xml'.}
+  \item{format}{Output format, one of 'json', 'xml', or
+  'mysql'.}
 
   \item{printdf}{Print data.frame (default, TRUE) or not
   (FALSE)}
-
-  \item{writemysql}{Write data to a mysql table (default =
-  FALSE)}
 
   \item{user}{If writemysql == TRUE, specify username for
   your MySQL login.}
@@ -57,12 +55,12 @@
 \examples{
 \dontrun{
 getobsspbyday(c(1, 2), '2011-11-01', '2011-12-31')
-getobsspbyday(c(1, 2), '2011-11-01', '2011-12-31', printdf = FALSE)
-getobsspbyday(c(1, 2), '2011-11-01', '2011-12-31', downform = 'xml')
+getobsspbyday(c(1, 2), '2011-11-01', '2011-12-31', printdf = TRUE)
+getobsspbyday(c(1, 2), '2011-11-01', '2011-12-31', format = 'xml')
 
 # Write to MySQL database.
-getobsspbyday(c(1, 2), '2011-11-01', '2011-12-31', printdf = FALSE,
- writemysql=TRUE, tablename='rnpntest', user='yourusername', dbname='yourdatabasename',
+getobsspbyday(c(1, 2), '2011-11-01', '2011-12-31', format = 'mysql',
+ tablename='rnpntest', user='yourusername', dbname='yourdatabasename',
  host='yourhostname', addprimkey=TRUE)
 }
 }

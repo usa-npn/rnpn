@@ -35,12 +35,12 @@
 \dontrun{
 # Use this function on its own
 dat <- data.frame(a=rnorm(10^2), b=rnorm(10^2))
-write_mysql(dat, 'dat230', 'asdfaf', 'test', 'localhost', TRUE)
+write_mysql(dat, 'dattest', 'yourusername', 'yourdatabasename', 'yourhostname', TRUE)
 
 # Use this function within another function
-getobsspbyday(c(1, 2), '2011-11-01', '2011-12-31', printdf = FALSE,
- writemysql=TRUE, tablename='rnpntest', user='asdfaf', dbname='test',
- host='localhost', addprimkey=TRUE)
+getobsspbyday(c(1, 2), '2011-11-01', '2011-12-31', format = 'mysql',
+ tablename='rnpntest', user='yourusername', dbname='yourdatabasename',
+ host='yourhostname', addprimkey=TRUE)
 }
 }
 
