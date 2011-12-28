@@ -23,8 +23,8 @@
 #' 
 #' # Write to MySQL database. 
 #' getobsspbyday(c(1, 2), '2011-11-01', '2011-12-31', printdf = FALSE, 
-#'  writemysql=TRUE, tablename='rnpntest', user='asdfaf', dbname='test', 
-#'  host='localhost', addprimkey=TRUE)
+#'  writemysql=TRUE, tablename='rnpntest', user='yourusername', dbname='yourdatabasename', 
+#'  host='yourhostname', addprimkey=TRUE)
 #' }
 getobsspbyday <- 
 
@@ -49,7 +49,9 @@ function(speciesid = NA, startdate = NA, enddate = NA, downform = 'json', printd
     ...,
     curl = curl)
   if(writemysql == TRUE){ 
-      dfsql <- ldply(a, identity)
+      df <- llply(fromJSON(tt)$all_species$species, function(x) ldply(x[2]$count_list, identity))
+      names(df) <- speciesid
+      dfsql <- ldply(df, identity)
       names(dfsql)[1] <- "species" 
       write_mysql(dat2write=dfsql, tablename=tablename, user=user, 
                   dbname=dbname, host=host, addprimkey=addprimkey) 
@@ -57,8 +59,6 @@ function(speciesid = NA, startdate = NA, enddate = NA, downform = 'json', printd
       {NULL}
   if(downform == 'json'){
     if(printdf == TRUE){
-      df <- llply(fromJSON(tt)$all_species$species, function(x) ldply(x[2]$count_list, identity))
-      names(df) <- speciesid
       df
     } else 
       {fromJSON(tt)}

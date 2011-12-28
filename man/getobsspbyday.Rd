@@ -62,8 +62,8 @@ getobsspbyday(c(1, 2), '2011-11-01', '2011-12-31', downform = 'xml')
 
 # Write to MySQL database.
 getobsspbyday(c(1, 2), '2011-11-01', '2011-12-31', printdf = FALSE,
- writemysql=TRUE, tablename='rnpntest', user='asdfaf', dbname='test',
- host='localhost', addprimkey=TRUE)
+ writemysql=TRUE, tablename='rnpntest', user='yourusername', dbname='yourdatabasename',
+ host='yourhostname', addprimkey=TRUE)
 }
 }
 
