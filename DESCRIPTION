@@ -21,3 +21,4 @@ Collate:
     'getobsspindloc.R'
     'getstationsbystate.R'
     'getstationswithspp.R'
+    'write_mysql.R'

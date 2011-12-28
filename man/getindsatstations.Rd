@@ -4,7 +4,7 @@
 \usage{
   getindsatstations(stationid = NA, downform = "json",
     printdf = TRUE,
-    url = "http://www-dev.usanpn.org/npn_portal/individuals/getIndividualsAtStations",
+    url = "http://www.usanpn.org/npn_portal/individuals/getIndividualsAtStations",
     ..., curl = getCurlHandle())
 }
 \arguments{

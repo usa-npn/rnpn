@@ -4,6 +4,8 @@
 \usage{
   getobsspbyday(speciesid = NA, startdate = NA,
     enddate = NA, downform = "json", printdf = TRUE,
+    writemysql = FALSE, tablename, user, dbname, host,
+    addprimkey,
     url = "http://www.usanpn.org/npn_portal/observations/getObservationsForSpeciesByDay",
     ..., curl = getCurlHandle())
 }
@@ -20,8 +22,20 @@
 
   \item{downform}{Download format, one of 'json' or 'xml'.}
 
-  \item{printdf}{print data.frame (default, TRUE) or not
+  \item{printdf}{Print data.frame (default, TRUE) or not
   (FALSE)}
+
+  \item{writemysql}{Write data to a mysql table (default =
+  FALSE)}
+
+  \item{user}{If writemysql == TRUE, specify username for
+  your MySQL login.}
+
+  \item{dbname}{If writemysql == TRUE, specify the database
+  name in MySQL.}
+
+  \item{user}{If writemysql == TRUE, specify username for
+  your MySQL login.}
 
   \item{url}{the PLoS API url for the function (should be
   left to default)}
@@ -45,6 +59,11 @@
 getobsspbyday(c(1, 2), '2011-11-01', '2011-12-31')
 getobsspbyday(c(1, 2), '2011-11-01', '2011-12-31', printdf = FALSE)
 getobsspbyday(c(1, 2), '2011-11-01', '2011-12-31', downform = 'xml')
+
+# Write to MySQL database.
+getobsspbyday(c(1, 2), '2011-11-01', '2011-12-31', printdf = FALSE,
+ writemysql=TRUE, tablename='rnpntest', user='asdfaf', dbname='test',
+ host='localhost', addprimkey=TRUE)
 }
 }
 
