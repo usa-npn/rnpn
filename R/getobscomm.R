@@ -1,4 +1,5 @@
 #' Get observation comments for a particular species or set of species.
+#'
 #' @import RJSONIO RCurl plyr XML
 #' @param observationid observation id, or as vector if >1, as e.g., c(2, 1938) (numeric)
 #' @param downform Download format, one of 'json' or 'xml'.
@@ -11,12 +12,9 @@
 #' @examples \dontrun{
 #' getobscomm(1938)
 #' }
-getobscomm <- 
-
-function(observationid = NA, downform = 'json',
+getobscomm <- function(observationid = NA, downform = 'json',
   url = 'http://www.usanpn.org/npn_portal/observations/getObservationComment',
-  ..., 
-  curl = getCurlHandle() ) 
+  ..., curl = getCurlHandle() ) 
 {
   url2 <- paste(url, '.', downform, sep='')
   args <- list()

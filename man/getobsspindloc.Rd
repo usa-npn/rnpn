@@ -1,7 +1,7 @@
 \name{getobsspindloc}
 \alias{getobsspindloc}
 \title{Return all of the data, positive or negative, for an individual or a group
-   of individuals, which are of a common species, at any number of locations..}
+   of individuals, which are of a common species, at any number of locations.}
 \usage{
   getobsspindloc(year = NA, stationid = NA, speciesid = NA,
     downform = "json", printdf = TRUE,
@@ -38,7 +38,7 @@
 \description{
   Return all of the data, positive or negative, for an
   individual or a group of individuals, which are of a
-  common species, at any number of locations..
+  common species, at any number of locations.
 }
 \examples{
 \dontrun{

@@ -1,4 +1,5 @@
 #' Get all observations for a particular species or set of species.
+#'
 #' @import RJSONIO RCurl plyr XML
 #' @param stationid use e.g., c(4881, 4882, etc.) if more than one species desired (numeric)
 #' @param downform Download format, one of 'json' or 'xml'.
@@ -13,12 +14,9 @@
 #' getindsatstations(c(507, 523))
 #' getindsatstations(c(507, 523), 'xml')
 #' }
-getindsatstations <-
-
-function(stationid = NA, downform = 'json', printdf = TRUE,
+getindsatstations <- function(stationid = NA, downform = 'json', printdf = TRUE,
   url = 'http://www.usanpn.org/npn_portal/individuals/getIndividualsAtStations',
-  ...,
-  curl = getCurlHandle() )
+  ..., curl = getCurlHandle() )
 {
   url2 <- paste(url, '.', downform, sep='')
   args <- list()

@@ -1,4 +1,5 @@
 #' Get all observations for a particular species or set of species.
+#'
 #' @import RJSONIO RCurl stringr plyr XML
 #' @param speciesid species id numbers, from 1 to infinity, potentially,
 #'     use e.g., c(52, 53, etc.) if more than one species desired (numeric)
@@ -16,13 +17,11 @@
 #' getallobssp(speciesid = c(52, 53), '2008-01-01', '2011-12-31')
 #' getallobssp(speciesid = c(52, 53), '2008-01-01', '2011-12-31', 'xml')
 #' }
-getallobssp <-
-
-function(speciesid = NA, startdate = NA, enddate = NA, downform = 'json',
+getallobssp <- function(speciesid = NA, startdate = NA, enddate = NA, 
+  downform = 'json',
   url = 'http://www.usanpn.org/npn_portal/observations/getAllObservationsForSpecies',
   method = 'getAllObservationsForSpecies',
-  ...,
-  curl = getCurlHandle() )
+  ..., curl = getCurlHandle() )
 {
   url2 <- paste(url, '.', downform, sep='')
   args <- list()

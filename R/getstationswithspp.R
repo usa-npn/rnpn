@@ -1,5 +1,6 @@
 #' Get a list of all stations which have an individual whom is a member of a 
 #'    set of species.
+#'
 #' @import RJSONIO RCurl plyr XML
 #' @param speciesid species id numbers, from 1 to infinity, potentially, 
 #'    use e.g., c(52, 53, etc.) if more than one species desired (numeric)
@@ -15,12 +16,9 @@
 #' getstationswithspp(c(52,53,54))
 #' getstationswithspp(c(52,53), printdf = FALSE)
 #' }
-getstationswithspp <- 
-
-function(speciesid = NA, downform = 'json', printdf = TRUE,
+getstationswithspp <- function(speciesid = NA, downform = 'json', printdf = TRUE,
   url = 'http://www.usanpn.org/npn_portal/stations/getStationsWithSpecies',
-  ..., 
-  curl = getCurlHandle() ) 
+  ..., curl = getCurlHandle() ) 
 {
   url2 <- paste(url, '.json?', sep='')
   args <- list()

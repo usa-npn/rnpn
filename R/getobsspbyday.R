@@ -1,4 +1,5 @@
 #' Get observations by day for a particular species or set of species.
+#'
 #' @import RJSONIO RCurl stringr plyr XML
 #' @param speciesid species id numbers, from 1 to infinity, potentially, 
 #'     use e.g., c(52, 53, etc.) if more than one species desired (numeric)
@@ -27,13 +28,11 @@
 #'  tablename='rnpntest', user='yourusername', dbname='yourdatabasename', 
 #'  host='yourhostname', addprimkey=TRUE)
 #' }
-getobsspbyday <- 
-
-function(speciesid = NA, startdate = NA, enddate = NA, format = 'json', printdf = FALSE,
+getobsspbyday <- function(speciesid = NA, startdate = NA, enddate = NA, 
+  format = 'json', printdf = FALSE,
   tablename = NA, user = NA, dbname = NA, host = NA, addprimkey = NA,
   url = 'http://www.usanpn.org/npn_portal/observations/getObservationsForSpeciesByDay',
-  ..., 
-  curl = getCurlHandle() ) 
+  ..., curl = getCurlHandle() ) 
 {
   if(format == 'mysql'){ downform <- 'json' } else { downform <- format }
   url2 <- paste(url, '.', downform, sep='')

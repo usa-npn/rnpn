@@ -1,4 +1,5 @@
 #' Write data to MySQL.
+#'
 #' @import RMySQL 
 #' @param dat2write data.frame to write to mysql
 #' @param tablename What do you want to name the new table in mysql?
@@ -20,10 +21,8 @@
 #'  tablename='rnpntest', user='yourusername', dbname='yourdatabasename', 
 #'  host='yourhostname', addprimkey=TRUE)
 #' }
-write_mysql <- 
-
-function(dat2write, tablename, user, dbname, host, addprimkey = TRUE) {
-  
+write_mysql <- function(dat2write, tablename, user, dbname, host, addprimkey = TRUE) 
+{  
   require(RMySQL)
   
   drv <- dbDriver("MySQL")

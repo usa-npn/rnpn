@@ -1,5 +1,6 @@
 #' Return all of the data, positive or negative, for an individual or a group 
-#'    of individuals, which are of a common species, at any number of locations..
+#'    of individuals, which are of a common species, at any number of locations.
+#'
 #' @import RJSONIO RCurl plyr XML
 #' @param year Year.
 #' @param stationid Station id; Use e.g., c(4881, 4882, etc.) if more than 
@@ -18,13 +19,10 @@
 #' getobsspindloc(2009, c(4881, 4882), 3)
 #' getobsspindloc(2009, c(4881, 4882), 3, 'xml')
 #' }
-getobsspindloc <- 
-
-function(year = NA, stationid = NA, speciesid = NA, downform = 'json', 
-  printdf = TRUE,
+getobsspindloc <- function(year = NA, stationid = NA, speciesid = NA, 
+  downform = 'json', printdf = TRUE,
   url = 'http://www.usanpn.org/npn_portal/observations/getObservationsForSpeciesIndividualAtLocation',
-  ..., 
-  curl = getCurlHandle() ) 
+  ..., curl = getCurlHandle() ) 
 {
   url2 <- paste(url, '.', downform, sep='')
   args <- list()
