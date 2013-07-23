@@ -15,7 +15,7 @@
 #' getindsatstations(c(507, 523), 'xml')
 #' }
 getindsatstations <- function(stationid = NA, downform = 'json', printdf = TRUE,
-  url = 'http://www.usanpn.org/npn_portal/individuals/getIndividualsAtStations',
+  url = 'https://www.usanpn.org/npn_portal/individuals/getIndividualsAtStations',
   ..., curl = getCurlHandle() )
 {
   url2 <- paste(url, '.', downform, sep='')

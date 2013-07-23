@@ -2,7 +2,7 @@
 \alias{getstationsbystate}
 \title{Get number of stations by state in a data frame.}
 \usage{
-  getstationsbystate(url = "http://www.usanpn.org/npn_portal/stations/getStationCountByState",
+  getstationsbystate(url = "https://www.usanpn.org/npn_portal/stations/getStationCountByState",
     ..., curl = getCurlHandle())
 }
 \arguments{

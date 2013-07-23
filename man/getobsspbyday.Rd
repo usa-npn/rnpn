@@ -6,7 +6,7 @@
     enddate = NA, format = "json", printdf = FALSE,
     tablename = NA, user = NA, dbname = NA, host = NA,
     addprimkey = NA,
-    url = "http://www.usanpn.org/npn_portal/observations/getObservationsForSpeciesByDay",
+    url = "https://www.usanpn.org/npn_portal/observations/getObservationsForSpeciesByDay",
     ..., curl = getCurlHandle())
 }
 \arguments{

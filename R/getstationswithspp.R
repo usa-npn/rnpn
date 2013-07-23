@@ -17,7 +17,7 @@
 #' getstationswithspp(c(52,53), printdf = FALSE)
 #' }
 getstationswithspp <- function(speciesid = NA, downform = 'json', printdf = TRUE,
-  url = 'http://www.usanpn.org/npn_portal/stations/getStationsWithSpecies',
+  url = 'https://www.usanpn.org/npn_portal/stations/getStationsWithSpecies',
   ..., curl = getCurlHandle() ) 
 {
   url2 <- paste(url, '.json?', sep='')

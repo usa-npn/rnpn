@@ -3,7 +3,7 @@
 \title{Get observation comments for a particular species or set of species.}
 \usage{
   getobscomm(observationid = NA, downform = "json",
-    url = "http://www.usanpn.org/npn_portal/observations/getObservationComment",
+    url = "https://www.usanpn.org/npn_portal/observations/getObservationComment",
     ..., curl = getCurlHandle())
 }
 \arguments{

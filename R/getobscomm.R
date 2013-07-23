@@ -13,7 +13,7 @@
 #' getobscomm(1938)
 #' }
 getobscomm <- function(observationid = NA, downform = 'json',
-  url = 'http://www.usanpn.org/npn_portal/observations/getObservationComment',
+  url = 'https://www.usanpn.org/npn_portal/observations/getObservationComment',
   ..., curl = getCurlHandle() ) 
 {
   url2 <- paste(url, '.', downform, sep='')

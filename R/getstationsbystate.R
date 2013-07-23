@@ -11,7 +11,7 @@
 #' getstationsbystate()
 #' }
 getstationsbystate <- function(
-  url = 'http://www.usanpn.org/npn_portal/stations/getStationCountByState',
+  url = 'https://www.usanpn.org/npn_portal/stations/getStationCountByState',
   ..., curl = getCurlHandle() ) 
 {
   url2 <- paste(url, '.json?', sep='')

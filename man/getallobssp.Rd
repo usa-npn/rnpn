@@ -4,7 +4,7 @@
 \usage{
   getallobssp(speciesid = NA, startdate = NA, enddate = NA,
     downform = "json",
-    url = "http://www.usanpn.org/npn_portal/observations/getAllObservationsForSpecies",
+    url = "https://www.usanpn.org/npn_portal/observations/getAllObservationsForSpecies",
     method = "getAllObservationsForSpecies", ...,
     curl = getCurlHandle())
 }

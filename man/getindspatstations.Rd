@@ -4,7 +4,7 @@
 \usage{
   getindspatstations(speciesid = NA, stationid = NA,
     year = NA, downform = "json", printdf = TRUE,
-    url = "http://www.usanpn.org/npn_portal/individuals/getIndividualsOfSpeciesAtStations",
+    url = "https://www.usanpn.org/npn_portal/individuals/getIndividualsOfSpeciesAtStations",
     ..., curl = getCurlHandle())
 }
 \arguments{

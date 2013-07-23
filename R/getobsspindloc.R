@@ -21,7 +21,7 @@
 #' }
 getobsspindloc <- function(year = NA, stationid = NA, speciesid = NA, 
   downform = 'json', printdf = TRUE,
-  url = 'http://www.usanpn.org/npn_portal/observations/getObservationsForSpeciesIndividualAtLocation',
+  url = 'https://www.usanpn.org/npn_portal/observations/getObservationsForSpeciesIndividualAtLocation',
   ..., curl = getCurlHandle() ) 
 {
   url2 <- paste(url, '.', downform, sep='')
