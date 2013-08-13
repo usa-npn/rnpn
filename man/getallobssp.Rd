@@ -3,10 +3,7 @@
 \title{Get all observations for a particular species or set of species.}
 \usage{
   getallobssp(speciesid = NA, startdate = NA, enddate = NA,
-    downform = "json",
-    url = "https://www.usanpn.org/npn_portal/observations/getAllObservationsForSpecies",
-    method = "getAllObservationsForSpecies", ...,
-    curl = getCurlHandle())
+    ..., curl = getCurlHandle())
 }
 \arguments{
   \item{speciesid}{species id numbers, from 1 to infinity,
@@ -18,13 +15,6 @@
 
   \item{enddate}{end date of data period desired, see
   format in examples (character)}
-
-  \item{downform}{Download format, one of 'json' or 'xml'.}
-
-  \item{url}{the PLoS API url for the function (should be
-  left to default)}
-
-  \item{method}{the API method (should be left to default)}
 
   \item{...}{optional additional curl options (debugging
   tools mostly)}
@@ -42,8 +32,11 @@
 }
 \examples{
 \dontrun{
-getallobssp(speciesid = c(52, 53), '2008-01-01', '2011-12-31')
-getallobssp(speciesid = c(52, 53), '2008-01-01', '2011-12-31', 'xml')
+# Lookup names
+lookup_names(name='Pinus', type='genus')
+
+# Get data on some species
+getallobssp(speciesid = c(52, 53), startdate='2008-01-01', enddate='2011-12-31')
 }
 }
 

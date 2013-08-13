@@ -6,6 +6,8 @@ Version: 0.0-1
 License: BSD
 Author: Scott Chamberlain, Lee Marsh
 Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>
+LazyLoad: yes
+LazyData: yes
 Imports:
     RJSONIO,
     RCurl (>= 1.6),
@@ -21,4 +23,5 @@ Collate:
     'getobsspindloc.R'
     'getstationsbystate.R'
     'getstationswithspp.R'
-    'write_mysql.R'
+    'rnpn-package.R'
+    'lookup_names.R'

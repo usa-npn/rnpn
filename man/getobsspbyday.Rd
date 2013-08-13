@@ -3,11 +3,7 @@
 \title{Get observations by day for a particular species or set of species.}
 \usage{
   getobsspbyday(speciesid = NA, startdate = NA,
-    enddate = NA, format = "json", printdf = FALSE,
-    tablename = NA, user = NA, dbname = NA, host = NA,
-    addprimkey = NA,
-    url = "https://www.usanpn.org/npn_portal/observations/getObservationsForSpeciesByDay",
-    ..., curl = getCurlHandle())
+    enddate = NA, ..., curl = getCurlHandle())
 }
 \arguments{
   \item{speciesid}{species id numbers, from 1 to infinity,
@@ -19,24 +15,6 @@
 
   \item{enddate}{end date of data period desired, see
   format in examples (character)}
-
-  \item{format}{Output format, one of 'json', 'xml', or
-  'mysql'.}
-
-  \item{printdf}{Print data.frame (default, TRUE) or not
-  (FALSE)}
-
-  \item{user}{If writemysql == TRUE, specify username for
-  your MySQL login.}
-
-  \item{dbname}{If writemysql == TRUE, specify the database
-  name in MySQL.}
-
-  \item{user}{If writemysql == TRUE, specify username for
-  your MySQL login.}
-
-  \item{url}{the PLoS API url for the function (should be
-  left to default)}
 
   \item{...}{optional additional curl options (debugging
   tools mostly)}
@@ -52,20 +30,22 @@
   Get observations by day for a particular species or set
   of species.
 }
-\details{
-  Remember to turn on your MySQL server before using the
-  'mysql' in the format argument.
-}
 \examples{
 \dontrun{
-getobsspbyday(c(1, 2), '2011-11-01', '2011-12-31')
-getobsspbyday(c(1, 2), '2011-11-01', '2011-12-31', printdf = TRUE)
-getobsspbyday(c(1, 2), '2011-11-01', '2011-12-31', format = 'xml')
+# Lookup names
+temp <- lookup_names(name='bird', type='common')
+comnames <- temp[temp$species_id \%in\% c(357, 359, 1108), 'common_name']
 
-# Write to MySQL database.
-getobsspbyday(c(1, 2), '2011-11-01', '2011-12-31', format = 'mysql',
- tablename='rnpntest', user='yourusername', dbname='yourdatabasename',
- host='yourhostname', addprimkey=TRUE)
+out <- getobsspbyday(speciesid=c(357, 359, 1108), startdate='2010-04-01', enddate='2013-09-31')
+names(out) <- comnames
+df <- ldply(out)
+df$date <- as.Date(df$date)
+
+library(ggplot2)
+ggplot(df, aes(date, count)) +
+ geom_line() +
+ theme_grey(base_size=20) +
+ facet_grid(.id ~.)
 }
 }
 

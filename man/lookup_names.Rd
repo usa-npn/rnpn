@@ -1,0 +1,25 @@
+\name{lookup_names}
+\alias{lookup_names}
+\title{Look up species IDs by taxonomic or common name}
+\usage{
+  lookup_names(name, type = "genus", fuzzy = FALSE)
+}
+\arguments{
+  \item{name}{A scientific or common name}
+
+  \item{type}{One of common_name, genus, or species}
+
+  \item{fuzzy}{One of TRUE or FALSE, if FALSE, uses fuzzy
+  search via agrep, if FALSE, uses grep}
+}
+\description{
+  Look up species IDs by taxonomic or common name
+}
+\examples{
+\dontrun{
+lookup_names(name='Pinus', type='genus')
+lookup_names(name='pine', type='common_name')
+lookup_names(name='bird', type='common_name', fuzzy=TRUE)
+}
+}
+
