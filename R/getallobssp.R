@@ -1,15 +1,15 @@
 #' Get all observations for a particular species or set of species.
 #'
-#' @import RJSONIO RCurl stringr plyr XML
+#' @import RJSONIO stringr plyr XML httr
 #' @param speciesid species id numbers, from 1 to infinity, potentially,
 #'     use e.g., c(52, 53, etc.) if more than one species desired (numeric)
 #' @param startdate start date of data period desired, see format in examples (character)
 #' @param enddate end date of data period desired, see format in examples (character)
-#' @param ... optional additional curl options (debugging tools mostly)
-#' @param curl If using in a loop, call getCurlHandle() first and pass
-#'  the returned value in here (avoids unnecessary footprint)
-#' @return Date when article was published.
+#' @param callopts Optional additional curl options (debugging tools mostly)
+#' @return An object of class npn with slots for taxa, stations, phenophase metadata, 
+#'    and data.
 #' @export
+#' @seealso npn_todf
 #' @examples \dontrun{
 #' # Lookup names
 #' lookup_names(name='Pinus', type='genus')
@@ -28,10 +28,9 @@ getallobssp <- function(speciesid = NULL, startdate = NULL, enddate = NULL, call
 {
   if(is.null(speciesid))
     stop("You must provide a speciesid")
+
   taxa <- taxonlist[as.numeric(as.character(taxonlist[,"species_id"])) %in% speciesid,c("species_id","genus","species")]
   taxa$species_id <- as.numeric(as.character(taxa$species_id))
-#   taxa <- split(taxa, taxa$species_id)
-#   taxa <- lapply(taxa, function(x) list(species_id=as.numeric(as.character(x$species_id)), name=paste(x$genus,x$species,sep=" ")))
   
   url = 'https://www.usanpn.org/npn_portal/observations/getAllObservationsForSpecies.json'
   args <- compact(list(start_date=startdate, end_date=enddate))
@@ -63,6 +62,7 @@ setClass("npn", slots=list(taxa="data.frame",
                            data="data.frame"))
 
 #' Coerce elements of output from a call to occ to a single data.frame
+#' 
 #' @param x An object of class occdat
 #' @param minimal Default is FALSE
 #' @return An object of class npnsp (for npn spatial)

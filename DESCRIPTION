@@ -11,6 +11,7 @@ LazyData: yes
 Imports:
     RJSONIO,
     RCurl (>= 1.6),
+    httr,
     stringr,
     XML,
     plyr
