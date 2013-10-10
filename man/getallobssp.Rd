@@ -21,7 +21,7 @@
 }
 \value{
   An object of class npn with slots for taxa, stations,
-  phenophase metadata, and data.
+  phenophase (metadata), and data.
 }
 \description{
   Get all observations for a particular species or set of
@@ -44,6 +44,6 @@ npn_todf(out)
 }
 }
 \seealso{
-  npn_todf
+  \code{\link{npn_todf}}
 }
 

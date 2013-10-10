@@ -96,9 +96,9 @@ Slot "data":
 Coerce data to a data.frame that has most all data. 
 
 ```coffee
-
+npn_todf(out)
 ```
 
 ```coffee
-
+some stuff...
 ```

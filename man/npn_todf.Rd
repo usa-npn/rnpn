@@ -1,19 +1,27 @@
 \name{npn_todf}
 \alias{npn_todf}
-\title{Coerce elements of output from a call to occ to a single data.frame}
+\title{Coerce elements of an object of class npn to a single data.frame}
 \usage{
-  npn_todf(x, minimal = FALSE)
+  npn_todf(input, minimal = FALSE)
 }
 \arguments{
-  \item{x}{An object of class occdat}
+  \item{x}{An object of class npn}
 
   \item{minimal}{Default is FALSE}
 }
 \value{
-  An object of class npnsp (for npn spatial)
+  An object of class npnsp (for npn spatial), containing
+  just a data.frame with the following fields if
+  minimal=TRUE \enumerate{ \item sciname \item latitude
+  \item longitude }
+
+  and the following fields if minimal=FALSE \enumerate{
+  \item sciname \item latitude \item longitude \item asdfas
+  \item asdfdh \item asdfawer \item asdfssawe \item asdfad
+  \item asdfwe \item adsfcwer }
 }
 \description{
-  Coerce elements of output from a call to occ to a single
+  Coerce elements of an object of class npn to a single
   data.frame
 }
 

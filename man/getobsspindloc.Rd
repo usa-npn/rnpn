@@ -3,33 +3,22 @@
 \title{Return all of the data, positive or negative, for an individual or a group
    of individuals, which are of a common species, at any number of locations.}
 \usage{
-  getobsspindloc(year = NA, stationid = NA, speciesid = NA,
-    downform = "json", printdf = TRUE,
-    url = "https://www.usanpn.org/npn_portal/observations/getObservationsForSpeciesIndividualAtLocation",
-    ..., curl = getCurlHandle())
+  getobsspindloc(year = NULL, stationid = NULL,
+    speciesid = NULL, printdf = TRUE, callopts = list())
 }
 \arguments{
-  \item{year}{Year.}
+  \item{year}{Year (numeric), required.}
 
   \item{stationid}{Station id; Use e.g., c(4881, 4882,
   etc.) if more than one species desired (numeric).}
 
   \item{speciesid}{Species id number (numeric).}
 
-  \item{downform}{Download format, one of 'json' or 'xml'.}
-
   \item{printdf}{print data.frame (default, TRUE) or not
   (FALSE)}
 
-  \item{url}{the PLoS API url for the function (should be
-  left to default)}
-
-  \item{...}{optional additional curl options (debugging
-  tools mostly)}
-
-  \item{curl}{If using in a loop, call getCurlHandle()
-  first and pass the returned value in here (avoids
-  unnecessary footprint)}
+  \item{callopts}{Optional additional curl options
+  (debugging tools mostly)}
 }
 \value{
   Data frame/json/xml of phenophas id's, phenophase names,

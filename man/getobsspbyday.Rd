@@ -2,8 +2,8 @@
 \alias{getobsspbyday}
 \title{Get observations by day for a particular species or set of species.}
 \usage{
-  getobsspbyday(speciesid = NA, startdate = NA,
-    enddate = NA, ..., curl = getCurlHandle())
+  getobsspbyday(speciesid = NULL, startdate = NULL,
+    enddate = NULL, callopts = list())
 }
 \arguments{
   \item{speciesid}{species id numbers, from 1 to infinity,
@@ -16,15 +16,11 @@
   \item{enddate}{end date of data period desired, see
   format in examples (character)}
 
-  \item{...}{optional additional curl options (debugging
-  tools mostly)}
-
-  \item{curl}{If using in a loop, call getCurlHandle()
-  first and pass the returned value in here (avoids
-  unnecessary footprint)}
+  \item{callopts}{Optional additional curl options
+  (debugging tools mostly)}
 }
 \value{
-  Number of observations by day.
+  Number of observations by day, in object of class npn.
 }
 \description{
   Get observations by day for a particular species or set
@@ -36,7 +32,8 @@
 temp <- lookup_names(name='bird', type='common')
 comnames <- temp[temp$species_id \%in\% c(357, 359, 1108), 'common_name']
 
-out <- getobsspbyday(speciesid=c(357, 359, 1108), startdate='2010-04-01', enddate='2013-09-31')
+out <- getobsspbyday(speciesid=c(357, 359, 1108), startdate='2010-04-01',
+   enddate='2013-09-31')
 names(out) <- comnames
 df <- ldply(out)
 df$date <- as.Date(df$date)

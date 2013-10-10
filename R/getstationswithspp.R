@@ -1,40 +1,32 @@
 #' Get a list of all stations which have an individual whom is a member of a 
 #'    set of species.
 #'
-#' @import RJSONIO RCurl plyr XML
+#' @importFrom httr GET stop_for_status content
 #' @param speciesid species id numbers, from 1 to infinity, potentially, 
 #'    use e.g., c(52, 53, etc.) if more than one species desired (numeric)
-#' @param downform Download format, one of 'json' or 'xml'.
 #' @param printdf print data.frame (default, TRUE) or not (FALSE)
-#' @param url the PLoS API url for the function (should be left to default)
-#' @param ... optional additional curl options (debugging tools mostly)
-#' @param curl If using in a loop, call getCurlHandle() first and pass
-#'  the returned value in here (avoids unnecessary footprint)
+#' @param callopts Optional additional curl options (debugging tools mostly)
 #' @return Stations' latitude and longitude, names, and ids.
 #' @export
 #' @examples \dontrun{
 #' getstationswithspp(c(52,53,54))
 #' getstationswithspp(c(52,53), printdf = FALSE)
 #' }
-getstationswithspp <- function(speciesid = NA, downform = 'json', printdf = TRUE,
-  url = 'https://www.usanpn.org/npn_portal/stations/getStationsWithSpecies',
-  ..., curl = getCurlHandle() ) 
+getstationswithspp <- function(speciesid = NA, printdf = TRUE, callopts=list()) 
 {
-  url2 <- paste(url, '.json?', sep='')
+  if(is.null(speciesid))
+    stop("You must provide an speciesid")
+
+  url = 'https://www.usanpn.org/npn_portal/stations/getStationsWithSpecies.json'
   args <- list()
-  if(!is.na(speciesid[1]))
-    for(i in 1:length(speciesid)) {
-      args[paste('species_id[',i,']',sep='')] <- speciesid[i]
-    }
-  tt <- getForm(url2,
-    .params = args,
-    ...,
-    curl = curl)
-  if(downform == 'json'){
-    if(printdf == TRUE){
-      ldply(fromJSON(tt), identity)
-    } else 
-      {fromJSON(tt)}
+  for(i in seq_along(speciesid)) {
+    args[paste('species_id[',i,']',sep='')] <- speciesid[i]
+  }
+  tmp <- GET(url, query = args, callopts)
+  stop_for_status(tmp)
+  tt <- content(tmp)
+  if(printdf == TRUE){
+    data.frame(do.call(rbind, tt))
   } else 
-    {xmlTreeParse(tt)}
+    { tt }
 }

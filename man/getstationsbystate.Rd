@@ -1,26 +1,18 @@
 \name{getstationsbystate}
 \alias{getstationsbystate}
-\title{Get number of stations by state in a data frame.}
+\title{Get number of stations by state.}
 \usage{
-  getstationsbystate(url = "https://www.usanpn.org/npn_portal/stations/getStationCountByState",
-    ..., curl = getCurlHandle())
+  getstationsbystate(callopts = list())
 }
 \arguments{
-  \item{url}{the PLoS API url for the function (should be
-  left to default)}
-
-  \item{...}{optional additional curl options (debugging
-  tools mostly)}
-
-  \item{curl}{If using in a loop, call getCurlHandle()
-  first and pass the returned value in here (avoids
-  unnecessary footprint)}
+  \item{callopts}{Optional additional curl options
+  (debugging tools mostly)}
 }
 \value{
-  Number of stations by state.
+  Number of stations by state as a data.frame.
 }
 \description{
-  Get number of stations by state in a data frame.
+  Get number of stations by state.
 }
 \examples{
 \dontrun{

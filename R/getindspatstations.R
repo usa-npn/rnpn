@@ -1,47 +1,41 @@
 #' Get all observations for a particular species or set of species.
 #'
-#' @import RJSONIO RCurl plyr XML
+#' @importFrom httr GET stop_for_status content
+#' @importFrom plyr compact
 #' @param speciesid species id numbers, from 1 to infinity, potentially, 
 #'     use e.g., c(52, 53, etc.) if more than one species desired (numeric)
 #' @param stationid use e.g., c(4881, 4882, etc.) if more than one species desired (numeric)
 #' @param year Year (numeric).
-#' @param downform Download format, one of 'json' or 'xml'.
 #' @param printdf print data.frame (default, TRUE) or not (FALSE)
-#' @param url the PLoS API url for the function (should be left to default)
-#' @param ... optional additional curl options (debugging tools mostly)
-#' @param curl If using in a loop, call getCurlHandle() first and pass
-#'  the returned value in here (avoids unnecessary footprint)
+#' @param callopts Optional additional curl options (debugging tools mostly)
 #' @return Observations for each species by date.
 #' @export
 #' @examples \dontrun{ 
 #' getindspatstations(35, c(60, 259), 2009)
 #' getindspatstations(35, c(60, 259), 2009, 'xml')
 #' }
-getindspatstations <-  function(speciesid = NA, stationid = NA, year = NA, 
-  downform = 'json', printdf = TRUE,
-  url = 'https://www.usanpn.org/npn_portal/individuals/getIndividualsOfSpeciesAtStations',
-  ..., curl = getCurlHandle() ) 
+getindspatstations <-  function(speciesid = NULL, stationid = NULL, year = NULL, 
+  printdf = TRUE) 
 {
-  url2 <- paste(url, '.', downform, sep='')
-  args <- list()
-  if(!is.na(speciesid[1]))
-    for(i in 1:length(speciesid)) {
-      args[paste('species_id[',i,']',sep='')] <- speciesid[i]
-    }
-  if(!is.na(stationid[1]))
-    for(i in 1:length(stationid)) {
-      args[paste('station_ids[',i,']',sep='')] <- stationid[i]
-    }
-  if(!is.na(year))
-    args$year <- year
-  tt <- getForm(url2,
-                .params = args,
-                ...,
-                curl = curl)
-  if(downform == 'json'){
-    out <- fromJSON(tt)
-      if(printdf == TRUE){
-        ldply(out, identity)} else {out}
-  } else
-    {xmlTreeParse(tt)}
+  if(is.null(speciesid))
+    stop("You must provide a speciesid")
+
+  if(is.null(stationid))
+    stop("You must provide a stationid")
+
+  url = 'https://www.usanpn.org/npn_portal/individuals/getIndividualsOfSpeciesAtStations.json'
+  args <- compact(list(year = year))
+  for(i in seq_along(speciesid)) {
+    args[paste('species_id[',i,']',sep='')] <- speciesid[i]
+  }
+  for(i in seq_along(stationid)) {
+    args[paste('station_ids[',i,']',sep='')] <- stationid[i]
+  }
+  tmp <- GET(url, query = args, callopts)
+  stop_for_status(tmp)
+  tt <- content(tmp)
+  if(printdf){
+    data.frame(do.call(rbind, tt))
+  } else 
+    {tt}
 }

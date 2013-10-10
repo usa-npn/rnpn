@@ -2,10 +2,8 @@
 \alias{getindspatstations}
 \title{Get all observations for a particular species or set of species.}
 \usage{
-  getindspatstations(speciesid = NA, stationid = NA,
-    year = NA, downform = "json", printdf = TRUE,
-    url = "https://www.usanpn.org/npn_portal/individuals/getIndividualsOfSpeciesAtStations",
-    ..., curl = getCurlHandle())
+  getindspatstations(speciesid = NULL, stationid = NULL,
+    year = NULL, printdf = TRUE)
 }
 \arguments{
   \item{speciesid}{species id numbers, from 1 to infinity,
@@ -17,20 +15,11 @@
 
   \item{year}{Year (numeric).}
 
-  \item{downform}{Download format, one of 'json' or 'xml'.}
-
   \item{printdf}{print data.frame (default, TRUE) or not
   (FALSE)}
 
-  \item{url}{the PLoS API url for the function (should be
-  left to default)}
-
-  \item{...}{optional additional curl options (debugging
-  tools mostly)}
-
-  \item{curl}{If using in a loop, call getCurlHandle()
-  first and pass the returned value in here (avoids
-  unnecessary footprint)}
+  \item{callopts}{Optional additional curl options
+  (debugging tools mostly)}
 }
 \value{
   Observations for each species by date.

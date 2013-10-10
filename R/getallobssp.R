@@ -1,15 +1,16 @@
 #' Get all observations for a particular species or set of species.
 #'
-#' @import RJSONIO stringr plyr XML httr
+#' @importFrom httr GET stop_for_status content
+#' @importFrom plyr compact
 #' @param speciesid species id numbers, from 1 to infinity, potentially,
 #'     use e.g., c(52, 53, etc.) if more than one species desired (numeric)
 #' @param startdate start date of data period desired, see format in examples (character)
 #' @param enddate end date of data period desired, see format in examples (character)
 #' @param callopts Optional additional curl options (debugging tools mostly)
-#' @return An object of class npn with slots for taxa, stations, phenophase metadata, 
+#' @return An object of class npn with slots for taxa, stations, phenophase (metadata), 
 #'    and data.
 #' @export
-#' @seealso npn_todf
+#' @seealso \code{\link{npn_todf}}
 #' @examples \dontrun{
 #' # Lookup names
 #' lookup_names(name='Pinus', type='genus')
@@ -61,20 +62,40 @@ setClass("npn", slots=list(taxa="data.frame",
                            phenophase="data.frame", 
                            data="data.frame"))
 
-#' Coerce elements of output from a call to occ to a single data.frame
+#' Coerce elements of an object of class npn to a single data.frame
 #' 
-#' @param x An object of class occdat
+#' @param x An object of class npn
 #' @param minimal Default is FALSE
-#' @return An object of class npnsp (for npn spatial)
+#' @return An object of class npnsp (for npn spatial), containing just a data.frame 
+#'    with the following fields if minimal=TRUE
+#' \enumerate{
+#'   \item sciname
+#'   \item latitude
+#'   \item longitude
+#' }
+#' 
+#' and the following fields if minimal=FALSE
+#' \enumerate{
+#'   \item sciname
+#'   \item latitude
+#'   \item longitude
+#'   \item asdfas
+#'   \item asdfdh
+#'   \item asdfawer
+#'   \item asdfssawe
+#'   \item asdfad
+#'   \item asdfwe
+#'   \item adsfcwer
+#' }
 #' @export
-npn_todf <- function(x, minimal=FALSE)
+npn_todf <- function(input, minimal=FALSE)
 {
-  if(!is(x,"npn"))
+  if(!is(input,"npn"))
     stop("Input object must be of class npn")
   
-  dat <- merge(x@stations, x@data, by="station_id")
-  dat <- merge(dat, x@taxa, by="species_id")[,-c(1,2)]
-  dat <- merge(dat, x@phenophase, by="phenophase_id")[,-1]
+  dat <- merge(input@stations, input@data, by="station_id")
+  dat <- merge(dat, input@taxa, by="species_id")[,-c(1,2)]
+  dat <- merge(dat, input@phenophase, by="phenophase_id")[,-1]
   dat <- transform(dat, sciname = paste(genus, species, sep=" "))
   dat <- data.frame(sciname=dat$sciname, latitude=dat$latitude, longitude=dat$longitude, 
                dat[,!names(dat)%in%c("sciname","latitude","longitude")])

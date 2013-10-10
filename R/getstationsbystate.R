@@ -1,21 +1,19 @@
-#' Get number of stations by state in a data frame.
+#' Get number of stations by state.
 #'
-#' @import RJSONIO RCurl plyr XML
-#' @param url the PLoS API url for the function (should be left to default)
-#' @param ... optional additional curl options (debugging tools mostly)
-#' @param curl If using in a loop, call getCurlHandle() first and pass
-#'  the returned value in here (avoids unnecessary footprint)
-#' @return Number of stations by state.
+#' @importFrom httr GET stop_for_status content
+#' @importFrom plyr ldply
+#' @param callopts Optional additional curl options (debugging tools mostly)
+#' @return Number of stations by state as a data.frame.
 #' @export
 #' @examples \dontrun{
 #' getstationsbystate()
 #' }
-getstationsbystate <- function(
-  url = 'https://www.usanpn.org/npn_portal/stations/getStationCountByState',
-  ..., curl = getCurlHandle() ) 
+getstationsbystate <- function(callopts=list())
 {
-  url2 <- paste(url, '.json?', sep='')
-  out <- fromJSON(getURLContent(url2))
+  url = 'https://www.usanpn.org/npn_portal/stations/getStationCountByState.json'
+  tmp <- GET(url, callopts)
+  stop_for_status(tmp)
+  out <- content(tmp)
   states <- ldply(out, function(x) if(is.null(x[[1]]) == TRUE) {x[[1]] <- "emptyvalue"} 
         else{x[[1]] <- x[[1]]})
   data <- ldply(out, function(x) x[[2]])

@@ -1,37 +1,29 @@
 #' Get all observations for a particular species or set of species.
 #'
-#' @import RJSONIO RCurl plyr XML
+#' @importFrom httr GET stop_for_status content
 #' @param stationid use e.g., c(4881, 4882, etc.) if more than one species desired (numeric)
-#' @param downform Download format, one of 'json' or 'xml'.
 #' @param printdf print data.frame (default, TRUE) or not (FALSE)
-#' @param url the PLoS API url for the function (should be left to default)
-#' @param ... optional additional curl options (debugging tools mostly)
-#' @param curl If using in a loop, call getCurlHandle() first and pass
-#'  the returned value in here (avoids unnecessary footprint)
+#' @param callopts Optional additional curl options (debugging tools mostly)
 #' @return Observations for each species by date.
 #' @export
 #' @examples \dontrun{
 #' getindsatstations(c(507, 523))
 #' getindsatstations(c(507, 523), 'xml')
 #' }
-getindsatstations <- function(stationid = NA, downform = 'json', printdf = TRUE,
-  url = 'https://www.usanpn.org/npn_portal/individuals/getIndividualsAtStations',
-  ..., curl = getCurlHandle() )
+getindsatstations <- function(stationid = NULL, printdf = TRUE, callopts=list())
 {
-  url2 <- paste(url, '.', downform, sep='')
+  if(is.null(stationid))
+    stop("You must provide a stationid")
+
+  url = 'https://www.usanpn.org/npn_portal/individuals/getIndividualsAtStations.json'
   args <- list()
-  if(!is.na(stationid[1]))
-    for(i in 1:length(stationid)) {
-      args[paste('station_ids[',i,']',sep='')] <- stationid[i]
-    }
-  tt <- getForm(url2,
-      .params = args,
-      ...,
-      curl = curl)
-  if(downform == 'json'){
-    out <- fromJSON(tt)
-  if(printdf == TRUE){
-    ldply(out, identity)} else {out}
-  } else
-    {xmlTreeParse(tt)}
+  for(i in seq_along(stationid)) {
+    args[paste('station_id[',i,']',sep='')] <- stationid[i]
+  }
+  tmp <- GET(url, query = args, callopts)
+  stop_for_status(tmp)
+  tt <- content(tmp)
+  if(printdf){
+    data.frame(do.call(rbind, tt))
+  } else {tt}
 }

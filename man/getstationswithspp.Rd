@@ -3,30 +3,19 @@
 \title{Get a list of all stations which have an individual whom is a member of a
    set of species.}
 \usage{
-  getstationswithspp(speciesid = NA, downform = "json",
-    printdf = TRUE,
-    url = "https://www.usanpn.org/npn_portal/stations/getStationsWithSpecies",
-    ..., curl = getCurlHandle())
+  getstationswithspp(speciesid = NA, printdf = TRUE,
+    callopts = list())
 }
 \arguments{
   \item{speciesid}{species id numbers, from 1 to infinity,
   potentially, use e.g., c(52, 53, etc.) if more than one
   species desired (numeric)}
 
-  \item{downform}{Download format, one of 'json' or 'xml'.}
-
   \item{printdf}{print data.frame (default, TRUE) or not
   (FALSE)}
 
-  \item{url}{the PLoS API url for the function (should be
-  left to default)}
-
-  \item{...}{optional additional curl options (debugging
-  tools mostly)}
-
-  \item{curl}{If using in a loop, call getCurlHandle()
-  first and pass the returned value in here (avoids
-  unnecessary footprint)}
+  \item{callopts}{Optional additional curl options
+  (debugging tools mostly)}
 }
 \value{
   Stations' latitude and longitude, names, and ids.
