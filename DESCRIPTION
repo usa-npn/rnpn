@@ -2,10 +2,12 @@ Package: rnpn
 Description: A programmatic interface to the
     Web Service methods provided by the National Phenology Network.
 Title: Interface to the National Phenology Network API methods
-Version: 0.0-1
-License: BSD
-Author: Scott Chamberlain, Lee Marsh
-Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>
+Version: 0.0.5
+License: MIT
+Authors@R: c(person("Scott", "Chamberlain", role = c("aut", "cre"),
+    email = "myrmecocystus@gmail.com"),
+    person("Lee", "Marsh", role = "aut",
+    email = "XXXX"))
 LazyLoad: yes
 LazyData: yes
 Imports:

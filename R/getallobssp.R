@@ -30,7 +30,7 @@ getallobssp <- function(speciesid = NULL, startdate = NULL, enddate = NULL, call
   if(is.null(speciesid))
     stop("You must provide a speciesid")
 
-  taxa <- taxonlist[as.numeric(as.character(taxonlist[,"species_id"])) %in% speciesid,c("species_id","genus","species")]
+  taxa <- taxonlist[as.numeric(as.character(taxonlist[,"species_id"])) %in% speciesid,c("species_id","genus","epithet","genus_epithet")]
   taxa$species_id <- as.numeric(as.character(taxa$species_id))
   
   url = 'https://www.usanpn.org/npn_portal/observations/getAllObservationsForSpecies.json'
@@ -41,18 +41,20 @@ getallobssp <- function(speciesid = NULL, startdate = NULL, enddate = NULL, call
   out <- GET(url, query=args, callopts)
   stop_for_status(out)
   tt <- content(out)
-  station_list <- data.frame(do.call(rbind, tt$station_list))
-  phenophase_list <- data.frame(do.call(rbind, tt$phenophase_list))
+  station_list <- ldply(tt$station_list, data.frame)
+  phenophase_list <- ldply(tt$phenophase_list, data.frame)
   foo <- function(x){
     tmp <- list(date=x$date, 
                 station_id=x$stations[[1]]$station_id,
                 species_id=x$stations[[1]]$species_ids[[1]]$species_id,
-                phenophase=data.frame(do.call(rbind, x$stations[[1]]$species_ids[[1]]$phenophases)))
-    do.call(data.frame, tmp)
+#                 phenophase=ldply(x$stations[[1]]$species_ids[[1]]$phenophases, data.frame),
+                phenophase_id=x$stations[[1]]$species_ids[[1]]$phenophases[[1]][[1]],
+                phen_seq=x$stations[[1]]$species_ids[[1]]$phenophases[[1]][[2]])
+    data.frame(tmp)
   }
   temp <- lapply(tt$observation_list, foo)
-  data <- do.call(rbind, temp)
-  names(data)[4:5] <- c("phenophase_id","phen_seq")
+  data <- data.frame(do.call(rbind, temp))
+#   names(data)[4:5] <- c("phenophase_id","phen_seq")
   
   new("npn", taxa=taxa, stations=station_list, phenophase = phenophase_list, data = data)
 }
@@ -96,8 +98,8 @@ npn_todf <- function(input, minimal=FALSE)
   dat <- merge(input@stations, input@data, by="station_id")
   dat <- merge(dat, input@taxa, by="species_id")[,-c(1,2)]
   dat <- merge(dat, input@phenophase, by="phenophase_id")[,-1]
-  dat <- transform(dat, sciname = paste(genus, species, sep=" "))
-  dat <- data.frame(sciname=dat$sciname, latitude=dat$latitude, longitude=dat$longitude, 
+#   dat <- transform(dat, sciname = paste(genus, species, sep=" "))
+  dat <- data.frame(sciname=dat$genus_epithet, latitude=dat$latitude, longitude=dat$longitude, 
                dat[,!names(dat)%in%c("sciname","latitude","longitude")])
   if(minimal)
     dat <- dat[,c("sciname","latitude","longitude")]

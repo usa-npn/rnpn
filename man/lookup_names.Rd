@@ -7,7 +7,8 @@
 \arguments{
   \item{name}{A scientific or common name}
 
-  \item{type}{One of common_name, genus, or species}
+  \item{type}{One of common_name, genus, epithet, or
+  genus_epithet}
 
   \item{fuzzy}{One of TRUE or FALSE, if FALSE, uses fuzzy
   search via agrep, if FALSE, uses grep}
