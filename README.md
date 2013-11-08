@@ -1,6 +1,8 @@
 rnpn
 ========
 
+[![Build Status](https://api.travis-ci.org/ropensci/rnpn.png)](https://travis-ci.org/ropensci/rnpn)
+
 `rnpn` is a set of functions/package is an R interface to the US National Phenology Network API. 
 
 National Phenology Network API documentation here: 

@@ -3,11 +3,12 @@ Description: A programmatic interface to the
     Web Service methods provided by the National Phenology Network.
 Title: Interface to the National Phenology Network API methods
 Version: 0.0.5
+Date: 2013-11-08
 License: MIT
 Authors@R: c(person("Scott", "Chamberlain", role = c("aut", "cre"),
     email = "myrmecocystus@gmail.com"),
     person("Lee", "Marsh", role = "aut",
-    email = "XXXX"))
+    email = "npnlee85@gmail.com"))
 LazyLoad: yes
 LazyData: yes
 Imports:
