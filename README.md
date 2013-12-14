@@ -18,9 +18,9 @@ Note to Windows users when installing using install_github in Hadley's devtools 
 
 ```coffee
 install.packages("devtools")
-require(devtools)
-install_github("rnpn", "ropensci")
-require(rnpn)
+library(devtools)
+install_github("ropensci/rnpn")
+library(rnpn)
 ```
 
 ### Quick start
@@ -105,5 +105,28 @@ npn_todf(out)
 some stuff...
 ```
 
+Please report any issues or bugs](https://github.com/ropensci/rnpn/issues).
+
+License: MIT
+
+This package is part of the [rOpenSci](http://ropensci.org/packages) project.
+
+To cite package `rnpn` in publications use:
+
+```coffee
+To cite package ‘rnpn’ in publications use:
+
+  Scott Chamberlain and Lee Marsh (2013). rnpn: Interface to the National Phenology Network API methods.
+  R package version 0.0.5.
+
+A BibTeX entry for LaTeX users is
+
+  @Manual{,
+    title = {rnpn: Interface to the National Phenology Network API methods},
+    author = {Scott Chamberlain and Lee Marsh},
+    year = {2013},
+    note = {R package version 0.0.5},
+  }
+```
 
 [![](http://ropensci.org/public_images/github_footer.png)](http://ropensci.org)
