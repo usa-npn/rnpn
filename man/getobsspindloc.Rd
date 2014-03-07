@@ -3,8 +3,8 @@
 \title{Return all of the data, positive or negative, for an individual or a group
    of individuals, which are of a common species, at any number of locations.}
 \usage{
-  getobsspindloc(year = NULL, stationid = NULL,
-    speciesid = NULL, printdf = TRUE, callopts = list())
+getobsspindloc(year = NULL, stationid = NULL, speciesid = NULL,
+  printdf = TRUE, callopts = list())
 }
 \arguments{
   \item{year}{Year (numeric), required.}
@@ -21,13 +21,13 @@
   (debugging tools mostly)}
 }
 \value{
-  Data frame/json/xml of phenophas id's, phenophase names,
-  sequence numbers, color, date, and observation id's.
+Data frame/json/xml of phenophas id's, phenophase names,
+sequence numbers, color, date, and observation id's.
 }
 \description{
-  Return all of the data, positive or negative, for an
-  individual or a group of individuals, which are of a
-  common species, at any number of locations.
+Return all of the data, positive or negative, for an
+individual or a group of individuals, which are of a common
+species, at any number of locations.
 }
 \examples{
 \dontrun{

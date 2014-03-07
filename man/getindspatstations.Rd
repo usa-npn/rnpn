@@ -2,8 +2,8 @@
 \alias{getindspatstations}
 \title{Get all observations for a particular species or set of species.}
 \usage{
-  getindspatstations(speciesid = NULL, stationid = NULL,
-    year = NULL, printdf = TRUE)
+getindspatstations(speciesid = NULL, stationid = NULL, year = NULL,
+  printdf = TRUE)
 }
 \arguments{
   \item{speciesid}{species id numbers, from 1 to infinity,
@@ -22,11 +22,11 @@
   (debugging tools mostly)}
 }
 \value{
-  Observations for each species by date.
+Observations for each species by date.
 }
 \description{
-  Get all observations for a particular species or set of
-  species.
+Get all observations for a particular species or set of
+species.
 }
 \examples{
 \dontrun{

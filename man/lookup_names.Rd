@@ -2,7 +2,7 @@
 \alias{lookup_names}
 \title{Look up species IDs by taxonomic or common name}
 \usage{
-  lookup_names(name, type = "genus", fuzzy = FALSE)
+lookup_names(name, type = "genus", fuzzy = FALSE)
 }
 \arguments{
   \item{name}{A scientific or common name}
@@ -14,7 +14,7 @@
   search via agrep, if FALSE, uses grep}
 }
 \description{
-  Look up species IDs by taxonomic or common name
+Look up species IDs by taxonomic or common name
 }
 \examples{
 \dontrun{

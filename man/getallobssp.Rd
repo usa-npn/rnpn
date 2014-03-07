@@ -2,8 +2,8 @@
 \alias{getallobssp}
 \title{Get all observations for a particular species or set of species.}
 \usage{
-  getallobssp(speciesid = NULL, startdate = NULL,
-    enddate = NULL, callopts = list())
+getallobssp(speciesid = NULL, startdate = NULL, enddate = NULL,
+  callopts = list())
 }
 \arguments{
   \item{speciesid}{species id numbers, from 1 to infinity,
@@ -20,12 +20,12 @@
   (debugging tools mostly)}
 }
 \value{
-  An object of class npn with slots for taxa, stations,
-  phenophase (metadata), and data.
+An object of class npn with slots for taxa, stations,
+phenophase (metadata), and data.
 }
 \description{
-  Get all observations for a particular species or set of
-  species.
+Get all observations for a particular species or set of
+species.
 }
 \examples{
 \dontrun{
@@ -44,6 +44,6 @@ npn_todf(out)
 }
 }
 \seealso{
-  \code{\link{npn_todf}}
+\code{\link{npn_todf}}
 }
 

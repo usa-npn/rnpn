@@ -1,5 +1,6 @@
 #' Get observations by day for a particular species or set of species.
 #'
+#' @import data.table
 #' @importFrom httr GET stop_for_status content
 #' @importFrom plyr compact llply ldply ddply summarise
 #' @importFrom stringr str_replace
@@ -27,6 +28,7 @@
 #'  theme_grey(base_size=20) +
 #'  facet_grid(.id ~.)
 #' }
+
 getobsspbyday <- function(speciesid = NULL, startdate = NULL, enddate = NULL, callopts=list())
 {
   if(is.null(speciesid))
@@ -40,11 +42,13 @@ getobsspbyday <- function(speciesid = NULL, startdate = NULL, enddate = NULL, ca
   tmp <- GET(url, query = args, callopts)
   stop_for_status(tmp)
   tt <- content(tmp)
-  df_list <- llply(tt$all_species$species, function(x) ldply(x[2]$count_list, identity))
+  df_list <- lapply(tt$all_species$species, function(x) rbindlist(lapply(x[2]$count_list, data.frame)))
   df_list <- llply(df_list, function(x){
       x$date <- str_replace(x$date, "\\s.+", "")
       x$count <- as.numeric(x$count)
-      ddply(x, .(date), summarise, count=sum(count))
+      tt <- data.frame(x[,sum(count),by=date])
+      names(tt) <- c('date','count')
+      tt
     })
   
   names(df_list) <- speciesid

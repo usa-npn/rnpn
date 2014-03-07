@@ -2,7 +2,7 @@
 \alias{getobscomm}
 \title{Get observation comments for a particular species or set of species.}
 \usage{
-  getobscomm(observationid = NULL, callopts = list())
+getobscomm(observationid = NULL, callopts = list())
 }
 \arguments{
   \item{observationid}{observation id, or as vector if >1,
@@ -12,11 +12,11 @@
   (debugging tools mostly)}
 }
 \value{
-  Comments.
+Comments.
 }
 \description{
-  Get observation comments for a particular species or set
-  of species.
+Get observation comments for a particular species or set of
+species.
 }
 \examples{
 \dontrun{

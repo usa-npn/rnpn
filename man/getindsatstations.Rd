@@ -2,8 +2,7 @@
 \alias{getindsatstations}
 \title{Get all observations for a particular species or set of species.}
 \usage{
-  getindsatstations(stationid = NULL, printdf = TRUE,
-    callopts = list())
+getindsatstations(stationid = NULL, printdf = TRUE, callopts = list())
 }
 \arguments{
   \item{stationid}{use e.g., c(4881, 4882, etc.) if more
@@ -16,11 +15,11 @@
   (debugging tools mostly)}
 }
 \value{
-  Observations for each species by date.
+Observations for each species by date.
 }
 \description{
-  Get all observations for a particular species or set of
-  species.
+Get all observations for a particular species or set of
+species.
 }
 \examples{
 \dontrun{

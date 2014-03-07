@@ -3,8 +3,7 @@
 \title{Get a list of all stations which have an individual whom is a member of a
    set of species.}
 \usage{
-  getstationswithspp(speciesid = NA, printdf = TRUE,
-    callopts = list())
+getstationswithspp(speciesid = NA, printdf = TRUE, callopts = list())
 }
 \arguments{
   \item{speciesid}{species id numbers, from 1 to infinity,
@@ -18,11 +17,11 @@
   (debugging tools mostly)}
 }
 \value{
-  Stations' latitude and longitude, names, and ids.
+Stations' latitude and longitude, names, and ids.
 }
 \description{
-  Get a list of all stations which have an individual whom
-  is a member of a set of species.
+Get a list of all stations which have an individual whom is
+a member of a set of species.
 }
 \examples{
 \dontrun{

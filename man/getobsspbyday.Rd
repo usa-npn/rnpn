@@ -2,8 +2,8 @@
 \alias{getobsspbyday}
 \title{Get observations by day for a particular species or set of species.}
 \usage{
-  getobsspbyday(speciesid = NULL, startdate = NULL,
-    enddate = NULL, callopts = list())
+getobsspbyday(speciesid = NULL, startdate = NULL, enddate = NULL,
+  callopts = list())
 }
 \arguments{
   \item{speciesid}{species id numbers, from 1 to infinity,
@@ -20,11 +20,11 @@
   (debugging tools mostly)}
 }
 \value{
-  Number of observations by day, in object of class npn.
+Number of observations by day, in object of class npn.
 }
 \description{
-  Get observations by day for a particular species or set
-  of species.
+Get observations by day for a particular species or set of
+species.
 }
 \examples{
 \dontrun{

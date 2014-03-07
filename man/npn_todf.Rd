@@ -2,7 +2,7 @@
 \alias{npn_todf}
 \title{Coerce elements of an object of class npn to a single data.frame}
 \usage{
-  npn_todf(input, minimal = FALSE)
+npn_todf(input, minimal = FALSE)
 }
 \arguments{
   \item{x}{An object of class npn}
@@ -10,18 +10,17 @@
   \item{minimal}{Default is FALSE}
 }
 \value{
-  An object of class npnsp (for npn spatial), containing
-  just a data.frame with the following fields if
-  minimal=TRUE \enumerate{ \item sciname \item latitude
-  \item longitude }
+An object of class npnsp (for npn spatial), containing just
+a data.frame with the following fields if minimal=TRUE
+\enumerate{ \item sciname \item latitude \item longitude }
 
-  and the following fields if minimal=FALSE \enumerate{
-  \item sciname \item latitude \item longitude \item asdfas
-  \item asdfdh \item asdfawer \item asdfssawe \item asdfad
-  \item asdfwe \item adsfcwer }
+and the following fields if minimal=FALSE \enumerate{ \item
+sciname \item latitude \item longitude \item asdfas \item
+asdfdh \item asdfawer \item asdfssawe \item asdfad \item
+asdfwe \item adsfcwer }
 }
 \description{
-  Coerce elements of an object of class npn to a single
-  data.frame
+Coerce elements of an object of class npn to a single
+data.frame
 }
 
