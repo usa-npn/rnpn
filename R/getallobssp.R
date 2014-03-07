@@ -25,6 +25,7 @@
 #' out <- getallobssp(speciesid = 52, startdate='2008-01-01', enddate='2011-12-31')
 #' npn_todf(out)
 #' }
+
 getallobssp <- function(speciesid = NULL, startdate = NULL, enddate = NULL, callopts=list())
 {
   if(is.null(speciesid))
@@ -41,8 +42,9 @@ getallobssp <- function(speciesid = NULL, startdate = NULL, enddate = NULL, call
   out <- GET(url, query=args, callopts)
   stop_for_status(out)
   tt <- content(out)
-  station_list <- ldply(tt$station_list, data.frame)
-  phenophase_list <- ldply(tt$phenophase_list, data.frame)
+  station_list <- data.frame(rbindlist(lapply(tt$station_list, data.frame)))
+  phenophase_list <- lapply(tt$phenophase_list, function(x){ x[sapply(x, is.null)] <- "none"; x})
+  phenophase_list <- data.frame(rbindlist(lapply(phenophase_list, data.frame)))
   foo <- function(x){
     tmp <- list(date=x$date, 
                 station_id=x$stations[[1]]$station_id,
@@ -108,3 +110,18 @@ npn_todf <- function(input, minimal=FALSE)
 }
 
 setClass("npnsp", slots=list(data="data.frame"))
+
+
+addmissing <- function(x){
+  names_ <- names(x[[which.max(laply(x, length))]])
+  
+  bbb <- function(x){
+    if(identical(names_[!names_ %in% names(x)], character(0))){x} else
+    {
+      xx <- rep("na", length(names_[!names_ %in% names(x)]))
+      names(xx) <- names_[!names_ %in% names(x)]
+      c(x, xx)
+    }
+  }
+  lapply(x, bbb)
+}
