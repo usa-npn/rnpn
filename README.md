@@ -105,7 +105,7 @@ npn_todf(out)
 some stuff...
 ```
 
-Please report any issues or bugs](https://github.com/ropensci/rnpn/issues).
+[Please report any issues or bugs](https://github.com/ropensci/rnpn/issues).
 
 License: MIT
 
