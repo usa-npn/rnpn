@@ -2,10 +2,11 @@ rnpn
 ========
 
 [![Build Status](https://api.travis-ci.org/ropensci/rnpn.png)](https://travis-ci.org/ropensci/rnpn)
+[![Build status](https://ci.appveyor.com/api/projects/status/es65utr5jmfmcsrg/branch/master)](https://ci.appveyor.com/project/sckott/rnpn/branch/master)
 
-`rnpn` is a set of functions/package is an R interface to the US National Phenology Network API. 
+`rnpn` is a set of functions/package is an R interface to the US National Phenology Network API.
 
-National Phenology Network API documentation here: 
+National Phenology Network API documentation here:
 https://docs.google.com/document/d/1yNjupricKOAXn6tY1sI7-EwkcfwdGUZ7lxYv7fcPjO8/edit?hl=en_US
 
 Note that there is no need for an API key to grab data from the National Phenology Network, but I think there is for writing data through the API. Currently, functions in this package only allow getting data, but will soon allow posting data to the USNPN endpoints.
@@ -95,7 +96,7 @@ Slot "data":
 11  2010-10-15 00:00:00       4881         52           393      300
 ```
 
-Coerce data to a data.frame that has most all data. 
+Coerce data to a data.frame that has most all data.
 
 ```coffee
 npn_todf(out)
