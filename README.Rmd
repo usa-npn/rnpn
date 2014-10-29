@@ -6,7 +6,8 @@ knitr::opts_chunk$set(
   comment = "#>",
   collapse = TRUE,
   warning = FALSE,
-  message = FALSE
+  message = FALSE,
+  fig.path='inst/img/'
 )
 ```
 
@@ -34,13 +35,15 @@ devtools::install_github("ropensci/rnpn")
 library('rnpn')
 ```
 
-### Searches
+### Lookup names
 
 You can lookup taxon names. This is not actually an API call to the web. The function simply searches for matches in a dataset stored in the package. You can then use the speciesid output in other functions.
 
 ```{r}
 lookup_names(name='Pinus', type='genus')
 ```
+
+### Search
 
 Search for a single species, specifying a start and end date. You can also pass a vector to the speciesid parameter.
 
@@ -52,6 +55,40 @@ Coerce data to a data.frame that has most all data.
 
 ```{r}
 npn_todf(out)
+```
+
+### List stations with xyz
+
+Get a list of all stations which have an individual whom is a member of a set of species.
+
+```{r}
+head( getstationswithspp(speciesid = 53) )
+```
+
+### Stations by state
+
+Number of stations by state.
+
+```{r}
+head( getstationsbystate() )
+```
+
+### Observations by day
+
+Get observations by day for a particular species or set of species.
+
+```{r tidy=FALSE, fig.width=10}
+library('plyr')
+out <- getobsspbyday(speciesid=c(357, 359, 1108), startdate='2010-04-01', enddate='2013-09-31')
+names(out) <- comnames
+df <- ldply(out)
+df$date <- as.Date(df$date)
+
+library('ggplot2')
+ggplot(df, aes(date, count)) +
+ geom_line() +
+ theme_grey(base_size=20) +
+ facet_grid(.id ~.)
 ```
 
 ## Meta

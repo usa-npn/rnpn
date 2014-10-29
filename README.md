@@ -29,7 +29,7 @@ devtools::install_github("ropensci/rnpn")
 library('rnpn')
 ```
 
-### Searches
+### Lookup names
 
 You can lookup taxon names. This is not actually an API call to the web. The function simply searches for matches in a dataset stored in the package. You can then use the speciesid output in other functions.
 
@@ -67,6 +67,8 @@ lookup_names(name='Pinus', type='genus')
 #> 794     Pinus edulis
 #> 836  Pinus monticola
 ```
+
+### Search
 
 Search for a single species, specifying a start and end date. You can also pass a vector to the speciesid parameter.
 
@@ -181,6 +183,60 @@ npn_todf(out)
 #> 19 Ripe seed cones Green3
 #> 20 Ripe seed cones Green3
 ```
+
+### List stations with xyz
+
+Get a list of all stations which have an individual whom is a member of a set of species.
+
+
+```r
+head( getstationswithspp(speciesid = 53) )
+#>    latitude  longitude      station_name station_id
+#> 1 44.340950 -72.461220  Frizzle Mountain        637
+#> 2 42.173855 -85.892418              Home       1447
+#> 3 44.588772 -93.004623              home       1572
+#> 4 48.051636 -92.766304   Wolfhaunt Creek       1598
+#> 5 48.051586 -92.764305 Wolfhaunt Prairie       1599
+#> 6 39.973316 -82.802826              Home       1841
+```
+
+### Stations by state
+
+Number of stations by state.
+
+
+```r
+head( getstationsbystate() )
+#>   state number_stations
+#> 1    CA            1508
+#> 2    AZ             753
+#> 3    ME             720
+#> 4    VA             720
+#> 5    CO             696
+#> 6    IL             587
+```
+
+### Observations by day
+
+Get observations by day for a particular species or set of species.
+
+
+```r
+library('plyr')
+out <- getobsspbyday(speciesid=c(357, 359, 1108), startdate='2010-04-01', enddate='2013-09-31')
+names(out) <- comnames
+#> Error in eval(expr, envir, enclos): object 'comnames' not found
+df <- ldply(out)
+df$date <- as.Date(df$date)
+
+library('ggplot2')
+ggplot(df, aes(date, count)) +
+ geom_line() +
+ theme_grey(base_size=20) +
+ facet_grid(.id ~.)
+```
+
+![plot of chunk unnamed-chunk-9](inst/img/unnamed-chunk-9-1.png) 
 
 ## Meta
 
