@@ -6,10 +6,10 @@
 #'     use e.g., c(52, 53, etc.) if more than one species desired (numeric)
 #' @param startdate start date of data period desired, see format in examples (character)
 #' @param enddate end date of data period desired, see format in examples (character)
-#' @param callopts Optional additional curl options (debugging tools mostly)
-#' @return An object of class npn with slots for taxa, stations, phenophase (metadata),
+#' @param ... Optional additional curl options (debugging tools mostly)
+#' @return An S4 object of class npn with slots for taxa, stations, phenophase (metadata),
 #'    and data.
-#' @seealso \code{\link{npn_todf}}
+#'
 #' @examples \dontrun{
 #' # Lookup names
 #' lookup_names(name='Pinus', type='genus')
@@ -20,27 +20,21 @@
 #' # Get data on two species
 #' getallobssp(speciesid = c(52, 53), startdate='2008-01-01', enddate='2011-12-31')
 #'
-#' # Get data on one species, convert to X
+#' # Get data on one species, convert to a single data.frame
 #' out <- getallobssp(speciesid = 52, startdate='2008-01-01', enddate='2011-12-31')
 #' npn_todf(out)
 #' }
 
-getallobssp <- function(speciesid = NULL, startdate = NULL, enddate = NULL, callopts=list())
+getallobssp <- function(speciesid, startdate = NULL, enddate = NULL, ...)
 {
-  if(is.null(speciesid))
-    stop("You must provide a speciesid")
-
   taxa <- taxonlist[as.numeric(as.character(taxonlist[,"species_id"])) %in% speciesid,c("species_id","genus","epithet","genus_epithet")]
   taxa$species_id <- as.numeric(as.character(taxa$species_id))
 
-  url = 'https://www.usanpn.org/npn_portal/observations/getAllObservationsForSpecies.json'
   args <- npnc(list(start_date=startdate, end_date=enddate))
   for(i in seq_along(speciesid)){
     args[paste('species_id[',i,']',sep='')] <- speciesid[i]
   }
-  out <- GET(url, query=args, callopts)
-  stop_for_status(out)
-  tt <- content(out)
+  tt <- npn_GET(paste0(base(), 'observations/getAllObservationsForSpecies.json'), args, ...)
   station_list <- data.frame(rbindlist(lapply(tt$station_list, data.frame)))
   phenophase_list <- lapply(tt$phenophase_list, function(x){ x[sapply(x, is.null)] <- "none"; x})
   phenophase_list <- data.frame(rbindlist(lapply(phenophase_list, data.frame)))

@@ -3,8 +3,7 @@
 \alias{getallobssp}
 \title{Get all observations for a particular species or set of species.}
 \usage{
-getallobssp(speciesid = NULL, startdate = NULL, enddate = NULL,
-  callopts = list())
+getallobssp(speciesid, startdate = NULL, enddate = NULL, ...)
 }
 \arguments{
 \item{speciesid}{species id numbers, from 1 to infinity, potentially,
@@ -14,10 +13,10 @@ use e.g., c(52, 53, etc.) if more than one species desired (numeric)}
 
 \item{enddate}{end date of data period desired, see format in examples (character)}
 
-\item{callopts}{Optional additional curl options (debugging tools mostly)}
+\item{...}{Optional additional curl options (debugging tools mostly)}
 }
 \value{
-An object of class npn with slots for taxa, stations, phenophase (metadata),
+An S4 object of class npn with slots for taxa, stations, phenophase (metadata),
    and data.
 }
 \description{
@@ -34,12 +33,9 @@ getallobssp(speciesid = 52, startdate='2008-01-01', enddate='2011-12-31')
 # Get data on two species
 getallobssp(speciesid = c(52, 53), startdate='2008-01-01', enddate='2011-12-31')
 
-# Get data on one species, convert to X
+# Get data on one species, convert to a single data.frame
 out <- getallobssp(speciesid = 52, startdate='2008-01-01', enddate='2011-12-31')
 npn_todf(out)
 }
-}
-\seealso{
-\code{\link{npn_todf}}
 }
 
