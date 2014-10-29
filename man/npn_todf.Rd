@@ -6,9 +6,9 @@
 npn_todf(input, minimal = FALSE)
 }
 \arguments{
-\item{minimal}{Default is FALSE}
+\item{input}{An object of class npn}
 
-\item{x}{An object of class npn}
+\item{minimal}{Default is FALSE}
 }
 \value{
 An object of class npnsp (for npn spatial), containing just a data.frame

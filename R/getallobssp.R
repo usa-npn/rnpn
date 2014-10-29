@@ -67,7 +67,7 @@ setClass("npn", slots=list(taxa="data.frame",
 
 #' Coerce elements of an object of class npn to a single data.frame
 #'
-#' @param x An object of class npn
+#' @param input An object of class npn
 #' @param minimal Default is FALSE
 #' @return An object of class npnsp (for npn spatial), containing just a data.frame
 #'    with the following fields if minimal=TRUE

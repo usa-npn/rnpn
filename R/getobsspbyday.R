@@ -1,7 +1,7 @@
 #' Get observations by day for a particular species or set of species.
 #'
 #' @export
-#' @import data.table
+#' @import data.table methods
 #' @importFrom httr GET stop_for_status content
 #' @importFrom plyr llply ldply ddply summarise
 #' @importFrom stringr str_replace

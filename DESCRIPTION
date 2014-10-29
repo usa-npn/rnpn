@@ -9,7 +9,7 @@ Authors@R: c(person("Scott", "Chamberlain", role = c("aut", "cre"),
     email = "myrmecocystus@gmail.com"),
     person("Lee", "Marsh", role = "aut",
     email = "npnlee85@gmail.com"))
-LazyData: true
+LazyData: yes
 Imports:
     RJSONIO,
     RCurl (>= 1.6),
@@ -17,4 +17,5 @@ Imports:
     stringr,
     XML,
     plyr,
-    data.table
+    data.table,
+    methods
