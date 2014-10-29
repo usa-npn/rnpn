@@ -3,6 +3,7 @@
 #' @export
 #' @import data.table methods
 #' @importFrom httr GET stop_for_status content
+#' @importFrom jsonlite fromJSON
 #' @importFrom plyr llply ldply ddply summarise
 #' @importFrom stringr str_replace
 #'

@@ -11,11 +11,9 @@ Authors@R: c(person("Scott", "Chamberlain", role = c("aut", "cre"),
     email = "npnlee85@gmail.com"))
 LazyData: yes
 Imports:
-    RJSONIO,
-    RCurl (>= 1.6),
     httr,
+    jsonlite,
     stringr,
-    XML,
     plyr,
     data.table,
     methods
