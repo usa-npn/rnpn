@@ -32,7 +32,7 @@ getobsspindloc <- function(stationid, speciesid, year=2010, individualid = NULL,
         } else {
           list(c(date=m$date, m$observations[[1]]))
         }
-      }), function(bb) Map(function(x) c(lst1[1:4], x), bb)))
+      }), function(bb) Map(function(x) c(z[1:4], x), bb)))
     ldfply(temp)
   })
   )
