@@ -5,9 +5,10 @@
 #' @param ... Optional additional curl options (debugging tools mostly)
 #' @return Number of stations by state as a data.frame.
 #' @examples \donttest{
-#' head( getstationsbystate() )
+#' head( npn_stationsbystate() )
 #' }
-getstationsbystate <- function(...)
+
+npn_stationsbystate <- function(...)
 {
   tt <- npn_GET(paste0(base(), 'stations/getStationCountByState.json'), list(), ...)
   states <- sapply(tt, function(x){

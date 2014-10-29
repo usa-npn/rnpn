@@ -10,10 +10,11 @@
 #' @param ... Optional additional curl options (debugging tools mostly)
 #' @return Observations for each species by date.
 #' @examples \donttest{
-#' getindspatstations(speciesid = 35, stationid = c(60, 259), year = 2009)
-#' getindspatstations(35, c(60, 259), 2009, 'xml')
+#' npn_indspatstations(speciesid = 35, stationid = c(60, 259), year = 2009)
+#' npn_indspatstations(35, c(60, 259), 2009, 'xml')
 #' }
-getindspatstations <-  function(speciesid, stationid, year = NULL, ...)
+
+npn_indspatstations <-  function(speciesid, stationid, year = NULL, ...)
 {
   args <- npnc(list(year = year))
   for(i in seq_along(speciesid)) {

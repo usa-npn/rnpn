@@ -12,12 +12,12 @@
 #' @return Data frame
 #'
 #' @examples \donttest{
-#' getobsspindloc(stationid = c(4881, 4882), speciesid = 3, year = 2009)
-#' getobsspindloc(stationid = c(4881, 4882), speciesid = 3)
-#' getobsspindloc(stationid = 4881, speciesid = 67)
+#' npn_obsspindloc(stationid = c(4881, 4882), speciesid = 3, year = 2009)
+#' npn_obsspindloc(stationid = c(4881, 4882), speciesid = 3)
+#' npn_obsspindloc(stationid = 4881, speciesid = 67)
 #' }
 
-getobsspindloc <- function(stationid, speciesid, year=2010, individualid = NULL, ...) {
+npn_obsspindloc <- function(stationid, speciesid, year=2010, individualid = NULL, ...) {
   args <- npnc(list(species_id=speciesid, individual_id=individualid, year=year))
   for(i in seq_along(stationid)) {
     args[paste('station_ids[',i,']',sep='')] <- stationid[i]

@@ -6,9 +6,10 @@
 #' @param ... Optional additional curl options (debugging tools mostly)
 #' @return Comments.
 #' @examples \donttest{
-#' getobscomm(c(1,4,5,7,89))
+#' npn_obscomm(c(1,4,5,7,89))
 #' }
-getobscomm <- function(observationid, ...)
+
+npn_obscomm <- function(observationid, ...)
 {
   args <- list()
   for(i in seq_along(observationid)) {

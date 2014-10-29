@@ -7,9 +7,10 @@
 #' @param ... Optional additional curl options (debugging tools mostly)
 #' @return Observations for each species by date.
 #' @examples \donttest{
-#' getindsatstations(stationid = c(507, 523))
+#' npn_indsatstations(stationid = c(507, 523))
 #' }
-getindsatstations <- function(stationid, ...)
+
+npn_indsatstations <- function(stationid, ...)
 {
   args <- list()
   for(i in seq_along(stationid)) {

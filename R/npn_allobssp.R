@@ -15,17 +15,17 @@
 #' lookup_names(name='Pinus', type='genus')
 #'
 #' # Get data on one species
-#' getallobssp(speciesid = 52, startdate='2008-01-01', enddate='2011-12-31')
+#' npn_allobssp(speciesid = 52, startdate='2008-01-01', enddate='2011-12-31')
 #'
 #' # Get data on two species
-#' getallobssp(speciesid = c(52, 53), startdate='2008-01-01', enddate='2011-12-31')
+#' npn_allobssp(speciesid = c(52, 53), startdate='2008-01-01', enddate='2011-12-31')
 #'
 #' # Get data on one species, convert to a single data.frame
-#' out <- getallobssp(speciesid = 52, startdate='2008-01-01', enddate='2011-12-31')
+#' out <- npn_allobssp(speciesid = 52, startdate='2008-01-01', enddate='2011-12-31')
 #' npn_todf(out)
 #' }
 
-getallobssp <- function(speciesid, startdate = NULL, enddate = NULL, ...)
+npn_allobssp <- function(speciesid, startdate = NULL, enddate = NULL, ...)
 {
   taxa <- taxonlist[as.numeric(as.character(taxonlist[,"species_id"])) %in% speciesid,c("species_id","genus","epithet","genus_epithet")]
   taxa$species_id <- as.numeric(as.character(taxa$species_id))

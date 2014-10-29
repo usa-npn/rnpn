@@ -9,11 +9,11 @@
 #'
 #' @return Stations' latitude and longitude, names, and ids.
 #' @examples \donttest{
-#' getstationswithspp(speciesid = c(52,53,54))
-#' getstationswithspp(speciesid = 53)
+#' npn_stationswithspp(speciesid = c(52,53,54))
+#' npn_stationswithspp(speciesid = 53)
 #' }
 
-getstationswithspp <- function(speciesid, ...)
+npn_stationswithspp <- function(speciesid, ...)
 {
   args <- list()
   for(i in seq_along(speciesid)) {

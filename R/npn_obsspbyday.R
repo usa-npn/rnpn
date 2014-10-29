@@ -14,14 +14,14 @@
 #' @param ... Optional additional curl options (debugging tools mostly)
 #' @return Number of observations by day, in object of class npn.
 #' @examples \donttest{
-#' out <- getobsspbyday(speciesid=357, startdate='2010-04-01', enddate='2012-01-05')
+#' out <- npn_obsspbyday(speciesid=357, startdate='2010-04-01', enddate='2012-01-05')
 #' head(out[[1]])
 #'
 #' # Lookup names
 #' temp <- lookup_names(name='bird', type='common')
 #' comnames <- temp[temp$species_id %in% c(357, 359, 1108), 'common_name']
 #'
-#' out <- getobsspbyday(speciesid=c(357, 359, 1108), startdate='2010-04-01', enddate='2013-09-31')
+#' out <- npn_obsspbyday(speciesid=c(357, 359, 1108), startdate='2010-04-01', enddate='2013-09-31')
 #' names(out) <- comnames
 #' df <- ldply(out)
 #' df$date <- as.Date(df$date)
@@ -33,7 +33,7 @@
 #'  facet_grid(.id ~.)
 #' }
 
-getobsspbyday <- function(speciesid = NULL, startdate = NULL, enddate = NULL, ...) {
+npn_obsspbyday <- function(speciesid = NULL, startdate = NULL, enddate = NULL, ...) {
   args <- npnc(list(start_date=startdate, end_date=enddate))
   for(i in seq_along(speciesid)) {
     args[paste('species_id[',i,']',sep='')] <- speciesid[i]
@@ -48,11 +48,4 @@ getobsspbyday <- function(speciesid = NULL, startdate = NULL, enddate = NULL, ..
     tt
   })
   structure(df_list, .Names=speciesid)
-}
-
-npn_GET <- function(url, args, ...){
-  tmp <- GET(url, query = args, ...)
-  stop_for_status(tmp)
-  tt <- content(tmp, as = "text")
-  jsonlite::fromJSON(tt, FALSE)
 }
