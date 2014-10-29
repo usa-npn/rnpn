@@ -74,7 +74,7 @@ Search for a single species, specifying a start and end date. You can also pass 
 
 
 ```r
-(out <- getallobssp(speciesid = 52, startdate='2008-01-01', enddate='2010-12-31'))
+(out <- npn_allobssp(speciesid = 52, startdate='2008-01-01', enddate='2010-12-31'))
 #> An object of class "npn"
 #> Slot "taxa":
 #>     species_id genus   epithet   genus_epithet
@@ -190,7 +190,7 @@ Get a list of all stations which have an individual whom is a member of a set of
 
 
 ```r
-head( getstationswithspp(speciesid = 53) )
+head( npn_stationswithspp(speciesid = 53) )
 #>    latitude  longitude      station_name station_id
 #> 1 44.340950 -72.461220  Frizzle Mountain        637
 #> 2 42.173855 -85.892418              Home       1447
@@ -206,7 +206,7 @@ Number of stations by state.
 
 
 ```r
-head( getstationsbystate() )
+head( npn_stationsbystate() )
 #>   state number_stations
 #> 1    CA            1508
 #> 2    AZ             753
@@ -223,7 +223,7 @@ Get observations by day for a particular species or set of species.
 
 ```r
 library('plyr')
-out <- getobsspbyday(speciesid=c(357, 359, 1108), startdate='2010-04-01', enddate='2013-09-31')
+out <- npn_obsspbyday(speciesid=c(357, 359, 1108), startdate='2010-04-01', enddate='2013-09-31')
 names(out) <- comnames
 #> Error in eval(expr, envir, enclos): object 'comnames' not found
 df <- ldply(out)
@@ -237,6 +237,94 @@ ggplot(df, aes(date, count)) +
 ```
 
 ![plot of chunk unnamed-chunk-9](inst/img/unnamed-chunk-9-1.png) 
+
+### Search for species
+
+All species
+
+
+```r
+head( npn_species() )
+#> Error in function (type, msg, asError = TRUE) : Avoided giant realloc for header (max is 102400)!
+```
+
+By ITIS taxonomic serial number
+
+
+```r
+npn_species_itis(ids = 27806)
+#>         common_name  genus species species_id
+#> 1 flowering dogwood Cornus florida         12
+```
+
+By USNPN id
+
+
+```r
+npn_species_id(ids = 3)
+#>   common_name genus species itis_taxonomic_sn
+#> 1   red maple  Acer  rubrum             28728
+```
+
+By state (and optionally kingdom)
+
+
+```r
+head( npn_species_state(state = "HI", kingdom = "Plantae") )
+#>   species_id       common_name        genus        species
+#> 1        120      'ohi'a lehua Metrosideros     polymorpha
+#> 2        174           alfalfa     Medicago         sativa
+#> 3        145    annual ragweed     Ambrosia artemisiifolia
+#> 4        124           avocado       Persea      americana
+#> 5        898           bayhops      Ipomoea     pes-caprae
+#> 6        870 beach strawberry      Fragaria     chiloensis
+#>   itis_taxonomic_sn
+#> 1             27259
+#> 2            183623
+#> 3             36496
+#> 4             18154
+#> 5             30787
+#> 6             24625
+```
+
+By scientific name
+
+
+```r
+npn_species_sci(genus = "Clintonia", species = "borealis")
+#>   common_name itis_taxonomic_sn species_id
+#> 1    bluebead             42903          9
+```
+
+By common name
+
+
+```r
+npn_species_comm(name = "thickleaved wild strawberry")
+#>      genus itis_taxonomic_sn    species species_id
+#> 1 Fragaria             24639 virginiana         17
+```
+
+Filter by network, group, year, or station
+
+
+```r
+head( npn_species_search(groups = 3, year = 2010) )
+#>              common_name        genus        species species_id
+#> 1                alfalfa     Medicago         sativa        174
+#> 2         annual ragweed     Ambrosia artemisiifolia        145
+#> 3 arctic sweet coltsfoot    Petasites       frigidus        434
+#> 4              bloodroot  Sanguinaria     canadensis       1016
+#> 5               bluebead    Clintonia       borealis          9
+#> 6             bluejacket Tradescantia       ohiensis        190
+#>   number_observations
+#> 1                  33
+#> 2                  19
+#> 3                  13
+#> 4                   1
+#> 5                 129
+#> 6                  19
+```
 
 ## Meta
 

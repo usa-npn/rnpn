@@ -48,7 +48,7 @@ lookup_names(name='Pinus', type='genus')
 Search for a single species, specifying a start and end date. You can also pass a vector to the speciesid parameter.
 
 ```{r}
-(out <- getallobssp(speciesid = 52, startdate='2008-01-01', enddate='2010-12-31'))
+(out <- npn_allobssp(speciesid = 52, startdate='2008-01-01', enddate='2010-12-31'))
 ```
 
 Coerce data to a data.frame that has most all data.
@@ -62,7 +62,7 @@ npn_todf(out)
 Get a list of all stations which have an individual whom is a member of a set of species.
 
 ```{r}
-head( getstationswithspp(speciesid = 53) )
+head( npn_stationswithspp(speciesid = 53) )
 ```
 
 ### Stations by state
@@ -70,7 +70,7 @@ head( getstationswithspp(speciesid = 53) )
 Number of stations by state.
 
 ```{r}
-head( getstationsbystate() )
+head( npn_stationsbystate() )
 ```
 
 ### Observations by day
@@ -79,7 +79,7 @@ Get observations by day for a particular species or set of species.
 
 ```{r tidy=FALSE, fig.width=10}
 library('plyr')
-out <- getobsspbyday(speciesid=c(357, 359, 1108), startdate='2010-04-01', enddate='2013-09-31')
+out <- npn_obsspbyday(speciesid=c(357, 359, 1108), startdate='2010-04-01', enddate='2013-09-31')
 names(out) <- comnames
 df <- ldply(out)
 df$date <- as.Date(df$date)
@@ -89,6 +89,50 @@ ggplot(df, aes(date, count)) +
  geom_line() +
  theme_grey(base_size=20) +
  facet_grid(.id ~.)
+```
+
+### Search for species
+
+All species
+
+```{r}
+head( npn_species() )
+```
+
+By ITIS taxonomic serial number
+
+```{r}
+npn_species_itis(ids = 27806)
+```
+
+By USNPN id
+
+```{r}
+npn_species_id(ids = 3)
+```
+
+By state (and optionally kingdom)
+
+```{r}
+head( npn_species_state(state = "HI", kingdom = "Plantae") )
+```
+
+By scientific name
+
+```{r}
+npn_species_sci(genus = "Clintonia", species = "borealis")
+```
+
+By common name
+
+```{r}
+npn_species_comm(name = "thickleaved wild strawberry")
+```
+
+Filter by network, group, year, or station
+
+```{r}
+head( npn_species_search(groups = 3, year = 2010) )
 ```
 
 ## Meta
