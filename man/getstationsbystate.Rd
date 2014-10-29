@@ -15,7 +15,7 @@ Number of stations by state as a data.frame.
 Get number of stations by state.
 }
 \examples{
-\dontrun{
+\donttest{
 head( getstationsbystate() )
 }
 }

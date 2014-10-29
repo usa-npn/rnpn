@@ -5,7 +5,7 @@
 #' @param observationid Required. Observation id, or as vector if >1, as e.g., c(2, 1938) (numeric)
 #' @param ... Optional additional curl options (debugging tools mostly)
 #' @return Comments.
-#' @examples \dontrun{
+#' @examples \donttest{
 #' getobscomm(c(1,4,5,7,89))
 #' }
 getobscomm <- function(observationid, ...)

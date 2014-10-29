@@ -8,7 +8,7 @@
 #' @param ... Optional additional curl options (debugging tools mostly)
 #'
 #' @return Stations' latitude and longitude, names, and ids.
-#' @examples \dontrun{
+#' @examples \donttest{
 #' getstationswithspp(speciesid = c(52,53,54))
 #' getstationswithspp(speciesid = 53)
 #' }

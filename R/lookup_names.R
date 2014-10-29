@@ -4,7 +4,7 @@
 #' @param type One of common_name, genus, epithet, or genus_epithet
 #' @param fuzzy One of TRUE or FALSE, if FALSE, uses fuzzy search via agrep, if
 #'    FALSE, uses grep
-#' @examples \dontrun{
+#' @examples \donttest{
 #' lookup_names(name='Pinus', type='genus')
 #' lookup_names(name='pine', type='common_name')
 #' lookup_names(name='bird', type='common_name', fuzzy=TRUE)

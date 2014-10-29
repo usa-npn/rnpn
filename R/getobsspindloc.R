@@ -11,7 +11,7 @@
 #' @param ... Optional additional curl options (debugging tools mostly)
 #' @return Data frame
 #'
-#' @examples \dontrun{
+#' @examples \donttest{
 #' getobsspindloc(stationid = c(4881, 4882), speciesid = 3, year = 2009)
 #' getobsspindloc(stationid = c(4881, 4882), speciesid = 3)
 #' getobsspindloc(stationid = 4881, speciesid = 67)

@@ -13,7 +13,7 @@
 #' @param enddate end date of data period desired, see format in examples (character)
 #' @param ... Optional additional curl options (debugging tools mostly)
 #' @return Number of observations by day, in object of class npn.
-#' @examples \dontrun{
+#' @examples \donttest{
 #' out <- getobsspbyday(speciesid=357, startdate='2010-04-01', enddate='2012-01-05')
 #' head(out[[1]])
 #'

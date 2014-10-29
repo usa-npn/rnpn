@@ -6,7 +6,7 @@
 #' (numeric)
 #' @param ... Optional additional curl options (debugging tools mostly)
 #' @return Observations for each species by date.
-#' @examples \dontrun{
+#' @examples \donttest{
 #' getindsatstations(stationid = c(507, 523))
 #' }
 getindsatstations <- function(stationid, ...)

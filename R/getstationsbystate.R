@@ -4,7 +4,7 @@
 #'
 #' @param ... Optional additional curl options (debugging tools mostly)
 #' @return Number of stations by state as a data.frame.
-#' @examples \dontrun{
+#' @examples \donttest{
 #' head( getstationsbystate() )
 #' }
 getstationsbystate <- function(...)

@@ -10,7 +10,7 @@
 #' @return An S4 object of class npn with slots for taxa, stations, phenophase (metadata),
 #'    and data.
 #'
-#' @examples \dontrun{
+#' @examples \donttest{
 #' # Lookup names
 #' lookup_names(name='Pinus', type='genus')
 #'

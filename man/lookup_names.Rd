@@ -17,7 +17,7 @@ FALSE, uses grep}
 Look up species IDs by taxonomic or common name
 }
 \examples{
-\dontrun{
+\donttest{
 lookup_names(name='Pinus', type='genus')
 lookup_names(name='pine', type='common_name')
 lookup_names(name='bird', type='common_name', fuzzy=TRUE)

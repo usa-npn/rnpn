@@ -26,7 +26,7 @@ Return all of the data, positive or negative, for an individual or a group
    of individuals, which are of a common species, at any number of locations.
 }
 \examples{
-\dontrun{
+\donttest{
 getobsspindloc(stationid = c(4881, 4882), speciesid = 3, year = 2009)
 getobsspindloc(stationid = c(4881, 4882), speciesid = 3)
 getobsspindloc(stationid = 4881, speciesid = 67)
