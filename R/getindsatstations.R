@@ -1,11 +1,11 @@
 #' Get all observations for a particular species or set of species.
 #'
-#' @importFrom httr GET stop_for_status content
+#' @export
+#'
 #' @param stationid use e.g., c(4881, 4882, etc.) if more than one species desired (numeric)
 #' @param printdf print data.frame (default, TRUE) or not (FALSE)
 #' @param callopts Optional additional curl options (debugging tools mostly)
 #' @return Observations for each species by date.
-#' @export
 #' @examples \dontrun{
 #' getindsatstations(c(507, 523))
 #' getindsatstations(c(507, 523), 'xml')
