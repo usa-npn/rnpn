@@ -3,14 +3,15 @@
 \alias{getindsatstations}
 \title{Get all observations for a particular species or set of species.}
 \usage{
-getindsatstations(stationid = NULL, printdf = TRUE, callopts = list())
+getindsatstations(stationid, ...)
 }
 \arguments{
-\item{stationid}{use e.g., c(4881, 4882, etc.) if more than one species desired (numeric)}
+\item{stationid}{Required. Use e.g., c(4881, 4882, etc.) if more than one species desired
+(numeric)}
 
-\item{printdf}{print data.frame (default, TRUE) or not (FALSE)}
+\item{...}{Optional additional curl options (debugging tools mostly)}
 
-\item{callopts}{Optional additional curl options (debugging tools mostly)}
+\item{printdf}{(logical) print data.frame (default, TRUE) or not (FALSE)}
 }
 \value{
 Observations for each species by date.
@@ -20,8 +21,7 @@ Get all observations for a particular species or set of species.
 }
 \examples{
 \dontrun{
-getindsatstations(c(507, 523))
-getindsatstations(c(507, 523), 'xml')
+getindsatstations(stationid = c(507, 523))
 }
 }
 

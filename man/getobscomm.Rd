@@ -3,12 +3,12 @@
 \alias{getobscomm}
 \title{Get observation comments for a particular species or set of species.}
 \usage{
-getobscomm(observationid = NULL, callopts = list())
+getobscomm(observationid, ...)
 }
 \arguments{
-\item{observationid}{observation id, or as vector if >1, as e.g., c(2, 1938) (numeric)}
+\item{observationid}{Required. Observation id, or as vector if >1, as e.g., c(2, 1938) (numeric)}
 
-\item{callopts}{Optional additional curl options (debugging tools mostly)}
+\item{...}{Optional additional curl options (debugging tools mostly)}
 }
 \value{
 Comments.
@@ -18,7 +18,7 @@ Get observation comments for a particular species or set of species.
 }
 \examples{
 \dontrun{
-getobscomm(1938)
+getobscomm(c(1,4,5,7,89))
 }
 }
 

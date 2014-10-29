@@ -3,42 +3,37 @@
 #'
 #' @export
 #'
-#' @param year Year (numeric), required.
-#' @param stationid Station id; Use e.g., c(4881, 4882, etc.) if more than
-#'    one species desired (numeric).
-#' @param speciesid Species id number (numeric).
-#' @param printdf print data.frame (default, TRUE) or not (FALSE)
-#' @param callopts Optional additional curl options (debugging tools mostly)
-#' @return Data frame/json/xml of phenophas id's, phenophase names, sequence
-#'    numbers, color, date, and observation id's.
+#' @param stationid Required. Station ID; Use e.g., c(4881, 4882, etc.) if more than
+#'    one station desired (numeric).
+#' @param speciesid Required. Species ID number (numeric).
+#' @param year Required. Year (numeric). Default: 2010
+#' @param individualid An individual's ID. (numeric)
+#' @param ... Optional additional curl options (debugging tools mostly)
+#' @return Data frame
 #'
 #' @examples \dontrun{
-#' getobsspindloc(2009, c(4881, 4882), 3)
-#' getobsspindloc(2009, c(4881, 4882), 3, 'xml')
+#' getobsspindloc(stationid = c(4881, 4882), speciesid = 3, year = 2009)
+#' getobsspindloc(stationid = c(4881, 4882), speciesid = 3)
+#' getobsspindloc(stationid = 4881, speciesid = 67)
 #' }
-getobsspindloc <- function(year = NULL, stationid = NULL, speciesid = NULL,
-  printdf = TRUE, callopts=list())
-{
-  if(is.null(speciesid))
-    stop("You must provide a speciesid")
-  if(is.null(stationid))
-    stop("You must provide a stationid")
 
-  url = 'https://www.usanpn.org/npn_portal/observations/getObservationsForSpeciesIndividualAtLocation.json'
-  args <- npnc(list(year=year, speciesid=speciesid))
+getobsspindloc <- function(stationid, speciesid, year=2010, individualid = NULL, ...) {
+  args <- npnc(list(species_id=speciesid, individual_id=individualid, year=year))
   for(i in seq_along(stationid)) {
     args[paste('station_ids[',i,']',sep='')] <- stationid[i]
   }
-  tmp <- GET(url, query = args, callopts)
-  stop_for_status(tmp)
-  tt <- content(tmp)
-  if(printdf){
-    f <- function(lst) function(nm) unlist(lapply(lst, "[[", nm), use.names=FALSE)
-    funcx <- function(lst1) {
-      temp <- lapply(lapply(lst1$dates, function(x) unlist(x)), function(x) c(lst1[1:4], x))
-      as.data.frame(Map(f(temp), names(temp[[1]])))
-    }
-    data.frame(do.call(funcx, tt))
-  } else
-    { tt }
+  tt <- npn_GET(paste0(base(),
+            'observations/getObservationsForSpeciesIndividualAtLocation.json'), args, ...)
+  do.call(rbind.fill, lapply(tt, function(z){
+    temp <- do.call(c, lapply(
+      lapply(z$dates, function(m){
+        if(length(m$observations) > 1){
+          unname(Map(function(r,s) c(date=r, s), m$date, m$observations))
+        } else {
+          list(c(date=m$date, m$observations[[1]]))
+        }
+      }), function(bb) Map(function(x) c(lst1[1:4], x), bb)))
+    ldfply(temp)
+  })
+  )
 }

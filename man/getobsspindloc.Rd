@@ -4,24 +4,22 @@
 \title{Return all of the data, positive or negative, for an individual or a group
    of individuals, which are of a common species, at any number of locations.}
 \usage{
-getobsspindloc(year = NULL, stationid = NULL, speciesid = NULL,
-  printdf = TRUE, callopts = list())
+getobsspindloc(stationid, speciesid, year = 2010, individualid = NULL, ...)
 }
 \arguments{
-\item{year}{Year (numeric), required.}
+\item{stationid}{Required. Station ID; Use e.g., c(4881, 4882, etc.) if more than
+one station desired (numeric).}
 
-\item{stationid}{Station id; Use e.g., c(4881, 4882, etc.) if more than
-one species desired (numeric).}
+\item{speciesid}{Required. Species ID number (numeric).}
 
-\item{speciesid}{Species id number (numeric).}
+\item{year}{Required. Year (numeric). Default: 2010}
 
-\item{printdf}{print data.frame (default, TRUE) or not (FALSE)}
+\item{individualid}{An individual's ID. (numeric)}
 
-\item{callopts}{Optional additional curl options (debugging tools mostly)}
+\item{...}{Optional additional curl options (debugging tools mostly)}
 }
 \value{
-Data frame/json/xml of phenophas id's, phenophase names, sequence
-   numbers, color, date, and observation id's.
+Data frame
 }
 \description{
 Return all of the data, positive or negative, for an individual or a group
@@ -29,8 +27,9 @@ Return all of the data, positive or negative, for an individual or a group
 }
 \examples{
 \dontrun{
-getobsspindloc(2009, c(4881, 4882), 3)
-getobsspindloc(2009, c(4881, 4882), 3, 'xml')
+getobsspindloc(stationid = c(4881, 4882), speciesid = 3, year = 2009)
+getobsspindloc(stationid = c(4881, 4882), speciesid = 3)
+getobsspindloc(stationid = 4881, speciesid = 67)
 }
 }
 
