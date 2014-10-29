@@ -2,7 +2,7 @@ Package: rnpn
 Title: Interface to the National Phenology Network API Methods.
 Description: Programmatic interface to the
     Web Service methods provided by the National Phenology Network.
-Version: 0.0.7.99
+Version: 0.0.8.99
 Date: 2014-10-29
 License: MIT + file LICENSE
 Authors@R: c(person("Scott", "Chamberlain", role = c("aut", "cre"),
