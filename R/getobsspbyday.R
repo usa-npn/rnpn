@@ -11,7 +11,7 @@
 #'     use e.g., c(52, 53, etc.) if more than one species desired (numeric)
 #' @param startdate start date of data period desired, see format in examples (character)
 #' @param enddate end date of data period desired, see format in examples (character)
-#' @param callopts Optional additional curl options (debugging tools mostly)
+#' @param ... Optional additional curl options (debugging tools mostly)
 #' @return Number of observations by day, in object of class npn.
 #' @examples \dontrun{
 #' out <- getobsspbyday(speciesid=357, startdate='2010-04-01', enddate='2012-01-05')

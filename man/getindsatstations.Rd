@@ -10,8 +10,6 @@ getindsatstations(stationid, ...)
 (numeric)}
 
 \item{...}{Optional additional curl options (debugging tools mostly)}
-
-\item{printdf}{(logical) print data.frame (default, TRUE) or not (FALSE)}
 }
 \value{
 Observations for each species by date.

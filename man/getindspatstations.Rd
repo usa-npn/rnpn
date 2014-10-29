@@ -15,8 +15,6 @@ use e.g., c(52, 53, etc.) if more than one species desired (numeric)}
 \item{year}{Year (numeric).}
 
 \item{...}{Optional additional curl options (debugging tools mostly)}
-
-\item{printdf}{print data.frame (default, TRUE) or not (FALSE)}
 }
 \value{
 Observations for each species by date.

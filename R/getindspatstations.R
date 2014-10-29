@@ -7,7 +7,6 @@
 #' @param stationid Required. Use e.g., c(4881, 4882, etc.) if more than one species desired
 #' (numeric)
 #' @param year Year (numeric).
-#' @param printdf print data.frame (default, TRUE) or not (FALSE)
 #' @param ... Optional additional curl options (debugging tools mostly)
 #' @return Observations for each species by date.
 #' @examples \dontrun{

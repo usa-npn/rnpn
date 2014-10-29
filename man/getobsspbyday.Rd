@@ -13,7 +13,7 @@ use e.g., c(52, 53, etc.) if more than one species desired (numeric)}
 
 \item{enddate}{end date of data period desired, see format in examples (character)}
 
-\item{callopts}{Optional additional curl options (debugging tools mostly)}
+\item{...}{Optional additional curl options (debugging tools mostly)}
 }
 \value{
 Number of observations by day, in object of class npn.
