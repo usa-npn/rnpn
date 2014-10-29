@@ -1,0 +1,63 @@
+rnpn
+========
+
+```{r echo=FALSE}
+knitr::opts_chunk$set(
+  comment = "#>",
+  collapse = TRUE,
+  warning = FALSE,
+  message = FALSE
+)
+```
+
+[![Build Status](https://api.travis-ci.org/ropensci/rnpn.png)](https://travis-ci.org/ropensci/rnpn)
+[![Build status](https://ci.appveyor.com/api/projects/status/es65utr5jmfmcsrg/branch/master)](https://ci.appveyor.com/project/sckott/rnpn/branch/master)
+
+`rnpn` is an R client for the US National Phenology Network API.
+
+National Phenology Network [API documentation](https://docs.google.com/document/d/1yNjupricKOAXn6tY1sI7-EwkcfwdGUZ7lxYv7fcPjO8/edit?hl=en_US).
+
+Note that there is no need for an API key to grab data from the National Phenology Network, but I think there is for writing data through the API. Currently, functions in this package only allow getting data, but may at some point allow posting data to the USNPN.
+
+## Quick start
+
+### Installation
+
+Note: Windows users installing from GitHub should get Rtools - can be installed from http://www.murdoch-sutherland.com/Rtools/
+
+```{r eval=FALSE}
+install.packages("devtools")
+devtools::install_github("ropensci/rnpn")
+```
+
+```{r}
+library('rnpn')
+```
+
+### Searches
+
+You can lookup taxon names. This is not actually an API call to the web. The function simply searches for matches in a dataset stored in the package. You can then use the speciesid output in other functions.
+
+```{r}
+lookup_names(name='Pinus', type='genus')
+```
+
+Search for a single species, specifying a start and end date. You can also pass a vector to the speciesid parameter.
+
+```{r}
+(out <- getallobssp(speciesid = 52, startdate='2008-01-01', enddate='2010-12-31'))
+```
+
+Coerce data to a data.frame that has most all data.
+
+```{r}
+npn_todf(out)
+```
+
+## Meta
+
+* [Please report any issues or bugs](https://github.com/ropensci/rnpn/issues).
+* License: MIT
+* Get citation information for `rnpn` in R doing `citation(package = 'rnpn')`
+
+[![](http://ropensci.org/public_images/github_footer.png)](http://ropensci.org)

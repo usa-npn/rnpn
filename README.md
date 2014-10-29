@@ -1,133 +1,191 @@
 rnpn
 ========
 
+
+
 [![Build Status](https://api.travis-ci.org/ropensci/rnpn.png)](https://travis-ci.org/ropensci/rnpn)
 [![Build status](https://ci.appveyor.com/api/projects/status/es65utr5jmfmcsrg/branch/master)](https://ci.appveyor.com/project/sckott/rnpn/branch/master)
 
-`rnpn` is a set of functions/package is an R interface to the US National Phenology Network API.
+`rnpn` is an R client for the US National Phenology Network API.
 
-National Phenology Network API documentation here:
-https://docs.google.com/document/d/1yNjupricKOAXn6tY1sI7-EwkcfwdGUZ7lxYv7fcPjO8/edit?hl=en_US
+National Phenology Network [API documentation](https://docs.google.com/document/d/1yNjupricKOAXn6tY1sI7-EwkcfwdGUZ7lxYv7fcPjO8/edit?hl=en_US).
 
-Note that there is no need for an API key to grab data from the National Phenology Network, but I think there is for writing data through the API. Currently, functions in this package only allow getting data, but will soon allow posting data to the USNPN endpoints.
+Note that there is no need for an API key to grab data from the National Phenology Network, but I think there is for writing data through the API. Currently, functions in this package only allow getting data, but may at some point allow posting data to the USNPN.
 
-Note to Windows users when installing using install_github in Hadley's devtools package:
+## Quick start
 
-* Rtools is required, and can be installed from this site (http://www.murdoch-sutherland.com/Rtools/).  After installation the following should install `rnpn`:
+### Installation
 
-### Install
+Note: Windows users installing from GitHub should get Rtools - can be installed from http://www.murdoch-sutherland.com/Rtools/
 
-```coffee
+
+```r
 install.packages("devtools")
-library(devtools)
-install_github("ropensci/rnpn")
-library(rnpn)
+devtools::install_github("ropensci/rnpn")
 ```
 
-### Quick start
+
+```r
+library('rnpn')
+```
+
+### Searches
 
 You can lookup taxon names. This is not actually an API call to the web. The function simply searches for matches in a dataset stored in the package. You can then use the speciesid output in other functions.
 
-```coffee
-lookup_names(name='Pinus', type='genus')
-```
 
-```coffee
-    species_id                  common_name genus    species itis_taxonomic_sn
-82         967                  Bishop pine Pinus   muricata            183359
-312         53           eastern white pine Pinus    strobus            183385
-370        219 Great Basin bristlecone pine Pinus   longaeva            183352
-458        220                  limber pine Pinus   flexilis            183343
-461         54                loblolly pine Pinus      taeda             18037
-462        762               lodgepole pine Pinus   contorta            183327
-465         52                longleaf pine Pinus  palustris             18038
-479        965               Mexican pinyon Pinus cembroides            183321
-584         25               ponderosa pine Pinus  ponderosa            183365
-618        968                     red pine Pinus   resinosa            183375
-698         51            singleleaf pinyon Pinus monophylla            183353
-704        295                   slash pine Pinus  elliottii             18036
-794         50             twoneedle pinyon Pinus     edulis            183336
-836        966           western white pine Pinus  monticola            183356
+```r
+lookup_names(name='Pinus', type='genus')
+#>     species_id                  common_name genus    epithet itis_tsn
+#> 82         967                  Bishop pine Pinus   muricata   183359
+#> 312         53           eastern white pine Pinus    strobus   183385
+#> 370        219 Great Basin bristlecone pine Pinus   longaeva   183352
+#> 458        220                  limber pine Pinus   flexilis   183343
+#> 461         54                loblolly pine Pinus      taeda    18037
+#> 462        762               lodgepole pine Pinus   contorta   183327
+#> 465         52                longleaf pine Pinus  palustris    18038
+#> 479        965               Mexican pinyon Pinus cembroides   183321
+#> 584         25               ponderosa pine Pinus  ponderosa   183365
+#> 618        968                     red pine Pinus   resinosa   183375
+#> 698         51            singleleaf pinyon Pinus monophylla   183353
+#> 704        295                   slash pine Pinus  elliottii    18036
+#> 794         50             twoneedle pinyon Pinus     edulis   183336
+#> 836        966           western white pine Pinus  monticola   183356
+#>        genus_epithet
+#> 82    Pinus muricata
+#> 312    Pinus strobus
+#> 370   Pinus longaeva
+#> 458   Pinus flexilis
+#> 461      Pinus taeda
+#> 462   Pinus contorta
+#> 465  Pinus palustris
+#> 479 Pinus cembroides
+#> 584  Pinus ponderosa
+#> 618   Pinus resinosa
+#> 698 Pinus monophylla
+#> 704  Pinus elliottii
+#> 794     Pinus edulis
+#> 836  Pinus monticola
 ```
 
 Search for a single species, specifying a start and end date. You can also pass a vector to the speciesid parameter.
 
-```coffee
-(out <- getallobssp(speciesid = 52, startdate='2008-01-01', enddate='2011-12-31'))
-```
 
-```coffee
-An object of class "npn"
-Slot "taxa":
-    species_id genus   species
-465         52 Pinus palustris
-
-Slot "stations":
-  station_id                                  station_name  latitude  longitude
-1       4881                        Possum Branch Preserve 28.045185 -82.706299
-2       5470                                            11 34.852619 -82.394012
-3       5758 University of South Florida Botanical Gardens 28.057789 -82.424065
-4       5116                                             9 34.928726 -79.782715
-5       6162                                          home 29.947870 -90.119652
-
-Slot "phenophase":
-  phenophase_id          phenophase_name  color
-1           393          Ripe seed cones Green3
-2           503           Pollen release Green2
-3           496         Emerging needles Green1
-4           486            Young needles Green1
-5           490             Pollen cones Green2
-6           495        Open pollen cones Green2
-7           392        Unripe seed cones Green3
-8           491 Recent cone or seed drop Green3
-
-Slot "data":
-                   date station_id species_id phenophase_id phen_seq
-1   2009-09-03 00:00:00       4881         52           393      300
-2   2009-09-10 00:00:00       4881         52           393      300
-3   2010-07-30 00:00:00       4881         52           393      300
-4   2010-08-13 00:00:00       4881         52           393      300
-5   2010-08-20 00:00:00       4881         52           393      300
-6   2010-09-03 00:00:00       4881         52           393      300
-7   2010-09-10 00:00:00       4881         52           393      300
-8   2010-09-17 00:00:00       4881         52           393      300
-9   2010-09-24 00:00:00       4881         52           393      300
-10  2010-10-08 00:00:00       4881         52           393      300
-11  2010-10-15 00:00:00       4881         52           393      300
+```r
+(out <- getallobssp(speciesid = 52, startdate='2008-01-01', enddate='2010-12-31'))
+#> An object of class "npn"
+#> Slot "taxa":
+#>     species_id genus   epithet   genus_epithet
+#> 465         52 Pinus palustris Pinus palustris
+#> 
+#> Slot "stations":
+#>   station_id           station_name  latitude  longitude
+#> 1       4881 Possum Branch Preserve 28.045185 -82.706299
+#> 
+#> Slot "phenophase":
+#>   phenophase_id phenophase_name  color
+#> 1           393 Ripe seed cones Green3
+#> 
+#> Slot "data":
+#>                   date station_id species_id phenophase_id phen_seq
+#> 1  2009-09-03 00:00:00       4881         52           393      300
+#> 2  2009-09-10 00:00:00       4881         52           393      300
+#> 3  2010-07-30 00:00:00       4881         52           393      300
+#> 4  2010-08-13 00:00:00       4881         52           393      300
+#> 5  2010-08-20 00:00:00       4881         52           393      300
+#> 6  2010-09-03 00:00:00       4881         52           393      300
+#> 7  2010-09-10 00:00:00       4881         52           393      300
+#> 8  2010-09-17 00:00:00       4881         52           393      300
+#> 9  2010-09-24 00:00:00       4881         52           393      300
+#> 10 2010-10-08 00:00:00       4881         52           393      300
+#> 11 2010-10-15 00:00:00       4881         52           393      300
+#> 12 2010-10-22 00:00:00       4881         52           393      300
+#> 13 2010-10-29 00:00:00       4881         52           393      300
+#> 14 2010-11-05 00:00:00       4881         52           393      300
+#> 15 2010-11-12 00:00:00       4881         52           393      300
+#> 16 2010-11-19 00:00:00       4881         52           393      300
+#> 17 2010-12-05 00:00:00       4881         52           393      300
+#> 18 2010-12-11 00:00:00       4881         52           393      300
+#> 19 2010-12-17 00:00:00       4881         52           393      300
+#> 20 2010-12-30 00:00:00       4881         52           393      300
 ```
 
 Coerce data to a data.frame that has most all data.
 
-```coffee
+
+```r
 npn_todf(out)
+#> An object of class "npnsp"
+#> Slot "data":
+#>            sciname  latitude  longitude           station_name
+#> 1  Pinus palustris 28.045185 -82.706299 Possum Branch Preserve
+#> 2  Pinus palustris 28.045185 -82.706299 Possum Branch Preserve
+#> 3  Pinus palustris 28.045185 -82.706299 Possum Branch Preserve
+#> 4  Pinus palustris 28.045185 -82.706299 Possum Branch Preserve
+#> 5  Pinus palustris 28.045185 -82.706299 Possum Branch Preserve
+#> 6  Pinus palustris 28.045185 -82.706299 Possum Branch Preserve
+#> 7  Pinus palustris 28.045185 -82.706299 Possum Branch Preserve
+#> 8  Pinus palustris 28.045185 -82.706299 Possum Branch Preserve
+#> 9  Pinus palustris 28.045185 -82.706299 Possum Branch Preserve
+#> 10 Pinus palustris 28.045185 -82.706299 Possum Branch Preserve
+#> 11 Pinus palustris 28.045185 -82.706299 Possum Branch Preserve
+#> 12 Pinus palustris 28.045185 -82.706299 Possum Branch Preserve
+#> 13 Pinus palustris 28.045185 -82.706299 Possum Branch Preserve
+#> 14 Pinus palustris 28.045185 -82.706299 Possum Branch Preserve
+#> 15 Pinus palustris 28.045185 -82.706299 Possum Branch Preserve
+#> 16 Pinus palustris 28.045185 -82.706299 Possum Branch Preserve
+#> 17 Pinus palustris 28.045185 -82.706299 Possum Branch Preserve
+#> 18 Pinus palustris 28.045185 -82.706299 Possum Branch Preserve
+#> 19 Pinus palustris 28.045185 -82.706299 Possum Branch Preserve
+#> 20 Pinus palustris 28.045185 -82.706299 Possum Branch Preserve
+#>                   date phen_seq genus   epithet   genus_epithet
+#> 1  2009-09-03 00:00:00      300 Pinus palustris Pinus palustris
+#> 2  2009-09-10 00:00:00      300 Pinus palustris Pinus palustris
+#> 3  2010-07-30 00:00:00      300 Pinus palustris Pinus palustris
+#> 4  2010-08-13 00:00:00      300 Pinus palustris Pinus palustris
+#> 5  2010-08-20 00:00:00      300 Pinus palustris Pinus palustris
+#> 6  2010-09-03 00:00:00      300 Pinus palustris Pinus palustris
+#> 7  2010-09-10 00:00:00      300 Pinus palustris Pinus palustris
+#> 8  2010-09-17 00:00:00      300 Pinus palustris Pinus palustris
+#> 9  2010-09-24 00:00:00      300 Pinus palustris Pinus palustris
+#> 10 2010-10-08 00:00:00      300 Pinus palustris Pinus palustris
+#> 11 2010-10-15 00:00:00      300 Pinus palustris Pinus palustris
+#> 12 2010-10-22 00:00:00      300 Pinus palustris Pinus palustris
+#> 13 2010-10-29 00:00:00      300 Pinus palustris Pinus palustris
+#> 14 2010-11-05 00:00:00      300 Pinus palustris Pinus palustris
+#> 15 2010-11-12 00:00:00      300 Pinus palustris Pinus palustris
+#> 16 2010-11-19 00:00:00      300 Pinus palustris Pinus palustris
+#> 17 2010-12-05 00:00:00      300 Pinus palustris Pinus palustris
+#> 18 2010-12-11 00:00:00      300 Pinus palustris Pinus palustris
+#> 19 2010-12-17 00:00:00      300 Pinus palustris Pinus palustris
+#> 20 2010-12-30 00:00:00      300 Pinus palustris Pinus palustris
+#>    phenophase_name  color
+#> 1  Ripe seed cones Green3
+#> 2  Ripe seed cones Green3
+#> 3  Ripe seed cones Green3
+#> 4  Ripe seed cones Green3
+#> 5  Ripe seed cones Green3
+#> 6  Ripe seed cones Green3
+#> 7  Ripe seed cones Green3
+#> 8  Ripe seed cones Green3
+#> 9  Ripe seed cones Green3
+#> 10 Ripe seed cones Green3
+#> 11 Ripe seed cones Green3
+#> 12 Ripe seed cones Green3
+#> 13 Ripe seed cones Green3
+#> 14 Ripe seed cones Green3
+#> 15 Ripe seed cones Green3
+#> 16 Ripe seed cones Green3
+#> 17 Ripe seed cones Green3
+#> 18 Ripe seed cones Green3
+#> 19 Ripe seed cones Green3
+#> 20 Ripe seed cones Green3
 ```
 
-```coffee
-some stuff...
-```
+## Meta
 
-[Please report any issues or bugs](https://github.com/ropensci/rnpn/issues).
-
-License: MIT
-
-This package is part of the [rOpenSci](http://ropensci.org/packages) project.
-
-To cite package `rnpn` in publications use:
-
-```coffee
-To cite package ‘rnpn’ in publications use:
-
-  Scott Chamberlain and Lee Marsh (2013). rnpn: Interface to the National Phenology Network API methods.
-  R package version 0.0.5.
-
-A BibTeX entry for LaTeX users is
-
-  @Manual{,
-    title = {rnpn: Interface to the National Phenology Network API methods},
-    author = {Scott Chamberlain and Lee Marsh},
-    year = {2013},
-    note = {R package version 0.0.5},
-  }
-```
+* [Please report any issues or bugs](https://github.com/ropensci/rnpn/issues).
+* License: MIT
+* Get citation information for `rnpn` in R doing `citation(package = 'rnpn')`
 
 [![](http://ropensci.org/public_images/github_footer.png)](http://ropensci.org)
