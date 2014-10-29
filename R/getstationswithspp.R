@@ -3,31 +3,21 @@
 #'
 #' @export
 #'
-#' @param speciesid species id numbers, from 1 to infinity, potentially,
+#' @param speciesid Required. Species id numbers, from 1 to infinity, potentially,
 #'    use e.g., c(52, 53, etc.) if more than one species desired (numeric)
-#' @param printdf print data.frame (default, TRUE) or not (FALSE)
-#' @param callopts Optional additional curl options (debugging tools mostly)
+#' @param ... Optional additional curl options (debugging tools mostly)
 #'
 #' @return Stations' latitude and longitude, names, and ids.
 #' @examples \dontrun{
-#' getstationswithspp(c(52,53,54))
-#' getstationswithspp(c(52,53), printdf = FALSE)
+#' getstationswithspp(speciesid = c(52,53,54))
+#' getstationswithspp(speciesid = 53)
 #' }
-getstationswithspp <- function(speciesid = NA, printdf = TRUE, callopts=list())
-{
-  if(is.null(speciesid))
-    stop("You must provide an speciesid")
 
-  url = 'https://www.usanpn.org/npn_portal/stations/getStationsWithSpecies.json'
+getstationswithspp <- function(speciesid, ...)
+{
   args <- list()
   for(i in seq_along(speciesid)) {
     args[paste('species_id[',i,']',sep='')] <- speciesid[i]
   }
-  tmp <- GET(url, query = args, callopts)
-  stop_for_status(tmp)
-  tt <- content(tmp)
-  if(printdf == TRUE){
-    data.frame(do.call(rbind, tt))
-  } else
-    { tt }
+  ldfply(npn_GET(paste0(base(), 'stations/getStationsWithSpecies.json'), args, ...))
 }

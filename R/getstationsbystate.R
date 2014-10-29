@@ -2,21 +2,21 @@
 #'
 #' @export
 #'
-#' @param callopts Optional additional curl options (debugging tools mostly)
+#' @param ... Optional additional curl options (debugging tools mostly)
 #' @return Number of stations by state as a data.frame.
 #' @examples \dontrun{
-#' getstationsbystate()
+#' head( getstationsbystate() )
 #' }
-getstationsbystate <- function(callopts=list())
+getstationsbystate <- function(...)
 {
-  url = 'https://www.usanpn.org/npn_portal/stations/getStationCountByState.json'
-  tmp <- GET(url, callopts)
-  stop_for_status(tmp)
-  out <- content(tmp)
-  states <- ldply(out, function(x) if(is.null(x[[1]]) == TRUE) {x[[1]] <- "emptyvalue"}
-        else{x[[1]] <- x[[1]]})
-  data <- ldply(out, function(x) x[[2]])
-  dfout <- data.frame(states, data)
-  names(dfout) <- c("state", "number_stations")
-  dfout
+  tt <- npn_GET(paste0(base(), 'stations/getStationCountByState.json'), list(), ...)
+  states <- sapply(tt, function(x){
+    if(is.null(x[[1]]) == TRUE) {
+      x[[1]] <- "emptyvalue"
+    } else{
+      x[[1]] <- x[[1]]
+    }
+  })
+  data <- sapply(tt, "[[", "number_stations")
+  structure(data.frame(states, data, stringsAsFactors = FALSE), .Names=c("state", "number_stations"))
 }
