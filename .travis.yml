@@ -1,4 +1,4 @@
-language: language: objective-c
+language: objective-c
 script: "./travis-tool.sh run_tests"
 before_script:
 - curl -OL http://raw.github.com/craigcitro/r-travis/master/scripts/travis-tool.sh
