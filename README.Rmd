@@ -79,6 +79,9 @@ Get observations by day for a particular species or set of species.
 
 ```{r tidy=FALSE, fig.width=10}
 library('plyr')
+temp <- lookup_names(name='bird', type='common')
+comnames <- as.character(temp[temp$species_id %in% c(357, 359, 1108), 'common_name'])
+
 out <- npn_obsspbyday(speciesid=c(357, 359, 1108), startdate='2010-04-01', enddate='2013-09-31')
 names(out) <- comnames
 df <- ldply(out)
@@ -137,7 +140,7 @@ head( npn_species_search(groups = 3, year = 2010) )
 
 ## Meta
 
-* [Please report any issues or bugs](https://github.com/ropensci/rnpn/issues).
+* Please [report any issues or bugs](https://github.com/ropensci/rnpn/issues).
 * License: MIT
 * Get citation information for `rnpn` in R doing `citation(package = 'rnpn')`
 

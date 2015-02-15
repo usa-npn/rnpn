@@ -208,12 +208,12 @@ Number of stations by state.
 ```r
 head( npn_stationsbystate() )
 #>   state number_stations
-#> 1    CA            1508
-#> 2    AZ             753
-#> 3    ME             720
-#> 4    VA             720
-#> 5    CO             696
-#> 6    IL             587
+#> 1    CA            1558
+#> 2    AZ             776
+#> 3    VA             745
+#> 4    ME             742
+#> 5    CO             700
+#> 6    IL             601
 ```
 
 ### Observations by day
@@ -223,9 +223,11 @@ Get observations by day for a particular species or set of species.
 
 ```r
 library('plyr')
+temp <- lookup_names(name='bird', type='common')
+comnames <- as.character(temp[temp$species_id %in% c(357, 359, 1108), 'common_name'])
+
 out <- npn_obsspbyday(speciesid=c(357, 359, 1108), startdate='2010-04-01', enddate='2013-09-31')
 names(out) <- comnames
-#> Error in eval(expr, envir, enclos): object 'comnames' not found
 df <- ldply(out)
 df$date <- as.Date(df$date)
 
@@ -245,7 +247,20 @@ All species
 
 ```r
 head( npn_species() )
-#> Error in function (type, msg, asError = TRUE) : Avoided giant realloc for header (max is 102400)!
+#>   species_id            common_name        genus      species
+#> 1        120           'ohi'a lehua Metrosideros   polymorpha
+#> 2       1227     Acadian flycatcher    Empidonax    virescens
+#> 3       1229       acorn woodpecker   Melanerpes formicivorus
+#> 4        174                alfalfa     Medicago       sativa
+#> 5       1032         alkali sacaton   Sporobolus     airoides
+#> 6       1174 Allegheny serviceberry  Amelanchier       laevis
+#>   itis_taxonomic_sn
+#> 1             27259
+#> 2            178339
+#> 3            178189
+#> 4            183623
+#> 5             42128
+#> 6            182046
 ```
 
 By ITIS taxonomic serial number
@@ -328,7 +343,7 @@ head( npn_species_search(groups = 3, year = 2010) )
 
 ## Meta
 
-* [Please report any issues or bugs](https://github.com/ropensci/rnpn/issues).
+* Please [report any issues or bugs](https://github.com/ropensci/rnpn/issues).
 * License: MIT
 * Get citation information for `rnpn` in R doing `citation(package = 'rnpn')`
 
