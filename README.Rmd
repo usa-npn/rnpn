@@ -53,7 +53,8 @@ Search for a single species, specifying a start and end date. You can also pass 
 
 Coerce data to a data.frame that has most all data.
 
-```{r}
+```{r eval=FALSE}
+# hmm, this doesn't work
 npn_todf(out)
 ```
 

@@ -81,107 +81,31 @@ Search for a single species, specifying a start and end date. You can also pass 
 #> 465         52 Pinus palustris Pinus palustris
 #> 
 #> Slot "stations":
-#>   station_id           station_name  latitude  longitude
-#> 1       4881 Possum Branch Preserve 28.045185 -82.706299
+#>   station_id           station_name latitude longitude species.52.n
+#> 1       4881 Possum Branch Preserve 28.04519  -82.7063           39
+#>   species.52.393.y species.52.393.n species.52.n.1 species.52.n.2
+#> 1               23               17             40             40
+#>   species.52.n.3
+#> 1             40
 #> 
 #> Slot "phenophase":
-#>   phenophase_id phenophase_name  color
-#> 1           393 Ripe seed cones Green3
+#>   phenophase_id      phenophase_name
+#> 1           221 Full pollen release 
+#> 2           393      Ripe seed cones
+#> 3           486       Young needles 
+#> 4           496    Emerging needles 
+#> 5           503      Pollen release 
 #> 
 #> Slot "data":
-#>                   date station_id species_id phenophase_id phen_seq
-#> 1  2009-09-03 00:00:00       4881         52           393      300
-#> 2  2009-09-10 00:00:00       4881         52           393      300
-#> 3  2010-07-30 00:00:00       4881         52           393      300
-#> 4  2010-08-13 00:00:00       4881         52           393      300
-#> 5  2010-08-20 00:00:00       4881         52           393      300
-#> 6  2010-09-03 00:00:00       4881         52           393      300
-#> 7  2010-09-10 00:00:00       4881         52           393      300
-#> 8  2010-09-17 00:00:00       4881         52           393      300
-#> 9  2010-09-24 00:00:00       4881         52           393      300
-#> 10 2010-10-08 00:00:00       4881         52           393      300
-#> 11 2010-10-15 00:00:00       4881         52           393      300
-#> 12 2010-10-22 00:00:00       4881         52           393      300
-#> 13 2010-10-29 00:00:00       4881         52           393      300
-#> 14 2010-11-05 00:00:00       4881         52           393      300
-#> 15 2010-11-12 00:00:00       4881         52           393      300
-#> 16 2010-11-19 00:00:00       4881         52           393      300
-#> 17 2010-12-05 00:00:00       4881         52           393      300
-#> 18 2010-12-11 00:00:00       4881         52           393      300
-#> 19 2010-12-17 00:00:00       4881         52           393      300
-#> 20 2010-12-30 00:00:00       4881         52           393      300
+#> data frame with 0 columns and 0 rows
 ```
 
 Coerce data to a data.frame that has most all data.
 
 
 ```r
+# hmm, this doesn't work
 npn_todf(out)
-#> An object of class "npnsp"
-#> Slot "data":
-#>            sciname  latitude  longitude           station_name
-#> 1  Pinus palustris 28.045185 -82.706299 Possum Branch Preserve
-#> 2  Pinus palustris 28.045185 -82.706299 Possum Branch Preserve
-#> 3  Pinus palustris 28.045185 -82.706299 Possum Branch Preserve
-#> 4  Pinus palustris 28.045185 -82.706299 Possum Branch Preserve
-#> 5  Pinus palustris 28.045185 -82.706299 Possum Branch Preserve
-#> 6  Pinus palustris 28.045185 -82.706299 Possum Branch Preserve
-#> 7  Pinus palustris 28.045185 -82.706299 Possum Branch Preserve
-#> 8  Pinus palustris 28.045185 -82.706299 Possum Branch Preserve
-#> 9  Pinus palustris 28.045185 -82.706299 Possum Branch Preserve
-#> 10 Pinus palustris 28.045185 -82.706299 Possum Branch Preserve
-#> 11 Pinus palustris 28.045185 -82.706299 Possum Branch Preserve
-#> 12 Pinus palustris 28.045185 -82.706299 Possum Branch Preserve
-#> 13 Pinus palustris 28.045185 -82.706299 Possum Branch Preserve
-#> 14 Pinus palustris 28.045185 -82.706299 Possum Branch Preserve
-#> 15 Pinus palustris 28.045185 -82.706299 Possum Branch Preserve
-#> 16 Pinus palustris 28.045185 -82.706299 Possum Branch Preserve
-#> 17 Pinus palustris 28.045185 -82.706299 Possum Branch Preserve
-#> 18 Pinus palustris 28.045185 -82.706299 Possum Branch Preserve
-#> 19 Pinus palustris 28.045185 -82.706299 Possum Branch Preserve
-#> 20 Pinus palustris 28.045185 -82.706299 Possum Branch Preserve
-#>                   date phen_seq genus   epithet   genus_epithet
-#> 1  2009-09-03 00:00:00      300 Pinus palustris Pinus palustris
-#> 2  2009-09-10 00:00:00      300 Pinus palustris Pinus palustris
-#> 3  2010-07-30 00:00:00      300 Pinus palustris Pinus palustris
-#> 4  2010-08-13 00:00:00      300 Pinus palustris Pinus palustris
-#> 5  2010-08-20 00:00:00      300 Pinus palustris Pinus palustris
-#> 6  2010-09-03 00:00:00      300 Pinus palustris Pinus palustris
-#> 7  2010-09-10 00:00:00      300 Pinus palustris Pinus palustris
-#> 8  2010-09-17 00:00:00      300 Pinus palustris Pinus palustris
-#> 9  2010-09-24 00:00:00      300 Pinus palustris Pinus palustris
-#> 10 2010-10-08 00:00:00      300 Pinus palustris Pinus palustris
-#> 11 2010-10-15 00:00:00      300 Pinus palustris Pinus palustris
-#> 12 2010-10-22 00:00:00      300 Pinus palustris Pinus palustris
-#> 13 2010-10-29 00:00:00      300 Pinus palustris Pinus palustris
-#> 14 2010-11-05 00:00:00      300 Pinus palustris Pinus palustris
-#> 15 2010-11-12 00:00:00      300 Pinus palustris Pinus palustris
-#> 16 2010-11-19 00:00:00      300 Pinus palustris Pinus palustris
-#> 17 2010-12-05 00:00:00      300 Pinus palustris Pinus palustris
-#> 18 2010-12-11 00:00:00      300 Pinus palustris Pinus palustris
-#> 19 2010-12-17 00:00:00      300 Pinus palustris Pinus palustris
-#> 20 2010-12-30 00:00:00      300 Pinus palustris Pinus palustris
-#>    phenophase_name  color
-#> 1  Ripe seed cones Green3
-#> 2  Ripe seed cones Green3
-#> 3  Ripe seed cones Green3
-#> 4  Ripe seed cones Green3
-#> 5  Ripe seed cones Green3
-#> 6  Ripe seed cones Green3
-#> 7  Ripe seed cones Green3
-#> 8  Ripe seed cones Green3
-#> 9  Ripe seed cones Green3
-#> 10 Ripe seed cones Green3
-#> 11 Ripe seed cones Green3
-#> 12 Ripe seed cones Green3
-#> 13 Ripe seed cones Green3
-#> 14 Ripe seed cones Green3
-#> 15 Ripe seed cones Green3
-#> 16 Ripe seed cones Green3
-#> 17 Ripe seed cones Green3
-#> 18 Ripe seed cones Green3
-#> 19 Ripe seed cones Green3
-#> 20 Ripe seed cones Green3
 ```
 
 ### List stations with xyz
@@ -208,12 +132,12 @@ Number of stations by state.
 ```r
 head( npn_stationsbystate() )
 #>   state number_stations
-#> 1    CA            1558
-#> 2    AZ             776
-#> 3    VA             745
-#> 4    ME             742
-#> 5    CO             700
-#> 6    IL             601
+#> 1    CA            1766
+#> 2    ME             857
+#> 3    VA             803
+#> 4    AZ             759
+#> 5    CO             755
+#> 6    MN             704
 ```
 
 ### Observations by day
@@ -247,20 +171,20 @@ All species
 
 ```r
 head( npn_species() )
-#>   species_id            common_name        genus      species
-#> 1        120           'ohi'a lehua Metrosideros   polymorpha
-#> 2       1227     Acadian flycatcher    Empidonax    virescens
-#> 3       1229       acorn woodpecker   Melanerpes formicivorus
-#> 4        174                alfalfa     Medicago       sativa
-#> 5       1032         alkali sacaton   Sporobolus     airoides
-#> 6       1174 Allegheny serviceberry  Amelanchier       laevis
+#>   species_id                 common_name        genus      species
+#> 1        120                'ohi'a lehua Metrosideros   polymorpha
+#> 2       1227          Acadian flycatcher    Empidonax    virescens
+#> 3       1229            acorn woodpecker   Melanerpes formicivorus
+#> 4       1343 alderleaf mountain-mahogany  Cercocarpus     montanus
+#> 5        174                     alfalfa     Medicago       sativa
+#> 6       1032              alkali sacaton   Sporobolus     airoides
 #>   itis_taxonomic_sn
 #> 1             27259
 #> 2            178339
 #> 3            178189
-#> 4            183623
-#> 5             42128
-#> 6            182046
+#> 4             25136
+#> 5            183623
+#> 6             42128
 ```
 
 By ITIS taxonomic serial number
@@ -325,20 +249,20 @@ Filter by network, group, year, or station
 
 ```r
 head( npn_species_search(groups = 3, year = 2010) )
-#>              common_name        genus        species species_id
-#> 1                alfalfa     Medicago         sativa        174
-#> 2         annual ragweed     Ambrosia artemisiifolia        145
-#> 3 arctic sweet coltsfoot    Petasites       frigidus        434
-#> 4              bloodroot  Sanguinaria     canadensis       1016
-#> 5               bluebead    Clintonia       borealis          9
-#> 6             bluejacket Tradescantia       ohiensis        190
+#>                common_name      genus        species species_id
+#> 1                  alfalfa   Medicago         sativa        174
+#> 2    alpine mountainsorrel     Oxyria         digyna        951
+#> 3        American pokeweed Phytolacca      americana        963
+#> 4    American skunkcabbage Lysichiton     americanus        922
+#> 5 American white waterlily   Nymphaea        odorata        938
+#> 6           annual ragweed   Ambrosia artemisiifolia        145
 #>   number_observations
-#> 1                  33
-#> 2                  19
-#> 3                  13
-#> 4                   1
-#> 5                 129
-#> 6                  19
+#> 1                5330
+#> 2                   7
+#> 3                 744
+#> 4                 753
+#> 5                  28
+#> 6                1784
 ```
 
 ## Meta
