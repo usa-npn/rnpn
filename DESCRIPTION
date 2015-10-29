@@ -1,7 +1,7 @@
 Package: rnpn
-Title: Interface to the National Phenology Network API Methods.
+Title: Interface to the National 'Phenology' Network 'API'
 Description: Programmatic interface to the
-    Web Service methods provided by the National Phenology Network.
+    Web Service methods provided by the National 'Phenology' Network.
 Version: 0.0.9.9000
 License: MIT + file LICENSE
 Authors@R: c(person("Scott", "Chamberlain", role = c("aut", "cre"),
@@ -10,9 +10,11 @@ Authors@R: c(person("Scott", "Chamberlain", role = c("aut", "cre"),
     email = "npnlee85@gmail.com"))
 LazyData: yes
 Imports:
+    methods,
     httr,
     jsonlite,
     stringr,
     plyr,
-    data.table,
-    methods
+    data.table
+Suggests:
+    ggplot2
