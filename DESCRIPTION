@@ -18,3 +18,4 @@ Imports:
     data.table
 Suggests:
     ggplot2
+RoxygenNote: 5.0.1
