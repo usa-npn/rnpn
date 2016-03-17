@@ -2,17 +2,17 @@ Package: rnpn
 Title: Interface to the National 'Phenology' Network 'API'
 Description: Programmatic interface to the
     Web Service methods provided by the National 'Phenology' Network.
-Version: 0.0.9.9000
+Version: 0.0.9.9300
 License: MIT + file LICENSE
-Authors@R: c(person("Scott", "Chamberlain", role = c("aut", "cre"),
-    email = "myrmecocystus@gmail.com"),
-    person("Lee", "Marsh", role = "aut",
-    email = "npnlee85@gmail.com"))
+Authors@R: c(
+    person("Scott", "Chamberlain", role = c("aut", "cre"), email = "myrmecocystus@gmail.com"),
+    person("Lee", "Marsh", role = "aut", email = "npnlee85@gmail.com")
+    )
 LazyData: yes
 Imports:
     methods,
-    httr,
-    jsonlite,
+    httr (>= 1.0.0),
+    jsonlite (>= 0.9.16),
     stringr,
     plyr,
     data.table

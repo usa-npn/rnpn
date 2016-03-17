@@ -30,34 +30,34 @@ npn_allobssp <- function(speciesid, startdate = NULL, enddate = NULL, ...)
   taxa <- taxonlist[as.numeric(as.character(taxonlist[,"species_id"])) %in% speciesid,c("species_id","genus","epithet","genus_epithet")]
   taxa$species_id <- as.numeric(as.character(taxa$species_id))
 
-  args <- npnc(list(start_date=startdate, end_date=enddate))
-  for(i in seq_along(speciesid)){
-    args[paste('species_id[',i,']',sep='')] <- speciesid[i]
+  args <- npnc(list(start_date = startdate, end_date = enddate))
+  for (i in seq_along(speciesid)) {
+    args[paste('species_id[',i,']',sep = '')] <- speciesid[i]
   }
   tt <- npn_GET(paste0(base(), 'observations/getAllObservationsForSpecies.json'), args, ...)
-  station_list <- data.frame(rbindlist(lapply(tt$station_list, data.frame)))
+  station_list <- data.frame(rbindlist(lapply(tt$station_list, data.frame), fill = TRUE))
   phenophase_list <- lapply(tt$phenophase_list, function(x){ x[sapply(x, is.null)] <- "none"; x})
-  phenophase_list <- data.frame(rbindlist(lapply(phenophase_list, data.frame)))
+  phenophase_list <- data.frame(rbindlist(lapply(phenophase_list, data.frame), fill = TRUE))
   foo <- function(x){
-    tmp <- list(date=x$date,
-                station_id=x$stations[[1]]$station_id,
-                species_id=x$stations[[1]]$species_ids[[1]]$species_id,
+    tmp <- list(date = x$date,
+                station_id = x$stations[[1]]$station_id,
+                species_id = x$stations[[1]]$species_ids[[1]]$species_id,
 #                 phenophase=ldply(x$stations[[1]]$species_ids[[1]]$phenophases, data.frame),
-                phenophase_id=x$stations[[1]]$species_ids[[1]]$phenophases[[1]][[1]],
-                phen_seq=x$stations[[1]]$species_ids[[1]]$phenophases[[1]][[2]])
+                phenophase_id = x$stations[[1]]$species_ids[[1]]$phenophases[[1]][[1]],
+                phen_seq = x$stations[[1]]$species_ids[[1]]$phenophases[[1]][[2]])
     data.frame(tmp)
   }
   temp <- lapply(tt$observation_list, foo)
   data <- data.frame(do.call(rbind, temp))
 #   names(data)[4:5] <- c("phenophase_id","phen_seq")
 
-  new("npn", taxa=taxa, stations=station_list, phenophase = phenophase_list, data = data)
+  new("npn", taxa = taxa, stations = station_list, phenophase = phenophase_list, data = data)
 }
 
-setClass("npn", slots=list(taxa="data.frame",
-                           stations="data.frame",
-                           phenophase="data.frame",
-                           data="data.frame"))
+setClass("npn", slots = list(taxa = "data.frame",
+                           stations = "data.frame",
+                           phenophase = "data.frame",
+                           data = "data.frame"))
 
 #' Coerce elements of an object of class npn to a single data.frame
 #'
@@ -85,32 +85,33 @@ setClass("npn", slots=list(taxa="data.frame",
 #'   \item adsfcwer
 #' }
 #' @export
-npn_todf <- function(input, minimal=FALSE)
-{
-  if(!is(input,"npn"))
-    stop("Input object must be of class npn")
+npn_todf <- function(input, minimal=FALSE) {
+  if (!is(input,"npn")) {
+    stop("Input object must be of class npn", call. = FALSE)
+  }
 
-  dat <- merge(input@stations, input@data, by="station_id")
-  dat <- merge(dat, input@taxa, by="species_id")[,-c(1,2)]
-  dat <- merge(dat, input@phenophase, by="phenophase_id")[,-1]
-#   dat <- transform(dat, sciname = paste(genus, species, sep=" "))
-  dat <- data.frame(sciname=dat$genus_epithet, latitude=dat$latitude, longitude=dat$longitude,
-               dat[,!names(dat)%in%c("sciname","latitude","longitude")])
-  if(minimal)
+  dat <- merge(input@stations, input@data, by = "station_id")
+  dat <- merge(dat, input@taxa, by = "species_id")[,-c(1, 2)]
+  dat <- merge(dat, input@phenophase, by = "phenophase_id")[,-1]
+  dat <- data.frame(sciname = dat$genus_epithet, latitude = dat$latitude, longitude = dat$longitude,
+               dat[,!names(dat) %in% c("sciname","latitude","longitude")])
+  if (minimal) {
     dat <- dat[,c("sciname","latitude","longitude")]
+  }
 
-  new("npnsp", data=dat)
+  new("npnsp", data = dat)
 }
 
-setClass("npnsp", slots=list(data="data.frame"))
+setClass("npnsp", slots = list(data = "data.frame"))
 
 
 addmissing <- function(x){
   names_ <- names(x[[which.max(sapply(x, length))]])
 
   bbb <- function(x){
-    if(identical(names_[!names_ %in% names(x)], character(0))){x} else
-    {
+    if (identical(names_[!names_ %in% names(x)], character(0))) {
+      x
+    } else {
       xx <- rep("na", length(names_[!names_ %in% names(x)]))
       names(xx) <- names_[!names_ %in% names(x)]
       c(x, xx)

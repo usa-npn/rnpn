@@ -34,18 +34,18 @@
 #' }
 
 npn_obsspbyday <- function(speciesid = NULL, startdate = NULL, enddate = NULL, ...) {
-  args <- npnc(list(start_date=startdate, end_date=enddate))
-  for(i in seq_along(speciesid)) {
-    args[paste('species_id[',i,']',sep='')] <- speciesid[i]
+  args <- npnc(list(start_date = startdate, end_date = enddate))
+  for (i in seq_along(speciesid)) {
+    args[paste('species_id[',i,']', sep = '')] <- speciesid[i]
   }
   tt <- npn_GET(paste0(base(), 'observations/getObservationsForSpeciesByDay.json'), args, ...)
-  df_list <- lapply(tt$all_species$species, function(x) rbindlist(lapply(x[2]$count_list, data.frame)))
+  df_list <- lapply(tt$all_species$species, function(x) rbindlist(lapply(x[2]$count_list, data.frame), fill = TRUE))
   df_list <- lapply(df_list, function(x){
     x$date <- str_replace(x$date, "\\s.+", "")
     x$count <- as.numeric(x$count)
-    tt <- data.frame(x[,sum(count),by=date])
+    tt <- data.frame(x[,sum(count),by = date])
     names(tt) <- c('date','count')
     tt
   })
-  structure(df_list, .Names=speciesid)
+  structure(df_list, .Names = speciesid)
 }
