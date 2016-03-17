@@ -48,14 +48,7 @@ lookup_names(name='Pinus', type='genus')
 Search for a single species, specifying a start and end date. You can also pass a vector to the speciesid parameter.
 
 ```{r}
-(out <- npn_allobssp(speciesid = 52, startdate='2008-01-01', enddate='2010-12-31'))
-```
-
-Coerce data to a data.frame that has most all data.
-
-```{r eval=FALSE}
-# hmm, this doesn't work
-npn_todf(out)
+npn_allobssp(speciesid = 52, startdate='2008-01-01', enddate='2010-12-31')
 ```
 
 ### List stations with xyz
@@ -91,8 +84,8 @@ df$date <- as.Date(df$date)
 library('ggplot2')
 ggplot(df, aes(date, count)) +
  geom_line() +
- theme_grey(base_size=20) +
- facet_grid(.id ~.)
+ theme_grey(base_size = 20) +
+ facet_grid(.id ~ .)
 ```
 
 ### Search for species
@@ -145,4 +138,4 @@ head( npn_species_search(groups = 3, year = 2010) )
 * License: MIT
 * Get citation information for `rnpn` in R doing `citation(package = 'rnpn')`
 
-[![](http://ropensci.org/public_images/github_footer.png)](http://ropensci.org)
+[![image](http://ropensci.org/public_images/github_footer.png)](http://ropensci.org)

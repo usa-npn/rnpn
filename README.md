@@ -74,21 +74,16 @@ Search for a single species, specifying a start and end date. You can also pass 
 
 
 ```r
-(out <- npn_allobssp(speciesid = 52, startdate='2008-01-01', enddate='2010-12-31'))
-#> An object of class "npn"
-#> Slot "taxa":
+npn_allobssp(speciesid = 52, startdate='2008-01-01', enddate='2010-12-31')
+#> $taxa
 #>     species_id genus   epithet   genus_epithet
 #> 465         52 Pinus palustris Pinus palustris
 #> 
-#> Slot "stations":
-#>   station_id           station_name latitude longitude species.52.n
-#> 1       4881 Possum Branch Preserve 28.04519  -82.7063           39
-#>   species.52.393.y species.52.393.n species.52.n.1 species.52.n.2
-#> 1               23               17             40             40
-#>   species.52.n.3
-#> 1             40
+#> $stations
+#>   station_id           station_name  latitude  longitude
+#> 1       4881 Possum Branch Preserve 28.045185 -82.706299
 #> 
-#> Slot "phenophase":
+#> $phenophase
 #>   phenophase_id      phenophase_name
 #> 1           221 Full pollen release 
 #> 2           393      Ripe seed cones
@@ -96,16 +91,15 @@ Search for a single species, specifying a start and end date. You can also pass 
 #> 4           496    Emerging needles 
 #> 5           503      Pollen release 
 #> 
-#> Slot "data":
-#> data frame with 0 columns and 0 rows
-```
-
-Coerce data to a data.frame that has most all data.
-
-
-```r
-# hmm, this doesn't work
-npn_todf(out)
+#> $data
+#> $data$`4881`
+#> $data$`4881`$`52`
+#>    id  n  y
+#> 1 221 39 NA
+#> 2 393 17 23
+#> 3 486 40 NA
+#> 4 496 40 NA
+#> 5 503 40 NA
 ```
 
 ### List stations with xyz
@@ -117,7 +111,7 @@ Get a list of all stations which have an individual whom is a member of a set of
 head( npn_stationswithspp(speciesid = 53) )
 #>    latitude  longitude      station_name station_id
 #> 1 44.340950 -72.461220  Frizzle Mountain        637
-#> 2 42.173855 -85.892418              Home       1447
+#> 2 42.176537 -85.892448              Home       1447
 #> 3 44.588772 -93.004623              home       1572
 #> 4 48.051636 -92.766304   Wolfhaunt Creek       1598
 #> 5 48.051586 -92.764305 Wolfhaunt Prairie       1599
@@ -132,12 +126,12 @@ Number of stations by state.
 ```r
 head( npn_stationsbystate() )
 #>   state number_stations
-#> 1    CA            1766
-#> 2    ME             857
-#> 3    VA             803
-#> 4    AZ             759
-#> 5    CO             755
-#> 6    MN             704
+#> 1    CA            1850
+#> 2    ME             875
+#> 3    VA             827
+#> 4    AZ             798
+#> 5    MN             776
+#> 6    CO             770
 ```
 
 ### Observations by day
@@ -158,11 +152,11 @@ df$date <- as.Date(df$date)
 library('ggplot2')
 ggplot(df, aes(date, count)) +
  geom_line() +
- theme_grey(base_size=20) +
- facet_grid(.id ~.)
+ theme_grey(base_size = 20) +
+ facet_grid(.id ~ .)
 ```
 
-![plot of chunk unnamed-chunk-9](inst/img/unnamed-chunk-9-1.png) 
+![plot of chunk unnamed-chunk-8](inst/img/unnamed-chunk-8-1.png)
 
 ### Search for species
 
@@ -173,18 +167,18 @@ All species
 head( npn_species() )
 #>   species_id                 common_name        genus      species
 #> 1        120                'ohi'a lehua Metrosideros   polymorpha
-#> 2       1227          Acadian flycatcher    Empidonax    virescens
-#> 3       1229            acorn woodpecker   Melanerpes formicivorus
-#> 4       1343 alderleaf mountain-mahogany  Cercocarpus     montanus
-#> 5        174                     alfalfa     Medicago       sativa
-#> 6       1032              alkali sacaton   Sporobolus     airoides
+#> 2       1436                  absinthium    Artemisia   absinthium
+#> 3       1227          Acadian flycatcher    Empidonax    virescens
+#> 4       1229            acorn woodpecker   Melanerpes formicivorus
+#> 5       1343 alderleaf mountain-mahogany  Cercocarpus     montanus
+#> 6        174                     alfalfa     Medicago       sativa
 #>   itis_taxonomic_sn
 #> 1             27259
-#> 2            178339
-#> 3            178189
-#> 4             25136
-#> 5            183623
-#> 6             42128
+#> 2             35445
+#> 3            178339
+#> 4            178189
+#> 5             25136
+#> 6            183623
 ```
 
 By ITIS taxonomic serial number
@@ -257,10 +251,10 @@ head( npn_species_search(groups = 3, year = 2010) )
 #> 5 American white waterlily   Nymphaea        odorata        938
 #> 6           annual ragweed   Ambrosia artemisiifolia        145
 #>   number_observations
-#> 1                5330
+#> 1                5540
 #> 2                   7
-#> 3                 744
-#> 4                 753
+#> 3                 768
+#> 4                 817
 #> 5                  28
 #> 6                1784
 ```
@@ -271,4 +265,4 @@ head( npn_species_search(groups = 3, year = 2010) )
 * License: MIT
 * Get citation information for `rnpn` in R doing `citation(package = 'rnpn')`
 
-[![](http://ropensci.org/public_images/github_footer.png)](http://ropensci.org)
+[![image](http://ropensci.org/public_images/github_footer.png)](http://ropensci.org)
