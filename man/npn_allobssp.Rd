@@ -24,7 +24,7 @@ An S4 object of class npn with slots for taxa, stations, phenophase (metadata),
 Get all observations for a particular species or set of species.
 }
 \examples{
-\donttest{
+\dontrun{
 # Lookup names
 lookup_names(name='Pinus', type='genus')
 

@@ -19,7 +19,7 @@ Observations for each species by date.
 Get all observations for a particular species or set of species.
 }
 \examples{
-\donttest{
+\dontrun{
 npn_indsatstations(stationid = c(507, 523))
 }
 }

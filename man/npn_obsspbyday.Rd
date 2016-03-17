@@ -23,7 +23,7 @@ Number of observations by day, in object of class npn.
 Get observations by day for a particular species or set of species.
 }
 \examples{
-\donttest{
+\dontrun{
 out <- npn_obsspbyday(speciesid=357, startdate='2010-04-01', enddate='2012-01-05')
 head(out[[1]])
 

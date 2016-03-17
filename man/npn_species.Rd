@@ -55,7 +55,7 @@ data.frame of species and their IDs
 Get scientific names.
 }
 \examples{
-\donttest{
+\dontrun{
 head( npn_species() )
 npn_species_itis(ids = 27806)
 npn_species_itis(ids = c(27806,36616))

@@ -5,7 +5,7 @@
 #' @param observationid Required. Observation id, or as vector if >1, as e.g., c(2, 1938) (numeric)
 #' @param ... Optional additional curl options (debugging tools mostly)
 #' @return Comments.
-#' @examples \donttest{
+#' @examples \dontrun{
 #' npn_obscomm(c(1,4,5,7,89))
 #' }
 

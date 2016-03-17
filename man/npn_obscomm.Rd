@@ -18,7 +18,7 @@ Comments.
 Get observation comments for a particular species or set of species.
 }
 \examples{
-\donttest{
+\dontrun{
 npn_obscomm(c(1,4,5,7,89))
 }
 }

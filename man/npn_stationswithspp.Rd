@@ -21,7 +21,7 @@ Get a list of all stations which have an individual whom is a member of a
    set of species.
 }
 \examples{
-\donttest{
+\dontrun{
 npn_stationswithspp(speciesid = c(52,53,54))
 npn_stationswithspp(speciesid = 53)
 }

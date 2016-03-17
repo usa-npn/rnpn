@@ -6,7 +6,7 @@
 #' (numeric)
 #' @param ... Optional additional curl options (debugging tools mostly)
 #' @return Observations for each species by date.
-#' @examples \donttest{
+#' @examples \dontrun{
 #' npn_indsatstations(stationid = c(507, 523))
 #' }
 
