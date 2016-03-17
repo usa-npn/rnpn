@@ -2,7 +2,7 @@
 % Please edit documentation in R/npn_allobssp.R
 \name{npn_allobssp}
 \alias{npn_allobssp}
-\title{Get all observations for a particular species or set of species.}
+\title{Get all observations for a particular species or set of species}
 \usage{
 npn_allobssp(speciesid, startdate = NULL, enddate = NULL, ...)
 }
@@ -17,11 +17,10 @@ use e.g., c(52, 53, etc.) if more than one species desired (numeric)}
 \item{...}{Optional additional curl options (debugging tools mostly)}
 }
 \value{
-An S4 object of class npn with slots for taxa, stations, phenophase (metadata),
-   and data.
+A list with slots for taxa, stations, phenophase (metadata) and data
 }
 \description{
-Get all observations for a particular species or set of species.
+Get all observations for a particular species or set of species
 }
 \examples{
 \dontrun{
@@ -35,8 +34,7 @@ npn_allobssp(speciesid = 52, startdate='2008-01-01', enddate='2011-12-31')
 npn_allobssp(speciesid = c(52, 53), startdate='2008-01-01', enddate='2011-12-31')
 
 # Get data on one species, convert to a single data.frame
-out <- npn_allobssp(speciesid = 52, startdate='2008-01-01', enddate='2011-12-31')
-npn_todf(out)
+npn_allobssp(speciesid = 52, startdate='2008-01-01', enddate='2011-12-31')
 }
 }
 

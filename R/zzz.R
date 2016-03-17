@@ -1,4 +1,8 @@
-npnc <- function (l) Filter(Negate(is.null), l)
+npnc <- function(l) Filter(Negate(is.null), l)
+
+pop <- function(x, y) {
+  x[!names(x) %in% y]
+}
 
 base <- function() 'https://www.usanpn.org/npn_portal/'
 
@@ -13,6 +17,6 @@ ldfply <- function(y){
 npn_GET <- function(url, args, ...){
   tmp <- GET(url, query = args, ...)
   stop_for_status(tmp)
-  tt <- content(tmp, as = "text")
+  tt <- content(tmp, as = "text", encoding = "UTF-8")
   jsonlite::fromJSON(tt, FALSE)
 }
