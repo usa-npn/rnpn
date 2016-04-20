@@ -5,7 +5,7 @@
 #'     use e.g., c(52, 53, etc.) if more than one species desired (numeric)
 #' @param startdate start date of data period desired, see format in examples (character)
 #' @param enddate end date of data period desired, see format in examples (character)
-#' @param ... Optional additional curl options (debugging tools mostly)
+#' @template curl
 #' @return A list with slots for taxa, stations, phenophase (metadata) and data
 #' @examples \dontrun{
 #' # Lookup names
@@ -49,23 +49,4 @@ npn_allobssp <- function(speciesid, startdate = NULL, enddate = NULL, ...) {
   }), vapply(tt$station_list, "[[", 1, "station_id"))
 
   list(taxa = taxa, stations = statdf, phenophase = phenophase_list, data = spp)
-
-  # foo <- function(x){
-  #   tmp <- list(date = x$date,
-  #               station_id = x$stations[[1]]$station_id,
-  #               species_id = x$stations[[1]]$species_ids[[1]]$species_id,
-  #               phenophase_id = x$stations[[1]]$species_ids[[1]]$phenophases[[1]][[1]],
-  #               phen_seq = x$stations[[1]]$species_ids[[1]]$phenophases[[1]][[2]])
-  #   data.frame(tmp)
-  # }
-  #
-  # temp <- lapply(tt$observation_list, foo)
-  # data <- data.frame(do.call(rbind, temp))
-
-  # new("npn", taxa = taxa, stations = station_list, phenophase = phenophase_list, data = data)
 }
-
-# setClass("npn", slots = list(taxa = "data.frame",
-#                            stations = "data.frame",
-#                            phenophase = "data.frame",
-#                            data = "data.frame"))

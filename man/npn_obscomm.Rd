@@ -9,7 +9,7 @@ npn_obscomm(observationid, ...)
 \arguments{
 \item{observationid}{Required. Observation id, or as vector if >1, as e.g., c(2, 1938) (numeric)}
 
-\item{...}{Optional additional curl options (debugging tools mostly)}
+\item{...}{Curl options passed on to \code{\link[httr]{GET}}}
 }
 \value{
 Comments.

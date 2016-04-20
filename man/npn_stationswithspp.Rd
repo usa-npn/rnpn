@@ -11,7 +11,7 @@ npn_stationswithspp(speciesid, ...)
 \item{speciesid}{Required. Species id numbers, from 1 to infinity, potentially,
 use e.g., c(52, 53, etc.) if more than one species desired (numeric)}
 
-\item{...}{Optional additional curl options (debugging tools mostly)}
+\item{...}{Curl options passed on to \code{\link[httr]{GET}}}
 }
 \value{
 Stations' latitude and longitude, names, and ids.

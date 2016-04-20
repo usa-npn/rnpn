@@ -1,7 +1,6 @@
 #' Get scientific names.
 #'
 #' @export
-#'
 #' @param ids One or more ITIS taxonomic serial numbers (tsn), or NPN ID numbers.
 #' @param state Required. A US state, two-letter abbreviation.
 #' @param kingdom Optional. A taxonomic kingdom.
@@ -12,7 +11,7 @@
 #' @param year Year of obseration
 #' @param groups One or more primary keys associated with a species type.
 #' @param stationid Station ID. Use e.g., c(4881, 4882, etc.) if more than one species desired
-#' @param ... Optional additional curl options (debugging tools mostly)
+#' @template curl
 #' @return data.frame of species and their IDs
 #' @examples \dontrun{
 #' head( npn_species() )
@@ -30,16 +29,13 @@
 #' library('httr')
 #' npn_species_itis(ids = 27806, config=verbose())
 #' }
-
-npn_species <- function(...)
-{
+npn_species <- function(...) {
   ldfply(npn_GET(paste0(base(), 'species/getSpecies.json'), list(), ...))
 }
 
 #' @export
 #' @rdname npn_species
-npn_species_itis <- function(ids, ...)
-{
+npn_species_itis <- function(ids, ...) {
   tt <- lapply(ids, function(z){
     npn_GET(paste0(base(), 'species/getSpeciesByItis.json'), list(itis_sn = z), ...)
   })
@@ -48,8 +44,7 @@ npn_species_itis <- function(ids, ...)
 
 #' @export
 #' @rdname npn_species
-npn_species_id <- function(ids, ...)
-{
+npn_species_id <- function(ids, ...) {
   tt <- lapply(ids, function(z){
     npn_GET(paste0(base(), 'species/getSpeciesById.json'), list(species_id = z), ...)
   })
@@ -58,16 +53,14 @@ npn_species_id <- function(ids, ...)
 
 #' @export
 #' @rdname npn_species
-npn_species_state <- function(state, kingdom = NULL, ...)
-{
+npn_species_state <- function(state, kingdom = NULL, ...) {
   args <- npnc(list(state = state, kingdom = kingdom))
   ldfply(npn_GET(paste0(base(), 'species/getSpeciesByState.json'), args, ...))
 }
 
 #' @export
 #' @rdname npn_species
-npn_species_sci <- function(genus, species, ...)
-{
+npn_species_sci <- function(genus, species, ...) {
   args <- list(genus = genus, species = species)
   data.frame(npn_GET(paste0(base(), 'species/getSpeciesByScientificName.json'), args, ...),
              stringsAsFactors = FALSE)
@@ -75,8 +68,7 @@ npn_species_sci <- function(genus, species, ...)
 
 #' @export
 #' @rdname npn_species
-npn_species_comm <- function(name, ...)
-{
+npn_species_comm <- function(name, ...) {
   tt <- lapply(name, function(z){
     npn_GET(paste0(base(), 'species/getSpeciesByCommonName.json'), list(common_name = z), ...)
   })
@@ -85,14 +77,13 @@ npn_species_comm <- function(name, ...)
 
 #' @export
 #' @rdname npn_species
-npn_species_search <- function(network=NULL, year=NULL, groups=NULL, stationid=NULL, ...)
-{
-  args <- npnc(list(network_id=network, observation_year=year))
-  for(i in seq_along(groups)) {
-    args[paste('group_ids[',i,']',sep='')] <- groups[i]
+npn_species_search <- function(network=NULL, year=NULL, groups=NULL, stationid=NULL, ...) {
+  args <- npnc(list(network_id = network, observation_year = year))
+  for (i in seq_along(groups)) {
+    args[paste0('group_ids[',i,']')] <- groups[i]
   }
-  for(i in seq_along(stationid)) {
-    args[paste('station_ids[',i,']',sep='')] <- stationid[i]
+  for (i in seq_along(stationid)) {
+    args[paste0('station_ids[',i,']')] <- stationid[i]
   }
 
   ldfply(npn_GET(paste0(base(), 'species/getSpeciesFilter.json'), args, ...))

@@ -14,7 +14,7 @@ use e.g., c(52, 53, etc.) if more than one species desired (numeric)}
 
 \item{enddate}{end date of data period desired, see format in examples (character)}
 
-\item{...}{Optional additional curl options (debugging tools mostly)}
+\item{...}{Curl options passed on to \code{\link[httr]{GET}}}
 }
 \value{
 A list with slots for taxa, stations, phenophase (metadata) and data

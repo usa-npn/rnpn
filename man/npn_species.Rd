@@ -26,7 +26,7 @@ npn_species_search(network = NULL, year = NULL, groups = NULL,
   stationid = NULL, ...)
 }
 \arguments{
-\item{...}{Optional additional curl options (debugging tools mostly)}
+\item{...}{Curl options passed on to \code{\link[httr]{GET}}}
 
 \item{ids}{One or more ITIS taxonomic serial numbers (tsn), or NPN ID numbers.}
 

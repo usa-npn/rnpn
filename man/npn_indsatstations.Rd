@@ -10,10 +10,10 @@ npn_indsatstations(stationid, ...)
 \item{stationid}{Required. Use e.g., c(4881, 4882, etc.) if more than one species desired
 (numeric)}
 
-\item{...}{Optional additional curl options (debugging tools mostly)}
+\item{...}{Curl options passed on to \code{\link[httr]{GET}}}
 }
 \value{
-Observations for each species by date.
+Observations for each species by date in a data.frame
 }
 \description{
 Get all observations for a particular species or set of species.

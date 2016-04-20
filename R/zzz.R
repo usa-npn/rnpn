@@ -1,10 +1,10 @@
+base <- function() 'https://www.usanpn.org/npn_portal/'
+
 npnc <- function(l) Filter(Negate(is.null), l)
 
 pop <- function(x, y) {
   x[!names(x) %in% y]
 }
-
-base <- function() 'https://www.usanpn.org/npn_portal/'
 
 ldfply <- function(y){
   res <- lapply(y, function(x){

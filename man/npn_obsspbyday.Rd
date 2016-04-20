@@ -14,10 +14,10 @@ use e.g., c(52, 53, etc.) if more than one species desired (numeric)}
 
 \item{enddate}{end date of data period desired, see format in examples (character)}
 
-\item{...}{Optional additional curl options (debugging tools mostly)}
+\item{...}{Curl options passed on to \code{\link[httr]{GET}}}
 }
 \value{
-Number of observations by day, in object of class npn.
+Number of observations by day, in a list
 }
 \description{
 Get observations by day for a particular species or set of species.
@@ -33,6 +33,7 @@ comnames <- temp[temp$species_id \%in\% c(357, 359, 1108), 'common_name']
 
 out <- npn_obsspbyday(speciesid=c(357, 359, 1108), startdate='2010-04-01', enddate='2013-09-31')
 names(out) <- comnames
+library("plyr")
 df <- ldply(out)
 df$date <- as.Date(df$date)
 

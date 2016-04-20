@@ -1,8 +1,7 @@
 #' Get number of stations by state.
 #'
 #' @export
-#'
-#' @param ... Optional additional curl options (debugging tools mostly)
+#' @template curl
 #' @return Number of stations by state as a data.frame.
 #' @examples \dontrun{
 #' head( npn_stationsbystate() )

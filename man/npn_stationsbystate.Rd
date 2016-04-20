@@ -7,7 +7,7 @@
 npn_stationsbystate(...)
 }
 \arguments{
-\item{...}{Optional additional curl options (debugging tools mostly)}
+\item{...}{Curl options passed on to \code{\link[httr]{GET}}}
 }
 \value{
 Number of stations by state as a data.frame.

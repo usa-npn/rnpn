@@ -2,11 +2,9 @@
 #'    set of species.
 #'
 #' @export
-#'
 #' @param speciesid Required. Species id numbers, from 1 to infinity, potentially,
 #'    use e.g., c(52, 53, etc.) if more than one species desired (numeric)
-#' @param ... Optional additional curl options (debugging tools mostly)
-#'
+#' @template curl
 #' @return Stations' latitude and longitude, names, and ids.
 #' @examples \dontrun{
 #' npn_stationswithspp(speciesid = c(52,53,54))

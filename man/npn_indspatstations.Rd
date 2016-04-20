@@ -15,7 +15,7 @@ use e.g., c(52, 53, etc.) if more than one species desired (numeric)}
 
 \item{year}{Year (numeric).}
 
-\item{...}{Optional additional curl options (debugging tools mostly)}
+\item{...}{Curl options passed on to \code{\link[httr]{GET}}}
 }
 \value{
 Observations for each species by date.
