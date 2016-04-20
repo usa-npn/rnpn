@@ -12,12 +12,12 @@ Authors@R: c(
     )
 LazyData: yes
 Imports:
+    stats,
     httr (>= 1.1.0),
     jsonlite (>= 0.9.19),
     plyr,
     data.table (>= 1.9.6)
 Suggests:
-    knitr,
     ggplot2,
     testthat,
     covr
