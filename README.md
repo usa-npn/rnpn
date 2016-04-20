@@ -5,6 +5,7 @@ rnpn
 
 [![Build Status](https://api.travis-ci.org/ropensci/rnpn.png)](https://travis-ci.org/ropensci/rnpn)
 [![Build status](https://ci.appveyor.com/api/projects/status/es65utr5jmfmcsrg/branch/master)](https://ci.appveyor.com/project/sckott/rnpn/branch/master)
+[![codecov.io](https://codecov.io/github/ropensci/rnpn/coverage.svg?branch=master)](https://codecov.io/github/ropensci/rnpn?branch=master)
 
 `rnpn` is an R client for the US National Phenology Network API.
 
@@ -12,15 +13,19 @@ National Phenology Network [API documentation](https://docs.google.com/document/
 
 Note that there is no need for an API key to grab data from the National Phenology Network, but I think there is for writing data through the API. Currently, functions in this package only allow getting data, but may at some point allow posting data to the USNPN.
 
-## Quick start
+## Installation
 
-### Installation
-
-Note: Windows users installing from GitHub should get Rtools - can be installed from http://www.murdoch-sutherland.com/Rtools/
+Stable version
 
 
 ```r
-install.packages("devtools")
+install.packages("rnpn")
+```
+
+Development version
+
+
+```r
 devtools::install_github("ropensci/rnpn")
 ```
 
@@ -35,7 +40,7 @@ You can lookup taxon names. This is not actually an API call to the web. The fun
 
 
 ```r
-lookup_names(name='Pinus', type='genus')
+lookup_names(name = 'Pinus', type = 'genus')
 #>     species_id                  common_name genus    epithet itis_tsn
 #> 82         967                  Bishop pine Pinus   muricata   183359
 #> 312         53           eastern white pine Pinus    strobus   183385
@@ -74,7 +79,7 @@ Search for a single species, specifying a start and end date. You can also pass 
 
 
 ```r
-npn_allobssp(speciesid = 52, startdate='2008-01-01', enddate='2010-12-31')
+npn_allobssp(speciesid = 52, startdate = '2008-01-01', enddate = '2010-12-31')
 #> $taxa
 #>     species_id genus   epithet   genus_epithet
 #> 465         52 Pinus palustris Pinus palustris
@@ -126,12 +131,12 @@ Number of stations by state.
 ```r
 head( npn_stationsbystate() )
 #>   state number_stations
-#> 1    CA            1850
-#> 2    ME             875
-#> 3    VA             827
-#> 4    AZ             798
-#> 5    MN             776
-#> 6    CO             770
+#> 1    CA            1935
+#> 2    ME             902
+#> 3    VA             833
+#> 4    AZ             804
+#> 5    MN             793
+#> 6    CO             777
 ```
 
 ### Observations by day
@@ -141,10 +146,10 @@ Get observations by day for a particular species or set of species.
 
 ```r
 library('plyr')
-temp <- lookup_names(name='bird', type='common')
+temp <- lookup_names(name = 'bird', type = 'common')
 comnames <- as.character(temp[temp$species_id %in% c(357, 359, 1108), 'common_name'])
 
-out <- npn_obsspbyday(speciesid=c(357, 359, 1108), startdate='2010-04-01', enddate='2013-09-31')
+out <- npn_obsspbyday(speciesid = c(357, 359, 1108), startdate = '2010-04-01', enddate = '2013-09-31')
 names(out) <- comnames
 df <- ldply(out)
 df$date <- as.Date(df$date)
@@ -156,7 +161,7 @@ ggplot(df, aes(date, count)) +
  facet_grid(.id ~ .)
 ```
 
-![plot of chunk unnamed-chunk-8](inst/img/unnamed-chunk-8-1.png)
+![plot of chunk unnamed-chunk-9](inst/img/unnamed-chunk-9-1.png)
 
 ### Search for species
 
@@ -251,12 +256,12 @@ head( npn_species_search(groups = 3, year = 2010) )
 #> 5 American white waterlily   Nymphaea        odorata        938
 #> 6           annual ragweed   Ambrosia artemisiifolia        145
 #>   number_observations
-#> 1                5540
+#> 1                5599
 #> 2                   7
-#> 3                 768
-#> 4                 817
+#> 3                 779
+#> 4                 880
 #> 5                  28
-#> 6                1784
+#> 6                1800
 ```
 
 ## Meta

@@ -21,14 +21,17 @@ National Phenology Network [API documentation](https://docs.google.com/document/
 
 Note that there is no need for an API key to grab data from the National Phenology Network, but I think there is for writing data through the API. Currently, functions in this package only allow getting data, but may at some point allow posting data to the USNPN.
 
-## Quick start
+## Installation
 
-### Installation
-
-Note: Windows users installing from GitHub should get Rtools - can be installed from http://www.murdoch-sutherland.com/Rtools/
+Stable version
 
 ```{r eval=FALSE}
-install.packages("devtools")
+install.packages("rnpn")
+```
+
+Development version
+
+```{r eval=FALSE}
 devtools::install_github("ropensci/rnpn")
 ```
 
@@ -41,7 +44,7 @@ library('rnpn')
 You can lookup taxon names. This is not actually an API call to the web. The function simply searches for matches in a dataset stored in the package. You can then use the speciesid output in other functions.
 
 ```{r}
-lookup_names(name='Pinus', type='genus')
+lookup_names(name = 'Pinus', type = 'genus')
 ```
 
 ### Search
@@ -49,7 +52,7 @@ lookup_names(name='Pinus', type='genus')
 Search for a single species, specifying a start and end date. You can also pass a vector to the speciesid parameter.
 
 ```{r}
-npn_allobssp(speciesid = 52, startdate='2008-01-01', enddate='2010-12-31')
+npn_allobssp(speciesid = 52, startdate = '2008-01-01', enddate = '2010-12-31')
 ```
 
 ### List stations with xyz
@@ -74,10 +77,10 @@ Get observations by day for a particular species or set of species.
 
 ```{r tidy=FALSE, fig.width=10}
 library('plyr')
-temp <- lookup_names(name='bird', type='common')
+temp <- lookup_names(name = 'bird', type = 'common')
 comnames <- as.character(temp[temp$species_id %in% c(357, 359, 1108), 'common_name'])
 
-out <- npn_obsspbyday(speciesid=c(357, 359, 1108), startdate='2010-04-01', enddate='2013-09-31')
+out <- npn_obsspbyday(speciesid = c(357, 359, 1108), startdate = '2010-04-01', enddate = '2013-09-31')
 names(out) <- comnames
 df <- ldply(out)
 df$date <- as.Date(df$date)
