@@ -39,9 +39,6 @@ npn_obsspbyday <- function(speciesid = NULL, startdate = NULL, enddate = NULL, .
   })
   df_list <- lapply(df_list, function(x){
     x$date <- gsub("\\s.+", "", x$date)
-    #x$count <- as.numeric(x$count)
-    #tt <- data.frame(x[, sum(count), by = date])
-    #names(tt) <- c('date','count')
     x
   })
   structure(df_list, .Names = speciesid)

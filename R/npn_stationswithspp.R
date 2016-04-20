@@ -11,11 +11,10 @@
 #' npn_stationswithspp(speciesid = 53)
 #' }
 
-npn_stationswithspp <- function(speciesid, ...)
-{
+npn_stationswithspp <- function(speciesid, ...) {
   args <- list()
-  for(i in seq_along(speciesid)) {
-    args[paste('species_id[',i,']',sep='')] <- speciesid[i]
+  for (i in seq_along(speciesid)) {
+    args[paste0('species_id[',i,']')] <- speciesid[i]
   }
   ldfply(npn_GET(paste0(base(), 'stations/getStationsWithSpecies.json'), args, ...))
 }

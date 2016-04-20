@@ -3,8 +3,8 @@
 \docType{data}
 \name{taxonlist}
 \alias{taxonlist}
-\title{Get data from the US National Phenology Network.}
-\format{A data.frame with 6 columns
+\title{Lookup-table for IDs of species and common names}
+\format{A data.frame with 897 rows and 6 columns
 \describe{
  \item{species_id}{species identifiers}
  \item{common_name}{common (vernacular) name}

@@ -28,7 +28,7 @@ npn_allobssp <- function(speciesid, startdate = NULL, enddate = NULL, ...) {
 
   args <- npnc(list(start_date = startdate, end_date = enddate))
   for (i in seq_along(speciesid)) {
-    args[paste('species_id[',i,']',sep = '')] <- speciesid[i]
+    args[paste0('species_id[',i,']')] <- speciesid[i]
   }
 
   tt <- npn_GET(paste0(base(), 'observations/getAllObservationsForSpecies.json'), args, ...)
