@@ -11,17 +11,16 @@
 #' @return Observations for each species by date.
 #' @examples \dontrun{
 #' npn_indspatstations(speciesid = 35, stationid = c(60, 259), year = 2009)
-#' npn_indspatstations(35, c(60, 259), 2009, 'xml')
+#' npn_indspatstations(35, c(60, 259), 2009)
 #' }
 
-npn_indspatstations <-  function(speciesid, stationid, year = NULL, ...)
-{
+npn_indspatstations <-  function(speciesid, stationid, year = NULL, ...) {
   args <- npnc(list(year = year))
-  for(i in seq_along(speciesid)) {
-    args[paste('species_id[',i,']',sep='')] <- speciesid[i]
+  for (i in seq_along(speciesid)) {
+    args[paste('species_id[',i,']', sep = '')] <- speciesid[i]
   }
-  for(i in seq_along(stationid)) {
-    args[paste('station_ids[',i,']',sep='')] <- stationid[i]
+  for (i in seq_along(stationid)) {
+    args[paste('station_ids[',i,']', sep = '')] <- stationid[i]
   }
   tt <- npn_GET(paste0(base(), 'individuals/getIndividualsOfSpeciesAtStations.json'), args, ...)
   ldfply(tt)

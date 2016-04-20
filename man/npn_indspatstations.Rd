@@ -26,7 +26,7 @@ Get all observations for a particular species or set of species.
 \examples{
 \dontrun{
 npn_indspatstations(speciesid = 35, stationid = c(60, 259), year = 2009)
-npn_indspatstations(35, c(60, 259), 2009, 'xml')
+npn_indspatstations(35, c(60, 259), 2009)
 }
 }
 
