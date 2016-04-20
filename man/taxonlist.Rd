@@ -4,6 +4,15 @@
 \name{taxonlist}
 \alias{taxonlist}
 \title{Get data from the US National Phenology Network.}
+\format{A data.frame with 6 columns
+\describe{
+ \item{species_id}{species identifiers}
+ \item{common_name}{common (vernacular) name}
+ \item{genus}{genus name}
+ \item{epithet}{epithet name}
+ \item{itis_tsn}{ITIS taxonomic serial number (tsn)}
+ \item{genus_epithet}{genus name + epithet name}
+}}
 \description{
 Lookup-table for IDs of species and common names
 }
