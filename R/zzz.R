@@ -18,5 +18,5 @@ npn_GET <- function(url, args, ...){
   tmp <- GET(url, query = args, ...)
   stop_for_status(tmp)
   tt <- content(tmp, as = "text", encoding = "UTF-8")
-  jsonlite::fromJSON(tt, FALSE)
+  if (nchar(tt) == 0) tt else jsonlite::fromJSON(tt, FALSE)
 }
