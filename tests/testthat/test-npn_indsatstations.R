@@ -6,7 +6,7 @@ test_that("npn_indsatstations works well", {
   aa <- npn_indsatstations(stationid = c(507, 523))
 
   expect_is(aa, "data.frame")
-  expect_is(aa$individual_id, "character")
+  expect_type(aa$individual_id, "integer")
   expect_is(aa$kingdom, "character")
   expect_gt(NROW(aa), 0)
 

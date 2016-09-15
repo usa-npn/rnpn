@@ -7,12 +7,12 @@ test_that("npn_stationswithspp works well", {
   bb <- npn_stationswithspp(speciesid = 53)
 
   expect_is(aa, "data.frame")
-  expect_is(aa$latitude, "character")
-  expect_is(aa$station_name, "character")
+  expect_type(aa$latitude, "integer")
+  expect_type(aa$station_name, "character")
   expect_gt(NROW(aa), 0)
 
   expect_is(bb, "data.frame")
-  expect_is(bb$latitude, "character")
+  expect_type(bb$latitude, "double")
   expect_is(bb$station_name, "character")
   expect_gt(NROW(bb), 0)
 })

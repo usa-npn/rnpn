@@ -8,5 +8,5 @@ test_that("npn_stationsbystate works well", {
   expect_is(aa, "data.frame")
   expect_named(aa, c('state', 'number_stations'))
   expect_is(aa$state, "character")
-  expect_is(aa$number_stations, "character")
+  expect_type(aa$number_stations, "integer")
 })

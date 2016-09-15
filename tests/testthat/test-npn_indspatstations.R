@@ -6,7 +6,7 @@ test_that("npn_indspatstations works well", {
   aa <- npn_indspatstations(speciesid = 35, stationid = c(60, 259), year = 2009)
 
   expect_is(aa, "data.frame")
-  expect_is(aa$individual_id, "character")
+  expect_type(aa$individual_id, "integer")
 
   expect_named(aa, c('individual_id', 'individual_name', 'number_observations'))
   expect_gt(NROW(aa), 0)
