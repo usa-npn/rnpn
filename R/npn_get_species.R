@@ -14,7 +14,7 @@
 #' @template curl
 #' @return data.frame of species and their IDs
 #' @examples \dontrun{
-#' head( npn_species() )
+#' npn_species()
 #' npn_species_itis(ids = 27806)
 #' npn_species_itis(ids = c(27806,36616))
 #' npn_species_id(ids = 3)
@@ -30,7 +30,9 @@
 #' npn_species_itis(ids = 27806, config=verbose())
 #' }
 npn_species <- function(...) {
-  ldfply(npn_GET(paste0(base(), 'species/getSpecies.json'), list(), ...))
+  tibble::as_data_frame(
+    npn_GET(paste0(base(), 'species/getSpecies.json'), list(), TRUE, ...)
+  )
 }
 
 #' @export

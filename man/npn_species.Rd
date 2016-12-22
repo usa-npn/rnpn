@@ -56,7 +56,7 @@ Get scientific names.
 }
 \examples{
 \dontrun{
-head( npn_species() )
+npn_species()
 npn_species_itis(ids = 27806)
 npn_species_itis(ids = c(27806,36616))
 npn_species_id(ids = 3)

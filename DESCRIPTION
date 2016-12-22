@@ -16,7 +16,8 @@ Imports:
     httr (>= 1.1.0),
     jsonlite (>= 0.9.19),
     plyr,
-    data.table (>= 1.9.6)
+    data.table (>= 1.9.6),
+    tibble
 Suggests:
     ggplot2,
     testthat,

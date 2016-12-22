@@ -14,9 +14,9 @@ ldfply <- function(y){
   do.call(rbind.fill, res)
 }
 
-npn_GET <- function(url, args, ...){
+npn_GET <- function(url, args, parse = FALSE, ...) {
   tmp <- GET(url, query = args, ...)
   stop_for_status(tmp)
   tt <- content(tmp, as = "text", encoding = "UTF-8")
-  if (nchar(tt) == 0) tt else jsonlite::fromJSON(tt, FALSE)
+  if (nchar(tt) == 0) tt else jsonlite::fromJSON(tt, parse, flatten = TRUE)
 }
