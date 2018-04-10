@@ -2,12 +2,12 @@
 % Please edit documentation in R/npn_get_species.R
 \name{npn_species}
 \alias{npn_species}
-\alias{npn_species_comm}
-\alias{npn_species_id}
 \alias{npn_species_itis}
-\alias{npn_species_sci}
-\alias{npn_species_search}
+\alias{npn_species_id}
 \alias{npn_species_state}
+\alias{npn_species_sci}
+\alias{npn_species_comm}
+\alias{npn_species_search}
 \title{Get scientific names.}
 \usage{
 npn_species(...)
@@ -72,4 +72,3 @@ library('httr')
 npn_species_itis(ids = 27806, config=verbose())
 }
 }
-

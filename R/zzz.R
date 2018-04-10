@@ -1,4 +1,12 @@
-base <- function() 'https://www.usanpn.org/npn_portal/'
+base <- function(env="ops"){
+  if(env=="dev"){
+      return('https://www-dev.usanpn.org/npn_portal/')
+  }else if (env=="ops"){
+      return('https://www.usanpn.org/npn_portal/')
+  }else{
+      return('https://www-dev.usanpn.org/npn_portal/')
+  }
+}
 
 npnc <- function(l) Filter(Negate(is.null), l)
 
@@ -19,4 +27,13 @@ npn_GET <- function(url, args, parse = FALSE, ...) {
   stop_for_status(tmp)
   tt <- content(tmp, as = "text", encoding = "UTF-8")
   if (nchar(tt) == 0) tt else jsonlite::fromJSON(tt, parse, flatten = TRUE)
+}
+
+#Utility function. Helps create URL strings for requests to NPN data services in the format variable_name[number]=Value
+npn_createArgList <- function(arg_name, arg_list){
+  args <- list()
+  for (i in seq_along(arg_list)) {
+    args[paste0(arg_name,'[',i,']')] <- arg_list[i]
+  }
+  return(args)
 }

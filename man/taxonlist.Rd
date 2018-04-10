@@ -17,4 +17,3 @@
 Lookup-table for IDs of species and common names
 }
 \keyword{data}
-

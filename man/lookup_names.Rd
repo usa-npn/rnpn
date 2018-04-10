@@ -24,4 +24,3 @@ lookup_names(name='pine', type='common_name')
 lookup_names(name='bird', type='common_name', fuzzy=TRUE)
 }
 }
-
