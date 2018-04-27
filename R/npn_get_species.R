@@ -90,3 +90,37 @@ npn_species_search <- function(network=NULL, year=NULL, groups=NULL, stationid=N
 
   ldfply(npn_GET(paste0(base(), 'species/getSpeciesFilter.json'), args, ...))
 }
+
+#' Get Species Types
+#'
+#' Return all plant or animal functional types used in the NPN database.
+#'
+#' @param kingdom The kingdom for which to return functional types; either 'Animalia' or 'Plantae'. Defaults to Plantae.
+#' @export
+npn_species_types <- function(kingdom="Plantae", ...) {
+  end_point = NULL
+
+  if(kingdom == "Plantae"){
+    end_point = 'species/getPlantTypes.json'
+
+  }else if(kingdom == "Animalia"){
+    end_point = 'species/getAnimalTypes.json'
+  }
+
+  if(!is.null(end_point)){
+    tibble::as_data_frame(
+      npn_GET(paste0(base(), end_point), list(), TRUE, ...)
+    )
+  }else{
+    plant_types <- tibble::as_data_frame(
+      npn_GET(paste0(base(), 'species/getPlantTypes.json'), list(), TRUE, ...)
+    )
+
+    animal_types <- tibble::as_data_frame(
+      npn_GET(paste0(base(), 'species/getAnimalTypes.json'), list(), TRUE, ...)
+    )
+
+    rbindlist(list(plant_types, animal_types))
+  }
+
+}

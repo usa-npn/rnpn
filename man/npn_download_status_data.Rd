@@ -4,19 +4,18 @@
 \alias{npn_download_status_data}
 \title{Download Status and Intesity Records}
 \usage{
-npn_download_status_data(request_source, start_date = NULL, end_date = NULL,
-  coords = NULL, species_ids = NULL, station_ids = NULL,
-  species_types = NULL, network_ids = NULL, states = NULL,
-  phenophase_ids = NULL, functional_types = NULL,
-  additional_fields = NULL, climate_data = FALSE, ip_address = NULL,
-  email = NULL, download_path = NULL)
+npn_download_status_data(request_source, years = NULL, coords = NULL,
+  species_ids = NULL, station_ids = NULL, species_types = NULL,
+  network_ids = NULL, states = NULL, phenophase_ids = NULL,
+  functional_types = NULL, additional_fields = NULL, climate_data = FALSE,
+  ip_address = NULL, email = NULL, download_path = NULL,
+  six_layer = FALSE, agdd_layer = NULL, six_sub_model = NULL,
+  six_phenophase = NULL, additional_layers = NULL)
 }
 \arguments{
 \item{request_source}{Required field, string. Self-identify who is making requests to the data service}
 
-\item{start_date}{String. Specify the start date of the search. Must be used in conjunction with end date.}
-
-\item{end_date}{String. Specify the end date of the search. Must be used in conjunction with start date.}
+\item{years}{Required field, list of strings. Specify the years to include in the search, e.g. c('2013','2014'). You must specify at least one year.}
 
 \item{coords}{List of float values, used to specify a bounding box as a search parameter, e.g. c ( lower_left_lat, lower_left_long,upper_right,lat,upper_right_long )}
 

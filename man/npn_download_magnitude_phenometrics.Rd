@@ -4,7 +4,7 @@
 \alias{npn_download_magnitude_phenometrics}
 \title{Download Magnitude Phenometrics}
 \usage{
-npn_download_magnitude_phenometrics(request_source, start_date, end_date,
+npn_download_magnitude_phenometrics(request_source, years,
   period_frequency = 30, coords = NULL, individual_ids = NULL,
   species_ids = NULL, station_ids = NULL, species_types = NULL,
   network_ids = NULL, states = NULL, phenophase_ids = NULL,
@@ -14,9 +14,7 @@ npn_download_magnitude_phenometrics(request_source, start_date, end_date,
 \arguments{
 \item{request_source}{Required field, string. Self-identify who is making requests to the data service}
 
-\item{start_date}{Required field, string. Specify the start date of the search. Must be used in conjunction with end date.}
-
-\item{end_date}{Required field, string. Specify the end date of the search. Must be used in conjunction with start date.}
+\item{years}{Required field, list of strings. Specify the years to include in the search, e.g. c('2013','2014'). You must specify at least one year.}
 
 \item{period_frequency}{Required field, integer. The integer value specifies the number of days by which to delineate the period of time specified by the
 start_date and end_date, i.e. a value of 7 will delineate the period of time weekly. Any remainder days are grouped into the final delineation.

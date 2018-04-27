@@ -18,8 +18,7 @@
 #'  http://www.usanpn.org/files/metadata/status_intensity_datafield_descriptions.xlsx
 #'
 #' @param request_source Required field, string. Self-identify who is making requests to the data service
-#' @param start_date String. Specify the start date of the search. Must be used in conjunction with end date.
-#' @param end_date String. Specify the end date of the search. Must be used in conjunction with start date.
+#' @param years Required field, list of strings. Specify the years to include in the search, e.g. c('2013','2014'). You must specify at least one year.
 #' @param coords List of float values, used to specify a bounding box as a search parameter, e.g. c ( lower_left_lat, lower_left_long,upper_right,lat,upper_right_long )
 #' @param species_ids List of unique IDs for searching based on species, e.g. c ( 3, 34, 35 )
 #' @param station_ids List of unique IDs for searching based on site location, e.g. c ( 5, 9, ... )
@@ -46,8 +45,7 @@
 #' }
 npn_download_status_data = function(
   request_source,
-  start_date = NULL,
-  end_date = NULL,
+  years = NULL,
   coords = NULL,
   species_ids = NULL,
   station_ids = NULL,
@@ -60,7 +58,12 @@ npn_download_status_data = function(
   climate_data = FALSE,
   ip_address = NULL,
   email = NULL,
-  download_path = NULL
+  download_path = NULL,
+  six_layer=FALSE,
+  agdd_layer=NULL,
+  six_sub_model=NULL,
+  six_phenophase=NULL,
+  additional_layers=NULL
 ){
 
 
@@ -79,14 +82,14 @@ npn_download_status_data = function(
                                      email)
 
 
-  if(!is.null(start_date) && !is.null(end_date)){
-    query['start_date'] = start_date
-    query['end_date'] = end_date
-  }
 
-  url = npn_get_download_url("/observations/getObservations.json?", query)
+  years <- sort(unlist(years))
 
-  return (npn_get_data(url,download_path))
+
+  #url = npn_get_download_url("/observations/getObservations.json?", query)
+
+  #return (npn_get_data(url,download_path))
+  return(npn_get_data_by_year("/observations/getObservations.json?",query,years,download_path, six_layer, agdd_layer, six_sub_model, six_phenophase,additional_layers))
 
 }
 
@@ -305,8 +308,7 @@ npn_download_site_phenometrics <- function(
 #'  http://www.usanpn.org/files/metadata/magnitude_phenometrics_datafield_descriptions.xlsx
 #'
 #' @param request_source Required field, string. Self-identify who is making requests to the data service
-#' @param start_date Required field, string. Specify the start date of the search. Must be used in conjunction with end date.
-#' @param end_date Required field, string. Specify the end date of the search. Must be used in conjunction with start date.
+#' @param years Required field, list of strings. Specify the years to include in the search, e.g. c('2013','2014'). You must specify at least one year.
 #' @param period_frequency Required field, integer. The integer value specifies the number of days by which to delineate the period of time specified by the
 #' start_date and end_date, i.e. a value of 7 will delineate the period of time weekly. Any remainder days are grouped into the final delineation.
 #' This parameter, while typically an int, also allows for a “special” string value, “months” to be passed in. Specifying this parameter as “months” will
@@ -334,8 +336,7 @@ npn_download_site_phenometrics <- function(
 #' }
 npn_download_magnitude_phenometrics <- function(
   request_source,
-  start_date,
-  end_date,
+  years,
   period_frequency=30,
   coords = NULL,
   individual_ids = NULL,
@@ -370,8 +371,9 @@ npn_download_magnitude_phenometrics <- function(
   query["frequency"] <- period_frequency
 
 
-  query['start_date'] = start_date
-  query['end_date'] = end_date
+  years <- sort(unlist(years))
+  query['start_date'] <- paste0(years[1],"-01-01")
+  query['end_date'] <- paste0(years[length(years)],"-12-31")
 
 
 
@@ -403,12 +405,22 @@ npn_get_data_by_year <- function(
   endpoint,
   query,
   years,
-  download_path=NULL
+  download_path=NULL,
+  six_layer=FALSE,
+  agdd_layer=NULL,
+  six_sub_model=NULL,
+  six_phenophase=NULL,
+  additional_layers=NULL
   ){
 
   all_data=NULL
   first_year=TRUE
+  six_raster = NULL
   if(length(years) > 0){
+
+    agdd_layer <- resolve_agdd_raster(agdd_layer)
+
+
     for(i in years){
 
       # This is where the start/end dates are automatically created
@@ -417,10 +429,20 @@ npn_get_data_by_year <- function(
       query['start_date'] = paste0(i,"-01-01")
       query['end_date'] = paste0(i, "-12-31")
 
+
+      if(six_layer){
+        six_raster <- resolve_six_raster(i, six_phenophase, six_sub_model)
+      }
+
+
       # We also have to generate a unique URL on each request to account
       # for the changes in the start/end date
       url = npn_get_download_url(endpoint, query)
-      data = npn_get_data(url,download_path,!first_year)
+      data = npn_get_data(url,download_path,!first_year, six_raster=six_raster, agdd_layer=agdd_layer)
+
+
+
+
 
       # First if statement checks whether this is the results returned is empty.
       # Second if statement checks if we've made a previous request that's
@@ -442,13 +464,6 @@ npn_get_data_by_year <- function(
   return(all_data)
 }
 
-
-
-
-
-
-
-
 #' Download NPN Data
 #'
 #' Generic utility function for querying data from the NPN data services.
@@ -464,31 +479,101 @@ npn_get_data_by_year <- function(
 npn_get_data <- function(
   url,
   download_path=NULL,
-  always_append=FALSE
+  always_append=FALSE,
+  six_raster=NULL,
+  agdd_layer=NULL
 ){
-  con <- curl (url)
+  con <- curl::curl (url)
   open(con,"rb")
-  data<- ""
+  dtm<- data.table::data.table()
+  raw_data <- ""
+  chunk<- NULL
+  json <- ""
   i<-0
+
+
   # Read the data 8MB at a time. This might be further optimized with the backing service.
   while(length(x <- readBin(con, raw(), n = 8388608))){
 
-    if(is.null(download_path)){
-      data<-paste(data, rawToChar(x))
-    }else{
-      write(rawToChar(x),download_path,append=if(i==0 && !always_append) FALSE else TRUE, sep="")
+    # If there is a chunk present from a previous iteration we want to append that
+    # to the front of whatever was read from the port and add the JSON array
+    # character as well.
+    raw_data <- paste0(ifelse(!is.null(chunk),paste0("[",chunk),""),rawToChar(x))
+
+    # Try to parse the raw data as JSON. This will fail if
+    # the response is bigger than the 8MB, but the rest of the
+    # script plans for that.
+    json <- tryCatch({
+      jsonlite::fromJSON(raw_data)
+    },error=function(msg){
+      return(NULL)
+    })
+
+    # This code runs when the JSON parsing fails as mentioned above.
+    # In that case, find the last } character in the data downloaded
+    # and from there break the data into two parts, the frame which
+    # we append the closing ] character to, and the chunk which we
+    # save for later.
+    # Try to parse the frame as JSON again, this time hoping for a
+    # successful run.
+    if(is.null(json)){
+      break_point <- regexpr("}[^}]*$",raw_data)
+      frame <- paste0(substr(raw_data,1,break_point), "]")
+      chunk <- substr(raw_data,break_point+2,nchar(raw_data))
+
+      json <- tryCatch({
+        jsonlite::fromJSON(frame)
+      },error=function(msg){
+        return(NULL)
+      })
+
+
     }
+
+    # Reconcile all the points in the frame with the SIX raster,
+    # if it's been requested.
+    if(!is.null(six_raster)){
+      json <- npn_merge_geo_data(six_raster, "SI-x_Value", json)
+    }
+
+    # Reconcile the AGDD point values with the data points if that
+    # was requested.
+    if(!is.null(agdd_layer)){
+
+      pvalues <- apply(json[,c('latitude','longitude','observation_date')],1,function(x){
+        npn_get_agdd_point_data(layer=agdd_layer,lat=as.numeric(x['latitude']),long=as.numeric(x['longitude']),date=x['observation_date'])
+      })
+
+      pvalues <- t(as.data.frame(pvalues))
+      colnames(pvalues) <- c(agdd_layer)
+      json <- cbind(json,pvalues)
+    }
+
+    # If the user asked for the data to be saved to file, then do that
+    # otherwise append the frame to the dtm (master data table) variable
+    if(is.null(download_path)){
+      dtm <- rbind(dtm, data.table::as.data.table(json))
+    }else{
+      write.table(json,download_path,append=if(i==0 && !always_append) FALSE else TRUE, sep=",",eol="\n",row.names=FALSE,col.names=ifelse(i==0,TRUE,FALSE))
+    }
+
     i<-i+1
+
 
   }
 
+
   close(con)
+
+  # If the user asks for the data to be saved to file then
+  # there is nothing to return.
   if(is.null(download_path)){
-    return(as.data.table(jsonlite::fromJSON(data)))
+    return (dtm)
   }else{
     return (NULL)
   }
 }
+
 
 
 
@@ -573,3 +658,5 @@ npn_get_common_query_vars <- function(
   return(query)
 
 }
+
+

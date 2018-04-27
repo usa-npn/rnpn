@@ -18,7 +18,10 @@ Imports:
     plyr,
     data.table (>= 1.9.6),
     tibble,
-    curl
+    curl,
+    raster,
+    XML,
+    sp
 Suggests:
     ggplot2,
     testthat,

@@ -4,7 +4,9 @@
 \alias{npn_get_data_by_year}
 \title{Get Data By Year}
 \usage{
-npn_get_data_by_year(endpoint, query, years, download_path = NULL)
+npn_get_data_by_year(endpoint, query, years, download_path = NULL,
+  six_layer = FALSE, agdd_layer = NULL, six_sub_model = NULL,
+  six_phenophase = NULL, additional_layers = NULL)
 }
 \arguments{
 \item{endpoint}{String, the endpoint to query}
