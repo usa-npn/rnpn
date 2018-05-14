@@ -158,7 +158,12 @@ npn_download_individual_phenometrics <- function(
   climate_data = FALSE,
   ip_address = NULL,
   email = NULL,
-  download_path = NULL
+  download_path = NULL,
+  six_layer=FALSE,
+  agdd_layer=NULL,
+  six_sub_model=NULL,
+  six_phenophase=NULL,
+  additional_layers=NULL
 ){
 
   query <- npn_get_common_query_vars(request_source,
@@ -180,7 +185,7 @@ npn_download_individual_phenometrics <- function(
   }
 
 
-  return(npn_get_data_by_year("/observations/getSummarizedData.json?",query,years,download_path))
+  return(npn_get_data_by_year("/observations/getSummarizedData.json?",query,years,download_path, six_layer, agdd_layer, six_sub_model,six_phenophase,additional_layers))
 
 }
 
@@ -254,7 +259,12 @@ npn_download_site_phenometrics <- function(
   climate_data = FALSE,
   ip_address = NULL,
   email = NULL,
-  download_path = NULL
+  download_path = NULL,
+  six_layer=FALSE,
+  agdd_layer=NULL,
+  six_sub_model=NULL,
+  six_phenophase=NULL,
+  additional_layers=NULL
 ){
 
   query <- npn_get_common_query_vars(request_source,
@@ -275,7 +285,7 @@ npn_download_site_phenometrics <- function(
 
 
 
-  return(npn_get_data_by_year("/observations/getSiteLevelData.json?",query,years,download_path))
+  return(npn_get_data_by_year("/observations/getSiteLevelData.json?",query,years,download_path, six_layer, agdd_layer, six_sub_model,six_phenophase,additional_layers))
 
 }
 
@@ -540,13 +550,30 @@ npn_get_data <- function(
     # was requested.
     if(!is.null(agdd_layer)){
 
-      pvalues <- apply(json[,c('latitude','longitude','observation_date')],1,function(x){
-        npn_get_agdd_point_data(layer=agdd_layer,lat=as.numeric(x['latitude']),long=as.numeric(x['longitude']),date=x['observation_date'])
+      date_col <- NULL
+
+      if("observation_date" %in% colnames(json)){
+        date_col <- "observation_date"
+      }else if("mean_first_yes_doy" %in% colnames(json)){
+        json$cal_date <- as.Date(json[, "mean_first_yes_doy"], origin = paste0(json[, "mean_first_yes_year"], "-01-01")) - 1
+        date_col <- "cal_date"
+      }else if("first_yes_day" %in% colnames(json)){
+        json$cal_date <- as.Date(json[, "first_yes_doy"], origin = paste0(json[, "first_yes_year"], "-01-01")) - 1
+        date_col <- "cal_date"
+      }
+
+      pvalues <- apply(json[,c('latitude','longitude',date_col)],1,function(x){
+        npn_get_agdd_point_data(layer=agdd_layer,lat=as.numeric(x['latitude']),long=as.numeric(x['longitude']),date=x[date_col])
       })
 
       pvalues <- t(as.data.frame(pvalues))
       colnames(pvalues) <- c(agdd_layer)
       json <- cbind(json,pvalues)
+
+      if("cal_date" %in% colnames(json)){
+        json$cal_date <- NULL
+      }
+
     }
 
     # If the user asked for the data to be saved to file, then do that
@@ -554,7 +581,7 @@ npn_get_data <- function(
     if(is.null(download_path)){
       dtm <- rbind(dtm, data.table::as.data.table(json))
     }else{
-      write.table(json,download_path,append=if(i==0 && !always_append) FALSE else TRUE, sep=",",eol="\n",row.names=FALSE,col.names=ifelse(i==0,TRUE,FALSE))
+      write.table(json,download_path,append=if(i==0 && !always_append) FALSE else TRUE, sep=",",eol="\n",row.names=FALSE,col.names=if(i==0 && !always_append) TRUE else FALSE)
     }
 
     i<-i+1

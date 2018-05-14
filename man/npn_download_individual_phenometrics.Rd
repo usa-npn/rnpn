@@ -9,7 +9,9 @@ npn_download_individual_phenometrics(request_source, years, coords = NULL,
   species_types = NULL, network_ids = NULL, states = NULL,
   phenophase_ids = NULL, functional_types = NULL,
   additional_fields = NULL, climate_data = FALSE, ip_address = NULL,
-  email = NULL, download_path = NULL)
+  email = NULL, download_path = NULL, six_layer = FALSE,
+  agdd_layer = NULL, six_sub_model = NULL, six_phenophase = NULL,
+  additional_layers = NULL)
 }
 \arguments{
 \item{request_source}{Required field, string. Self-identify who is making requests to the data service}
