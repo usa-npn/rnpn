@@ -20,4 +20,3 @@ Get number of stations by state.
 head( npn_stationsbystate() )
 }
 }
-

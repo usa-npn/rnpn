@@ -29,4 +29,3 @@ npn_indspatstations(speciesid = 35, stationid = c(60, 259), year = 2009)
 npn_indspatstations(35, c(60, 259), 2009)
 }
 }
-

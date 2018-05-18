@@ -8,4 +8,3 @@
  \item \code{\link{npn_obsspbyday}}: Removed.
 }
 }
-

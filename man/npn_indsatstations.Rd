@@ -23,4 +23,3 @@ Get all observations for a particular species or set of species.
 npn_indsatstations(stationid = c(507, 523))
 }
 }
-

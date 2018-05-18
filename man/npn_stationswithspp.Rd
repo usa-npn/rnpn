@@ -26,4 +26,3 @@ npn_stationswithspp(speciesid = c(52,53,54))
 npn_stationswithspp(speciesid = 53)
 }
 }
-

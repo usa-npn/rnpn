@@ -10,4 +10,3 @@ npn_obsspbyday(...)
 This function is defunct.
 }
 \keyword{internal}
-

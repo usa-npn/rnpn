@@ -37,4 +37,3 @@ npn_allobssp(speciesid = c(52, 53), startdate='2008-01-01', enddate='2011-12-31'
 npn_allobssp(speciesid = 52, startdate='2008-01-01', enddate='2011-12-31')
 }
 }
-
