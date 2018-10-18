@@ -1,12 +1,12 @@
 
 #'  Download Status and Intesity Records
 #'
-#'  This function allows for a parameterized search of all status records in the USA-NPN database, returning all records as per the search results in a data
+#'  This function allows for a parameterized search of all status records in the USA-NPN database, returning all records as per the search parameters in a data
 #'  table. Data fetched from NPN services is returned as raw JSON before being channeled into a data table. Optinally results can be directed to an output file in
-#'  which case raw JSON is saved to file; in that case, data is also streamed to file which allows for more easily handling of the data if the search otherwise
+#'  which case the raw JSON is convereted to CSV and saved to file; in that case, data is also streamed to file which allows for more easily handling of the data if the search otherwise
 #'  returns more data than can be handled at once in memory.
 #'
-#'  All search parameters are optional, however, failing to provide even a single search parameter will return all results in the database. Request_Source
+#'  Most search parameters are optional, however, users are encouraged to supply additional search parameters to get results that are easier to work with. Request_Source
 #'  must be provided. This is a self-identifying string, telling the service who is asking for the data or from where the request is being made. It is recommended
 #'  you provide your name or organization name. If the call to this function is acting as an intermediary for a client, then you may also optionally provide
 #'  a user email and/or IP address for usage data reporting later.
@@ -27,12 +27,25 @@
 #' @param states List of US postal states to be used as search params, e.g. c ( "AZ", "IL" )
 #' @param phenophase_ids List of unique IDs for searching based on phenophase, e.g. c ( 323, 324, ... )
 #' @param functional_types List of unique functional type names, e.g. c ( "Birds"  )
-#' @param additional_fields List of additional fields to be included in the search results, e.g. ( "Station_Name", "Plant_Nickname" )
+#' @param additional_fields List of additional fields to be included in the search results, e.g. c( "Station_Name", "Plant_Nickname" )
 #' @param climate_data Boolean value indicating that all climate variables should be included in additional_fields
 #' @param ip_address Optional field, string. IP Address of user requesting data. Used for generating data reports
 #' @param email Optional field, string. Email of user requesting data.
 #' @param download_path Optional file path to which search results should be re-directed for later use.
-#'
+#' @param six_leaf_layer Boolean value when set to true will attempt to resolve the date of the observation to a spring index, leafing
+#' value for the location at which the observations was taken
+#' @param six_bloom_layer Boolean value when set to true will attempt to resolve the date of the observation to a spring index, bloom
+#' value for the location at which the observations was taken
+#' @param six_sub_model Affects the results of the six layers returned. Can be used to specify one of three submodels used to calcualte
+#' the spring index values. Thus setting this field will change the results of six_leaf_layer and six_bloom_layer. Valid values include:
+#' 'lilac','zabelli' and 'arnoldred'. For more information see the NPN's Sping Index Maps documentation: https://www.usanpn.org/data/spring_indices
+#' @param agdd_layer numeric value, accepts 32 or 50. When set, the results will attempt to resolve the date of the observation to
+#' an AGDD value for the location; the 32 or 50 represents the base value of the AGDD value returned. All AGDD values are based on
+#' a January 1st start date of the year in which the observation was taken.
+#' @param additional_layers Data frame with first column named 'name' and containing the names of the layer for which to retreive data
+#' and the second column named 'param' and containing string representations of the time/elevation subset parameter to use.
+#' This variable can be used to append additional geospatial layer data fields to the results, such that the date of observation
+#' in each row will resolve to a value from the specified layers, given the location of the observation.
 #' @return Data table of all status records returned as per the search parameters. Null if output directed to file.
 #' @export
 #' @examples \dontrun{
@@ -45,7 +58,7 @@
 #' }
 npn_download_status_data = function(
   request_source,
-  years = NULL,
+  years,
   coords = NULL,
   species_ids = NULL,
   station_ids = NULL,
@@ -59,10 +72,10 @@ npn_download_status_data = function(
   ip_address = NULL,
   email = NULL,
   download_path = NULL,
-  six_layer=FALSE,
+  six_leaf_layer=FALSE,
+  six_bloom_layer=FALSE,
   agdd_layer=NULL,
   six_sub_model=NULL,
-  six_phenophase=NULL,
   additional_layers=NULL
 ){
 
@@ -84,12 +97,7 @@ npn_download_status_data = function(
 
 
   years <- sort(unlist(years))
-
-
-  #url = npn_get_download_url("/observations/getObservations.json?", query)
-
-  #return (npn_get_data(url,download_path))
-  return(npn_get_data_by_year("/observations/getObservations.json?",query,years,download_path, six_layer, agdd_layer, six_sub_model, six_phenophase,additional_layers))
+  return(npn_get_data_by_year("/observations/getObservations.json?",query,years,download_path, six_leaf_layer, six_bloom_layer,agdd_layer, six_sub_model, additional_layers))
 
 }
 
@@ -98,9 +106,9 @@ npn_download_status_data = function(
 
 #'  Download Individual Phenometrics
 #'
-#'  This function allows for a parameterized search of all individual phenometrics records in the USA-NPN database, returning all records as per the search results in a
+#'  This function allows for a parameterized search of all individual phenometrics records in the USA-NPN database, returning all records as per the search parameters in a
 #'  data table. Data fetched from NPN services is returned as raw JSON before being channeled into a data table. Optinally results can be directed to an output file in
-#'  which case raw JSON is saved to file; in that case, data is also streamed to file which allows for more easily handling of the data if the search otherwise
+#'  which case raw JSON is converted to CSV and saved to file; in that case, data is also streamed to file which allows for more easily handling of the data if the search otherwise
 #'  returns more data than can be handled at once in memory.
 #'
 #'  This data type includes estimates of the dates of phenophase onsets and ends for individual plants and for animal species at a site during a user-defined time
@@ -108,12 +116,12 @@ npn_download_status_data = function(
 #'  the last "yes", submitted for a given phenophase on a given organism. Note that more than one consecutive series for an organism may be present within a single
 #'  growing season or year.
 #'
-#'  Most search parameters are optional, however, failing to provide even a single search parameter will return all results in the database. Request_Source
+#'  Most search parameters are optional, however, users are encouraged to supply additional search parameters to get results that are easier to work with. Request_Source
 #'  must be provided. This is a self-identifying string, telling the service who is asking for the data or from where the request is being made. It is recommended
 #'  you provide your name or organization name. If the call to this function is acting as an intermediary for a client, then you may also optionally provide
 #'  a user email and/or IP address for usage data reporting later.
 #'
-#'  Additional fields provides the ability to specify more, non-critical fields to include in the search results. A complete list of additional fields can be found in
+#'  Additional fields provides the ability to specify additional, non-critical fields to include in the search results. A complete list of additional fields can be found in
 #'  the NPN service's companion documention
 #'  https://docs.google.com/document/d/1yNjupricKOAXn6tY1sI7-EwkcfwdGUZ7lxYv7fcPjO8/edit#heading=h.7yy4i3278v7u
 #'  Metadata on all fields can be found in the following Excel sheet:
@@ -125,16 +133,29 @@ npn_download_status_data = function(
 #' @param species_ids List of unique IDs for searching based on species, e.g. c ( 3, 34, 35 )
 #' @param station_ids List of unique IDs for searching based on site location, e.g. c ( 5, 9, ... )
 #' @param species_types List of unique species type names for searching based on species types, e.g. c ( "Decidious", "Evergreen" )
-#' @param network_ids List of unique IDs for searching based on parter group/network, e.g. ( 500, 300, ... )
+#' @param network_ids List of unique IDs for searching based on parter group/network, e.g. c( 500, 300, ... )
 #' @param states List of US postal states to be used as search params, e.g. c ( "AZ", "IL" )
 #' @param phenophase_ids List of unique IDs for searching based on phenophase, e.g. c ( 323, 324, ... )
 #' @param functional_types List of unique functional type names, e.g. c ( "Birds"  )
-#' @param additional_fields List of additional fields to be included in the search results, e.g. ( "Station_Name", "Plant_Nickname" )
-#' @param climate_data Boolean value indicating that all climate variables should be included in additional_fields
+#' @param additional_fields List of additional fields to be included in the search results, e.g. c ( "Station_Name", "Plant_Nickname" )
+#' @param climate_data Boolean value indicating that all climate variables should be included in additional_fields.
 #' @param ip_address Optional field, string. IP Address of user requesting data. Used for generating data reports
 #' @param email Optional field, string. Email of user requesting data.
 #' @param download_path Optional file path to which search results should be re-directed for later use.
-#'
+#' @param six_leaf_layer Boolean value when set to true will attempt to resolve the date of the observation to a spring index, leafing
+#' value for the location at which the observations was taken
+#' @param six_bloom_layer Boolean value when set to true will attempt to resolve the date of the observation to a spring index, bloom
+#' value for the location at which the observations was taken
+#' @param six_sub_model Affects the results of the six layers returned. Can be used to specify one of three submodels used to calcualte
+#' the spring index values. Thus setting this field will change the results of six_leaf_layer and six_bloom_layer. Valid values include:
+#' 'lilac','zabelli' and 'arnoldred'. For more information see the NPN's Sping Index Maps documentation: https://www.usanpn.org/data/spring_indices
+#' @param agdd_layer numeric value, accepts 32 or 50. When set, the results will attempt to resolve the date of the observation to
+#' an AGDD value for the location; the 32 or 50 represents the base value of the AGDD value returned. All AGDD values are based on
+#' a January 1st start date of the year in which the observation was taken.
+#' @param additional_layers Data frame with first column named 'name' and containing the names of the layer for which to retreive data
+#' and the second column named 'param' and containing string representations of the time/elevation subset parameter to use.
+#' This variable can be used to append additional geospatial layer data fields to the results, such that the date of observation
+#' in each row will resolve to a value from the specified layers, given the location of the observation.
 #' @return Data table of all status records returned as per the search parameters. Null if output directed to file.
 #' @export
 #' @examples \dontrun{
@@ -159,10 +180,10 @@ npn_download_individual_phenometrics <- function(
   ip_address = NULL,
   email = NULL,
   download_path = NULL,
-  six_layer=FALSE,
+  six_leaf_layer=FALSE,
+  six_bloom_layer=FALSE,
   agdd_layer=NULL,
   six_sub_model=NULL,
-  six_phenophase=NULL,
   additional_layers=NULL
 ){
 
@@ -185,7 +206,7 @@ npn_download_individual_phenometrics <- function(
   }
 
 
-  return(npn_get_data_by_year("/observations/getSummarizedData.json?",query,years,download_path, six_layer, agdd_layer, six_sub_model,six_phenophase,additional_layers))
+  return(npn_get_data_by_year("/observations/getSummarizedData.json?",query,years,download_path, six_leaf_layer, six_bloom_layer, agdd_layer, six_sub_model,additional_layers))
 
 }
 
@@ -195,9 +216,9 @@ npn_download_individual_phenometrics <- function(
 
 #'  Download Site Phenometrics
 #'
-#'  This function allows for a parameterized search of all site records in the USA-NPN database, returning all records as per the search results in a
+#'  This function allows for a parameterized search of all site phenometrics records in the USA-NPN database, returning all records as per the search parameters in a
 #'  data table. Data fetched from NPN services is returned as raw JSON before being channeled into a data table. Optinally results can be directed to an output file in
-#'  which case raw JSON is saved to file; in that case, data is also streamed to file which allows for more easily handling of the data if the search otherwise
+#'  which case raw JSON is converted to CSV and saved to file; in that case, data is also streamed to file which allows for more easily handling of the data if the search otherwise
 #'  returns more data than can be handled at once in memory.
 #'
 #'  This data type includes estimates of the overall onset and end of phenophase activity for plant and animal species at a site over a user-defined time period.
@@ -207,12 +228,12 @@ npn_download_individual_phenometrics <- function(
 #'  the mean of the last “yes” records. Note that a phenophase may have ended and restarted during the overall period of its activity at the site.
 #'  These more fine-scale patterns can be explored in the individual phenometrics data.
 #'
-#'  Most search parameters are optional, however, failing to provide even a single search parameter will return all results in the database. Request_Source
+#'  Most search parameters are optional, however, users are encouraged to supply additional search parameters to get results that are easier to work with. Request_Source
 #'  must be provided. This is a self-identifying string, telling the service who is asking for the data or from where the request is being made. It is recommended
 #'  you provide your name or organization name. If the call to this function is acting as an intermediary for a client, then you may also optionally provide
 #'  a user email and/or IP address for usage data reporting later.
 #'
-#'  Additional fields provides the ability to specify more, non-critical fields to include in the search results. A complete list of additional fields can be found in
+#'  Additional fields provides the ability to specify additional, non-critical fields to include in the search results. A complete list of additional fields can be found in
 #'  the NPN service's companion documention
 #'  https://docs.google.com/document/d/1yNjupricKOAXn6tY1sI7-EwkcfwdGUZ7lxYv7fcPjO8/edit#heading=h.ueaexz9bczti
 #'  Metadata on all fields can be found in the following Excel sheet:
@@ -235,7 +256,20 @@ npn_download_individual_phenometrics <- function(
 #' @param ip_address Optional field, string. IP Address of user requesting data. Used for generating data reports
 #' @param email Optional field, string. Email of user requesting data.
 #' @param download_path Optional file path to which search results should be re-directed for later use.
-#'
+#' @param six_leaf_layer Boolean value when set to true will attempt to resolve the date of the observation to a spring index, leafing
+#' value for the location at which the observations was taken
+#' @param six_bloom_layer Boolean value when set to true will attempt to resolve the date of the observation to a spring index, bloom
+#' value for the location at which the observations was taken
+#' @param six_sub_model Affects the results of the six layers returned. Can be used to specify one of three submodels used to calcualte
+#' the spring index values. Thus setting this field will change the results of six_leaf_layer and six_bloom_layer. Valid values include:
+#' 'lilac','zabelli' and 'arnoldred'. For more information see the NPN's Sping Index Maps documentation: https://www.usanpn.org/data/spring_indices
+#' @param agdd_layer numeric value, accepts 32 or 50. When set, the results will attempt to resolve the date of the observation to
+#' an AGDD value for the location; the 32 or 50 represents the base value of the AGDD value returned. All AGDD values are based on
+#' a January 1st start date of the year in which the observation was taken.
+#' @param additional_layers Data frame with first column named 'name' and containing the names of the layer for which to retreive data
+#' and the second column named 'param' and containing string representations of the time/elevation subset parameter to use.
+#' This variable can be used to append additional geospatial layer data fields to the results, such that the date of observation
+#' in each row will resolve to a value from the specified layers, given the location of the observation.
 #' @return Data table of all status records returned as per the search parameters. Null if output directed to file.
 #' @export
 #' @examples \dontrun{
@@ -260,10 +294,10 @@ npn_download_site_phenometrics <- function(
   ip_address = NULL,
   email = NULL,
   download_path = NULL,
-  six_layer=FALSE,
+  six_leaf_layer=FALSE,
+  six_bloom_layer=FALSE,
   agdd_layer=NULL,
   six_sub_model=NULL,
-  six_phenophase=NULL,
   additional_layers=NULL
 ){
 
@@ -411,25 +445,31 @@ npn_download_magnitude_phenometrics <- function(
 #'
 #' @return Data table - a data table combining each requests results from the service
 #' @keywords internal
+#'
 npn_get_data_by_year <- function(
   endpoint,
   query,
   years,
   download_path=NULL,
-  six_layer=FALSE,
+  six_leaf_layer=FALSE,
+  six_bloom_layer=FALSE,
   agdd_layer=NULL,
   six_sub_model=NULL,
-  six_phenophase=NULL,
   additional_layers=NULL
   ){
 
   all_data=NULL
   first_year=TRUE
-  six_raster = NULL
+  six_leaf_raster = NULL
+  six_bloom_raster = NULL
+  additional_rasters = NULL
   if(length(years) > 0){
 
     agdd_layer <- resolve_agdd_raster(agdd_layer)
 
+    if(!is.null(additional_layers)){
+      additional_layers$raster <- get_additional_rasters(additional_layers)
+    }
 
     for(i in years){
 
@@ -440,15 +480,21 @@ npn_get_data_by_year <- function(
       query['end_date'] = paste0(i, "-12-31")
 
 
-      if(six_layer){
-        six_raster <- resolve_six_raster(i, six_phenophase, six_sub_model)
+      if(isTRUE(six_leaf_layer)){
+        six_leaf_raster <- resolve_six_raster(i, "leaf", six_sub_model)
       }
+
+      if(isTRUE(six_bloom_layer)){
+        six_bloom_raster <- resolve_six_raster(i, "bloom", six_sub_model)
+      }
+
+
 
 
       # We also have to generate a unique URL on each request to account
       # for the changes in the start/end date
       url = npn_get_download_url(endpoint, query)
-      data = npn_get_data(url,download_path,!first_year, six_raster=six_raster, agdd_layer=agdd_layer)
+      data = npn_get_data(url,download_path,!first_year, six_leaf_raster=six_leaf_raster, six_bloom_raster=six_bloom_raster,agdd_layer=agdd_layer, additional_layers=additional_layers)
 
 
 
@@ -486,12 +532,16 @@ npn_get_data_by_year <- function(
 #'
 #' @return Data table of the requested dawta. NULL if a download_path was specified.
 #' @keywords internal
+#' Don't keep this as export, REMOVE THIS EXPORT
+#' @export
 npn_get_data <- function(
   url,
   download_path=NULL,
   always_append=FALSE,
-  six_raster=NULL,
-  agdd_layer=NULL
+  six_leaf_raster=NULL,
+  six_bloom_raster=NULL,
+  agdd_layer=NULL,
+  additional_layers=NULL
 ){
   con <- curl::curl (url)
   open(con,"rb")
@@ -540,11 +590,25 @@ npn_get_data <- function(
 
     }
 
-    # Reconcile all the points in the frame with the SIX raster,
+    # Reconcile all the points in the frame with the SIX leaf raster,
     # if it's been requested.
-    if(!is.null(six_raster)){
-      json <- npn_merge_geo_data(six_raster, "SI-x_Value", json)
+    if(!is.null(six_leaf_raster)){
+      json <- npn_merge_geo_data(six_leaf_raster, "SI-x_Leaf_Value", json)
     }
+
+    # Reconcile all the points in the frame with the SIX bloom raster,
+    # if it's been requested.
+    if(!is.null(six_bloom_raster)){
+      json <- npn_merge_geo_data(six_bloom_raster, "SI-x_Bloom_Value", json)
+    }
+
+    if(!is.null(additional_layers)){
+      for(j in rownames(additional_layers)){
+        json <- npn_merge_geo_data(additional_layers[j,][['raster']][[1]],as.character(additional_layers[j,][['name']][[1]]),json)
+      }
+    }
+
+
 
     # Reconcile the AGDD point values with the data points if that
     # was requested.
@@ -683,6 +747,26 @@ npn_get_common_query_vars <- function(
   }
 
   return(query)
+
+}
+
+#' @export
+npn_get_modis_data <- function (appeears_login,appeears_pw,data,year){
+
+  token <- appeears::appeears_start_session(appeears_login,appeears_pw)
+  layers <- c('Onset_Greenness_Increase','Onset_Greenness_Maximum','Onset_Greenness_Decrease','Onset_Greenness_Minimum')
+  start_date <- paste0(year,"-01-01")
+  end_date <- paste0(year,"-12-31")
+  points <- data.frame(lat=data$latitude,long=data$longitude)
+  points <- unique(points[,])
+  task_name <- paste0("rNPN-",Sys.time())
+
+  task <- appeears::appeears_start_task(token, task_name, start_date, end_date, 'MCD12Q2.005',layers, 'point',points)
+
+}
+
+npn_convert_modis_date_to_current_year <- function(days){
+
 
 }
 

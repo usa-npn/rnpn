@@ -5,7 +5,8 @@
 \title{Download NPN Data}
 \usage{
 npn_get_data(url, download_path = NULL, always_append = FALSE,
-  six_raster = NULL, agdd_layer = NULL)
+  six_leaf_raster = NULL, six_bloom_raster = NULL, agdd_layer = NULL,
+  additional_layers = NULL)
 }
 \arguments{
 \item{url}{The URL of the service endpoint to request data from}
@@ -22,4 +23,12 @@ Data table of the requested dawta. NULL if a download_path was specified.
 \description{
 Generic utility function for querying data from the NPN data services.
 }
+\keyword{Don't}
+\keyword{EXPORT}
+\keyword{REMOVE}
+\keyword{THIS}
+\keyword{as}
+\keyword{export,}
 \keyword{internal}
+\keyword{keep}
+\keyword{this}

@@ -20,10 +20,15 @@ Imports:
     tibble,
     curl,
     raster,
+    rgdal,
     XML,
-    sp
+    sp,
+    appeears
 Suggests:
     ggplot2,
     testthat,
-    covr
+    covr,
+    knitr,
+    rmarkdown
 RoxygenNote: 6.0.1
+VignetteBuilder: knitr

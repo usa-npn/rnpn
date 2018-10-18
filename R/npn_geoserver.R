@@ -1,4 +1,77 @@
 
+#'  Get Geospatial Data Layer Details
+#'
+#'  This function will return information about the various data layers available via the NPN's geospatial web services.
+#'  Specifically, this function will query the NPN's GetCapabilities endpoint and parse the information on that page
+#'  about the layers. For each layer, this function will retrieve the layer name (as to be specified elsewhere programmatically),
+#'  the title (human readable), the abstract, which describes the data in the layer, the dimension name and dimension range for
+#'  specifying specific date values from the layer.
+#'
+#'  Information about the layers can also be viewed at the getCapbilities page directly:
+#'  https://geoserver.usanpn.org/geoserver/wms?request=GetCapabilities
+#'
+#'
+#' @return Data frame containing all layer details as specified in function description.
+#' @export
+#' @examples \dontrun{
+#' layers <- npn_get_layer_details()
+#' }
+npn_get_layer_details <- function(){
+  doc <- "http://geoserver.usanpn.org/geoserver/ows?service=wms&version=1.3.0&request=GetCapabilities"
+  doc.data <- XML::xmlParse(file = doc)
+
+  capability.list <- XML::xmlToList(doc.data)[["Capability"]]
+  layer.list <- capability.list$Layer
+  layers <- layer.list[names(layer.list) == "Layer"]
+
+  name.vector <- unlist(lapply(X = layers, FUN = function(x) {
+    if (!is.null(x$Name)) {
+      x$Name
+    } else NA
+  }))
+
+  title.vector <- unlist(lapply(X = layers, FUN = function(x) {
+    if (!is.null(x$Title)) {
+      x$Title
+    } else NA
+  }))
+
+  abstract.vector <- unlist(lapply(X = layers, FUN = function(x) {
+    if (!is.null(x$Abstract)) {
+      x$Abstract
+    } else NA
+  }))
+
+  dimension.range.vector <- unlist(lapply(X = layers, FUN = function(x) {
+    if (!is.null(x$Dimension)) {
+      x$Dimension$text
+    } else NA
+  }))
+
+  dimension.name.vector <- unlist(lapply(X = layers, FUN = function(x) {
+    if (!is.null(x$Dimension)) {
+      x$Dimension$.attrs['name']
+    } else NA
+  }))
+
+
+  return (data.frame(name=name.vector,title=title.vector,abstract=abstract.vector,dimension.name=dimension.name.vector,dimension.range=dimension.range.vector))
+
+}
+
+#'  Download Geospatial Data
+#'
+#'  Function for directly downloading any arbitrary Geospatial layer data from the NPN Geospatial web services.
+#'
+#'  Information about the layers can also be viewed at the getCapbilities page directly:
+#'  https://geoserver.usanpn.org/geoserver/wms?request=GetCapabilities
+#'
+#'
+#' @return Data frame containing all layer details as specified in function description.
+#' @export
+#' @examples \dontrun{
+#' ras<-npn_download_geospatial("si-x:30yr_avg_six_bloom","255")
+#' }
 #' @export
 npn_download_geospatial <- function (
   coverage_id,
@@ -13,8 +86,18 @@ npn_download_geospatial <- function (
     z <- tempfile()
   }
 
-  url <- paste(base_geoserver(), "coverageId=", coverage_id, "&SUBSET=time(\"", date, "T00:00:00.000Z\")&format=", format, sep="")
+  s <- "&SUBSET="
+  param <- tryCatch({
+    as.Date(date)
+    paste0(s,"time(\"",date,"T00:00:00.000Z\")")
+  },error=function(msg){
+    paste0(s,"elevation(",date,")")
+  })
+
+
+  url <- paste0(base_geoserver(), "format=geotiff&coverageId=",coverage_id,param)
   print (url)
+
   if(is.null(output_path)){
     download.file(url,z,method="libcurl", mode="wb")
 
@@ -27,28 +110,26 @@ npn_download_geospatial <- function (
 
 }
 
-# Checks in the global variable "point values"
-# to see if the exact data point being requested
-# has already been asked for and returns the value
-# if it's already saved.
-npn_check_point_cached <- function(
-  layer,lat,long,date
-){
-  val = NULL
-  if(exists("point_values")){
-    val <- point_values[point_values$layer == layer & point_values$lat == lat & point_values$long == long & point_values$date == date,]['value']
-    if(!is.null(val) && nrow(val) == 0){
-      val <- NULL
-    }
-  }
-  return(val)
-}
 
 
 
-# This function is for requested AGDD point values. Because the NPN has a separate
-# data service that can provide AGDD values which is more accurate than Geoserver
-# this function is ideal when requested point AGDD point values.
+
+#' Get AGDD Point Value
+#'
+#' This function is for requesting AGDD point values. Because the NPN has a separate
+#' data service that can provide AGDD values which is more accurate than Geoserver
+#' this function is ideal when requested AGDD point values.
+#'
+#' As this function only works for AGDD point values, if it's necessary to retrieve point values
+#' for other layers please try the npn_get_point_data function.
+#'
+#' @param layer The name of the queried layer
+#' @param lat The latitude of the queried point
+#' @param long The longitude of the queried point
+#' @param date The queried date
+#' @param store_date Boolean value. If set TRUE then the value retrived will be stored in a global variable named point_values for
+#' later use
+#' @return Returns a numeric value of the AGDD value at the specified lat/long/date. If no value can be retrieved, then -9999 is returned.
 #' @export
 npn_get_agdd_point_data <- function(
   layer,
@@ -69,7 +150,8 @@ npn_get_agdd_point_data <- function(
                    query = list(),
                    httr::progress())
 
-
+  # If the server returns an error then in that case,
+  # just return the -9999 value.
   json_data <- tryCatch({
     jsonlite::fromJSON(httr::content(data, as = "text"))
   },error=function(msg){
@@ -77,6 +159,8 @@ npn_get_agdd_point_data <- function(
     return(-9999)
   })
 
+  # If the server returns an unexpected value, also return
+  # -9999.
   v <- tryCatch({
     as.numeric(json_data[json_data$date==date,"point_value"])
   },error=function(msg){
@@ -105,8 +189,12 @@ npn_get_agdd_point_data <- function(
 
 
 
-# This function can get point data about any layer, not just AGDD layers. It pulls this from
-# the NPN's WCS service so the data may not be totally precise.
+#' Get Point Data Value
+#'
+#' This function can get point data about any of the NPN geospatial layers.
+#'
+#' Please note that this function pulls this from the NPN's WCS service so the data may not be totally precise. If
+#' you need precise AGDD values try using the npn_get_agdd_point_data function.
 #' @export
 npn_get_point_data <- function(
   layer,
@@ -146,39 +234,29 @@ npn_get_point_data <- function(
 
 
 
-npn_merge_geo_data <- function(
-  raster,
-  col_label,
-  df
-){
 
-  coords <- data.frame(lon=df[,"longitude"],lat=df[,"latitude"])
-  sp::coordinates(coords)
-
-  values <- raster::extract(x=raster,y=coords)
-
-  df <- cbind(df,values)
-  names(df)[names(df) == "values"] <- col_label
-
-  return(df)
-}
-
-
-resolve_agdd_raster <- function(
-  agdd_layer
-){
-
-  if(!is.null(agdd_layer)){
-    if(agdd_layer == 32){
-      agdd_layer <- "gdd:agdd"
-    }else if(agdd_layer == 50){
-      agdd_layer <- "gdd:agdd_50f"
-    }
-  }
-
-}
-
-
+#' Resolve SIX Raster
+#'
+#' Utility function used to resolve the appripriate SI-x layer to use
+#' based on the year being retrieved, the phenophase and sub-model being
+#' requested.
+#'
+#' If the year being requested is more than two years older than the current year
+#' then use the prism based layers rather than the NCEP based layers.
+#' This is because the PRISM data is not availabel in whole until midway through
+#' the year after it was initially recorded. Hence, the 'safest' approach is to only
+#' refer to the PRISM data when we knows for sure it's available in full, i.e. two years
+#' prior.
+#'
+#' Sub-model and phenophase on the other hand are rotely appended to the name of the layer
+#' to request, no special logic is present in making the decision which layer to retrieve
+#' based on those parameters.
+#'
+#' @year String representation of the year being requested
+#' @phenophase The SI-x phenophase being requested, 'leaf' or 'bloom'; defaults to 'leaf'
+#' @sub_model The SI-x sub model to use. Defaults to NULL (no sub-model)
+#' @return Returns a raster object of the appropriate SI-x layer
+#' @keywords internal
 resolve_six_raster <- function(
   year,
   phenophase = "leaf",
@@ -212,6 +290,94 @@ resolve_six_raster <- function(
   layer_name = paste0("si-x:", sub_model, "_", phenophase, "_", src)
 
   raster <- npn_download_geospatial(layer_name, date,"tiff")
+}
+
+#' Merge Geo Data
+#'
+#' Utility function to intersect point based observational data with Geospatial
+#' data values. This will take a data frame and append a new column to it.
+#' @ras Raster containing geospatial data
+#' @col_label The name of the column to append to the data frame
+#' @df The data frame which to append the new column of geospatial point values. For
+#' this function to work, df must contain two columns: "longitude", and "latitude"
+#' @return The data frame, now appended with the new geospatial data values' column
+#' @keywords internal
+npn_merge_geo_data <- function(
+  ras,
+  col_label,
+  df
+){
+
+  # Convert the lat/long coordinates, presumed present in the input data frame
+  # into coordinate objects
+  coords <- data.frame(lon=df[,"longitude"],lat=df[,"latitude"])
+  sp::coordinates(coords)
+
+  # Use the raster library's extract function to pull out the relevant
+  # geospatial values, then add them to the the data frame as a new column.
+  values <- raster::extract(x=ras,y=coords)
+
+  df <- cbind(df,values)
+  names(df)[names(df) == "values"] <- col_label
+
+  return(df)
+}
+
+
+resolve_agdd_raster <- function(
+  agdd_layer
+){
+
+  if(!is.null(agdd_layer)){
+    if(agdd_layer == 32){
+      agdd_layer <- "gdd:agdd"
+    }else if(agdd_layer == 50){
+      agdd_layer <- "gdd:agdd_50f"
+    }
+  }
+
+}
+
+
+#' Check Point Cached
+#'
+#' Checks in the global variable "point values" to see if the exact data point being requested
+#' has already been asked for and returns the value if it's already saved.
+#' @param layer The name of the queried layer
+#' @param lat The latitude of the queried point
+#' @param long The longitude of the queried point
+#' @param date The queried date
+#' @return The value of the cell located at the specified coordinates and date if the value has been queried, otherwise NULL
+#' @keywords internal
+npn_check_point_cached <- function(
+  layer,lat,long,date
+){
+  val = NULL
+  if(exists("point_values")){
+    val <- point_values[point_values$layer == layer & point_values$lat == lat & point_values$long == long & point_values$date == date,]['value']
+    if(!is.null(val) && nrow(val) == 0){
+      val <- NULL
+    }
+  }
+  return(val)
+}
+
+
+#' Get Additional Layers
+#'
+#' Utility function to easily take arbitrary layer name parameters as a data frame and
+#' return the raster data from NPN Geospatial data services
+#' @param data Data frame with first column named 'name' and containing the names of the layer for which to retreive data and the second column
+#' named 'param' and containing string representations of the time/elevation subset parameter to pass
+#' @return Returns a data frame containing the raster objects related to the specified layers
+#' @keywords internal
+get_additional_rasters <- function(data){
+
+
+
+  rasters <- apply(data,1,function(df){
+    npn_download_geospatial(df['name'],df['param'])
+  })
 }
 
 

@@ -4,13 +4,13 @@
 \alias{npn_download_status_data}
 \title{Download Status and Intesity Records}
 \usage{
-npn_download_status_data(request_source, years = NULL, coords = NULL,
+npn_download_status_data(request_source, years, coords = NULL,
   species_ids = NULL, station_ids = NULL, species_types = NULL,
   network_ids = NULL, states = NULL, phenophase_ids = NULL,
   functional_types = NULL, additional_fields = NULL, climate_data = FALSE,
   ip_address = NULL, email = NULL, download_path = NULL,
-  six_layer = FALSE, agdd_layer = NULL, six_sub_model = NULL,
-  six_phenophase = NULL, additional_layers = NULL)
+  six_leaf_layer = FALSE, six_bloom_layer = FALSE, agdd_layer = NULL,
+  six_sub_model = NULL, additional_layers = NULL)
 }
 \arguments{
 \item{request_source}{Required field, string. Self-identify who is making requests to the data service}
@@ -33,7 +33,7 @@ npn_download_status_data(request_source, years = NULL, coords = NULL,
 
 \item{functional_types}{List of unique functional type names, e.g. c ( "Birds"  )}
 
-\item{additional_fields}{List of additional fields to be included in the search results, e.g. ( "Station_Name", "Plant_Nickname" )}
+\item{additional_fields}{List of additional fields to be included in the search results, e.g. c( "Station_Name", "Plant_Nickname" )}
 
 \item{climate_data}{Boolean value indicating that all climate variables should be included in additional_fields}
 
@@ -42,18 +42,37 @@ npn_download_status_data(request_source, years = NULL, coords = NULL,
 \item{email}{Optional field, string. Email of user requesting data.}
 
 \item{download_path}{Optional file path to which search results should be re-directed for later use.}
+
+\item{six_leaf_layer}{Boolean value when set to true will attempt to resolve the date of the observation to a spring index, leafing
+value for the location at which the observations was taken}
+
+\item{six_bloom_layer}{Boolean value when set to true will attempt to resolve the date of the observation to a spring index, bloom
+value for the location at which the observations was taken}
+
+\item{agdd_layer}{numeric value, accepts 32 or 50. When set, the results will attempt to resolve the date of the observation to
+an AGDD value for the location; the 32 or 50 represents the base value of the AGDD value returned. All AGDD values are based on
+a January 1st start date of the year in which the observation was taken.}
+
+\item{six_sub_model}{Affects the results of the six layers returned. Can be used to specify one of three submodels used to calcualte
+the spring index values. Thus setting this field will change the results of six_leaf_layer and six_bloom_layer. Valid values include:
+'lilac','zabelli' and 'arnoldred'. For more information see the NPN's Sping Index Maps documentation: https://www.usanpn.org/data/spring_indices}
+
+\item{additional_layers}{Data frame with first column named 'name' and containing the names of the layer for which to retreive data
+and the second column named 'param' and containing string representations of the time/elevation subset parameter to use.
+This variable can be used to append additional geospatial layer data fields to the results, such that the date of observation
+in each row will resolve to a value from the specified layers, given the location of the observation.}
 }
 \value{
 Data table of all status records returned as per the search parameters. Null if output directed to file.
 }
 \description{
-This function allows for a parameterized search of all status records in the USA-NPN database, returning all records as per the search results in a data
+This function allows for a parameterized search of all status records in the USA-NPN database, returning all records as per the search parameters in a data
  table. Data fetched from NPN services is returned as raw JSON before being channeled into a data table. Optinally results can be directed to an output file in
- which case raw JSON is saved to file; in that case, data is also streamed to file which allows for more easily handling of the data if the search otherwise
+ which case the raw JSON is convereted to CSV and saved to file; in that case, data is also streamed to file which allows for more easily handling of the data if the search otherwise
  returns more data than can be handled at once in memory.
 }
 \details{
-All search parameters are optional, however, failing to provide even a single search parameter will return all results in the database. Request_Source
+Most search parameters are optional, however, users are encouraged to supply additional search parameters to get results that are easier to work with. Request_Source
  must be provided. This is a self-identifying string, telling the service who is asking for the data or from where the request is being made. It is recommended
  you provide your name or organization name. If the call to this function is acting as an intermediary for a client, then you may also optionally provide
  a user email and/or IP address for usage data reporting later.
