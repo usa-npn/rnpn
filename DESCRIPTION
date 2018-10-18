@@ -22,8 +22,7 @@ Imports:
     raster,
     rgdal,
     XML,
-    sp,
-    appeears
+    sp
 Suggests:
     ggplot2,
     testthat,
