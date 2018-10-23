@@ -4,7 +4,7 @@ base <- function(env="dev"){
   }else if (env=="ops"){
       return('https://www.usanpn.org/npn_portal/')
   }else{
-      return('https://www-dev.usanpn.org/npn_portal/')
+      return('https://www.usanpn.org/npn_portal/')
   }
 }
 
@@ -14,7 +14,7 @@ base_geoserver <- function(env="dev"){
   }else if (env=="ops"){
     return('https://geoserver.usanpn.org/geoserver/wcs?service=WCS&version=2.0.1&request=GetCoverage&')
   }else{
-    return('https://geoserver-dev.usanpn.org/geoserver/wcs?service=WCS&version=2.0.1&request=GetCoverage&')
+    return('https://geoserver.usanpn.org/geoserver/wcs?service=WCS&version=2.0.1&request=GetCoverage&')
   }
 }
 

@@ -319,7 +319,7 @@ npn_download_site_phenometrics <- function(
 
 
 
-  return(npn_get_data_by_year("/observations/getSiteLevelData.json?",query,years,download_path, six_layer, agdd_layer, six_sub_model,six_phenophase,additional_layers))
+  return(npn_get_data_by_year("/observations/getSiteLevelData.json?",query,years,download_path, six_leaf_layer, agdd_layer, six_sub_model,six_phenophase,additional_layers))
 
 }
 
@@ -543,6 +543,7 @@ npn_get_data <- function(
   agdd_layer=NULL,
   additional_layers=NULL
 ){
+
   con <- curl::curl (url)
   open(con,"rb")
   dtm<- data.table::data.table()
@@ -716,7 +717,7 @@ npn_get_common_query_vars <- function(
 
   query = c(
     list(
-      request_src = request_source,
+      request_src = URLencode(request_source),
       climate_data = (if(climate_data) 1 else 0)
     ),
     # All these variables take a multiplicity of possible parameters, this will help put them all together.
