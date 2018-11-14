@@ -8,7 +8,7 @@ base <- function(env="dev"){
   }
 }
 
-base_geoserver <- function(env="dev"){
+base_geoserver <- function(env="ops"){
   if(env=="dev"){
     return('https://geoserver-dev.usanpn.org/geoserver/wcs?service=WCS&version=2.0.1&request=GetCoverage&')
   }else if (env=="ops"){
@@ -43,7 +43,7 @@ npn_GET <- function(url, args, parse = FALSE, ...) {
 npn_createArgList <- function(arg_name, arg_list){
   args <- list()
   for (i in seq_along(arg_list)) {
-    args[paste0(arg_name,'[',i,']')] <- arg_list[i]
+    args[paste0(arg_name,'[',i,']')] <- URLencode(toString(arg_list[i]))
   }
   return(args)
 }
