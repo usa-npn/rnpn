@@ -241,7 +241,7 @@ npn_download_individual_phenometrics <- function(
 #'
 #' @param request_source Required field, string. Self-identify who is making requests to the data service
 #' @param years Required field, list of strings. Specify the years to include in the search, e.g. c('2013','2014'). You must specify at least one year.
-#' @param num_days_quality_filter Required field, defaultsto 30. The integer value sets the upper limit on the number of days difference between the
+#' @param num_days_quality_filter Required field, defaults to 30. The integer value sets the upper limit on the number of days difference between the
 #' first Y value and the previous N value for each individual to be included in the data aggregation.
 #' @param coords List of float values, used to specify a bounding box as a search parameter, e.g. c ( lower_left_lat, lower_left_long,upper_right,lat,upper_right_long )
 #' @param species_ids List of unique IDs for searching based on species, e.g. c ( 3, 34, 35 )
@@ -319,7 +319,7 @@ npn_download_site_phenometrics <- function(
 
 
 
-  return(npn_get_data_by_year("/observations/getSiteLevelData.json?",query,years,download_path, six_leaf_layer, agdd_layer, six_sub_model,six_phenophase,additional_layers))
+  return(npn_get_data_by_year("/observations/getSiteLevelData.json?",query,years,download_path, six_leaf_layer, six_bloom_layer, agdd_layer, six_sub_model,additional_layers))
 
 }
 

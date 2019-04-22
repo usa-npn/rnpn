@@ -1,10 +1,10 @@
-base <- function(env="dev"){
+base <- function(env="ops"){
   if(env=="dev"){
       return('https://www-dev.usanpn.org/npn_portal/')
   }else if (env=="ops"){
       return('https://www.usanpn.org/npn_portal/')
   }else{
-      return('https://www.usanpn.org/npn_portal/')
+      return('https://www-dev.usanpn.org/npn_portal/')
   }
 }
 
