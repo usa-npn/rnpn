@@ -61,6 +61,9 @@ npn_download_status_data = function(
   years,
   coords = NULL,
   species_ids = NULL,
+  family_ids = NULL,
+  order_ids = NULL,
+  class_ids = NULL,
   station_ids = NULL,
   species_types = NULL,
   network_ids = NULL,
@@ -92,6 +95,9 @@ npn_download_status_data = function(
                                      additional_fields,
                                      climate_data,
                                      ip_address,
+                  									 family_ids,
+                  									 order_ids,
+                  									 class_ids,
                                      email)
 
 
@@ -283,6 +289,10 @@ npn_download_site_phenometrics <- function(
   num_days_quality_filter=30,
   coords = NULL,
   species_ids = NULL,
+  family_ids = NULL,
+  order_ids = NULL,
+  class_ids = NULL,
+  pheno_class_ids = NULL,
   station_ids = NULL,
   species_types = NULL,
   network_ids = NULL,
@@ -298,7 +308,9 @@ npn_download_site_phenometrics <- function(
   six_bloom_layer=FALSE,
   agdd_layer=NULL,
   six_sub_model=NULL,
-  additional_layers=NULL
+  additional_layers=NULL,
+  taxonomy_aggregate=NULL,
+  pheno_class_aggregate=NULL
 ){
 
   query <- npn_get_common_query_vars(request_source,
@@ -313,6 +325,12 @@ npn_download_site_phenometrics <- function(
                                      additional_fields,
                                      climate_data,
                                      ip_address,
+                                     family_ids,
+                                     order_ids,
+                                     class_ids,
+                                     pheno_class_ids,
+                                     taxonomy_aggregate,
+                                     pheno_class_aggregate,
                                      email)
 
   query["num_days_quality_filter"] <- num_days_quality_filter
@@ -385,6 +403,10 @@ npn_download_magnitude_phenometrics <- function(
   coords = NULL,
   individual_ids = NULL,
   species_ids = NULL,
+  family_ids = NULL,
+  order_ids = NULL,
+  class_ids = NULL,
+  pheno_class_ids = NULL,
   station_ids = NULL,
   species_types = NULL,
   network_ids = NULL,
@@ -395,7 +417,9 @@ npn_download_magnitude_phenometrics <- function(
   climate_data = FALSE,
   ip_address = NULL,
   email = NULL,
-  download_path = NULL
+  download_path = NULL,
+  taxonomy_aggregate=NULL,
+  pheno_class_aggregate=NULL
 ){
 
   query <- npn_get_common_query_vars(request_source,
@@ -410,6 +434,12 @@ npn_download_magnitude_phenometrics <- function(
                                      additional_fields,
                                      climate_data,
                                      ip_address,
+                                     family_ids,
+                                     order_ids,
+                                     class_ids,
+                                     pheno_class_ids,
+                                     taxonomy_aggregate,
+                                     pheno_class_aggregate,
                                      email)
 
   query["frequency"] <- period_frequency
@@ -684,7 +714,7 @@ npn_get_download_url <- function(
   endpoint,
   query_vars
 ){
-  url<- paste0(base(), endpoint)
+  url<- paste0(base('dev'), endpoint)
   query_str <- paste(names(query_vars),"=",query_vars,sep="",collapse = '&')
 
   return (paste0(url,query_str))
@@ -712,8 +742,30 @@ npn_get_common_query_vars <- function(
   additional_fields = NULL,
   climate_data = FALSE,
   ip_address = NULL,
+  family_ids = NULL,
+  order_ids = NULL,
+  class_ids = NULL,
+  pheno_class_ids= NULL,
+  taxonomy_aggregate=NULL,
+  pheno_class_aggregate=NULL,
   email = NULL
 ){
+
+
+  if(!is.null(family_ids)){
+    species_ids = NULL
+  }
+
+  if(!is.null(class_ids)){
+    species_ids = NULL
+    family_ids = NULL
+  }
+
+  if(!is.null(order_ids)){
+    species_ids = NULL
+    family_ids = NULL
+    class_ids = NULL
+  }
 
   query = c(
     list(
@@ -721,6 +773,7 @@ npn_get_common_query_vars <- function(
       climate_data = (if(climate_data) 1 else 0)
     ),
     # All these variables take a multiplicity of possible parameters, this will help put them all together.
+
     npn_createArgList("species_id", species_ids),
     npn_createArgList("site_id", station_ids),
     npn_createArgList("species_type", species_types),
@@ -728,7 +781,11 @@ npn_get_common_query_vars <- function(
     npn_createArgList("state", states),
     npn_createArgList("phenophase_id", phenophase_ids),
     npn_createArgList("functional_type", functional_types),
-    npn_createArgList("additional_field", additional_fields)
+    npn_createArgList("additional_field", additional_fields),
+  	npn_createArgList("family_id", family_ids),
+    npn_createArgList("order_id", order_ids),
+  	npn_createArgList("class_id", class_ids),
+    npn_createArgList("pheno_class_id", pheno_class_ids)
   )
 
   if(!is.null(coords) && length(coords) == 4){
@@ -745,6 +802,14 @@ npn_get_common_query_vars <- function(
 
   if(!is.null(email)){
     query['user_email'] = email
+  }
+
+  if(!is.null(taxonomy_aggregate) && taxonomy_aggregate){
+    query['taxonomy_aggregate'] = 1
+  }
+
+  if(!is.null(pheno_class_aggregate) && pheno_class_aggregate){
+    query['pheno_class_aggregate'] = 1
   }
 
   return(query)
