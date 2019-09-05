@@ -4,10 +4,10 @@
 \alias{npn_download_individual_phenometrics}
 \title{Download Individual Phenometrics}
 \usage{
-npn_download_individual_phenometrics(request_source, years, coords = NULL,
-  individual_ids = NULL, species_ids = NULL, station_ids = NULL,
-  species_types = NULL, network_ids = NULL, states = NULL,
-  phenophase_ids = NULL, functional_types = NULL,
+npn_download_individual_phenometrics(request_source, years,
+  coords = NULL, individual_ids = NULL, species_ids = NULL,
+  station_ids = NULL, species_types = NULL, network_ids = NULL,
+  states = NULL, phenophase_ids = NULL, functional_types = NULL,
   additional_fields = NULL, climate_data = FALSE, ip_address = NULL,
   email = NULL, download_path = NULL, six_leaf_layer = FALSE,
   six_bloom_layer = FALSE, agdd_layer = NULL, six_sub_model = NULL,
@@ -62,6 +62,12 @@ the spring index values. Thus setting this field will change the results of six_
 and the second column named 'param' and containing string representations of the time/elevation subset parameter to use.
 This variable can be used to append additional geospatial layer data fields to the results, such that the date of observation
 in each row will resolve to a value from the specified layers, given the location of the observation.}
+
+\item{family_ids}{List of unique IDs for searching based on taxonomic family, e.g. c ( 3, 34, 35 ) . This parameter will take precedence if species_ids is also set.}
+
+\item{order_ids}{List of unique IDs for searching based on taxonomic order, e.g. c ( 3, 34, 35 ) . This parameter will take precedence if species_ids or family_ids are also set.}
+
+\item{class_ids}{List of unique IDs for searching based on taxonomic class, e.g. c ( 3, 34, 35 ) . This parameter will take precedence if species_ids, family_ids or order_ids are also set.}
 }
 \value{
 Data table of all status records returned as per the search parameters. Null if output directed to file.

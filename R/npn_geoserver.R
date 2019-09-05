@@ -233,6 +233,45 @@ npn_get_point_data <- function(
 }
 
 
+lpdaac_get_point_data <- function(
+  layer,
+  lat,
+  long,
+  date,
+  store_data=TRUE){
+
+  cached_value <- npn_check_point_cached(layer,lat,long,date)
+  if(!is.null(cached_value)){
+    return(cached_value)
+  }
+
+  url <- paste0(base_geoserver(), "coverageId=",layer,"&format=application/gml+xml&subset=http://www.opengis.net/def/axis/OGC/0/Long(",long,")&subset=http://www.opengis.net/def/axis/OGC/0/Lat(",lat,")&subset=http://www.opengis.net/def/axis/OGC/0/time(\"",date,"T00:00:00.000Z\")")
+  data = httr::GET(url,
+                   query = list(),
+                   httr::progress())
+  #Download the data as XML and store it as an XML doc
+  xml_data <- httr::content(data, as = "text")
+  doc <- XML::xmlInternalTreeParse(xml_data)
+
+  df <- XML::xmlToDataFrame(XML::xpathApply(doc, "//gml:RectifiedGridCoverage/gml:rangeSet/gml:DataBlock/tupleList"))
+
+  v <- as.numeric(as.list(strsplit(gsub("\n","",df[1,"text"]),' ')[[1]])[1])
+
+  if(store_data){
+    if(!exists("point_values")){
+      point_values <<- data.frame(layer=layer,lat=lat,long=long,date=date,value=v)
+    }else{
+      point_values <<- rbind(point_values, data.frame(layer=layer,lat=lat,long=long,date=date,value=v))
+    }
+  }
+
+  return(v)
+
+}
+
+
+
+
 
 
 #' Resolve SIX Raster
@@ -379,6 +418,173 @@ get_additional_rasters <- function(data){
     npn_download_geospatial(df['name'],df['param'])
   })
 }
+
+
+
+
+#' Get Custom AGDD Time Series
+#'
+#' This function takes a series of variables used in calculating AGDD and returns an AGDD time series,
+#' based on start and end date, for a given location in the continental US.
+#' This function leverages the USA-NPN geo web services
+#'
+#' @param method Takes "simple" or "double-sine" as input. This is the AGDD calculation method to use for each
+#' data point. Simple refers to simple averaging.
+#' @param start_date Date at which to begin the AGDD calculations
+#' @param end_date Date at which to end the AGDD calculations
+#' @param base_temp This is the lowest temperature for each day  for it to be considered in the calculation.
+#' @param upper_threshold This parameter is only applicable for the double-sine method. This sets the highest temperature
+#' to be considered in any given day's AGDD calculation
+#' @param climate_data_source Specified the climate data set to use. Takes either "PRISM" or "NCEP" as input.
+#' @param temp_unit The unit of temperature to use in the calculation. Takes either "fahrenheit" or "celsius" as input.
+#' @param lat The latitude of the location for which to calcualte the time series
+#' @param long The longitude of the location for which to calculate the time series
+#'
+#'
+#' @export
+npn_get_custom_agdd_time_series <- function(
+  method,
+  start_date,
+  end_date,
+  base_temp,
+  climate_data_source,
+  temp_unit,
+  lat,
+  long,
+  upper_threshold=NULL
+){
+
+  base_url <- ""
+  climate_data_source <- toupper(climate_data_source)
+  temp_unit <- tolower(temp_unit)
+  method <- tolower(method)
+
+  if(method == "simple"){
+    base_url <- "https://data.usanpn.org/geoservices/v1/agdd/simple/pointTimeSeries?"
+  }else{
+    base_url <- "https://data.usanpn.org/geoservices/v1/agdd/double-sine/pointTimeSeries?"
+  }
+
+  url <- paste0(base_url, "climateProvider=", climate_data_source)
+
+  url <- paste0(url,"&temperatureUnit=",temp_unit)
+
+  url <- paste0(url,"&startDate=",start_date)
+
+  url <- paste0(url,"&endDate=",end_date)
+
+  url <- paste0(url, "&latitude=",lat)
+
+  url <- paste0(url, "&longitude=", long)
+
+  if(method == "simple"){
+
+    url <- paste0(url,"&base=",base_temp)
+
+  }else{
+
+    url <- paste0(url, "&lowerThreshol=",base_temp)
+    if(!is.null(upper_threshold)){
+
+      url <- paste0(url, "&upperThreshold=", upper_threshold)
+
+    }
+
+  }
+
+  data = httr::GET(url,
+                   query = list(),
+                   httr::progress())
+
+
+  return(jsonlite::fromJSON(httr::content(data, as = "text"))$timeSeries)
+
+
+
+}
+
+#' Get Cuomst AGDD Raster Map
+#'
+#' This function takes a series of variables used in calculating AGDD and returns
+#' a raster of the continental USA with each pixel representing the calculated AGDD value
+#' based on start and end date.
+#' This function leverages the USA-NPN geo web services
+
+#' @param method Takes "simple" or "double-sine" as input. This is the AGDD calculation method to use for each
+#' data point. Simple refers to simple averaging.
+#' @param start_date Date at which to begin the AGDD calculations
+#' @param end_date Date at which to end the AGDD calculations
+#' @param base_temp This is the lowest temperature for each day  for it to be considered in the calculation.
+#' @param upper_threshold This parameter is only applicable for the double-sine method. This sets the highest temperature
+#' to be considered in any given day's AGDD calculation
+#' @param climate_data_source Specified the climate data set to use. Takes either "PRISM" or "NCEP" as input.
+#' @param temp_unit The unit of temperature to use in the calculation. Takes either "fahrenheit" or "celsius" as input.
+#' @export
+npn_get_custom_agdd_raster <- function(
+  method,
+  climate_data_source,
+  temp_unit,
+  start_date,
+  end_date,
+  base_temp,
+  upper_threshold=NULL
+){
+
+  base_url <- ""
+  climate_data_source <- toupper(climate_data_source)
+  temp_unit <- tolower(temp_unit)
+  method <- tolower(method)
+  ras <- NULL
+
+  if(method == "simple"){
+    base_url <- "https://data.usanpn.org/geoservices/v1/agdd/simple/map?"
+  }else{
+    base_url <- "https://data.usanpn.org/geoservices/v1/agdd/double-sine/map?"
+  }
+
+
+  url <- paste0(base_url, "climateProvider=", climate_data_source)
+
+  url <- paste0(url,"&temperatureUnit=",temp_unit)
+
+  url <- paste0(url,"&startDate=",start_date)
+
+  url <- paste0(url,"&endDate=",end_date)
+
+  if(method == "simple"){
+
+    url <- paste0(url,"&base=",base_temp)
+
+  }else{
+
+    url <- paste0(url, "&lowerThreshold=",base_temp)
+
+    if(!is.null(upper_threshold)){
+
+      url <- paste0(url, "&upperThreshold=", upper_threshold)
+
+    }
+
+  }
+
+  data = httr::GET(url,
+                   query = list(),
+                   httr::progress())
+
+  mapURL <- jsonlite::fromJSON(httr::content(data, as = "text"))$mapUrl
+
+  if(!is.null(mapURL)){
+    z <- tempfile()
+    download.file(mapURL,z,method="libcurl", mode="wb")
+    ras <- raster::raster(z)
+  }
+
+  return(ras)
+
+}
+
+
+
 
 
 

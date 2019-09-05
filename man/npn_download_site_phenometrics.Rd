@@ -6,12 +6,15 @@
 \usage{
 npn_download_site_phenometrics(request_source, years,
   num_days_quality_filter = 30, coords = NULL, species_ids = NULL,
-  station_ids = NULL, species_types = NULL, network_ids = NULL,
-  states = NULL, phenophase_ids = NULL, functional_types = NULL,
-  additional_fields = NULL, climate_data = FALSE, ip_address = NULL,
-  email = NULL, download_path = NULL, six_leaf_layer = FALSE,
+  family_ids = NULL, order_ids = NULL, class_ids = NULL,
+  pheno_class_ids = NULL, station_ids = NULL, species_types = NULL,
+  network_ids = NULL, states = NULL, phenophase_ids = NULL,
+  functional_types = NULL, additional_fields = NULL,
+  climate_data = FALSE, ip_address = NULL, email = NULL,
+  download_path = NULL, six_leaf_layer = FALSE,
   six_bloom_layer = FALSE, agdd_layer = NULL, six_sub_model = NULL,
-  additional_layers = NULL)
+  additional_layers = NULL, taxonomy_aggregate = NULL,
+  pheno_class_aggregate = NULL)
 }
 \arguments{
 \item{request_source}{Required field, string. Self-identify who is making requests to the data service}
@@ -24,6 +27,14 @@ first Y value and the previous N value for each individual to be included in the
 \item{coords}{List of float values, used to specify a bounding box as a search parameter, e.g. c ( lower_left_lat, lower_left_long,upper_right,lat,upper_right_long )}
 
 \item{species_ids}{List of unique IDs for searching based on species, e.g. c ( 3, 34, 35 )}
+
+\item{family_ids}{List of unique IDs for searching based on taxonomic family, e.g. c ( 3, 34, 35 ) . This parameter will take precedence if species_ids is also set.}
+
+\item{order_ids}{List of unique IDs for searching based on taxonomic order, e.g. c ( 3, 34, 35 ) . This parameter will take precedence if species_ids or family_ids are also set.}
+
+\item{class_ids}{List of unique IDs for searching based on taxonomic class, e.g. c ( 3, 34, 35 ) . This parameter will take precedence if species_ids, family_ids or order_ids are also set.}
+
+\item{pheno_class_ids}{List of unique IDs for searching based on pheno class id, e.g. c (1, 5, 13)}
 
 \item{station_ids}{List of unique IDs for searching based on site location, e.g. c ( 5, 9, ... )}
 
@@ -65,6 +76,10 @@ the spring index values. Thus setting this field will change the results of six_
 and the second column named 'param' and containing string representations of the time/elevation subset parameter to use.
 This variable can be used to append additional geospatial layer data fields to the results, such that the date of observation
 in each row will resolve to a value from the specified layers, given the location of the observation.}
+
+\item{taxonomy_aggregate}{Boolean value indicating whether to aggregate data by a taxonomic order higher than species. This will be based on the values set in family_ids, order_ids, or class_ids. If one of those three fields are not set, then this value is ignored.}
+
+\item{pheno_class_aggregate}{Boolean value indicating whether to aggregate data by the pheno class ids as per the pheno_class_ids parameter. If the pheno_class_ids value is not set, then this parameter is ignored. This can be used in conjunction with taxonomy_aggregate and higher taxonomic level data filtering.}
 }
 \value{
 Data table of all status records returned as per the search parameters. Null if output directed to file.

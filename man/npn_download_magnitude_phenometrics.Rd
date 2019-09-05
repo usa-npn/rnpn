@@ -6,10 +6,13 @@
 \usage{
 npn_download_magnitude_phenometrics(request_source, years,
   period_frequency = 30, coords = NULL, individual_ids = NULL,
-  species_ids = NULL, station_ids = NULL, species_types = NULL,
-  network_ids = NULL, states = NULL, phenophase_ids = NULL,
-  functional_types = NULL, additional_fields = NULL, climate_data = FALSE,
-  ip_address = NULL, email = NULL, download_path = NULL)
+  species_ids = NULL, family_ids = NULL, order_ids = NULL,
+  class_ids = NULL, pheno_class_ids = NULL, station_ids = NULL,
+  species_types = NULL, network_ids = NULL, states = NULL,
+  phenophase_ids = NULL, functional_types = NULL,
+  additional_fields = NULL, climate_data = FALSE, ip_address = NULL,
+  email = NULL, download_path = NULL, taxonomy_aggregate = NULL,
+  pheno_class_aggregate = NULL)
 }
 \arguments{
 \item{request_source}{Required field, string. Self-identify who is making requests to the data service}
@@ -24,6 +27,14 @@ delineate the period of time by the calendar months regardless of how many days 
 \item{coords}{List of float values, used to specify a bounding box as a search parameter, e.g. c ( lower_left_lat, lower_left_long,upper_right,lat,upper_right_long )}
 
 \item{species_ids}{List of unique IDs for searching based on species, e.g. c ( 3, 34, 35 )}
+
+\item{family_ids}{List of unique IDs for searching based on taxonomic family, e.g. c ( 3, 34, 35 ) . This parameter will take precedence if species_ids is also set.}
+
+\item{order_ids}{List of unique IDs for searching based on taxonomic order, e.g. c ( 3, 34, 35 ) . This parameter will take precedence if species_ids or family_ids are also set.}
+
+\item{class_ids}{List of unique IDs for searching based on taxonomic class, e.g. c ( 3, 34, 35 ) . This parameter will take precedence if species_ids, family_ids or order_ids are also set.}
+
+\item{pheno_class_ids}{List of unique IDs for searching based on pheno class id, e.g. c (1, 5, 13)}
 
 \item{station_ids}{List of unique IDs for searching based on site location, e.g. c ( 5, 9, ... )}
 
@@ -46,6 +57,10 @@ delineate the period of time by the calendar months regardless of how many days 
 \item{email}{Optional field, string. Email of user requesting data.}
 
 \item{download_path}{Optional file path to which search results should be re-directed for later use.}
+
+\item{taxonomy_aggregate}{Boolean value indicating whether to aggregate data by a taxonomic order higher than species. This will be based on the values set in family_ids, order_ids, or class_ids. If one of those three fields are not set, then this value is ignored.}
+
+\item{pheno_class_aggregate}{Boolean value indicating whether to aggregate data by the pheno class ids as per the pheno_class_ids parameter. If the pheno_class_ids value is not set, then this parameter is ignored. This can be used in conjunction with taxonomy_aggregate and higher taxonomic level data filtering.}
 }
 \value{
 Data table of all status records returned as per the search parameters. Null if output directed to file.

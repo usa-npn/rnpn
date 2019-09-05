@@ -21,6 +21,9 @@
 #' @param years Required field, list of strings. Specify the years to include in the search, e.g. c('2013','2014'). You must specify at least one year.
 #' @param coords List of float values, used to specify a bounding box as a search parameter, e.g. c ( lower_left_lat, lower_left_long,upper_right,lat,upper_right_long )
 #' @param species_ids List of unique IDs for searching based on species, e.g. c ( 3, 34, 35 )
+#' @param family_ids List of unique IDs for searching based on taxonomic family, e.g. c ( 3, 34, 35 ) . This parameter will take precedence if species_ids is also set.
+#' @param order_ids List of unique IDs for searching based on taxonomic order, e.g. c ( 3, 34, 35 ) . This parameter will take precedence if species_ids or family_ids are also set.
+#' @param class_ids List of unique IDs for searching based on taxonomic class, e.g. c ( 3, 34, 35 ) . This parameter will take precedence if species_ids, family_ids or order_ids are also set.
 #' @param station_ids List of unique IDs for searching based on site location, e.g. c ( 5, 9, ... )
 #' @param species_types List of unique species type names for searching based on species types, e.g. c ( "Decidious", "Evergreen" )
 #' @param network_ids List of unique IDs for searching based on parter group/network, e.g. ( 500, 300, ... )
@@ -137,6 +140,9 @@ npn_download_status_data = function(
 #' @param years Required field, list of strings. Specify the years to include in the search, e.g. c('2013','2014'). You must specify at least one year.
 #' @param coords List of float values, used to specify a bounding box as a search parameter, e.g. c ( lower_left_lat, lower_left_long,upper_right,lat,upper_right_long )
 #' @param species_ids List of unique IDs for searching based on species, e.g. c ( 3, 34, 35 )
+#' @param family_ids List of unique IDs for searching based on taxonomic family, e.g. c ( 3, 34, 35 ) . This parameter will take precedence if species_ids is also set.
+#' @param order_ids List of unique IDs for searching based on taxonomic order, e.g. c ( 3, 34, 35 ) . This parameter will take precedence if species_ids or family_ids are also set.
+#' @param class_ids List of unique IDs for searching based on taxonomic class, e.g. c ( 3, 34, 35 ) . This parameter will take precedence if species_ids, family_ids or order_ids are also set.
 #' @param station_ids List of unique IDs for searching based on site location, e.g. c ( 5, 9, ... )
 #' @param species_types List of unique species type names for searching based on species types, e.g. c ( "Decidious", "Evergreen" )
 #' @param network_ids List of unique IDs for searching based on parter group/network, e.g. c( 500, 300, ... )
@@ -251,6 +257,12 @@ npn_download_individual_phenometrics <- function(
 #' first Y value and the previous N value for each individual to be included in the data aggregation.
 #' @param coords List of float values, used to specify a bounding box as a search parameter, e.g. c ( lower_left_lat, lower_left_long,upper_right,lat,upper_right_long )
 #' @param species_ids List of unique IDs for searching based on species, e.g. c ( 3, 34, 35 )
+#' @param family_ids List of unique IDs for searching based on taxonomic family, e.g. c ( 3, 34, 35 ) . This parameter will take precedence if species_ids is also set.
+#' @param order_ids List of unique IDs for searching based on taxonomic order, e.g. c ( 3, 34, 35 ) . This parameter will take precedence if species_ids or family_ids are also set.
+#' @param class_ids List of unique IDs for searching based on taxonomic class, e.g. c ( 3, 34, 35 ) . This parameter will take precedence if species_ids, family_ids or order_ids are also set.
+#' @param taxonomy_aggregate Boolean value indicating whether to aggregate data by a taxonomic order higher than species. This will be based on the values set in family_ids, order_ids, or class_ids. If one of those three fields are not set, then this value is ignored.
+#' @param pheno_class_ids List of unique IDs for searching based on pheno class id, e.g. c (1, 5, 13)
+#' @param pheno_class_aggregate Boolean value indicating whether to aggregate data by the pheno class ids as per the pheno_class_ids parameter. If the pheno_class_ids value is not set, then this parameter is ignored. This can be used in conjunction with taxonomy_aggregate and higher taxonomic level data filtering.
 #' @param station_ids List of unique IDs for searching based on site location, e.g. c ( 5, 9, ... )
 #' @param species_types List of unique species type names for searching based on species types, e.g. c ( "Decidious", "Evergreen" )
 #' @param network_ids List of unique IDs for searching based on parter group/network, e.g. ( 500, 300, ... )
@@ -377,6 +389,12 @@ npn_download_site_phenometrics <- function(
 #' delineate the period of time by the calendar months regardless of how many days are in each month. Defaults to 30 if omitted.
 #' @param coords List of float values, used to specify a bounding box as a search parameter, e.g. c ( lower_left_lat, lower_left_long,upper_right,lat,upper_right_long )
 #' @param species_ids List of unique IDs for searching based on species, e.g. c ( 3, 34, 35 )
+#' @param family_ids List of unique IDs for searching based on taxonomic family, e.g. c ( 3, 34, 35 ) . This parameter will take precedence if species_ids is also set.
+#' @param order_ids List of unique IDs for searching based on taxonomic order, e.g. c ( 3, 34, 35 ) . This parameter will take precedence if species_ids or family_ids are also set.
+#' @param class_ids List of unique IDs for searching based on taxonomic class, e.g. c ( 3, 34, 35 ) . This parameter will take precedence if species_ids, family_ids or order_ids are also set.
+#' @param taxonomy_aggregate Boolean value indicating whether to aggregate data by a taxonomic order higher than species. This will be based on the values set in family_ids, order_ids, or class_ids. If one of those three fields are not set, then this value is ignored.
+#' @param pheno_class_ids List of unique IDs for searching based on pheno class id, e.g. c (1, 5, 13)
+#' @param pheno_class_aggregate Boolean value indicating whether to aggregate data by the pheno class ids as per the pheno_class_ids parameter. If the pheno_class_ids value is not set, then this parameter is ignored. This can be used in conjunction with taxonomy_aggregate and higher taxonomic level data filtering.
 #' @param station_ids List of unique IDs for searching based on site location, e.g. c ( 5, 9, ... )
 #' @param species_types List of unique species type names for searching based on species types, e.g. c ( "Decidious", "Evergreen" )
 #' @param network_ids List of unique IDs for searching based on parter group/network, e.g. ( 500, 300, ... )
@@ -714,7 +732,7 @@ npn_get_download_url <- function(
   endpoint,
   query_vars
 ){
-  url<- paste0(base('dev'), endpoint)
+  url<- paste0(base(), endpoint)
   query_str <- paste(names(query_vars),"=",query_vars,sep="",collapse = '&')
 
   return (paste0(url,query_str))

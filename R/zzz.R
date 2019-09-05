@@ -1,20 +1,44 @@
-base <- function(env="ops"){
-  if(env=="dev"){
-      return('https://www-dev.usanpn.org/npn_portal/')
-  }else if (env=="ops"){
+
+#' Set Environment
+#'
+#' By default this library will call the NPN's production services
+#' but in some cases it's preferable to access the development web services
+#' so this function allows for manually setting the web service endpoints
+#' to use DEV instead. Just pass in "dev" to this function to change the
+#' endpoints to use.
+#' @export
+npn_set_env <- function (env = "ops"){
+  env <<- env
+}
+
+
+base <- function(){
+
+  if( exists("env") && !is.null(env)){
+    env <- env
+  }else{
+    env <- "ops"
+  }
+
+  if(env=="ops"){
       return('https://www.usanpn.org/npn_portal/')
   }else{
       return('https://www-dev.usanpn.org/npn_portal/')
   }
 }
 
-base_geoserver <- function(env="ops"){
-  if(env=="dev"){
-    return('https://geoserver-dev.usanpn.org/geoserver/wcs?service=WCS&version=2.0.1&request=GetCoverage&')
-  }else if (env=="ops"){
+base_geoserver <- function(){
+
+  if( exists("env") && !is.null(env)){
+    env <- env
+  }else{
+    env <- "ops"
+  }
+
+  if(env=="ops"){
     return('https://geoserver.usanpn.org/geoserver/wcs?service=WCS&version=2.0.1&request=GetCoverage&')
   }else{
-    return('https://geoserver.usanpn.org/geoserver/wcs?service=WCS&version=2.0.1&request=GetCoverage&')
+    return('https://geoserver-dev.usanpn.org/geoserver/wcs?service=WCS&version=2.0.1&request=GetCoverage&')
   }
 }
 

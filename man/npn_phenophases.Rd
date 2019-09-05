@@ -10,5 +10,5 @@ npn_phenophases(...)
 \item{...}{Curl options passed on to \code{\link[httr]{GET}}}
 }
 \description{
-Get Phenophases
+Retrieves a complete list of all phenophases in the NPN database
 }

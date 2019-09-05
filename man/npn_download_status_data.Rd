@@ -5,12 +5,14 @@
 \title{Download Status and Intesity Records}
 \usage{
 npn_download_status_data(request_source, years, coords = NULL,
-  species_ids = NULL, station_ids = NULL, species_types = NULL,
+  species_ids = NULL, family_ids = NULL, order_ids = NULL,
+  class_ids = NULL, station_ids = NULL, species_types = NULL,
   network_ids = NULL, states = NULL, phenophase_ids = NULL,
-  functional_types = NULL, additional_fields = NULL, climate_data = FALSE,
-  ip_address = NULL, email = NULL, download_path = NULL,
-  six_leaf_layer = FALSE, six_bloom_layer = FALSE, agdd_layer = NULL,
-  six_sub_model = NULL, additional_layers = NULL)
+  functional_types = NULL, additional_fields = NULL,
+  climate_data = FALSE, ip_address = NULL, email = NULL,
+  download_path = NULL, six_leaf_layer = FALSE,
+  six_bloom_layer = FALSE, agdd_layer = NULL, six_sub_model = NULL,
+  additional_layers = NULL)
 }
 \arguments{
 \item{request_source}{Required field, string. Self-identify who is making requests to the data service}
@@ -20,6 +22,12 @@ npn_download_status_data(request_source, years, coords = NULL,
 \item{coords}{List of float values, used to specify a bounding box as a search parameter, e.g. c ( lower_left_lat, lower_left_long,upper_right,lat,upper_right_long )}
 
 \item{species_ids}{List of unique IDs for searching based on species, e.g. c ( 3, 34, 35 )}
+
+\item{family_ids}{List of unique IDs for searching based on taxonomic family, e.g. c ( 3, 34, 35 ) . This parameter will take precedence if species_ids is also set.}
+
+\item{order_ids}{List of unique IDs for searching based on taxonomic order, e.g. c ( 3, 34, 35 ) . This parameter will take precedence if species_ids or family_ids are also set.}
+
+\item{class_ids}{List of unique IDs for searching based on taxonomic class, e.g. c ( 3, 34, 35 ) . This parameter will take precedence if species_ids, family_ids or order_ids are also set.}
 
 \item{station_ids}{List of unique IDs for searching based on site location, e.g. c ( 5, 9, ... )}
 

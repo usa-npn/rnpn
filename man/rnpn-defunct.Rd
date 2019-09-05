@@ -6,5 +6,8 @@
 \description{
 \itemize{
  \item \code{\link{npn_obsspbyday}}: Removed.
+ \item \code{\link{npn_allobssp}}: Removed.
+ \item \code{\link{npn_indspatstations}}: Removed.
+ \item \code{\link{npn_indsatstations}}: Removed.
 }
 }
