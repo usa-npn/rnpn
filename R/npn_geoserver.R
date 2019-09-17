@@ -483,7 +483,7 @@ npn_get_custom_agdd_time_series <- function(
 
   }else{
 
-    url <- paste0(url, "&lowerThreshol=",base_temp)
+    url <- paste0(url, "&lowerThreshold=",base_temp)
     if(!is.null(upper_threshold)){
 
       url <- paste0(url, "&upperThreshold=", upper_threshold)
