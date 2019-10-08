@@ -51,7 +51,7 @@ Development version
 
     install.packages("devtools")
     library('devtools')
-    devtools::install_github("ropensci/rnpn")
+    devtools::install_github("usa-npn/rnpn")
 
     library('rnpn')
 

@@ -42,7 +42,7 @@ Development version
 ```{r eval=FALSE}
 install.packages("devtools")
 library('devtools')
-devtools::install_github("ropensci/rnpn")
+devtools::install_github("usa-npn/rnpn")
 ```
 
 ```{r}
