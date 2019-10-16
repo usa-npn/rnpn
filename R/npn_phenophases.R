@@ -85,8 +85,8 @@ npn_pheno_classes <- function (...){
 #' @param family_ids List of taxonomic family ids to search for.
 #' @param order_ids List of taxonomic order ids to search for.
 #' @param class_ids List of taxonomic class ids to search for
-#' @date Specify the date of interst. For this function to return anything, either this value must be set of return_all must be 1.
-#' @return_all Takes either 0 or 1 as input and defaults to 0. For this function to return anything, either this value must be set to 1
+#' @param date Specify the date of interst. For this function to return anything, either this value must be set of return_all must be 1.
+#' @param return_all Takes either 0 or 1 as input and defaults to 0. For this function to return anything, either this value must be set to 1
 #' or date must be set.
 #' @export
 npn_get_phenophases_for_taxon <- function (family_ids=NULL,order_ids=NULL,class_ids=NULL,date=NULL,return_all=0, ...){

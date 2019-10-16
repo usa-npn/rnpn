@@ -6,24 +6,24 @@
 \title{Download Magnitude Phenometrics}
 \usage{
 npn_download_magnitude_phenometrics(request_source, years,
-  period_frequency = 30, coords = NULL, individual_ids = NULL,
+  period_frequency = "30", coords = NULL, individual_ids = NULL,
   species_ids = NULL, family_ids = NULL, order_ids = NULL,
   class_ids = NULL, pheno_class_ids = NULL, station_ids = NULL,
   species_types = NULL, network_ids = NULL, states = NULL,
   phenophase_ids = NULL, functional_types = NULL,
   additional_fields = NULL, climate_data = FALSE, ip_address = NULL,
   email = NULL, download_path = NULL, taxonomy_aggregate = NULL,
-  pheno_class_aggregate = NULL, shape_file = NULL)
+  pheno_class_aggregate = NULL, wkt = NULL)
 
 npn_download_magnitude_phenometrics(request_source, years,
-  period_frequency = 30, coords = NULL, individual_ids = NULL,
+  period_frequency = "30", coords = NULL, individual_ids = NULL,
   species_ids = NULL, family_ids = NULL, order_ids = NULL,
   class_ids = NULL, pheno_class_ids = NULL, station_ids = NULL,
   species_types = NULL, network_ids = NULL, states = NULL,
   phenophase_ids = NULL, functional_types = NULL,
   additional_fields = NULL, climate_data = FALSE, ip_address = NULL,
   email = NULL, download_path = NULL, taxonomy_aggregate = NULL,
-  pheno_class_aggregate = NULL, shape_file = NULL)
+  pheno_class_aggregate = NULL, wkt = NULL)
 }
 \arguments{
 \item{request_source}{Required field, string. Self-identify who is making requests to the data service}

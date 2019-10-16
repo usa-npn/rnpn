@@ -5,9 +5,9 @@
 \alias{npn_get_download_url}
 \title{Generate Download URL}
 \usage{
-npn_get_download_url(endpoint, query_vars)
+npn_get_download_url(endpoint)
 
-npn_get_download_url(endpoint, query_vars)
+npn_get_download_url(endpoint)
 }
 \arguments{
 \item{endpoint}{The service point, e.g. "observations/getObservations.json?"}

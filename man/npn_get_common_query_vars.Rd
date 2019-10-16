@@ -12,7 +12,7 @@ npn_get_common_query_vars(request_source, coords = NULL,
   climate_data = FALSE, ip_address = NULL, family_ids = NULL,
   order_ids = NULL, class_ids = NULL, pheno_class_ids = NULL,
   taxonomy_aggregate = NULL, pheno_class_aggregate = NULL,
-  shape_file = NULL, email = NULL)
+  wkt = NULL, email = NULL)
 
 npn_get_common_query_vars(request_source, coords = NULL,
   species_ids = NULL, station_ids = NULL, species_types = NULL,
@@ -21,7 +21,7 @@ npn_get_common_query_vars(request_source, coords = NULL,
   climate_data = FALSE, ip_address = NULL, family_ids = NULL,
   order_ids = NULL, class_ids = NULL, pheno_class_ids = NULL,
   taxonomy_aggregate = NULL, pheno_class_aggregate = NULL,
-  shape_file = NULL, email = NULL)
+  wkt = NULL, email = NULL)
 }
 \value{
 List of query string variables

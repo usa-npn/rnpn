@@ -13,8 +13,7 @@ npn_download_status_data(request_source, years, coords = NULL,
   climate_data = FALSE, ip_address = NULL, email = NULL,
   download_path = NULL, six_leaf_layer = FALSE,
   six_bloom_layer = FALSE, agdd_layer = NULL, six_sub_model = NULL,
-  additional_layers = NULL, pheno_class_ids = NULL,
-  shape_file = NULL)
+  additional_layers = NULL, pheno_class_ids = NULL, wkt = NULL)
 
 npn_download_status_data(request_source, years, coords = NULL,
   species_ids = NULL, family_ids = NULL, order_ids = NULL,
@@ -24,8 +23,7 @@ npn_download_status_data(request_source, years, coords = NULL,
   climate_data = FALSE, ip_address = NULL, email = NULL,
   download_path = NULL, six_leaf_layer = FALSE,
   six_bloom_layer = FALSE, agdd_layer = NULL, six_sub_model = NULL,
-  additional_layers = NULL, pheno_class_ids = NULL,
-  shape_file = NULL)
+  additional_layers = NULL, pheno_class_ids = NULL, wkt = NULL)
 }
 \arguments{
 \item{request_source}{Required field, string. Self-identify who is making requests to the data service}

@@ -19,8 +19,8 @@ Look up species IDs by taxonomic or common name
 }
 \examples{
 \dontrun{
-lookup_names(name='Pinus', type='genus')
-lookup_names(name='pine', type='common_name')
-lookup_names(name='bird', type='common_name', fuzzy=TRUE)
+npn_lookup_names(name='Pinus', type='genus')
+npn_lookup_names(name='pine', type='common_name')
+npn_lookup_names(name='bird', type='common_name', fuzzy=TRUE)
 }
 }

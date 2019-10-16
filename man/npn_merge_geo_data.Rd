@@ -6,6 +6,14 @@
 \usage{
 npn_merge_geo_data(ras, col_label, df)
 }
+\arguments{
+\item{ras}{Raster containing geospatial data}
+
+\item{col_label}{The name of the column to append to the data frame}
+
+\item{df}{The data frame which to append the new column of geospatial point values. For
+this function to work, df must contain two columns: "longitude", and "latitude"}
+}
 \value{
 The data frame, now appended with the new geospatial data values' column
 }

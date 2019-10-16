@@ -5,6 +5,7 @@
 #' @importFrom httr GET stop_for_status content
 #' @importFrom jsonlite fromJSON
 #' @importFrom plyr llply ldply ddply summarise rbind.fill
+#' @importFrom magrittr "%>%"
 #' @name rnpn-package
 #' @aliases rnpn
 #' @docType package

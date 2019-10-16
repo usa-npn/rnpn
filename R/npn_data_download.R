@@ -82,7 +82,9 @@ npn_download_status_data = function(
   six_bloom_layer=FALSE,
   agdd_layer=NULL,
   six_sub_model=NULL,
-  additional_layers=NULL
+  additional_layers=NULL,
+  pheno_class_ids=NULL,
+  wkt=NULL
 ){
 
 
@@ -101,6 +103,10 @@ npn_download_status_data = function(
                   									 family_ids,
                   									 order_ids,
                   									 class_ids,
+                  									 pheno_class_ids,
+                  									 taxonomy_aggregate=NULL,
+                  									 pheno_class_aggregate=NULL,
+                  									 wkt,
                                      email)
 
 
@@ -190,13 +196,18 @@ npn_download_individual_phenometrics <- function(
   additional_fields = NULL,
   climate_data = FALSE,
   ip_address = NULL,
+  family_ids = NULL,
+  order_ids = NULL,
+  class_ids = NULL,
+  pheno_class_ids= NULL,
   email = NULL,
   download_path = NULL,
   six_leaf_layer=FALSE,
   six_bloom_layer=FALSE,
   agdd_layer=NULL,
   six_sub_model=NULL,
-  additional_layers=NULL
+  additional_layers=NULL,
+  wkt=NULL
 ){
 
   query <- npn_get_common_query_vars(request_source,
@@ -211,6 +222,13 @@ npn_download_individual_phenometrics <- function(
                                      additional_fields,
                                      climate_data,
                                      ip_address,
+                                     family_ids,
+                                     order_ids,
+                                     class_ids,
+                                     pheno_class_ids,
+                                     taxonomy_aggregate=NULL,
+                                     pheno_class_aggregate=NULL,
+                                     wkt,
                                      email)
 
   if(!is.null(individual_ids)){
@@ -298,7 +316,7 @@ npn_download_individual_phenometrics <- function(
 npn_download_site_phenometrics <- function(
   request_source,
   years,
-  num_days_quality_filter=30,
+  num_days_quality_filter="30",
   coords = NULL,
   species_ids = NULL,
   family_ids = NULL,
@@ -322,7 +340,8 @@ npn_download_site_phenometrics <- function(
   six_sub_model=NULL,
   additional_layers=NULL,
   taxonomy_aggregate=NULL,
-  pheno_class_aggregate=NULL
+  pheno_class_aggregate=NULL,
+  wkt=NULL
 ){
 
   query <- npn_get_common_query_vars(request_source,
@@ -343,6 +362,7 @@ npn_download_site_phenometrics <- function(
                                      pheno_class_ids,
                                      taxonomy_aggregate,
                                      pheno_class_aggregate,
+                                     wkt,
                                      email)
 
   query["num_days_quality_filter"] <- num_days_quality_filter
@@ -417,7 +437,7 @@ npn_download_site_phenometrics <- function(
 npn_download_magnitude_phenometrics <- function(
   request_source,
   years,
-  period_frequency=30,
+  period_frequency="30",
   coords = NULL,
   individual_ids = NULL,
   species_ids = NULL,
@@ -437,7 +457,8 @@ npn_download_magnitude_phenometrics <- function(
   email = NULL,
   download_path = NULL,
   taxonomy_aggregate=NULL,
-  pheno_class_aggregate=NULL
+  pheno_class_aggregate=NULL,
+  wkt=NULL
 ){
 
   query <- npn_get_common_query_vars(request_source,
@@ -458,6 +479,7 @@ npn_download_magnitude_phenometrics <- function(
                                      pheno_class_ids,
                                      taxonomy_aggregate,
                                      pheno_class_aggregate,
+                                     wkt,
                                      email)
 
   query["frequency"] <- period_frequency
@@ -469,9 +491,9 @@ npn_download_magnitude_phenometrics <- function(
 
 
 
-  url = npn_get_download_url("/observations/getMagnitudeData.json?", query)
+  url = npn_get_download_url("/observations/getMagnitudeData.json")
 
-  return (npn_get_data(url,download_path))
+  return (npn_get_data(url,query, download_path))
 
 }
 
@@ -541,8 +563,8 @@ npn_get_data_by_year <- function(
 
       # We also have to generate a unique URL on each request to account
       # for the changes in the start/end date
-      url = npn_get_download_url(endpoint, query)
-      data = npn_get_data(url,download_path,!first_year, six_leaf_raster=six_leaf_raster, six_bloom_raster=six_bloom_raster,agdd_layer=agdd_layer, additional_layers=additional_layers)
+      url = npn_get_download_url(endpoint)
+      data = npn_get_data(url,query,download_path,!first_year, six_leaf_raster=six_leaf_raster, six_bloom_raster=six_bloom_raster,agdd_layer=agdd_layer, additional_layers=additional_layers)
 
 
 
@@ -568,6 +590,9 @@ npn_get_data_by_year <- function(
   return(all_data)
 }
 
+
+
+
 #' Download NPN Data
 #'
 #' Generic utility function for querying data from the NPN data services.
@@ -584,6 +609,7 @@ npn_get_data_by_year <- function(
 #' @export
 npn_get_data <- function(
   url,
+  query,
   download_path=NULL,
   always_append=FALSE,
   six_leaf_raster=NULL,
@@ -592,22 +618,40 @@ npn_get_data <- function(
   additional_layers=NULL
 ){
 
-  con <- curl::curl (url)
-  open(con,"rb")
+
+  h <- curl::new_handle()
+  query = c(query, customrequest="POST")
+  curl::handle_setform(h, .list = query)
+
+  con <- curl::curl(url,handle=h)
+
+  open(con,"rb", raw = TRUE, blocking = TRUE)
   dtm<- data.table::data.table()
   raw_data <- ""
-  chunk<- NULL
+  ch <- NULL
   json <- ""
   i<-0
 
+  append_chunk <- function(ch=NULL){
+    if(!is.null(ch) && ch != ""){
+      ch <- paste0("[",ch)
+    }else{
+      ch <- ""
+    }
+  }
+
 
   # Read the data 8MB at a time. This might be further optimized with the backing service.
-  while(length(x <- readBin(con, raw(), n = 8388608))){
+  while(object.size(raw_data <- readBin(con, raw(), n = 8388608)
+                    %>% rawToChar
+                    %>% paste0(append_chunk(ch),.) ) > 100)
+    {
 
-    # If there is a chunk present from a previous iteration we want to append that
-    # to the front of whatever was read from the port and add the JSON array
-    # character as well.
-    raw_data <- paste0(ifelse(!is.null(chunk),paste0("[",chunk),""),rawToChar(x))
+    if(!is.null(ch)){
+      ch <- ""
+    }
+
+
 
     # Try to parse the raw data as JSON. This will fail if
     # the response is bigger than the 8MB, but the rest of the
@@ -626,9 +670,12 @@ npn_get_data <- function(
     # Try to parse the frame as JSON again, this time hoping for a
     # successful run.
     if(is.null(json)){
+
+
       break_point <- regexpr("}[^}]*$",raw_data)
       frame <- paste0(substr(raw_data,1,break_point), "]")
-      chunk <- substr(raw_data,break_point+2,nchar(raw_data))
+      ch <- substr(raw_data,break_point+2,nchar(raw_data))
+      rm(raw_data)
 
       json <- tryCatch({
         jsonlite::fromJSON(frame)
@@ -636,8 +683,11 @@ npn_get_data <- function(
         return(NULL)
       })
 
+      rm(frame)
+
 
     }
+
 
     # Reconcile all the points in the frame with the SIX leaf raster,
     # if it's been requested.
@@ -698,12 +748,16 @@ npn_get_data <- function(
     }
 
     i<-i+1
-
+    rm(json)
+    gc()
 
   }
 
 
+
+
   close(con)
+
 
   # If the user asks for the data to be saved to file then
   # there is nothing to return.
@@ -729,13 +783,12 @@ npn_get_data <- function(
 #' @return The URL, as a string
 #' @keywords internal
 npn_get_download_url <- function(
-  endpoint,
-  query_vars
+  endpoint
 ){
   url<- paste0(base(), endpoint)
-  query_str <- paste(names(query_vars),"=",query_vars,sep="",collapse = '&')
+#  query_str <- paste(names(query_vars),"=",query_vars,sep="",collapse = '&')
 
-  return (paste0(url,query_str))
+  return (paste0(url))
 }
 
 
@@ -766,6 +819,7 @@ npn_get_common_query_vars <- function(
   pheno_class_ids= NULL,
   taxonomy_aggregate=NULL,
   pheno_class_aggregate=NULL,
+  wkt=NULL,
   email = NULL
 ){
 
@@ -785,15 +839,34 @@ npn_get_common_query_vars <- function(
     class_ids = NULL
   }
 
+  if(!is.null(wkt)){
+
+
+    station_ids_shape <- tryCatch({
+      shape_stations <- npn_stations_by_location(wkt)
+      station_ids_shape <- shape_stations$station_id
+    },error=function(msg){
+      print("Unable to filter by shape file.")
+      print(msg)
+    })
+
+    if(!is.null(station_ids)){
+      station_ids <- c(station_ids,station_ids_shape)
+    }else{
+      station_ids <- station_ids_shape
+    }
+
+  }
+
   query = c(
     list(
       request_src = URLencode(request_source),
-      climate_data = (if(climate_data) 1 else 0)
+      climate_data = (if(climate_data) "1" else "0")
     ),
     # All these variables take a multiplicity of possible parameters, this will help put them all together.
 
     npn_createArgList("species_id", species_ids),
-    npn_createArgList("site_id", station_ids),
+    npn_createArgList("station_id", station_ids),
     npn_createArgList("species_type", species_types),
     npn_createArgList("network_id", network_ids),
     npn_createArgList("state", states),
@@ -833,25 +906,4 @@ npn_get_common_query_vars <- function(
   return(query)
 
 }
-
-#' @export
-npn_get_modis_data <- function (appeears_login,appeears_pw,data,year){
-
-  token <- appeears::appeears_start_session(appeears_login,appeears_pw)
-  layers <- c('Onset_Greenness_Increase','Onset_Greenness_Maximum','Onset_Greenness_Decrease','Onset_Greenness_Minimum')
-  start_date <- paste0(year,"-01-01")
-  end_date <- paste0(year,"-12-31")
-  points <- data.frame(lat=data$latitude,long=data$longitude)
-  points <- unique(points[,])
-  task_name <- paste0("rNPN-",Sys.time())
-
-  task <- appeears::appeears_start_task(token, task_name, start_date, end_date, 'MCD12Q2.005',layers, 'point',points)
-
-}
-
-npn_convert_modis_date_to_current_year <- function(days){
-
-
-}
-
 

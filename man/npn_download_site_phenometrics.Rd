@@ -6,7 +6,7 @@
 \title{Download Site Phenometrics}
 \usage{
 npn_download_site_phenometrics(request_source, years,
-  num_days_quality_filter = 30, coords = NULL, species_ids = NULL,
+  num_days_quality_filter = "30", coords = NULL, species_ids = NULL,
   family_ids = NULL, order_ids = NULL, class_ids = NULL,
   pheno_class_ids = NULL, station_ids = NULL, species_types = NULL,
   network_ids = NULL, states = NULL, phenophase_ids = NULL,
@@ -15,10 +15,10 @@ npn_download_site_phenometrics(request_source, years,
   download_path = NULL, six_leaf_layer = FALSE,
   six_bloom_layer = FALSE, agdd_layer = NULL, six_sub_model = NULL,
   additional_layers = NULL, taxonomy_aggregate = NULL,
-  pheno_class_aggregate = NULL, shape_file = NULL)
+  pheno_class_aggregate = NULL, wkt = NULL)
 
 npn_download_site_phenometrics(request_source, years,
-  num_days_quality_filter = 30, coords = NULL, species_ids = NULL,
+  num_days_quality_filter = "30", coords = NULL, species_ids = NULL,
   family_ids = NULL, order_ids = NULL, class_ids = NULL,
   pheno_class_ids = NULL, station_ids = NULL, species_types = NULL,
   network_ids = NULL, states = NULL, phenophase_ids = NULL,
@@ -27,7 +27,7 @@ npn_download_site_phenometrics(request_source, years,
   download_path = NULL, six_leaf_layer = FALSE,
   six_bloom_layer = FALSE, agdd_layer = NULL, six_sub_model = NULL,
   additional_layers = NULL, taxonomy_aggregate = NULL,
-  pheno_class_aggregate = NULL, shape_file = NULL)
+  pheno_class_aggregate = NULL, wkt = NULL)
 }
 \arguments{
 \item{request_source}{Required field, string. Self-identify who is making requests to the data service}

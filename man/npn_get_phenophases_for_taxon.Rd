@@ -13,10 +13,11 @@ npn_get_phenophases_for_taxon(family_ids = NULL, order_ids = NULL,
 \item{order_ids}{List of taxonomic order ids to search for.}
 
 \item{class_ids}{List of taxonomic class ids to search for}
-}
-\value{
-_all Takes either 0 or 1 as input and defaults to 0. For this function to return anything, either this value must be set to 1
-or date must be set.
+
+\item{date}{Specify the date of interst. For this function to return anything, either this value must be set of return_all must be 1.}
+
+\item{return_all}{Takes either 0 or 1 as input and defaults to 0. For this function to return anything, either this value must be set to 1
+or date must be set.}
 }
 \description{
 This function gets a list of phenophases that are applicable for a provided taxonomic grouping, e.g. family, order.

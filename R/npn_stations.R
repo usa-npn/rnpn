@@ -59,10 +59,12 @@ npn_stations_by_location <- function( wkt, ...){
 
   end_point <- 'stations/getStationsByLocation.json'
   if(!is.null(wkt)){
+
     tt <- lapply(wkt, function(z){
-      npn_GET(paste0(base(), end_point), list(wkt = z), TRUE, ...)
+      npn_GET(paste0(base(), end_point), list("wkt" = wkt), TRUE, ...)
     })
     ldfply(tt)
+
   }else{
     tibble::as_data_frame(
       npn_GET(paste0(base(), end_point), list(), TRUE, ...)

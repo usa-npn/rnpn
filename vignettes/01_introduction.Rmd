@@ -1,0 +1,71 @@
+---
+title: "01. Introduction to National Phenology Network Observational Data"
+author: "Lee Marsh"
+date: "October 4, 2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Introduction
+
+The USA National Phenology Network (USA-NPN) is a USGS funded organization that collects phenological observation records from volunteer and professional scientists to better understand the impact of changes in the environment on the timing of species’ lifecycles. The USA-NPN also provides a number of raster-based climatological data sets and phenological models. These in-situ observation and geospatial, modeled datasets are available through a number of tools and data services.
+
+The USA-NPN R library, “rnpn”, is primarily a data access service for USA-NPN data products, serving as a wrapper to the USA-NPN REST based web services. (link). This guide details how to use the library to access and work with all USA-NPN data types.
+
+
+## Accessing USA-NPN Observational Data
+
+USA-NPN Observational data are collected on the ground by citizen and professional observers following standardized protocols, using the Nature’s Notebook platform. The data are available 2009 to present, and come in four formats or data types: Status & Intensity, Individual Phenometrics, Site Phenometrics and Magnitude Phenometrics. An overview of the differences is provided in the figure below, and each type is detailed in the following sections. For a complete description of the USA-NPN approach and notes for working with each data type see the [Open File Report on USA-NPN Observational Data](https://pubs.usgs.gov/of/2018/1060/ofr20181060.pdf).
+
+
+In Nature’s Notebook, observers register a location, and then at each location they register any number of individual plants or animal species. The expectation is that the user then takes regular observations on each individual/species at a regular interval. Phenological status is reported by yes or no answers to a series of questions, for example, “Do you see leaves?” or “Do you see active individuals?”. In contrast to traditional monitoring of annual “first” events (for example, date of first leaf or first robin), this approach captures absence data when the phenophase is not occurring and repeat events. Each observation is comprised of a series of 1, 0 and -1 values, representing yes/no/uncertain for each possible phenophase for the plant on that date. To explore data in this native “Status and Intensity” format, see the vignette by the same name.
+
+A few considerations and functions apply across all USA-NPN Observational data types. 
+
+### Basic format for for Observational data calls
+
+The basic format for an observational data call in the rnpn library is:
+
+
+```{r eval=FALSE}
+npn_download_[NAME OF DATA TYPE] (
+  request_source = [NULL]
+  year =  [NULL]
+  species_ID = [NULL]
+)                  
+```
+
+‘Request source’ should usually be populated with your full name or the name of the organization you represent. Species_ID is the unique identifer for all the available plants and animals in the USA-NPN database.
+You can create a table of all available species and their ID numbers:
+
+```{r eval=FALSE}
+species <- npn_species()
+```
+
+Search for a species by common name from the full list:
+```{r eval=FALSE}
+species[species$common_name=="red maple",]
+```
+
+
+There are many parameters which can be set beyond these basic ones, depending on the data type, and further detailed in the other vignettes featured in this package.
+
+
+### Required Parameters
+
+Note that specifying the year(s) of interest is a required parameter.
+
+There’s also another required field, “request_source”, which is a user-provided, self-identifying string. This allows the client to provide some information about who is accessing the data. Knowing who is using the data is very helpful for our staff to report the impact of the USA-NPN to the scientific community. The input provided here is entirely honor-based.
+
+
+### Find stations at which a species has been observed
+
+You can also now look up which stations have a registered plant for a particular species. In the example below, we use the species ID for red maple, which we were able to find through the npn_species() function, to find all stations with that species.
+
+```{r eval=FALSE}
+npn_stations_with_spp (3)
+```
+

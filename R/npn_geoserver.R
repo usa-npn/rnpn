@@ -86,12 +86,12 @@ npn_download_geospatial <- function (
     z <- tempfile()
   }
 
-  s <- "&SUBSET="
+  s <- "&"
   param <- tryCatch({
     as.Date(date)
-    paste0(s,"time(\"",date,"T00:00:00.000Z\")")
+    paste0(s,"SUBSET=time(\"",date,"T00:00:00.000Z\")")
   },error=function(msg){
-    paste0(s,"elevation(",date,")")
+    paste0(s,"elevation=",date)
   })
 
 
@@ -291,9 +291,9 @@ lpdaac_get_point_data <- function(
 #' to request, no special logic is present in making the decision which layer to retrieve
 #' based on those parameters.
 #'
-#' @year String representation of the year being requested
-#' @phenophase The SI-x phenophase being requested, 'leaf' or 'bloom'; defaults to 'leaf'
-#' @sub_model The SI-x sub model to use. Defaults to NULL (no sub-model)
+#' @param year String representation of the year being requested
+#' @param phenophase The SI-x phenophase being requested, 'leaf' or 'bloom'; defaults to 'leaf'
+#' @param sub_model The SI-x sub model to use. Defaults to NULL (no sub-model)
 #' @return Returns a raster object of the appropriate SI-x layer
 #' @keywords internal
 resolve_six_raster <- function(
@@ -335,9 +335,9 @@ resolve_six_raster <- function(
 #'
 #' Utility function to intersect point based observational data with Geospatial
 #' data values. This will take a data frame and append a new column to it.
-#' @ras Raster containing geospatial data
-#' @col_label The name of the column to append to the data frame
-#' @df The data frame which to append the new column of geospatial point values. For
+#' @param ras Raster containing geospatial data
+#' @param col_label The name of the column to append to the data frame
+#' @param df The data frame which to append the new column of geospatial point values. For
 #' this function to work, df must contain two columns: "longitude", and "latitude"
 #' @return The data frame, now appended with the new geospatial data values' column
 #' @keywords internal

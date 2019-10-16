@@ -16,16 +16,16 @@ Imports:
     stats,
     httr (>= 1.1.0),
     jsonlite (>= 0.9.19),
-    plyr,
     data.table (>= 1.9.6),
+    sf,
     tibble,
     curl,
-    sf,
     raster,
     rgdal,
     XML,
     sp,
-    tidyverse
+    tidyverse,
+    magrittr
 Suggests:
     ggplot2,
     testthat,

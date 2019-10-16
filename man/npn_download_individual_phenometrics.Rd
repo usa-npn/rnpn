@@ -13,7 +13,7 @@ npn_download_individual_phenometrics(request_source, years,
   family_ids = NULL, order_ids = NULL, class_ids = NULL,
   pheno_class_ids = NULL, email = NULL, download_path = NULL,
   six_leaf_layer = FALSE, six_bloom_layer = FALSE, agdd_layer = NULL,
-  six_sub_model = NULL, additional_layers = NULL, shape_file = NULL)
+  six_sub_model = NULL, additional_layers = NULL, wkt = NULL)
 
 npn_download_individual_phenometrics(request_source, years,
   coords = NULL, individual_ids = NULL, species_ids = NULL,
@@ -23,7 +23,7 @@ npn_download_individual_phenometrics(request_source, years,
   family_ids = NULL, order_ids = NULL, class_ids = NULL,
   pheno_class_ids = NULL, email = NULL, download_path = NULL,
   six_leaf_layer = FALSE, six_bloom_layer = FALSE, agdd_layer = NULL,
-  six_sub_model = NULL, additional_layers = NULL, shape_file = NULL)
+  six_sub_model = NULL, additional_layers = NULL, wkt = NULL)
 }
 \arguments{
 \item{request_source}{Required field, string. Self-identify who is making requests to the data service}

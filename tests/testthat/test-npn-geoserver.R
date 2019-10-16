@@ -1,0 +1,67 @@
+context("npn_geospatial")
+
+skip("Move along")
+test_that("npn_get_layer_details works",{
+  layers <- npn_get_layer_details()
+
+  expect_is(layers,"data.frame")
+  expect_gt(nrow(layers),50)
+
+})
+
+test_that("npn_download_geospatial works", {
+  library(raster)
+  ras <- npn_download_geospatial("gdd:agdd",date="2018-05-05")
+  expect_is(ras,"RasterLayer")
+
+
+  npn_download_geospatial("gdd:agdd",date="2018-05-05",output_path = "testing.tiff")
+  expect_equal(file.exists("testing.tiff"),TRUE)
+  file_raster <- raster("testing.tiff")
+
+  expect_equal(cellStats(ras,max),cellStats(file_raster,max))
+  file.remove("testing.tiff")
+
+  ras <- npn_download_geospatial("gdd:30yr_avg_agdd",date=50)
+  expect_is(ras,"RasterLayer")
+  expect_error(npn_download_geospatial("gdd:30yr_avg_agdd",date="2018-01-01"))
+
+  ras <- npn_download_geospatial("inca:midgup_median_nad83_02deg",date=NULL)
+  expect_is(ras,"RasterLayer")
+  expect_error(npn_download_geospatial("inca:midgup_median_nad83_02deg",date="2016-01-01"))
+
+})
+
+
+test_that("npn_get_point_data functions", {
+
+  value <- npn_get_point_data("gdd:agdd",38.8,-110.5,"2019-05-05")
+  expect_equal(round(value), 1233)
+
+  value <- npn_get_point_data("si-x:average_leaf_prism",38.8,-110.5,"1990-01-01")
+  expect_equal(value, 83)
+
+  #No data in Canada
+  expect_error(npn_get_point_data("si-x:average_leaf_prism",60.916600, -123.037793,"1990-01-01"))
+
+})
+
+
+test_that("npn_custom_agdd functions",{
+
+  res <- npn_get_custom_agdd_time_series(
+    "double-sine",
+    "2019-01-01",
+    "2019-01-15",
+    25,
+    "NCEP",
+    "fahrenheit",
+    39.7,
+    -107.5,
+    upper_threshold=90
+  )
+
+  expect_is(res,"data.frame")
+  expect_equal(round(res[15,"agdd"]),34)
+
+})

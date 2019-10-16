@@ -9,5 +9,6 @@
  \item \code{\link{npn_allobssp}}: Removed.
  \item \code{\link{npn_indspatstations}}: Removed.
  \item \code{\link{npn_indsatstations}}: Removed.
+ \item \code{\link{npn_stationsbystate}}: Removed.
 }
 }
