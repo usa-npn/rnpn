@@ -12,7 +12,7 @@
 #' npn_species_id(ids = 3)
 #' }
 npn_species <- function(...) {
-  tibble::as_data_frame(
+  tibble::as_tibble(
     npn_GET(paste0(base(), 'species/getSpecies.json'), list(), TRUE, ...)
   )
 }
@@ -90,7 +90,7 @@ npn_species_types <- function(kingdom="Plantae", ...) {
   }
 
   if(!is.null(end_point)){
-    tibble::as_data_frame(
+    tibble::as.tibble(
       npn_GET(paste0(base(), end_point), list(), TRUE, ...)
     )
   }else{

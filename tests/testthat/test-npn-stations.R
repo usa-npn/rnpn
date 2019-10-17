@@ -1,10 +1,10 @@
 context("npn_stations")
 
 
-skip("Move on")
-
 test_that("npn_stations functions", {
-  skip("Move on")
+  npn_set_env(get_test_env())
+
+
   stations <- npn_stations()
 
   expect_is(stations, "data.frame")
@@ -24,6 +24,9 @@ test_that("npn_stations functions", {
 
 
 test_that("npn_stations_by_state functions", {
+  npn_set_env(get_test_env())
+
+
   res <- npn_stations_by_state()
 
   expect_is(res, "data.frame")
@@ -33,8 +36,9 @@ test_that("npn_stations_by_state functions", {
 
 
 test_that("npn_stations_by_location functions",{
+  npn_set_env(get_test_env())
 
-  skip("This function not on OPS yet")
+
   stations <- npn_stations_by_location(wkt="POLYGON((-110.94484396954107 32.23623109416672,-110.96166678448247 32.23594069208043,-110.95960684795904 32.21328646993733,-110.94244071026372 32.21343170728929,-110.93935080547857 32.23216538049456,-110.94484396954107 32.23623109416672))")
 
   expect_is(stations,"data.frame")
@@ -48,6 +52,8 @@ test_that("npn_stations_by_location functions",{
 })
 
 test_that("npn_stations_with_spp functions",{
+  npn_set_env(get_test_env())
+
 
   stations <- npn_stations_with_spp(3)
 

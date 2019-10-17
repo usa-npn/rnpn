@@ -1,8 +1,9 @@
 context("npn_phenophases")
 
-skip("moving on")
 
 test_that("npn_phenophases works", {
+  npn_set_env(get_test_env())
+
   pp <- npn_phenophases()
 
   expect_is(pp, "data.frame")
@@ -14,6 +15,9 @@ test_that("npn_phenophases works", {
 
 
 test_that("npn_phenophase_definitions works", {
+  npn_set_env(get_test_env())
+
+
   pp <- npn_phenophase_definitions()
 
   expect_is(pp, "data.frame")
@@ -24,6 +28,9 @@ test_that("npn_phenophase_definitions works", {
 })
 
 test_that("npn_phenophase_details works", {
+  npn_set_env(get_test_env())
+
+
   pd <- npn_phenophase_details(56)
 
   expect_is(pd, "data.frame")
@@ -43,6 +50,9 @@ test_that("npn_phenophase_details works", {
 
 
 test_that("npn_phenophases_by_species works",{
+  npn_set_env(get_test_env())
+
+
   pp <- npn_phenophases_by_species(3,"2018-05-05")
 
   expect_is(pp,"data.frame")
@@ -53,6 +63,9 @@ test_that("npn_phenophases_by_species works",{
 })
 
 test_that("npn_pheno_classes works",{
+  npn_set_env(get_test_env())
+
+
   pc <- npn_pheno_classes()
 
   expect_is(pc,"data.frame")
@@ -61,6 +74,9 @@ test_that("npn_pheno_classes works",{
 })
 
 test_that("npn_abundance_categories works",{
+  npn_set_env(get_test_env())
+
+
   ac <- npn_abundance_categories()
 
   expect_is(ac,"data.frame")
@@ -70,7 +86,9 @@ test_that("npn_abundance_categories works",{
 
 
 test_that("npn_get_phenophases_for_taxon works", {
-  npn_set_env("dev")
+  npn_set_env(get_test_env())
+
+
   pp <- npn_get_phenophases_for_taxon(class_ids=5,date="2018-05-05")
 
   expect_is(pp,"list")

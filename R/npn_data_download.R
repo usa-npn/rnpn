@@ -33,6 +33,7 @@
 #' @param additional_fields List of additional fields to be included in the search results, e.g. c( "Station_Name", "Plant_Nickname" )
 #' @param climate_data Boolean value indicating that all climate variables should be included in additional_fields
 #' @param ip_address Optional field, string. IP Address of user requesting data. Used for generating data reports
+#' @param dataset_ids List of unique IDs for searching based on dataset, e.g. NEON or GRSM c(17,15)
 #' @param email Optional field, string. Email of user requesting data.
 #' @param download_path Optional file path to which search results should be re-directed for later use.
 #' @param six_leaf_layer Boolean value when set to true will attempt to resolve the date of the observation to a spring index, leafing
@@ -76,6 +77,7 @@ npn_download_status_data = function(
   additional_fields = NULL,
   climate_data = FALSE,
   ip_address = NULL,
+  dataset_ids = NULL,
   email = NULL,
   download_path = NULL,
   six_leaf_layer=FALSE,
@@ -100,6 +102,7 @@ npn_download_status_data = function(
                                      additional_fields,
                                      climate_data,
                                      ip_address,
+                                     dataset_ids,
                   									 family_ids,
                   									 order_ids,
                   									 class_ids,
@@ -158,6 +161,7 @@ npn_download_status_data = function(
 #' @param additional_fields List of additional fields to be included in the search results, e.g. c ( "Station_Name", "Plant_Nickname" )
 #' @param climate_data Boolean value indicating that all climate variables should be included in additional_fields.
 #' @param ip_address Optional field, string. IP Address of user requesting data. Used for generating data reports
+#' @param dataset_ids List of unique IDs for searching based on dataset, e.g. NEON or GRSM c(17,15)
 #' @param email Optional field, string. Email of user requesting data.
 #' @param download_path Optional file path to which search results should be re-directed for later use.
 #' @param six_leaf_layer Boolean value when set to true will attempt to resolve the date of the observation to a spring index, leafing
@@ -196,6 +200,7 @@ npn_download_individual_phenometrics <- function(
   additional_fields = NULL,
   climate_data = FALSE,
   ip_address = NULL,
+  dataset_ids = NULL,
   family_ids = NULL,
   order_ids = NULL,
   class_ids = NULL,
@@ -222,6 +227,7 @@ npn_download_individual_phenometrics <- function(
                                      additional_fields,
                                      climate_data,
                                      ip_address,
+                                     dataset_ids,
                                      family_ids,
                                      order_ids,
                                      class_ids,
@@ -290,6 +296,7 @@ npn_download_individual_phenometrics <- function(
 #' @param additional_fields List of additional fields to be included in the search results, e.g. ( "Station_Name", "Plant_Nickname" )
 #' @param climate_data Boolean value indicating that all climate variables should be included in additional_fields
 #' @param ip_address Optional field, string. IP Address of user requesting data. Used for generating data reports
+#' @param dataset_ids List of unique IDs for searching based on dataset, e.g. NEON or GRSM c(17,15)
 #' @param email Optional field, string. Email of user requesting data.
 #' @param download_path Optional file path to which search results should be re-directed for later use.
 #' @param six_leaf_layer Boolean value when set to true will attempt to resolve the date of the observation to a spring index, leafing
@@ -332,6 +339,7 @@ npn_download_site_phenometrics <- function(
   additional_fields = NULL,
   climate_data = FALSE,
   ip_address = NULL,
+  dataset_ids = NULL,
   email = NULL,
   download_path = NULL,
   six_leaf_layer=FALSE,
@@ -356,6 +364,7 @@ npn_download_site_phenometrics <- function(
                                      additional_fields,
                                      climate_data,
                                      ip_address,
+                                     dataset_ids,
                                      family_ids,
                                      order_ids,
                                      class_ids,
@@ -424,6 +433,7 @@ npn_download_site_phenometrics <- function(
 #' @param additional_fields List of additional fields to be included in the search results, e.g. ( "Station_Name", "Plant_Nickname" )
 #' @param climate_data Boolean value indicating that all climate variables should be included in additional_fields
 #' @param ip_address Optional field, string. IP Address of user requesting data. Used for generating data reports
+#' @param dataset_ids List of unique IDs for searching based on dataset, e.g. NEON or GRSM c(17,15)
 #' @param email Optional field, string. Email of user requesting data.
 #' @param download_path Optional file path to which search results should be re-directed for later use.
 #'
@@ -454,6 +464,7 @@ npn_download_magnitude_phenometrics <- function(
   additional_fields = NULL,
   climate_data = FALSE,
   ip_address = NULL,
+  dataset_ids = NULL,
   email = NULL,
   download_path = NULL,
   taxonomy_aggregate=NULL,
@@ -473,6 +484,7 @@ npn_download_magnitude_phenometrics <- function(
                                      additional_fields,
                                      climate_data,
                                      ip_address,
+                                     dataset_ids,
                                      family_ids,
                                      order_ids,
                                      class_ids,
@@ -813,6 +825,7 @@ npn_get_common_query_vars <- function(
   additional_fields = NULL,
   climate_data = FALSE,
   ip_address = NULL,
+  dataset_ids = NULL,
   family_ids = NULL,
   order_ids = NULL,
   class_ids = NULL,
@@ -869,6 +882,7 @@ npn_get_common_query_vars <- function(
     npn_createArgList("station_id", station_ids),
     npn_createArgList("species_type", species_types),
     npn_createArgList("network_id", network_ids),
+    npn_createArgList("dataset_ids", dataset_ids),
     npn_createArgList("state", states),
     npn_createArgList("phenophase_id", phenophase_ids),
     npn_createArgList("functional_type", functional_types),
@@ -896,11 +910,11 @@ npn_get_common_query_vars <- function(
   }
 
   if(!is.null(taxonomy_aggregate) && taxonomy_aggregate){
-    query['taxonomy_aggregate'] = 1
+    query['taxonomy_aggregate'] = "1"
   }
 
   if(!is.null(pheno_class_aggregate) && pheno_class_aggregate){
-    query['pheno_class_aggregate'] = 1
+    query['pheno_class_aggregate'] = "1"
   }
 
   return(query)

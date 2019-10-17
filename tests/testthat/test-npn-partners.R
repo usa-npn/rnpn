@@ -1,8 +1,9 @@
 context("npn_partners")
 
-skip("Moving on")
-
 test_that("npn_groups works",{
+  npn_set_env(get_test_env())
+
+
   groups <- npn_groups()
 
   expect_is(groups,"data.frame")

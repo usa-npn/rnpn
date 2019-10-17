@@ -11,6 +11,9 @@ npn_set_env <- function (env = "ops"){
   env <<- env
 }
 
+get_test_env <- function(){
+  return("dev")
+}
 
 base <- function(){
 

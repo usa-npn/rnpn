@@ -87,12 +87,16 @@ npn_download_geospatial <- function (
   }
 
   s <- "&"
-  param <- tryCatch({
-    as.Date(date)
-    paste0(s,"SUBSET=time(\"",date,"T00:00:00.000Z\")")
-  },error=function(msg){
-    paste0(s,"elevation=",date)
-  })
+  if(!is.null(date)){
+    param <- tryCatch({
+      as.Date(date)
+      paste0(s,"SUBSET=time(\"",date,"T00:00:00.000Z\")")
+    },error=function(msg){
+      paste0(s,"SUBSET=elevation(",date,")")
+    })
+  }else{
+    param <- ""
+  }
 
 
   url <- paste0(base_geoserver(), "format=geotiff&coverageId=",coverage_id,param)

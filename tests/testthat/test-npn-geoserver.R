@@ -1,7 +1,10 @@
 context("npn_geospatial")
 
-skip("Move along")
+
 test_that("npn_get_layer_details works",{
+  npn_set_env(get_test_env())
+
+
   layers <- npn_get_layer_details()
 
   expect_is(layers,"data.frame")
@@ -10,6 +13,8 @@ test_that("npn_get_layer_details works",{
 })
 
 test_that("npn_download_geospatial works", {
+  npn_set_env(get_test_env())
+
   library(raster)
   ras <- npn_download_geospatial("gdd:agdd",date="2018-05-05")
   expect_is(ras,"RasterLayer")
@@ -26,6 +31,8 @@ test_that("npn_download_geospatial works", {
   expect_is(ras,"RasterLayer")
   expect_error(npn_download_geospatial("gdd:30yr_avg_agdd",date="2018-01-01"))
 
+  #This layer not on DEV
+  npn_set_env("ops")
   ras <- npn_download_geospatial("inca:midgup_median_nad83_02deg",date=NULL)
   expect_is(ras,"RasterLayer")
   expect_error(npn_download_geospatial("inca:midgup_median_nad83_02deg",date="2016-01-01"))
@@ -34,9 +41,12 @@ test_that("npn_download_geospatial works", {
 
 
 test_that("npn_get_point_data functions", {
+  npn_set_env(get_test_env())
+
 
   value <- npn_get_point_data("gdd:agdd",38.8,-110.5,"2019-05-05")
-  expect_equal(round(value), 1233)
+  expect_lt(round(value), 1235)
+  expect_gt(round(value), 1232)
 
   value <- npn_get_point_data("si-x:average_leaf_prism",38.8,-110.5,"1990-01-01")
   expect_equal(value, 83)
@@ -48,6 +58,8 @@ test_that("npn_get_point_data functions", {
 
 
 test_that("npn_custom_agdd functions",{
+  npn_set_env(get_test_env())
+
 
   res <- npn_get_custom_agdd_time_series(
     "double-sine",

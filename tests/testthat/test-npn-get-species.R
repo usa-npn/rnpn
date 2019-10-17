@@ -1,11 +1,12 @@
 context("npn_species")
 
-skip("Move along")
+
 
 test_that("npn_species returns a data frame", {
+  npn_set_env(get_test_env())
+
+
   species <- npn_species()
-
-
   expect_is(species, "data.frame")
 
   #should expect a large data frame with at least this many records
@@ -14,6 +15,9 @@ test_that("npn_species returns a data frame", {
 })
 
 test_that("npn_species_id working", {
+  npn_set_env(get_test_env())
+
+
   species <- npn_species_id(3)
 
   expect_is(species, "data.frame")
@@ -22,8 +26,10 @@ test_that("npn_species_id working", {
 
 
 test_that("npn_species_state works",{
-  species_state <- npn_species_state("AZ")
+  npn_set_env(get_test_env())
 
+
+  species_state <- npn_species_state("AZ")
   expect_is(species_state, "data.frame")
   #should see at least this many species
   expect_gt(nrow(species_state),10)
@@ -40,6 +46,8 @@ test_that("npn_species_state works",{
 })
 
 test_that("npn_species_search works",{
+  npn_set_env(get_test_env())
+
 
   species <- npn_species_search()
   expect_is(species, "data.frame")
@@ -53,6 +61,9 @@ test_that("npn_species_search works",{
 })
 
 test_that("npn_species_types",{
+  npn_set_env(get_test_env())
+
+
   #There's at least 15 things in any of these cases
   t <- npn_species_types()
   expect_is(t, "data.frame")

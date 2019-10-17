@@ -2,6 +2,7 @@
 
 export(npn_abundance_categories)
 export(npn_allobssp)
+export(npn_datasets)
 export(npn_download_geospatial)
 export(npn_download_individual_phenometrics)
 export(npn_download_magnitude_phenometrics)
