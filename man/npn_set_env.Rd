@@ -6,6 +6,9 @@
 \usage{
 npn_set_env(env = "ops")
 }
+\arguments{
+\item{env}{The environment to use. Should be "ops" or "dev"}
+}
 \description{
 By default this library will call the NPN's production services
 but in some cases it's preferable to access the development web services

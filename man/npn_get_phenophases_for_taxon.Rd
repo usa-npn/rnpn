@@ -18,6 +18,8 @@ npn_get_phenophases_for_taxon(family_ids = NULL, order_ids = NULL,
 
 \item{return_all}{Takes either 0 or 1 as input and defaults to 0. For this function to return anything, either this value must be set to 1
 or date must be set.}
+
+\item{...}{Curl options passed on to \code{\link[httr]{GET}}}
 }
 \description{
 This function gets a list of phenophases that are applicable for a provided taxonomic grouping, e.g. family, order.

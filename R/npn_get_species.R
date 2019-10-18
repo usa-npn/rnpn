@@ -78,6 +78,7 @@ npn_species_search <- function(network=NULL, start_date=NULL, end_date=NULL, sta
 #' Return all plant or animal functional types used in the NPN database.
 #'
 #' @param kingdom The kingdom for which to return functional types; either 'Animalia' or 'Plantae'. Defaults to Plantae.
+#' @template curl
 #' @export
 npn_species_types <- function(kingdom="Plantae", ...) {
   end_point = NULL

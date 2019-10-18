@@ -6,6 +6,9 @@
 \usage{
 npn_pheno_classes(...)
 }
+\arguments{
+\item{...}{Curl options passed on to \code{\link[httr]{GET}}}
+}
 \description{
 Gets information about all pheno classes, which a higher-level order of phenophases
 }

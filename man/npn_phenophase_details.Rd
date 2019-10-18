@@ -8,6 +8,8 @@ npn_phenophase_details(ids, ...)
 }
 \arguments{
 \item{ids}{List of phenophase ids for which to retrieve additional details.}
+
+\item{...}{Curl options passed on to \code{\link[httr]{GET}}}
 }
 \description{
 Retrieves additional details for select phenophases, including full list of applicable phenophase definition IDs and phenophase

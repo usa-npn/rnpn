@@ -7,6 +7,20 @@
 npn_download_geospatial(coverage_id, date, format = "geotiff",
   output_path = NULL)
 }
+\arguments{
+\item{coverage_id}{The coverage id (machine name) of the layer for which to retrieve.
+Applicable values can be found via the npn_get_layer_details() function under the 'name' column.}
+
+\item{date}{Specify the date param for the layer retrieved. This can be a calendar
+date formatted YYYY-mm-dd or it could be a string integer representing day of year.
+It can also be NULL in some cases. Which to use depends entirely on the layer being
+requested. More information available from the npn_get_layer_details() function.}
+
+\item{format}{The output format of the raster layer retrieved. Defaults to GeoTIFF.}
+
+\item{output_path}{Optional value. When set, the raster will be piped to the file
+path specified. When left unset, this function will return a raster object.}
+}
 \value{
 Data frame containing all layer details as specified in function description.
 }

@@ -25,7 +25,8 @@ Imports:
     XML,
     sp,
     tidyverse,
-    magrittr
+    magrittr,
+    plyr
 Suggests:
     ggplot2,
     testthat,

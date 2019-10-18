@@ -53,8 +53,22 @@ npn_stations_by_state <- function(...) {
     .Names = c("state", "number_stations"))
 }
 
-
+#' Get station data based on a WKT defined geography.
+#'
+#' Takes a Well-Known Text based geography as input and returns data for all
+#' stations, including unique IDs, within that boundary.
+#'
 #' @export
+#' @template curl
+#' @param wkt Required field specifying the WKT geography to use.
+#' @return Station data as as data.frame.
+#' @examples \dontrun{
+#' head( npn_stationsbystate(wkt="POLYGON((
+#' -110.94484396954107 32.23623109416672,-110.96166678448247 32.23594069208043,
+#' -110.95960684795904 32.21328646993733,-110.94244071026372 32.21343170728929,
+#' -110.93935080547857 32.23216538049456,-110.94484396954107 32.23623109416672))")
+#' )
+#' }
 npn_stations_by_location <- function( wkt, ...){
 
   end_point <- 'stations/getStationsByLocation.json'
@@ -66,7 +80,7 @@ npn_stations_by_location <- function( wkt, ...){
     ldfply(tt)
 
   }else{
-    tibble::as_data_frame(
+    tibble::as.tibble(
       npn_GET(paste0(base(), end_point), list(), TRUE, ...)
     )
   }

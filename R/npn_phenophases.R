@@ -35,6 +35,7 @@ npn_phenophase_definitions <- function ( ... ){
 #' revision notes over time
 #'
 #' @param ids List of phenophase ids for which to retrieve additional details.
+#' @template curl
 #' @export
 npn_phenophase_details <- function (ids, ...){
   tibble::as_data_frame(
@@ -49,6 +50,7 @@ npn_phenophase_details <- function (ids, ...){
 #' any given species can change from year to year
 #' @param species_ids List of species_ids for which to get phenophase information
 #' @param date The applicable date for which to retrieve phenophases for the given species
+#' @template curl
 #' @export
 npn_phenophases_by_species <- function (species_ids, date, ...){
   arg_list<-npn_createArgList("species_id", species_ids)
@@ -62,6 +64,7 @@ npn_phenophases_by_species <- function (species_ids, date, ...){
 #' Gets information about all pheno classes, which a higher-level order of phenophases
 #'
 #' @export
+#' @template curl
 npn_pheno_classes <- function (...){
   tibble::as_data_frame(
     npn_GET(paste0(base(), 'phenophases/getPhenoClasses.json'), list(), TRUE, ...)
@@ -89,6 +92,7 @@ npn_pheno_classes <- function (...){
 #' @param return_all Takes either 0 or 1 as input and defaults to 0. For this function to return anything, either this value must be set to 1
 #' or date must be set.
 #' @export
+#' @template curl
 npn_get_phenophases_for_taxon <- function (family_ids=NULL,order_ids=NULL,class_ids=NULL,date=NULL,return_all=0, ...){
   family_list <- npn_createArgList("family_id", family_ids)
   class_list <- npn_createArgList("class_id", class_ids)
@@ -98,9 +102,10 @@ npn_get_phenophases_for_taxon <- function (family_ids=NULL,order_ids=NULL,class_
 
 #' Get Abundance Categories
 #'
-#' Gets data on all abundance/intensity categories and includes a data frame of applicable abundance/intensity values for each category
-
+#' Gets data on all abundance/intensity categories and includes a data frame of
+#' applicable abundance/intensity values for each category
 #' @export
+#' @template curl
 npn_abundance_categories <- function ( ...){
 
 

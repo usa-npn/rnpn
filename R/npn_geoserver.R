@@ -69,6 +69,15 @@ npn_get_layer_details <- function(){
 #'
 #' @return Data frame containing all layer details as specified in function description.
 #' @export
+#' @param coverage_id The coverage id (machine name) of the layer for which to retrieve.
+#' Applicable values can be found via the npn_get_layer_details() function under the 'name' column.
+#' @param date Specify the date param for the layer retrieved. This can be a calendar
+#' date formatted YYYY-mm-dd or it could be a string integer representing day of year.
+#' It can also be NULL in some cases. Which to use depends entirely on the layer being
+#' requested. More information available from the npn_get_layer_details() function.
+#' @param format The output format of the raster layer retrieved. Defaults to GeoTIFF.
+#' @param output_path Optional value. When set, the raster will be piped to the file
+#' path specified. When left unset, this function will return a raster object.
 #' @examples \dontrun{
 #' ras<-npn_download_geospatial("si-x:30yr_avg_six_bloom","255")
 #' }
@@ -131,7 +140,7 @@ npn_download_geospatial <- function (
 #' @param lat The latitude of the queried point
 #' @param long The longitude of the queried point
 #' @param date The queried date
-#' @param store_date Boolean value. If set TRUE then the value retrived will be stored in a global variable named point_values for
+#' @param store_data Boolean value. If set TRUE then the value retrived will be stored in a global variable named point_values for
 #' later use
 #' @return Returns a numeric value of the AGDD value at the specified lat/long/date. If no value can be retrieved, then -9999 is returned.
 #' @export
@@ -199,6 +208,13 @@ npn_get_agdd_point_data <- function(
 #'
 #' Please note that this function pulls this from the NPN's WCS service so the data may not be totally precise. If
 #' you need precise AGDD values try using the npn_get_agdd_point_data function.
+#' @param layer The coverage id (machine name) of the layer for which to retrieve.
+#' Applicable values can be found via the npn_get_layer_details() function under the 'name' column.
+#' @param lat The latitude of the point
+#' @param long The longitude of the point
+#' @param date The date for which to get a value
+#' @param store_data Boolean value. If set TRUE then the value retrived will be stored in a global variable named point_values for
+#' later use
 #' @export
 npn_get_point_data <- function(
   layer,
@@ -235,47 +251,6 @@ npn_get_point_data <- function(
   return(v)
 
 }
-
-
-lpdaac_get_point_data <- function(
-  layer,
-  lat,
-  long,
-  date,
-  store_data=TRUE){
-
-  cached_value <- npn_check_point_cached(layer,lat,long,date)
-  if(!is.null(cached_value)){
-    return(cached_value)
-  }
-
-  url <- paste0(base_geoserver(), "coverageId=",layer,"&format=application/gml+xml&subset=http://www.opengis.net/def/axis/OGC/0/Long(",long,")&subset=http://www.opengis.net/def/axis/OGC/0/Lat(",lat,")&subset=http://www.opengis.net/def/axis/OGC/0/time(\"",date,"T00:00:00.000Z\")")
-  data = httr::GET(url,
-                   query = list(),
-                   httr::progress())
-  #Download the data as XML and store it as an XML doc
-  xml_data <- httr::content(data, as = "text")
-  doc <- XML::xmlInternalTreeParse(xml_data)
-
-  df <- XML::xmlToDataFrame(XML::xpathApply(doc, "//gml:RectifiedGridCoverage/gml:rangeSet/gml:DataBlock/tupleList"))
-
-  v <- as.numeric(as.list(strsplit(gsub("\n","",df[1,"text"]),' ')[[1]])[1])
-
-  if(store_data){
-    if(!exists("point_values")){
-      point_values <<- data.frame(layer=layer,lat=lat,long=long,date=date,value=v)
-    }else{
-      point_values <<- rbind(point_values, data.frame(layer=layer,lat=lat,long=long,date=date,value=v))
-    }
-  }
-
-  return(v)
-
-}
-
-
-
-
 
 
 #' Resolve SIX Raster

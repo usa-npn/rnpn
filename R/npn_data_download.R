@@ -50,15 +50,20 @@
 #' and the second column named 'param' and containing string representations of the time/elevation subset parameter to use.
 #' This variable can be used to append additional geospatial layer data fields to the results, such that the date of observation
 #' in each row will resolve to a value from the specified layers, given the location of the observation.
+#' @param pheno_class_ids List of unique IDs for searching based on pheno class. Note that if
+#' both pheno_class_id and phenophase_id are provided in the same request, phenophase_id will be ignored.
+#' @param wkt WKT geometry by which filter data. Specifying a valid WKT within the contigous US will
+#' filter data based on the locations which fall within that WKT.
 #' @return Data table of all status records returned as per the search parameters. Null if output directed to file.
 #' @export
 #' @examples \dontrun{
-#' Download all red maple data for 2016:
-#' npn_download_status_data(request_source="Your Name or Org Here", start_date="2016-01-01", end_date="2016-12-31", species_id=c(3))
-#'
-#' Download all saguaro data for the summer of 2016
-#' npn_download_status_data(request_source="Your Name or Org Here", start_date="2016-03-01", end_date="2016-10-31", species_id=c(210),
-#' download_path="saguaro_data_summer_2016.json")
+#' Download all saguaro data for 2016
+#' npn_download_status_data(
+#'   request_source="Your Name or Org Here",
+#'   years=c(2016),
+#'   species_id=c(210),
+#'   download_path="saguaro_data_2016.json"
+#' )
 #' }
 npn_download_status_data = function(
   request_source,
@@ -162,6 +167,9 @@ npn_download_status_data = function(
 #' @param climate_data Boolean value indicating that all climate variables should be included in additional_fields.
 #' @param ip_address Optional field, string. IP Address of user requesting data. Used for generating data reports
 #' @param dataset_ids List of unique IDs for searching based on dataset, e.g. NEON or GRSM c(17,15)
+#' @param individual_ids Comma-seperated string of unique IDs for individual plants/animal species by which to filter the data
+#' @param pheno_class_ids List of unique IDs for searching based on pheno class. Note that if
+#' both pheno_class_id and phenophase_id are provided in the same request, phenophase_id will be ignored.
 #' @param email Optional field, string. Email of user requesting data.
 #' @param download_path Optional file path to which search results should be re-directed for later use.
 #' @param six_leaf_layer Boolean value when set to true will attempt to resolve the date of the observation to a spring index, leafing
@@ -178,12 +186,18 @@ npn_download_status_data = function(
 #' and the second column named 'param' and containing string representations of the time/elevation subset parameter to use.
 #' This variable can be used to append additional geospatial layer data fields to the results, such that the date of observation
 #' in each row will resolve to a value from the specified layers, given the location of the observation.
+#' @param wkt WKT geometry by which filter data. Specifying a valid WKT within the contigous US will
+#' filter data based on the locations which fall within that WKT.
 #' @return Data table of all status records returned as per the search parameters. Null if output directed to file.
 #' @export
 #' @examples \dontrun{
 #' Download all saguaro data for 2013 and 2014
-#' npn_download_individual_phenometrics(request_source="Your Name or Org Here", years=c('2013','2014'), species_id=c(210),
-#' download_path="saguaro_data_2013_2014.json")
+#' npn_download_individual_phenometrics(
+#'   request_source="Your Name or Org Here",
+#'   years=c('2013','2014'),
+#'   species_id=c(210),
+#'   download_path="saguaro_data_2013_2014.json"
+#' )
 #' }
 npn_download_individual_phenometrics <- function(
   request_source,
@@ -258,10 +272,10 @@ npn_download_individual_phenometrics <- function(
 #'  returns more data than can be handled at once in memory.
 #'
 #'  This data type includes estimates of the overall onset and end of phenophase activity for plant and animal species at a site over a user-defined time period.
-#'  Each row provides the first and last occurrences of a given phenophase on a given species, beginning with the date of the first observed “yes” phenophase status
-#'  record and ending with the date of the last observed “yes” record of the user-defined time period. For plant species where multiple individuals are monitored
-#'  at the site, the date provided for “first yes” is the mean of the first “yes” records for each individual plant at the site, and the date for “last yes” is
-#'  the mean of the last “yes” records. Note that a phenophase may have ended and restarted during the overall period of its activity at the site.
+#'  Each row provides the first and last occurrences of a given phenophase on a given species, beginning with the date of the first observed "yes" phenophase status
+#'  record and ending with the date of the last observed "yes" record of the user-defined time period. For plant species where multiple individuals are monitored
+#'  at the site, the date provided for "first yes" is the mean of the first "yes" records for each individual plant at the site, and the date for "last yes" is
+#'  the mean of the last "yes" records. Note that a phenophase may have ended and restarted during the overall period of its activity at the site.
 #'  These more fine-scale patterns can be explored in the individual phenometrics data.
 #'
 #'  Most search parameters are optional, however, users are encouraged to supply additional search parameters to get results that are easier to work with. Request_Source
@@ -313,12 +327,18 @@ npn_download_individual_phenometrics <- function(
 #' and the second column named 'param' and containing string representations of the time/elevation subset parameter to use.
 #' This variable can be used to append additional geospatial layer data fields to the results, such that the date of observation
 #' in each row will resolve to a value from the specified layers, given the location of the observation.
+#' @param wkt WKT geometry by which filter data. Specifying a valid WKT within the contigous US will
+#' filter data based on the locations which fall within that WKT.
 #' @return Data table of all status records returned as per the search parameters. Null if output directed to file.
 #' @export
 #' @examples \dontrun{
 #' Download all saguaro data for 2013 and 2014
-#' npn_download_site_phenometrics(request_source="Your Name or Org Here", years=c('2013','2014'), species_id=c(210),
-#' download_path="saguaro_data_2013_2014.json")
+#' npn_download_site_phenometrics(
+#'   request_source="Your Name or Org Here",
+#'   years=c('2013','2014'),
+#'   species_id=c(210),
+#'   download_path="saguaro_data_2013_2014.json"
+#' )
 #' }
 npn_download_site_phenometrics <- function(
   request_source,
@@ -395,7 +415,7 @@ npn_download_site_phenometrics <- function(
 #'
 #'  This data type includes various measures of the extent to which a phenophase for a plant or animal species is expressed across multiple individuals and sites
 #'  over a user-selected set of time intervals. Each row provides up to eight calculated measures summarized weekly, bi-weekly, monthly or over a custom time interval.
-#'  These measures include approaches to evaluate the shape of an annual activity curve, including the total number of “yes” records and the proportion of “yes”
+#'  These measures include approaches to evaluate the shape of an annual activity curve, including the total number of "yes" records and the proportion of "yes"
 #'  records relative to the total number of status records over the course of a calendar year for a region of interest. They also include several approaches for
 #'  standardizing animal abundances by observer effort over time and space (e.g. mean active bird individuals per hour). See the Metadata window for more information.
 #'
@@ -414,7 +434,7 @@ npn_download_site_phenometrics <- function(
 #' @param years Required field, list of strings. Specify the years to include in the search, e.g. c('2013','2014'). You must specify at least one year.
 #' @param period_frequency Required field, integer. The integer value specifies the number of days by which to delineate the period of time specified by the
 #' start_date and end_date, i.e. a value of 7 will delineate the period of time weekly. Any remainder days are grouped into the final delineation.
-#' This parameter, while typically an int, also allows for a “special” string value, “months” to be passed in. Specifying this parameter as “months” will
+#' This parameter, while typically an int, also allows for a "special" string value, "months" to be passed in. Specifying this parameter as "months" will
 #' delineate the period of time by the calendar months regardless of how many days are in each month. Defaults to 30 if omitted.
 #' @param coords List of float values, used to specify a bounding box as a search parameter, e.g. c ( lower_left_lat, lower_left_long,upper_right,lat,upper_right_long )
 #' @param species_ids List of unique IDs for searching based on species, e.g. c ( 3, 34, 35 )
@@ -436,20 +456,24 @@ npn_download_site_phenometrics <- function(
 #' @param dataset_ids List of unique IDs for searching based on dataset, e.g. NEON or GRSM c(17,15)
 #' @param email Optional field, string. Email of user requesting data.
 #' @param download_path Optional file path to which search results should be re-directed for later use.
-#'
+#' @param wkt WKT geometry by which filter data. Specifying a valid WKT within the contigous US will
+#' filter data based on the locations which fall within that WKT.
 #' @return Data table of all status records returned as per the search parameters. Null if output directed to file.
 #' @export
 #' @examples \dontrun{
 #' Download all saguaro data for 2013
-#' npn_download_magnitude_phenometrics(request_source="Your Name or Org Here", start_date='2013-01-01', end_date='2013-12-31', species_id=c(210),
-#' download_path="saguaro_data_2013.json")
+#' npn_download_magnitude_phenometrics(
+#'   request_source="Your Name or Org Here",
+#'   years=c(2013),
+#'   species_id=c(210),
+#'   download_path="saguaro_data_2013.json"
+#' )
 #' }
 npn_download_magnitude_phenometrics <- function(
   request_source,
   years,
   period_frequency="30",
   coords = NULL,
-  individual_ids = NULL,
   species_ids = NULL,
   family_ids = NULL,
   order_ids = NULL,
@@ -738,7 +762,7 @@ npn_get_data <- function(
       }
 
       pvalues <- apply(json[,c('latitude','longitude',date_col)],1,function(x){
-        npn_get_agdd_point_data(layer=agdd_layer,lat=as.numeric(x['latitude']),long=as.numeric(x['longitude']),date=x[date_col])
+        rnpn::npn_get_agdd_point_data(layer=agdd_layer,lat=as.numeric(x['latitude']),long=as.numeric(x['longitude']),date=x[date_col])
       })
 
       pvalues <- t(as.data.frame(pvalues))

@@ -82,6 +82,9 @@ in each row will resolve to a value from the specified layers, given the locatio
 \item{taxonomy_aggregate}{Boolean value indicating whether to aggregate data by a taxonomic order higher than species. This will be based on the values set in family_ids, order_ids, or class_ids. If one of those three fields are not set, then this value is ignored.}
 
 \item{pheno_class_aggregate}{Boolean value indicating whether to aggregate data by the pheno class ids as per the pheno_class_ids parameter. If the pheno_class_ids value is not set, then this parameter is ignored. This can be used in conjunction with taxonomy_aggregate and higher taxonomic level data filtering.}
+
+\item{wkt}{WKT geometry by which filter data. Specifying a valid WKT within the contigous US will
+filter data based on the locations which fall within that WKT.}
 }
 \value{
 Data table of all status records returned as per the search parameters. Null if output directed to file.
@@ -94,10 +97,10 @@ This function allows for a parameterized search of all site phenometrics records
 }
 \details{
 This data type includes estimates of the overall onset and end of phenophase activity for plant and animal species at a site over a user-defined time period.
- Each row provides the first and last occurrences of a given phenophase on a given species, beginning with the date of the first observed “yes” phenophase status
- record and ending with the date of the last observed “yes” record of the user-defined time period. For plant species where multiple individuals are monitored
- at the site, the date provided for “first yes” is the mean of the first “yes” records for each individual plant at the site, and the date for “last yes” is
- the mean of the last “yes” records. Note that a phenophase may have ended and restarted during the overall period of its activity at the site.
+ Each row provides the first and last occurrences of a given phenophase on a given species, beginning with the date of the first observed "yes" phenophase status
+ record and ending with the date of the last observed "yes" record of the user-defined time period. For plant species where multiple individuals are monitored
+ at the site, the date provided for "first yes" is the mean of the first "yes" records for each individual plant at the site, and the date for "last yes" is
+ the mean of the last "yes" records. Note that a phenophase may have ended and restarted during the overall period of its activity at the site.
  These more fine-scale patterns can be explored in the individual phenometrics data.
 
 Most search parameters are optional, however, users are encouraged to supply additional search parameters to get results that are easier to work with. Request_Source
@@ -114,7 +117,11 @@ Additional fields provides the ability to specify additional, non-critical field
 \examples{
 \dontrun{
 Download all saguaro data for 2013 and 2014
-npn_download_site_phenometrics(request_source="Your Name or Org Here", years=c('2013','2014'), species_id=c(210),
-download_path="saguaro_data_2013_2014.json")
+npn_download_site_phenometrics(
+  request_source="Your Name or Org Here",
+  years=c('2013','2014'),
+  species_id=c(210),
+  download_path="saguaro_data_2013_2014.json"
+)
 }
 }

@@ -6,6 +6,7 @@
 #' so this function allows for manually setting the web service endpoints
 #' to use DEV instead. Just pass in "dev" to this function to change the
 #' endpoints to use.
+#' @param env The environment to use. Should be "ops" or "dev"
 #' @export
 npn_set_env <- function (env = "ops"){
   env <<- env

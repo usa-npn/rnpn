@@ -8,6 +8,8 @@ npn_species_types(kingdom = "Plantae", ...)
 }
 \arguments{
 \item{kingdom}{The kingdom for which to return functional types; either 'Animalia' or 'Plantae'. Defaults to Plantae.}
+
+\item{...}{Curl options passed on to \code{\link[httr]{GET}}}
 }
 \description{
 Return all plant or animal functional types used in the NPN database.

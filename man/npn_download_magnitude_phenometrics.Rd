@@ -5,15 +5,14 @@
 \title{Download Magnitude Phenometrics}
 \usage{
 npn_download_magnitude_phenometrics(request_source, years,
-  period_frequency = "30", coords = NULL, individual_ids = NULL,
-  species_ids = NULL, family_ids = NULL, order_ids = NULL,
-  class_ids = NULL, pheno_class_ids = NULL, station_ids = NULL,
-  species_types = NULL, network_ids = NULL, states = NULL,
-  phenophase_ids = NULL, functional_types = NULL,
-  additional_fields = NULL, climate_data = FALSE, ip_address = NULL,
-  dataset_ids = NULL, email = NULL, download_path = NULL,
-  taxonomy_aggregate = NULL, pheno_class_aggregate = NULL,
-  wkt = NULL)
+  period_frequency = "30", coords = NULL, species_ids = NULL,
+  family_ids = NULL, order_ids = NULL, class_ids = NULL,
+  pheno_class_ids = NULL, station_ids = NULL, species_types = NULL,
+  network_ids = NULL, states = NULL, phenophase_ids = NULL,
+  functional_types = NULL, additional_fields = NULL,
+  climate_data = FALSE, ip_address = NULL, dataset_ids = NULL,
+  email = NULL, download_path = NULL, taxonomy_aggregate = NULL,
+  pheno_class_aggregate = NULL, wkt = NULL)
 }
 \arguments{
 \item{request_source}{Required field, string. Self-identify who is making requests to the data service}
@@ -22,7 +21,7 @@ npn_download_magnitude_phenometrics(request_source, years,
 
 \item{period_frequency}{Required field, integer. The integer value specifies the number of days by which to delineate the period of time specified by the
 start_date and end_date, i.e. a value of 7 will delineate the period of time weekly. Any remainder days are grouped into the final delineation.
-This parameter, while typically an int, also allows for a “special” string value, “months” to be passed in. Specifying this parameter as “months” will
+This parameter, while typically an int, also allows for a "special" string value, "months" to be passed in. Specifying this parameter as "months" will
 delineate the period of time by the calendar months regardless of how many days are in each month. Defaults to 30 if omitted.}
 
 \item{coords}{List of float values, used to specify a bounding box as a search parameter, e.g. c ( lower_left_lat, lower_left_long,upper_right,lat,upper_right_long )}
@@ -64,6 +63,9 @@ delineate the period of time by the calendar months regardless of how many days 
 \item{taxonomy_aggregate}{Boolean value indicating whether to aggregate data by a taxonomic order higher than species. This will be based on the values set in family_ids, order_ids, or class_ids. If one of those three fields are not set, then this value is ignored.}
 
 \item{pheno_class_aggregate}{Boolean value indicating whether to aggregate data by the pheno class ids as per the pheno_class_ids parameter. If the pheno_class_ids value is not set, then this parameter is ignored. This can be used in conjunction with taxonomy_aggregate and higher taxonomic level data filtering.}
+
+\item{wkt}{WKT geometry by which filter data. Specifying a valid WKT within the contigous US will
+filter data based on the locations which fall within that WKT.}
 }
 \value{
 Data table of all status records returned as per the search parameters. Null if output directed to file.
@@ -77,7 +79,7 @@ This function allows for a parameterized search of all magnitude phenometrics in
 \details{
 This data type includes various measures of the extent to which a phenophase for a plant or animal species is expressed across multiple individuals and sites
  over a user-selected set of time intervals. Each row provides up to eight calculated measures summarized weekly, bi-weekly, monthly or over a custom time interval.
- These measures include approaches to evaluate the shape of an annual activity curve, including the total number of “yes” records and the proportion of “yes”
+ These measures include approaches to evaluate the shape of an annual activity curve, including the total number of "yes" records and the proportion of "yes"
  records relative to the total number of status records over the course of a calendar year for a region of interest. They also include several approaches for
  standardizing animal abundances by observer effort over time and space (e.g. mean active bird individuals per hour). See the Metadata window for more information.
 
@@ -95,7 +97,11 @@ Additional fields provides the ability to specify more, non-critical fields to i
 \examples{
 \dontrun{
 Download all saguaro data for 2013
-npn_download_magnitude_phenometrics(request_source="Your Name or Org Here", start_date='2013-01-01', end_date='2013-12-31', species_id=c(210),
-download_path="saguaro_data_2013.json")
+npn_download_magnitude_phenometrics(
+  request_source="Your Name or Org Here",
+  years=c(2013),
+  species_id=c(210),
+  download_path="saguaro_data_2013.json"
+)
 }
 }

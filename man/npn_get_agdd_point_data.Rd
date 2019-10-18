@@ -15,7 +15,7 @@ npn_get_agdd_point_data(layer, lat, long, date, store_data = TRUE)
 
 \item{date}{The queried date}
 
-\item{store_date}{Boolean value. If set TRUE then the value retrived will be stored in a global variable named point_values for
+\item{store_data}{Boolean value. If set TRUE then the value retrived will be stored in a global variable named point_values for
 later use}
 }
 \value{

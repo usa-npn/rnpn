@@ -10,6 +10,8 @@ npn_phenophases_by_species(species_ids, date, ...)
 \item{species_ids}{List of species_ids for which to get phenophase information}
 
 \item{date}{The applicable date for which to retrieve phenophases for the given species}
+
+\item{...}{Curl options passed on to \code{\link[httr]{GET}}}
 }
 \description{
 Retrieves the phenophases applicable to species for a given date. It's important to specify a date since protocols/phenophases for

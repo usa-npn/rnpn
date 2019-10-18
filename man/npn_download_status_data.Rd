@@ -71,6 +71,12 @@ the spring index values. Thus setting this field will change the results of six_
 and the second column named 'param' and containing string representations of the time/elevation subset parameter to use.
 This variable can be used to append additional geospatial layer data fields to the results, such that the date of observation
 in each row will resolve to a value from the specified layers, given the location of the observation.}
+
+\item{pheno_class_ids}{List of unique IDs for searching based on pheno class. Note that if
+both pheno_class_id and phenophase_id are provided in the same request, phenophase_id will be ignored.}
+
+\item{wkt}{WKT geometry by which filter data. Specifying a valid WKT within the contigous US will
+filter data based on the locations which fall within that WKT.}
 }
 \value{
 Data table of all status records returned as per the search parameters. Null if output directed to file.
@@ -95,11 +101,12 @@ Additional fields provides the ability to specify more, non-critical fields to i
 }
 \examples{
 \dontrun{
-Download all red maple data for 2016:
-npn_download_status_data(request_source="Your Name or Org Here", start_date="2016-01-01", end_date="2016-12-31", species_id=c(3))
-
-Download all saguaro data for the summer of 2016
-npn_download_status_data(request_source="Your Name or Org Here", start_date="2016-03-01", end_date="2016-10-31", species_id=c(210),
-download_path="saguaro_data_summer_2016.json")
+Download all saguaro data for 2016
+npn_download_status_data(
+  request_source="Your Name or Org Here",
+  years=c(2016),
+  species_id=c(210),
+  download_path="saguaro_data_2016.json"
+)
 }
 }

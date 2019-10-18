@@ -22,6 +22,8 @@ npn_download_individual_phenometrics(request_source, years,
 
 \item{coords}{List of float values, used to specify a bounding box as a search parameter, e.g. c ( lower_left_lat, lower_left_long,upper_right,lat,upper_right_long )}
 
+\item{individual_ids}{Comma-seperated string of unique IDs for individual plants/animal species by which to filter the data}
+
 \item{species_ids}{List of unique IDs for searching based on species, e.g. c ( 3, 34, 35 )}
 
 \item{station_ids}{List of unique IDs for searching based on site location, e.g. c ( 5, 9, ... )}
@@ -50,6 +52,9 @@ npn_download_individual_phenometrics(request_source, years,
 
 \item{class_ids}{List of unique IDs for searching based on taxonomic class, e.g. c ( 3, 34, 35 ) . This parameter will take precedence if species_ids, family_ids or order_ids are also set.}
 
+\item{pheno_class_ids}{List of unique IDs for searching based on pheno class. Note that if
+both pheno_class_id and phenophase_id are provided in the same request, phenophase_id will be ignored.}
+
 \item{email}{Optional field, string. Email of user requesting data.}
 
 \item{download_path}{Optional file path to which search results should be re-directed for later use.}
@@ -72,6 +77,9 @@ the spring index values. Thus setting this field will change the results of six_
 and the second column named 'param' and containing string representations of the time/elevation subset parameter to use.
 This variable can be used to append additional geospatial layer data fields to the results, such that the date of observation
 in each row will resolve to a value from the specified layers, given the location of the observation.}
+
+\item{wkt}{WKT geometry by which filter data. Specifying a valid WKT within the contigous US will
+filter data based on the locations which fall within that WKT.}
 }
 \value{
 Data table of all status records returned as per the search parameters. Null if output directed to file.
@@ -102,7 +110,11 @@ Additional fields provides the ability to specify additional, non-critical field
 \examples{
 \dontrun{
 Download all saguaro data for 2013 and 2014
-npn_download_individual_phenometrics(request_source="Your Name or Org Here", years=c('2013','2014'), species_id=c(210),
-download_path="saguaro_data_2013_2014.json")
+npn_download_individual_phenometrics(
+  request_source="Your Name or Org Here",
+  years=c('2013','2014'),
+  species_id=c(210),
+  download_path="saguaro_data_2013_2014.json"
+)
 }
 }

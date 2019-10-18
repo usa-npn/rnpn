@@ -6,6 +6,10 @@
 \usage{
 npn_abundance_categories(...)
 }
+\arguments{
+\item{...}{Curl options passed on to \code{\link[httr]{GET}}}
+}
 \description{
-Gets data on all abundance/intensity categories and includes a data frame of applicable abundance/intensity values for each category
+Gets data on all abundance/intensity categories and includes a data frame of
+applicable abundance/intensity values for each category
 }

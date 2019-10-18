@@ -6,6 +6,7 @@
 #' @importFrom jsonlite fromJSON
 #' @importFrom plyr llply ldply ddply summarise rbind.fill
 #' @importFrom magrittr "%>%"
+#' @importFrom utils URLencode download.file object.size write.table
 #' @name rnpn-package
 #' @aliases rnpn
 #' @docType package
