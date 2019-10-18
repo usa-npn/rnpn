@@ -96,7 +96,7 @@ npn_download_geospatial <- function (
   }
 
   s <- "&"
-  if(!is.null(date)){
+  if(!is.null(date) && toString(date) != ""){
     param <- tryCatch({
       as.Date(date)
       paste0(s,"SUBSET=time(\"",date,"T00:00:00.000Z\")")
