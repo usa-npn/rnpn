@@ -108,7 +108,7 @@ npn_download_geospatial <- function (
   }
 
 
-  url <- paste0(base_geoserver(), "format=geotiff&coverageId=",coverage_id,param)
+  url <- paste0(base_geoserver(), "format=", format , "&coverageId=",coverage_id,param)
   print (url)
 
   if(is.null(output_path)){

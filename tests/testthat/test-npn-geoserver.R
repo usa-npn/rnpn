@@ -39,6 +39,43 @@ test_that("npn_download_geospatial works", {
 
 })
 
+test_that("npn_download_geospatial format param working", {
+  npn_set_env("ops")
+
+  npn_download_geospatial(
+    "gdd:30yr_avg_agdd_50f",
+    date="5",
+    output_path = "testing.tiff"
+  )
+
+  npn_download_geospatial(
+    "gdd:30yr_avg_agdd_50f",
+    date="1,3",
+    format="application/x-netcdf",
+    output_path = "testing.netcdf"
+  )
+
+  tiff_size <- file.size("testing.tiff")
+  netcdf_size <- file.size("testing.netcdf")
+
+  file.remove("testing.tiff")
+  file.remove("testing.netcdf")
+
+  #GeoTIFF and NetCDF are similar enough foramts that they
+  # are nearly 1:1 in like sized rasters but there is some margin
+  # of difference. This tests that a NETCDF file containg 3 times
+  # as much data as a similar GeoTIFF is the same size within 25K.
+
+  # This is useful as a test because if the URL is malformed or the
+  # format is wrong, even if the request specifies a larger
+  # date/elevation subset, still only one such raster will be
+  # returned.
+  expect_lt(abs((tiff_size * 3) - netcdf_size), 25000)
+
+
+
+})
+
 
 test_that("npn_get_point_data functions", {
   npn_set_env(get_test_env())
