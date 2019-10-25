@@ -1,8 +1,12 @@
 ---
-title: "Putting It All Together"
+title: "07. Putting It All Together"
 author: "Lee Marsh"
-date: "October 11, 2019"
-output: html_document
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteEngine{knitr::knitr}
+  %\VignetteIndexEntry{07. Putting It All Together}
+  %\usepackage[UTF-8]{inputenc}
 ---
 
 ```{r setup, include=FALSE}
@@ -16,13 +20,13 @@ library(raster)
 
 ## Combine Point and Raster Data
 
-Observational and gridded data can be visualized or analyzed together for a variety of purposes. Users may want to identify spatial patterns in the alignment of dogwood bloom and the Spring Index bloom model. The current year’s lilac leaf out observations may be compared to the 30 year average lilac sub-model of the spring index to see how well the model predicts the observations.
+Observational and gridded data can be visualized or analyzed together for a variety of purposes. Users may want to identify spatial patterns in the alignment of dogwood bloom and the Spring Index bloom model. The current year's lilac leaf out observations may be compared to the 30 year average lilac sub-model of the spring index to see how well the model predicts the observations.
 
 This example shows several data access calls to assemble observational and gridded data.
 
 
 
-Option 1: You can add a parameter to an observational data call to additionally get a gridded layer value for each observation location/date. Note that if you don’t specify which sub model of the Spring Index you want,  you will get the SI-x Average layers.
+Option 1: You can add a parameter to an observational data call to additionally get a gridded layer value for each observation location/date. Note that if you don't specify which sub model of the Spring Index you want,  you will get the SI-x Average layers.
 
 ```{r eval=FALSE}
 npn_download_site_phenometrics(

@@ -1,5 +1,5 @@
-rnpn
-====
+
+# rnpn
 
 [![Build
 Status](https://api.travis-ci.org/ropensci/rnpn.png)](https://travis-ci.org/ropensci/rnpn)
@@ -26,8 +26,7 @@ endpoints do require user authentication and are not accessible through
 this R wrapper. Please contact the package authors for more information
 if that’s what you’re trying to do.
 
-Installation
-------------
+## Installation
 
 This package has evolved slowly and is currently managed in a few
 locations, with varying degrees of available functionality.
@@ -38,7 +37,9 @@ deprecated.
 
 CRAN version
 
-    install.packages("rnpn")
+``` r
+install.packages("rnpn")
+```
 
 There’s a newer iteration of the package that includes a lot more
 functionality, including the ability to access geospatial data, and is
@@ -49,14 +50,17 @@ devtools.
 
 Development version
 
-    install.packages("devtools")
-    library('devtools')
-    devtools::install_github("usa-npn/rnpn")
+``` r
+install.packages("devtools")
+library('devtools')
+devtools::install_github("usa-npn/rnpn")
+```
 
-    library('rnpn')
+``` r
+library('rnpn')
+```
 
-The Basics
-----------
+## The Basics
 
 Many of the functions to search for data require knowing the internal
 unique identifiers of some of the database entities to filter the data
@@ -64,19 +68,26 @@ down efficiently. For example, if you want to search by species, then
 you must know the internal identifier of the species. To get a list of
 all available species use the following:
 
-    species_list <- npn_species()
+``` r
+species_list <- npn_species()
+```
 
 Similarly, for phenophases:
 
-    phenophases <- npn_phenophases()
+``` r
+phenophases <- npn_phenophases()
+```
 
 ### Getting Observational Data
 
 There are four main functions for accessing observational data, at
 various levels of aggregation. At the most basic level you can download
-the raw status and intensity data.
+the raw status and intensity
+data.
 
-    some_data <- npn_download_status_data(request_source='Your Name or Org Here',years=c(2015),species_id=c(35),states=c('AZ','IL'))
+``` r
+some_data <- npn_download_status_data(request_source='Your Name or Org Here',years=c(2015),species_id=c(35),states=c('AZ','IL'))
+```
 
 Note that through this API, data can only be filtered chronologically by
 full calendar years. You can specify any number of years in each API
@@ -92,34 +103,41 @@ transfer of raster data. Generally, this package does not focus on
 interacting with WMS services, although they are available. To get a
 list of all available data layers, use the following:
 
-    layers <- npn_get_layer_details()
+``` r
+layers <- npn_get_layer_details()
+```
 
 You can then use the name of the layers to select and download
-geospatial data as a raster.
+geospatial data as a
+raster.
 
-    npn_download_geospatial(coverage_id = 'si-x:lilac_leaf_ncep_historic',date='2016-12-31',format='geotiff',output_path='./six-test-raster.tiff')
+``` r
+npn_download_geospatial(coverage_id = 'si-x:lilac_leaf_ncep_historic',date='2016-12-31',format='geotiff',output_path='./six-test-raster.tiff')
+```
 
 If you’re looking for a grid value at a specific latitude/longitude,
-that is also possible.
+that is also
+possible.
 
-    point_value <- npn_get_point_data('si-x:lilac_leaf_ncep_historic',date='2016-12-31',lat=38.5,long=-110.7)
+``` r
+point_value <- npn_get_point_data('si-x:lilac_leaf_ncep_historic',date='2016-12-31',lat=38.5,long=-110.7)
+```
 
-What’s Next
------------
+## What’s Next
 
 Please read and review the vignettes for this package to get further
 information about the full scope of functionality available.
 
-Meta
-----
+## Meta
 
--   Please [report any issues or
+  - Please [report any issues or
     bugs](https://github.com/ropensci/rnpn/issues).
--   License: MIT
--   Get citation information for `rnpn` in R doing
-    `citation(package = 'rnpn')`
--   Please note that this project is released with a [Contributor Code
+  - License: MIT
+  - Get citation information for `rnpn` in R doing `citation(package =
+    'rnpn')`
+  - Please note that this project is released with a [Contributor Code
     of Conduct](CONDUCT.md). By participating in this project you agree
-    to abide by its terms.
+    to abide by its
+terms.
 
 [![image](http://ropensci.org/public_images/github_footer.png)](http://ropensci.org)
