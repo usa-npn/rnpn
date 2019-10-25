@@ -79,16 +79,16 @@ npn_pheno_classes <- function (...){
 #' Note that since a higher taxononmic order will aggregate individual species not every phenophase returned through this
 #' function will be applicable for every species belonging to that taxonomic group.
 #'
-#' It's also important to note that phenopphase definitions can change for individual species over time, so there's a need
-#' to specify either a date of interest, or to explicitely statea that the function should return all phenophases that were
+#' It's also important to note that phenophase definitions can change for individual species over time, so there's a need
+#' to specify either a date of interest, or to explicitly state that the function should return all phenophases that were
 #' ever applicable for any species belonging to the specified taxonomic group.
 #'
-#' When called, this function requires of these three paramaters, exactly one of family_ids, order_ids or class_ids to be set.
+#' When called, this function requires of these three parameters, exactly one of family_ids, order_ids or class_ids to be set.
 #'
 #' @param family_ids List of taxonomic family ids to search for.
 #' @param order_ids List of taxonomic order ids to search for.
 #' @param class_ids List of taxonomic class ids to search for
-#' @param date Specify the date of interst. For this function to return anything, either this value must be set of return_all must be 1.
+#' @param date Specify the date of interest. For this function to return anything, either this value must be set of return_all must be 1.
 #' @param return_all Takes either 0 or 1 as input and defaults to 0. For this function to return anything, either this value must be set to 1
 #' or date must be set.
 #' @export

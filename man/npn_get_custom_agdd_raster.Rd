@@ -2,7 +2,7 @@
 % Please edit documentation in R/npn_geoserver.R
 \name{npn_get_custom_agdd_raster}
 \alias{npn_get_custom_agdd_raster}
-\title{Get Cuomst AGDD Raster Map}
+\title{Get Custom AGDD Raster Map}
 \usage{
 npn_get_custom_agdd_raster(method, climate_data_source, temp_unit,
   start_date, end_date, base_temp, upper_threshold = NULL)
@@ -13,7 +13,7 @@ data point. Simple refers to simple averaging.}
 
 \item{climate_data_source}{Specified the climate data set to use. Takes either "PRISM" or "NCEP" as input.}
 
-\item{temp_unit}{The unit of temperature to use in the calculation. Takes either "fahrenheit" or "celsius" as input.}
+\item{temp_unit}{The unit of temperature to use in the calculation. Takes either "Fahrenheit" or "Celsius" as input.}
 
 \item{start_date}{Date at which to begin the AGDD calculations}
 

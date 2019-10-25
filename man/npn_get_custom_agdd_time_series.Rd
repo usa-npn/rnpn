@@ -19,9 +19,9 @@ data point. Simple refers to simple averaging.}
 
 \item{climate_data_source}{Specified the climate data set to use. Takes either "PRISM" or "NCEP" as input.}
 
-\item{temp_unit}{The unit of temperature to use in the calculation. Takes either "fahrenheit" or "celsius" as input.}
+\item{temp_unit}{The unit of temperature to use in the calculation. Takes either "Fahrenheit" or "Celsius" as input.}
 
-\item{lat}{The latitude of the location for which to calcualte the time series}
+\item{lat}{The latitude of the location for which to calculate the time series}
 
 \item{long}{The longitude of the location for which to calculate the time series}
 

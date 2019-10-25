@@ -23,6 +23,6 @@ Data table - a data table combining each requests results from the service
 }
 \description{
 Utility function to chain multiple requests to npn_get_data for requests where data should only be retrieved on an annual basis, or otherwise automatically be
-deliniated in some way. Results in a data table that's a combined set of the results from each request to the data service.
+delineated in some way. Results in a data table that's a combined set of the results from each request to the data service.
 }
 \keyword{internal}

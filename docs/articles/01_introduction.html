@@ -71,7 +71,7 @@
       <a href="../articles/06_geospatial.html">06. USA-NPN Geospatial Data</a>
     </li>
     <li>
-      <a href="../articles/07_combine_raster_point.html">Putting It All Together</a>
+      <a href="../articles/07_combine_raster_point.html">07. Putting It All Together</a>
     </li>
   </ul>
 </li>
@@ -106,7 +106,7 @@
 <div id="introduction" class="section level1">
 <h1 class="hasAnchor">
 <a href="#introduction" class="anchor"></a>Introduction</h1>
-<p>The USA National Phenology Network (USA-NPN) is a USGS funded organization that collects phenological observation records from volunteer and professional scientists to better understand the impact of changes in the environment on the timing of species’ lifecycles. The USA-NPN also provides a number of raster-based climatological data sets and phenological models. These in-situ observation and geospatial, modeled datasets are available through a number of tools and data services.</p>
+<p>The USA National Phenology Network (USA-NPN) is a USGS funded organization that collects phenological observation records from volunteer and professional scientists to better understand the impact of changes in the environment on the timing of species’ life cycles. The USA-NPN also provides a number of raster-based climatological data sets and phenological models. These in-situ observation and geospatial, modeled datasets are available through a number of tools and data services.</p>
 <p>The USA-NPN R library, “rnpn”, is primarily a data access service for USA-NPN data products, serving as a wrapper to the USA-NPN REST based web services. (link). This guide details how to use the library to access and work with all USA-NPN data types.</p>
 <div id="accessing-usa-npn-observational-data" class="section level2">
 <h2 class="hasAnchor">
@@ -123,7 +123,7 @@
 <a class="sourceLine" id="cb1-3" data-line-number="3">  <span class="dt">year =</span>  [<span class="ot">NULL</span>]</a>
 <a class="sourceLine" id="cb1-4" data-line-number="4">  <span class="dt">species_ID =</span> [<span class="ot">NULL</span>]</a>
 <a class="sourceLine" id="cb1-5" data-line-number="5">)                  </a></code></pre></div>
-<p>‘Request source’’’ should usually be populated with your full name or the name of the organization you represent. Species_ID is the unique identifer for all the available plants and animals in the USA-NPN database. You can create a table of all available species and their ID numbers:</p>
+<p>‘Request source’ should usually be populated with your full name or the name of the organization you represent. Species_ID is the unique identifier for all the available plants and animals in the USA-NPN database. You can create a table of all available species and their ID numbers:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">species &lt;-<span class="st"> </span><span class="kw"><a href="../reference/npn_species.html">npn_species</a></span>()</a></code></pre></div>
 <p>Search for a species by common name from the full list:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">species[species<span class="op">$</span>common_name<span class="op">==</span><span class="st">"red maple"</span>,]</a></code></pre></div>

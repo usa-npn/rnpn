@@ -11,7 +11,7 @@ status](https://ci.appveyor.com/api/projects/status/es65utr5jmfmcsrg/branch/mast
 Network data web services. These services include access to a rich set
 of observer-contributed, point-based phenology records as well as
 geospatial data products including gridded phenological model and
-climitalogical data.
+climitological data.
 
 Documentation is available for the National Phenology Network [API
 documentation](https://docs.google.com/document/d/1yNjupricKOAXn6tY1sI7-EwkcfwdGUZ7lxYv7fcPjO8/edit?hl=en_US),

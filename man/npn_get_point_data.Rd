@@ -16,7 +16,7 @@ Applicable values can be found via the npn_get_layer_details() function under th
 
 \item{date}{The date for which to get a value}
 
-\item{store_data}{Boolean value. If set TRUE then the value retrived will be stored in a global variable named point_values for
+\item{store_data}{Boolean value. If set TRUE then the value retrieved will be stored in a global variable named point_values for
 later use}
 }
 \description{

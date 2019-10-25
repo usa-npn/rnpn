@@ -164,7 +164,7 @@ average_model <- npn_download_geospatial(
 ```
 
 
-The Spring Indicies are also unique in that the algorithm has been run against the BEST climate data set, so historic data going back to 1880 is available.
+The Spring Indices are also unique in that the algorithm has been run against the BEST climate data set, so historic data going back to 1880 is available.
 
 ```{r warning = FALSE, message=FALSE}
 BESTSIxData1905 <- npn_download_geospatial(

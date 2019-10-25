@@ -1,9 +1,9 @@
 
-#'  Download Status and Intesity Records
+#'  Download Status and Intensity Records
 #'
 #'  This function allows for a parameterized search of all status records in the USA-NPN database, returning all records as per the search parameters in a data
-#'  table. Data fetched from NPN services is returned as raw JSON before being channeled into a data table. Optinally results can be directed to an output file in
-#'  which case the raw JSON is convereted to CSV and saved to file; in that case, data is also streamed to file which allows for more easily handling of the data if the search otherwise
+#'  table. Data fetched from NPN services is returned as raw JSON before being channeled into a data table. Optionally results can be directed to an output file in
+#'  which case the raw JSON is converted to CSV and saved to file; in that case, data is also streamed to file which allows for more easily handling of the data if the search otherwise
 #'  returns more data than can be handled at once in memory.
 #'
 #'  Most search parameters are optional, however, users are encouraged to supply additional search parameters to get results that are easier to work with. Request_Source
@@ -12,7 +12,7 @@
 #'  a user email and/or IP address for usage data reporting later.
 #'
 #'  Additional fields provides the ability to specify more, non-critical fields to include in the search results. A complete list of additional fields can be found in
-#'  the NPN service's companion documention
+#'  the NPN service's companion documentation
 #'  https://docs.google.com/document/d/1yNjupricKOAXn6tY1sI7-EwkcfwdGUZ7lxYv7fcPjO8/edit#heading=h.w0nctgedhaop
 #'  Metadata on all fields can be found in the following Excel sheet:
 #'  http://www.usanpn.org/files/metadata/status_intensity_datafield_descriptions.xlsx
@@ -25,8 +25,8 @@
 #' @param order_ids List of unique IDs for searching based on taxonomic order, e.g. c ( 3, 34, 35 ) . This parameter will take precedence if species_ids or family_ids are also set.
 #' @param class_ids List of unique IDs for searching based on taxonomic class, e.g. c ( 3, 34, 35 ) . This parameter will take precedence if species_ids, family_ids or order_ids are also set.
 #' @param station_ids List of unique IDs for searching based on site location, e.g. c ( 5, 9, ... )
-#' @param species_types List of unique species type names for searching based on species types, e.g. c ( "Decidious", "Evergreen" )
-#' @param network_ids List of unique IDs for searching based on parter group/network, e.g. ( 500, 300, ... )
+#' @param species_types List of unique species type names for searching based on species types, e.g. c ( "Deciduous", "Evergreen" )
+#' @param network_ids List of unique IDs for searching based on partner group/network, e.g. ( 500, 300, ... )
 #' @param states List of US postal states to be used as search params, e.g. c ( "AZ", "IL" )
 #' @param phenophase_ids List of unique IDs for searching based on phenophase, e.g. c ( 323, 324, ... )
 #' @param functional_types List of unique functional type names, e.g. c ( "Birds"  )
@@ -40,19 +40,19 @@
 #' value for the location at which the observations was taken
 #' @param six_bloom_layer Boolean value when set to true will attempt to resolve the date of the observation to a spring index, bloom
 #' value for the location at which the observations was taken
-#' @param six_sub_model Affects the results of the six layers returned. Can be used to specify one of three submodels used to calcualte
+#' @param six_sub_model Affects the results of the six layers returned. Can be used to specify one of three submodels used to calculate
 #' the spring index values. Thus setting this field will change the results of six_leaf_layer and six_bloom_layer. Valid values include:
-#' 'lilac','zabelli' and 'arnoldred'. For more information see the NPN's Sping Index Maps documentation: https://www.usanpn.org/data/spring_indices
+#' 'lilac','zabelli' and 'arnoldred'. For more information see the NPN's Spring Index Maps documentation: https://www.usanpn.org/data/spring_indices
 #' @param agdd_layer numeric value, accepts 32 or 50. When set, the results will attempt to resolve the date of the observation to
 #' an AGDD value for the location; the 32 or 50 represents the base value of the AGDD value returned. All AGDD values are based on
 #' a January 1st start date of the year in which the observation was taken.
-#' @param additional_layers Data frame with first column named 'name' and containing the names of the layer for which to retreive data
+#' @param additional_layers Data frame with first column named 'name' and containing the names of the layer for which to retrieve data
 #' and the second column named 'param' and containing string representations of the time/elevation subset parameter to use.
 #' This variable can be used to append additional geospatial layer data fields to the results, such that the date of observation
 #' in each row will resolve to a value from the specified layers, given the location of the observation.
 #' @param pheno_class_ids List of unique IDs for searching based on pheno class. Note that if
 #' both pheno_class_id and phenophase_id are provided in the same request, phenophase_id will be ignored.
-#' @param wkt WKT geometry by which filter data. Specifying a valid WKT within the contigous US will
+#' @param wkt WKT geometry by which filter data. Specifying a valid WKT within the contiguous US will
 #' filter data based on the locations which fall within that WKT.
 #' @return Data table of all status records returned as per the search parameters. Null if output directed to file.
 #' @export
@@ -130,7 +130,7 @@ npn_download_status_data = function(
 #'  Download Individual Phenometrics
 #'
 #'  This function allows for a parameterized search of all individual phenometrics records in the USA-NPN database, returning all records as per the search parameters in a
-#'  data table. Data fetched from NPN services is returned as raw JSON before being channeled into a data table. Optinally results can be directed to an output file in
+#'  data table. Data fetched from NPN services is returned as raw JSON before being channeled into a data table. Optionally results can be directed to an output file in
 #'  which case raw JSON is converted to CSV and saved to file; in that case, data is also streamed to file which allows for more easily handling of the data if the search otherwise
 #'  returns more data than can be handled at once in memory.
 #'
@@ -145,7 +145,7 @@ npn_download_status_data = function(
 #'  a user email and/or IP address for usage data reporting later.
 #'
 #'  Additional fields provides the ability to specify additional, non-critical fields to include in the search results. A complete list of additional fields can be found in
-#'  the NPN service's companion documention
+#'  the NPN service's companion documentation
 #'  https://docs.google.com/document/d/1yNjupricKOAXn6tY1sI7-EwkcfwdGUZ7lxYv7fcPjO8/edit#heading=h.7yy4i3278v7u
 #'  Metadata on all fields can be found in the following Excel sheet:
 #'  http://www.usanpn.org/files/metadata/individual_phenometrics_datafield_descriptions.xlsx
@@ -158,8 +158,8 @@ npn_download_status_data = function(
 #' @param order_ids List of unique IDs for searching based on taxonomic order, e.g. c ( 3, 34, 35 ) . This parameter will take precedence if species_ids or family_ids are also set.
 #' @param class_ids List of unique IDs for searching based on taxonomic class, e.g. c ( 3, 34, 35 ) . This parameter will take precedence if species_ids, family_ids or order_ids are also set.
 #' @param station_ids List of unique IDs for searching based on site location, e.g. c ( 5, 9, ... )
-#' @param species_types List of unique species type names for searching based on species types, e.g. c ( "Decidious", "Evergreen" )
-#' @param network_ids List of unique IDs for searching based on parter group/network, e.g. c( 500, 300, ... )
+#' @param species_types List of unique species type names for searching based on species types, e.g. c ( "Deciduous", "Evergreen" )
+#' @param network_ids List of unique IDs for searching based on partner group/network, e.g. c( 500, 300, ... )
 #' @param states List of US postal states to be used as search params, e.g. c ( "AZ", "IL" )
 #' @param phenophase_ids List of unique IDs for searching based on phenophase, e.g. c ( 323, 324, ... )
 #' @param functional_types List of unique functional type names, e.g. c ( "Birds"  )
@@ -167,7 +167,7 @@ npn_download_status_data = function(
 #' @param climate_data Boolean value indicating that all climate variables should be included in additional_fields.
 #' @param ip_address Optional field, string. IP Address of user requesting data. Used for generating data reports
 #' @param dataset_ids List of unique IDs for searching based on dataset, e.g. NEON or GRSM c(17,15)
-#' @param individual_ids Comma-seperated string of unique IDs for individual plants/animal species by which to filter the data
+#' @param individual_ids Comma-separated string of unique IDs for individual plants/animal species by which to filter the data
 #' @param pheno_class_ids List of unique IDs for searching based on pheno class. Note that if
 #' both pheno_class_id and phenophase_id are provided in the same request, phenophase_id will be ignored.
 #' @param email Optional field, string. Email of user requesting data.
@@ -176,17 +176,17 @@ npn_download_status_data = function(
 #' value for the location at which the observations was taken
 #' @param six_bloom_layer Boolean value when set to true will attempt to resolve the date of the observation to a spring index, bloom
 #' value for the location at which the observations was taken
-#' @param six_sub_model Affects the results of the six layers returned. Can be used to specify one of three submodels used to calcualte
+#' @param six_sub_model Affects the results of the six layers returned. Can be used to specify one of three submodels used to calculate
 #' the spring index values. Thus setting this field will change the results of six_leaf_layer and six_bloom_layer. Valid values include:
-#' 'lilac','zabelli' and 'arnoldred'. For more information see the NPN's Sping Index Maps documentation: https://www.usanpn.org/data/spring_indices
+#' 'lilac','zabelli' and 'arnoldred'. For more information see the NPN's Spring Index Maps documentation: https://www.usanpn.org/data/spring_indices
 #' @param agdd_layer numeric value, accepts 32 or 50. When set, the results will attempt to resolve the date of the observation to
 #' an AGDD value for the location; the 32 or 50 represents the base value of the AGDD value returned. All AGDD values are based on
 #' a January 1st start date of the year in which the observation was taken.
-#' @param additional_layers Data frame with first column named 'name' and containing the names of the layer for which to retreive data
+#' @param additional_layers Data frame with first column named 'name' and containing the names of the layer for which to retrieve data
 #' and the second column named 'param' and containing string representations of the time/elevation subset parameter to use.
 #' This variable can be used to append additional geospatial layer data fields to the results, such that the date of observation
 #' in each row will resolve to a value from the specified layers, given the location of the observation.
-#' @param wkt WKT geometry by which filter data. Specifying a valid WKT within the contigous US will
+#' @param wkt WKT geometry by which filter data. Specifying a valid WKT within the contiguous US will
 #' filter data based on the locations which fall within that WKT.
 #' @return Data table of all status records returned as per the search parameters. Null if output directed to file.
 #' @export
@@ -267,7 +267,7 @@ npn_download_individual_phenometrics <- function(
 #'  Download Site Phenometrics
 #'
 #'  This function allows for a parameterized search of all site phenometrics records in the USA-NPN database, returning all records as per the search parameters in a
-#'  data table. Data fetched from NPN services is returned as raw JSON before being channeled into a data table. Optinally results can be directed to an output file in
+#'  data table. Data fetched from NPN services is returned as raw JSON before being channeled into a data table. Optionally results can be directed to an output file in
 #'  which case raw JSON is converted to CSV and saved to file; in that case, data is also streamed to file which allows for more easily handling of the data if the search otherwise
 #'  returns more data than can be handled at once in memory.
 #'
@@ -284,7 +284,7 @@ npn_download_individual_phenometrics <- function(
 #'  a user email and/or IP address for usage data reporting later.
 #'
 #'  Additional fields provides the ability to specify additional, non-critical fields to include in the search results. A complete list of additional fields can be found in
-#'  the NPN service's companion documention
+#'  the NPN service's companion documentation
 #'  https://docs.google.com/document/d/1yNjupricKOAXn6tY1sI7-EwkcfwdGUZ7lxYv7fcPjO8/edit#heading=h.ueaexz9bczti
 #'  Metadata on all fields can be found in the following Excel sheet:
 #'  http://www.usanpn.org/files/metadata/site_phenometrics_datafield_descriptions.xlsx
@@ -302,8 +302,8 @@ npn_download_individual_phenometrics <- function(
 #' @param pheno_class_ids List of unique IDs for searching based on pheno class id, e.g. c (1, 5, 13)
 #' @param pheno_class_aggregate Boolean value indicating whether to aggregate data by the pheno class ids as per the pheno_class_ids parameter. If the pheno_class_ids value is not set, then this parameter is ignored. This can be used in conjunction with taxonomy_aggregate and higher taxonomic level data filtering.
 #' @param station_ids List of unique IDs for searching based on site location, e.g. c ( 5, 9, ... )
-#' @param species_types List of unique species type names for searching based on species types, e.g. c ( "Decidious", "Evergreen" )
-#' @param network_ids List of unique IDs for searching based on parter group/network, e.g. ( 500, 300, ... )
+#' @param species_types List of unique species type names for searching based on species types, e.g. c ( "Deciduous", "Evergreen" )
+#' @param network_ids List of unique IDs for searching based on partner group/network, e.g. ( 500, 300, ... )
 #' @param states List of US postal states to be used as search params, e.g. c ( "AZ", "IL" )
 #' @param phenophase_ids List of unique IDs for searching based on phenophase, e.g. c ( 323, 324, ... )
 #' @param functional_types List of unique functional type names, e.g. c ( "Birds"  )
@@ -317,17 +317,17 @@ npn_download_individual_phenometrics <- function(
 #' value for the location at which the observations was taken
 #' @param six_bloom_layer Boolean value when set to true will attempt to resolve the date of the observation to a spring index, bloom
 #' value for the location at which the observations was taken
-#' @param six_sub_model Affects the results of the six layers returned. Can be used to specify one of three submodels used to calcualte
+#' @param six_sub_model Affects the results of the six layers returned. Can be used to specify one of three submodels used to calculate
 #' the spring index values. Thus setting this field will change the results of six_leaf_layer and six_bloom_layer. Valid values include:
-#' 'lilac','zabelli' and 'arnoldred'. For more information see the NPN's Sping Index Maps documentation: https://www.usanpn.org/data/spring_indices
+#' 'lilac','zabelli' and 'arnoldred'. For more information see the NPN's Spring Index Maps documentation: https://www.usanpn.org/data/spring_indices
 #' @param agdd_layer numeric value, accepts 32 or 50. When set, the results will attempt to resolve the date of the observation to
 #' an AGDD value for the location; the 32 or 50 represents the base value of the AGDD value returned. All AGDD values are based on
 #' a January 1st start date of the year in which the observation was taken.
-#' @param additional_layers Data frame with first column named 'name' and containing the names of the layer for which to retreive data
+#' @param additional_layers Data frame with first column named 'name' and containing the names of the layer for which to retrieve data
 #' and the second column named 'param' and containing string representations of the time/elevation subset parameter to use.
 #' This variable can be used to append additional geospatial layer data fields to the results, such that the date of observation
 #' in each row will resolve to a value from the specified layers, given the location of the observation.
-#' @param wkt WKT geometry by which filter data. Specifying a valid WKT within the contigous US will
+#' @param wkt WKT geometry by which filter data. Specifying a valid WKT within the contiguous US will
 #' filter data based on the locations which fall within that WKT.
 #' @return Data table of all status records returned as per the search parameters. Null if output directed to file.
 #' @export
@@ -409,7 +409,7 @@ npn_download_site_phenometrics <- function(
 #'  Download Magnitude Phenometrics
 #'
 #'  This function allows for a parameterized search of all magnitude phenometrics in the USA-NPN database, returning all records as per the search results in a
-#'  data table. Data fetched from NPN services is returned as raw JSON before being channeled into a data table. Optinally results can be directed to an output file in
+#'  data table. Data fetched from NPN services is returned as raw JSON before being channeled into a data table. Optionally results can be directed to an output file in
 #'  which case raw JSON is saved to file; in that case, data is also streamed to file which allows for more easily handling of the data if the search otherwise
 #'  returns more data than can be handled at once in memory.
 #'
@@ -425,7 +425,7 @@ npn_download_site_phenometrics <- function(
 #'  a user email and/or IP address for usage data reporting later.
 #'
 #'  Additional fields provides the ability to specify more, non-critical fields to include in the search results. A complete list of additional fields can be found in
-#'  the NPN service's companion documention
+#'  the NPN service's companion documentation
 #'  https://docs.google.com/document/d/1yNjupricKOAXn6tY1sI7-EwkcfwdGUZ7lxYv7fcPjO8/edit#heading=h.df3zspopwq98
 #'  Metadata on all fields can be found in the following Excel sheet:
 #'  http://www.usanpn.org/files/metadata/magnitude_phenometrics_datafield_descriptions.xlsx
@@ -445,8 +445,8 @@ npn_download_site_phenometrics <- function(
 #' @param pheno_class_ids List of unique IDs for searching based on pheno class id, e.g. c (1, 5, 13)
 #' @param pheno_class_aggregate Boolean value indicating whether to aggregate data by the pheno class ids as per the pheno_class_ids parameter. If the pheno_class_ids value is not set, then this parameter is ignored. This can be used in conjunction with taxonomy_aggregate and higher taxonomic level data filtering.
 #' @param station_ids List of unique IDs for searching based on site location, e.g. c ( 5, 9, ... )
-#' @param species_types List of unique species type names for searching based on species types, e.g. c ( "Decidious", "Evergreen" )
-#' @param network_ids List of unique IDs for searching based on parter group/network, e.g. ( 500, 300, ... )
+#' @param species_types List of unique species type names for searching based on species types, e.g. c ( "Deciduous", "Evergreen" )
+#' @param network_ids List of unique IDs for searching based on partner group/network, e.g. ( 500, 300, ... )
 #' @param states List of US postal states to be used as search params, e.g. c ( "AZ", "IL" )
 #' @param phenophase_ids List of unique IDs for searching based on phenophase, e.g. c ( 323, 324, ... )
 #' @param functional_types List of unique functional type names, e.g. c ( "Birds"  )
@@ -456,7 +456,7 @@ npn_download_site_phenometrics <- function(
 #' @param dataset_ids List of unique IDs for searching based on dataset, e.g. NEON or GRSM c(17,15)
 #' @param email Optional field, string. Email of user requesting data.
 #' @param download_path Optional file path to which search results should be re-directed for later use.
-#' @param wkt WKT geometry by which filter data. Specifying a valid WKT within the contigous US will
+#' @param wkt WKT geometry by which filter data. Specifying a valid WKT within the contiguous US will
 #' filter data based on the locations which fall within that WKT.
 #' @return Data table of all status records returned as per the search parameters. Null if output directed to file.
 #' @export
@@ -541,7 +541,7 @@ npn_download_magnitude_phenometrics <- function(
 #' Get Data By Year
 #'
 #' Utility function to chain multiple requests to npn_get_data for requests where data should only be retrieved on an annual basis, or otherwise automatically be
-#' deliniated in some way. Results in a data table that's a combined set of the results from each request to the data service.
+#' delineated in some way. Results in a data table that's a combined set of the results from each request to the data service.
 #'
 #' @param endpoint String, the endpoint to query
 #' @param query Base query string to use. This includes all the user selected parameters but doesn't include start/end date which will be automatically generated and
@@ -639,7 +639,7 @@ npn_get_data_by_year <- function(
 #' in the case of npn_get_data_by_year where we're making multiple requests to the same service and aggregating all
 #' data results in a single file. Without this flag, otherwise, each call to the service would truncate the output file.
 #'
-#' @return Data table of the requested dawta. NULL if a download_path was specified.
+#' @return Data table of the requested data. NULL if a download_path was specified.
 #' @keywords internal
 #' Don't keep this as export, REMOVE THIS EXPORT
 #' @export
@@ -830,7 +830,7 @@ npn_get_download_url <- function(
 
 #' Get Common Query String Variables
 #'
-#' Utility function to generate a list of query string variables for requests to NPN data service points. Some parametse are basically present in all requests,
+#' Utility function to generate a list of query string variables for requests to NPN data service points. Some parameters are basically present in all requests,
 #' so this function helps put them together.
 #'
 #'

@@ -20,7 +20,7 @@ knitr::opts_chunk$set(
 [![Build status](https://ci.appveyor.com/api/projects/status/es65utr5jmfmcsrg/branch/master)](https://ci.appveyor.com/project/sckott/rnpn/branch/master)
 [![codecov.io](https://codecov.io/github/ropensci/rnpn/coverage.svg?branch=master)](https://codecov.io/github/ropensci/rnpn?branch=master)
 
-`rnpn` is an R client for interacting with the USA National Phenology Network data web services. These services include access to a rich set of observer-contributed, point-based phenology records as well as geospatial data products including gridded phenological model and climitalogical data.
+`rnpn` is an R client for interacting with the USA National Phenology Network data web services. These services include access to a rich set of observer-contributed, point-based phenology records as well as geospatial data products including gridded phenological model and climatological data.
 
 Documentation is available for the National Phenology Network [API documentation](https://docs.google.com/document/d/1yNjupricKOAXn6tY1sI7-EwkcfwdGUZ7lxYv7fcPjO8/edit?hl=en_US), which describes the full set of REST services this package wraps.
 

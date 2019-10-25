@@ -71,7 +71,7 @@
       <a href="../articles/06_geospatial.html">06. USA-NPN Geospatial Data</a>
     </li>
     <li>
-      <a href="../articles/07_combine_raster_point.html">Putting It All Together</a>
+      <a href="../articles/07_combine_raster_point.html">07. Putting It All Together</a>
     </li>
   </ul>
 </li>
@@ -94,7 +94,7 @@
       <h1>06. USA-NPN Geospatial Data</h1>
                         <h4 class="author">Lee Marsh</h4>
             
-            <h4 class="date">October 10, 2019</h4>
+            <h4 class="date">2019-10-25</h4>
       
       
       <div class="hidden name"><code>06_geospatial.Rmd</code></div>
@@ -150,7 +150,7 @@
 <div id="accumulated-growing-degree-day-products" class="section level2">
 <h2 class="hasAnchor">
 <a href="#accumulated-growing-degree-day-products" class="anchor"></a>Accumulated Growing Degree Day Products</h2>
-<p>Heat accumulation is commonly used as a way of predicting the timing of phenological transitions in plants and animals, including when plants exhibit leaf out, flowering, or fruit ripening, or when insects emerge from dormancy. This is typically expressed as accumulated heat units, either Growing Degree Hours or Growing Degree Days. Growing degree day thresholds have been established for many species, and are commonly used in agriculture, horticulture, and pest management to schedule activities such as harvesting, pesticide treatment, and flower collection. The USA-NPN is currently generating Accumulated Growing Degree Days (AGDD) rasters using a January 1 start date, calculated using simple averaging. These are available calculated using two base temperatures, 32 degrees Fahrenheit (°F) and 50 °F.</p>
+<p>Heat accumulation is commonly used as a way of predicting the timing of phenological transitions in plants and animals, including when plants exhibit leaf out, flowering, or fruit ripening, or when insects emerge from dormancy. This is typically expressed as accumulated heat units, either Growing Degree Hours or Growing Degree Days. Growing degree day thresholds have been established for many species, and are commonly used in agriculture, horticulture, and pest management to schedule activities such as harvesting, pesticide treatment, and flower collection. The USA-NPN is currently generating Accumulated Growing Degree Days (AGDD) rasters using a January 1 start date, calculated using simple averaging. These are available calculated using two base temperatures, 32 degrees Fahrenheit (F) and 50 F.</p>
 <p>When querying certain layers, the underlying data is agnostic about the specific year, and in these cases it makes sense to use the day of year to request data, since that will provide a standardized result, (i.e., April 1st is day 91 in some years and day 92 in others).</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw"><a href="../reference/npn_download_geospatial.html">npn_download_geospatial</a></span>(</a>
 <a class="sourceLine" id="cb5-2" data-line-number="2"> <span class="st">'gdd:30yr_avg_agdd_50f'</span>, </a>
@@ -199,7 +199,7 @@
 <a class="sourceLine" id="cb12-7" data-line-number="7"> <span class="st">"si-x:average_bloom_prism"</span>,</a>
 <a class="sourceLine" id="cb12-8" data-line-number="8"> <span class="st">"1987-01-01"</span></a>
 <a class="sourceLine" id="cb12-9" data-line-number="9">)</a></code></pre></div>
-<p>The Spring Indicies are also unique in that the algorithm has been run against the BEST climate data set, so historic data going back to 1880 is available.</p>
+<p>The Spring Indices are also unique in that the algorithm has been run against the BEST climate data set, so historic data going back to 1880 is available.</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1">BESTSIxData1905 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/npn_download_geospatial.html">npn_download_geospatial</a></span>(</a>
 <a class="sourceLine" id="cb13-2" data-line-number="2"> <span class="st">'si-x:average_bloom_best'</span>, </a>
 <a class="sourceLine" id="cb13-3" data-line-number="3"> <span class="st">'1905-01-01'</span></a>
@@ -226,7 +226,7 @@
 <a class="sourceLine" id="cb19-3" data-line-number="3"> <span class="dt">main =</span> <span class="st">"Daily Temperature Max (C), May 5th, 2019"</span></a>
 <a class="sourceLine" id="cb19-4" data-line-number="4">)</a></code></pre></div>
 <p><img src="06_geospatial_files/figure-html/unnamed-chunk-14-1.png" width="700"></p>
-<p>The MODISv6 layers are aggregate values for remote sensing values from the MODISv6 data set, representing a subset of the following  phenometrics, aggregated across 2001 - 2017: EVI Area, Mid-Greenup, Mid-Greendown. The available aggregate values for each layer are: median, TSslope, and mean absolute deviation. This example shows the median green up value, as DOY. Note that because this layer has a fixed date, the date parameter is input as a blank string.</p>
+<p>The MODISv6 layers are aggregate values for remote sensing values from the MODISv6 data set, representing a subset of the following phenometrics, aggregated across 2001 - 2017: EVI Area, Mid-Greenup, Mid-Greendown. The available aggregate values for each layer are: median, TSslope, and mean absolute deviation. This example shows the median green up value, as DOY. Note that because this layer has a fixed date, the date parameter is input as a blank string.</p>
 <div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1">median_greenup &lt;-<span class="st"> </span><span class="kw"><a href="../reference/npn_download_geospatial.html">npn_download_geospatial</a></span>(</a>
 <a class="sourceLine" id="cb20-2" data-line-number="2"> <span class="st">'inca:midgup_median_nad83_02deg'</span>,</a>
 <a class="sourceLine" id="cb20-3" data-line-number="3"> <span class="st">''</span></a>

@@ -7,7 +7,7 @@
 get_additional_rasters(data)
 }
 \arguments{
-\item{data}{Data frame with first column named 'name' and containing the names of the layer for which to retreive data and the second column
+\item{data}{Data frame with first column named 'name' and containing the names of the layer for which to retrieve data and the second column
 named 'param' and containing string representations of the time/elevation subset parameter to pass}
 }
 \value{

@@ -38,9 +38,9 @@ delineate the period of time by the calendar months regardless of how many days 
 
 \item{station_ids}{List of unique IDs for searching based on site location, e.g. c ( 5, 9, ... )}
 
-\item{species_types}{List of unique species type names for searching based on species types, e.g. c ( "Decidious", "Evergreen" )}
+\item{species_types}{List of unique species type names for searching based on species types, e.g. c ( "Deciduous", "Evergreen" )}
 
-\item{network_ids}{List of unique IDs for searching based on parter group/network, e.g. ( 500, 300, ... )}
+\item{network_ids}{List of unique IDs for searching based on partner group/network, e.g. ( 500, 300, ... )}
 
 \item{states}{List of US postal states to be used as search params, e.g. c ( "AZ", "IL" )}
 
@@ -64,7 +64,7 @@ delineate the period of time by the calendar months regardless of how many days 
 
 \item{pheno_class_aggregate}{Boolean value indicating whether to aggregate data by the pheno class ids as per the pheno_class_ids parameter. If the pheno_class_ids value is not set, then this parameter is ignored. This can be used in conjunction with taxonomy_aggregate and higher taxonomic level data filtering.}
 
-\item{wkt}{WKT geometry by which filter data. Specifying a valid WKT within the contigous US will
+\item{wkt}{WKT geometry by which filter data. Specifying a valid WKT within the contiguous US will
 filter data based on the locations which fall within that WKT.}
 }
 \value{
@@ -72,7 +72,7 @@ Data table of all status records returned as per the search parameters. Null if 
 }
 \description{
 This function allows for a parameterized search of all magnitude phenometrics in the USA-NPN database, returning all records as per the search results in a
- data table. Data fetched from NPN services is returned as raw JSON before being channeled into a data table. Optinally results can be directed to an output file in
+ data table. Data fetched from NPN services is returned as raw JSON before being channeled into a data table. Optionally results can be directed to an output file in
  which case raw JSON is saved to file; in that case, data is also streamed to file which allows for more easily handling of the data if the search otherwise
  returns more data than can be handled at once in memory.
 }
@@ -89,7 +89,7 @@ Most search parameters are optional, however, failing to provide even a single s
  a user email and/or IP address for usage data reporting later.
 
 Additional fields provides the ability to specify more, non-critical fields to include in the search results. A complete list of additional fields can be found in
- the NPN service's companion documention
+ the NPN service's companion documentation
  https://docs.google.com/document/d/1yNjupricKOAXn6tY1sI7-EwkcfwdGUZ7lxYv7fcPjO8/edit#heading=h.df3zspopwq98
  Metadata on all fields can be found in the following Excel sheet:
  http://www.usanpn.org/files/metadata/magnitude_phenometrics_datafield_descriptions.xlsx

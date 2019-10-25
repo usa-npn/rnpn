@@ -18,7 +18,7 @@ in the case of npn_get_data_by_year where we're making multiple requests to the 
 data results in a single file. Without this flag, otherwise, each call to the service would truncate the output file.}
 }
 \value{
-Data table of the requested dawta. NULL if a download_path was specified.
+Data table of the requested data. NULL if a download_path was specified.
 }
 \description{
 Generic utility function for querying data from the NPN data services.

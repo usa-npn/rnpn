@@ -140,7 +140,7 @@ npn_download_geospatial <- function (
 #' @param lat The latitude of the queried point
 #' @param long The longitude of the queried point
 #' @param date The queried date
-#' @param store_data Boolean value. If set TRUE then the value retrived will be stored in a global variable named point_values for
+#' @param store_data Boolean value. If set TRUE then the value retrieved will be stored in a global variable named point_values for
 #' later use
 #' @return Returns a numeric value of the AGDD value at the specified lat/long/date. If no value can be retrieved, then -9999 is returned.
 #' @export
@@ -213,7 +213,7 @@ npn_get_agdd_point_data <- function(
 #' @param lat The latitude of the point
 #' @param long The longitude of the point
 #' @param date The date for which to get a value
-#' @param store_data Boolean value. If set TRUE then the value retrived will be stored in a global variable named point_values for
+#' @param store_data Boolean value. If set TRUE then the value retrieved will be stored in a global variable named point_values for
 #' later use
 #' @export
 npn_get_point_data <- function(
@@ -255,18 +255,18 @@ npn_get_point_data <- function(
 
 #' Resolve SIX Raster
 #'
-#' Utility function used to resolve the appripriate SI-x layer to use
+#' Utility function used to resolve the appropriate SI-x layer to use
 #' based on the year being retrieved, the phenophase and sub-model being
 #' requested.
 #'
 #' If the year being requested is more than two years older than the current year
 #' then use the prism based layers rather than the NCEP based layers.
-#' This is because the PRISM data is not availabel in whole until midway through
+#' This is because the PRISM data is not available in whole until midway through
 #' the year after it was initially recorded. Hence, the 'safest' approach is to only
 #' refer to the PRISM data when we knows for sure it's available in full, i.e. two years
 #' prior.
 #'
-#' Sub-model and phenophase on the other hand are rotely appended to the name of the layer
+#' Sub-model and phenophase on the other hand are appended to the name of the layer
 #' to request, no special logic is present in making the decision which layer to retrieve
 #' based on those parameters.
 #'
@@ -385,7 +385,7 @@ npn_check_point_cached <- function(
 #'
 #' Utility function to easily take arbitrary layer name parameters as a data frame and
 #' return the raster data from NPN Geospatial data services
-#' @param data Data frame with first column named 'name' and containing the names of the layer for which to retreive data and the second column
+#' @param data Data frame with first column named 'name' and containing the names of the layer for which to retrieve data and the second column
 #' named 'param' and containing string representations of the time/elevation subset parameter to pass
 #' @return Returns a data frame containing the raster objects related to the specified layers
 #' @keywords internal
@@ -415,8 +415,8 @@ get_additional_rasters <- function(data){
 #' @param upper_threshold This parameter is only applicable for the double-sine method. This sets the highest temperature
 #' to be considered in any given day's AGDD calculation
 #' @param climate_data_source Specified the climate data set to use. Takes either "PRISM" or "NCEP" as input.
-#' @param temp_unit The unit of temperature to use in the calculation. Takes either "fahrenheit" or "celsius" as input.
-#' @param lat The latitude of the location for which to calcualte the time series
+#' @param temp_unit The unit of temperature to use in the calculation. Takes either "Fahrenheit" or "Celsius" as input.
+#' @param lat The latitude of the location for which to calculate the time series
 #' @param long The longitude of the location for which to calculate the time series
 #'
 #'
@@ -482,7 +482,7 @@ npn_get_custom_agdd_time_series <- function(
 
 }
 
-#' Get Cuomst AGDD Raster Map
+#' Get Custom AGDD Raster Map
 #'
 #' This function takes a series of variables used in calculating AGDD and returns
 #' a raster of the continental USA with each pixel representing the calculated AGDD value
@@ -497,7 +497,7 @@ npn_get_custom_agdd_time_series <- function(
 #' @param upper_threshold This parameter is only applicable for the double-sine method. This sets the highest temperature
 #' to be considered in any given day's AGDD calculation
 #' @param climate_data_source Specified the climate data set to use. Takes either "PRISM" or "NCEP" as input.
-#' @param temp_unit The unit of temperature to use in the calculation. Takes either "fahrenheit" or "celsius" as input.
+#' @param temp_unit The unit of temperature to use in the calculation. Takes either "Fahrenheit" or "Celsius" as input.
 #' @export
 npn_get_custom_agdd_raster <- function(
   method,

@@ -12,7 +12,7 @@ npn_groups(use_hierarchy = FALSE, ...)
 \item{...}{Curl options passed on to \code{\link[httr]{GET}}}
 }
 \value{
-List of parnter groups, including ID and name
+List of partner groups, including ID and name
 }
 \description{
 Returns a list of all groups participating in the NPN's data collection program. These details can be used to further filter

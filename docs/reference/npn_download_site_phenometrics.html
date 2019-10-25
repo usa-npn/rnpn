@@ -33,7 +33,7 @@
 <meta property="og:title" content="Download Site Phenometrics — npn_download_site_phenometrics" />
 
 <meta property="og:description" content="This function allows for a parameterized search of all site phenometrics records in the USA-NPN database, returning all records as per the search parameters in a
- data table. Data fetched from NPN services is returned as raw JSON before being channeled into a data table. Optinally results can be directed to an output file in
+ data table. Data fetched from NPN services is returned as raw JSON before being channeled into a data table. Optionally results can be directed to an output file in
  which case raw JSON is converted to CSV and saved to file; in that case, data is also streamed to file which allows for more easily handling of the data if the search otherwise
  returns more data than can be handled at once in memory." />
 <meta name="twitter:card" content="summary" />
@@ -107,7 +107,7 @@
       <a href="../articles/06_geospatial.html">06. USA-NPN Geospatial Data</a>
     </li>
     <li>
-      <a href="../articles/07_combine_raster_point.html">Putting It All Together</a>
+      <a href="../articles/07_combine_raster_point.html">07. Putting It All Together</a>
     </li>
   </ul>
 </li>
@@ -138,7 +138,7 @@
     <div class="ref-description">
     
     <p>This function allows for a parameterized search of all site phenometrics records in the USA-NPN database, returning all records as per the search parameters in a
- data table. Data fetched from NPN services is returned as raw JSON before being channeled into a data table. Optinally results can be directed to an output file in
+ data table. Data fetched from NPN services is returned as raw JSON before being channeled into a data table. Optionally results can be directed to an output file in
  which case raw JSON is converted to CSV and saved to file; in that case, data is also streamed to file which allows for more easily handling of the data if the search otherwise
  returns more data than can be handled at once in memory.</p>
     
@@ -202,11 +202,11 @@ first Y value and the previous N value for each individual to be included in the
     </tr>
     <tr>
       <th>species_types</th>
-      <td><p>List of unique species type names for searching based on species types, e.g. c ( "Decidious", "Evergreen" )</p></td>
+      <td><p>List of unique species type names for searching based on species types, e.g. c ( "Deciduous", "Evergreen" )</p></td>
     </tr>
     <tr>
       <th>network_ids</th>
-      <td><p>List of unique IDs for searching based on parter group/network, e.g. ( 500, 300, ... )</p></td>
+      <td><p>List of unique IDs for searching based on partner group/network, e.g. ( 500, 300, ... )</p></td>
     </tr>
     <tr>
       <th>states</th>
@@ -262,13 +262,13 @@ a January 1st start date of the year in which the observation was taken.</p></td
     </tr>
     <tr>
       <th>six_sub_model</th>
-      <td><p>Affects the results of the six layers returned. Can be used to specify one of three submodels used to calcualte
+      <td><p>Affects the results of the six layers returned. Can be used to specify one of three submodels used to calculate
 the spring index values. Thus setting this field will change the results of six_leaf_layer and six_bloom_layer. Valid values include:
-'lilac','zabelli' and 'arnoldred'. For more information see the NPN's Sping Index Maps documentation: https://www.usanpn.org/data/spring_indices</p></td>
+'lilac','zabelli' and 'arnoldred'. For more information see the NPN's Spring Index Maps documentation: https://www.usanpn.org/data/spring_indices</p></td>
     </tr>
     <tr>
       <th>additional_layers</th>
-      <td><p>Data frame with first column named 'name' and containing the names of the layer for which to retreive data
+      <td><p>Data frame with first column named 'name' and containing the names of the layer for which to retrieve data
 and the second column named 'param' and containing string representations of the time/elevation subset parameter to use.
 This variable can be used to append additional geospatial layer data fields to the results, such that the date of observation
 in each row will resolve to a value from the specified layers, given the location of the observation.</p></td>
@@ -283,7 +283,7 @@ in each row will resolve to a value from the specified layers, given the locatio
     </tr>
     <tr>
       <th>wkt</th>
-      <td><p>WKT geometry by which filter data. Specifying a valid WKT within the contigous US will
+      <td><p>WKT geometry by which filter data. Specifying a valid WKT within the contiguous US will
 filter data based on the locations which fall within that WKT.</p></td>
     </tr>
     </table>
@@ -305,7 +305,7 @@ filter data based on the locations which fall within that WKT.</p></td>
  you provide your name or organization name. If the call to this function is acting as an intermediary for a client, then you may also optionally provide
  a user email and/or IP address for usage data reporting later.</p>
 <p>Additional fields provides the ability to specify additional, non-critical fields to include in the search results. A complete list of additional fields can be found in
- the NPN service's companion documention
+ the NPN service's companion documentation
  https://docs.google.com/document/d/1yNjupricKOAXn6tY1sI7-EwkcfwdGUZ7lxYv7fcPjO8/edit#heading=h.ueaexz9bczti
  Metadata on all fields can be found in the following Excel sheet:
  http://www.usanpn.org/files/metadata/site_phenometrics_datafield_descriptions.xlsx</p>

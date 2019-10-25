@@ -9,7 +9,7 @@
 #' @param use_hierarchy Boolean indicating whether or not the list of networks should be represented in a hierarchy. Defaults to FALSE
 #' @template curl
 #'
-#' @return List of parnter groups, including ID and name
+#' @return List of partner groups, including ID and name
 #' @export
 npn_groups <- function(use_hierarchy=FALSE, ...) {
   end_point <- NULL

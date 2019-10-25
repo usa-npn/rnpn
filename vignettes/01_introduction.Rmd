@@ -15,7 +15,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Introduction
 
-The USA National Phenology Network (USA-NPN) is a USGS funded organization that collects phenological observation records from volunteer and professional scientists to better understand the impact of changes in the environment on the timing of species' lifecycles. The USA-NPN also provides a number of raster-based climatological data sets and phenological models. These in-situ observation and geospatial, modeled datasets are available through a number of tools and data services.
+The USA National Phenology Network (USA-NPN) is a USGS funded organization that collects phenological observation records from volunteer and professional scientists to better understand the impact of changes in the environment on the timing of species' life cycles. The USA-NPN also provides a number of raster-based climatological data sets and phenological models. These in-situ observation and geospatial, modeled datasets are available through a number of tools and data services.
 
 The USA-NPN R library, "rnpn", is primarily a data access service for USA-NPN data products, serving as a wrapper to the USA-NPN REST based web services. (link). This guide details how to use the library to access and work with all USA-NPN data types.
 
@@ -42,7 +42,7 @@ npn_download_[NAME OF DATA TYPE] (
 )                  
 ```
 
-'Request source''' should usually be populated with your full name or the name of the organization you represent. Species_ID is the unique identifer for all the available plants and animals in the USA-NPN database.
+'Request source' should usually be populated with your full name or the name of the organization you represent. Species_ID is the unique identifier for all the available plants and animals in the USA-NPN database.
 You can create a table of all available species and their ID numbers:
 
 ```{r eval=FALSE}
