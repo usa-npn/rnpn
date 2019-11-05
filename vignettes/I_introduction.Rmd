@@ -1,5 +1,5 @@
 ---
-title: "01. Introduction to National Phenology Network Observational Data"
+title: "I. Introduction to National Phenology Network Observational Data"
 author: "Lee Marsh"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette

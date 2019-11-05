@@ -32,6 +32,7 @@ Suggests:
     testthat,
     covr,
     knitr,
-    rmarkdown
+    rmarkdown,
+    RColorBrewer
 RoxygenNote: 6.1.1
 VignetteBuilder: knitr

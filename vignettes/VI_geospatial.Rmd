@@ -1,5 +1,5 @@
 ---
-title: "06. USA-NPN Geospatial Data"
+title: "VI. USA-NPN Geospatial Data"
 author: "Lee Marsh"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette

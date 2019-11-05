@@ -666,6 +666,7 @@ npn_get_data <- function(
   raw_data <- ""
   ch <- NULL
   json <- ""
+  . <- ""
   i<-0
 
   append_chunk <- function(ch=NULL){

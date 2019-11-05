@@ -5,11 +5,11 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>05. Magnitude Phenometrics • rnpn</title>
+<title>V. Magnitude Phenometrics • rnpn</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="05. Magnitude Phenometrics">
+<script src="../pkgdown.js"></script><meta property="og:title" content="V. Magnitude Phenometrics">
 <meta property="og:description" content="">
 <meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -37,12 +37,6 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -53,25 +47,25 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/01_introduction.html">01. Introduction to National Phenology Network Observational Data</a>
+      <a href="../articles/I_introduction.html">I. Introduction</a>
     </li>
     <li>
-      <a href="../articles/02_status_intensity.html">02. Status and Intensity Data</a>
+      <a href="../articles/II_status_intensity.html">II. Status and Intensity Data</a>
     </li>
     <li>
-      <a href="../articles/03_individual_phenometrics.html">03. Individual Phenometrics</a>
+      <a href="../articles/III_individual_phenometrics.html">III. Individual Phenometrics</a>
     </li>
     <li>
-      <a href="../articles/04_site_phenometrics.html">04. Site Phenometrics</a>
+      <a href="../articles/IV_site_phenometrics.html">IV. Site Phenometrics</a>
     </li>
     <li>
-      <a href="../articles/05_magnitude_phenometrics.html">05. Magnitude Phenometrics</a>
+      <a href="../articles/V_magnitude_phenometrics.html">V. Magnitude Phenometrics</a>
     </li>
     <li>
-      <a href="../articles/06_geospatial.html">06. USA-NPN Geospatial Data</a>
+      <a href="../articles/VI_geospatial.html">VI. USA-NPN Geospatial Data</a>
     </li>
     <li>
-      <a href="../articles/07_combine_raster_point.html">07. Putting It All Together</a>
+      <a href="../articles/VII_combine_raster_point.html">VII. Putting It All Together</a>
     </li>
   </ul>
 </li>
@@ -91,13 +85,13 @@
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1>05. Magnitude Phenometrics</h1>
+      <h1>V. Magnitude Phenometrics</h1>
                         <h4 class="author">Lee Marsh</h4>
             
-            <h4 class="date">2019-10-25</h4>
+            <h4 class="date">2019-11-05</h4>
       
       
-      <div class="hidden name"><code>05_magnitude_phenometrics.Rmd</code></div>
+      <div class="hidden name"><code>V_magnitude_phenometrics.Rmd</code></div>
 
     </div>
 
@@ -137,7 +131,7 @@
 <a class="sourceLine" id="cb3-16" data-line-number="16">  <span class="dt">xlim=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/as.Date">as.Date</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"2018-01-01"</span>, <span class="st">"2018-08-01"</span>)),</a>
 <a class="sourceLine" id="cb3-17" data-line-number="17">  <span class="dt">ylim=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">0</span>,<span class="dv">1</span>)</a>
 <a class="sourceLine" id="cb3-18" data-line-number="18">)</a></code></pre></div>
-<p><img src="05_magnitude_phenometrics_files/figure-html/unnamed-chunk-2-1.png" width="700"></p>
+<p><img src="V_magnitude_phenometrics_files/figure-html/unnamed-chunk-2-1.png" width="700"></p>
 </div>
   </div>
 

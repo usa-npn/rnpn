@@ -14,14 +14,15 @@
 #' }
 npn_lookup_names <- function(name, type = 'genus', fuzzy = FALSE) {
 
-  if(!exists("species_list") || is.null(species_list)){
-    species_list <<- npn_species()
+  if(is.null(pkg.env$species_list)){
+    assign("species_list",npn_species(),envir = pkg.env)
   }
 
   type <- match.arg(type, choices = c('common_name','genus','species'))
+
   if (fuzzy) {
-    species_list[agrep(name, species_list[, type]), ]
+    pkg.env$species_list[agrep(name, pkg.env$species_list[, type]), ]
   } else {
-    species_list[grep(name, species_list[, type]), ]
+    pkg.env$species_list[grep(name, pkg.env$species_list[[type]]), ]
   }
 }

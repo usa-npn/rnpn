@@ -2,11 +2,11 @@ pandoc: 2.2.3.2
 pkgdown: 1.3.0
 pkgdown_sha: ~
 articles:
-  01_introduction: 01_introduction.html
-  02_status_intensity: 02_status_intensity.html
-  03_individual_phenometrics: 03_individual_phenometrics.html
-  04_site_phenometrics: 04_site_phenometrics.html
-  05_magnitude_phenometrics: 05_magnitude_phenometrics.html
-  06_geospatial: 06_geospatial.html
-  07_combine_raster_point: 07_combine_raster_point.html
+  III_individual_phenometrics: III_individual_phenometrics.html
+  II_status_intensity: II_status_intensity.html
+  IV_site_phenometrics: IV_site_phenometrics.html
+  I_introduction: I_introduction.html
+  VII_combine_raster_point: VII_combine_raster_point.html
+  VI_geospatial: VI_geospatial.html
+  V_magnitude_phenometrics: V_magnitude_phenometrics.html
 

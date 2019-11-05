@@ -5,11 +5,11 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>06. USA-NPN Geospatial Data • rnpn</title>
+<title>VI. USA-NPN Geospatial Data • rnpn</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="06. USA-NPN Geospatial Data">
+<script src="../pkgdown.js"></script><meta property="og:title" content="VI. USA-NPN Geospatial Data">
 <meta property="og:description" content="">
 <meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -37,12 +37,6 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -53,25 +47,25 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/01_introduction.html">01. Introduction to National Phenology Network Observational Data</a>
+      <a href="../articles/I_introduction.html">I. Introduction</a>
     </li>
     <li>
-      <a href="../articles/02_status_intensity.html">02. Status and Intensity Data</a>
+      <a href="../articles/II_status_intensity.html">II. Status and Intensity Data</a>
     </li>
     <li>
-      <a href="../articles/03_individual_phenometrics.html">03. Individual Phenometrics</a>
+      <a href="../articles/III_individual_phenometrics.html">III. Individual Phenometrics</a>
     </li>
     <li>
-      <a href="../articles/04_site_phenometrics.html">04. Site Phenometrics</a>
+      <a href="../articles/IV_site_phenometrics.html">IV. Site Phenometrics</a>
     </li>
     <li>
-      <a href="../articles/05_magnitude_phenometrics.html">05. Magnitude Phenometrics</a>
+      <a href="../articles/V_magnitude_phenometrics.html">V. Magnitude Phenometrics</a>
     </li>
     <li>
-      <a href="../articles/06_geospatial.html">06. USA-NPN Geospatial Data</a>
+      <a href="../articles/VI_geospatial.html">VI. USA-NPN Geospatial Data</a>
     </li>
     <li>
-      <a href="../articles/07_combine_raster_point.html">07. Putting It All Together</a>
+      <a href="../articles/VII_combine_raster_point.html">VII. Putting It All Together</a>
     </li>
   </ul>
 </li>
@@ -91,13 +85,13 @@
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1>06. USA-NPN Geospatial Data</h1>
+      <h1>VI. USA-NPN Geospatial Data</h1>
                         <h4 class="author">Lee Marsh</h4>
             
-            <h4 class="date">2019-10-25</h4>
+            <h4 class="date">2019-11-05</h4>
       
       
-      <div class="hidden name"><code>06_geospatial.Rmd</code></div>
+      <div class="hidden name"><code>VI_geospatial.Rmd</code></div>
 
     </div>
 
@@ -178,7 +172,7 @@
 <a class="sourceLine" id="cb10-2" data-line-number="2"> AGDDJun2019, </a>
 <a class="sourceLine" id="cb10-3" data-line-number="3"> <span class="dt">main =</span> <span class="st">"AGDD base 50 on June 25th, 2019"</span></a>
 <a class="sourceLine" id="cb10-4" data-line-number="4">)</a></code></pre></div>
-<p><img src="06_geospatial_files/figure-html/unnamed-chunk-9-1.png" width="700"></p>
+<p><img src="VI_geospatial_files/figure-html/unnamed-chunk-9-1.png" width="700"></p>
 <p>An important layer to know of is the 30 year average for AGDD products. This is useful for many comparative analyses. This layer takes DOY as the date input, since it’s the average AGDD value for each day of year for 1981 - 2010.</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1">average_30yr &lt;-<span class="st"> </span><span class="kw"><a href="../reference/npn_download_geospatial.html">npn_download_geospatial</a></span>(</a>
 <a class="sourceLine" id="cb11-2" data-line-number="2"> <span class="st">"gdd:30yr_avg_agdd"</span>,</a>
@@ -210,7 +204,7 @@
 <a class="sourceLine" id="cb16-2" data-line-number="2"> BESTSIxData1905, </a>
 <a class="sourceLine" id="cb16-3" data-line-number="3"> <span class="dt">main =</span> <span class="st">"Spring Index, 1905"</span></a>
 <a class="sourceLine" id="cb16-4" data-line-number="4">)</a></code></pre></div>
-<p><img src="06_geospatial_files/figure-html/unnamed-chunk-13-1.png" width="700"></p>
+<p><img src="VI_geospatial_files/figure-html/unnamed-chunk-13-1.png" width="700"></p>
 <div id="other-layers" class="section level3">
 <h3 class="hasAnchor">
 <a href="#other-layers" class="anchor"></a>Other Layers</h3>
@@ -225,7 +219,7 @@
 <a class="sourceLine" id="cb19-2" data-line-number="2"> daily_max_<span class="dv">20190505</span>, </a>
 <a class="sourceLine" id="cb19-3" data-line-number="3"> <span class="dt">main =</span> <span class="st">"Daily Temperature Max (C), May 5th, 2019"</span></a>
 <a class="sourceLine" id="cb19-4" data-line-number="4">)</a></code></pre></div>
-<p><img src="06_geospatial_files/figure-html/unnamed-chunk-14-1.png" width="700"></p>
+<p><img src="VI_geospatial_files/figure-html/unnamed-chunk-14-1.png" width="700"></p>
 <p>The MODISv6 layers are aggregate values for remote sensing values from the MODISv6 data set, representing a subset of the following phenometrics, aggregated across 2001 - 2017: EVI Area, Mid-Greenup, Mid-Greendown. The available aggregate values for each layer are: median, TSslope, and mean absolute deviation. This example shows the median green up value, as DOY. Note that because this layer has a fixed date, the date parameter is input as a blank string.</p>
 <div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1">median_greenup &lt;-<span class="st"> </span><span class="kw"><a href="../reference/npn_download_geospatial.html">npn_download_geospatial</a></span>(</a>
 <a class="sourceLine" id="cb20-2" data-line-number="2"> <span class="st">'inca:midgup_median_nad83_02deg'</span>,</a>
@@ -236,7 +230,7 @@
 <a class="sourceLine" id="cb22-2" data-line-number="2"> median_greenup, </a>
 <a class="sourceLine" id="cb22-3" data-line-number="3"> <span class="dt">main =</span> <span class="st">"MODIS Median Mid-Greenup, 2001 - 2017"</span></a>
 <a class="sourceLine" id="cb22-4" data-line-number="4">)</a></code></pre></div>
-<p><img src="06_geospatial_files/figure-html/unnamed-chunk-15-1.png" width="700"></p>
+<p><img src="VI_geospatial_files/figure-html/unnamed-chunk-15-1.png" width="700"></p>
 </div>
 </div>
 </div>

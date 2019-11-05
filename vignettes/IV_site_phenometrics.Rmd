@@ -1,5 +1,5 @@
 ---
-title: "04. Site Phenometrics"
+title: "IV. Site Phenometrics"
 author: "Lee Marsh"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette

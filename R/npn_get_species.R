@@ -91,15 +91,15 @@ npn_species_types <- function(kingdom="Plantae", ...) {
   }
 
   if(!is.null(end_point)){
-    tibble::as.tibble(
+    tibble::as_tibble(
       npn_GET(paste0(base(), end_point), list(), TRUE, ...)
     )
   }else{
-    plant_types <- tibble::as_data_frame(
+    plant_types <- tibble::as_tibble(
       npn_GET(paste0(base(), 'species/getPlantTypes.json'), list(), TRUE, ...)
     )
 
-    animal_types <- tibble::as_data_frame(
+    animal_types <- tibble::as_tibble(
       npn_GET(paste0(base(), 'species/getAnimalTypes.json'), list(), TRUE, ...)
     )
 

@@ -181,15 +181,15 @@ npn_get_agdd_point_data <- function(
     return(-9999)
   })
 
-  # Once the value is known, then cache it in global memory so the script doesn't try to ask for the save
+  # Once the value is known, then cache it in global memory so the script doesn't try to ask for the same
   # data point more than once.
   #
   # TODO: Break this into it's own function
   if(store_data){
-    if(!exists("point_values")){
-      point_values <<- data.frame(layer=layer,lat=lat,long=long,date=date,value=v)
+    if(is.null(pkg.env$point_values)){
+      pkg.env$point_values <- data.frame(layer=layer,lat=lat,long=long,date=date,value=v)
     }else{
-      point_values <<- rbind(point_values, data.frame(layer=layer,lat=lat,long=long,date=date,value=v))
+      pkg.env$point_values <- rbind(pkg.env$point_values, data.frame(layer=layer,lat=lat,long=long,date=date,value=v))
     }
   }
 
@@ -241,10 +241,10 @@ npn_get_point_data <- function(
   v <- as.numeric(as.list(strsplit(gsub("\n","",df[1,"text"]),' ')[[1]])[1])
 
   if(store_data){
-    if(!exists("point_values")){
-      point_values <<- data.frame(layer=layer,lat=lat,long=long,date=date,value=v)
+    if(!is.null(pkg.env$point_values)){
+      pkg.env$point_values <- data.frame(layer=layer,lat=lat,long=long,date=date,value=v)
     }else{
-      point_values <<- rbind(point_values, data.frame(layer=layer,lat=lat,long=long,date=date,value=v))
+      pkg.env$point_values <- rbind(pkg.env$point_values, data.frame(layer=layer,lat=lat,long=long,date=date,value=v))
     }
   }
 
@@ -371,8 +371,8 @@ npn_check_point_cached <- function(
   layer,lat,long,date
 ){
   val = NULL
-  if(exists("point_values")){
-    val <- point_values[point_values$layer == layer & point_values$lat == lat & point_values$long == long & point_values$date == date,]['value']
+  if(!is.null(pkg.env$point_values)){
+    val <- pkg.env$point_values[pkg.env$point_values$layer == layer & pkg.env$point_values$lat == lat & pkg.env$point_values$long == long & pkg.env$point_values$date == date,]['value']
     if(!is.null(val) && nrow(val) == 0){
       val <- NULL
     }

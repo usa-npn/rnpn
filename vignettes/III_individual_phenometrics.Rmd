@@ -1,5 +1,5 @@
 ---
-title: "03. Individual Phenometrics"
+title: "III. Individual Phenometrics"
 author: "Lee Marsh"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
@@ -29,7 +29,7 @@ Any call for individual phenometrics requires chronological bounds, usually a ca
 Here's an example of how to query the services for individual phenometrics data. Note that the overall structure and parameters are very similar to the call for status data. The biggest difference in this case is that start and end date parameters are now replaced with a 'years' array, which predictably takes a set of year values with which to query the service. 
 
 
-```{r eval=FALSE}
+```{r}
 npn_download_individual_phenometrics(
   request_source='Your Name Here', 
   years=c(2013,2014,2015,2016), 
@@ -45,7 +45,7 @@ In this example, we're able to see individual saguaro phenology for 2013 through
 Climate data from DayMet can also be acquired with Status & Intensity, Individual Phenometrics and Site Phenometric data types, by setting the climate_data parameter to true. In this example, we are getting colored leaves (phenophase ID is 498) data for birches, using the four birch species IDs, for 2015: 
 
 
-```{r eval=FALSE}
+```{r}
 npn_download_individual_phenometrics(
   request_source = 'Your Name Here', 
   years = c('2015'), 

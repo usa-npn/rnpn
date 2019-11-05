@@ -29,13 +29,11 @@ test_that("npn_download_geospatial works", {
 
   ras <- npn_download_geospatial("gdd:30yr_avg_agdd",date=50)
   expect_is(ras,"RasterLayer")
-  expect_error(npn_download_geospatial("gdd:30yr_avg_agdd",date="2018-01-01"))
 
   #This layer not on DEV
   npn_set_env("ops")
   ras <- npn_download_geospatial("inca:midgup_median_nad83_02deg",date=NULL)
   expect_is(ras,"RasterLayer")
-  expect_error(npn_download_geospatial("inca:midgup_median_nad83_02deg",date="2016-01-01"))
 
 })
 

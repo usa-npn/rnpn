@@ -1,4 +1,6 @@
 
+pkg.env <- new.env(parent = emptyenv())
+
 #' Set Environment
 #'
 #' By default this library will call the NPN's production services
@@ -9,22 +11,23 @@
 #' @param env The environment to use. Should be "ops" or "dev"
 #' @export
 npn_set_env <- function (env = "ops"){
-  env <<- env
+  pkg.env$remote_env <- env
 }
 
 get_test_env <- function(){
   return("dev")
 }
 
+
 base <- function(){
 
-  if( exists("env") && !is.null(env)){
-    env <- env
+  if( !is.null(pkg.env$remote_env)){
+    pkg.env$remote_env <- pkg.env$remote_env
   }else{
-    env <- "ops"
+    pkg.env$remote_env <- "ops"
   }
 
-  if(env=="ops"){
+  if(pkg.env$remote_env=="ops"){
       return('https://www.usanpn.org/npn_portal/')
   }else{
       return('https://www-dev.usanpn.org/npn_portal/')
@@ -33,13 +36,13 @@ base <- function(){
 
 base_geoserver <- function(){
 
-  if( exists("env") && !is.null(env)){
-    env <- env
+  if( !is.null(pkg.env$remote_env)){
+    pkg.env$remote_env <- pkg.env$remote_env
   }else{
-    env <- "ops"
+    pkg.env$remote_env <- "ops"
   }
 
-  if(env=="ops"){
+  if(pkg.env$remote_env=="ops"){
     return('https://geoserver.usanpn.org/geoserver/wcs?service=WCS&version=2.0.1&request=GetCoverage&')
   }else{
     return('https://geoserver-dev.usanpn.org/geoserver/wcs?service=WCS&version=2.0.1&request=GetCoverage&')

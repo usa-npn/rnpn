@@ -207,23 +207,23 @@ test_that("higher taxonomic ordering works for status data", {
   expect_lt(nrow(less_data), nrow(some_data))
   expect_gt(nrow(less_data),0)
 
-  skip("Takes too long")
+  #Skip, takes too long
   #class_ID
-  some_data <- npn_download_status_data(
-    "Unit Test",
-    c(2013),
-    class_ids = c(15),
-    additional_fields = c("Class_ID")
-  )
-
-  expect_is(some_data,"data.frame")
-  expect_gt(nrow(some_data), 1000)
-  expect_is(some_data$family_id, "integer")
-  expect_equal(some_data[1,]$class_id,15)
-
-  less_data <- subset(some_data,species_id==6)
-  expect_lt(nrow(less_data), nrow(some_data))
-  expect_gt(nrow(less_data),0)
+  # some_data <- npn_download_status_data(
+  #   "Unit Test",
+  #   c(2013),
+  #   class_ids = c(15),
+  #   additional_fields = c("Class_ID")
+  # )
+  #
+  # expect_is(some_data,"data.frame")
+  # expect_gt(nrow(some_data), 1000)
+  # expect_is(some_data$family_id, "integer")
+  # expect_equal(some_data[1,]$class_id,15)
+  #
+  # less_data <- subset(some_data,species_id==6)
+  # expect_lt(nrow(less_data), nrow(some_data))
+  # expect_gt(nrow(less_data),0)
 
 
 })
@@ -268,23 +268,23 @@ test_that("higher taxonomic ordering works for individual phenometrics", {
   expect_lt(nrow(less_data), nrow(some_data))
   expect_gt(nrow(less_data),0)
 
-  skip("Takes too long")
-  #class_ID
-  some_data <- npn_download_individual_phenometrics(
-    "Unit Test",
-    c(2013),
-    class_ids = c(15),
-    additional_fields = c("Class_ID")
-  )
-
-  expect_is(some_data,"data.frame")
-  expect_gt(nrow(some_data), 1000)
-  expect_is(some_data$family_id, "integer")
-  expect_equal(some_data[1,]$class_id,15)
-
-  less_data <- subset(some_data,species_id==6)
-  expect_lt(nrow(less_data), nrow(some_data))
-  expect_gt(nrow(less_data),0)
+  # skip("Takes too long")
+  # #class_ID
+  # some_data <- npn_download_individual_phenometrics(
+  #   "Unit Test",
+  #   c(2013),
+  #   class_ids = c(15),
+  #   additional_fields = c("Class_ID")
+  # )
+  #
+  # expect_is(some_data,"data.frame")
+  # expect_gt(nrow(some_data), 1000)
+  # expect_is(some_data$family_id, "integer")
+  # expect_equal(some_data[1,]$class_id,15)
+  #
+  # less_data <- subset(some_data,species_id==6)
+  # expect_lt(nrow(less_data), nrow(some_data))
+  # expect_gt(nrow(less_data),0)
 
 
 })
@@ -328,23 +328,23 @@ test_that("higher taxonomic ordering works for site phenometrics", {
   expect_lt(nrow(less_data), nrow(some_data))
   expect_gt(nrow(less_data),0)
 
-  skip("Takes too long")
-  #class_ID
-  some_data <- npn_download_site_phenometrics(
-    "Unit Test",
-    c(2013),
-    class_ids = c(15),
-    additional_fields = c("Class_ID")
-  )
-
-  expect_is(some_data,"data.frame")
-  expect_gt(nrow(some_data), 1000)
-  expect_is(some_data$family_id, "integer")
-  expect_equal(some_data[1,]$class_id,15)
-
-  less_data <- subset(some_data,species_id==6)
-  expect_lt(nrow(less_data), nrow(some_data))
-  expect_gt(nrow(less_data),0)
+  # skip("Takes too long")
+  # #class_ID
+  # some_data <- npn_download_site_phenometrics(
+  #   "Unit Test",
+  #   c(2013),
+  #   class_ids = c(15),
+  #   additional_fields = c("Class_ID")
+  # )
+  #
+  # expect_is(some_data,"data.frame")
+  # expect_gt(nrow(some_data), 1000)
+  # expect_is(some_data$family_id, "integer")
+  # expect_equal(some_data[1,]$class_id,15)
+  #
+  # less_data <- subset(some_data,species_id==6)
+  # expect_lt(nrow(less_data), nrow(some_data))
+  # expect_gt(nrow(less_data),0)
 
 
 })
@@ -389,23 +389,23 @@ test_that("higher taxonomic ordering works for magnitude phenometrics", {
   expect_lt(nrow(less_data), nrow(some_data))
   expect_gt(nrow(less_data),0)
 
-  skip("Takes too long")
-  #class_ID
-  some_data <- npn_download_magnitude_phenometrics(
-    "Unit Test",
-    c(2013),
-    class_ids = c(15),
-    additional_fields = c("Class_ID")
-  )
-
-  expect_is(some_data,"data.frame")
-  expect_gt(nrow(some_data), 1000)
-  expect_is(some_data$family_id, "integer")
-  expect_equal(some_data[1,]$class_id,15)
-
-  less_data <- subset(some_data,species_id==6)
-  expect_lt(nrow(less_data), nrow(some_data))
-  expect_gt(nrow(less_data),0)
+  # skip("Takes too long")
+  # #class_ID
+  # some_data <- npn_download_magnitude_phenometrics(
+  #   "Unit Test",
+  #   c(2013),
+  #   class_ids = c(15),
+  #   additional_fields = c("Class_ID")
+  # )
+  #
+  # expect_is(some_data,"data.frame")
+  # expect_gt(nrow(some_data), 1000)
+  # expect_is(some_data$family_id, "integer")
+  # expect_equal(some_data[1,]$class_id,15)
+  #
+  # less_data <- subset(some_data,species_id==6)
+  # expect_lt(nrow(less_data), nrow(some_data))
+  # expect_gt(nrow(less_data),0)
 
 
 })
