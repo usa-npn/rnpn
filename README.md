@@ -2,10 +2,10 @@
 # rnpn
 
 [![Build
-Status](https://api.travis-ci.org/ropensci/rnpn.png)](https://travis-ci.org/ropensci/rnpn)
+Status](https://api.travis-ci.org/usa-npn/rnpn.png)](https://travis-ci.org/usa-npn/rnpn)
 [![Build
 status](https://ci.appveyor.com/api/projects/status/es65utr5jmfmcsrg/branch/master)](https://ci.appveyor.com/project/sckott/rnpn/branch/master)
-[![codecov.io](https://codecov.io/github/ropensci/rnpn/coverage.svg?branch=master)](https://codecov.io/github/ropensci/rnpn?branch=master)
+[![codecov.io](https://codecov.io/github/usa-npn/rnpn/coverage.svg?branch=master)](https://codecov.io/github/usa-npn/rnpn?branch=master)
 
 `rnpn` is an R client for interacting with the USA National Phenology
 Network data web services. These services include access to a rich set
@@ -131,7 +131,7 @@ information about the full scope of functionality available.
 ## Meta
 
   - Please [report any issues or
-    bugs](https://github.com/ropensci/rnpn/issues).
+    bugs](https://github.com/usa-npn/rnpn/issues).
   - License: MIT
   - Get citation information for `rnpn` in R doing `citation(package =
     'rnpn')`
