@@ -21,6 +21,7 @@
 #' @param years Required field, list of strings. Specify the years to include in the search, e.g. c('2013','2014'). You must specify at least one year.
 #' @param coords List of float values, used to specify a bounding box as a search parameter, e.g. c ( lower_left_lat, lower_left_long,upper_right,lat,upper_right_long )
 #' @param species_ids List of unique IDs for searching based on species, e.g. c ( 3, 34, 35 )
+#' @param genus_ids List of unique IDs for searching based on taxonomic family, e.g. c ( 3, 34, 35 ) . This parameter will take precedence if species_ids is also set.
 #' @param family_ids List of unique IDs for searching based on taxonomic family, e.g. c ( 3, 34, 35 ) . This parameter will take precedence if species_ids is also set.
 #' @param order_ids List of unique IDs for searching based on taxonomic order, e.g. c ( 3, 34, 35 ) . This parameter will take precedence if species_ids or family_ids are also set.
 #' @param class_ids List of unique IDs for searching based on taxonomic class, e.g. c ( 3, 34, 35 ) . This parameter will take precedence if species_ids, family_ids or order_ids are also set.
@@ -70,6 +71,7 @@ npn_download_status_data = function(
   years,
   coords = NULL,
   species_ids = NULL,
+  genus_ids = NULL,
   family_ids = NULL,
   order_ids = NULL,
   class_ids = NULL,
@@ -108,6 +110,7 @@ npn_download_status_data = function(
                                      climate_data,
                                      ip_address,
                                      dataset_ids,
+                                     genus_ids,
                   									 family_ids,
                   									 order_ids,
                   									 class_ids,
@@ -438,6 +441,7 @@ npn_download_site_phenometrics <- function(
 #' delineate the period of time by the calendar months regardless of how many days are in each month. Defaults to 30 if omitted.
 #' @param coords List of float values, used to specify a bounding box as a search parameter, e.g. c ( lower_left_lat, lower_left_long,upper_right,lat,upper_right_long )
 #' @param species_ids List of unique IDs for searching based on species, e.g. c ( 3, 34, 35 )
+#' @param genus_ids List of unique IDs for searching based on taxonomic family, e.g. c ( 3, 34, 35 ) . This parameter will take precedence if species_ids is also set.
 #' @param family_ids List of unique IDs for searching based on taxonomic family, e.g. c ( 3, 34, 35 ) . This parameter will take precedence if species_ids is also set.
 #' @param order_ids List of unique IDs for searching based on taxonomic order, e.g. c ( 3, 34, 35 ) . This parameter will take precedence if species_ids or family_ids are also set.
 #' @param class_ids List of unique IDs for searching based on taxonomic class, e.g. c ( 3, 34, 35 ) . This parameter will take precedence if species_ids, family_ids or order_ids are also set.
@@ -850,6 +854,7 @@ npn_get_common_query_vars <- function(
   climate_data = FALSE,
   ip_address = NULL,
   dataset_ids = NULL,
+  genus_ids = NULL,
   family_ids = NULL,
   order_ids = NULL,
   class_ids = NULL,
@@ -874,6 +879,13 @@ npn_get_common_query_vars <- function(
     species_ids = NULL
     family_ids = NULL
     class_ids = NULL
+  }
+
+  if(!is.null(genus_ids)){
+    species_ids = NULL
+    family_ids = NULL
+    class_ids = NULL
+    order_ids = NULL
   }
 
   if(!is.null(wkt)){
@@ -911,6 +923,7 @@ npn_get_common_query_vars <- function(
     npn_createArgList("phenophase_id", phenophase_ids),
     npn_createArgList("functional_type", functional_types),
     npn_createArgList("additional_field", additional_fields),
+    npn_createArgList("genus_id", genus_ids),
   	npn_createArgList("family_id", family_ids),
     npn_createArgList("order_id", order_ids),
   	npn_createArgList("class_id", class_ids),
