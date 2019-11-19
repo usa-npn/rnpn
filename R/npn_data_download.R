@@ -157,6 +157,7 @@ npn_download_status_data = function(
 #' @param years Required field, list of strings. Specify the years to include in the search, e.g. c('2013','2014'). You must specify at least one year.
 #' @param coords List of float values, used to specify a bounding box as a search parameter, e.g. c ( lower_left_lat, lower_left_long,upper_right,lat,upper_right_long )
 #' @param species_ids List of unique IDs for searching based on species, e.g. c ( 3, 34, 35 )
+#' @param genus_ids List of unique IDs for searching based on taxonomic family, e.g. c ( 3, 34, 35 ) . This parameter will take precedence if species_ids is also set.
 #' @param family_ids List of unique IDs for searching based on taxonomic family, e.g. c ( 3, 34, 35 ) . This parameter will take precedence if species_ids is also set.
 #' @param order_ids List of unique IDs for searching based on taxonomic order, e.g. c ( 3, 34, 35 ) . This parameter will take precedence if species_ids or family_ids are also set.
 #' @param class_ids List of unique IDs for searching based on taxonomic class, e.g. c ( 3, 34, 35 ) . This parameter will take precedence if species_ids, family_ids or order_ids are also set.
@@ -218,6 +219,7 @@ npn_download_individual_phenometrics <- function(
   climate_data = FALSE,
   ip_address = NULL,
   dataset_ids = NULL,
+  genus_ids = NULL,
   family_ids = NULL,
   order_ids = NULL,
   class_ids = NULL,
@@ -245,6 +247,7 @@ npn_download_individual_phenometrics <- function(
                                      climate_data,
                                      ip_address,
                                      dataset_ids,
+                                     genus_ids,
                                      family_ids,
                                      order_ids,
                                      class_ids,
@@ -298,6 +301,7 @@ npn_download_individual_phenometrics <- function(
 #' first Y value and the previous N value for each individual to be included in the data aggregation.
 #' @param coords List of float values, used to specify a bounding box as a search parameter, e.g. c ( lower_left_lat, lower_left_long,upper_right,lat,upper_right_long )
 #' @param species_ids List of unique IDs for searching based on species, e.g. c ( 3, 34, 35 )
+#' @param genus_ids List of unique IDs for searching based on taxonomic family, e.g. c ( 3, 34, 35 ) . This parameter will take precedence if species_ids is also set.
 #' @param family_ids List of unique IDs for searching based on taxonomic family, e.g. c ( 3, 34, 35 ) . This parameter will take precedence if species_ids is also set.
 #' @param order_ids List of unique IDs for searching based on taxonomic order, e.g. c ( 3, 34, 35 ) . This parameter will take precedence if species_ids or family_ids are also set.
 #' @param class_ids List of unique IDs for searching based on taxonomic class, e.g. c ( 3, 34, 35 ) . This parameter will take precedence if species_ids, family_ids or order_ids are also set.
@@ -349,6 +353,7 @@ npn_download_site_phenometrics <- function(
   num_days_quality_filter="30",
   coords = NULL,
   species_ids = NULL,
+  genus_ids = NULL,
   family_ids = NULL,
   order_ids = NULL,
   class_ids = NULL,
@@ -388,6 +393,7 @@ npn_download_site_phenometrics <- function(
                                      climate_data,
                                      ip_address,
                                      dataset_ids,
+                                     genus_ids,
                                      family_ids,
                                      order_ids,
                                      class_ids,
