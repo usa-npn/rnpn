@@ -485,6 +485,7 @@ npn_download_magnitude_phenometrics <- function(
   period_frequency="30",
   coords = NULL,
   species_ids = NULL,
+  genus_ids = NULL,
   family_ids = NULL,
   order_ids = NULL,
   class_ids = NULL,
@@ -519,6 +520,7 @@ npn_download_magnitude_phenometrics <- function(
                                      climate_data,
                                      ip_address,
                                      dataset_ids,
+                                     genus_ids,
                                      family_ids,
                                      order_ids,
                                      class_ids,
@@ -874,24 +876,24 @@ npn_get_common_query_vars <- function(
 
   if(!is.null(family_ids)){
     species_ids = NULL
+    genus_ids = NULL
   }
 
   if(!is.null(class_ids)){
     species_ids = NULL
+    genus_ids = NULL
     family_ids = NULL
   }
 
   if(!is.null(order_ids)){
     species_ids = NULL
+    genus_ids = NULL
     family_ids = NULL
     class_ids = NULL
   }
 
   if(!is.null(genus_ids)){
     species_ids = NULL
-    family_ids = NULL
-    class_ids = NULL
-    order_ids = NULL
   }
 
   if(!is.null(wkt)){
