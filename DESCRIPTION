@@ -22,4 +22,6 @@ Suggests:
     ggplot2,
     testthat,
     covr
+URL: https://docs.ropensci.org/rnpn (website)
+    https://github.com/ropensci/rnpn (devel)
 RoxygenNote: 6.0.1
