@@ -679,15 +679,20 @@ npn_get_data <- function(
 
 
   # Read the data 8MB at a time. This might be further optimized with the backing service.
-  while(object.size(raw_data <- readBin(con, raw(), n = 8388608)
-                    %>% rawToChar
-                    %>% paste0(append_chunk(ch),.) ) > 100)
-    {
+  repeat{
+
+    raw_data <- readBin(con, raw(), n = 8388608)
+
+    if(length(raw_data) == 0){
+      break
+    }
+
+    raw_data <- rawToChar(raw_data)
+    raw_data <- paste0(append_chunk(ch),raw_data)
 
     if(!is.null(ch)){
       ch <- ""
     }
-
 
 
     # Try to parse the raw data as JSON. This will fail if
