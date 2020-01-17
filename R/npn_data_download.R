@@ -924,6 +924,10 @@ npn_get_common_query_vars <- function(
   )
 
   if(!is.null(coords) && length(coords) == 4){
+
+    if(is.numeric(coords)) {
+      coords <- toString(coords)
+    }
     query['bottom_left_x1'] = coords[1]
     query['bottom_left_y1'] = coords[2]
     query['upper_rigth_x2'] = coords[3]
