@@ -610,7 +610,7 @@ npn_get_data_by_year <- function(
       # Second if statement checks if we've made a previous request that's
       # returned data. The data doesn't have to be combined if there was
       # no previous iteration / the results were empty
-      if(!is.null(data)){
+      if(!is.null(data) && is.null(download_path)){
         if(!is.null(all_data)){
           all_data <- rbindlist(list(all_data,data))
         }else{
@@ -618,7 +618,9 @@ npn_get_data_by_year <- function(
         }
       }
 
-      first_year=FALSE
+      if(!is.null(data)){
+        first_year=FALSE
+      }
     }
 
   }
@@ -668,6 +670,7 @@ npn_get_data <- function(
   json <- ""
   . <- ""
   i<-0
+  set_has_data <- FALSE
 
   append_chunk <- function(ch=NULL){
     if(!is.null(ch) && ch != ""){
@@ -786,7 +789,10 @@ npn_get_data <- function(
     if(is.null(download_path)){
       dtm <- rbind(dtm, data.table::as.data.table(json))
     }else{
-      write.table(json,download_path,append=if(i==0 && !always_append) FALSE else TRUE, sep=",",eol="\n",row.names=FALSE,col.names=if(i==0 && !always_append) TRUE else FALSE)
+      if(length(json) > 0){
+        set_has_data <- TRUE
+        write.table(json,download_path,append=if(i==0 && !always_append) FALSE else TRUE, sep=",",eol="\n",row.names=FALSE,col.names=if(i==0 && !always_append) TRUE else FALSE)
+      }
     }
 
     i<-i+1
@@ -806,7 +812,7 @@ npn_get_data <- function(
   if(is.null(download_path)){
     return (dtm)
   }else{
-    return (NULL)
+    return (set_has_data)
   }
 }
 
