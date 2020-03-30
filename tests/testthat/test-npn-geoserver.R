@@ -68,7 +68,14 @@ test_that("npn_download_geospatial format param working", {
   # format is wrong, even if the request specifies a larger
   # date/elevation subset, still only one such raster will be
   # returned.
-  expect_lt(abs((tiff_size * 3) - netcdf_size), 25000)
+  #
+  # EDIT: This changed circal 3/2020 when we updated the NetCDF libs
+  # on Geoserver. This test "works", but since the two formats aren't
+  # that comparable any more, it's a little dodgier, and this mostly
+  # just checks that the NetCDF isn't empty or something (which happened
+  # during our install of the new Geoserver), so still a useful test to have.
+
+  expect_lt(abs((tiff_size * 2) - netcdf_size), 700000)
 
 
 
