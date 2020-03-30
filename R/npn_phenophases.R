@@ -88,16 +88,18 @@ npn_pheno_classes <- function (...){
 #' @param family_ids List of taxonomic family ids to search for.
 #' @param order_ids List of taxonomic order ids to search for.
 #' @param class_ids List of taxonomic class ids to search for
+#' @param genus_ids List of taxonomic genus ids to search for
 #' @param date Specify the date of interest. For this function to return anything, either this value must be set of return_all must be 1.
 #' @param return_all Takes either 0 or 1 as input and defaults to 0. For this function to return anything, either this value must be set to 1
 #' or date must be set.
 #' @export
 #' @template curl
-npn_get_phenophases_for_taxon <- function (family_ids=NULL,order_ids=NULL,class_ids=NULL,date=NULL,return_all=0, ...){
+npn_get_phenophases_for_taxon <- function (family_ids=NULL,order_ids=NULL,class_ids=NULL,genus_ids=NULL,date=NULL,return_all=0, ...){
   family_list <- npn_createArgList("family_id", family_ids)
   class_list <- npn_createArgList("class_id", class_ids)
   order_list <- npn_createArgList("order_id", order_ids)
-  npn_GET(paste0(base(), 'phenophases/getPhenophasesForTaxon.json'), c(family_list, class_list, order_list, date=date,return_all=return_all), FALSE, ...)
+  genus_list <- npn_createArgList("genus_id", genus_ids)
+  npn_GET(paste0(base(), 'phenophases/getPhenophasesForTaxon.json'), c(family_list, class_list, order_list, genus_list, date=date,return_all=return_all), FALSE, ...)
 }
 
 #' Get Abundance Categories
