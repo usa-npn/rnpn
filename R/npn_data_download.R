@@ -96,7 +96,6 @@ npn_download_status_data = function(
   wkt=NULL
 ){
 
-
   query <- npn_get_common_query_vars(request_source,
                                      coords,
                                      species_ids,
@@ -123,7 +122,9 @@ npn_download_status_data = function(
 
 
   years <- sort(unlist(years))
-  return(npn_get_data_by_year("/observations/getObservations.json?",query,years,download_path, six_leaf_layer, six_bloom_layer,agdd_layer, six_sub_model, additional_layers))
+  res <- npn_get_data_by_year("/observations/getObservations.ndjson?",query,years,download_path, six_leaf_layer, six_bloom_layer,agdd_layer, six_sub_model, additional_layers)
+
+  return(res)
 
 }
 
@@ -262,7 +263,7 @@ npn_download_individual_phenometrics <- function(
   }
 
 
-  return(npn_get_data_by_year("/observations/getSummarizedData.json?",query,years,download_path, six_leaf_layer, six_bloom_layer, agdd_layer, six_sub_model,additional_layers))
+  return(npn_get_data_by_year("/observations/getSummarizedData.ndjson?",query,years,download_path, six_leaf_layer, six_bloom_layer, agdd_layer, six_sub_model,additional_layers))
 
 }
 
@@ -407,7 +408,7 @@ npn_download_site_phenometrics <- function(
 
 
 
-  return(npn_get_data_by_year("/observations/getSiteLevelData.json?",query,years,download_path, six_leaf_layer, six_bloom_layer, agdd_layer, six_sub_model,additional_layers))
+  return(npn_get_data_by_year("/observations/getSiteLevelData.ndjson?",query,years,download_path, six_leaf_layer, six_bloom_layer, agdd_layer, six_sub_model,additional_layers))
 
 }
 
@@ -539,7 +540,7 @@ npn_download_magnitude_phenometrics <- function(
 
 
 
-  url = npn_get_download_url("/observations/getMagnitudeData.json")
+  url = npn_get_download_url("/observations/getMagnitudeData.ndjson")
 
   return (npn_get_data(url,query, download_path))
 
@@ -674,96 +675,33 @@ npn_get_data <- function(
   curl::handle_setform(h, .list = query)
 
   con <- curl::curl(url,handle=h)
-
-  open(con,"rb", raw = TRUE, blocking = TRUE)
+  current_data <- NULL
   dtm<- data.table::data.table()
-  raw_data <- ""
-  ch <- NULL
-  json <- ""
-  . <- ""
-  i<-0
   set_has_data <- FALSE
-
-  append_chunk <- function(ch=NULL){
-    if(!is.null(ch) && ch != ""){
-      ch <- paste0("[",ch)
-    }else{
-      ch <- ""
-    }
-  }
-
+  i<-0
 
   # Read the data 8MB at a time. This might be further optimized with the backing service.
-  repeat{
 
-    raw_data <- readBin(con, raw(), n = 8388608)
-
-    if(length(raw_data) == 0){
-      break
-    }
-
-    raw_data <- rawToChar(raw_data)
-    raw_data <- paste0(append_chunk(ch),raw_data)
-
-    if(!is.null(ch)){
-      ch <- ""
-    }
-
-
-    # Try to parse the raw data as JSON. This will fail if
-    # the response is bigger than the 8MB, but the rest of the
-    # script plans for that.
-    json <- tryCatch({
-      jsonlite::fromJSON(raw_data)
-    },error=function(msg){
-      return(NULL)
-    })
-
-    # This code runs when the JSON parsing fails as mentioned above.
-    # In that case, find the last } character in the data downloaded
-    # and from there break the data into two parts, the frame which
-    # we append the closing ] character to, and the chunk which we
-    # save for later.
-    # Try to parse the frame as JSON again, this time hoping for a
-    # successful run.
-    if(is.null(json)){
-
-
-      break_point <- regexpr("}[^}]*$",raw_data)
-      frame <- paste0(substr(raw_data,1,break_point), "]")
-      ch <- substr(raw_data,break_point+2,nchar(raw_data))
-      rm(raw_data)
-
-      json <- tryCatch({
-        jsonlite::fromJSON(frame)
-      },error=function(msg){
-        return(NULL)
-      })
-
-      rm(frame)
-
-
-    }
+  jsonlite::stream_in(con, function(df){
 
 
     # Reconcile all the points in the frame with the SIX leaf raster,
     # if it's been requested.
     if(!is.null(six_leaf_raster)){
-      json <- npn_merge_geo_data(six_leaf_raster, "SI-x_Leaf_Value", json)
+      df <- npn_merge_geo_data(six_leaf_raster, "SI-x_Leaf_Value", df)
     }
 
     # Reconcile all the points in the frame with the SIX bloom raster,
     # if it's been requested.
     if(!is.null(six_bloom_raster)){
-      json <- npn_merge_geo_data(six_bloom_raster, "SI-x_Bloom_Value", json)
+      df <- npn_merge_geo_data(six_bloom_raster, "SI-x_Bloom_Value", df)
     }
 
     if(!is.null(additional_layers)){
       for(j in rownames(additional_layers)){
-        json <- npn_merge_geo_data(additional_layers[j,][['raster']][[1]],as.character(additional_layers[j,][['name']][[1]]),json)
+        df <- npn_merge_geo_data(additional_layers[j,][['raster']][[1]],as.character(additional_layers[j,][['name']][[1]]),df)
       }
     }
-
 
 
     # Reconcile the AGDD point values with the data points if that
@@ -772,51 +710,50 @@ npn_get_data <- function(
 
       date_col <- NULL
 
-      if("observation_date" %in% colnames(json)){
+      if("observation_date" %in% colnames(df)){
         date_col <- "observation_date"
-      }else if("mean_first_yes_doy" %in% colnames(json)){
-        json$cal_date <- as.Date(json[, "mean_first_yes_doy"], origin = paste0(json[, "mean_first_yes_year"], "-01-01")) - 1
+      }else if("mean_first_yes_doy" %in% colnames(df)){
+        df$cal_date <- as.Date(df[, "mean_first_yes_doy"], origin = paste0(df[, "mean_first_yes_year"], "-01-01")) - 1
         date_col <- "cal_date"
-      }else if("first_yes_day" %in% colnames(json)){
-        json$cal_date <- as.Date(json[, "first_yes_doy"], origin = paste0(json[, "first_yes_year"], "-01-01")) - 1
+      }else if("first_yes_day" %in% colnames(df)){
+        df$cal_date <- as.Date(df[, "first_yes_doy"], origin = paste0(df[, "first_yes_year"], "-01-01")) - 1
         date_col <- "cal_date"
       }
 
-      pvalues <- apply(json[,c('latitude','longitude',date_col)],1,function(x){
+      pvalues <- apply(df[,c('latitude','longitude',date_col)],1,function(x){
         rnpn::npn_get_agdd_point_data(layer=agdd_layer,lat=as.numeric(x['latitude']),long=as.numeric(x['longitude']),date=x[date_col])
       })
 
       pvalues <- t(as.data.frame(pvalues))
       colnames(pvalues) <- c(agdd_layer)
-      json <- cbind(json,pvalues)
+      df <- cbind(df,pvalues)
 
-      if("cal_date" %in% colnames(json)){
-        json$cal_date <- NULL
+      if("cal_date" %in% colnames(df)){
+        df$cal_date <- NULL
       }
 
     }
+
+
 
     # If the user asked for the data to be saved to file, then do that
     # otherwise append the frame to the dtm (master data table) variable
     if(is.null(download_path)){
-      dtm <- rbind(dtm, data.table::as.data.table(json))
+      dtm <<- rbind(dtm, data.table::as.data.table(df))
     }else{
-      if(length(json) > 0){
+      if(length(df) > 0){
         set_has_data <- TRUE
-        write.table(json,download_path,append=if(i==0 && !always_append) FALSE else TRUE, sep=",",eol="\n",row.names=FALSE,col.names=if(i==0 && !always_append) TRUE else FALSE)
+        write.table(df,download_path,append=if(i==0 && !always_append) FALSE else TRUE, sep=",",eol="\n",row.names=FALSE,col.names=if(i==0 && !always_append) TRUE else FALSE)
+
       }
     }
 
-    i<-i+1
-    rm(json)
-    gc()
-
-  }
+    i<<-i+1
 
 
 
+  },pagesize = 5000)
 
-  close(con)
 
 
   # If the user asks for the data to be saved to file then
@@ -826,6 +763,18 @@ npn_get_data <- function(
   }else{
     return (set_has_data)
   }
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 

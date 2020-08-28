@@ -47,8 +47,6 @@ test_that("npn_stations_by_location functions",{
 
   expect_error(npn_stations_by_location())
 
-  expect_error(npn_stations_by_location("foo"))
-
 })
 
 test_that("npn_stations_with_spp functions",{
