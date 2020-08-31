@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rnpn</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.0-9002</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.0-1000</span>
       </span>
     </div>
 
@@ -90,7 +90,7 @@
       <h1 data-toc-skip>IV. Site Phenometrics</h1>
                         <h4 class="author">Lee Marsh</h4>
             
-            <h4 class="date">2020-03-30</h4>
+            <h4 class="date">2020-08-31</h4>
       
       
       <div class="hidden name"><code>IV_site_phenometrics.Rmd</code></div>
@@ -105,9 +105,14 @@
 <p>Site Phenometrics, derived from Individual Phenometrics, provide summary metrics of the onset and end date of phenophase activity for a species at a site. Observers are directed to create sites that represent uniform habitat and are no larger than 15 acres. For plants, this metric is calculated as an average for all individuals of a species at the site. For animals, where individuals are not tracked, this metric represents the first and last recorded appearance of the species during the season of interest. For instance, if you asked for red maple leafing data, and there was a site with three red maple trees being observed, then the data would be the average onset date for all three of those red maple trees at that site.</p>
 <p>Here’s an example of how to query the services for site phenometrics data, for cloned lilacs, breaking leaf buds, 2013. The call is very similar to the call for individual phenometrics data, however, in addition you can supply the quality control filter for the number of days between a yes record and preceding no record (also applies to the last yes and following no), for the observation to be included in the calculations. Typically this is set to 7, 14 or 30, as when downloading data using the USA-NPN Phenology Observation Portal. If you do not set this parameter, it defaults to 30 days. Note that in this example the results are stored in memory, rather than output as a file.</p>
 <div class="sourceCode" id="cb1"><html><body><pre class="r">LilacLeafPoints2013</pre></body></html></div>
+<pre><code>## using a custom handler function.</code></pre>
+<pre><code>## opening curl input connection.</code></pre>
+<pre><code>## 
+ Found 43 records...</code></pre>
+<pre><code>## closing curl input connection.</code></pre>
 <p>In this example we’re able to see the date of the first observation of breaking leaf buds for cloned lilacs, averaged across individuals within sites. If any observation did not have a preceding no record within 30 days it was excluded from the calculations.</p>
 <p>We can now plot our cloned lilac site phenometric onset data by latitude.</p>
-<div class="sourceCode" id="cb2"><html><body><pre class="r">plot(
+<div class="sourceCode" id="cb6"><html><body><pre class="r">plot(
   mean_first_yes_doy~latitude, 
   data=LilacLeafPoints2013, 
   ylab=c("Day of Year"), 

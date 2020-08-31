@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rnpn</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.0-9002</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.0-1000</span>
       </span>
     </div>
 
@@ -90,7 +90,7 @@
       <h1 data-toc-skip>V. Magnitude Phenometrics</h1>
                         <h4 class="author">Lee Marsh</h4>
             
-            <h4 class="date">2020-03-30</h4>
+            <h4 class="date">2020-08-31</h4>
       
       
       <div class="hidden name"><code>V_magnitude_phenometrics.Rmd</code></div>
@@ -112,10 +112,15 @@
   phenophase_ids = '292', 
   download_path = 'MPM_BCC_ActInd_2018.csv'
 )</pre></body></html></div>
-<pre><code>## [1] TRUE</code></pre>
+<pre><code>## using a custom handler function.</code></pre>
+<pre><code>## opening curl input connection.</code></pre>
+<pre><code>## 
+ Found 52 records...</code></pre>
+<pre><code>## closing curl input connection.</code></pre>
+<pre><code>## [1] FALSE</code></pre>
 <p>In this example we’re able to see all of the magnitude phenometric fields, including proportion_yes_records, and mean_num_animals_in-phase. See the <a href="Open%20File%20Report%20on%20USA-NPN%20Observational%20Data">https://pubs.usgs.gov/of/2018/1060/ofr20181060.pdf</a> for full field descriptions.</p>
 <p>From this dataset we can view the Proportion_Yes_Records (of all the records submitted on this species, what proportion are positive/yes records) by weekly interval:</p>
-<div class="sourceCode" id="cb3"><html><body><pre class="r">BCC_AI</pre></body></html></div>
+<div class="sourceCode" id="cb7"><html><body><pre class="r">BCC_AI</pre></body></html></div>
 <p><img src="V_magnitude_phenometrics_files/figure-html/unnamed-chunk-2-1.png" width="700"></p>
 </div>
   </div>
