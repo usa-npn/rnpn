@@ -4,8 +4,15 @@
 \alias{npn_get_custom_agdd_raster}
 \title{Get Custom AGDD Raster Map}
 \usage{
-npn_get_custom_agdd_raster(method, climate_data_source, temp_unit,
-  start_date, end_date, base_temp, upper_threshold = NULL)
+npn_get_custom_agdd_raster(
+  method,
+  climate_data_source,
+  temp_unit,
+  start_date,
+  end_date,
+  base_temp,
+  upper_threshold = NULL
+)
 }
 \arguments{
 \item{method}{Takes "simple" or "double-sine" as input. This is the AGDD calculation method to use for each

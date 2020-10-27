@@ -5,7 +5,4 @@
 \alias{rnpn-package}
 \alias{rnpn}
 \title{Interface to the National Phenology Network API}
-\description{
-Interface to the National Phenology Network API
-}
 \keyword{package}
