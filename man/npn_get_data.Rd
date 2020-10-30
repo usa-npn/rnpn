@@ -4,9 +4,16 @@
 \alias{npn_get_data}
 \title{Download NPN Data}
 \usage{
-npn_get_data(url, query, download_path = NULL, always_append = FALSE,
-  six_leaf_raster = NULL, six_bloom_raster = NULL, agdd_layer = NULL,
-  additional_layers = NULL)
+npn_get_data(
+  url,
+  query,
+  download_path = NULL,
+  always_append = FALSE,
+  six_leaf_raster = NULL,
+  six_bloom_raster = NULL,
+  agdd_layer = NULL,
+  additional_layers = NULL
+)
 }
 \arguments{
 \item{url}{The URL of the service endpoint to request data from}

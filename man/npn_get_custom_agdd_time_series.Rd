@@ -4,8 +4,17 @@
 \alias{npn_get_custom_agdd_time_series}
 \title{Get Custom AGDD Time Series}
 \usage{
-npn_get_custom_agdd_time_series(method, start_date, end_date, base_temp,
-  climate_data_source, temp_unit, lat, long, upper_threshold = NULL)
+npn_get_custom_agdd_time_series(
+  method,
+  start_date,
+  end_date,
+  base_temp,
+  climate_data_source,
+  temp_unit,
+  lat,
+  long,
+  upper_threshold = NULL
+)
 }
 \arguments{
 \item{method}{Takes "simple" or "double-sine" as input. This is the AGDD calculation method to use for each

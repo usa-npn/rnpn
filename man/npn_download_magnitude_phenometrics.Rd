@@ -4,15 +4,33 @@
 \alias{npn_download_magnitude_phenometrics}
 \title{Download Magnitude Phenometrics}
 \usage{
-npn_download_magnitude_phenometrics(request_source, years,
-  period_frequency = "30", coords = NULL, species_ids = NULL,
-  family_ids = NULL, order_ids = NULL, class_ids = NULL,
-  pheno_class_ids = NULL, station_ids = NULL, species_types = NULL,
-  network_ids = NULL, states = NULL, phenophase_ids = NULL,
-  functional_types = NULL, additional_fields = NULL,
-  climate_data = FALSE, ip_address = NULL, dataset_ids = NULL,
-  email = NULL, download_path = NULL, taxonomy_aggregate = NULL,
-  pheno_class_aggregate = NULL, wkt = NULL)
+npn_download_magnitude_phenometrics(
+  request_source,
+  years,
+  period_frequency = "30",
+  coords = NULL,
+  species_ids = NULL,
+  genus_ids = NULL,
+  family_ids = NULL,
+  order_ids = NULL,
+  class_ids = NULL,
+  pheno_class_ids = NULL,
+  station_ids = NULL,
+  species_types = NULL,
+  network_ids = NULL,
+  states = NULL,
+  phenophase_ids = NULL,
+  functional_types = NULL,
+  additional_fields = NULL,
+  climate_data = FALSE,
+  ip_address = NULL,
+  dataset_ids = NULL,
+  email = NULL,
+  download_path = NULL,
+  taxonomy_aggregate = NULL,
+  pheno_class_aggregate = NULL,
+  wkt = NULL
+)
 }
 \arguments{
 \item{request_source}{Required field, string. Self-identify who is making requests to the data service}
@@ -27,6 +45,8 @@ delineate the period of time by the calendar months regardless of how many days 
 \item{coords}{List of float values, used to specify a bounding box as a search parameter, e.g. c ( lower_left_lat, lower_left_long,upper_right,lat,upper_right_long )}
 
 \item{species_ids}{List of unique IDs for searching based on species, e.g. c ( 3, 34, 35 )}
+
+\item{genus_ids}{List of unique IDs for searching based on taxonomic family, e.g. c ( 3, 34, 35 ) . This parameter will take precedence if species_ids is also set.}
 
 \item{family_ids}{List of unique IDs for searching based on taxonomic family, e.g. c ( 3, 34, 35 ) . This parameter will take precedence if species_ids is also set.}
 
@@ -83,12 +103,12 @@ This data type includes various measures of the extent to which a phenophase for
  records relative to the total number of status records over the course of a calendar year for a region of interest. They also include several approaches for
  standardizing animal abundances by observer effort over time and space (e.g. mean active bird individuals per hour). See the Metadata window for more information.
 
-Most search parameters are optional, however, failing to provide even a single search parameter will return all results in the database. Request_Source
+ Most search parameters are optional, however, failing to provide even a single search parameter will return all results in the database. Request_Source
  must be provided. This is a self-identifying string, telling the service who is asking for the data or from where the request is being made. It is recommended
  you provide your name or organization name. If the call to this function is acting as an intermediary for a client, then you may also optionally provide
  a user email and/or IP address for usage data reporting later.
 
-Additional fields provides the ability to specify more, non-critical fields to include in the search results. A complete list of additional fields can be found in
+ Additional fields provides the ability to specify more, non-critical fields to include in the search results. A complete list of additional fields can be found in
  the NPN service's companion documentation
  https://docs.google.com/document/d/1yNjupricKOAXn6tY1sI7-EwkcfwdGUZ7lxYv7fcPjO8/edit#heading=h.df3zspopwq98
  Metadata on all fields can be found in the following Excel sheet:

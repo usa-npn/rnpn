@@ -13,8 +13,13 @@ npn_species_id(ids, ...)
 
 npn_species_state(state, kingdom = NULL, ...)
 
-npn_species_search(network = NULL, start_date = NULL,
-  end_date = NULL, station_id = NULL, ...)
+npn_species_search(
+  network = NULL,
+  start_date = NULL,
+  end_date = NULL,
+  station_id = NULL,
+  ...
+)
 }
 \arguments{
 \item{...}{Curl options passed on to \code{\link[httr]{GET}}}

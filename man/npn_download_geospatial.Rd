@@ -4,8 +4,12 @@
 \alias{npn_download_geospatial}
 \title{Download Geospatial Data}
 \usage{
-npn_download_geospatial(coverage_id, date, format = "geotiff",
-  output_path = NULL)
+npn_download_geospatial(
+  coverage_id,
+  date,
+  format = "geotiff",
+  output_path = NULL
+)
 }
 \arguments{
 \item{coverage_id}{The coverage id (machine name) of the layer for which to retrieve.

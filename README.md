@@ -1,17 +1,22 @@
 
 # rnpn
 
+<!-- badges: start -->
+
 [![Build
 Status](https://api.travis-ci.org/usa-npn/rnpn.png)](https://travis-ci.org/usa-npn/rnpn)
 [![Build
-status](https://ci.appveyor.com/api/projects/status/es65utr5jmfmcsrg/branch/master)](https://ci.appveyor.com/project/sckott/rnpn/branch/master)
+status](https://ci.appveyor.com/api/projects/status/es65utr5jmfmcsrg/branch/master)](https://ci.appveyor.com/project/usa-npn/rnpn/branch/master)
 [![codecov.io](https://codecov.io/github/usa-npn/rnpn/coverage.svg?branch=master)](https://codecov.io/github/usa-npn/rnpn?branch=master)
+[![CRAN
+checks](https://cranchecks.info/badges/worst/rnpn)](https://cran.r-project.org/web/checks/check_results_rnpn.html)
+<!-- badges: end -->
 
 `rnpn` is an R client for interacting with the USA National Phenology
 Network data web services. These services include access to a rich set
 of observer-contributed, point-based phenology records as well as
 geospatial data products including gridded phenological model and
-climitological data.
+climatological data.
 
 Documentation is available for the National Phenology Network [API
 documentation](https://docs.google.com/document/d/1yNjupricKOAXn6tY1sI7-EwkcfwdGUZ7lxYv7fcPjO8/edit?hl=en_US),
@@ -82,8 +87,7 @@ phenophases <- npn_phenophases()
 
 There are four main functions for accessing observational data, at
 various levels of aggregation. At the most basic level you can download
-the raw status and intensity
-data.
+the raw status and intensity data.
 
 ``` r
 some_data <- npn_download_status_data(request_source='Your Name or Org Here',years=c(2015),species_id=c(35),states=c('AZ','IL'))
@@ -108,16 +112,14 @@ layers <- npn_get_layer_details()
 ```
 
 You can then use the name of the layers to select and download
-geospatial data as a
-raster.
+geospatial data as a raster.
 
 ``` r
 npn_download_geospatial(coverage_id = 'si-x:lilac_leaf_ncep_historic',date='2016-12-31',format='geotiff',output_path='./six-test-raster.tiff')
 ```
 
 If you’re looking for a grid value at a specific latitude/longitude,
-that is also
-possible.
+that is also possible.
 
 ``` r
 point_value <- npn_get_point_data('si-x:lilac_leaf_ncep_historic',date='2016-12-31',lat=38.5,long=-110.7)
@@ -131,13 +133,12 @@ information about the full scope of functionality available.
 ## Meta
 
   - Please [report any issues or
-    bugs](https://github.com/usa-npn/rnpn/issues).
+    bugs](https://github.com/ropensci/rnpn/issues).
   - License: MIT
   - Get citation information for `rnpn` in R doing `citation(package =
     'rnpn')`
   - Please note that this project is released with a [Contributor Code
     of Conduct](CONDUCT.md). By participating in this project you agree
-    to abide by its
-terms.
+    to abide by its terms.
 
 [![image](http://ropensci.org/public_images/github_footer.png)](http://ropensci.org)

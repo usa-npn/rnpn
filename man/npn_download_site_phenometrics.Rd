@@ -4,17 +4,38 @@
 \alias{npn_download_site_phenometrics}
 \title{Download Site Phenometrics}
 \usage{
-npn_download_site_phenometrics(request_source, years,
-  num_days_quality_filter = "30", coords = NULL, species_ids = NULL,
-  family_ids = NULL, order_ids = NULL, class_ids = NULL,
-  pheno_class_ids = NULL, station_ids = NULL, species_types = NULL,
-  network_ids = NULL, states = NULL, phenophase_ids = NULL,
-  functional_types = NULL, additional_fields = NULL,
-  climate_data = FALSE, ip_address = NULL, dataset_ids = NULL,
-  email = NULL, download_path = NULL, six_leaf_layer = FALSE,
-  six_bloom_layer = FALSE, agdd_layer = NULL, six_sub_model = NULL,
-  additional_layers = NULL, taxonomy_aggregate = NULL,
-  pheno_class_aggregate = NULL, wkt = NULL)
+npn_download_site_phenometrics(
+  request_source,
+  years,
+  num_days_quality_filter = "30",
+  coords = NULL,
+  species_ids = NULL,
+  genus_ids = NULL,
+  family_ids = NULL,
+  order_ids = NULL,
+  class_ids = NULL,
+  pheno_class_ids = NULL,
+  station_ids = NULL,
+  species_types = NULL,
+  network_ids = NULL,
+  states = NULL,
+  phenophase_ids = NULL,
+  functional_types = NULL,
+  additional_fields = NULL,
+  climate_data = FALSE,
+  ip_address = NULL,
+  dataset_ids = NULL,
+  email = NULL,
+  download_path = NULL,
+  six_leaf_layer = FALSE,
+  six_bloom_layer = FALSE,
+  agdd_layer = NULL,
+  six_sub_model = NULL,
+  additional_layers = NULL,
+  taxonomy_aggregate = NULL,
+  pheno_class_aggregate = NULL,
+  wkt = NULL
+)
 }
 \arguments{
 \item{request_source}{Required field, string. Self-identify who is making requests to the data service}
@@ -27,6 +48,8 @@ first Y value and the previous N value for each individual to be included in the
 \item{coords}{List of float values, used to specify a bounding box as a search parameter, e.g. c ( lower_left_lat, lower_left_long,upper_right,lat,upper_right_long )}
 
 \item{species_ids}{List of unique IDs for searching based on species, e.g. c ( 3, 34, 35 )}
+
+\item{genus_ids}{List of unique IDs for searching based on taxonomic family, e.g. c ( 3, 34, 35 ) . This parameter will take precedence if species_ids is also set.}
 
 \item{family_ids}{List of unique IDs for searching based on taxonomic family, e.g. c ( 3, 34, 35 ) . This parameter will take precedence if species_ids is also set.}
 
@@ -103,12 +126,12 @@ This data type includes estimates of the overall onset and end of phenophase act
  the mean of the last "yes" records. Note that a phenophase may have ended and restarted during the overall period of its activity at the site.
  These more fine-scale patterns can be explored in the individual phenometrics data.
 
-Most search parameters are optional, however, users are encouraged to supply additional search parameters to get results that are easier to work with. Request_Source
+ Most search parameters are optional, however, users are encouraged to supply additional search parameters to get results that are easier to work with. Request_Source
  must be provided. This is a self-identifying string, telling the service who is asking for the data or from where the request is being made. It is recommended
  you provide your name or organization name. If the call to this function is acting as an intermediary for a client, then you may also optionally provide
  a user email and/or IP address for usage data reporting later.
 
-Additional fields provides the ability to specify additional, non-critical fields to include in the search results. A complete list of additional fields can be found in
+ Additional fields provides the ability to specify additional, non-critical fields to include in the search results. A complete list of additional fields can be found in
  the NPN service's companion documentation
  https://docs.google.com/document/d/1yNjupricKOAXn6tY1sI7-EwkcfwdGUZ7lxYv7fcPjO8/edit#heading=h.ueaexz9bczti
  Metadata on all fields can be found in the following Excel sheet:

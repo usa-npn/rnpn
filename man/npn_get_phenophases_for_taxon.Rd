@@ -4,8 +4,15 @@
 \alias{npn_get_phenophases_for_taxon}
 \title{Get Phenophases for Taxon}
 \usage{
-npn_get_phenophases_for_taxon(family_ids = NULL, order_ids = NULL,
-  class_ids = NULL, date = NULL, return_all = 0, ...)
+npn_get_phenophases_for_taxon(
+  family_ids = NULL,
+  order_ids = NULL,
+  class_ids = NULL,
+  genus_ids = NULL,
+  date = NULL,
+  return_all = 0,
+  ...
+)
 }
 \arguments{
 \item{family_ids}{List of taxonomic family ids to search for.}
@@ -13,6 +20,8 @@ npn_get_phenophases_for_taxon(family_ids = NULL, order_ids = NULL,
 \item{order_ids}{List of taxonomic order ids to search for.}
 
 \item{class_ids}{List of taxonomic class ids to search for}
+
+\item{genus_ids}{List of taxonomic genus ids to search for}
 
 \item{date}{Specify the date of interest. For this function to return anything, either this value must be set of return_all must be 1.}
 

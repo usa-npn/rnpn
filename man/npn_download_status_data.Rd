@@ -4,15 +4,35 @@
 \alias{npn_download_status_data}
 \title{Download Status and Intensity Records}
 \usage{
-npn_download_status_data(request_source, years, coords = NULL,
-  species_ids = NULL, family_ids = NULL, order_ids = NULL,
-  class_ids = NULL, station_ids = NULL, species_types = NULL,
-  network_ids = NULL, states = NULL, phenophase_ids = NULL,
-  functional_types = NULL, additional_fields = NULL,
-  climate_data = FALSE, ip_address = NULL, dataset_ids = NULL,
-  email = NULL, download_path = NULL, six_leaf_layer = FALSE,
-  six_bloom_layer = FALSE, agdd_layer = NULL, six_sub_model = NULL,
-  additional_layers = NULL, pheno_class_ids = NULL, wkt = NULL)
+npn_download_status_data(
+  request_source,
+  years,
+  coords = NULL,
+  species_ids = NULL,
+  genus_ids = NULL,
+  family_ids = NULL,
+  order_ids = NULL,
+  class_ids = NULL,
+  station_ids = NULL,
+  species_types = NULL,
+  network_ids = NULL,
+  states = NULL,
+  phenophase_ids = NULL,
+  functional_types = NULL,
+  additional_fields = NULL,
+  climate_data = FALSE,
+  ip_address = NULL,
+  dataset_ids = NULL,
+  email = NULL,
+  download_path = NULL,
+  six_leaf_layer = FALSE,
+  six_bloom_layer = FALSE,
+  agdd_layer = NULL,
+  six_sub_model = NULL,
+  additional_layers = NULL,
+  pheno_class_ids = NULL,
+  wkt = NULL
+)
 }
 \arguments{
 \item{request_source}{Required field, string. Self-identify who is making requests to the data service}
@@ -22,6 +42,8 @@ npn_download_status_data(request_source, years, coords = NULL,
 \item{coords}{List of float values, used to specify a bounding box as a search parameter, e.g. c ( lower_left_lat, lower_left_long,upper_right,lat,upper_right_long )}
 
 \item{species_ids}{List of unique IDs for searching based on species, e.g. c ( 3, 34, 35 )}
+
+\item{genus_ids}{List of unique IDs for searching based on taxonomic family, e.g. c ( 3, 34, 35 ) . This parameter will take precedence if species_ids is also set.}
 
 \item{family_ids}{List of unique IDs for searching based on taxonomic family, e.g. c ( 3, 34, 35 ) . This parameter will take precedence if species_ids is also set.}
 
@@ -93,7 +115,7 @@ Most search parameters are optional, however, users are encouraged to supply add
  you provide your name or organization name. If the call to this function is acting as an intermediary for a client, then you may also optionally provide
  a user email and/or IP address for usage data reporting later.
 
-Additional fields provides the ability to specify more, non-critical fields to include in the search results. A complete list of additional fields can be found in
+ Additional fields provides the ability to specify more, non-critical fields to include in the search results. A complete list of additional fields can be found in
  the NPN service's companion documentation
  https://docs.google.com/document/d/1yNjupricKOAXn6tY1sI7-EwkcfwdGUZ7lxYv7fcPjO8/edit#heading=h.w0nctgedhaop
  Metadata on all fields can be found in the following Excel sheet:
