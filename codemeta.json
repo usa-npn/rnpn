@@ -14,7 +14,7 @@
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.0.2 (2020-06-22)",
+  "runtimePlatform": "R version 3.6.2 (2019-12-12)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -103,6 +103,18 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=knitr"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "markdown",
+      "name": "markdown",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=markdown"
     },
     {
       "@type": "SoftwareApplication",
@@ -299,10 +311,19 @@
   "contIntegration": ["https://travis-ci.org/usa-npn/rnpn", "https://ci.appveyor.com/project/usa-npn/rnpn/branch/master", "https://codecov.io/github/usa-npn/rnpn?branch=master"],
   "releaseNotes": "https://github.com/ropensci/rnpn/blob/master/NEWS.md",
   "readme": "https://github.com/ropensci/rnpn/blob/master/README.md",
-  "fileSize": "1895.57KB",
+  "fileSize": "2111.71KB",
   "contributor": {},
   "copyrightHolder": {},
   "funder": {},
-  "keywords": ["web-api", "species", "data", "rstats", "r", "national-phenology-network", "phenology", "r-package"],
+  "keywords": [
+    "web-api",
+    "species",
+    "data",
+    "rstats",
+    "r",
+    "national-phenology-network",
+    "phenology",
+    "r-package"
+  ],
   "relatedLink": "https://CRAN.R-project.org/package=rnpn"
 }
