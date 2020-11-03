@@ -10,7 +10,7 @@
 #'
 npn_phenophases <- function( ...) {
 
-  tibble::as_data_frame(
+  tibble::as_tibble(
     npn_GET(paste0(base(), 'phenophases/getPhenophases.json'), list(), TRUE, ...)
   )
 
@@ -23,7 +23,7 @@ npn_phenophases <- function( ...) {
 #' @template curl
 #' @export
 npn_phenophase_definitions <- function ( ... ){
-  tibble::as_data_frame(
+  tibble::as_tibble(
     npn_GET(paste0(base(), 'phenophases/getPhenophaseDefinitionDetails.json'), list(), TRUE, ...)
   )
 }
@@ -38,7 +38,7 @@ npn_phenophase_definitions <- function ( ... ){
 #' @template curl
 #' @export
 npn_phenophase_details <- function (ids, ...){
-  tibble::as_data_frame(
+  tibble::as_tibble(
     npn_GET(paste0(base(), 'phenophases/getPhenophaseDetails.json'), list(ids = paste(ids,sep="",collapse = ',')), TRUE, ...)
   )
 }
@@ -54,7 +54,7 @@ npn_phenophase_details <- function (ids, ...){
 #' @export
 npn_phenophases_by_species <- function (species_ids, date, ...){
   arg_list<-npn_createArgList("species_id", species_ids)
-  tibble::as_data_frame(
+  tibble::as_tibble(
     npn_GET(paste0(base(), 'phenophases/getPhenophasesForSpecies.json'), c(arg_list, date=date), TRUE, ...)
   )
 }
@@ -66,7 +66,7 @@ npn_phenophases_by_species <- function (species_ids, date, ...){
 #' @export
 #' @template curl
 npn_pheno_classes <- function (...){
-  tibble::as_data_frame(
+  tibble::as_tibble(
     npn_GET(paste0(base(), 'phenophases/getPhenoClasses.json'), list(), TRUE, ...)
   )
 }
@@ -111,7 +111,7 @@ npn_get_phenophases_for_taxon <- function (family_ids=NULL,order_ids=NULL,class_
 npn_abundance_categories <- function ( ...){
 
 
-  tibble::as_data_frame(
+  tibble::as_tibble(
     npn_GET(paste0(base(), 'phenophases/getAbundanceCategories.json'), list(), TRUE, ...)
   )
 

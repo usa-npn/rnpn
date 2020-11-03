@@ -23,7 +23,7 @@ Magnitude Phenometrics are a suite of eight metrics derived from Status and Inte
 Here's an example of how to query for Magnitude Phenometrics, for the active individuals phenophase for black-capped chickadee data, in 2018. Requirements are similar to other data types. You must additionally specify the time interval by which the data should be summarized. Typically this is weekly, biweekly or monthly, as in the POP and Visualization Tool. The interval chosen in this example is 7 days.
 
 
-```{r}
+```{r eval=FALSE}
 npn_download_magnitude_phenometrics(
   request_source = 'Your Name Here', 
   years = '2018',
@@ -40,7 +40,7 @@ In this example we're able to see all of the magnitude phenometric fields, inclu
 
 From this dataset we can view the Proportion_Yes_Records (of all the records submitted on this species, what proportion are positive/yes records) by weekly interval:
 
-```{r}
+```{r eval=FALSE}
 BCC_AI<-read.csv(
   'MPM_BCC_ActInd_2018.csv', 
   header = TRUE, 
@@ -60,6 +60,7 @@ plot(
   ylim=c(0,1)
 )
 ```
-
+```{r, echo=FALSE, out.width = "50%", fig.pos="h"}
+knitr::include_graphics("figures/magnitude-phenometrics.png")
 
 

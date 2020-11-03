@@ -20,7 +20,7 @@ npn_groups <- function(use_hierarchy=FALSE, ...) {
     end_point <- 'networks/getPartnerNetworks.json'
   }
 
-  tibble::as_data_frame(
+  tibble::as_tibble(
     npn_GET(paste0(base(), end_point), list(), TRUE, ...)
   )
 

@@ -74,7 +74,7 @@ function will be applicable for every species belonging to that taxonomic group.
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rnpn</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.0-1000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.1</span>
       </span>
     </div>
 
@@ -143,8 +143,15 @@ Note that since a higher taxononmic order will aggregate individual species not 
 function will be applicable for every species belonging to that taxonomic group.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>npn_get_phenophases_for_taxon</span>(<span class='kw'>family_ids</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>order_ids</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>class_ids</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>date</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>return_all</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>npn_get_phenophases_for_taxon</span><span class='op'>(</span>
+  family_ids <span class='op'>=</span> <span class='cn'>NULL</span>,
+  order_ids <span class='op'>=</span> <span class='cn'>NULL</span>,
+  class_ids <span class='op'>=</span> <span class='cn'>NULL</span>,
+  genus_ids <span class='op'>=</span> <span class='cn'>NULL</span>,
+  date <span class='op'>=</span> <span class='cn'>NULL</span>,
+  return_all <span class='op'>=</span> <span class='fl'>0</span>,
+  <span class='va'>...</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -160,6 +167,10 @@ function will be applicable for every species belonging to that taxonomic group.
     <tr>
       <th>class_ids</th>
       <td><p>List of taxonomic class ids to search for</p></td>
+    </tr>
+    <tr>
+      <th>genus_ids</th>
+      <td><p>List of taxonomic genus ids to search for</p></td>
     </tr>
     <tr>
       <th>date</th>
@@ -194,11 +205,11 @@ ever applicable for any species belonging to the specified taxonomic group.</p>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Scott Chamberlain, Lee Marsh, Alyssa Rosemartin, Kevin Wong.</p>
+  <p>Developed by Lee Marsh, Scott Chamberlain, Alyssa Rosemartin, Kevin Wong.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rnpn</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.0-1000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.1</span>
       </span>
     </div>
 
@@ -90,7 +90,7 @@
       <h1 data-toc-skip>I. Introduction to National Phenology Network Observational Data</h1>
                         <h4 class="author">Lee Marsh</h4>
             
-            <h4 class="date">2020-08-31</h4>
+            <h4 class="date">2020-11-03</h4>
       
       
       <div class="hidden name"><code>I_introduction.Rmd</code></div>
@@ -114,15 +114,17 @@
 <h3 class="hasAnchor">
 <a href="#basic-format-for-for-observational-data-calls" class="anchor"></a>Basic format for for Observational data calls</h3>
 <p>The basic format for an observational data call in the rnpn library is:</p>
-<div class="sourceCode" id="cb1"><html><body><pre class="r">npn_download_[NAME OF DATA TYPE] (
-  request_source = [NULL]
-  year =  [NULL]
-  species_ID = [NULL]
-)                  </pre></body></html></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1">npn_download_[NAME OF DATA TYPE] (</a>
+<a class="sourceLine" id="cb1-2" title="2">  <span class="dt">request_source =</span> [<span class="ot">NULL</span>]</a>
+<a class="sourceLine" id="cb1-3" title="3">  <span class="dt">year =</span>  [<span class="ot">NULL</span>]</a>
+<a class="sourceLine" id="cb1-4" title="4">  <span class="dt">species_ID =</span> [<span class="ot">NULL</span>]</a>
+<a class="sourceLine" id="cb1-5" title="5">)                  </a></code></pre></div>
 <p>‘Request source’ should usually be populated with your full name or the name of the organization you represent. Species_ID is the unique identifier for all the available plants and animals in the USA-NPN database. You can create a table of all available species and their ID numbers:</p>
-<div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="no">species</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/npn_species.html">npn_species</a></span>()</pre></body></html></div>
+<div class="sourceCode" id="cb2"><pre class="downlit">
+<span class="va">species</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/npn_species.html">npn_species</a></span><span class="op">(</span><span class="op">)</span></pre></div>
 <p>Search for a species by common name from the full list:</p>
-<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="no">species</span>[<span class="no">species</span>$<span class="no">common_name</span><span class="kw">==</span><span class="st">"red maple"</span>,]</pre></body></html></div>
+<div class="sourceCode" id="cb3"><pre class="downlit">
+<span class="va">species</span><span class="op">[</span><span class="va">species</span><span class="op">$</span><span class="va">common_name</span><span class="op">==</span><span class="st">"red maple"</span>,<span class="op">]</span></pre></div>
 <p>There are many parameters which can be set beyond these basic ones, depending on the data type, and further detailed in the other vignettes featured in this package.</p>
 </div>
 <div id="required-parameters" class="section level3">
@@ -135,7 +137,8 @@
 <h3 class="hasAnchor">
 <a href="#find-stations-at-which-a-species-has-been-observed" class="anchor"></a>Find stations at which a species has been observed</h3>
 <p>You can also now look up which stations have a registered plant for a particular species. In the example below, we use the species ID for red maple, which we were able to find through the npn_species() function, to find all stations with that species.</p>
-<div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="fu"><a href="../reference/npn_stations_with_spp.html">npn_stations_with_spp</a></span> (<span class="fl">3</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb4"><pre class="downlit">
+<span class="fu"><a href="../reference/npn_stations_with_spp.html">npn_stations_with_spp</a></span> <span class="op">(</span><span class="fl">3</span><span class="op">)</span></pre></div>
 </div>
 </div>
 </div>
@@ -152,11 +155,11 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Scott Chamberlain, Lee Marsh, Alyssa Rosemartin, Kevin Wong.</p>
+  <p>Developed by Lee Marsh, Scott Chamberlain, Alyssa Rosemartin, Kevin Wong.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

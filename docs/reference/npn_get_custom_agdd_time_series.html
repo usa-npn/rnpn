@@ -74,7 +74,7 @@ This function leverages the USA-NPN geo web services" />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rnpn</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.0-1000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.1</span>
       </span>
     </div>
 
@@ -143,8 +143,17 @@ based on start and end date, for a given location in the continental US.
 This function leverages the USA-NPN geo web services</p>
     </div>
 
-    <pre class="usage"><span class='fu'>npn_get_custom_agdd_time_series</span>(<span class='no'>method</span>, <span class='no'>start_date</span>, <span class='no'>end_date</span>, <span class='no'>base_temp</span>,
-  <span class='no'>climate_data_source</span>, <span class='no'>temp_unit</span>, <span class='no'>lat</span>, <span class='no'>long</span>, <span class='kw'>upper_threshold</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>npn_get_custom_agdd_time_series</span><span class='op'>(</span>
+  <span class='va'>method</span>,
+  <span class='va'>start_date</span>,
+  <span class='va'>end_date</span>,
+  <span class='va'>base_temp</span>,
+  <span class='va'>climate_data_source</span>,
+  <span class='va'>temp_unit</span>,
+  <span class='va'>lat</span>,
+  <span class='va'>long</span>,
+  upper_threshold <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -201,11 +210,11 @@ to be considered in any given day's AGDD calculation</p></td>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Scott Chamberlain, Lee Marsh, Alyssa Rosemartin, Kevin Wong.</p>
+  <p>Developed by Lee Marsh, Scott Chamberlain, Alyssa Rosemartin, Kevin Wong.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

@@ -1,5 +1,5 @@
 pandoc: 2.7.2
-pkgdown: 1.5.0
+pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
   III_individual_phenometrics: III_individual_phenometrics.html
@@ -9,5 +9,5 @@ articles:
   VII_combine_raster_point: VII_combine_raster_point.html
   VI_geospatial: VI_geospatial.html
   V_magnitude_phenometrics: V_magnitude_phenometrics.html
-last_built: 2020-08-31T15:36Z
+last_built: 2020-11-03T16:03Z
 

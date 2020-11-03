@@ -23,7 +23,7 @@ Site Phenometrics, derived from Individual Phenometrics, provide summary metrics
 Here's an example of how to query the services for site phenometrics data, for cloned lilacs, breaking leaf buds, 2013. The call is very similar to the call for individual phenometrics data, however, in addition you can supply the quality control filter for the number of days between a yes record and preceding no record (also applies to the last yes and following no), for the observation to be included in the calculations. Typically this is set to 7, 14 or 30, as when downloading data using the USA-NPN Phenology Observation Portal. If you do not set this parameter, it defaults to 30 days. Note that in this example the results are stored in memory,  rather than output as a file.
 
 
-```{r}
+```{r eval=FALSE}
 LilacLeafPoints2013<-npn_download_site_phenometrics(
   request_source = 'Your Name Here', 
   years = c('2013'),
@@ -41,7 +41,7 @@ In this example we're able to see the date of the first observation of breaking 
 We can now plot our cloned lilac site phenometric onset data by latitude.
 
 
-```{r}
+```{r eval=FALSE}
 plot(
   mean_first_yes_doy~latitude, 
   data=LilacLeafPoints2013, 
@@ -55,4 +55,5 @@ plot(
   ylim=c(0,200)
 )
 ```
-
+```{r, echo=FALSE, out.width = "50%", fig.pos="h"}
+knitr::include_graphics("figures/site-phenometrics.png")

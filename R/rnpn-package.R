@@ -1,8 +1,6 @@
 #' Interface to the National Phenology Network API
 #'
-#' @description Programmatic interface to the
-#' Web Service methods provided by the National 'Phenology' Network
-#' (<https://usanpn.org/>), which includes data on various life history
+#' @description This package allows for easy access to the National Phenology Network's Data API. To learn more, take a look at the vignettes.
 #' events that occur at specific times.
 #' @importFrom stats setNames
 #' @importFrom data.table rbindlist setDF

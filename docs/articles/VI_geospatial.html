@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rnpn</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.0-1000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.1</span>
       </span>
     </div>
 
@@ -90,7 +90,7 @@
       <h1 data-toc-skip>VI. USA-NPN Geospatial Data</h1>
                         <h4 class="author">Lee Marsh</h4>
             
-            <h4 class="date">2020-08-31</h4>
+            <h4 class="date">2020-11-03</h4>
       
       
       <div class="hidden name"><code>VI_geospatial.Rmd</code></div>
@@ -116,97 +116,139 @@
 </li>
 </ul>
 <p>All of these products can be downloaded using the npn_download_geospatial call. There is a number of other products and permutations of the above listed AGDD and Spring Index products, so you can get a complete list of available layers and additional details about them including resolution, extent and the abstract/layer description.</p>
-<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="no">layers</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/npn_get_layer_details.html">npn_get_layer_details</a></span>()</pre></body></html></div>
+<div class="sourceCode" id="cb1"><pre class="downlit">
+<span class="va">layers</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/npn_get_layer_details.html">npn_get_layer_details</a></span><span class="op">(</span><span class="op">)</span></pre></div>
 <p>The following sections describe how to parameterize calls for both AGDD and Spring Index layers. These calls result in raster data sets for the contiguous United States.</p>
 <p>If you are interested in how many GDDs had accumulated when the red maple in your backyard leafed out, or what day the Spring Index requirements for leaf out were met for your location, you may wish to query the layers for these values, based on location and date. There are two ways to accomplish this, using the npn_get_point_data function which works for all layers and the npn_get_AGDD_point_data function, which only works for AGDD layers and provides a more precise result.</p>
-<div class="sourceCode" id="cb2"><html><body><pre class="r">npn_get_agdd_point_data(
- 'gdd:agdd_50f', 
- '38', 
- '-90', 
- '2019-02-25'
-)</pre></body></html></div>
+<div class="sourceCode" id="cb2"><pre class="downlit">
+<span class="fu"><a href="../reference/npn_get_agdd_point_data.html">npn_get_agdd_point_data</a></span><span class="op">(</span>
+ <span class="st">'gdd:agdd_50f'</span>, 
+ <span class="st">'38'</span>, 
+ <span class="st">'-90'</span>, 
+ <span class="st">'2019-02-25'</span>
+<span class="op">)</span></pre></div>
 <p>This returns a value of 7.64098 GDD, base 50F, for the coordinates 38 north, -90 west on February 25th, 2019.</p>
-<div class="sourceCode" id="cb3"><html><body><pre class="r">npn_get_point_data(
- 'si-x:lilac_bloom_ncep', 
- '30', 
- '-90', 
- '2019-02-25'
-)</pre></body></html></div>
+<div class="sourceCode" id="cb3"><pre class="downlit">
+<span class="fu"><a href="../reference/npn_get_point_data.html">npn_get_point_data</a></span><span class="op">(</span>
+ <span class="st">'si-x:lilac_bloom_ncep'</span>, 
+ <span class="st">'30'</span>, 
+ <span class="st">'-90'</span>, 
+ <span class="st">'2019-02-25'</span>
+<span class="op">)</span></pre></div>
 <p>This returns a value for lilac bloom of day 48, for the coordinates 30 north, -90 west, as of February 25th, 2019.</p>
 <p>The above mentioned AGDD products use base temperatures of 32F or 50F and are managed through WCS services. There is also a function to get dynamic AGDD calculations based on a user defined base temperature and a number of other parameters.</p>
-<div class="sourceCode" id="cb4"><html><body><pre class="r">custom_agdd_raster </pre></body></html></div>
+<div class="sourceCode" id="cb4"><pre class="downlit">
+<span class="va">custom_agdd_raster</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/npn_get_custom_agdd_raster.html">npn_get_custom_agdd_raster</a></span><span class="op">(</span>
+ method <span class="op">=</span> <span class="st">'double-sine'</span>,
+ climate_data_source <span class="op">=</span> <span class="st">'NCEP'</span>,
+ temp_unit <span class="op">=</span> <span class="st">'fahrenheit'</span>,
+ start_date <span class="op">=</span> <span class="st">'2019-01-01'</span>,
+ end_date <span class="op">=</span> <span class="st">'2019-05-10'</span>,
+ base_temp <span class="op">=</span> <span class="fl">20</span>,
+ upper_threshold <span class="op">=</span> <span class="fl">90</span>
+<span class="op">)</span></pre></div>
 <div id="accumulated-growing-degree-day-products" class="section level2">
 <h2 class="hasAnchor">
 <a href="#accumulated-growing-degree-day-products" class="anchor"></a>Accumulated Growing Degree Day Products</h2>
 <p>Heat accumulation is commonly used as a way of predicting the timing of phenological transitions in plants and animals, including when plants exhibit leaf out, flowering, or fruit ripening, or when insects emerge from dormancy. This is typically expressed as accumulated heat units, either Growing Degree Hours or Growing Degree Days. Growing degree day thresholds have been established for many species, and are commonly used in agriculture, horticulture, and pest management to schedule activities such as harvesting, pesticide treatment, and flower collection. The USA-NPN is currently generating Accumulated Growing Degree Days (AGDD) rasters using a January 1 start date, calculated using simple averaging. These are available calculated using two base temperatures, 32 degrees Fahrenheit (F) and 50 F.</p>
 <p>When querying certain layers, the underlying data is agnostic about the specific year, and in these cases it makes sense to use the day of year to request data, since that will provide a standardized result, (i.e., April 1st is day 91 in some years and day 92 in others).</p>
-<div class="sourceCode" id="cb5"><html><body><pre class="r">npn_download_geospatial(
- 'gdd:30yr_avg_agdd_50f', 
- 95
-)</pre></body></html></div>
+<div class="sourceCode" id="cb5"><pre class="downlit">
+<span class="fu"><a href="../reference/npn_download_geospatial.html">npn_download_geospatial</a></span><span class="op">(</span>
+ <span class="st">'gdd:30yr_avg_agdd_50f'</span>, 
+ <span class="fl">95</span>
+<span class="op">)</span></pre></div>
 <p>But if you’re looking at a specific year, such as a current year layer, it makes sense to use a specific calendar date (formatted YYYY-MM-DD). It’s also possible to save the raster directly to file instead of loading it into memory.</p>
-<div class="sourceCode" id="cb6"><html><body><pre class="r">npn_download_geospatial(
- 'gdd:agdd', 
- '2018-05-05',
- output_path='20180505-agdd-value.tiff'
-)</pre></body></html></div>
+<div class="sourceCode" id="cb6"><pre class="downlit">
+<span class="fu"><a href="../reference/npn_download_geospatial.html">npn_download_geospatial</a></span><span class="op">(</span>
+ <span class="st">'gdd:agdd'</span>, 
+ <span class="st">'2018-05-05'</span>,
+ output_path<span class="op">=</span><span class="st">'20180505-agdd-value.tiff'</span>
+<span class="op">)</span></pre></div>
 <p>In the case of the historic Spring Index layers, however, the product represents the overall outcome for the entire year, so while the year component of the date matters, the month and day do not. In this case, specify January 1 as the month and date.</p>
-<div class="sourceCode" id="cb7"><html><body><pre class="r">npn_download_geospatial(
- "si-x:average_bloom_prism",
- "1995-01-01"
-)</pre></body></html></div>
+<div class="sourceCode" id="cb7"><pre class="downlit">
+<span class="fu"><a href="../reference/npn_download_geospatial.html">npn_download_geospatial</a></span><span class="op">(</span>
+ <span class="st">"si-x:average_bloom_prism"</span>,
+ <span class="st">"1995-01-01"</span>
+<span class="op">)</span></pre></div>
 <p>The dimension.range value, returned in the npn_get_layer_details() function, clarifies the full set of applicable dates for each layer.</p>
 <p>Of course, it’s also easy to grab raster data and load it into a visual plot as in this example, showing a map of AGDD base 50 on 2019-06-25:</p>
-<div class="sourceCode" id="cb8"><html><body><pre class="r">AGDDJun2019</pre></body></html></div>
+<div class="sourceCode" id="cb8"><pre class="downlit">
+<span class="va">AGDDJun2019</span><span class="op">&lt;-</span><span class="fu"><a href="../reference/npn_download_geospatial.html">npn_download_geospatial</a></span><span class="op">(</span>
+ <span class="st">"gdd:agdd_50f"</span>, 
+ <span class="st">"2019-06-25"</span>
+<span class="op">)</span></pre></div>
 <pre><code>## [1] "https://geoserver.usanpn.org/geoserver/wcs?service=WCS&amp;version=2.0.1&amp;request=GetCoverage&amp;format=geotiff&amp;coverageId=gdd:agdd_50f&amp;SUBSET=time(\"2019-06-25T00:00:00.000Z\")"</code></pre>
-<div class="sourceCode" id="cb10"><html><body><pre class="r">plot(
- AGDDJun2019, 
- main = "AGDD base 50 on June 25th, 2019"
-)</pre></body></html></div>
+<div class="sourceCode" id="cb10"><pre class="downlit">
+<span class="fu"><a href="https://rdrr.io/r/graphics/plot.html">plot</a></span><span class="op">(</span>
+ <span class="va">AGDDJun2019</span>, 
+ main <span class="op">=</span> <span class="st">"AGDD base 50 on June 25th, 2019"</span>
+<span class="op">)</span></pre></div>
 <p><img src="VI_geospatial_files/figure-html/unnamed-chunk-9-1.png" width="700"></p>
 <p>An important layer to know of is the 30 year average for AGDD products. This is useful for many comparative analyses. This layer takes DOY as the date input, since it’s the average AGDD value for each day of year for 1981 - 2010.</p>
-<div class="sourceCode" id="cb11"><html><body><pre class="r">average_30yr </pre></body></html></div>
+<div class="sourceCode" id="cb11"><pre class="downlit">
+<span class="va">average_30yr</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/npn_download_geospatial.html">npn_download_geospatial</a></span><span class="op">(</span>
+ <span class="st">"gdd:30yr_avg_agdd"</span>,
+ <span class="fl">45</span>
+<span class="op">)</span></pre></div>
 </div>
 <div id="extended-spring-indices" class="section level2">
 <h2 class="hasAnchor">
 <a href="#extended-spring-indices" class="anchor"></a>Extended Spring Indices</h2>
 <p>The Extended Spring Indices are mathematical models that predict the “start of spring” (timing of first leaf or first bloom) at a particular location. These models were constructed using historical observations of the timing of first leaf and first bloom in a cloned lilac cultivar (Syringa X chinensis ‘Red Rothomagensis’) and two cloned honeysuckle cultivars (Lonicera tatarica L. ‘Arnold Red’ and Lonicera korolkowii Stapf, also known as ‘Zabelii’), which were selected based on the availability of historical observations from across a wide geographic area. Primary inputs to the model are temperature and weather events, beginning January 1 of each year. The model outputs are first leaf and first bloom date for a given location.</p>
 <p>Data for the Spring Index is available through an enumeration of layers that represents each of the three sub-models as well as an ‘average’ model which represents the aggregation of the three sub-models. These layers are further enumerated by both of the represented phenophases, leaf and bloom. In the example below, first the layer representing only the Arnold Red model for 1987 is retrieved, while the second function call gets the model averaging all three of the models for the same year.</p>
-<div class="sourceCode" id="cb12"><html><body><pre class="r">npn_download_geospatial(
- "si-x:arnoldred_bloom_prism",
- "1987-01-01"
-)
+<div class="sourceCode" id="cb12"><pre class="downlit">
+<span class="fu"><a href="../reference/npn_download_geospatial.html">npn_download_geospatial</a></span><span class="op">(</span>
+ <span class="st">"si-x:arnoldred_bloom_prism"</span>,
+ <span class="st">"1987-01-01"</span>
+<span class="op">)</span>
 
-average_model </pre></body></html></div>
+<span class="va">average_model</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/npn_download_geospatial.html">npn_download_geospatial</a></span><span class="op">(</span>
+ <span class="st">"si-x:average_bloom_prism"</span>,
+ <span class="st">"1987-01-01"</span>
+<span class="op">)</span></pre></div>
 <p>The Spring Indices are also unique in that the algorithm has been run against the BEST climate data set, so historic data going back to 1880 is available.</p>
-<div class="sourceCode" id="cb13"><html><body><pre class="r">BESTSIxData1905 </pre></body></html></div>
+<div class="sourceCode" id="cb13"><pre class="downlit">
+<span class="va">BESTSIxData1905</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/npn_download_geospatial.html">npn_download_geospatial</a></span><span class="op">(</span>
+ <span class="st">'si-x:average_bloom_best'</span>, 
+ <span class="st">'1905-01-01'</span>
+<span class="op">)</span></pre></div>
 <pre><code>## [1] "https://geoserver.usanpn.org/geoserver/wcs?service=WCS&amp;version=2.0.1&amp;request=GetCoverage&amp;format=geotiff&amp;coverageId=si-x:average_bloom_best&amp;SUBSET=time(\"1905-01-01T00:00:00.000Z\")"</code></pre>
-<div class="sourceCode" id="cb15"><html><body><pre class="r"><span class="fu">NAvalue</span>(<span class="no">BESTSIxData1905</span>) <span class="kw">&lt;-</span> -<span class="fl">9999</span></pre></body></html></div>
-<div class="sourceCode" id="cb16"><html><body><pre class="r">plot(
- BESTSIxData1905, 
- main = "Spring Index, 1905"
-)</pre></body></html></div>
+<div class="sourceCode" id="cb15"><pre class="downlit">
+<span class="fu">NAvalue</span><span class="op">(</span><span class="va">BESTSIxData1905</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="op">-</span><span class="fl">9999</span></pre></div>
+<div class="sourceCode" id="cb16"><pre class="downlit">
+<span class="fu"><a href="https://rdrr.io/r/graphics/plot.html">plot</a></span><span class="op">(</span>
+ <span class="va">BESTSIxData1905</span>, 
+ main <span class="op">=</span> <span class="st">"Spring Index, 1905"</span>
+<span class="op">)</span></pre></div>
 <p><img src="VI_geospatial_files/figure-html/unnamed-chunk-13-1.png" width="700"></p>
 <div id="other-layers" class="section level3">
 <h3 class="hasAnchor">
 <a href="#other-layers" class="anchor"></a>Other Layers</h3>
 <p>Besides the AGDD and Spring Index layers there are a number of other useful layers available through these services, including daily temperature minimum and maximums and aggregated MODISv6 phenometrics.</p>
 <p>The daily temperature minimum and maximum values are the underlying climate data used to generate current year AGDD and Spring Index maps. These data are generated by NOAA’s National Centers for Environmental Prediction (NCEP) and are reserved through NPN’s geospatial services.</p>
-<div class="sourceCode" id="cb17"><html><body><pre class="r">daily_max_20190505 </pre></body></html></div>
+<div class="sourceCode" id="cb17"><pre class="downlit">
+<span class="va">daily_max_20190505</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/npn_download_geospatial.html">npn_download_geospatial</a></span><span class="op">(</span>
+ <span class="st">'climate:tmax'</span>, 
+ <span class="st">'2019-05-05'</span>
+<span class="op">)</span></pre></div>
 <pre><code>## [1] "https://geoserver.usanpn.org/geoserver/wcs?service=WCS&amp;version=2.0.1&amp;request=GetCoverage&amp;format=geotiff&amp;coverageId=climate:tmax&amp;SUBSET=time(\"2019-05-05T00:00:00.000Z\")"</code></pre>
-<div class="sourceCode" id="cb19"><html><body><pre class="r">plot(
- daily_max_20190505, 
- main = "Daily Temperature Max (C), May 5th, 2019"
-)</pre></body></html></div>
+<div class="sourceCode" id="cb19"><pre class="downlit">
+<span class="fu"><a href="https://rdrr.io/r/graphics/plot.html">plot</a></span><span class="op">(</span>
+ <span class="va">daily_max_20190505</span>, 
+ main <span class="op">=</span> <span class="st">"Daily Temperature Max (C), May 5th, 2019"</span>
+<span class="op">)</span></pre></div>
 <p><img src="VI_geospatial_files/figure-html/unnamed-chunk-14-1.png" width="700"></p>
 <p>The MODISv6 layers are aggregate values for remote sensing values from the MODISv6 data set, representing a subset of the following phenometrics, aggregated across 2001 - 2017: EVI Area, Mid-Greenup, Mid-Greendown. The available aggregate values for each layer are: median, TSslope, and mean absolute deviation. This example shows the median green up value, as DOY. Note that because this layer has a fixed date, the date parameter is input as a blank string.</p>
-<div class="sourceCode" id="cb20"><html><body><pre class="r">median_greenup </pre></body></html></div>
-<pre><code>## [1] "https://geoserver.usanpn.org/geoserver/wcs?service=WCS&amp;version=2.0.1&amp;request=GetCoverage&amp;format=geotiff&amp;coverageId=inca:midgup_median_nad83_02deg"</code></pre>
-<div class="sourceCode" id="cb22"><html><body><pre class="r">plot(
- median_greenup, 
- main = "MODIS Median Mid-Greenup, 2001 - 2017"
-)</pre></body></html></div>
-<p><img src="VI_geospatial_files/figure-html/unnamed-chunk-15-1.png" width="700"></p>
+<div class="sourceCode" id="cb20"><pre class="downlit">
+<span class="va">median_greenup</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/npn_download_geospatial.html">npn_download_geospatial</a></span><span class="op">(</span>
+ <span class="st">'inca:midgup_median_nad83_02deg'</span>,
+ <span class="st">''</span>
+<span class="op">)</span>
+
+<span class="fu"><a href="https://rdrr.io/r/graphics/plot.html">plot</a></span><span class="op">(</span>
+ <span class="va">median_greenup</span>, 
+ main <span class="op">=</span> <span class="st">"MODIS Median Mid-Greenup, 2001 - 2017"</span>
+<span class="op">)</span></pre></div>
 </div>
 </div>
 </div>
@@ -223,11 +265,11 @@ average_model </pre></body></html></div>
 
 
       <footer><div class="copyright">
-  <p>Developed by Scott Chamberlain, Lee Marsh, Alyssa Rosemartin, Kevin Wong.</p>
+  <p>Developed by Lee Marsh, Scott Chamberlain, Alyssa Rosemartin, Kevin Wong.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

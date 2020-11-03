@@ -31,7 +31,7 @@ Both suites are available as:
  
 All of these products can be downloaded using the npn_download_geospatial call. There is a number of other products and permutations of the above listed AGDD and Spring Index products, so you can get a complete list of available layers and additional details about them including resolution, extent and the abstract/layer description. 
 
-```{r}
+```{r eval=FALSE}
 layers <- npn_get_layer_details()
 ```
 
@@ -87,7 +87,6 @@ Heat accumulation is commonly used as a way of predicting the timing of phenolog
 When querying certain layers, the underlying data is agnostic about the specific year, and in these cases it makes sense to use the day of year to request data, since that will provide a standardized result, (i.e., April 1st is day 91 in some years and day 92 in others). 
 
 ```{r eval=FALSE}
-
 npn_download_geospatial(
  'gdd:30yr_avg_agdd_50f', 
  95
@@ -117,10 +116,10 @@ The dimension.range value, returned in the npn_get_layer_details() function, cla
 
 Of course, it's also easy to grab raster data and load it into a visual plot as in this example, showing a map of AGDD base 50 on 2019-06-25:
 
-```{r warning = FALSE, message=FALSE}
+```{r}
 AGDDJun2019<-npn_download_geospatial(
- 'gdd:agdd_50f', 
- '2019-06-25'
+ "gdd:agdd_50f", 
+ "2019-06-25"
 )
 ```
 
@@ -206,7 +205,7 @@ plot(
 The MODISv6 layers are aggregate values for remote sensing values from the MODISv6 data set, representing a subset of the following phenometrics, aggregated across 2001 - 2017: EVI Area, Mid-Greenup, Mid-Greendown. The available aggregate values for each layer are: median, TSslope, and mean absolute deviation.
 This example shows the median green up value, as DOY. Note that because this layer has a fixed date, the date parameter is input as a blank string.
 
-```{r}
+```{r eval=FALSE}
 median_greenup <- npn_download_geospatial(
  'inca:midgup_median_nad83_02deg',
  ''

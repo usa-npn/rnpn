@@ -656,8 +656,6 @@ npn_get_data_by_year <- function(
 #'
 #' @return Data table of the requested data. NULL if a download_path was specified.
 #' @keywords internal
-#' Don't keep this as export, REMOVE THIS EXPORT
-#' @export
 npn_get_data <- function(
   url,
   query,

@@ -30,12 +30,4 @@ Data table of the requested data. NULL if a download_path was specified.
 \description{
 Generic utility function for querying data from the NPN data services.
 }
-\keyword{Don't}
-\keyword{EXPORT}
-\keyword{REMOVE}
-\keyword{THIS}
-\keyword{as}
-\keyword{export,}
 \keyword{internal}
-\keyword{keep}
-\keyword{this}

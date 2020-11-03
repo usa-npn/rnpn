@@ -34,7 +34,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">rnpn</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.0-1000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.1</span>
       </span>
     </div>
 
@@ -92,8 +92,9 @@
 <div id="rnpn" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#rnpn" class="anchor"></a>rnpn</h1></div>
+<!-- badges: start -->
 
-<p><code>rnpn</code> is an R client for interacting with the USA National Phenology Network data web services. These services include access to a rich set of observer-contributed, point-based phenology records as well as geospatial data products including gridded phenological model and climitological data.</p>
+<p><code>rnpn</code> is an R client for interacting with the USA National Phenology Network data web services. These services include access to a rich set of observer-contributed, point-based phenology records as well as geospatial data products including gridded phenological model and climatological data.</p>
 <p>Documentation is available for the National Phenology Network <a href="https://docs.google.com/document/d/1yNjupricKOAXn6tY1sI7-EwkcfwdGUZ7lxYv7fcPjO8/edit?hl=en_US">API documentation</a>, which describes the full set of REST services this package wraps.</p>
 <p>There is no need for an API key to grab data from the National Phenology Network but users are required to self identify, on an honor system, against requests that may draw upon larger datasets.</p>
 <p>Currently there are services for writing to the database but those endpoints do require user authentication and are not accessible through this R wrapper. Please contact the package authors for more information if that’s what you’re trying to do.</p>
@@ -103,37 +104,46 @@
 <p>This package has evolved slowly and is currently managed in a few locations, with varying degrees of available functionality.</p>
 <p>The original, v. 0.1, iteration of the package is available through CRAN but has limited functionality and a number of endpoints that have been deprecated.</p>
 <p>CRAN version</p>
-<div class="sourceCode" id="cb1"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"rnpn"</span>)</pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit">
+<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"rnpn"</span><span class="op">)</span></pre></div>
 <p>There’s a newer iteration of the package that includes a lot more functionality, including the ability to access geospatial data, and is up-to-date with the backing data services. This version of the package is actively maintained, but is not managed through CRAN yet and as such is more bug-prone. This version of the package must be installed through devtools.</p>
 <p>Development version</p>
-<div class="sourceCode" id="cb2"><pre class="r">install.packages("devtools")
-library('devtools')
-devtools::install_github("usa-npn/rnpn")</pre></div>
-<div class="sourceCode" id="cb3"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">'rnpn'</span>)</pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit">
+<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://devtools.r-lib.org/">'devtools'</a></span><span class="op">)</span>
+<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span><span class="op">(</span><span class="st">"usa-npn/rnpn"</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit">
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st">'rnpn'</span><span class="op">)</span></pre></div>
 </div>
 <div id="the-basics" class="section level2">
 <h2 class="hasAnchor">
 <a href="#the-basics" class="anchor"></a>The Basics</h2>
 <p>Many of the functions to search for data require knowing the internal unique identifiers of some of the database entities to filter the data down efficiently. For example, if you want to search by species, then you must know the internal identifier of the species. To get a list of all available species use the following:</p>
-<div class="sourceCode" id="cb4"><pre class="r"><span class="no">species_list</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/npn_species.html">npn_species</a></span>()</pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit">
+<span class="va">species_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/npn_species.html">npn_species</a></span><span class="op">(</span><span class="op">)</span></pre></div>
 <p>Similarly, for phenophases:</p>
-<div class="sourceCode" id="cb5"><pre class="r"><span class="no">phenophases</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/npn_phenophases.html">npn_phenophases</a></span>()</pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit">
+<span class="va">phenophases</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/npn_phenophases.html">npn_phenophases</a></span><span class="op">(</span><span class="op">)</span></pre></div>
 <div id="getting-observational-data" class="section level3">
 <h3 class="hasAnchor">
 <a href="#getting-observational-data" class="anchor"></a>Getting Observational Data</h3>
 <p>There are four main functions for accessing observational data, at various levels of aggregation. At the most basic level you can download the raw status and intensity data.</p>
-<div class="sourceCode" id="cb6"><pre class="r"><span class="no">some_data</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/npn_download_status_data.html">npn_download_status_data</a></span>(<span class="kw">request_source</span><span class="kw">=</span><span class="st">'Your Name or Org Here'</span>,<span class="kw">years</span><span class="kw">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">2015</span>),<span class="kw">species_id</span><span class="kw">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">35</span>),<span class="kw">states</span><span class="kw">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">'AZ'</span>,<span class="st">'IL'</span>))</pre></div>
+<div class="sourceCode" id="cb6"><pre class="downlit">
+<span class="va">some_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/npn_download_status_data.html">npn_download_status_data</a></span><span class="op">(</span>request_source<span class="op">=</span><span class="st">'Your Name or Org Here'</span>,years<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2015</span><span class="op">)</span>,species_id<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">35</span><span class="op">)</span>,states<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'AZ'</span>,<span class="st">'IL'</span><span class="op">)</span><span class="op">)</span></pre></div>
 <p>Note that through this API, data can only be filtered chronologically by full calendar years. You can specify any number of years in each API call. Also note that request_source is a required parameter and should be populated with your name or the name of the organization you represent. All other parameters are optional but it is highly recommended that you filter your data search further.</p>
 </div>
 <div id="getting-geospatial-data" class="section level3">
 <h3 class="hasAnchor">
 <a href="#getting-geospatial-data" class="anchor"></a>Getting Geospatial Data</h3>
 <p>This package wraps around standard WCS endpoints to facilitate the transfer of raster data. Generally, this package does not focus on interacting with WMS services, although they are available. To get a list of all available data layers, use the following:</p>
-<div class="sourceCode" id="cb7"><pre class="r"><span class="no">layers</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/npn_get_layer_details.html">npn_get_layer_details</a></span>()</pre></div>
+<div class="sourceCode" id="cb7"><pre class="downlit">
+<span class="va">layers</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/npn_get_layer_details.html">npn_get_layer_details</a></span><span class="op">(</span><span class="op">)</span></pre></div>
 <p>You can then use the name of the layers to select and download geospatial data as a raster.</p>
-<div class="sourceCode" id="cb8"><pre class="r"><span class="fu"><a href="reference/npn_download_geospatial.html">npn_download_geospatial</a></span>(<span class="kw">coverage_id</span> <span class="kw">=</span> <span class="st">'si-x:lilac_leaf_ncep_historic'</span>,<span class="kw">date</span><span class="kw">=</span><span class="st">'2016-12-31'</span>,<span class="kw">format</span><span class="kw">=</span><span class="st">'geotiff'</span>,<span class="kw">output_path</span><span class="kw">=</span><span class="st">'./six-test-raster.tiff'</span>)</pre></div>
+<div class="sourceCode" id="cb8"><pre class="downlit">
+<span class="fu"><a href="reference/npn_download_geospatial.html">npn_download_geospatial</a></span><span class="op">(</span>coverage_id <span class="op">=</span> <span class="st">'si-x:lilac_leaf_ncep_historic'</span>,date<span class="op">=</span><span class="st">'2016-12-31'</span>,format<span class="op">=</span><span class="st">'geotiff'</span>,output_path<span class="op">=</span><span class="st">'./six-test-raster.tiff'</span><span class="op">)</span></pre></div>
 <p>If you’re looking for a grid value at a specific latitude/longitude, that is also possible.</p>
-<div class="sourceCode" id="cb9"><pre class="r"><span class="no">point_value</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/npn_get_point_data.html">npn_get_point_data</a></span>(<span class="st">'si-x:lilac_leaf_ncep_historic'</span>,<span class="kw">date</span><span class="kw">=</span><span class="st">'2016-12-31'</span>,<span class="kw">lat</span><span class="kw">=</span><span class="fl">38.5</span>,<span class="kw">long</span><span class="kw">=</span>-<span class="fl">110.7</span>)</pre></div>
+<div class="sourceCode" id="cb9"><pre class="downlit">
+<span class="va">point_value</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/npn_get_point_data.html">npn_get_point_data</a></span><span class="op">(</span><span class="st">'si-x:lilac_leaf_ncep_historic'</span>,date<span class="op">=</span><span class="st">'2016-12-31'</span>,lat<span class="op">=</span><span class="fl">38.5</span>,long<span class="op">=</span><span class="op">-</span><span class="fl">110.7</span><span class="op">)</span></pre></div>
 </div>
 </div>
 <div id="whats-next" class="section level2">
@@ -145,7 +155,7 @@ devtools::install_github("usa-npn/rnpn")</pre></div>
 <h2 class="hasAnchor">
 <a href="#meta" class="anchor"></a>Meta</h2>
 <ul>
-<li>Please <a href="https://github.com/usa-npn/rnpn/issues">report any issues or bugs</a>.</li>
+<li>Please <a href="https://github.com/ropensci/rnpn/issues">report any issues or bugs</a>.</li>
 <li>License: MIT</li>
 <li>Get citation information for <code>rnpn</code> in R doing <code><a href="https://rdrr.io/r/utils/citation.html">citation(package = 'rnpn')</a></code>
 </li>
@@ -175,8 +185,8 @@ devtools::install_github("usa-npn/rnpn")</pre></div>
 <div class="developers">
 <h2>Developers</h2>
 <ul class="list-unstyled">
-<li>Scott Chamberlain <br><small class="roles"> Author, maintainer </small>  </li>
-<li>Lee Marsh <br><small class="roles"> Author </small>  </li>
+<li>Lee Marsh <br><small class="roles"> Author, maintainer </small>  </li>
+<li>Scott Chamberlain <br><small class="roles"> Author </small>  </li>
 <li>Alyssa Rosemartin <br><small class="roles"> Author </small>  </li>
 <li>Kevin Wong <br><small class="roles"> Author </small>  </li>
 </ul>
@@ -186,8 +196,9 @@ devtools::install_github("usa-npn/rnpn")</pre></div>
 <h2>Dev status</h2>
 <ul class="list-unstyled">
 <li><a href="https://travis-ci.org/usa-npn/rnpn"><img src="https://api.travis-ci.org/usa-npn/rnpn.png" alt="Build Status"></a></li>
-<li><a href="https://ci.appveyor.com/project/sckott/rnpn/branch/master"><img src="https://ci.appveyor.com/api/projects/status/es65utr5jmfmcsrg/branch/master" alt="Build status"></a></li>
+<li><a href="https://ci.appveyor.com/project/usa-npn/rnpn/branch/master"><img src="https://ci.appveyor.com/api/projects/status/es65utr5jmfmcsrg/branch/master" alt="Build status"></a></li>
 <li><a href="https://codecov.io/github/usa-npn/rnpn?branch=master"><img src="https://codecov.io/github/usa-npn/rnpn/coverage.svg?branch=master" alt="codecov.io"></a></li>
+<li><a href="https://cran.r-project.org/web/checks/check_results_rnpn.html"><img src="https://cranchecks.info/badges/worst/rnpn" alt="CRAN checks"></a></li>
 </ul>
 </div>
 </div>
@@ -195,11 +206,11 @@ devtools::install_github("usa-npn/rnpn")</pre></div>
 
 
       <footer><div class="copyright">
-  <p>Developed by Scott Chamberlain, Lee Marsh, Alyssa Rosemartin, Kevin Wong.</p>
+  <p>Developed by Lee Marsh, Scott Chamberlain, Alyssa Rosemartin, Kevin Wong.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

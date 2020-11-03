@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rnpn</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.0-1000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.1</span>
       </span>
     </div>
 
@@ -90,7 +90,7 @@
       <h1 data-toc-skip>VII. Putting It All Together</h1>
                         <h4 class="author">Lee Marsh</h4>
             
-            <h4 class="date">2020-08-31</h4>
+            <h4 class="date">2020-11-03</h4>
       
       
       <div class="hidden name"><code>VII_combine_raster_point.Rmd</code></div>
@@ -105,41 +105,86 @@
 <p>Observational and gridded data can be visualized or analyzed together for a variety of purposes. Users may want to identify spatial patterns in the alignment of dogwood bloom and the Spring Index bloom model. The current year’s lilac leaf out observations may be compared to the 30 year average lilac sub-model of the spring index to see how well the model predicts the observations.</p>
 <p>This example shows several data access calls to assemble observational and gridded data.</p>
 <p>Option 1: You can add a parameter to an observational data call to additionally get a gridded layer value for each observation location/date. Note that if you don’t specify which sub model of the Spring Index you want, you will get the SI-x Average layers.</p>
-<div class="sourceCode" id="cb1"><html><body><pre class="r">npn_download_site_phenometrics(
-  request_source = 'Your Name Here', 
-  years = '2013',
-  num_days_quality_filter = '30', 
-  species_ids = '35',
-  phenophase_ids = '373', 
-  download_path = 'cl_lilac_data_2013_SIxLeaf.csv',
-  six_leaf_layer = TRUE,
-  six_sub_model = 'lilac'
-)</pre></body></html></div>
+<div class="sourceCode" id="cb1"><pre class="downlit">
+<span class="fu"><a href="../reference/npn_download_site_phenometrics.html">npn_download_site_phenometrics</a></span><span class="op">(</span>
+  request_source <span class="op">=</span> <span class="st">'Your Name Here'</span>, 
+  years <span class="op">=</span> <span class="st">'2013'</span>,
+  num_days_quality_filter <span class="op">=</span> <span class="st">'30'</span>, 
+  species_ids <span class="op">=</span> <span class="st">'35'</span>,
+  phenophase_ids <span class="op">=</span> <span class="st">'373'</span>, 
+  download_path <span class="op">=</span> <span class="st">'cl_lilac_data_2013_SIxLeaf.csv'</span>,
+  six_leaf_layer <span class="op">=</span> <span class="cn">TRUE</span>,
+  six_sub_model <span class="op">=</span> <span class="st">'lilac'</span>
+<span class="op">)</span></pre></div>
 <p>If you want to append raster data other than Spring Index, Leaf values, there’s alternative boolean flags that can be set, including six_bloom_layer for Spring Index, Bloom data, and agdd_layer. Instead of TRUE or FALSE agdd_layer takes 32 or 50 and will correlate each data point with the corresponding AGDD value for the given date using either 32 or 50 base temperature.</p>
 <p>Option 2: You can create a combined plot of observational data with modeled/raster data.</p>
 <p>Building on the approach for accessing point data from earlier vignettes describing Individual Phenometrics and getting raster data, we can access and plot these products together. In this example, we will look at how well cloned lilac leaf out observations in 2018 are predicted by the lilac leaf sub model of the Spring Index.</p>
 <div id="step-1-get-the-data" class="section level3">
 <h3 class="hasAnchor">
 <a href="#step-1-get-the-data" class="anchor"></a>Step 1: Get the data</h3>
-<div class="sourceCode" id="cb2"><html><body><pre class="r">LilacLeaf2018</pre></body></html></div>
-<pre><code>## [1] "https://geoserver.usanpn.org/geoserver/wcs?service=WCS&amp;version=2.0.1&amp;request=GetCoverage&amp;format=geotiff&amp;coverageId=si-x:lilac_leaf_ncep&amp;SUBSET=time(\"2018-12-31T00:00:00.000Z\")"</code></pre>
-<div class="sourceCode" id="cb4"><html><body><pre class="r">LilacLeaf2018Obs </pre></body></html></div>
-<pre><code>## using a custom handler function.</code></pre>
-<pre><code>## opening curl input connection.</code></pre>
-<pre><code>## 
- Found 180 records...</code></pre>
-<pre><code>## closing curl input connection.</code></pre>
+<div class="sourceCode" id="cb2"><pre class="downlit">
+<span class="va">LilacLeaf2018</span><span class="op">&lt;-</span><span class="fu"><a href="../reference/npn_download_geospatial.html">npn_download_geospatial</a></span><span class="op">(</span>
+  <span class="st">'si-x:lilac_leaf_ncep_historic'</span>, 
+  <span class="st">'2018-01-01'</span>, 
+<span class="op">)</span>
+
+
+<span class="va">LilacLeaf2018Obs</span> <span class="op">&lt;-</span><span class="fu"><a href="../reference/npn_download_individual_phenometrics.html">npn_download_individual_phenometrics</a></span><span class="op">(</span>
+  request_source <span class="op">=</span> <span class="st">'Your Name Here'</span>, 
+  years <span class="op">=</span> <span class="st">'2018'</span>,
+  species_ids <span class="op">=</span> <span class="st">'35'</span>,
+  phenophase_ids <span class="op">=</span> <span class="st">'373'</span> 
+<span class="op">)</span></pre></div>
 </div>
 <div id="step-2-preparing-the-data" class="section level3">
 <h3 class="hasAnchor">
 <a href="#step-2-preparing-the-data" class="anchor"></a>Step 2: Preparing the data</h3>
-<div class="sourceCode" id="cb9"><html><body><pre class="r">coords </pre></body></html></div>
+<div class="sourceCode" id="cb3"><pre class="downlit">
+<span class="va">coords</span> <span class="op">&lt;-</span> <span class="va">LilacLeaf2018Obs</span><span class="op">[</span> , <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"longitude"</span>, <span class="st">"latitude"</span><span class="op">)</span><span class="op">]</span>
+<span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="va">LilacLeaf2018Obs</span><span class="op">$</span><span class="va">first_yes_doy</span><span class="op">)</span>
+
+<span class="va">crs</span> <span class="op">&lt;-</span> <span class="fu">CRS</span><span class="op">(</span><span class="st">"+proj=utm +zone=18 +datum=WGS84 +units=m +no_defs 
+                 +ellps=WGS84 +towgs84=0,0,0"</span><span class="op">)</span>
+
+<span class="va">LL_spdf</span> <span class="op">&lt;-</span> <span class="fu">SpatialPointsDataFrame</span><span class="op">(</span>
+  coords <span class="op">=</span> <span class="va">coords</span>,
+  data <span class="op">=</span> <span class="va">data</span>, 
+  proj4string <span class="op">=</span> <span class="va">crs</span>
+<span class="op">)</span></pre></div>
 </div>
 <div id="step-3-define-style-options-and-create-graph" class="section level3">
 <h3 class="hasAnchor">
 <a href="#step-3-define-style-options-and-create-graph" class="anchor"></a>Step 3: Define style options and create graph</h3>
-<div class="sourceCode" id="cb10"><html><body><pre class="r">my.palette </pre></body></html></div>
-<p><img src="VII_combine_raster_point_files/figure-html/unnamed-chunk-4-1.png" width="700"></p>
+<div class="sourceCode" id="cb4"><pre class="downlit">
+<span class="va">my.palette</span> <span class="op">&lt;-</span> <span class="fu">brewer.pal</span><span class="op">(</span>n<span class="op">=</span><span class="fl">9</span>,name<span class="op">=</span><span class="st">"OrRd"</span><span class="op">)</span>
+
+<span class="fu"><a href="https://rdrr.io/r/graphics/plot.html">plot</a></span><span class="op">(</span>
+  <span class="va">LilacLeaf2018</span>, 
+  col <span class="op">=</span> <span class="va">my.palette</span>,
+  main<span class="op">=</span><span class="st">"2018 Observed and Predicted Lilac Leaf Out"</span>
+<span class="op">)</span>
+
+<span class="fu"><a href="https://rdrr.io/r/graphics/plot.html">plot</a></span><span class="op">(</span>
+  <span class="va">LL_spdf</span>,
+  main<span class="op">=</span><span class="st">"Lilac Obs"</span>,
+  pch <span class="op">=</span> <span class="fl">21</span>,
+  bg <span class="op">=</span> <span class="va">my.palette</span>,
+  col <span class="op">=</span> <span class="st">'black'</span>,
+  xlim<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">125.0208</span>,<span class="op">-</span><span class="fl">66.47917</span><span class="op">)</span>,
+  ylim<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">24.0625</span> ,<span class="fl">49.9375</span><span class="op">)</span>,
+  add <span class="op">=</span> <span class="cn">TRUE</span>
+<span class="op">)</span>
+
+<span class="fu"><a href="https://rdrr.io/r/graphics/legend.html">legend</a></span><span class="op">(</span>
+  <span class="st">"bottomright"</span>, 
+  legend<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Cloned Lilac Leaf Out Observations"</span><span class="op">)</span>,
+  pch <span class="op">=</span> <span class="fl">21</span>,
+  bg <span class="op">=</span> <span class="st">'white'</span>,
+  col <span class="op">=</span> <span class="st">'black'</span>,
+  bty<span class="op">=</span><span class="st">"n"</span>, 
+  cex<span class="op">=</span><span class="fl">.8</span>
+<span class="op">)</span></pre></div>
+<p><img src="figures/7-plot.png" width="50%"></p>
 </div>
 </div>
   </div>
@@ -155,11 +200,11 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Scott Chamberlain, Lee Marsh, Alyssa Rosemartin, Kevin Wong.</p>
+  <p>Developed by Lee Marsh, Scott Chamberlain, Alyssa Rosemartin, Kevin Wong.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

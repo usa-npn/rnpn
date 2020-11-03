@@ -51,10 +51,10 @@ Option 2: You can create a combined plot of observational data with modeled/rast
 Building on the approach for accessing point data from earlier vignettes describing Individual Phenometrics and getting raster data, we can access and plot these products together. In this example, we will look at how well cloned lilac leaf out observations in 2018 are predicted by the lilac leaf sub model of the Spring Index.
 
 ### Step 1: Get the data
-```{r}
+```{r eval=FALSE}
 LilacLeaf2018<-npn_download_geospatial(
-  'si-x:lilac_leaf_ncep', 
-  '2018-12-31', 
+  'si-x:lilac_leaf_ncep_historic', 
+  '2018-01-01', 
 )
 
 
@@ -70,7 +70,7 @@ LilacLeaf2018Obs <-npn_download_individual_phenometrics(
 
 
 ### Step 2: Preparing the data
-```{r}
+```{r eval=FALSE}
 
 coords <- LilacLeaf2018Obs[ , c("longitude", "latitude")]
 data <- as.data.frame(LilacLeaf2018Obs$first_yes_doy)
@@ -88,7 +88,7 @@ LL_spdf <- SpatialPointsDataFrame(
 
 
 ### Step 3: Define style options and create graph
-```{r}
+```{r eval=FALSE}
 
 my.palette <- brewer.pal(n=9,name="OrRd")
 
@@ -120,3 +120,5 @@ legend(
 )
 
 ```
+```{r, echo=FALSE, out.width = "50%", fig.pos="h"}
+knitr::include_graphics("figures/7-plot.png")

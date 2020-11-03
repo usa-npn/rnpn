@@ -20,7 +20,7 @@ npn_stations <- function(state_code=NULL, ...) {
     })
     ldfply(tt)
   }else{
-    tibble::as_data_frame(
+    tibble::as_tibble(
       npn_GET(paste0(base(), end_point), list(), TRUE, ...)
     )
   }
