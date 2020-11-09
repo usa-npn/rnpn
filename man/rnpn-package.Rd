@@ -6,6 +6,7 @@
 \alias{rnpn}
 \title{Interface to the National Phenology Network API}
 \description{
-Interface to the National Phenology Network API
+This package allows for easy access to the National Phenology Network's Data API. To learn more, take a look at the vignettes.
+events that occur at specific times.
 }
 \keyword{package}

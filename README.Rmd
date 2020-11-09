@@ -1,3 +1,8 @@
+---
+output:
+  github_document
+---
+
 rnpn
 ========
 
@@ -17,126 +22,87 @@ knitr::opts_chunk$set(
 [![cran checks](https://cranchecks.info/badges/worst/rnpn)](https://cranchecks.info/pkgs/rnpn)
 [![codecov.io](https://codecov.io/github/ropensci/rnpn/coverage.svg?branch=master)](https://codecov.io/github/ropensci/rnpn?branch=master)
 
-`rnpn` is an R client for the US National Phenology Network API.
 
-National Phenology Network [API documentation](https://docs.google.com/document/d/1yNjupricKOAXn6tY1sI7-EwkcfwdGUZ7lxYv7fcPjO8/edit?hl=en_US).
+`rnpn` is an R client for interacting with the USA National Phenology Network data web services. These services include access to a rich set of observer-contributed, point-based phenology records as well as geospatial data products including gridded phenological model and climatological data.
 
-Note that there is no need for an API key to grab data from the National Phenology Network, but I think there is for writing data through the API. Currently, functions in this package only allow getting data, but may at some point allow posting data to the USNPN.
+Documentation is available for the National Phenology Network [API documentation](https://docs.google.com/document/d/1yNjupricKOAXn6tY1sI7-EwkcfwdGUZ7lxYv7fcPjO8/edit?hl=en_US), which describes the full set of REST services this package wraps.
+
+There is no need for an API key to grab data from the National Phenology Network but users are required to self identify, on an honor system, against requests that may draw upon larger datasets.
+
+Currently there are services for writing to the database but those endpoints do require user authentication and are not accessible through this R wrapper. Please contact the package authors for more information if that's what you're trying to do.
 
 ## Installation
 
-Stable version
+This package has evolved slowly and is currently managed in a few locations, with varying degrees of available functionality.
+
+The original, v. 0.1, iteration of the package is available through CRAN but has limited functionality and a number of endpoints that have been deprecated.
+
+CRAN version
 
 ```{r eval=FALSE}
 install.packages("rnpn")
 ```
 
+There's a newer iteration of the package that includes a lot more functionality, including the ability to access geospatial data, and is up-to-date with the backing data services. This version of the package is actively maintained, but is not managed through CRAN yet and as such is more bug-prone. This version of the package must be installed through devtools.
+
 Development version
 
 ```{r eval=FALSE}
-devtools::install_github("ropensci/rnpn")
+install.packages("devtools")
+library('devtools')
+devtools::install_github("usa-npn/rnpn")
 ```
 
 ```{r}
 library('rnpn')
 ```
 
-### Lookup names
+## The Basics
 
-You can lookup taxon names. This is not actually an API call to the web. The function simply searches for matches in a dataset stored in the package. You can then use the speciesid output in other functions.
+Many of the functions to search for data require knowing the internal unique identifiers of some of the database entities to filter the data down efficiently. For example, if you want to search by species, then you must know the internal identifier of the species. To get a list of all available species use the following:
 
-```{r}
-lookup_names(name = 'Pinus', type = 'genus')
+```{r eval=FALSE}
+species_list <- npn_species()
 ```
 
-### Search
+Similarly, for phenophases:
 
-Search for a single species, specifying a start and end date. You can also pass a vector to the speciesid parameter.
-
-```{r}
-npn_allobssp(speciesid = 52, startdate = '2008-01-01', enddate = '2010-12-31')
+```{r eval=FALSE}
+phenophases <- npn_phenophases()
 ```
 
-### List stations with xyz
+### Getting Observational Data
 
-Get a list of all stations which have an individual whom is a member of a set of species.
+There are four main functions for accessing observational data, at various levels of aggregation. At the most basic level you can download the raw status and intensity data.
 
-```{r}
-head( npn_stationswithspp(speciesid = 53) )
+```{r eval=FALSE}
+some_data <- npn_download_status_data(request_source='Your Name or Org Here',years=c(2015),species_id=c(35),states=c('AZ','IL'))
 ```
 
-### Stations by state
+Note that through this API, data can only be filtered chronologically by full calendar years. You can specify any number of years in each API call. Also note that request_source is a required parameter and should be populated with your name or the name of the organization you represent.
+All other parameters are optional but it is highly recommended that you filter your data search further.
 
-Number of stations by state.
+### Getting Geospatial Data
 
-```{r}
-head( npn_stationsbystate() )
+This package wraps around standard WCS endpoints to facilitate the transfer of raster data. Generally, this package does not focus on interacting with WMS services, although they are available. To get a list of all available data layers, use the following:
+
+```{r eval=FALSE}
+layers <- npn_get_layer_details()
+```
+You can then use the name of the layers to select and download geospatial data as a raster.
+
+```{r eval=FALSE}
+npn_download_geospatial(coverage_id = 'si-x:lilac_leaf_ncep_historic',date='2016-12-31',format='geotiff',output_path='./six-test-raster.tiff')
 ```
 
-### Observations by day
-
-Get observations by day for a particular species or set of species.
-
-```{r tidy=FALSE, fig.width=10}
-library('plyr')
-temp <- lookup_names(name = 'bird', type = 'common')
-comnames <- as.character(temp[temp$species_id %in% c(357, 359, 1108), 'common_name'])
-
-out <- npn_obsspbyday(speciesid = c(357, 359, 1108), startdate = '2010-04-01', enddate = '2013-09-31')
-names(out) <- comnames
-df <- ldply(out)
-df$date <- as.Date(df$date)
-
-library('ggplot2')
-ggplot(df, aes(date, count)) +
- geom_line() +
- theme_grey(base_size = 20) +
- facet_grid(.id ~ .)
+If you're looking for a grid value at a specific latitude/longitude, that is also possible.
+```{r eval=FALSE}
+point_value <- npn_get_point_data('si-x:lilac_leaf_ncep_historic',date='2016-12-31',lat=38.5,long=-110.7)
 ```
 
-### Search for species
+## What's Next
 
-All species
-
-```{r}
-head( npn_species() )
-```
-
-By ITIS taxonomic serial number
-
-```{r}
-npn_species_itis(ids = 27806)
-```
-
-By USNPN id
-
-```{r}
-npn_species_id(ids = 3)
-```
-
-By state (and optionally kingdom)
-
-```{r}
-head( npn_species_state(state = "HI", kingdom = "Plantae") )
-```
-
-By scientific name
-
-```{r}
-npn_species_sci(genus = "Clintonia", species = "borealis")
-```
-
-By common name
-
-```{r}
-npn_species_comm(name = "thickleaved wild strawberry")
-```
-
-Filter by network, group, year, or station
-
-```{r}
-head( npn_species_search(groups = 3, year = 2010) )
-```
+Please read and review the vignettes for this package to get further information about the full scope of functionality available.
 
 ## Meta
 

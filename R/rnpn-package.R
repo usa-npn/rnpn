@@ -1,28 +1,17 @@
 #' Interface to the National Phenology Network API
 #'
+#' @description This package allows for easy access to the National Phenology Network's Data API. To learn more, take a look at the vignettes.
+#' events that occur at specific times.
 #' @importFrom stats setNames
 #' @importFrom data.table rbindlist setDF
 #' @importFrom httr GET stop_for_status content
 #' @importFrom jsonlite fromJSON
 #' @importFrom plyr llply ldply ddply summarise rbind.fill
+#' @importFrom magrittr "%>%"
+#' @importFrom utils URLencode download.file object.size write.table
 #' @name rnpn-package
 #' @aliases rnpn
 #' @docType package
 #' @keywords package
 NULL
 
-#' Lookup-table for IDs of species and common names
-#'
-#' @name taxonlist
-#' @docType data
-#' @keywords data
-#' @format A data.frame with 897 rows and 6 columns
-#' \describe{
-#'  \item{species_id}{species identifiers}
-#'  \item{common_name}{common (vernacular) name}
-#'  \item{genus}{genus name}
-#'  \item{epithet}{epithet name}
-#'  \item{itis_tsn}{ITIS taxonomic serial number (tsn)}
-#'  \item{genus_epithet}{genus name + epithet name}
-#' }
-NULL

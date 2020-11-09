@@ -1,0 +1,23 @@
+navbar:
+  type: default
+  left:
+  - text: Reference
+    href: reference/index.html
+  - text: Articles
+    menu:
+    - text: I. Introduction
+      href: articles/I_introduction.html
+    - text: II. Status and Intensity Data
+      href: articles/II_status_intensity.html
+    - text: III. Individual Phenometrics
+      href: articles/III_individual_phenometrics.html
+    - text: IV. Site Phenometrics
+      href: articles/IV_site_phenometrics.html
+    - text: V. Magnitude Phenometrics
+      href: articles/V_magnitude_phenometrics.html
+    - text: VI. USA-NPN Geospatial Data
+      href: articles/VI_geospatial.html
+    - text: VII. Putting It All Together
+      href: articles/VII_combine_raster_point.html
+  - text: Changelog
+    href: news/index.html
