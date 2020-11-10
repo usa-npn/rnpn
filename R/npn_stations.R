@@ -36,7 +36,7 @@ npn_stations <- function(state_code=NULL, ...) {
 #' @template curl
 #' @return Number of stations by state as a data.frame.
 #' @examples \dontrun{
-#' head( npn_stationsbystate() )
+#' head( npn_stations_by_state() )
 #' }
 npn_stations_by_state <- function(...) {
   tt <- npn_GET(paste0(base(), 'stations/getStationCountByState.json'), list(), ...)
@@ -63,7 +63,7 @@ npn_stations_by_state <- function(...) {
 #' @param wkt Required field specifying the WKT geography to use.
 #' @return Station data as as data.frame.
 #' @examples \dontrun{
-#' head( npn_stationsbystate(wkt="POLYGON((
+#' head( npn_stations_by_state(wkt="POLYGON((
 #' -110.94484396954107 32.23623109416672,-110.96166678448247 32.23594069208043,
 #' -110.95960684795904 32.21328646993733,-110.94244071026372 32.21343170728929,
 #' -110.93935080547857 32.23216538049456,-110.94484396954107 32.23623109416672))")
@@ -99,8 +99,8 @@ npn_stations_by_location <- function( wkt, ...){
 #' @template curl
 #' @return Stations' latitude and longitude, names, and ids.
 #' @examples \dontrun{
-#' npn_stationswithspp(speciesid = c(52,53,54))
-#' npn_stationswithspp(speciesid = 53)
+#' npn_stations_with_spp(speciesid = c(52,53,54))
+#' npn_stations_with_spp(speciesid = 53)
 #' }
 
 npn_stations_with_spp <- function(speciesid, ...) {

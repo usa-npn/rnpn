@@ -58,7 +58,7 @@
 #' @return Data table of all status records returned as per the search parameters. Null if output directed to file.
 #' @export
 #' @examples \dontrun{
-#' Download all saguaro data for 2016
+#' #Download all saguaro data for 2016
 #' npn_download_status_data(
 #'   request_source="Your Name or Org Here",
 #'   years=c(2016),
@@ -196,7 +196,7 @@ npn_download_status_data = function(
 #' @return Data table of all status records returned as per the search parameters. Null if output directed to file.
 #' @export
 #' @examples \dontrun{
-#' Download all saguaro data for 2013 and 2014
+#' #Download all saguaro data for 2013 and 2014
 #' npn_download_individual_phenometrics(
 #'   request_source="Your Name or Org Here",
 #'   years=c('2013','2014'),
@@ -340,7 +340,7 @@ npn_download_individual_phenometrics <- function(
 #' @return Data table of all status records returned as per the search parameters. Null if output directed to file.
 #' @export
 #' @examples \dontrun{
-#' Download all saguaro data for 2013 and 2014
+#' #Download all saguaro data for 2013 and 2014
 #' npn_download_site_phenometrics(
 #'   request_source="Your Name or Org Here",
 #'   years=c('2013','2014'),
@@ -472,7 +472,7 @@ npn_download_site_phenometrics <- function(
 #' @return Data table of all status records returned as per the search parameters. Null if output directed to file.
 #' @export
 #' @examples \dontrun{
-#' Download all saguaro data for 2013
+#' #Download book all saguaro data for 2013
 #' npn_download_magnitude_phenometrics(
 #'   request_source="Your Name or Org Here",
 #'   years=c(2013),

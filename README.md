@@ -1,12 +1,15 @@
 
 # rnpn
 
-
-
-[![Proect Status: Active – The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
-[![Build Status](https://api.travis-ci.org/ropensci/rnpn.png)](https://travis-ci.org/ropensci/rnpn)
-[![Build status](https://ci.appveyor.com/api/projects/status/es65utr5jmfmcsrg/branch/master)](https://ci.appveyor.com/project/sckott/rnpn/branch/master)
-[![cran checks](https://cranchecks.info/badges/worst/rnpn)](https://cranchecks.info/pkgs/rnpn)
+[![Project Status: Active – The project has reached a stable, usable
+state and is being actively
+developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
+[![Build
+Status](https://api.travis-ci.org/ropensci/rnpn.png)](https://travis-ci.org/ropensci/rnpn)
+[![Build
+status](https://ci.appveyor.com/api/projects/status/es65utr5jmfmcsrg/branch/master)](https://ci.appveyor.com/project/sckott/rnpn/branch/master)
+[![cran
+checks](https://cranchecks.info/badges/worst/rnpn)](https://cranchecks.info/pkgs/rnpn)
 [![codecov.io](https://codecov.io/github/ropensci/rnpn/coverage.svg?branch=master)](https://codecov.io/github/ropensci/rnpn?branch=master)
 
 `rnpn` is an R client for interacting with the USA National Phenology
@@ -21,7 +24,9 @@ which describes the full set of REST services this package wraps.
 
 There is no need for an API key to grab data from the National Phenology
 Network but users are required to self identify, on an honor system,
-against requests that may draw upon larger datasets.
+against requests that may draw upon larger datasets. Simply populate the
+request\_source parameter, as necessary, with your name or the name of
+your institution.
 
 Currently there are services for writing to the database but those
 endpoints do require user authentication and are not accessible through
@@ -134,8 +139,8 @@ information about the full scope of functionality available.
   - License: MIT
   - Get citation information for `rnpn` in R doing `citation(package =
     'rnpn')`
-  - Please note that this project is released with a [Contributor Code
-    of Conduct](CONDUCT.md). By participating in this project you agree
-    to abide by its terms.
+  - Please note that this package is released with a [Contributor Code
+    of Conduct](https://ropensci.org/code-of-conduct/). By contributing
+    to this project, you agree to abide by its terms.
 
 [![image](http://ropensci.org/public_images/github_footer.png)](http://ropensci.org)

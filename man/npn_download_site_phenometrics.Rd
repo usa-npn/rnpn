@@ -139,7 +139,7 @@ This data type includes estimates of the overall onset and end of phenophase act
 }
 \examples{
 \dontrun{
-Download all saguaro data for 2013 and 2014
+#Download all saguaro data for 2013 and 2014
 npn_download_site_phenometrics(
   request_source="Your Name or Org Here",
   years=c('2013','2014'),

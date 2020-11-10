@@ -21,7 +21,7 @@ Get a list of all stations which have an individual whom is a member of a
 }
 \examples{
 \dontrun{
-npn_stationswithspp(speciesid = c(52,53,54))
-npn_stationswithspp(speciesid = 53)
+npn_stations_with_spp(speciesid = c(52,53,54))
+npn_stations_with_spp(speciesid = 53)
 }
 }

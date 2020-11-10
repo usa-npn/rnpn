@@ -17,6 +17,6 @@ Get number of stations by state.
 }
 \examples{
 \dontrun{
-head( npn_stationsbystate() )
+head( npn_stations_by_state() )
 }
 }

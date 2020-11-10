@@ -123,7 +123,7 @@ Most search parameters are optional, however, users are encouraged to supply add
 }
 \examples{
 \dontrun{
-Download all saguaro data for 2016
+#Download all saguaro data for 2016
 npn_download_status_data(
   request_source="Your Name or Org Here",
   years=c(2016),

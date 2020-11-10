@@ -116,7 +116,7 @@ This data type includes various measures of the extent to which a phenophase for
 }
 \examples{
 \dontrun{
-Download all saguaro data for 2013
+#Download book all saguaro data for 2013
 npn_download_magnitude_phenometrics(
   request_source="Your Name or Org Here",
   years=c(2013),

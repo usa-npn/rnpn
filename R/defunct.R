@@ -43,6 +43,18 @@ npn_stationsbystate <- function (...){
     msg = "the npn_stationsbystate() function no longer works - renamed. Use npn_stations_by_state instead.")
 }
 
+
+#' This function renamed to be consistent with other package function names.
+#' @export
+#' @rdname npn_stationswithspp-defunct
+#' @keywords internal
+npn_stationswithspp <- function (...){
+  .Defunct(package = "rnpn",
+           msg = "the npn_stationswithspp() function no longer works - renamed. Use npn_stations_with_spp instead.")
+}
+
+
+
 #' Defunct functions in rnpn
 #'
 #' \itemize{
@@ -51,6 +63,7 @@ npn_stationsbystate <- function (...){
 #'  \item \code{\link{npn_indspatstations}}: Removed.
 #'  \item \code{\link{npn_indsatstations}}: Removed.
 #'  \item \code{\link{npn_stationsbystate}}: Removed.
+#'  \item \code{\link{npn_stationswithspp}}: Removed.
 #' }
 #'
 #' @name rnpn-defunct

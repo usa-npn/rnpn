@@ -1,2 +1,2 @@
 library("testthat")
-#test_check("rnpn")
+test_check("rnpn")
