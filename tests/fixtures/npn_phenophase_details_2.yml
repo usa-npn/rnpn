@@ -1,0 +1,33 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://www-dev.usanpn.org/npn_portal/phenophases/getPhenophaseDetails.json?ids=56%2C61
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      date: Thu, 12 Nov 2020 23:03:22 GMT
+      server: Apache/2.4.7 (Ubuntu) SVN/1.8.8 PHP/5.5.9-1ubuntu4.29 OpenSSL/1.0.1f
+      x-powered-by: PHP/5.5.9-1ubuntu4.29
+      access-control-allow-origin: '*'
+      access-control-allow-headers: origin, x-requested-with, content-type
+      access-control-allow-methods: PUT, GET, POST, DELETE, OPTIONS
+      content-length: '347'
+      content-type: application/json
+    body:
+      encoding: UTF-8
+      file: no
+      string: '[{"phenophase_id":56,"phenophase_description":"First leaf (3 locations)","definition_ids":"''56''","phenophase_names":"First
+        leaf","phenophase_revision_comments":"Test Comment"},{"phenophase_id":61,"phenophase_description":"50%
+        of leaves colored","definition_ids":"''61''","phenophase_names":"50% of leaves
+        colored","phenophase_revision_comments":""}]'
+  recorded_at: 2020-11-12 23:03:10 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.7.0

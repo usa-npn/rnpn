@@ -1,0 +1,77 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://www-dev.usanpn.org/npn_portal/observations/getDatasetDetails.json
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      date: Thu, 12 Nov 2020 21:18:55 GMT
+      server: Apache/2.4.7 (Ubuntu) SVN/1.8.8 PHP/5.5.9-1ubuntu4.29 OpenSSL/1.0.1f
+      x-powered-by: PHP/5.5.9-1ubuntu4.29
+      pragma: no-cache
+      cache-control: no-store, no-cache, max-age=0, must-revalidate
+      access-control-allow-origin: '*'
+      access-control-allow-headers: origin, x-requested-with, content-type
+      access-control-allow-methods: PUT, GET, POST, DELETE, OPTIONS
+      content-length: '6347'
+      content-type: application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      file: no
+      string: '[{"dataset_id":1,"dataset_name":"Legacy Lilac Data","dataset_description":"Legacy
+        lilac phenology data for Eastern US (SCSV) and Western US","contact_name":"Mark
+        D. Schwarz","contact_institution":"USA NPN","contact_email":"mds@uwm.edu","contact_phone":"(414)
+        229-3740 ","contact_address":"Department of Geography, Bolton 410  P.O. Box
+        413  University of Wisconsin-Milwaukee  Milwaukee, WI  53201-0413 ","dataset_comments":"","dataset_documentation_url":null},{"dataset_id":3,"dataset_name":"Nature''s
+        Notebook Mobile App","dataset_description":"Mobile app submissions of Nature''s
+        Notebook data","contact_name":"USA National Phenology Network","contact_institution":"","contact_email":"lee@usanpn.org","contact_phone":null,"contact_address":null,"dataset_comments":null,"dataset_documentation_url":null},{"dataset_id":6,"dataset_name":"NEON
+        Pilot Data 2011","dataset_description":"NEON initial pilot year at CPER","contact_name":"Becky
+        Kao","contact_institution":"NEON","contact_email":"Rebecca.Kao@botanicgardens.org","contact_phone":null,"contact_address":null,"dataset_comments":"Data
+        collected and recorded in Excel worksheets by Becky Kao and field crew; Data
+        reformatted for NN 2011 protocols and entered here by Ellen Denny","dataset_documentation_url":null},{"dataset_id":7,"dataset_name":"Legacy
+        Lilac\/Honeysuckle Data - East","dataset_description":"Legacy Lilac\/Honeysuckle
+        Data using Eastern Protocols","contact_name":"Mark D. Schwarz","contact_institution":"USA
+        NPN","contact_email":"mds@uwm.edu","contact_phone":"(414) 229-3740 ","contact_address":"Department
+        of Geography, Bolton 410  P.O. Box 413  University of Wisconsin-Milwaukee  Milwaukee,
+        WI  53201-0413 ","dataset_comments":"","dataset_documentation_url":"https:\/\/docs.google.com\/document\/d\/1MvPTvYHiTcXgG7HKhzoNyfEZtKi5S787CzjFq2hsRL0\/pub"},{"dataset_id":8,"dataset_name":"Legacy
+        Lilac\/Honeysuckle Data - West","dataset_description":"Legacy Lilac\/Honeysuckle
+        Data using Western Protocols","contact_name":"Mark D. Schwarz","contact_institution":"USA
+        NPN","contact_email":"mds@uwm.edu","contact_phone":"(414) 229-3740 ","contact_address":"Department
+        of Geography, Bolton 410  P.O. Box 413  University of Wisconsin-Milwaukee  Milwaukee,
+        WI  53201-0413 ","dataset_comments":"","dataset_documentation_url":"https:\/\/docs.google.com\/document\/d\/1MvPTvYHiTcXgG7HKhzoNyfEZtKi5S787CzjFq2hsRL0\/pub"},{"dataset_id":9,"dataset_name":"AT
+        Seasons Mobile App","dataset_description":"Mobile app customized for the AT
+        Seasons group","contact_name":"Lee Marsh","contact_institution":"","contact_email":"rlmarsh85@gmail.com","contact_phone":null,"contact_address":null,"dataset_comments":null,"dataset_documentation_url":null},{"dataset_id":10,"dataset_name":"Nature''s
+        Notebook Bulk Upload","dataset_description":"Observer contributed entered
+        through the bulk upload tool, rather than the convention data entry interface","contact_name":"Lee
+        Marsh","contact_institution":"","contact_email":"rlmarsh85@gmail.com","contact_phone":null,"contact_address":null,"dataset_comments":null,"dataset_documentation_url":null},{"dataset_id":11,"dataset_name":"ADF
+        Nature Log","dataset_description":"Mail-in data program using modified Nature''s
+        Notebook protocols, 2010-2012","contact_name":"Theresa Crimmins","contact_institution":"Arbor
+        Day Foundation","contact_email":"theresa@usanpn.org","contact_phone":null,"contact_address":null,"dataset_comments":"","dataset_documentation_url":"https:\/\/docs.google.com\/document\/d\/1RpxEw5OtwfzyyWAz4MZ2U6Ku5ijOaCOePnqmO7IcTtI\/pub"},{"dataset_id":12,"dataset_name":"Archived
+        NPN Data","dataset_description":"Archives data from the NPN database circa
+        2008 and prior","contact_name":"Ellen Denny","contact_institution":"USA NPN","contact_email":"ellen@usanpn.org","contact_phone":null,"contact_address":null,"dataset_comments":null,"dataset_documentation_url":null},{"dataset_id":13,"dataset_name":"NYBG
+        2009-2013","dataset_description":" New York Botanical Garden forest phenology
+        using old Nature''s Notebook protocols, 2009-2013","contact_name":"Jessica
+        Arcate Shuler","contact_institution":"New York Botanical Garden","contact_email":"jarcate@nybg.org","contact_phone":"718-817-8061","contact_address":"The
+        New York Botanical Garden, 2900 Southern Boulevard, Bronx, NY 10458","dataset_comments":"","dataset_documentation_url":"https:\/\/docs.google.com\/document\/d\/11M-jhpp2fLEl1uwx7op_ndrYvSpXa-EOEkgopyp6S9o\/pub"},{"dataset_id":14,"dataset_name":"Test
+        App","dataset_description":null,"contact_name":"Lee Marsh","contact_institution":"","contact_email":"rlmarsh85@gmail.com","contact_phone":null,"contact_address":null,"dataset_comments":null,"dataset_documentation_url":null},{"dataset_id":15,"dataset_name":"GRSM
+        Tremont 2010-2012","dataset_description":"Great Smoky Mountains Institute
+        at Tremont phenology using modified Nature''s Notebook protocols, 2010-2012","contact_name":"Tiffany
+        Beachy","contact_institution":"Great Smoky Mountains Institute at Tremont","contact_email":"tiffany@gsmit.org","contact_phone":"","contact_address":"Great
+        Smoky Mountains Institute at Tremont in Great Smoky Mountains National Park,
+        9275 Tremomt Rd., Townsend, TN 37882","dataset_comments":null,"dataset_documentation_url":"https:\/\/docs.google.com\/document\/d\/1ZtAMXg-LY4BRNyYMwAoKpJA_ChUVDeklErR9gb1k8tw\/pub"},{"dataset_id":16,"dataset_name":"lb_test","dataset_description":null,"contact_name":"
+        Marsh","contact_institution":"","contact_email":"rlmarsh85@gmail.com","contact_phone":null,"contact_address":null,"dataset_comments":null,"dataset_documentation_url":null},{"dataset_id":17,"dataset_name":"NEON
+        2013-Present","dataset_description":"National Ecological Observatory Network
+        phenology using USA-NPN protocols, 2013 to present","contact_name":"Katie
+        Jones","contact_institution":"NEON","contact_email":"kjones@BattelleEcology.org","contact_phone":null,"contact_address":null,"dataset_comments":null,"dataset_documentation_url":"https:\/\/docs.google.com\/document\/d\/e\/2PACX-1vRquPEazk0c99ShLV5_t_hGSjJPp7tPgEXVxhhOrrCyoFxzwruNcthbH3Z_jnaCglQfxsRGP0zVz6mA\/pub"},{"dataset_id":18,"dataset_name":"Morton
+        Arboretum","dataset_description":null,"contact_name":"Christy Rollinson","contact_institution":"","contact_email":"crollinson@gmail.com","contact_phone":null,"contact_address":null,"dataset_comments":null,"dataset_documentation_url":null}]'
+  recorded_at: 2020-11-12 21:18:42 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.7.0

@@ -1,0 +1,236 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://www-dev.usanpn.org/npn_portal/species/getSpeciesByState.json?state=AZ&kingdom=Animalia
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      date: Thu, 12 Nov 2020 21:19:35 GMT
+      server: Apache/2.4.7 (Ubuntu) SVN/1.8.8 PHP/5.5.9-1ubuntu4.29 OpenSSL/1.0.1f
+      x-powered-by: PHP/5.5.9-1ubuntu4.29
+      pragma: no-cache
+      cache-control: no-store, no-cache, max-age=0, must-revalidate
+      access-control-allow-origin: '*'
+      access-control-allow-headers: origin, x-requested-with, content-type
+      access-control-allow-methods: PUT, GET, POST, DELETE, OPTIONS
+      transfer-encoding: chunked
+      content-type: application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      file: no
+      string: '[{"species_id":1229,"common_name":"acorn woodpecker","genus":"Melanerpes","kingdom":"Animalia","species":"formicivorus","itis_taxonomic_sn":178189},{"species_id":1414,"common_name":"Allen''s
+        hummingbird","genus":"Selasphorus","kingdom":"Animalia","species":"sasin","itis_taxonomic_sn":178041},{"species_id":1668,"common_name":"American
+        badger","genus":"Taxidea","kingdom":"Animalia","species":"taxus","itis_taxonomic_sn":180565},{"species_id":348,"common_name":"American
+        bullfrog","genus":"Lithobates","kingdom":"Animalia","species":"catesbeianus","itis_taxonomic_sn":775084},{"species_id":1379,"common_name":"American
+        coot","genus":"Fulica","kingdom":"Animalia","species":"americana","itis_taxonomic_sn":176292},{"species_id":1225,"common_name":"American
+        crow","genus":"Corvus","kingdom":"Animalia","species":"brachyrhynchos","itis_taxonomic_sn":179731},{"species_id":1657,"common_name":"American
+        dipper","genus":"Cinclus","kingdom":"Animalia","species":"mexicanus","itis_taxonomic_sn":178536},{"species_id":251,"common_name":"American
+        eel","genus":"Anguilla","kingdom":"Animalia","species":"rostrata","itis_taxonomic_sn":161127},{"species_id":240,"common_name":"American
+        goldfinch","genus":"Spinus","kingdom":"Animalia","species":"tristis","itis_taxonomic_sn":179249},{"species_id":372,"common_name":"American
+        kestrel","genus":"Falco","kingdom":"Animalia","species":"sparverius","itis_taxonomic_sn":175622},{"species_id":1193,"common_name":"American
+        redstart","genus":"Setophaga","kingdom":"Animalia","species":"ruticilla","itis_taxonomic_sn":178979},{"species_id":246,"common_name":"American
+        robin","genus":"Turdus","kingdom":"Animalia","species":"migratorius","itis_taxonomic_sn":179759},{"species_id":1416,"common_name":"American
+        tree sparrow","genus":"Spizelloides","kingdom":"Animalia","species":"arborea","itis_taxonomic_sn":997961},{"species_id":1709,"common_name":"American
+        white pelican","genus":"Pelecanus","kingdom":"Animalia","species":"erythrorhynchos","itis_taxonomic_sn":174684},{"species_id":1088,"common_name":"Anna''s
+        hummingbird","genus":"Calypte","kingdom":"Animalia","species":"anna","itis_taxonomic_sn":178036},{"species_id":1427,"common_name":"Apache
+        cicada","genus":"Diceroprocta","kingdom":"Animalia","species":"apache","itis_taxonomic_sn":846859},{"species_id":1795,"common_name":"apple
+        maggot","genus":"Rhagoletis","kingdom":"Animalia","species":"pomonella","itis_taxonomic_sn":142702},{"species_id":1663,"common_name":"ash-throated
+        flycatcher","genus":"Myiarchus","kingdom":"Animalia","species":"cinerascens","itis_taxonomic_sn":178316},{"species_id":371,"common_name":"bald
+        eagle","genus":"Haliaeetus","kingdom":"Animalia","species":"leucocephalus","itis_taxonomic_sn":175420},{"species_id":1104,"common_name":"barn
+        swallow","genus":"Hirundo","kingdom":"Animalia","species":"rustica","itis_taxonomic_sn":178448},{"species_id":1660,"common_name":"belted
+        kingfisher","genus":"Megaceryle","kingdom":"Animalia","species":"alcyon","itis_taxonomic_sn":178106},{"species_id":268,"common_name":"bighorn
+        sheep","genus":"Ovis","kingdom":"Animalia","species":"canadensis","itis_taxonomic_sn":180711},{"species_id":389,"common_name":"bigmouth
+        buffalo","genus":"Ictiobus","kingdom":"Animalia","species":"cyprinellus","itis_taxonomic_sn":163956},{"species_id":376,"common_name":"black
+        phoebe","genus":"Sayornis","kingdom":"Animalia","species":"nigricans","itis_taxonomic_sn":178330},{"species_id":1240,"common_name":"black
+        pineleaf scale","genus":"Nuculaspis","kingdom":"Animalia","species":"californica","itis_taxonomic_sn":null},{"species_id":1196,"common_name":"black-and-white
+        warbler","genus":"Mniotilta","kingdom":"Animalia","species":"varia","itis_taxonomic_sn":178844},{"species_id":1788,"common_name":"black-bellied
+        plover","genus":"Pluvialis","kingdom":"Animalia","species":"squatarola","itis_taxonomic_sn":176567},{"species_id":1232,"common_name":"black-billed
+        magpie","genus":"Pica","kingdom":"Animalia","species":"hudsonia","itis_taxonomic_sn":726117},{"species_id":245,"common_name":"black-capped
+        chickadee","genus":"Poecile","kingdom":"Animalia","species":"atricapillus","itis_taxonomic_sn":554382},{"species_id":353,"common_name":"black-chinned
+        hummingbird","genus":"Archilochus","kingdom":"Animalia","species":"alexandri","itis_taxonomic_sn":178033},{"species_id":1842,"common_name":"black-crowned
+        night-heron","genus":"Nycticorax","kingdom":"Animalia","species":"nycticorax","itis_taxonomic_sn":174832},{"species_id":1408,"common_name":"black-headed
+        grosbeak","genus":"Pheucticus","kingdom":"Animalia","species":"melanocephalus","itis_taxonomic_sn":179140},{"species_id":1706,"common_name":"black-tailed
+        jackrabbit","genus":"Lepus","kingdom":"Animalia","species":"californicus","itis_taxonomic_sn":180115},{"species_id":403,"common_name":"black-tailed
+        prairie dog","genus":"Cynomys","kingdom":"Animalia","species":"ludovicianus","itis_taxonomic_sn":180186},{"species_id":1226,"common_name":"black-throated
+        blue warbler","genus":"Setophaga","kingdom":"Animalia","species":"caerulescens","itis_taxonomic_sn":950042},{"species_id":1402,"common_name":"bobcat","genus":"Lynx","kingdom":"Animalia","species":"rufus","itis_taxonomic_sn":180582},{"species_id":736,"common_name":"bobolink","genus":"Dolichonyx","kingdom":"Animalia","species":"oryzivorus","itis_taxonomic_sn":179032},{"species_id":336,"common_name":"boreal
+        chorus frog","genus":"Pseudacris","kingdom":"Animalia","species":"maculata","itis_taxonomic_sn":207312},{"species_id":354,"common_name":"broad-tailed
+        hummingbird","genus":"Selasphorus","kingdom":"Animalia","species":"platycercus","itis_taxonomic_sn":178038},{"species_id":1085,"common_name":"broad-winged
+        hawk","genus":"Buteo","kingdom":"Animalia","species":"platypterus","itis_taxonomic_sn":175365},{"species_id":1789,"common_name":"bronze
+        birch borer","genus":"Agrilus","kingdom":"Animalia","species":"anxius","itis_taxonomic_sn":809380},{"species_id":1397,"common_name":"brown
+        creeper","genus":"Certhia","kingdom":"Animalia","species":"americana","itis_taxonomic_sn":178803},{"species_id":361,"common_name":"brown
+        pelican","genus":"Pelecanus","kingdom":"Animalia","species":"occidentalis","itis_taxonomic_sn":174685},{"species_id":363,"common_name":"brown-headed
+        cowbird","genus":"Molothrus","kingdom":"Animalia","species":"ater","itis_taxonomic_sn":179112},{"species_id":1394,"common_name":"bufflehead","genus":"Bucephala","kingdom":"Animalia","species":"albeola","itis_taxonomic_sn":175145},{"species_id":288,"common_name":"bumblebee","genus":"Bombus","kingdom":"Animalia","species":"spp.","itis_taxonomic_sn":154397},{"species_id":1666,"common_name":"bushtit","genus":"Psaltriparus","kingdom":"Animalia","species":"minimus","itis_taxonomic_sn":178764},{"species_id":391,"common_name":"cabbage
+        white","genus":"Pieris","kingdom":"Animalia","species":"rapae","itis_taxonomic_sn":188541},{"species_id":1231,"common_name":"cactus
+        deermouse","genus":"Peromyscus","kingdom":"Animalia","species":"eremicus","itis_taxonomic_sn":180286},{"species_id":1655,"common_name":"California
+        quail","genus":"Callipepla","kingdom":"Animalia","species":"californica","itis_taxonomic_sn":175876},{"species_id":1376,"common_name":"California
+        scrub-jay","genus":"Aphelocoma","kingdom":"Animalia","species":"californica","itis_taxonomic_sn":554128},{"species_id":1120,"common_name":"calliope
+        hummingbird","genus":"Stellula","kingdom":"Animalia","species":"calliope","itis_taxonomic_sn":178048},{"species_id":1224,"common_name":"Canada
+        goose","genus":"Branta","kingdom":"Animalia","species":"canadensis","itis_taxonomic_sn":174999},{"species_id":1220,"common_name":"canyon
+        spotted whiptail","genus":"Cnemidophorus","kingdom":"Animalia","species":"burti","itis_taxonomic_sn":174015},{"species_id":417,"common_name":"Carolina
+        locust","genus":"Dissosteira","kingdom":"Animalia","species":"carolina","itis_taxonomic_sn":102209},{"species_id":1195,"common_name":"cedar
+        waxwing","genus":"Bombycilla","kingdom":"Animalia","species":"cedrorum","itis_taxonomic_sn":178532},{"species_id":1115,"common_name":"clapper
+        rail","genus":"Rallus","kingdom":"Animalia","species":"longirostris","itis_taxonomic_sn":176209},{"species_id":242,"common_name":"cliff
+        swallow","genus":"Petrochelidon","kingdom":"Animalia","species":"pyrrhonota","itis_taxonomic_sn":178455},{"species_id":1135,"common_name":"common
+        buckeye","genus":"Junonia","kingdom":"Animalia","species":"coenia","itis_taxonomic_sn":778049},{"species_id":272,"common_name":"common
+        green darner","genus":"Anax","kingdom":"Animalia","species":"junius","itis_taxonomic_sn":101598},{"species_id":243,"common_name":"common
+        loon","genus":"Gavia","kingdom":"Animalia","species":"immer","itis_taxonomic_sn":174469},{"species_id":1786,"common_name":"common
+        moorhen","genus":"Gallinula","kingdom":"Animalia","species":"chloropus","itis_taxonomic_sn":176284},{"species_id":1095,"common_name":"common
+        nighthawk","genus":"Chordeiles","kingdom":"Animalia","species":"minor","itis_taxonomic_sn":177979},{"species_id":1703,"common_name":"common
+        raven","genus":"Corvus","kingdom":"Animalia","species":"corax","itis_taxonomic_sn":179725},{"species_id":1388,"common_name":"common
+        ringlet","genus":"Coenonympha","kingdom":"Animalia","species":"tullia","itis_taxonomic_sn":778111},{"species_id":1139,"common_name":"common
+        sootywing","genus":"Pholisora","kingdom":"Animalia","species":"catullus","itis_taxonomic_sn":706772},{"species_id":1121,"common_name":"common
+        tern","genus":"Sterna","kingdom":"Animalia","species":"hirundo","itis_taxonomic_sn":176888},{"species_id":275,"common_name":"common
+        whitetail","genus":"Plathemis","kingdom":"Animalia","species":"lydia","itis_taxonomic_sn":101809},{"species_id":394,"common_name":"common
+        wood-nymph","genus":"Cercyonis","kingdom":"Animalia","species":"pegala","itis_taxonomic_sn":778122},{"species_id":1197,"common_name":"common
+        yellowthroat","genus":"Geothlypis","kingdom":"Animalia","species":"trichas","itis_taxonomic_sn":178944},{"species_id":1428,"common_name":"convergent
+        lady beetle","genus":"Hippodamia","kingdom":"Animalia","species":"convergens","itis_taxonomic_sn":114331},{"species_id":1218,"common_name":"Cooper''s
+        hawk","genus":"Accipiter","kingdom":"Animalia","species":"cooperii","itis_taxonomic_sn":175309},{"species_id":1089,"common_name":"Costa''s
+        hummingbird","genus":"Calypte","kingdom":"Animalia","species":"costae","itis_taxonomic_sn":178035},{"species_id":238,"common_name":"Couch''s
+        spadefoot","genus":"Scaphiopus","kingdom":"Animalia","species":"couchii","itis_taxonomic_sn":173429},{"species_id":1396,"common_name":"coyote","genus":"Canis","kingdom":"Animalia","species":"latrans","itis_taxonomic_sn":180599},{"species_id":740,"common_name":"curve-billed
+        thrasher","genus":"Toxostoma","kingdom":"Animalia","species":"curvirostre","itis_taxonomic_sn":178637},{"species_id":362,"common_name":"dark-eyed
+        junco","genus":"Junco","kingdom":"Animalia","species":"hyemalis","itis_taxonomic_sn":179410},{"species_id":1235,"common_name":"desert
+        cottontail","genus":"Sylvilagus","kingdom":"Animalia","species":"audubonii","itis_taxonomic_sn":180122},{"species_id":1413,"common_name":"desert
+        spiny lizard","genus":"Sceloporus","kingdom":"Animalia","species":"magister","itis_taxonomic_sn":173873},{"species_id":1712,"common_name":"dickcissel","genus":"Spiza","kingdom":"Animalia","species":"americana","itis_taxonomic_sn":179165},{"species_id":1113,"common_name":"downy
+        woodpecker","genus":"Picoides","kingdom":"Animalia","species":"pubescens","itis_taxonomic_sn":178259},{"species_id":356,"common_name":"eastern
+        bluebird","genus":"Sialia","kingdom":"Animalia","species":"sialis","itis_taxonomic_sn":179801},{"species_id":285,"common_name":"eastern
+        collared lizard","genus":"Crotaphytus","kingdom":"Animalia","species":"collaris","itis_taxonomic_sn":173912},{"species_id":410,"common_name":"eastern
+        cottontail","genus":"Sylvilagus","kingdom":"Animalia","species":"floridanus","itis_taxonomic_sn":180124},{"species_id":1713,"common_name":"eastern
+        meadowlark","genus":"Sturnella","kingdom":"Animalia","species":"magna","itis_taxonomic_sn":179034},{"species_id":1117,"common_name":"eastern
+        phoebe","genus":"Sayornis","kingdom":"Animalia","species":"phoebe","itis_taxonomic_sn":178329},{"species_id":392,"common_name":"eastern
+        tailed-blue","genus":"Cupido","kingdom":"Animalia","species":"comyntas","itis_taxonomic_sn":777889},{"species_id":409,"common_name":"elk","genus":"Cervus","kingdom":"Animalia","species":"elaphus","itis_taxonomic_sn":180695},{"species_id":1123,"common_name":"European
+        starling","genus":"Sturnus","kingdom":"Animalia","species":"vulgaris","itis_taxonomic_sn":179637},{"species_id":1131,"common_name":"fatal
+        metalmark ","genus":"Calephelis","kingdom":"Animalia","species":"nemesis","itis_taxonomic_sn":777937},{"species_id":415,"common_name":"flame
+        skimmer","genus":"Libellula","kingdom":"Animalia","species":"saturata","itis_taxonomic_sn":101916},{"species_id":1140,"common_name":"four-spotted
+        skimmer","genus":"Libellula","kingdom":"Animalia","species":"quadrimaculata","itis_taxonomic_sn":101896},{"species_id":1404,"common_name":"fox
+        sparrow","genus":"Passerella","kingdom":"Animalia","species":"iliaca","itis_taxonomic_sn":179464},{"species_id":368,"common_name":"Gambel''s
+        quail","genus":"Callipepla","kingdom":"Animalia","species":"gambelii","itis_taxonomic_sn":175877},{"species_id":413,"common_name":"giant
+        salmonfly","genus":"Pteronarcys","kingdom":"Animalia","species":"californica","itis_taxonomic_sn":102473},{"species_id":1403,"common_name":"giant
+        swallowtail","genus":"Papilio","kingdom":"Animalia","species":"cresphontes","itis_taxonomic_sn":777702},{"species_id":1221,"common_name":"Gila
+        spotted whiptail","genus":"Cnemidophorus","kingdom":"Animalia","species":"flagellicaudus","itis_taxonomic_sn":174018},{"species_id":283,"common_name":"gopher
+        snake","genus":"Pituophis","kingdom":"Animalia","species":"catenifer","itis_taxonomic_sn":209400},{"species_id":1420,"common_name":"gray
+        fox","genus":"Urocyon","kingdom":"Animalia","species":"cinereoargenteus","itis_taxonomic_sn":180609},{"species_id":370,"common_name":"great
+        blue heron","genus":"Ardea","kingdom":"Animalia","species":"herodias","itis_taxonomic_sn":174773},{"species_id":1393,"common_name":"great
+        horned owl","genus":"Bubo","kingdom":"Animalia","species":"virginianus","itis_taxonomic_sn":177884},{"species_id":343,"common_name":"Great
+        Plains toad","genus":"Anaxyrus","kingdom":"Animalia","species":"cognatus","itis_taxonomic_sn":773516},{"species_id":1704,"common_name":"greater
+        roadrunner","genus":"Geococcyx","kingdom":"Animalia","species":"californianus","itis_taxonomic_sn":177836},{"species_id":1141,"common_name":"green
+        sweat bee ","genus":"Agapostemon","kingdom":"Animalia","species":"texanus","itis_taxonomic_sn":757559},{"species_id":1783,"common_name":"green-winged
+        teal","genus":"Anas","kingdom":"Animalia","species":"crecca","itis_taxonomic_sn":175081},{"species_id":1099,"common_name":"grey
+        catbird","genus":"Dumetella","kingdom":"Animalia","species":"carolinensis","itis_taxonomic_sn":178625},{"species_id":1391,"common_name":"gulf
+        fritillary","genus":"Agraulis","kingdom":"Animalia","species":"vanillae","itis_taxonomic_sn":777975},{"species_id":1399,"common_name":"Gunnison''s
+        prairie dog","genus":"Cynomys","kingdom":"Animalia","species":"gunnisoni","itis_taxonomic_sn":180184},{"species_id":1106,"common_name":"herring
+        gull","genus":"Larus","kingdom":"Animalia","species":"argentatus","itis_taxonomic_sn":176824},{"species_id":1236,"common_name":"hooded
+        warbler","genus":"Setophaga","kingdom":"Animalia","species":"citrina","itis_taxonomic_sn":950029},{"species_id":1114,"common_name":"horned
+        grebe","genus":"Podiceps","kingdom":"Animalia","species":"auritus","itis_taxonomic_sn":174482},{"species_id":1400,"common_name":"horned
+        lark","genus":"Eremophila","kingdom":"Animalia","species":"alpestris","itis_taxonomic_sn":554256},{"species_id":1110,"common_name":"house
+        sparrow","genus":"Passer","kingdom":"Animalia","species":"domesticus","itis_taxonomic_sn":179628},{"species_id":355,"common_name":"house
+        wren","genus":"Troglodytes","kingdom":"Animalia","species":"aedon","itis_taxonomic_sn":178541},{"species_id":244,"common_name":"killdeer","genus":"Charadrius","kingdom":"Animalia","species":"vociferus","itis_taxonomic_sn":176520},{"species_id":383,"common_name":"largemouth
+        bass","genus":"Micropterus","kingdom":"Animalia","species":"salmoides","itis_taxonomic_sn":168160},{"species_id":1656,"common_name":"lark
+        sparrow","genus":"Chondestes","kingdom":"Animalia","species":"grammacus","itis_taxonomic_sn":179371},{"species_id":405,"common_name":"least
+        chipmunk","genus":"Tamias","kingdom":"Animalia","species":"minimus","itis_taxonomic_sn":180195},{"species_id":374,"common_name":"least
+        tern","genus":"Sternula","kingdom":"Animalia","species":"antillarum","itis_taxonomic_sn":824127},{"species_id":1091,"common_name":"lesser
+        goldfinch","genus":"Spinus","kingdom":"Animalia","species":"psaltria","itis_taxonomic_sn":179254},{"species_id":1127,"common_name":"lesser
+        yellowlegs","genus":"Tringa","kingdom":"Animalia","species":"flavipes","itis_taxonomic_sn":176620},{"species_id":1243,"common_name":"lilac
+        borer","genus":"Podosesia","kingdom":"Animalia","species":"syringae","itis_taxonomic_sn":null},{"species_id":1136,"common_name":"Lyside
+        sulphur","genus":"Kricogonia","kingdom":"Animalia","species":"lyside","itis_taxonomic_sn":777722},{"species_id":1375,"common_name":"mallard","genus":"Anas","kingdom":"Animalia","species":"platyrhynchos","itis_taxonomic_sn":175063},{"species_id":396,"common_name":"monarch","genus":"Danaus","kingdom":"Animalia","species":"plexippus","itis_taxonomic_sn":117273},{"species_id":1411,"common_name":"mountain
+        chickadee","genus":"Poecile","kingdom":"Animalia","species":"gambeli","itis_taxonomic_sn":554385},{"species_id":1715,"common_name":"mountain
+        cottontail","genus":"Sylvilagus","kingdom":"Animalia","species":"nuttallii","itis_taxonomic_sn":180126},{"species_id":1137,"common_name":"mourning
+        cloak ","genus":"Nymphalis","kingdom":"Animalia","species":"antiopa","itis_taxonomic_sn":188597},{"species_id":375,"common_name":"mourning
+        dove","genus":"Zenaida","kingdom":"Animalia","species":"macroura","itis_taxonomic_sn":177125},{"species_id":264,"common_name":"mule
+        deer","genus":"Odocoileus","kingdom":"Animalia","species":"hemionus","itis_taxonomic_sn":180698},{"species_id":1658,"common_name":"New
+        Mexico whiptail","genus":"Cnemidophorus","kingdom":"Animalia","species":"neomexicanus","itis_taxonomic_sn":174024},{"species_id":1406,"common_name":"North
+        American deermouse","genus":"Peromyscus","kingdom":"Animalia","species":"maniculatus","itis_taxonomic_sn":180276},{"species_id":1401,"common_name":"North
+        American porcupine","genus":"Erethizon","kingdom":"Animalia","species":"dorsatus","itis_taxonomic_sn":825295},{"species_id":369,"common_name":"northern
+        bobwhite","genus":"Colinus","kingdom":"Animalia","species":"virginianus","itis_taxonomic_sn":175863},{"species_id":1090,"common_name":"northern
+        cardinal","genus":"Cardinalis","kingdom":"Animalia","species":"cardinalis","itis_taxonomic_sn":179124},{"species_id":1702,"common_name":"northern
+        harrier","genus":"Circus","kingdom":"Animalia","species":"cyaneus","itis_taxonomic_sn":175430},{"species_id":233,"common_name":"northern
+        leopard frog","genus":"Lithobates","kingdom":"Animalia","species":"pipiens","itis_taxonomic_sn":775108},{"species_id":1108,"common_name":"northern
+        mockingbird","genus":"Mimus","kingdom":"Animalia","species":"polyglottos","itis_taxonomic_sn":178620},{"species_id":1230,"common_name":"northern
+        parula","genus":"Setophaga","kingdom":"Animalia","species":"americana","itis_taxonomic_sn":950033},{"species_id":1081,"common_name":"northern
+        pintail","genus":"Anas","kingdom":"Animalia","species":"acuta","itis_taxonomic_sn":175074},{"species_id":1385,"common_name":"oleander
+        aphid","genus":"Aphis","kingdom":"Animalia","species":"nerii","itis_taxonomic_sn":200580},{"species_id":247,"common_name":"olive-sided
+        flycatcher","genus":"Contopus","kingdom":"Animalia","species":"cooperi","itis_taxonomic_sn":554221},{"species_id":1132,"common_name":"orange
+        sulphur","genus":"Colias","kingdom":"Animalia","species":"eurytheme","itis_taxonomic_sn":188528},{"species_id":428,"common_name":"ornate
+        box turtle","genus":"Terrapene","kingdom":"Animalia","species":"ornata","itis_taxonomic_sn":173778},{"species_id":248,"common_name":"osprey","genus":"Pandion","kingdom":"Animalia","species":"haliaetus","itis_taxonomic_sn":175590},{"species_id":737,"common_name":"ovenbird","genus":"Seiurus","kingdom":"Animalia","species":"aurocapilla","itis_taxonomic_sn":726205},{"species_id":232,"common_name":"Pacific
+        treefrog","genus":"Pseudacris","kingdom":"Animalia","species":"regilla","itis_taxonomic_sn":207313},{"species_id":1111,"common_name":"painted
+        bunting","genus":"Passerina","kingdom":"Animalia","species":"ciris","itis_taxonomic_sn":179156},{"species_id":280,"common_name":"painted
+        turtle","genus":"Chrysemys","kingdom":"Animalia","species":"picta","itis_taxonomic_sn":173783},{"species_id":1426,"common_name":"pallid-winged
+        grasshopper","genus":"Trimerotropis","kingdom":"Animalia","species":"pallidipennis","itis_taxonomic_sn":658812},{"species_id":1102,"common_name":"peregrine
+        falcon","genus":"Falco","kingdom":"Animalia","species":"peregrinus","itis_taxonomic_sn":175604},{"species_id":1382,"common_name":"phainopepla","genus":"Phainopepla","kingdom":"Animalia","species":"nitens","itis_taxonomic_sn":179877},{"species_id":1239,"common_name":"pine
+        needle scale","genus":"Chionaspis","kingdom":"Animalia","species":"pinifoliae","itis_taxonomic_sn":null},{"species_id":1129,"common_name":"pipevine
+        swallowtail ","genus":"Battus","kingdom":"Animalia","species":"philenor","itis_taxonomic_sn":777692},{"species_id":231,"common_name":"Plains
+        spadefoot","genus":"Spea","kingdom":"Animalia","species":"bombifrons","itis_taxonomic_sn":206989},{"species_id":1710,"common_name":"prothonotary
+        warbler","genus":"Protonotaria","kingdom":"Animalia","species":"citrea","itis_taxonomic_sn":178846},{"species_id":286,"common_name":"punctured
+        tiger beetle","genus":"Cicindela","kingdom":"Animalia","species":"punctulata","itis_taxonomic_sn":697729},{"species_id":1194,"common_name":"purple
+        martin","genus":"Progne","kingdom":"Animalia","species":"subis","itis_taxonomic_sn":178464},{"species_id":1133,"common_name":"queen","genus":"Danaus","kingdom":"Animalia","species":"gilippus","itis_taxonomic_sn":777963},{"species_id":407,"common_name":"raccoon","genus":"Procyon","kingdom":"Animalia","species":"lotor","itis_taxonomic_sn":180575},{"species_id":282,"common_name":"racer","genus":"Coluber","kingdom":"Animalia","species":"constrictor","itis_taxonomic_sn":174169},{"species_id":1134,"common_name":"Reakirt''s
+        blue","genus":"Echinargus","kingdom":"Animalia","species":"isola","itis_taxonomic_sn":777919},{"species_id":393,"common_name":"red
+        admiral","genus":"Vanessa","kingdom":"Animalia","species":"atalanta","itis_taxonomic_sn":188599},{"species_id":1422,"common_name":"red
+        fox","genus":"Vulpes","kingdom":"Animalia","species":"vulpes","itis_taxonomic_sn":180604},{"species_id":1425,"common_name":"red
+        harvester ant","genus":"Pogonomyrmex","kingdom":"Animalia","species":"barbatus","itis_taxonomic_sn":154232},{"species_id":1146,"common_name":"red
+        squirrel","genus":"Tamiasciurus","kingdom":"Animalia","species":"hudsonicus","itis_taxonomic_sn":180166},{"species_id":377,"common_name":"red-eyed
+        vireo","genus":"Vireo","kingdom":"Animalia","species":"olivaceus","itis_taxonomic_sn":179021},{"species_id":733,"common_name":"red-tailed
+        hawk","genus":"Buteo","kingdom":"Animalia","species":"jamaicensis","itis_taxonomic_sn":175350},{"species_id":359,"common_name":"red-winged
+        blackbird","genus":"Agelaius","kingdom":"Animalia","species":"phoeniceus","itis_taxonomic_sn":179045},{"species_id":1407,"common_name":"ring-necked
+        pheasant","genus":"Phasianus","kingdom":"Animalia","species":"colchicus","itis_taxonomic_sn":175905},{"species_id":1423,"common_name":"round-tailed
+        ground squirrel","genus":"Xerospermophilus","kingdom":"Animalia","species":"tereticaudus","itis_taxonomic_sn":930313},{"species_id":741,"common_name":"ruby-crowned
+        kinglet","genus":"Regulus","kingdom":"Animalia","species":"calendula","itis_taxonomic_sn":179870},{"species_id":1119,"common_name":"rufous
+        hummingbird","genus":"Selasphorus","kingdom":"Animalia","species":"rufus","itis_taxonomic_sn":178040},{"species_id":284,"common_name":"sagebrush
+        lizard","genus":"Sceloporus","kingdom":"Animalia","species":"graciosus","itis_taxonomic_sn":173870},{"species_id":364,"common_name":"sandhill
+        crane","genus":"Grus","kingdom":"Animalia","species":"canadensis","itis_taxonomic_sn":176177},{"species_id":1234,"common_name":"Say''s
+        phoebe","genus":"Sayornis","kingdom":"Animalia","species":"saya","itis_taxonomic_sn":178333},{"species_id":1787,"common_name":"short-billed
+        dowitcher","genus":"Limnodromus","kingdom":"Animalia","species":"griseus","itis_taxonomic_sn":176675},{"species_id":426,"common_name":"side-blotched
+        lizard","genus":"Uta","kingdom":"Animalia","species":"stansburiana","itis_taxonomic_sn":173956},{"species_id":384,"common_name":"smallmouth
+        bass","genus":"Micropterus","kingdom":"Animalia","species":"dolomieu","itis_taxonomic_sn":550562},{"species_id":276,"common_name":"snapping
+        turtle","genus":"Chelydra","kingdom":"Animalia","species":"serpentina","itis_taxonomic_sn":173752},{"species_id":1094,"common_name":"snowy
+        plover","genus":"Charadrius","kingdom":"Animalia","species":"alexandrinus","itis_taxonomic_sn":176510},{"species_id":1380,"common_name":"song
+        sparrow","genus":"Melospiza","kingdom":"Animalia","species":"melodia","itis_taxonomic_sn":179492},{"species_id":1142,"common_name":"Sonoran
+        bumble bee ","genus":"Bombus","kingdom":"Animalia","species":"sonorus","itis_taxonomic_sn":714837},{"species_id":1222,"common_name":"Sonoran
+        spotted whiptail","genus":"Cnemidophorus","kingdom":"Animalia","species":"sonorae","itis_taxonomic_sn":174025},{"species_id":728,"common_name":"speckle-wing
+        quill","genus":"Callibaetis","kingdom":"Animalia","species":"spp.","itis_taxonomic_sn":100903},{"species_id":373,"common_name":"spotted
+        sandpiper","genus":"Actitis","kingdom":"Animalia","species":"macularius","itis_taxonomic_sn":726049},{"species_id":1665,"common_name":"spotted
+        towhee","genus":"Pipilo","kingdom":"Animalia","species":"maculatus","itis_taxonomic_sn":554380},{"species_id":260,"common_name":"spring
+        azure","genus":"Celastrina","kingdom":"Animalia","species":"ladon complex","itis_taxonomic_sn":777893},{"species_id":1398,"common_name":"Steller''s
+        jay","genus":"Cyanocitta","kingdom":"Animalia","species":"stelleri","itis_taxonomic_sn":179685},{"species_id":1711,"common_name":"subterranean
+        termite","genus":"Reticulitermes","kingdom":"Animalia","species":"spp.","itis_taxonomic_sn":623930},{"species_id":1086,"common_name":"Swainson''s
+        hawk","genus":"Buteo","kingdom":"Animalia","species":"swainsoni","itis_taxonomic_sn":175367},{"species_id":1667,"common_name":"thirteen-lined
+        ground squirrel","genus":"Ictidomys","kingdom":"Animalia","species":"tridecemlineatus","itis_taxonomic_sn":930308},{"species_id":229,"common_name":"tiger
+        salamander","genus":"Ambystoma","kingdom":"Animalia","species":"mavortium-tigrinum","itis_taxonomic_sn":668193},{"species_id":1124,"common_name":"tree
+        swallow","genus":"Tachycineta","kingdom":"Animalia","species":"bicolor","itis_taxonomic_sn":178431},{"species_id":1701,"common_name":"turkey
+        vulture","genus":"Cathartes","kingdom":"Animalia","species":"aura","itis_taxonomic_sn":175265},{"species_id":1707,"common_name":"twelve-spotted
+        skimmer","genus":"Libellula","kingdom":"Animalia","species":"pulchella","itis_taxonomic_sn":101895},{"species_id":1143,"common_name":"valley
+        carpenter bee ","genus":"Xylocopa","kingdom":"Animalia","species":"varipuncta","itis_taxonomic_sn":684982},{"species_id":416,"common_name":"variegated
+        meadowhawk","genus":"Sympetrum","kingdom":"Animalia","species":"corruptum","itis_taxonomic_sn":101978},{"species_id":1223,"common_name":"verdin","genus":"Auriparus","kingdom":"Animalia","species":"flaviceps","itis_taxonomic_sn":178759},{"species_id":1125,"common_name":"violet-green
+        swallow","genus":"Tachycineta","kingdom":"Animalia","species":"thalassina","itis_taxonomic_sn":178427},{"species_id":1421,"common_name":"warbling
+        vireo","genus":"Vireo","kingdom":"Animalia","species":"gilvus","itis_taxonomic_sn":179023},{"species_id":357,"common_name":"western
+        bluebird","genus":"Sialia","kingdom":"Animalia","species":"mexicana","itis_taxonomic_sn":179806},{"species_id":1419,"common_name":"western
+        kingbird","genus":"Tyrannus","kingdom":"Animalia","species":"verticalis","itis_taxonomic_sn":178287},{"species_id":1714,"common_name":"western
+        meadowlark","genus":"Sturnella","kingdom":"Animalia","species":"neglecta","itis_taxonomic_sn":179039},{"species_id":1130,"common_name":"western
+        pygmy-blue","genus":"Brephidium","kingdom":"Animalia","species":"exilis","itis_taxonomic_sn":777886},{"species_id":1410,"common_name":"western
+        tanager","genus":"Piranga","kingdom":"Animalia","species":"ludoviciana","itis_taxonomic_sn":179882},{"species_id":278,"common_name":"western
+        terrestrial garter snake","genus":"Thamnophis","kingdom":"Animalia","species":"elegans","itis_taxonomic_sn":174142},{"species_id":423,"common_name":"western
+        whiptail","genus":"Cnemidophorus","kingdom":"Animalia","species":"tigris","itis_taxonomic_sn":208940},{"species_id":1415,"common_name":"white-breasted
+        nuthatch","genus":"Sitta","kingdom":"Animalia","species":"carolinensis","itis_taxonomic_sn":178775},{"species_id":1669,"common_name":"white-crowned
+        sparrow","genus":"Zonotrichia","kingdom":"Animalia","species":"leucophrys","itis_taxonomic_sn":179455},{"species_id":1405,"common_name":"white-footed
+        deermouse","genus":"Peromyscus","kingdom":"Animalia","species":"leucopus","itis_taxonomic_sn":180278},{"species_id":270,"common_name":"white-tailed
+        deer","genus":"Odocoileus","kingdom":"Animalia","species":"virginianus","itis_taxonomic_sn":180699},{"species_id":739,"common_name":"white-throated
+        sparrow","genus":"Zonotrichia","kingdom":"Animalia","species":"albicollis","itis_taxonomic_sn":179462},{"species_id":1128,"common_name":"white-winged
+        dove","genus":"Zenaida","kingdom":"Animalia","species":"asiatica","itis_taxonomic_sn":177121},{"species_id":1662,"common_name":"wild
+        turkey","genus":"Meleagris","kingdom":"Animalia","species":"gallopavo","itis_taxonomic_sn":176136},{"species_id":1092,"common_name":"willet","genus":"Tringa","kingdom":"Animalia","species":"semipalmatus","itis_taxonomic_sn":824147},{"species_id":738,"common_name":"winter
+        wren","genus":"Troglodytes","kingdom":"Animalia","species":"troglodytes","itis_taxonomic_sn":178547},{"species_id":367,"common_name":"wood
+        duck","genus":"Aix","kingdom":"Animalia","species":"sponsa","itis_taxonomic_sn":175122},{"species_id":237,"common_name":"Woodhouse''s
+        toad","genus":"Anaxyrus","kingdom":"Animalia","species":"woodhousii","itis_taxonomic_sn":773532},{"species_id":398,"common_name":"woolly
+        bear","genus":"Pyrrharctia","kingdom":"Animalia","species":"isabella","itis_taxonomic_sn":117310},{"species_id":257,"common_name":"yellow
+        perch","genus":"Perca","kingdom":"Animalia","species":"flavescens","itis_taxonomic_sn":168469},{"species_id":358,"common_name":"yellow
+        warbler","genus":"Setophaga","kingdom":"Animalia","species":"petechia","itis_taxonomic_sn":950039},{"species_id":1097,"common_name":"yellow-rumped
+        warbler","genus":"Setophaga","kingdom":"Animalia","species":"coronata","itis_taxonomic_sn":950046},{"species_id":1395,"common_name":"zebra-tailed
+        lizard","genus":"Callisaurus","kingdom":"Animalia","species":"draconoides","itis_taxonomic_sn":173906}]'
+  recorded_at: 2020-11-12 21:19:22 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.7.0

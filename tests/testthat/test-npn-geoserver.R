@@ -4,19 +4,28 @@ context("npn_geospatial")
 test_that("npn_get_layer_details works",{
   npn_set_env(get_test_env())
 
+  vcr::use_cassette("npn_get_layer_details_1", {
+    layers <- npn_get_layer_details()
+  })
 
-  layers <- npn_get_layer_details()
+
 
   expect_is(layers,"data.frame")
   expect_gt(nrow(layers),50)
 
 })
 
-test_that("npn_download_geospatial works", {
-  npn_set_env(get_test_env())
 
+test_that("npn_download_geospatial works", {
+#  skip_on_cran()
+  skip("No file downloads")
+
+  npn_set_env(get_test_env())
   library(raster)
+
   ras <- npn_download_geospatial("gdd:agdd",date="2018-05-05")
+
+
   expect_is(ras,"RasterLayer")
 
 
@@ -38,6 +47,8 @@ test_that("npn_download_geospatial works", {
 })
 
 test_that("npn_download_geospatial format param working", {
+  #skip_on_cran()
+  skip("No file downloads")
   npn_set_env("ops")
 
   npn_download_geospatial(
@@ -69,7 +80,7 @@ test_that("npn_download_geospatial format param working", {
   # date/elevation subset, still only one such raster will be
   # returned.
   #
-  # EDIT: This changed circal 3/2020 when we updated the NetCDF libs
+  # EDIT: This changed circa 3/2020 when we updated the NetCDF libs
   # on Geoserver. This test "works", but since the two formats aren't
   # that comparable any more, it's a little dodgier, and this mostly
   # just checks that the NetCDF isn't empty or something (which happened
@@ -85,12 +96,15 @@ test_that("npn_download_geospatial format param working", {
 test_that("npn_get_point_data functions", {
   npn_set_env(get_test_env())
 
-
-  value <- npn_get_point_data("gdd:agdd",38.8,-110.5,"2019-05-05")
+  vcr::use_cassette("npn_get_point_data_1", {
+    value <- npn_get_point_data("gdd:agdd",38.8,-110.5,"2019-05-05")
+  })
   expect_lt(round(value), 1235)
   expect_gt(round(value), 1232)
 
-  value <- npn_get_point_data("si-x:average_leaf_prism",38.8,-110.5,"1990-01-01")
+  vcr::use_cassette("npn_get_point_data_2", {
+    value <- npn_get_point_data("si-x:average_leaf_prism",38.8,-110.5,"1990-01-01")
+  })
   expect_equal(value, 83)
 
   #No data in Canada
@@ -102,18 +116,19 @@ test_that("npn_get_point_data functions", {
 test_that("npn_custom_agdd functions",{
   npn_set_env(get_test_env())
 
-
-  res <- npn_get_custom_agdd_time_series(
-    "double-sine",
-    "2019-01-01",
-    "2019-01-15",
-    25,
-    "NCEP",
-    "fahrenheit",
-    39.7,
-    -107.5,
-    upper_threshold=90
-  )
+  vcr::use_cassette("npn_get_custom_agdd_time_series_1", {
+    res <- npn_get_custom_agdd_time_series(
+      "double-sine",
+      "2019-01-01",
+      "2019-01-15",
+      25,
+      "NCEP",
+      "fahrenheit",
+      39.7,
+      -107.5,
+      upper_threshold=90
+    )
+  })
 
   expect_is(res,"data.frame")
   expect_equal(round(res[15,"agdd"]),34)

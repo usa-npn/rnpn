@@ -22,6 +22,7 @@ Imports:
     sf,
     tibble,
     curl,
+    crul,
     raster,
     rgdal,
     XML,
@@ -36,7 +37,8 @@ Suggests:
     knitr,
     markdown,
     rmarkdown,
-    RColorBrewer
+    RColorBrewer,
+    vcr
 RoxygenNote: 7.1.0
 VignetteBuilder: knitr
 URL: https://docs.ropensci.org/rnpn/ (website)

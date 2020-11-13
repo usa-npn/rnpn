@@ -1,0 +1,529 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://www-dev.usanpn.org/npn_portal/stations/getStationsByLocation.json?wkt=POLYGON%20%28%28-102.04224%2036.993083%2C-109.045223%2036.999084%2C-109.050076%2041.000659%2C-102.051614%2041.002377%2C-102.04224%2036.993083%29%29
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      date: Thu, 12 Nov 2020 23:03:09 GMT
+      server: Apache/2.4.7 (Ubuntu) SVN/1.8.8 PHP/5.5.9-1ubuntu4.29 OpenSSL/1.0.1f
+      x-powered-by: PHP/5.5.9-1ubuntu4.29
+      access-control-allow-origin: '*'
+      access-control-allow-headers: origin, x-requested-with, content-type
+      access-control-allow-methods: PUT, GET, POST, DELETE, OPTIONS
+      transfer-encoding: chunked
+      content-type: application/json
+    body:
+      encoding: UTF-8
+      file: no
+      string: '[{"latitude":37.629002,"longitude":-106.672997,"station_name":9050039,"station_id":21},{"latitude":39.990002,"longitude":-105.260002,"station_name":"PPN_50848","station_id":52},{"latitude":39.975800,"longitude":-104.809196,"station_name":"PPN_50950","station_id":53},{"latitude":38.553902,"longitude":-107.090698,"station_name":"PPN_51713","station_id":54},{"latitude":38.780499,"longitude":-105.182404,"station_name":"PPN_51977","station_id":55},{"latitude":38.922501,"longitude":-108.831001,"station_name":"PPN_53307","station_id":57},{"latitude":40.443401,"longitude":-106.902199,"station_name":"PPN_53488","station_id":58},{"latitude":38.699001,"longitude":-103.421600,"station_name":"PPN_54444","station_id":59},{"latitude":37.884998,"longitude":-102.667603,"station_name":"PPN_54770","station_id":60},{"latitude":40.362000,"longitude":-108.818100,"station_name":"PPN_55422","station_id":61},{"latitude":38.389160,"longitude":-108.950043,"station_name":"PPN_56320","station_id":62},{"latitude":40.965267,"longitude":-105.218773,"station_name":"PPN_58690","station_id":63},{"latitude":37.469002,"longitude":-105.836502,"station_name":"PPN_58860","station_id":64},{"latitude":38.861141,"longitude":-107.647919,"station_name":"38213
+        Hwy 133","station_id":257},{"latitude":39.184269,"longitude":-106.854614,"station_name":"PPN_9050002","station_id":258},{"latitude":39.611000,"longitude":-104.954002,"station_name":"PPN_9050003","station_id":259},{"latitude":39.900002,"longitude":-104.699997,"station_name":"PPN_9050004","station_id":260},{"latitude":39.098499,"longitude":-104.834297,"station_name":"PPN_9050005","station_id":261},{"latitude":40.200001,"longitude":-105.000000,"station_name":"PPN_9050007","station_id":262},{"latitude":40.587250,"longitude":-104.963005,"station_name":"PPN_9050009","station_id":263},{"latitude":38.621399,"longitude":-104.676903,"station_name":"PPN_9050011","station_id":264},{"latitude":38.193001,"longitude":-104.824997,"station_name":"PPN_9050013","station_id":265},{"latitude":38.137798,"longitude":-104.663597,"station_name":"PPN_9050014","station_id":266},{"latitude":39.678303,"longitude":-104.858276,"station_name":"PPN_9050016","station_id":267},{"latitude":39.845947,"longitude":-105.402855,"station_name":"PPN_9050019","station_id":268},{"latitude":40.531700,"longitude":-105.141502,"station_name":"PPN_9050021","station_id":269},{"latitude":39.287998,"longitude":-104.450996,"station_name":"PPN_9050022","station_id":270},{"latitude":39.464321,"longitude":-105.088882,"station_name":"PPN_9050023","station_id":271},{"latitude":39.299999,"longitude":-108.900002,"station_name":"PPN_9050025","station_id":272},{"latitude":40.007000,"longitude":-105.288300,"station_name":"PPN_9050026","station_id":273},{"latitude":37.347599,"longitude":-108.302597,"station_name":"PPN_9050027","station_id":274},{"latitude":39.500000,"longitude":-107.800003,"station_name":"PPN_9050029","station_id":275},{"latitude":39.585369,"longitude":-105.367180,"station_name":"PPN_9050031","station_id":276},{"latitude":39.705601,"longitude":-104.665901,"station_name":"PPN_9050032","station_id":277},{"latitude":39.594200,"longitude":-105.008598,"station_name":"PPN_9050034","station_id":278},{"latitude":39.353100,"longitude":-104.504860,"station_name":"PPN_9050035","station_id":279},{"latitude":37.668118,"longitude":-106.355034,"station_name":"PPN_9050036","station_id":280},{"latitude":40.240002,"longitude":-105.040001,"station_name":"PPN_9050037","station_id":281},{"latitude":40.229401,"longitude":-105.507797,"station_name":"PPN_9050038","station_id":282},{"latitude":37.348400,"longitude":-108.734100,"station_name":"PPN_9050040","station_id":283},{"latitude":40.447498,"longitude":-104.686096,"station_name":"PPN_9050041","station_id":284},{"latitude":40.372601,"longitude":-105.133003,"station_name":"PPN_9050042","station_id":285},{"latitude":39.483879,"longitude":-105.243401,"station_name":"PPN_9050043","station_id":286},{"latitude":40.372601,"longitude":-105.133003,"station_name":"PPN_9050044","station_id":287},{"latitude":39.827099,"longitude":-105.064003,"station_name":"PPN_9050046","station_id":288},{"latitude":39.740650,"longitude":-105.230980,"station_name":"PPN_9050047","station_id":289},{"latitude":39.744202,"longitude":-105.104897,"station_name":"PPN_9050048","station_id":290},{"latitude":39.706001,"longitude":-104.965202,"station_name":"PPN_9050049","station_id":291},{"latitude":39.716400,"longitude":-105.243698,"station_name":"PPN_9050050","station_id":292},{"latitude":39.497501,"longitude":-105.289597,"station_name":"PPN_9050051","station_id":293},{"latitude":39.679100,"longitude":-104.417198,"station_name":"PPN_9050053","station_id":294},{"latitude":39.099899,"longitude":-104.763603,"station_name":"PPN_9050057","station_id":295},{"latitude":40.596020,"longitude":-102.222214,"station_name":"PPN_9050058","station_id":296},{"latitude":39.566399,"longitude":-107.350502,"station_name":"PPN_9050060","station_id":297},{"latitude":39.373798,"longitude":-103.663002,"station_name":"PPN_9050061","station_id":298},{"latitude":37.519600,"longitude":-106.176399,"station_name":"PPN_9050062","station_id":299},{"latitude":39.793400,"longitude":-108.135696,"station_name":"PPN_9050063","station_id":300},{"latitude":39.304100,"longitude":-102.594398,"station_name":"PPN_9050065","station_id":301},{"latitude":37.958401,"longitude":-104.823898,"station_name":"PPN_9050066","station_id":302},{"latitude":38.029099,"longitude":-107.627502,"station_name":"PPN_9050067","station_id":303},{"latitude":37.808601,"longitude":-105.254799,"station_name":"PPN_9050068","station_id":304},{"latitude":40.133999,"longitude":-106.472000,"station_name":"PPN_9050070","station_id":305},{"latitude":39.574200,"longitude":-104.858803,"station_name":"PPN_9050071","station_id":306},{"latitude":39.733002,"longitude":-104.924004,"station_name":"PPN_9050072","station_id":307},{"latitude":40.140701,"longitude":-102.218803,"station_name":"PPN_9050073","station_id":308},{"latitude":39.089466,"longitude":-108.104729,"station_name":"PPN_9050074","station_id":309},{"latitude":38.983101,"longitude":-104.690399,"station_name":"PPN_9050075","station_id":310},{"latitude":40.599300,"longitude":-105.115196,"station_name":"PPN_9050076","station_id":311},{"latitude":40.199249,"longitude":-105.076782,"station_name":"PPN_9050077","station_id":312},{"latitude":39.681400,"longitude":-104.925697,"station_name":"PPN_9050078","station_id":313},{"latitude":40.647499,"longitude":-105.047600,"station_name":"PPN_9050079","station_id":314},{"latitude":39.991402,"longitude":-105.106499,"station_name":"PPN_9050080","station_id":315},{"latitude":40.606846,"longitude":-105.053215,"station_name":"home","station_id":650},{"latitude":39.720402,"longitude":-104.917397,"station_name":"PPN_9050028","station_id":694},{"latitude":37.576965,"longitude":-106.100365,"station_name":"PPN_9050020","station_id":703},{"latitude":37.629002,"longitude":-106.673203,"station_name":"PPN_9050039","station_id":706},{"latitude":40.199276,"longitude":-105.076851,"station_name":"backyard","station_id":716},{"latitude":37.282257,"longitude":-107.857346,"station_name":"KAHfrontyard","station_id":744},{"latitude":40.633488,"longitude":-105.042152,"station_name":"south
+        side of house","station_id":769},{"latitude":39.719887,"longitude":-104.917572,"station_name":"Home","station_id":777},{"latitude":39.720806,"longitude":-104.992363,"station_name":"Home","station_id":823},{"latitude":39.067238,"longitude":-108.641747,"station_name":"home","station_id":824},{"latitude":39.085911,"longitude":-108.558975,"station_name":"J
+        &amp; J","station_id":840},{"latitude":39.864285,"longitude":-105.100296,"station_name":"Home","station_id":844},{"latitude":39.586277,"longitude":-104.998146,"station_name":"home","station_id":862},{"latitude":40.522957,"longitude":-107.548576,"station_name":"Home","station_id":872},{"latitude":40.187710,"longitude":-105.110550,"station_name":"my
+        neighborhood","station_id":885},{"latitude":39.698811,"longitude":-105.148407,"station_name":"My
+        yard","station_id":911},{"latitude":39.755241,"longitude":-105.655685,"station_name":"450
+        Acre Home, Office","station_id":912},{"latitude":39.305210,"longitude":-104.968727,"station_name":"home","station_id":969},{"latitude":39.699768,"longitude":-105.263649,"station_name":"Master
+        West Window","station_id":1019},{"latitude":39.699631,"longitude":-105.263504,"station_name":"Entry
+        East Window","station_id":1020},{"latitude":39.967957,"longitude":-105.249641,"station_name":"home","station_id":1045},{"latitude":37.995285,"longitude":-105.699020,"station_name":"USGS
+        24K Crestone SE - BBS Block","station_id":1131},{"latitude":39.771393,"longitude":-105.061974,"station_name":"home","station_id":1149},{"latitude":39.975616,"longitude":-105.141869,"station_name":"Home","station_id":1273},{"latitude":38.918552,"longitude":-104.726097,"station_name":"Front
+        Yard","station_id":1303},{"latitude":40.023022,"longitude":-105.289528,"station_name":"My
+        garden","station_id":1321},{"latitude":37.578869,"longitude":-108.218765,"station_name":"Home","station_id":1323},{"latitude":39.940815,"longitude":-105.381973,"station_name":"Lazy
+        Z Gross Res Inlet","station_id":1349},{"latitude":39.948448,"longitude":-105.424545,"station_name":"Lazy
+        Z - Bonnie Rd intersection","station_id":1350},{"latitude":40.390175,"longitude":-105.153160,"station_name":"Home","station_id":1416},{"latitude":39.626698,"longitude":-102.568192,"station_name":"our
+        yard","station_id":1421},{"latitude":40.031734,"longitude":-105.246422,"station_name":"UCAR
+        CG","station_id":1429},{"latitude":40.485489,"longitude":-107.560013,"station_name":"Home-East
+        Pasture","station_id":1450},{"latitude":39.673565,"longitude":-105.276230,"station_name":"home","station_id":1451},{"latitude":40.485458,"longitude":-107.561020,"station_name":"Home-West
+        Pasture","station_id":1472},{"latitude":39.608711,"longitude":-105.129997,"station_name":"My
+        Back Yard","station_id":1494},{"latitude":39.602497,"longitude":-104.976295,"station_name":"front
+        yard","station_id":1520},{"latitude":38.525482,"longitude":-106.953705,"station_name":"front
+        yard","station_id":1574},{"latitude":39.673973,"longitude":-104.962456,"station_name":"Denver
+        University","station_id":1648},{"latitude":39.755093,"longitude":-104.988121,"station_name":"office","station_id":1649},{"latitude":39.673824,"longitude":-104.962433,"station_name":"Univerisity
+        of Denver","station_id":1654},{"latitude":39.676964,"longitude":-104.963707,"station_name":"University
+        of Denver","station_id":1656},{"latitude":39.603176,"longitude":-105.071312,"station_name":"University
+        of Denver","station_id":1657},{"latitude":39.000000,"longitude":-104.000000,"station_name":"University
+        of Denver","station_id":1658},{"latitude":39.676964,"longitude":-104.963707,"station_name":"University
+        of Denver","station_id":1659},{"latitude":39.676964,"longitude":-104.963707,"station_name":"University
+        of Denver","station_id":1660},{"latitude":39.683365,"longitude":-104.963852,"station_name":"DU","station_id":1661},{"latitude":39.676964,"longitude":-104.963707,"station_name":"University
+        of Denver","station_id":1662},{"latitude":39.676636,"longitude":-104.965233,"station_name":"University
+        of Denver","station_id":1663},{"latitude":39.676964,"longitude":-104.963707,"station_name":"University
+        of Denver","station_id":1664},{"latitude":39.674335,"longitude":-104.962143,"station_name":"University
+        of Denver","station_id":1665},{"latitude":39.676964,"longitude":-104.963707,"station_name":"U.
+        Denver","station_id":1666},{"latitude":39.676739,"longitude":-104.965233,"station_name":"University
+        Of Denver","station_id":1667},{"latitude":39.676491,"longitude":-104.962250,"station_name":"DU","station_id":1669},{"latitude":39.000000,"longitude":-104.000000,"station_name":"DU","station_id":1670},{"latitude":39.000000,"longitude":-104.000000,"station_name":"DU","station_id":1671},{"latitude":39.674469,"longitude":-104.962212,"station_name":"Biology
+        2","station_id":1672},{"latitude":39.000000,"longitude":-104.000000,"station_name":"University
+        of Denver","station_id":1673},{"latitude":39.673592,"longitude":-104.979774,"station_name":"my
+        school","station_id":1674},{"latitude":39.674850,"longitude":-104.965225,"station_name":"du","station_id":1675},{"latitude":39.550053,"longitude":-105.782066,"station_name":"DU
+        Concepts Spring","station_id":1676},{"latitude":39.801991,"longitude":-105.154099,"station_name":"KennethDU","station_id":1677},{"latitude":39.000000,"longitude":-104.000000,"station_name":"DU","station_id":1678},{"latitude":39.674145,"longitude":-104.977135,"station_name":"DU
+        - Marysia","station_id":1679},{"latitude":39.673592,"longitude":-104.979774,"station_name":"University
+        of Denver","station_id":1680},{"latitude":39.755093,"longitude":-104.988121,"station_name":"University
+        of Denver (Nick) ","station_id":1681},{"latitude":39.675320,"longitude":-104.964256,"station_name":"University
+        of Denver","station_id":1682},{"latitude":39.674850,"longitude":-104.965225,"station_name":"DU","station_id":1683},{"latitude":39.000000,"longitude":-104.000000,"station_name":"University
+        of Denver","station_id":1684},{"latitude":39.675320,"longitude":-104.964172,"station_name":"University
+        of Denver","station_id":1685},{"latitude":39.673592,"longitude":-104.979774,"station_name":"University
+        of Denver","station_id":1686},{"latitude":39.673592,"longitude":-104.979774,"station_name":"University
+        of Denver","station_id":1687},{"latitude":39.000000,"longitude":-104.000000,"station_name":"University
+        of Denver","station_id":1688},{"latitude":39.000000,"longitude":-104.000000,"station_name":"University
+        of Denver","station_id":1689},{"latitude":39.673592,"longitude":-104.979774,"station_name":"University
+        of Denver","station_id":1690},{"latitude":39.673592,"longitude":-104.979774,"station_name":"University
+        of Denver","station_id":1691},{"latitude":39.000000,"longitude":-104.000000,"station_name":"DU","station_id":1692},{"latitude":39.673592,"longitude":-104.979774,"station_name":"University
+        of Denver","station_id":1693},{"latitude":39.000000,"longitude":-104.000000,"station_name":"University
+        of Denver","station_id":1694},{"latitude":39.678780,"longitude":-104.962433,"station_name":"University
+        of denver","station_id":1695},{"latitude":39.678379,"longitude":-104.962006,"station_name":"Driscoll","station_id":1696},{"latitude":39.672905,"longitude":-104.963745,"station_name":"Facilities","station_id":1697},{"latitude":39.673592,"longitude":-104.979774,"station_name":"du","station_id":1698},{"latitude":39.674839,"longitude":-104.961227,"station_name":"Olin","station_id":1699},{"latitude":39.674850,"longitude":-104.965225,"station_name":"JMac","station_id":1700},{"latitude":39.674850,"longitude":-104.965225,"station_name":"University
+        of Denver","station_id":1701},{"latitude":39.674541,"longitude":-104.962128,"station_name":"DU","station_id":1702},{"latitude":39.550053,"longitude":-105.782066,"station_name":"University
+        of Denver","station_id":1703},{"latitude":39.675327,"longitude":-104.963142,"station_name":"DU","station_id":1704},{"latitude":39.504040,"longitude":-104.589844,"station_name":"university
+        of denver","station_id":1705},{"latitude":39.675404,"longitude":-104.957527,"station_name":"University
+        of Denver","station_id":1706},{"latitude":39.674839,"longitude":-104.964058,"station_name":"University
+        of Denver","station_id":1707},{"latitude":39.674839,"longitude":-104.964058,"station_name":"University
+        of Denver","station_id":1708},{"latitude":39.674839,"longitude":-104.964058,"station_name":"University
+        of Denver","station_id":1709},{"latitude":39.683365,"longitude":-104.963852,"station_name":"DU
+        Campus","station_id":1710},{"latitude":39.683365,"longitude":-104.963852,"station_name":"DU","station_id":1711},{"latitude":39.676239,"longitude":-104.965233,"station_name":"University
+        of Denver","station_id":1712},{"latitude":39.676239,"longitude":-104.965233,"station_name":"DU","station_id":1713},{"latitude":39.676998,"longitude":-104.962372,"station_name":"university
+        of denver","station_id":1714},{"latitude":39.676239,"longitude":-104.965233,"station_name":"University
+        of Denver","station_id":1715},{"latitude":39.673592,"longitude":-104.979774,"station_name":"DU","station_id":1716},{"latitude":39.673592,"longitude":-104.979774,"station_name":"DU
+        concepts lab","station_id":1717},{"latitude":39.675037,"longitude":-104.965050,"station_name":"University
+        of Denver","station_id":1720},{"latitude":40.385277,"longitude":-105.490746,"station_name":"Lone
+        Pine yard","station_id":1722},{"latitude":39.673592,"longitude":-104.979774,"station_name":"University
+        of Denver","station_id":1724},{"latitude":39.000000,"longitude":-104.000000,"station_name":"Tree
+        Site","station_id":1725},{"latitude":39.674088,"longitude":-104.962067,"station_name":"University
+        of Denver","station_id":1726},{"latitude":39.684376,"longitude":-104.966370,"station_name":"campus","station_id":1727},{"latitude":39.674263,"longitude":-104.962738,"station_name":"University
+        of Denver ","station_id":1728},{"latitude":39.678379,"longitude":-104.962006,"station_name":"Driscoll","station_id":1729},{"latitude":39.677902,"longitude":-104.962662,"station_name":"University
+        of Denver","station_id":1730},{"latitude":39.678379,"longitude":-104.962006,"station_name":"Driscoll","station_id":1731},{"latitude":39.678555,"longitude":-104.984604,"station_name":"Driscoll","station_id":1732},{"latitude":39.678379,"longitude":-104.962006,"station_name":"Driscoll","station_id":1733},{"latitude":39.755093,"longitude":-104.988121,"station_name":"University
+        of Denver","station_id":1734},{"latitude":39.678379,"longitude":-104.962006,"station_name":"Driscoll","station_id":1735},{"latitude":39.678379,"longitude":-104.962006,"station_name":"Driscoll","station_id":1736},{"latitude":39.755093,"longitude":-104.988121,"station_name":"University
+        Of Denver","station_id":1737},{"latitude":39.678379,"longitude":-104.962006,"station_name":"Driscoll","station_id":1738},{"latitude":39.678379,"longitude":-104.961998,"station_name":"Driscoll
+        ","station_id":1739},{"latitude":39.678379,"longitude":-104.962006,"station_name":"Driscoll","station_id":1740},{"latitude":39.678379,"longitude":-104.962692,"station_name":"Driscoll","station_id":1741},{"latitude":39.678379,"longitude":-104.962006,"station_name":"Driscoll","station_id":1742},{"latitude":39.678379,"longitude":-104.962006,"station_name":"Driscoll
+        ","station_id":1743},{"latitude":39.678379,"longitude":-104.962006,"station_name":"Driscoll","station_id":1744},{"latitude":39.678379,"longitude":-104.962006,"station_name":"Driscoll","station_id":1745},{"latitude":39.678379,"longitude":-104.962006,"station_name":"Driscoll","station_id":1746},{"latitude":39.677952,"longitude":-104.962868,"station_name":"University
+        of Denver - Dogwood","station_id":1747},{"latitude":39.671913,"longitude":-104.963905,"station_name":"University
+        of Denver - Aspen","station_id":1748},{"latitude":39.674839,"longitude":-104.961227,"station_name":"Olin","station_id":1750},{"latitude":39.674839,"longitude":-104.961227,"station_name":"Olin","station_id":1751},{"latitude":39.674839,"longitude":-104.961227,"station_name":"Olin","station_id":1752},{"latitude":39.674839,"longitude":-104.961227,"station_name":"Olin","station_id":1753},{"latitude":39.674839,"longitude":-104.961227,"station_name":"Olin","station_id":1754},{"latitude":39.674839,"longitude":-104.961227,"station_name":"Olin","station_id":1755},{"latitude":39.676628,"longitude":-104.959389,"station_name":"University
+        of Denver","station_id":1756},{"latitude":39.674839,"longitude":-104.961227,"station_name":"Oiln","station_id":1757},{"latitude":39.673939,"longitude":-104.962479,"station_name":"University
+        of Denver","station_id":1758},{"latitude":39.676628,"longitude":-104.959389,"station_name":"Redrose
+        dogwood and little leaf linden","station_id":1759},{"latitude":39.674839,"longitude":-104.961227,"station_name":"Olin","station_id":1760},{"latitude":39.674839,"longitude":-104.961227,"station_name":"Olin","station_id":1761},{"latitude":39.674839,"longitude":-104.961227,"station_name":"Olin","station_id":1762},{"latitude":39.674839,"longitude":-104.961227,"station_name":"olin","station_id":1763},{"latitude":39.673874,"longitude":-104.962402,"station_name":"University
+        of Denver","station_id":1764},{"latitude":39.674839,"longitude":-104.961227,"station_name":"Olin","station_id":1765},{"latitude":39.674839,"longitude":-104.961227,"station_name":"Olin
+        ","station_id":1766},{"latitude":39.674934,"longitude":-104.961342,"station_name":"Olin","station_id":1767},{"latitude":39.676628,"longitude":-104.959389,"station_name":"school","station_id":1768},{"latitude":39.673969,"longitude":-104.962448,"station_name":"University
+        of Denver","station_id":1769},{"latitude":39.673794,"longitude":-104.962448,"station_name":"University
+        of Denver","station_id":1770},{"latitude":39.674992,"longitude":-104.963493,"station_name":"University
+        of Denver","station_id":1771},{"latitude":39.674850,"longitude":-104.965225,"station_name":"University
+        of Denver","station_id":1772},{"latitude":39.673847,"longitude":-104.962448,"station_name":"University
+        of Denver","station_id":1773},{"latitude":39.673916,"longitude":-104.962410,"station_name":"University
+        of Denver","station_id":1774},{"latitude":39.674850,"longitude":-104.965225,"station_name":"university
+        of denver","station_id":1776},{"latitude":39.550053,"longitude":-105.782066,"station_name":"Denver","station_id":1777},{"latitude":39.000000,"longitude":-104.000000,"station_name":"DU","station_id":1778},{"latitude":39.674850,"longitude":-104.965225,"station_name":"Johnson-MacFarland
+        Hall","station_id":1779},{"latitude":39.674839,"longitude":-104.961227,"station_name":"Olin","station_id":1782},{"latitude":39.740986,"longitude":-104.985352,"station_name":"University
+        of Denver","station_id":1785},{"latitude":39.674850,"longitude":-104.965202,"station_name":"JMac","station_id":1791},{"latitude":39.678020,"longitude":-104.962914,"station_name":"Driscoll","station_id":1794},{"latitude":39.000000,"longitude":-104.000000,"station_name":"Aspen
+        group","station_id":1795},{"latitude":39.683365,"longitude":-104.963852,"station_name":"university
+        of denver","station_id":1796},{"latitude":39.675327,"longitude":-104.963142,"station_name":"University
+        of Denver","station_id":1838},{"latitude":40.000412,"longitude":-104.808960,"station_name":"front
+        yard","station_id":1840},{"latitude":39.674843,"longitude":-104.965240,"station_name":"University
+        o Denveh","station_id":1847},{"latitude":39.674824,"longitude":-104.926674,"station_name":"J-Mac","station_id":1849},{"latitude":39.674843,"longitude":-104.961266,"station_name":"University
+        of Denver","station_id":1851},{"latitude":39.755093,"longitude":-104.988121,"station_name":"University
+        of Denver","station_id":1858},{"latitude":39.677963,"longitude":-104.962868,"station_name":"University
+        of Denver","station_id":1863},{"latitude":39.755093,"longitude":-104.988121,"station_name":"University
+        of Denver campus","station_id":1865},{"latitude":39.679447,"longitude":-104.960808,"station_name":"University
+        of Denver","station_id":1866},{"latitude":39.675526,"longitude":-104.963150,"station_name":"Dogwoods
+        by JMac","station_id":1867},{"latitude":39.671921,"longitude":-104.963844,"station_name":"Aspens
+        by Maintanence","station_id":1868},{"latitude":39.755093,"longitude":-104.988121,"station_name":"University
+        of Denver","station_id":1869},{"latitude":39.676628,"longitude":-104.959396,"station_name":"Denver
+        University","station_id":1870},{"latitude":39.755093,"longitude":-104.988121,"station_name":"DU","station_id":1871},{"latitude":39.678440,"longitude":-104.927902,"station_name":"University
+        of Denver","station_id":1872},{"latitude":39.674076,"longitude":-104.961685,"station_name":"Tree","station_id":1873},{"latitude":39.671867,"longitude":-104.963852,"station_name":"University
+        of Denver","station_id":1874},{"latitude":39.674843,"longitude":-104.965240,"station_name":"Denver
+        University","station_id":1875},{"latitude":39.683365,"longitude":-104.963852,"station_name":"Campus","station_id":1876},{"latitude":39.674843,"longitude":-104.965240,"station_name":"J-Mac
+        tree","station_id":1878},{"latitude":39.678509,"longitude":-104.962807,"station_name":"University
+        of Denver","station_id":1879},{"latitude":39.676750,"longitude":-104.965248,"station_name":"University
+        of Denver","station_id":1880},{"latitude":39.674843,"longitude":-104.965240,"station_name":"University
+        of Denver","station_id":1884},{"latitude":39.676628,"longitude":-104.959396,"station_name":"University
+        of Denver","station_id":1885},{"latitude":39.755093,"longitude":-104.988121,"station_name":"Olin
+        Hall","station_id":1886},{"latitude":39.667889,"longitude":-104.974792,"station_name":"University
+        of Denver","station_id":1887},{"latitude":39.674843,"longitude":-104.965240,"station_name":"University
+        of Denver","station_id":1888},{"latitude":39.673592,"longitude":-104.979774,"station_name":"School","station_id":1890},{"latitude":39.672905,"longitude":-104.963745,"station_name":"School","station_id":1891},{"latitude":39.677006,"longitude":-104.962364,"station_name":"Aaron
+        Hogan''s Observations","station_id":1892},{"latitude":39.842285,"longitude":-102.744141,"station_name":"my
+        front yard","station_id":1920},{"latitude":40.914551,"longitude":-105.830444,"station_name":"Back
+        yard","station_id":1926},{"latitude":39.961891,"longitude":-105.510376,"station_name":"Backyard","station_id":1927},{"latitude":38.476704,"longitude":-102.780426,"station_name":"PPN_52446","station_id":2244},{"latitude":40.517445,"longitude":-105.056602,"station_name":"home","station_id":2287},{"latitude":40.005669,"longitude":-105.247658,"station_name":"yard","station_id":2290},{"latitude":39.249138,"longitude":-105.729248,"station_name":"upper
+        property","station_id":2306},{"latitude":39.251606,"longitude":-105.729546,"station_name":"lower
+        pasture","station_id":2307},{"latitude":39.248505,"longitude":-105.729179,"station_name":"house
+        pasture &amp; woods","station_id":2308},{"latitude":39.249950,"longitude":-105.729019,"station_name":"overlook","station_id":2309},{"latitude":39.248531,"longitude":-105.727753,"station_name":"woods","station_id":2310},{"latitude":40.150623,"longitude":-105.136169,"station_name":"Home","station_id":2533},{"latitude":38.872963,"longitude":-106.980804,"station_name":"front
+        yard","station_id":2548},{"latitude":38.542110,"longitude":-106.930908,"station_name":"CSU-ex
+        demonstration garden","station_id":2629},{"latitude":40.783272,"longitude":-104.777985,"station_name":"SGS
+        LTER","station_id":2773},{"latitude":40.803024,"longitude":-104.786911,"station_name":"SGS
+        LTER","station_id":2778},{"latitude":39.970871,"longitude":-105.255142,"station_name":"home","station_id":2782},{"latitude":39.732159,"longitude":-104.960899,"station_name":"Denver
+        Botanic Gardens","station_id":2783},{"latitude":40.587448,"longitude":-105.082306,"station_name":"Avery
+        House/Edwards House","station_id":2796},{"latitude":39.971001,"longitude":-105.397003,"station_name":"PPN_9050018","station_id":2803},{"latitude":37.098389,"longitude":-108.463722,"station_name":"Internship","station_id":4851},{"latitude":37.098114,"longitude":-108.463036,"station_name":"Ute
+        Internship","station_id":4852},{"latitude":40.547150,"longitude":-105.072685,"station_name":"My
+        Backyard","station_id":4857},{"latitude":40.733192,"longitude":-105.522087,"station_name":"BDSR","station_id":4874},{"latitude":40.400002,"longitude":-105.000000,"station_name":"Kim''s
+        home","station_id":4883},{"latitude":39.978806,"longitude":-105.133560,"station_name":"My
+        Yard","station_id":4889},{"latitude":40.040478,"longitude":-105.277695,"station_name":"park","station_id":4892},{"latitude":38.954746,"longitude":-107.003456,"station_name":"RMBL","station_id":5068},{"latitude":39.980545,"longitude":-105.253990,"station_name":"Home","station_id":5109},{"latitude":40.144558,"longitude":-105.124695,"station_name":"Office","station_id":5128},{"latitude":39.755360,"longitude":-105.117828,"station_name":"home","station_id":5364},{"latitude":40.649448,"longitude":-105.641251,"station_name":227038398,"station_id":5528},{"latitude":40.715538,"longitude":-105.292488,"station_name":-2096807308,"station_id":5548},{"latitude":39.371696,"longitude":-107.066925,"station_name":"HOME","station_id":5568},{"latitude":40.397762,"longitude":-105.074982,"station_name":"Chiaroscuro","station_id":5689},{"latitude":39.502098,"longitude":-104.796440,"station_name":"My
+        backyard","station_id":5723},{"latitude":40.256805,"longitude":-103.793640,"station_name":"Summer
+        House","station_id":5732},{"latitude":40.487049,"longitude":-106.823448,"station_name":"Karen
+        home","station_id":5734},{"latitude":40.269833,"longitude":-106.857704,"station_name":"Stagecoach
+        Pasture","station_id":5761},{"latitude":40.585258,"longitude":-105.084419,"station_name":"Colorado
+        State University","station_id":5763},{"latitude":39.735813,"longitude":-104.946968,"station_name":-1568302461,"station_id":5767},{"latitude":38.840401,"longitude":-107.607002,"station_name":"front
+        yard slope","station_id":5793},{"latitude":39.999397,"longitude":-105.291023,"station_name":"Chataqua
+        ","station_id":5808},{"latitude":39.502098,"longitude":-104.796440,"station_name":"My
+        front and back yards","station_id":5819},{"latitude":40.576363,"longitude":-105.081825,"station_name":"Oval","station_id":5858},{"latitude":40.576298,"longitude":-105.080849,"station_name":"The
+        Oval","station_id":5859},{"latitude":40.575909,"longitude":-105.080795,"station_name":"The
+        Oval","station_id":5860},{"latitude":40.568336,"longitude":-105.078255,"station_name":"Green
+        House Site","station_id":5861},{"latitude":40.570415,"longitude":-105.091736,"station_name":"Green
+        House Area","station_id":5862},{"latitude":40.576233,"longitude":-105.080856,"station_name":"Oval
+        site","station_id":5864},{"latitude":40.576054,"longitude":-105.080925,"station_name":"oval
+        site","station_id":5865},{"latitude":40.576118,"longitude":-105.080643,"station_name":"oval
+        site","station_id":5866},{"latitude":40.570354,"longitude":-105.091972,"station_name":"Greenhouse
+        site","station_id":5867},{"latitude":40.573238,"longitude":-105.087891,"station_name":"greenhouse
+        site","station_id":5868},{"latitude":39.677448,"longitude":-104.838120,"station_name":"Home","station_id":5949},{"latitude":39.707237,"longitude":-104.818520,"station_name":"Aurora
+        Mall","station_id":5950},{"latitude":40.299828,"longitude":-104.954025,"station_name":"Home","station_id":5990},{"latitude":39.998955,"longitude":-105.285248,"station_name":"Chautauqua
+        Park","station_id":6059},{"latitude":39.879047,"longitude":-105.200958,"station_name":"Rocky
+        Flats wildlife refuge","station_id":6060},{"latitude":40.585808,"longitude":-105.105431,"station_name":"City
+        Park","station_id":6163},{"latitude":40.004066,"longitude":-105.207451,"station_name":"Halcyon","station_id":6205},{"latitude":40.311855,"longitude":-104.907349,"station_name":"Home","station_id":6269},{"latitude":40.629574,"longitude":-105.139221,"station_name":"Home","station_id":6330},{"latitude":39.723320,"longitude":-105.110817,"station_name":"Denver
+        Federal Center","station_id":6384},{"latitude":39.196304,"longitude":-106.821953,"station_name":"ACES
+        ","station_id":6450},{"latitude":40.041004,"longitude":-105.278061,"station_name":"backyard","station_id":6456},{"latitude":40.573795,"longitude":-105.081818,"station_name":"CSU","station_id":6474},{"latitude":39.625481,"longitude":-106.619514,"station_name":"Lake
+        Creek Home Property","station_id":6477},{"latitude":40.036625,"longitude":-105.292145,"station_name":"Home","station_id":6563},{"latitude":37.275280,"longitude":-107.880066,"station_name":"Fort
+        Lewis College Campus","station_id":6662},{"latitude":37.275188,"longitude":-107.872772,"station_name":"Fort
+        Lewis College - Campus","station_id":6663},{"latitude":37.276272,"longitude":-107.862289,"station_name":"Fort
+        Lewis College","station_id":6664},{"latitude":37.273815,"longitude":-107.871162,"station_name":"Fort
+        Lewis College Campus","station_id":6665},{"latitude":37.275280,"longitude":-107.880066,"station_name":"Fort
+        Lewis College Campus","station_id":6666},{"latitude":37.273083,"longitude":-107.869850,"station_name":"running
+        trail","station_id":6667},{"latitude":37.273815,"longitude":-107.871162,"station_name":"Fort
+        Lewis College Campus","station_id":6668},{"latitude":37.273899,"longitude":-107.871994,"station_name":"Fort
+        Lewis College ","station_id":6669},{"latitude":37.275288,"longitude":-107.863365,"station_name":"Animas","station_id":6670},{"latitude":37.275642,"longitude":-107.864677,"station_name":"in
+        between animas and cenntennial","station_id":6671},{"latitude":37.274231,"longitude":-107.870415,"station_name":"Fort
+        Lewis College","station_id":6674},{"latitude":37.273815,"longitude":-107.871162,"station_name":"Fort
+        Lewis College south piont","station_id":6675},{"latitude":37.273815,"longitude":-107.871162,"station_name":"school","station_id":6676},{"latitude":37.273815,"longitude":-107.871162,"station_name":"School","station_id":6677},{"latitude":37.273815,"longitude":-107.871162,"station_name":"Fort
+        Lewis College","station_id":6678},{"latitude":37.276661,"longitude":-107.867004,"station_name":"flc
+        campus","station_id":6679},{"latitude":37.074852,"longitude":-107.465088,"station_name":"College
+        campus","station_id":6680},{"latitude":37.276188,"longitude":-107.882568,"station_name":"FLC","station_id":6681},{"latitude":37.275280,"longitude":-107.880066,"station_name":"Bader
+        Community","station_id":6682},{"latitude":37.275280,"longitude":-107.880066,"station_name":"Bader
+        Community2","station_id":6683},{"latitude":37.275280,"longitude":-107.880066,"station_name":"Centeniall
+        Community","station_id":6684},{"latitude":38.840401,"longitude":-107.607002,"station_name":"house","station_id":6688},{"latitude":40.433689,"longitude":-105.090851,"station_name":"back
+        yard","station_id":6711},{"latitude":39.427620,"longitude":-105.307404,"station_name":"Schuyler
+        Gulch","station_id":8191},{"latitude":39.731804,"longitude":-104.961166,"station_name":"DBG-York
+        Street","station_id":8309},{"latitude":38.808037,"longitude":-104.844215,"station_name":"undeveloped
+        lot","station_id":8313},{"latitude":40.307476,"longitude":-105.084206,"station_name":"House","station_id":8327},{"latitude":38.951870,"longitude":-108.286331,"station_name":"home/ranch","station_id":8338},{"latitude":39.635853,"longitude":-105.263252,"station_name":"Farm
+        Plot","station_id":8358},{"latitude":37.278412,"longitude":-107.865791,"station_name":"Chapel","station_id":8393},{"latitude":37.073463,"longitude":-105.067200,"station_name":"FDO","station_id":8411},{"latitude":38.790543,"longitude":-104.611809,"station_name":"The
+        Home Place","station_id":8432},{"latitude":40.319847,"longitude":-105.091782,"station_name":"Loveland
+        resevoir","station_id":8565},{"latitude":39.550053,"longitude":-105.782066,"station_name":"Colorado","station_id":8680},{"latitude":39.796551,"longitude":-105.122688,"station_name":"home-backyard","station_id":8695},{"latitude":39.751930,"longitude":-105.042671,"station_name":"my
+        home","station_id":8714},{"latitude":38.326450,"longitude":-104.783142,"station_name":"Home","station_id":8741},{"latitude":40.816002,"longitude":-104.749001,"station_name":"Central
+        Plains Experimental Range","station_id":8785},{"latitude":37.274883,"longitude":-107.872429,"station_name":"Centennial
+        trail","station_id":9089},{"latitude":37.274113,"longitude":-107.873589,"station_name":"lower
+        centennial","station_id":9090},{"latitude":37.273510,"longitude":-107.871445,"station_name":"South
+        facing slope of campus","station_id":9091},{"latitude":37.280556,"longitude":-107.868538,"station_name":"North
+        facing slope of campus ","station_id":9092},{"latitude":37.275246,"longitude":-107.872742,"station_name":"Slope
+        Site (Fort Lewis)","station_id":9095},{"latitude":37.274628,"longitude":-107.865784,"station_name":"Flat
+        Site (Fort Lewis)","station_id":9096},{"latitude":37.330406,"longitude":-107.900650,"station_name":"home","station_id":9102},{"latitude":37.273254,"longitude":-107.871201,"station_name":"Rainbows","station_id":9116},{"latitude":37.273338,"longitude":-107.867706,"station_name":"snyder
+        road","station_id":9117},{"latitude":37.274574,"longitude":-107.872505,"station_name":"Fort
+        Lewis College","station_id":9118},{"latitude":37.280613,"longitude":-107.869469,"station_name":"Fort
+        lewis","station_id":9119},{"latitude":37.275608,"longitude":-107.872704,"station_name":"Chapel
+        site 2 ","station_id":9120},{"latitude":37.274029,"longitude":-107.864624,"station_name":"Bader
+        Backyard","station_id":9121},{"latitude":37.276279,"longitude":-107.862587,"station_name":"Fort
+        Lewis College Campus","station_id":9122},{"latitude":37.824921,"longitude":-107.355225,"station_name":"backyard","station_id":9129},{"latitude":37.299713,"longitude":-107.868340,"station_name":"Home","station_id":9130},{"latitude":37.275658,"longitude":-107.872612,"station_name":"Site
+        3 Chapel","station_id":9131},{"latitude":39.549431,"longitude":-105.322990,"station_name":"Backyard","station_id":9132},{"latitude":37.275444,"longitude":-107.872528,"station_name":"Fort
+        Lewis College Group 2","station_id":9133},{"latitude":37.279793,"longitude":-107.871582,"station_name":"Fortlewis
+        Site 1","station_id":9134},{"latitude":37.275280,"longitude":-107.880066,"station_name":"Behind
+        Mears ","station_id":9135},{"latitude":37.272655,"longitude":-107.869576,"station_name":"Fort
+        Lewis College campus, Durango CO","station_id":9136},{"latitude":37.274139,"longitude":-107.868790,"station_name":"site
+        four on campus","station_id":9137},{"latitude":37.273380,"longitude":-107.870811,"station_name":"Fort
+        Lewis College Campus Site 4","station_id":9138},{"latitude":37.273533,"longitude":-107.871803,"station_name":"Fort
+        Lewis College Campus","station_id":9170},{"latitude":37.229935,"longitude":-107.811462,"station_name":"Chandra''s
+        House","station_id":9171},{"latitude":37.278824,"longitude":-107.865936,"station_name":"Fort
+        Lewis College #1","station_id":9193},{"latitude":37.276272,"longitude":-107.867096,"station_name":"Fort
+        Lewis #2","station_id":9194},{"latitude":37.274136,"longitude":-107.867615,"station_name":"Site
+        11","station_id":9222},{"latitude":37.272320,"longitude":-107.869629,"station_name":"Bio
+        110L Site","station_id":9224},{"latitude":37.273815,"longitude":-107.871162,"station_name":"Trail
+        behind Mears ","station_id":9226},{"latitude":37.273815,"longitude":-107.871162,"station_name":"Patch
+        Behing Mears ","station_id":9228},{"latitude":37.277554,"longitude":-107.858192,"station_name":"backyard","station_id":9229},{"latitude":39.228470,"longitude":-106.041801,"station_name":"Beaver
+        Ponds Environmental Education Center","station_id":9259},{"latitude":37.273815,"longitude":-107.871162,"station_name":"FLC
+        campus","station_id":9297},{"latitude":40.912865,"longitude":-105.505707,"station_name":"home","station_id":9323},{"latitude":37.277584,"longitude":-107.858147,"station_name":"front
+        hill","station_id":9325},{"latitude":37.277576,"longitude":-107.858154,"station_name":"Front
+        Hill","station_id":9326},{"latitude":39.556316,"longitude":-105.106071,"station_name":"Back
+        yard","station_id":9396},{"latitude":39.642483,"longitude":-106.518005,"station_name":"Walking
+        Mountains Science Center","station_id":9411},{"latitude":40.564056,"longitude":-105.124588,"station_name":"Our
+        Backyard","station_id":9441},{"latitude":38.754082,"longitude":-105.029297,"station_name":"deneme","station_id":9504},{"latitude":38.882881,"longitude":-106.998428,"station_name":"Peanut
+        Lake","station_id":9562},{"latitude":39.713604,"longitude":-105.360329,"station_name":"Dino
+        Rock, Shed draw, garden hill, cistern, ravine to Grove","station_id":9582},{"latitude":39.713177,"longitude":-105.359360,"station_name":"spring
+        draw","station_id":9583},{"latitude":39.714622,"longitude":-105.355751,"station_name":"surrounding
+        shop","station_id":9584},{"latitude":40.262890,"longitude":-105.163193,"station_name":"home","station_id":9585},{"latitude":38.568195,"longitude":-106.926254,"station_name":"Gunnison","station_id":9624},{"latitude":38.635803,"longitude":-106.939476,"station_name":"Lujan
+        Creek","station_id":9648},{"latitude":37.280525,"longitude":-107.868515,"station_name":"Fort
+        Lewis College campus","station_id":9708},{"latitude":37.273815,"longitude":-107.871162,"station_name":"Fort
+        lewis college campus","station_id":9781},{"latitude":38.660221,"longitude":-108.059563,"station_name":"my
+        yard","station_id":9833},{"latitude":39.007618,"longitude":-104.636513,"station_name":"My
+        back yard","station_id":9893},{"latitude":39.520020,"longitude":-105.177612,"station_name":"my
+        land in foothills","station_id":9907},{"latitude":39.498241,"longitude":-104.890930,"station_name":"Surrey
+        Ridge","station_id":9927},{"latitude":38.943844,"longitude":-104.781609,"station_name":"Neighborhood","station_id":10045},{"latitude":38.943844,"longitude":-104.781609,"station_name":"Walk","station_id":10046},{"latitude":37.275280,"longitude":-107.880066,"station_name":"Fort
+        Lewis","station_id":10088},{"latitude":40.359257,"longitude":-105.565636,"station_name":"Backyard","station_id":10110},{"latitude":39.579479,"longitude":-105.124023,"station_name":"yard","station_id":10143},{"latitude":40.304790,"longitude":-105.082916,"station_name":"fickel
+        park","station_id":10337},{"latitude":38.319595,"longitude":-104.804085,"station_name":"Home","station_id":10477},{"latitude":37.273815,"longitude":-107.871162,"station_name":"Fort
+        Lewis College","station_id":10568},{"latitude":37.275280,"longitude":-107.880066,"station_name":"trail","station_id":10575},{"latitude":37.273815,"longitude":-107.871162,"station_name":"Site
+        #8","station_id":10586},{"latitude":37.273663,"longitude":-107.868019,"station_name":"Nature
+        Trail ","station_id":10587},{"latitude":37.273815,"longitude":-107.871162,"station_name":"Mears","station_id":10589},{"latitude":37.273815,"longitude":-107.871162,"station_name":"The
+        Fort","station_id":10590},{"latitude":37.273815,"longitude":-107.871162,"station_name":"Rim
+        Trail","station_id":10591},{"latitude":37.275280,"longitude":-107.880066,"station_name":"Fort
+        Lewis College","station_id":10612},{"latitude":37.273815,"longitude":-107.871162,"station_name":"Site
+        #8","station_id":10613},{"latitude":37.274609,"longitude":-107.872292,"station_name":"FLC
+        College Zone 3","station_id":10614},{"latitude":37.300274,"longitude":-107.929688,"station_name":"Fort
+        Lewis","station_id":10615},{"latitude":37.273815,"longitude":-107.871162,"station_name":"Fort
+        Lewis College Campus","station_id":10617},{"latitude":37.273815,"longitude":-107.871162,"station_name":"Fort
+        Lewis College","station_id":10619},{"latitude":37.273815,"longitude":-107.871162,"station_name":"campus","station_id":10622},{"latitude":37.274155,"longitude":-107.869415,"station_name":"thefort","station_id":10627},{"latitude":37.275280,"longitude":-107.880066,"station_name":"School
+        forest","station_id":10631},{"latitude":37.273815,"longitude":-107.871162,"station_name":"Fort
+        Lewis Section 5","station_id":10633},{"latitude":39.322281,"longitude":-104.950615,"station_name":"Home","station_id":10837},{"latitude":39.322281,"longitude":-104.950615,"station_name":"Perry
+        Pines Field Station","station_id":10838},{"latitude":40.102547,"longitude":-104.447754,"station_name":"Home","station_id":10850},{"latitude":38.933807,"longitude":-104.680069,"station_name":"Banning
+        Lewis Ranch","station_id":10986},{"latitude":40.102547,"longitude":-104.447754,"station_name":"home
+        yard","station_id":10990},{"latitude":40.102547,"longitude":-104.447754,"station_name":"my
+        home yard","station_id":10991},{"latitude":38.486015,"longitude":-107.873672,"station_name":"work","station_id":10993},{"latitude":38.487682,"longitude":-107.879089,"station_name":"home","station_id":10996},{"latitude":38.057919,"longitude":-108.225647,"station_name":"Beaver
+        Pines, Norwood","station_id":11020},{"latitude":38.368332,"longitude":-108.736389,"station_name":"the
+        Nature Conservancy, Tabeguache","station_id":11021},{"latitude":38.368332,"longitude":-108.736389,"station_name":"Tabeguache","station_id":11022},{"latitude":38.368332,"longitude":-108.736389,"station_name":"Tabegauche","station_id":11023},{"latitude":40.564671,"longitude":-105.090080,"station_name":"Backyard","station_id":11049},{"latitude":40.564667,"longitude":-105.090080,"station_name":"home","station_id":11050},{"latitude":37.273815,"longitude":-107.871162,"station_name":"FLC
+        South San Juan Mountains Study Sights","station_id":11074},{"latitude":40.090519,"longitude":-104.798615,"station_name":"Yard","station_id":11092},{"latitude":39.563293,"longitude":-104.917015,"station_name":"Office","station_id":11465},{"latitude":40.599365,"longitude":-105.013771,"station_name":"Front
+        Yard","station_id":11467},{"latitude":39.610939,"longitude":-105.307541,"station_name":"Home","station_id":11508},{"latitude":39.922314,"longitude":-105.459282,"station_name":"home","station_id":11516},{"latitude":39.818233,"longitude":-105.543114,"station_name":"Red
+        Hawk Lake","station_id":11754},{"latitude":37.270092,"longitude":-107.873421,"station_name":"Old
+        house","station_id":11766},{"latitude":37.854317,"longitude":-107.621529,"station_name":"Fort
+        Lewis College","station_id":12267},{"latitude":37.273815,"longitude":-107.871162,"station_name":"Fort
+        Lewis College 1","station_id":12268},{"latitude":39.657017,"longitude":-104.868530,"station_name":"Cherry
+        Creek Greens","station_id":12272},{"latitude":39.663441,"longitude":-104.875420,"station_name":"Cherry
+        Creek Trail-S. Elmira St. to Highline Canal Trail","station_id":12273},{"latitude":37.274963,"longitude":-107.869560,"station_name":"Business
+        Building","station_id":12278},{"latitude":37.275280,"longitude":-107.880066,"station_name":"EBH","station_id":12280},{"latitude":37.273815,"longitude":-107.871162,"station_name":"campus","station_id":12281},{"latitude":37.273815,"longitude":-107.871162,"station_name":"FLC","station_id":12283},{"latitude":37.274593,"longitude":-107.872101,"station_name":"Chapel","station_id":12284},{"latitude":37.275280,"longitude":-107.880066,"station_name":"FLC
+        Chapel","station_id":12285},{"latitude":37.273815,"longitude":-107.871162,"station_name":"FortLewis
+        College","station_id":12391},{"latitude":37.273815,"longitude":-107.871162,"station_name":"Campus
+        #3","station_id":12393},{"latitude":37.273815,"longitude":-107.871162,"station_name":"Site
+        7","station_id":12394},{"latitude":37.276783,"longitude":-107.873512,"station_name":"Fort
+        Lewis College campus","station_id":12395},{"latitude":37.274788,"longitude":-107.863609,"station_name":9,"station_id":12396},{"latitude":37.276421,"longitude":-107.862350,"station_name":"FLC
+        site 10","station_id":12397},{"latitude":37.276520,"longitude":-107.862427,"station_name":"Fort
+        Lewis College Site 10","station_id":12398},{"latitude":37.274685,"longitude":-107.863754,"station_name":9.1,"station_id":12399},{"latitude":37.274940,"longitude":-107.863220,"station_name":"site
+        9 hamish","station_id":12400},{"latitude":37.273815,"longitude":-107.871162,"station_name":"Fort
+        Lewis Campus","station_id":12401},{"latitude":37.273815,"longitude":-107.871162,"station_name":"Fort
+        Lewis College","station_id":12402},{"latitude":37.273243,"longitude":-107.870201,"station_name":"SS","station_id":12403},{"latitude":38.319550,"longitude":-104.803947,"station_name":"My
+        Home","station_id":12405},{"latitude":37.273815,"longitude":-107.871162,"station_name":"Fort
+        Lewis College","station_id":12406},{"latitude":39.332130,"longitude":-105.391136,"station_name":"Windy
+        Peak Outdoor Lab","station_id":12425},{"latitude":37.264011,"longitude":-107.871132,"station_name":"Horse
+        Gulch","station_id":12565},{"latitude":37.278717,"longitude":-107.880089,"station_name":"River
+        Trail","station_id":12567},{"latitude":37.275337,"longitude":-107.868408,"station_name":"Fort
+        Lewis College","station_id":12583},{"latitude":37.276890,"longitude":-107.880157,"station_name":"new
+        house","station_id":12610},{"latitude":39.550663,"longitude":-105.099319,"station_name":"DBG-Chatfield","station_id":12708},{"latitude":39.642727,"longitude":-105.592819,"station_name":"Mount
+        Goliath","station_id":12715},{"latitude":39.187790,"longitude":-106.835846,"station_name":"Home","station_id":12743},{"latitude":39.195240,"longitude":-106.821182,"station_name":"Hallam
+        Lake","station_id":12744},{"latitude":40.169998,"longitude":-103.150002,"station_name":"lilac_data_50109","station_id":13908},{"latitude":39.500000,"longitude":-108.379997,"station_name":"lilac_data_50214","station_id":13909},{"latitude":38.849998,"longitude":-102.180000,"station_name":"lilac_data_50304","station_id":13910},{"latitude":38.919998,"longitude":-103.080002,"station_name":"lilac_data_50348","station_id":13911},{"latitude":39.180000,"longitude":-106.830002,"station_name":"lilac_data_50370","station_id":13912},{"latitude":39.400002,"longitude":-105.480003,"station_name":"lilac_data_50454","station_id":13913},{"latitude":39.369999,"longitude":-107.029999,"station_name":"lilac_data_50514","station_id":13914},{"latitude":37.430000,"longitude":-105.519997,"station_name":"lilac_data_50776","station_id":13915},{"latitude":39.880001,"longitude":-106.699997,"station_name":"lilac_data_50810","station_id":13916},{"latitude":39.630001,"longitude":-102.180000,"station_name":"lilac_data_50834","station_id":13917},{"latitude":40.650002,"longitude":-104.330002,"station_name":"lilac_data_50945","station_id":13918},{"latitude":38.849998,"longitude":-106.129997,"station_name":"lilac_data_51071","station_id":13919},{"latitude":39.720001,"longitude":-104.220001,"station_name":"lilac_data_51179","station_id":13920},{"latitude":38.900002,"longitude":-107.930000,"station_name":"lilac_data_51440","station_id":13922},{"latitude":37.750000,"longitude":-106.120003,"station_name":"lilac_data_51458","station_id":13923},{"latitude":39.220001,"longitude":-105.279999,"station_name":"lilac_data_51528","station_id":13924},{"latitude":38.820000,"longitude":-102.349998,"station_name":"lilac_data_51564","station_id":13925},{"latitude":38.380001,"longitude":-105.779999,"station_name":"lilac_data_51693","station_id":13926},{"latitude":39.250000,"longitude":-107.970001,"station_name":"lilac_data_51741","station_id":13927},{"latitude":40.520000,"longitude":-107.550003,"station_name":"lilac_data_51928","station_id":13928},{"latitude":38.750000,"longitude":-108.050003,"station_name":"lilac_data_52192","station_id":13929},{"latitude":39.770000,"longitude":-104.879997,"station_name":"lilac_data_52220","station_id":13930},{"latitude":39.750000,"longitude":-105.000000,"station_name":"lilac_data_52225","station_id":13931},{"latitude":37.380001,"longitude":-103.879997,"station_name":"lilac_data_52312","station_id":13932},{"latitude":37.470001,"longitude":-108.500000,"station_name":"lilac_data_52326","station_id":13933},{"latitude":39.080002,"longitude":-104.570000,"station_name":"lilac_data_52494","station_id":13934},{"latitude":40.119999,"longitude":-102.480003,"station_name":"lilac_data_52535","station_id":13935},{"latitude":39.130001,"longitude":-104.529999,"station_name":"lilac_data_52600","station_id":13936},{"latitude":40.380001,"longitude":-105.519997,"station_name":"lilac_data_52759","station_id":13937},{"latitude":39.320000,"longitude":-103.080002,"station_name":"lilac_data_52932","station_id":13938},{"latitude":38.549999,"longitude":-103.680000,"station_name":"lilac_data_52997","station_id":13939},{"latitude":40.099998,"longitude":-104.820000,"station_name":"lilac_data_53027","station_id":13940},{"latitude":40.250000,"longitude":-103.800003,"station_name":"lilac_data_53038","station_id":13941},{"latitude":39.169998,"longitude":-108.730003,"station_name":"lilac_data_53146","station_id":13942},{"latitude":38.669998,"longitude":-108.980003,"station_name":"lilac_data_53246","station_id":13943},{"latitude":39.279999,"longitude":-103.529999,"station_name":"lilac_data_53258","station_id":13944},{"latitude":39.049999,"longitude":-108.449997,"station_name":"lilac_data_53489","station_id":13945},{"latitude":39.099998,"longitude":-104.730003,"station_name":"lilac_data_53579","station_id":13946},{"latitude":39.230000,"longitude":-104.750000,"station_name":"lilac_data_53584","station_id":13947},{"latitude":39.880001,"longitude":-106.330002,"station_name":"lilac_data_53592","station_id":13948},{"latitude":40.480000,"longitude":-107.250000,"station_name":"lilac_data_53867","station_id":13949},{"latitude":38.049999,"longitude":-102.120003,"station_name":"lilac_data_54076","station_id":13950},{"latitude":40.000000,"longitude":-104.080002,"station_name":"lilac_data_54155","station_id":13951},{"latitude":39.130001,"longitude":-103.470001,"station_name":"lilac_data_54172","station_id":13952},{"latitude":38.070000,"longitude":-102.930000,"station_name":"lilac_data_54388","station_id":13953},{"latitude":39.349998,"longitude":-104.480003,"station_name":"lilac_data_54581","station_id":13954},{"latitude":38.770000,"longitude":-102.779999,"station_name":"lilac_data_54603","station_id":13955},{"latitude":40.480000,"longitude":-103.019997,"station_name":"lilac_data_54945","station_id":13956},{"latitude":39.270000,"longitude":-103.699997,"station_name":"lilac_data_55017","station_id":13957},{"latitude":39.000000,"longitude":-103.730003,"station_name":"lilac_data_55020","station_id":13958},{"latitude":40.000000,"longitude":-108.199997,"station_name":"lilac_data_55048","station_id":13959},{"latitude":40.169998,"longitude":-105.070000,"station_name":"lilac_data_55116","station_id":13960},{"latitude":37.200001,"longitude":-108.500000,"station_name":"lilac_data_55531","station_id":13961},{"latitude":38.500000,"longitude":-106.330002,"station_name":"lilac_data_55695","station_id":13962},{"latitude":37.580002,"longitude":-106.150002,"station_name":"lilac_data_55706","station_id":13963},{"latitude":38.480000,"longitude":-107.879997,"station_name":"lilac_data_55717","station_id":13964},{"latitude":39.650002,"longitude":-105.230003,"station_name":"lilac_data_55765","station_id":13965},{"latitude":39.650002,"longitude":-105.230003,"station_name":"lilac_data_55805","station_id":13966},{"latitude":40.599998,"longitude":-103.849998,"station_name":"lilac_data_55922","station_id":13967},{"latitude":40.270000,"longitude":-102.849998,"station_name":"lilac_data_56192","station_id":13968},{"latitude":39.119999,"longitude":-104.919998,"station_name":"lilac_data_56280","station_id":13969},{"latitude":39.529999,"longitude":-104.650002,"station_name":"lilac_data_56326","station_id":13970},{"latitude":37.349998,"longitude":-106.500000,"station_name":"lilac_data_56559","station_id":13971},{"latitude":38.299999,"longitude":-104.349998,"station_name":"lilac_data_56763","station_id":13972},{"latitude":39.529999,"longitude":-107.800003,"station_name":"lilac_data_57031","station_id":13973},{"latitude":38.029999,"longitude":-103.699997,"station_name":"lilac_data_57167","station_id":13974},{"latitude":38.880001,"longitude":-104.099998,"station_name":"lilac_data_57287","station_id":13975},{"latitude":38.080002,"longitude":-106.129997,"station_name":"lilac_data_57337","station_id":13976},{"latitude":39.570000,"longitude":-107.230003,"station_name":"lilac_data_57618","station_id":13977},{"latitude":39.150002,"longitude":-104.080002,"station_name":"lilac_data_57664","station_id":13978},{"latitude":37.400002,"longitude":-102.620003,"station_name":"lilac_data_57866","station_id":13979},{"latitude":37.279999,"longitude":-102.180000,"station_name":"lilac_data_57992","station_id":13980},{"latitude":37.250000,"longitude":-104.330002,"station_name":"lilac_data_58434","station_id":13981},{"latitude":37.130001,"longitude":-103.320000,"station_name":"lilac_data_58468","station_id":13982},{"latitude":39.299999,"longitude":-102.730003,"station_name":"lilac_data_58722","station_id":13983},{"latitude":40.419998,"longitude":-105.199997,"station_name":"lilac_data_58839","station_id":13984},{"latitude":38.220001,"longitude":-105.080002,"station_name":"lilac_data_58986","station_id":13985},{"latitude":38.919998,"longitude":-107.519997,"station_name":"lilac_data_59045","station_id":13986},{"latitude":40.150002,"longitude":-106.900002,"station_name":"lilac_data_59265","station_id":13987},{"latitude":40.130001,"longitude":-102.730003,"station_name":"lilac_data_59295","station_id":13988},{"latitude":37.000000,"longitude":-103.650002,"station_name":"lilac_data_295073","station_id":14257},{"latitude":37.092545,"longitude":-108.130920,"station_name":"home","station_id":14887},{"latitude":40.799999,"longitude":-108.919998,"station_name":"honeysuckle_data_51017","station_id":15597},{"latitude":39.369999,"longitude":-104.870003,"station_name":"honeysuckle_data_51401","station_id":15598},{"latitude":39.380001,"longitude":-106.199997,"station_name":"honeysuckle_data_51660","station_id":15599},{"latitude":37.349998,"longitude":-108.570000,"station_name":"honeysuckle_data_51886","station_id":15600},{"latitude":39.630001,"longitude":-106.029999,"station_name":"honeysuckle_data_52281","station_id":15601},{"latitude":40.230000,"longitude":-108.970001,"station_name":"honeysuckle_data_52286","station_id":15602},{"latitude":39.230000,"longitude":-106.000000,"station_name":"honeysuckle_data_52814","station_id":15603},{"latitude":40.580002,"longitude":-105.080002,"station_name":"honeysuckle_data_53005","station_id":15604},{"latitude":38.070000,"longitude":-102.320000,"station_name":"honeysuckle_data_53477","station_id":15605},{"latitude":40.180000,"longitude":-105.870003,"station_name":"honeysuckle_data_53500","station_id":15606},{"latitude":40.419998,"longitude":-104.699997,"station_name":"honeysuckle_data_53553","station_id":15607},{"latitude":38.680000,"longitude":-104.379997,"station_name":"honeysuckle_data_53656","station_id":15608},{"latitude":39.570000,"longitude":-105.220001,"station_name":"honeysuckle_data_54293","station_id":15609},{"latitude":39.770000,"longitude":-105.849998,"station_name":"honeysuckle_data_54397","station_id":15610},{"latitude":37.349998,"longitude":-108.300003,"station_name":"honeysuckle_data_55327","station_id":15611},{"latitude":40.029999,"longitude":-107.519997,"station_name":"honeysuckle_data_55408","station_id":15612},{"latitude":39.369999,"longitude":-106.750000,"station_name":"honeysuckle_data_55507","station_id":15613},{"latitude":39.619999,"longitude":-105.019997,"station_name":"honeysuckle_data_55762","station_id":15614},{"latitude":37.220001,"longitude":-105.050003,"station_name":"honeysuckle_data_55990","station_id":15615},{"latitude":40.619999,"longitude":-102.470001,"station_name":"honeysuckle_data_56299","station_id":15616},{"latitude":38.369999,"longitude":-108.970001,"station_name":"honeysuckle_data_56315","station_id":15617},{"latitude":37.680000,"longitude":-108.029999,"station_name":"honeysuckle_data_57017","station_id":15618},{"latitude":37.720001,"longitude":-107.269997,"station_name":"honeysuckle_data_57050","station_id":15619},{"latitude":38.529999,"longitude":-106.000000,"station_name":"honeysuckle_data_57370","station_id":15620},{"latitude":39.380001,"longitude":-104.970001,"station_name":"honeysuckle_data_57510","station_id":15621},{"latitude":39.299999,"longitude":-102.870003,"station_name":"honeysuckle_data_57519","station_id":15622},{"latitude":40.029999,"longitude":-105.580002,"station_name":"honeysuckle_data_57648","station_id":15623},{"latitude":37.400002,"longitude":-102.620003,"station_name":"honeysuckle_data_57862","station_id":15624},{"latitude":37.799999,"longitude":-106.830002,"station_name":"honeysuckle_data_58742","station_id":15625},{"latitude":37.869999,"longitude":-104.120003,"station_name":"honeysuckle_data_58997","station_id":15626},{"latitude":40.029999,"longitude":-106.220001,"station_name":"honeysuckle_data_59096","station_id":15627},{"latitude":37.549999,"longitude":-108.730003,"station_name":"honeysuckle_data_59275","station_id":15628},{"latitude":38.919998,"longitude":-103.279999,"station_name":"honeysuckle_data_50884","station_id":16032},{"latitude":39.320000,"longitude":-102.269997,"station_name":"honeysuckle_data_51121","station_id":16033},{"latitude":37.770000,"longitude":-107.129997,"station_name":"honeysuckle_data_53951","station_id":16034},{"latitude":40.580002,"longitude":-102.300003,"station_name":"honeysuckle_data_54082","station_id":16035},{"latitude":37.130001,"longitude":-107.629997,"station_name":"honeysuckle_data_54250","station_id":16036},{"latitude":39.619999,"longitude":-105.019997,"station_name":"honeysuckle_data_55056","station_id":16037},{"latitude":38.380001,"longitude":-108.980003,"station_name":"honeysuckle_data_56318","station_id":16038},{"latitude":38.180000,"longitude":-104.650002,"station_name":"honeysuckle_data_56767","station_id":16039},{"latitude":39.590431,"longitude":-104.952271,"station_name":"Back
+        Yard","station_id":16159},{"latitude":37.273815,"longitude":-107.871162,"station_name":"flc","station_id":16167},{"latitude":37.275280,"longitude":-107.880066,"station_name":"fort
+        lewis college","station_id":16170},{"latitude":39.498920,"longitude":-105.347000,"station_name":"Home","station_id":16269},{"latitude":40.017719,"longitude":-105.281960,"station_name":"Office","station_id":16467},{"latitude":38.075005,"longitude":-104.986656,"station_name":"Pueblo
+        Mountain Park","station_id":16619},{"latitude":37.274010,"longitude":-107.868996,"station_name":"Junipers","station_id":16622},{"latitude":37.272995,"longitude":-107.868027,"station_name":"Africa","station_id":16624},{"latitude":37.273815,"longitude":-107.871162,"station_name":"Site
+        7-Bader/Snyder","station_id":16626},{"latitude":37.273815,"longitude":-107.871162,"station_name":"Number
+        2","station_id":16627},{"latitude":37.273815,"longitude":-107.871162,"station_name":"FLC
+        #9","station_id":16628},{"latitude":37.280624,"longitude":-107.867256,"station_name":"Fort
+        Lewis College","station_id":16629},{"latitude":37.274689,"longitude":-107.872612,"station_name":"Centennial
+        Nature Trail","station_id":16630},{"latitude":37.273685,"longitude":-107.864594,"station_name":"Bader/Snyder","station_id":16631},{"latitude":37.271748,"longitude":-107.870163,"station_name":"FLC","station_id":16634},{"latitude":37.275089,"longitude":-107.872696,"station_name":"Section
+        3","station_id":16651},{"latitude":37.277630,"longitude":-107.873306,"station_name":"AshleyGreer","station_id":16652},{"latitude":37.273815,"longitude":-107.871162,"station_name":"Chapel","station_id":16653},{"latitude":37.273651,"longitude":-107.871780,"station_name":"Fort
+        Lewis College South Hill Rim Trail","station_id":16654},{"latitude":37.273617,"longitude":-107.868073,"station_name":"Durango
+        8th","station_id":16655},{"latitude":37.275280,"longitude":-107.880066,"station_name":"Fort
+        Lewis College Campus","station_id":16656},{"latitude":40.040649,"longitude":-105.207779,"station_name":"Fort
+        Lewis College Campus","station_id":16659},{"latitude":37.273815,"longitude":-107.871162,"station_name":"college
+        campus","station_id":16660},{"latitude":37.272968,"longitude":-107.869362,"station_name":"Fort
+        Lewis College","station_id":16661},{"latitude":37.274487,"longitude":-107.863564,"station_name":"Site
+        9","station_id":16662},{"latitude":37.849167,"longitude":-106.926437,"station_name":"Willow
+        Creek Restoration","station_id":16663},{"latitude":40.707909,"longitude":-105.007202,"station_name":"Backyard","station_id":16814},{"latitude":37.923618,"longitude":-104.930267,"station_name":"Home","station_id":16894},{"latitude":40.476273,"longitude":-104.904648,"station_name":"back
+        yard","station_id":17011},{"latitude":39.732040,"longitude":-104.960098,"station_name":"Denver
+        Botanic Gardens","station_id":17060},{"latitude":39.742233,"longitude":-104.954567,"station_name":"City
+        Park South Neighborhood","station_id":17067},{"latitude":39.732040,"longitude":-104.960098,"station_name":"Denver
+        Botanic Gardens","station_id":17068},{"latitude":39.501820,"longitude":-104.518616,"station_name":"Home","station_id":17195},{"latitude":39.500328,"longitude":-104.528786,"station_name":"CO
+        Home","station_id":17198},{"latitude":38.839516,"longitude":-107.798340,"station_name":"my
+        property","station_id":17206},{"latitude":40.153999,"longitude":-103.602966,"station_name":"home","station_id":17208},{"latitude":39.986977,"longitude":-105.222160,"station_name":"home","station_id":17224},{"latitude":38.383228,"longitude":-107.820503,"station_name":"Backyard","station_id":17236},{"latitude":38.383228,"longitude":-107.820503,"station_name":"My
+        back yard","station_id":17238},{"latitude":38.839516,"longitude":-107.798340,"station_name":"Colwell
+        Cedars Retreat","station_id":17253},{"latitude":39.382038,"longitude":-104.948189,"station_name":"Home","station_id":17288},{"latitude":40.589725,"longitude":-105.067482,"station_name":"Buckingham
+        Park","station_id":17403},{"latitude":40.473270,"longitude":-105.024529,"station_name":"YARD","station_id":17624},{"latitude":37.279495,"longitude":-107.935600,"station_name":"lightner  creek","station_id":17675},{"latitude":39.640545,"longitude":-105.050156,"station_name":"Zenobia","station_id":17695},{"latitude":39.732040,"longitude":-104.960098,"station_name":"Denver
+        Botanic Gardens","station_id":17697},{"latitude":39.665764,"longitude":-104.927467,"station_name":"My
+        backyard","station_id":17744},{"latitude":39.727100,"longitude":-104.956406,"station_name":"Cheesman
+        Park","station_id":17790},{"latitude":40.624863,"longitude":-105.061096,"station_name":"Home","station_id":18225},{"latitude":38.543526,"longitude":-106.004379,"station_name":"Sands
+        lake","station_id":18370},{"latitude":40.033360,"longitude":-105.289993,"station_name":"my
+        front yard","station_id":18381},{"latitude":39.966557,"longitude":-105.252617,"station_name":"Community
+        Garden","station_id":18643},{"latitude":37.273804,"longitude":-107.871033,"station_name":"Fort
+        Lewis College ","station_id":18752},{"latitude":37.275280,"longitude":-107.880066,"station_name":"Fort
+        Lewis College Campus","station_id":18754},{"latitude":39.731567,"longitude":-104.961311,"station_name":"&quot;A&quot;
+        Science Pyramid","station_id":18785},{"latitude":40.529842,"longitude":-105.036201,"station_name":"SitSpot","station_id":18807},{"latitude":37.281857,"longitude":-107.865356,"station_name":"fort
+        lewis college","station_id":18836},{"latitude":37.273804,"longitude":-107.871033,"station_name":"Campus","station_id":18837},{"latitude":39.924530,"longitude":-105.078728,"station_name":"Home","station_id":18921},{"latitude":39.733765,"longitude":-104.870140,"station_name":"Our
+        back yard","station_id":19185},{"latitude":37.273540,"longitude":-107.871582,"station_name":"South
+        ","station_id":19206},{"latitude":37.282196,"longitude":-107.865486,"station_name":"North","station_id":19207},{"latitude":37.282055,"longitude":-107.865547,"station_name":"North
+        Fort Lewis","station_id":19208},{"latitude":37.273552,"longitude":-107.871574,"station_name":"South
+        Fort Lewis","station_id":19209},{"latitude":37.281857,"longitude":-107.865356,"station_name":"chapman
+        hill","station_id":19496},{"latitude":40.342621,"longitude":-105.515762,"station_name":"home","station_id":19562},{"latitude":39.624386,"longitude":-105.328125,"station_name":"home","station_id":19579},{"latitude":40.589729,"longitude":-105.148796,"station_name":"CSU-Atmos","station_id":19710},{"latitude":39.074177,"longitude":-108.559799,"station_name":"Home","station_id":19887},{"latitude":39.614273,"longitude":-104.861862,"station_name":"Home","station_id":19898},{"latitude":40.594196,"longitude":-105.086533,"station_name":"Whitcomb","station_id":19913},{"latitude":40.402344,"longitude":-104.699036,"station_name":"West
+        bird feeder","station_id":19943},{"latitude":39.736118,"longitude":-104.976120,"station_name":"Home","station_id":19948},{"latitude":39.883434,"longitude":-105.092957,"station_name":"Home","station_id":19954},{"latitude":38.545826,"longitude":-106.925323,"station_name":"Gunnison,
+        Colorado","station_id":19976},{"latitude":38.872795,"longitude":-104.762604,"station_name":"Palmer
+        Park, Greencrest Trail","station_id":19992},{"latitude":39.760746,"longitude":-105.015945,"station_name":"home","station_id":20126},{"latitude":39.769814,"longitude":-105.014832,"station_name":"LoHi,
+        Denver","station_id":20128},{"latitude":40.621700,"longitude":-105.072807,"station_name":"Home","station_id":20266},{"latitude":40.616798,"longitude":-105.144737,"station_name":"2021
+        Bingham Ln","station_id":20305},{"latitude":37.294128,"longitude":-107.836121,"station_name":"Skyline
+        Trail ","station_id":20321},{"latitude":39.672035,"longitude":-104.927689,"station_name":"Highline
+        Canal Yale - Holly","station_id":20335},{"latitude":40.411854,"longitude":-105.152641,"station_name":"Devil''s
+        Backbone Open Space","station_id":20338},{"latitude":39.551144,"longitude":-104.950569,"station_name":"My
+        school","station_id":20415},{"latitude":39.522610,"longitude":-104.965714,"station_name":"MVHS","station_id":20422},{"latitude":39.952251,"longitude":-104.604378,"station_name":"charlie
+        wade farm","station_id":20446},{"latitude":39.507935,"longitude":-105.518150,"station_name":"Home","station_id":20487},{"latitude":40.023914,"longitude":-105.289291,"station_name":"Home","station_id":20610},{"latitude":37.630058,"longitude":-104.795677,"station_name":"home","station_id":20625},{"latitude":39.666878,"longitude":-104.873795,"station_name":"Bike
+        path","station_id":20713},{"latitude":39.604790,"longitude":-105.022484,"station_name":"Hudson
+        gardens","station_id":20714},{"latitude":39.668701,"longitude":-104.875587,"station_name":"high
+        line canal ","station_id":20715},{"latitude":39.684456,"longitude":-104.834015,"station_name":"jewel
+        wetland","station_id":20717},{"latitude":37.342041,"longitude":-108.291618,"station_name":"home","station_id":20837},{"latitude":40.402683,"longitude":-104.698280,"station_name":"East
+        Bird Feeder","station_id":21024},{"latitude":39.640263,"longitude":-106.374191,"station_name":"Vail","station_id":21098},{"latitude":39.730827,"longitude":-104.960464,"station_name":"Denver
+        Botanic Garens","station_id":21280},{"latitude":40.402924,"longitude":-104.697510,"station_name":"Red
+        Maple site","station_id":21468},{"latitude":40.402988,"longitude":-104.700211,"station_name":"Ponderosa
+        site","station_id":21470},{"latitude":40.404621,"longitude":-104.698280,"station_name":"Cottonwood
+        site","station_id":21471},{"latitude":40.406452,"longitude":-104.685745,"station_name":"School
+        ","station_id":21497},{"latitude":40.406452,"longitude":-104.685745,"station_name":"UNC
+        campus","station_id":21512},{"latitude":37.282524,"longitude":-107.879013,"station_name":"Triangle
+        Park","station_id":21575},{"latitude":37.277824,"longitude":-107.887711,"station_name":"Overend
+        Park","station_id":21576},{"latitude":37.277824,"longitude":-107.887711,"station_name":"testingresponse","station_id":21578},{"latitude":37.277824,"longitude":-107.887711,"station_name":"testing
+        response","station_id":21579},{"latitude":37.277824,"longitude":-107.887711,"station_name":"testing
+        space","station_id":21580},{"latitude":39.277824,"longitude":-107.887711,"station_name":"twice
+        more test","station_id":21600},{"latitude":37.265465,"longitude":-107.884979,"station_name":"Dog
+        Park","station_id":21621},{"latitude":37.261326,"longitude":-107.878571,"station_name":"Santa
+        Rita Park","station_id":21622},{"latitude":37.275196,"longitude":-107.884216,"station_name":"Schneider
+        Park","station_id":21628},{"latitude":37.266800,"longitude":-107.875000,"station_name":"Fanto
+        Park","station_id":21632},{"latitude":37.310001,"longitude":-107.854202,"station_name":"Oxbow
+        Park","station_id":21649},{"latitude":40.406452,"longitude":-104.685745,"station_name":"UNCO
+        Ross Courtyard","station_id":21665},{"latitude":37.276310,"longitude":-107.867310,"station_name":"FLC","station_id":21734},{"latitude":40.406452,"longitude":-104.685745,"station_name":"UNC
+        ","station_id":21782},{"latitude":40.423313,"longitude":-104.709129,"station_name":"University
+        of Northern Colorado","station_id":21784},{"latitude":40.635410,"longitude":-103.209549,"station_name":"Home
+        ","station_id":21789},{"latitude":40.401314,"longitude":-104.698433,"station_name":"UNC","station_id":21790},{"latitude":40.406452,"longitude":-104.685745,"station_name":"ponderosa
+        pine 1","station_id":21792},{"latitude":40.406452,"longitude":-104.685745,"station_name":"house
+        sparrows unc","station_id":21793},{"latitude":40.406452,"longitude":-104.685745,"station_name":"ponderosa
+        pine 2","station_id":21794},{"latitude":40.406452,"longitude":-104.685745,"station_name":"ponderosa
+        pine 3","station_id":21795},{"latitude":40.406452,"longitude":-104.685745,"station_name":"ponderosa
+        pine 4 ","station_id":21796},{"latitude":37.276310,"longitude":-107.867310,"station_name":"FLC
+        campus","station_id":21835},{"latitude":39.196430,"longitude":-106.822075,"station_name":"ACES
+        Hallam Lake","station_id":21912},{"latitude":39.596001,"longitude":-105.000839,"station_name":"my
+        yard","station_id":21964},{"latitude":40.399384,"longitude":-104.724983,"station_name":"home","station_id":22098},{"latitude":39.881905,"longitude":-105.110077,"station_name":"Witt
+        STEM Elementary/Ketner Lake","station_id":22288},{"latitude":39.071510,"longitude":-108.543869,"station_name":"Home-CMU","station_id":22332},{"latitude":40.402924,"longitude":-104.698685,"station_name":"School","station_id":22369},{"latitude":40.412254,"longitude":-104.693130,"station_name":"bird
+        feeder 1","station_id":22373},{"latitude":40.403107,"longitude":-104.698799,"station_name":"bird
+        feeder 2","station_id":22374},{"latitude":40.401344,"longitude":-104.700172,"station_name":"bird
+        feeder ","station_id":22482},{"latitude":40.423313,"longitude":-104.709129,"station_name":"UNCO","station_id":22489},{"latitude":40.000122,"longitude":-105.214699,"station_name":"Bobolink
+        Trail","station_id":22517},{"latitude":40.402390,"longitude":-104.699097,"station_name":"west
+        bird feeder","station_id":22521},{"latitude":39.760971,"longitude":-104.921944,"station_name":"house","station_id":22602},{"latitude":40.225113,"longitude":-105.265404,"station_name":"home","station_id":22743},{"latitude":40.585258,"longitude":-105.084419,"station_name":"Pineridge","station_id":22751},{"latitude":40.193417,"longitude":-105.114670,"station_name":"1518
+        19th Ave ","station_id":22752},{"latitude":39.704571,"longitude":-105.091240,"station_name":"Belmar
+        Park","station_id":22758},{"latitude":39.550053,"longitude":-105.782066,"station_name":"Bluestem
+        prairie open space","station_id":22813},{"latitude":38.965111,"longitude":-105.075752,"station_name":"My
+        yard","station_id":23027},{"latitude":38.856602,"longitude":-107.829002,"station_name":"Ranch","station_id":23048},{"latitude":38.849129,"longitude":-104.896141,"station_name":"home","station_id":23219},{"latitude":39.731644,"longitude":-105.043495,"station_name":"Home","station_id":23301},{"latitude":39.131527,"longitude":-103.469559,"station_name":"Home","station_id":23312},{"latitude":39.224037,"longitude":-106.039841,"station_name":"Beaver
+        Ponds EEC","station_id":23329},{"latitude":40.052189,"longitude":-105.049812,"station_name":"My
+        backyard","station_id":23332},{"latitude":39.755703,"longitude":-104.932503,"station_name":"Backyard","station_id":23404},{"latitude":39.940384,"longitude":-105.263176,"station_name":"Homestead
+        (HS)","station_id":23472},{"latitude":40.172562,"longitude":-105.045319,"station_name":"U-Reservoir","station_id":23634},{"latitude":40.001648,"longitude":-105.257401,"station_name":"my
+        front yard","station_id":23695},{"latitude":39.744644,"longitude":-104.902588,"station_name":"my
+        yard","station_id":23710},{"latitude":39.952682,"longitude":-105.233200,"station_name":"Eldo
+        Springs Office","station_id":23729},{"latitude":40.432434,"longitude":-105.500381,"station_name":"Rocky
+        Mountain National Park","station_id":23747},{"latitude":40.737804,"longitude":-105.546074,"station_name":"Shambhala
+        Mountain Center","station_id":23749},{"latitude":40.115330,"longitude":-105.259300,"station_name":"Left
+        Hand Creek at 41st","station_id":23779},{"latitude":38.959160,"longitude":-106.989769,"station_name":"Rocky
+        Mountain Biological Laboratory","station_id":23783},{"latitude":40.144711,"longitude":-105.890991,"station_name":"Home","station_id":23831},{"latitude":38.536797,"longitude":-105.994652,"station_name":"Home","station_id":23928},{"latitude":39.402748,"longitude":-107.212334,"station_name":"Garden","station_id":23934},{"latitude":39.684925,"longitude":-105.160980,"station_name":"Home/Open
+        Space","station_id":23976},{"latitude":38.957268,"longitude":-106.985413,"station_name":"Warming
+        Meadow","station_id":24064},{"latitude":38.974041,"longitude":-107.036972,"station_name":"Baldy","station_id":24101},{"latitude":38.920975,"longitude":-104.991844,"station_name":"Ute
+        Pass Elementary School","station_id":24122},{"latitude":40.423313,"longitude":-104.709129,"station_name":"UNC","station_id":24154},{"latitude":39.194214,"longitude":-106.820915,"station_name":"Lost
+        Man Trail","station_id":24185},{"latitude":40.513485,"longitude":-105.016479,"station_name":"Fossil
+        Ridge HS","station_id":24189},{"latitude":40.406452,"longitude":-104.685745,"station_name":"UNIVERSITY","station_id":24325},{"latitude":40.402721,"longitude":-104.698265,"station_name":"East
+        Bird Feeder","station_id":24403},{"latitude":37.272778,"longitude":-107.881432,"station_name":"Test
+        Site 6","station_id":24565},{"latitude":40.515118,"longitude":-105.249344,"station_name":"Mountain
+        Ranch","station_id":24614},{"latitude":39.550053,"longitude":-105.782066,"station_name":"Sloan''s
+        Lake","station_id":24638},{"latitude":40.171124,"longitude":-105.104500,"station_name":"Roosevelt
+        Park ","station_id":24799},{"latitude":39.732044,"longitude":-104.960114,"station_name":"botanic","station_id":24898},{"latitude":39.655083,"longitude":-104.881844,"station_name":"My
+        back yard","station_id":24916},{"latitude":39.739235,"longitude":-104.990250,"station_name":"Denver
+        botanic gardens","station_id":24918},{"latitude":39.550053,"longitude":-105.782066,"station_name":"Denver
+        botanic gardens","station_id":24919},{"latitude":39.727478,"longitude":-104.958496,"station_name":"USA
+        Penology Site","station_id":24920},{"latitude":39.732136,"longitude":-104.960503,"station_name":"Denver
+        Botanic Gardens ","station_id":24921},{"latitude":39.731873,"longitude":-104.959618,"station_name":"Denver
+        Botanic Gardens","station_id":24922},{"latitude":39.732380,"longitude":-104.960182,"station_name":"Denver
+        Botanic Garden","station_id":24923},{"latitude":39.914913,"longitude":-105.076469,"station_name":"Broomfield
+        Academy ","station_id":24924},{"latitude":39.587765,"longitude":-105.002464,"station_name":"heritage
+        high school","station_id":24925},{"latitude":39.622005,"longitude":-104.712624,"station_name":"Home","station_id":24940},{"latitude":39.240330,"longitude":-108.153702,"station_name":"Shire","station_id":24982},{"latitude":38.607613,"longitude":-104.561424,"station_name":"Asheviile
+        ","station_id":24991},{"latitude":40.166328,"longitude":-105.138954,"station_name":"Golden
+        Ponds","station_id":25042},{"latitude":39.931171,"longitude":-104.973930,"station_name":"Century
+        Middle Schhol","station_id":25056},{"latitude":39.502338,"longitude":-107.311920,"station_name":"Home","station_id":25103},{"latitude":40.424683,"longitude":-104.706413,"station_name":"UNCO","station_id":25107},{"latitude":40.402390,"longitude":-104.699097,"station_name":"West
+        bird feeder","station_id":25116},{"latitude":40.439823,"longitude":-104.682106,"station_name":"UNCO
+        BIO 111","station_id":25120},{"latitude":40.402798,"longitude":-104.698296,"station_name":"unco","station_id":25121},{"latitude":40.402431,"longitude":-104.700302,"station_name":"Pinus
+        1","station_id":25157},{"latitude":40.402302,"longitude":-104.700157,"station_name":"Pinus
+        2","station_id":25158},{"latitude":39.550053,"longitude":-105.782066,"station_name":"university
+        of northern colorado ","station_id":25178},{"latitude":40.393677,"longitude":-105.073158,"station_name":"Land.51","station_id":25232},{"latitude":39.683758,"longitude":-104.909340,"station_name":"Home","station_id":25234},{"latitude":40.402832,"longitude":-104.698746,"station_name":"CW10","station_id":25249},{"latitude":40.402622,"longitude":-104.698273,"station_name":"uncobio111","station_id":25259},{"latitude":39.736374,"longitude":-104.984467,"station_name":"Sherman","station_id":25379},{"latitude":38.598450,"longitude":-106.531380,"station_name":"CO-GN-59","station_id":25390},{"latitude":39.980373,"longitude":-105.240639,"station_name":"yantra
+        park","station_id":25397},{"latitude":39.978935,"longitude":-105.239006,"station_name":"tantra
+        park","station_id":25398},{"latitude":39.986198,"longitude":-105.245102,"station_name":"lighthouse","station_id":25401},{"latitude":40.173481,"longitude":-105.108414,"station_name":"Home","station_id":25483},{"latitude":39.984535,"longitude":-105.160049,"station_name":"Jardins
+        du Claque","station_id":25539},{"latitude":37.469173,"longitude":-105.877350,"station_name":"my
+        back yard","station_id":25587},{"latitude":40.419441,"longitude":-104.766640,"station_name":"my
+        yard","station_id":25605},{"latitude":40.525364,"longitude":-105.057388,"station_name":"Home","station_id":25708},{"latitude":38.941944,"longitude":-104.769348,"station_name":"Home","station_id":25722},{"latitude":40.019424,"longitude":-105.278854,"station_name":"Home
+        Office","station_id":25759},{"latitude":40.569077,"longitude":-105.067665,"station_name":"My
+        yard","station_id":25803},{"latitude":39.714520,"longitude":-104.968918,"station_name":"Home","station_id":25809},{"latitude":39.746132,"longitude":-105.000984,"station_name":"auraria
+        campus","station_id":25931},{"latitude":39.746132,"longitude":-105.000984,"station_name":"auraria
+        campus","station_id":25932},{"latitude":40.145805,"longitude":-105.391602,"station_name":"Cal-Wood
+        Education Center","station_id":26113},{"latitude":39.437016,"longitude":-104.776649,"station_name":"My
+        Backyard","station_id":26115},{"latitude":38.698036,"longitude":-106.047630,"station_name":"Ruby
+        Trail Plot - Browns Canyon National Monument","station_id":26158},{"latitude":39.095551,"longitude":-108.538383,"station_name":"Home","station_id":26520},{"latitude":39.994247,"longitude":-105.138596,"station_name":"My
+        Yard","station_id":26606},{"latitude":39.647892,"longitude":-104.888420,"station_name":"Willow
+        Circle","station_id":26649},{"latitude":39.459217,"longitude":-104.738129,"station_name":"Home","station_id":26755},{"latitude":39.525028,"longitude":-104.798653,"station_name":"Home","station_id":26769},{"latitude":39.563759,"longitude":-105.102394,"station_name":"Chatfield
+        botanical gardens","station_id":26991},{"latitude":39.550911,"longitude":-105.100891,"station_name":"Chatfield
+        Farms","station_id":26992},{"latitude":39.554592,"longitude":-105.100311,"station_name":"Chatfield
+        Botanic Gardens","station_id":26993},{"latitude":40.060734,"longitude":-105.163162,"station_name":"Home","station_id":27062},{"latitude":39.667038,"longitude":-104.873650,"station_name":"beaumont
+        place","station_id":27143},{"latitude":40.580162,"longitude":-105.130775,"station_name":"home","station_id":27176},{"latitude":37.939583,"longitude":-107.811111,"station_name":"telluride","station_id":27186},{"latitude":39.073315,"longitude":-108.491341,"station_name":"GJHS","station_id":27199},{"latitude":39.537788,"longitude":-105.063248,"station_name":"Chatfield
+        State Park ","station_id":27211},{"latitude":39.546753,"longitude":-105.364182,"station_name":"home","station_id":27214},{"latitude":40.430473,"longitude":-105.503891,"station_name":"test","station_id":27218},{"latitude":39.100288,"longitude":-108.700989,"station_name":"Colorado
+        National Monument","station_id":27309},{"latitude":40.028240,"longitude":-105.269234,"station_name":"EdgewoodHome","station_id":27330},{"latitude":39.732914,"longitude":-104.943871,"station_name":"GarfieldXericGarden","station_id":27393},{"latitude":39.732960,"longitude":-104.943840,"station_name":"GarfieldPollinatorGarden","station_id":27402},{"latitude":40.408871,"longitude":-105.075943,"station_name":"Snakes
+        yard ","station_id":27405},{"latitude":40.366192,"longitude":-105.560562,"station_name":"Rocky
+        Mountain National Park","station_id":27408},{"latitude":40.193966,"longitude":-105.854507,"station_name":"mountain
+        home","station_id":27434},{"latitude":39.763706,"longitude":-105.225410,"station_name":"back
+        yard","station_id":27437},{"latitude":39.817715,"longitude":-105.149132,"station_name":"Kolaga''s
+        yard","station_id":27440},{"latitude":39.731209,"longitude":-104.982697,"station_name":"home","station_id":27465},{"latitude":39.029083,"longitude":-108.629250,"station_name":"Cottonwood
+        Site 1","station_id":27478},{"latitude":40.102146,"longitude":-105.148888,"station_name":"Home","station_id":27532},{"latitude":40.406452,"longitude":-104.685745,"station_name":"University
+        of Northern Colorado","station_id":27629},{"latitude":40.406452,"longitude":-104.685745,"station_name":"Campus","station_id":27641},{"latitude":40.407551,"longitude":-104.685745,"station_name":"University
+        of Northern Colorado","station_id":27649},{"latitude":39.550053,"longitude":-105.782066,"station_name":"UNCO
+        Bio 111","station_id":27668},{"latitude":40.388443,"longitude":-104.709175,"station_name":"UNC","station_id":27679},{"latitude":39.645420,"longitude":-106.610085,"station_name":"Lake
+        Creek","station_id":27690},{"latitude":40.402920,"longitude":-104.700394,"station_name":"UNC","station_id":27693},{"latitude":40.403725,"longitude":-104.695770,"station_name":"Bird
+        Feeder West","station_id":27725},{"latitude":40.411045,"longitude":-104.696373,"station_name":"UNC-
+        Greeley, CO","station_id":27760},{"latitude":40.403290,"longitude":-104.694191,"station_name":"university","station_id":27831},{"latitude":40.014984,"longitude":-105.270546,"station_name":"my
+        yard","station_id":27875},{"latitude":38.833881,"longitude":-104.821365,"station_name":"Neighborhood","station_id":27896},{"latitude":40.585258,"longitude":-105.084419,"station_name":"Environmental
+        Learning Center","station_id":27961},{"latitude":39.762592,"longitude":-105.235451,"station_name":"Yard","station_id":28146},{"latitude":39.762955,"longitude":-105.235558,"station_name":"Green
+        Belt","station_id":28147},{"latitude":38.449352,"longitude":-105.223351,"station_name":"Meeting
+        place","station_id":28178},{"latitude":38.462894,"longitude":-105.203796,"station_name":"Lindzeys
+        house","station_id":28180},{"latitude":40.411137,"longitude":-105.641251,"station_name":"RMNP_1","station_id":28217},{"latitude":40.542511,"longitude":-105.105118,"station_name":"My
+        neighborhood","station_id":28230},{"latitude":39.745934,"longitude":-105.084625,"station_name":"Yard","station_id":28231},{"latitude":39.096687,"longitude":-108.586464,"station_name":"WCCC","station_id":28234},{"latitude":38.448254,"longitude":-105.227295,"station_name":"In
+        town","station_id":28268},{"latitude":37.289955,"longitude":-107.106407,"station_name":"Gate
+        5","station_id":28311},{"latitude":39.628815,"longitude":-104.781265,"station_name":"Home","station_id":28383},{"latitude":40.400726,"longitude":-104.698250,"station_name":"House
+        Sparrow East","station_id":28449},{"latitude":40.556053,"longitude":-105.019295,"station_name":"Environmental
+        Learning Center","station_id":28466},{"latitude":40.561821,"longitude":-105.130386,"station_name":"Fort
+        Collins Home","station_id":28467},{"latitude":39.381027,"longitude":-107.003998,"station_name":"Central
+        Rocky Mountain Permaculture Institute (CRMPI)","station_id":28470},{"latitude":40.585258,"longitude":-105.084419,"station_name":"TEST","station_id":28547},{"latitude":40.025597,"longitude":-105.275215,"station_name":"Watershed
+        School","station_id":28551},{"latitude":39.970863,"longitude":-105.255150,"station_name":"Boulder","station_id":28580},{"latitude":40.400578,"longitude":-104.698372,"station_name":"UNC","station_id":28674},{"latitude":40.406452,"longitude":-104.685745,"station_name":"University
+        of Norther Colorado","station_id":28728},{"latitude":40.026028,"longitude":-105.275726,"station_name":"Watershed
+        School","station_id":28749},{"latitude":40.420963,"longitude":-104.715492,"station_name":"University
+        of Nothern Colorado","station_id":28750},{"latitude":40.402676,"longitude":-104.698990,"station_name":"west
+        bird feeder ","station_id":28765},{"latitude":40.406452,"longitude":-104.685745,"station_name":"Bird
+        feeder","station_id":28766},{"latitude":40.406452,"longitude":-104.685745,"station_name":"Trees","station_id":28771},{"latitude":40.406452,"longitude":-104.685745,"station_name":"Easter
+        Cotton Woods ","station_id":28772},{"latitude":40.405941,"longitude":-104.698624,"station_name":1,"station_id":28818},{"latitude":40.409374,"longitude":-104.697098,"station_name":"UNC
+        Campus ","station_id":28819},{"latitude":40.402901,"longitude":-104.697350,"station_name":"red
+        maple tree","station_id":28831},{"latitude":40.402878,"longitude":-104.694664,"station_name":"east
+        bird feeder","station_id":28833},{"latitude":40.402390,"longitude":-104.699097,"station_name":"west
+        bird feeder","station_id":28834},{"latitude":37.579674,"longitude":-106.152626,"station_name":"back
+        yard","station_id":28836},{"latitude":40.406452,"longitude":-104.685745,"station_name":"UNC","station_id":28837},{"latitude":38.860214,"longitude":-104.916679,"station_name":"my
+        site","station_id":28850},{"latitude":40.402657,"longitude":-104.700119,"station_name":"cottonwood
+        tree","station_id":28855},{"latitude":40.406452,"longitude":-104.685745,"station_name":"UNCO","station_id":28859},{"latitude":40.407639,"longitude":-104.694107,"station_name":"Campus","station_id":28867},{"latitude":40.405514,"longitude":-104.696037,"station_name":"my
+        school bird house","station_id":28868},{"latitude":40.030739,"longitude":-105.272659,"station_name":"Salberg
+        Park","station_id":28869},{"latitude":40.030739,"longitude":-105.272659,"station_name":"Salberg
+        park","station_id":28870},{"latitude":40.030739,"longitude":-105.272659,"station_name":"Salberg
+        Park","station_id":28871},{"latitude":40.030739,"longitude":-105.272659,"station_name":"Salberg
+        Park","station_id":28872},{"latitude":40.025597,"longitude":-105.275215,"station_name":"Watershed
+        School ","station_id":28873},{"latitude":40.030739,"longitude":-105.272659,"station_name":"Salberg
+        Park","station_id":28874},{"latitude":40.030739,"longitude":-105.272659,"station_name":"Salberg
+        park ","station_id":28875},{"latitude":40.030739,"longitude":-105.272659,"station_name":"Salberg
+        Park","station_id":28877},{"latitude":40.034794,"longitude":-105.266548,"station_name":"Salberg
+        park","station_id":28878},{"latitude":40.030739,"longitude":-105.272659,"station_name":"Salberg
+        Park","station_id":28880},{"latitude":40.030739,"longitude":-105.272659,"station_name":"Salberg
+        park","station_id":28881},{"latitude":40.030739,"longitude":-105.272659,"station_name":"Salberg
+        Park","station_id":28882},{"latitude":40.401917,"longitude":-104.696968,"station_name":"UNC","station_id":28886},{"latitude":40.030655,"longitude":-105.273117,"station_name":"Salberg
+        Park","station_id":28888},{"latitude":40.402752,"longitude":-104.700516,"station_name":"UNC
+        Biology Study ","station_id":28890},{"latitude":40.400578,"longitude":-104.698372,"station_name":"South
+        side of UNCO","station_id":28891},{"latitude":40.403358,"longitude":-104.701782,"station_name":"cottonwood
+        9","station_id":28895},{"latitude":40.423313,"longitude":-104.709129,"station_name":"UNCO
+        BIO","station_id":28896},{"latitude":40.406452,"longitude":-104.685745,"station_name":"University
+        of Northern Colorado","station_id":28897},{"latitude":40.402058,"longitude":-104.698814,"station_name":"chickadee
+        bird feeder","station_id":28902},{"latitude":40.439823,"longitude":-104.682106,"station_name":"University
+        of Northern Colorado","station_id":28903},{"latitude":40.401237,"longitude":-104.699890,"station_name":"home","station_id":28904},{"latitude":40.405041,"longitude":-104.698624,"station_name":"cottonwood","station_id":28914},{"latitude":40.243629,"longitude":-105.017326,"station_name":"Environmental
+        Learning Center","station_id":28936},{"latitude":40.402695,"longitude":-104.699409,"station_name":9,"station_id":28948},{"latitude":40.403030,"longitude":-104.697922,"station_name":"Ross
+        Feeder","station_id":28953},{"latitude":40.403885,"longitude":-104.697212,"station_name":"trees","station_id":28970},{"latitude":40.399857,"longitude":-104.694252,"station_name":"UNCO
+        Bio 111","station_id":28974},{"latitude":40.521603,"longitude":-105.055214,"station_name":"Newman_PollinatorGrdn","station_id":28992},{"latitude":39.997883,"longitude":-105.257553,"station_name":"Home","station_id":29163},{"latitude":39.886894,"longitude":-105.055923,"station_name":"Westminster
+        CIty Park","station_id":29219},{"latitude":39.999710,"longitude":-105.215065,"station_name":"Bobolink","station_id":29241},{"latitude":39.700001,"longitude":-107.400002,"station_name":"Ladela","station_id":29441},{"latitude":39.675434,"longitude":-105.562256,"station_name":"dd2
+        fast","station_id":30047},{"latitude":40.817814,"longitude":-104.745300,"station_name":"CPER_077.phenology.phe
+        - primary","station_id":30221},{"latitude":40.820606,"longitude":-104.754677,"station_name":"CPER_091.phenology.phe
+        - phenocam","station_id":30222},{"latitude":40.054119,"longitude":-105.585106,"station_name":"NIWO_071.phenology.phe
+        - primary","station_id":30248},{"latitude":40.055756,"longitude":-105.582306,"station_name":"NIWO_070.phenology.phe
+        - phenocam","station_id":30249},{"latitude":40.187695,"longitude":-105.538246,"station_name":"RMNP_050.phenology.phe
+        - primary","station_id":30260},{"latitude":40.276714,"longitude":-105.546066,"station_name":"RMNP_051.phenology.phe
+        - phenocam","station_id":30261},{"latitude":40.463554,"longitude":-103.031158,"station_name":"STER_017.phenology.phe
+        - primary","station_id":30273},{"latitude":40.463509,"longitude":-103.028786,"station_name":"STER_020.phenology.phe
+        - phenocam","station_id":30274}]'
+  recorded_at: 2020-11-12 23:02:56 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.7.0

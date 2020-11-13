@@ -3,8 +3,10 @@ context("npn_partners")
 test_that("npn_groups works",{
   npn_set_env(get_test_env())
 
+  vcr::use_cassette("npn_groups_1", {
+    groups <- npn_groups()
+  })
 
-  groups <- npn_groups()
 
   expect_is(groups,"data.frame")
   expect_is(groups$network_name, "character")
