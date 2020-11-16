@@ -18,6 +18,10 @@ get_test_env <- function(){
   return("dev")
 }
 
+get_skip_long_tests <- function(){
+  return(TRUE)
+}
+
 
 base <- function(){
 

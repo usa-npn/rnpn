@@ -1,5 +1,22 @@
 context("npn_observations")
+# Important to note that these test make up the bulk of the package's functionality
+# And yet many of these tests are skipped by default.
+# Because these all make HTTP requests to the npn data services, they are either
+# stubbed or skipped to keep CRAN from failing on a service outage, etc.
+# The first pack of tests use stubs to test general service functionality, and
+# make sure responses are parsed correctly. Because the underlying code uses
+# the r curl package, those stubs where manually generated. Any future stubs
+# need to be manually generated in the same way.
+# The other tests are skipped for brevity's sake, as they are generally just
+# variations on the basic tests. Those tests are ALWAYS skipped on CRAN and can
+# be enabled to run on a workstation by flipping the skip_long_tests flag that
+# is setup in the R/zzz.R file.
+#
+# The references to VCR are still in place, even though they generally don't work
+# just to be consistent with the rest of the code which does use VCR correctly.
+# Maybe someday it will be adapted to work with curl.
 
+skip_long_tests <- get_skip_long_tests()
 
 test_that("no request source blocked", {
   npn_set_env(get_test_env())
@@ -14,15 +31,14 @@ test_that("no request source blocked", {
 
 test_that("basic function works", {
   npn_set_env(get_test_env())
-  cassette <- insert_cassette(name = "npn_download_status_data_basic_1")
-  cassette$new_recorded_interactions
-  some_data <- npn_download_status_data(
-    "Unit Test",
-    c(2013),
-    species_ids = c(6)
-  )
 
-  cassette$eject()
+  vcr::use_cassette("npn_download_status_data_basic_1", {
+    some_data <- npn_download_status_data(
+      "Unit Test",
+      c(2013),
+      species_ids = c(6)
+    )
+  })
 
 
   expect_is(some_data,"data.frame")
@@ -103,13 +119,16 @@ test_that("basic function works", {
 
   expect_gt(num_mag_custom,num_mag_default)
 
-
 })
 
 
 test_that("file download works", {
-#  skip_on_cran()
-  skip("No file downloads")
+
+  skip_on_cran()
+  if(skip_long_tests){
+    skip("Skipping long tests")
+  }
+
   npn_set_env(get_test_env())
 
   test_download_path <- "unit-test-download.csv"
@@ -153,7 +172,12 @@ test_that("file download works", {
 
 
 test_that("climate data flag works", {
-  print("Calling climate data flag")
+
+  skip_on_cran()
+  if(skip_long_tests){
+    skip("Skipping long tests")
+  }
+
   npn_set_env(get_test_env())
   vcr::use_cassette("npn_download_status_data_climate_flag_1", {
     some_data <- npn_download_status_data(
@@ -195,7 +219,12 @@ test_that("climate data flag works", {
 
 
 test_that("higher taxonomic ordering works for status data", {
-  print("Calling higher taxon order status")
+
+  skip_on_cran()
+  if(skip_long_tests){
+    skip("Skipping long tests")
+  }
+
   npn_set_env(get_test_env())
 
   #Check the different taxonomic levels for
@@ -237,7 +266,6 @@ test_that("higher taxonomic ordering works for status data", {
   expect_lt(nrow(less_data), nrow(some_data))
   expect_gt(nrow(less_data),0)
 
-  print("About to ask for class")
   #class_ID
   vcr::use_cassette("npn_download_status_data_tax_3", {
     some_data <- npn_download_status_data(
@@ -262,7 +290,12 @@ test_that("higher taxonomic ordering works for status data", {
 
 
 test_that("higher taxonomic ordering works for individual phenometrics", {
-  print("Calling tax order individual")
+
+  skip_on_cran()
+  if(skip_long_tests){
+    skip("Skipping long tests")
+  }
+
   npn_set_env(get_test_env())
 
 
@@ -331,7 +364,12 @@ test_that("higher taxonomic ordering works for individual phenometrics", {
 
 
 test_that("higher taxonomic ordering works for site phenometrics", {
-  print("Calling tax order site")
+
+  skip_on_cran()
+  if(skip_long_tests){
+    skip("Skipping long tests")
+  }
+
   npn_set_env(get_test_env())
 
   #Check the different taxonomic levels for
@@ -399,7 +437,12 @@ test_that("higher taxonomic ordering works for site phenometrics", {
 
 
 test_that("higher taxonomic ordering works for magnitude phenometrics", {
-  print("calling tax order mag")
+
+  skip_on_cran()
+  if(skip_long_tests){
+    skip("Skipping long tests")
+  }
+
   npn_set_env(get_test_env())
 
 
@@ -468,7 +511,12 @@ test_that("higher taxonomic ordering works for magnitude phenometrics", {
 
 
 test_that("higher level taxonomic agg and pheno agg works for site level",{
-  print("calling pheno agg")
+
+  skip_on_cran()
+  if(skip_long_tests){
+    skip("Skipping long tests")
+  }
+
   npn_set_env(get_test_env())
 
   vcr::use_cassette("npn_download_site_phenometrics_pheno_agg_1", {
@@ -521,7 +569,12 @@ test_that("higher level taxonomic agg and pheno agg works for site level",{
 })
 
 test_that("higher level taxonomic agg works for magnitude", {
-  print("Calling pheno agg magnitude (2)")
+
+  skip_on_cran()
+  if(skip_long_tests){
+    skip("Skipping long tests")
+  }
+
   npn_set_env(get_test_env())
 
   vcr::use_cassette("npn_download_magnitude_phenometrics_pheno_agg_1", {
@@ -572,7 +625,12 @@ test_that("higher level taxonomic agg works for magnitude", {
 })
 
 test_that("six concordance works for status", {
-  print("Calling six concord")
+
+  skip_on_cran()
+  if(skip_long_tests){
+    skip("Skipping long tests")
+  }
+
   npn_set_env(get_test_env())
 
   vcr::use_cassette("npn_download_status_data_six_concord_1", {
@@ -657,7 +715,12 @@ test_that("six concordance works for status", {
 
 
 test_that("wkt filter works", {
-  print("calling wkt")
+
+  skip_on_cran()
+  if(skip_long_tests){
+    skip("Skipping long tests")
+  }
+
   npn_set_env(get_test_env())
 
   #wkt is for CO
@@ -765,7 +828,12 @@ test_that("wkt filter works", {
 
 
 test_that("frequency params work", {
-  print("Calling freq")
+
+  skip_on_cran()
+  if(skip_long_tests){
+    skip("Skipping long tests")
+  }
+
   npn_set_env(get_test_env())
 
   vcr::use_cassette("npn_download_site_phenometrics_frequency_1", {

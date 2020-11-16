@@ -76,4 +76,5 @@ test_that("npn_stations_with_spp functions",{
     stations <- npn_stations_with_spp(9000)
   })
   expect_null(stations)
+
 })

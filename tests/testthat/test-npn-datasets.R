@@ -14,5 +14,4 @@ test_that("datasets endpoint working", {
   expect_is(datasets$dataset_name, "character")
   expect_gt(nrow(datasets), 5)
 
-
 })
