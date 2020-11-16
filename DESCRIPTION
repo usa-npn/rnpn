@@ -15,21 +15,16 @@ Authors@R: c(
     )
 LazyData: yes
 Imports:
-    stats,
     httr (>= 1.1.0),
     jsonlite (>= 0.9.19),
     data.table (>= 1.9.6),
-    sf,
     tibble,
     curl,
-    crul,
     raster,
-    rgdal,
+    plyr,
     XML,
-    sp,
-    tidyverse,
     magrittr,
-    plyr
+    sp
 Suggests:
     ggplot2,
     testthat,
@@ -37,9 +32,10 @@ Suggests:
     knitr,
     markdown,
     rmarkdown,
+    rgdal,
     RColorBrewer,
     vcr
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.1
 VignetteBuilder: knitr
 URL: https://docs.ropensci.org/rnpn/ (website)
     https://github.com/ropensci/rnpn/ (devel)

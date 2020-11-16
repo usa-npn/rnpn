@@ -308,7 +308,16 @@ filter data based on the locations which fall within that WKT.</p></td>
  http://www.usanpn.org/files/metadata/magnitude_phenometrics_datafield_descriptions.xlsx</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"></pre>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='co'>#Download book all saguaro data for 2013</span>
+<span class='fu'>npn_download_magnitude_phenometrics</span><span class='op'>(</span>
+  request_source<span class='op'>=</span><span class='st'>"Your Name or Org Here"</span>,
+  years<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>2013</span><span class='op'>)</span>,
+  species_id<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>210</span><span class='op'>)</span>,
+  download_path<span class='op'>=</span><span class='st'>"saguaro_data_2013.json"</span>
+<span class='op'>)</span>
+<span class='op'>}</span>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

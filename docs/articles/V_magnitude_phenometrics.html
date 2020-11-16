@@ -91,13 +91,14 @@
 
       
 
-      </header><div class="row">
+      </header><link href="V_magnitude_phenometrics_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
+<script src="V_magnitude_phenometrics_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>V. Magnitude Phenometrics</h1>
                         <h4 class="author">Lee Marsh</h4>
             
-            <h4 class="date">2020-11-09</h4>
+            <h4 class="date">2020-11-16</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/ropensci/rnpn/blob/master/vignettes/V_magnitude_phenometrics.Rmd"><code>vignettes/V_magnitude_phenometrics.Rmd</code></a></small>
       <div class="hidden name"><code>V_magnitude_phenometrics.Rmd</code></div>
@@ -111,26 +112,26 @@
 <a href="#magnitude-phenometrics" class="anchor"></a>Magnitude Phenometrics</h1>
 <p>Magnitude Phenometrics are a suite of eight metrics derived from Status and Intensity data. This data type provides information on the extent to which a phenophase is expressed across multiple individuals or sites, for a given set of sequential time intervals. The data user may select a weekly, bi-weekly, monthly, or custom time interval to summarize the metrics. Two metrics are available for both plants and animals, one metric is available for plants alone and five metrics are available for animals alone (table 1). Three of the five animal metrics correct animal abundance values for observer effort in time and space.</p>
 <p>Here’s an example of how to query for Magnitude Phenometrics, for the active individuals phenophase for black-capped chickadee data, in 2018. Requirements are similar to other data types. You must additionally specify the time interval by which the data should be summarized. Typically this is weekly, biweekly or monthly, as in the POP and Visualization Tool. The interval chosen in this example is 7 days.</p>
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="fu"><a href="../reference/npn_download_magnitude_phenometrics.html">npn_download_magnitude_phenometrics</a></span><span class="op">(</span>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/npn_download_magnitude_phenometrics.html">npn_download_magnitude_phenometrics</a></span><span class="op">(</span>
   request_source <span class="op">=</span> <span class="st">'Your Name Here'</span>, 
   years <span class="op">=</span> <span class="st">'2018'</span>,
   period_frequency <span class="op">=</span> <span class="st">"7"</span>,
   species_ids <span class="op">=</span> <span class="st">'245'</span>, 
   phenophase_ids <span class="op">=</span> <span class="st">'292'</span>, 
   download_path <span class="op">=</span> <span class="st">'MPM_BCC_ActInd_2018.csv'</span>
-<span class="op">)</span></pre></div>
+<span class="op">)</span></code></pre></div>
 <p>In this example we’re able to see all of the magnitude phenometric fields, including proportion_yes_records, and mean_num_animals_in-phase. See the <a href="Open%20File%20Report%20on%20USA-NPN%20Observational%20Data">https://pubs.usgs.gov/of/2018/1060/ofr20181060.pdf</a> for full field descriptions.</p>
 <p>From this dataset we can view the Proportion_Yes_Records (of all the records submitted on this species, what proportion are positive/yes records) by weekly interval:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="va">BCC_AI</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">BCC_AI</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span>
   <span class="st">'MPM_BCC_ActInd_2018.csv'</span>, 
   header <span class="op">=</span> <span class="cn">TRUE</span>, 
   na<span class="op">=</span><span class="op">-</span><span class="fl">9999</span>, 
   stringsAsFactors <span class="op">=</span> <span class="cn">FALSE</span>
 <span class="op">)</span>
 
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.html">plot</a></span><span class="op">(</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span>
   <span class="va">BCC_AI</span><span class="op">$</span><span class="va">proportion_yes_record</span><span class="op">~</span><span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="va">BCC_AI</span><span class="op">$</span><span class="va">start_date</span>,<span class="st">"%Y-%m-%d"</span><span class="op">)</span>, 
   ylab<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Proportion Yes Records"</span><span class="op">)</span>, 
   xlab<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Date"</span><span class="op">)</span>,
@@ -140,7 +141,7 @@
   pch<span class="op">=</span><span class="fl">21</span>,
   xlim<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"2018-01-01"</span>, <span class="st">"2018-08-01"</span><span class="op">)</span><span class="op">)</span>,
   ylim<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1</span><span class="op">)</span>
-<span class="op">)</span></pre></div>
+<span class="op">)</span></code></pre></div>
 <p><img src="figures/magnitude-phenometrics.png" width="50%"></p>
 </div>
   </div>
