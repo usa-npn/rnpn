@@ -20,6 +20,7 @@ Imports:
     tibble,
     curl,
     raster,
+    rgdal,
     plyr,
     XML,
     magrittr,
@@ -31,7 +32,6 @@ Suggests:
     knitr,
     markdown,
     rmarkdown,
-    rgdal,
     RColorBrewer,
     vcr
 RoxygenNote: 7.1.1
