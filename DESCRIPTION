@@ -5,7 +5,6 @@ Description: Programmatic interface to the
     (<https://usanpn.org/>), which includes data on various life history
     events that occur at specific times.
 Version: 1.1.1
-Date: 2020-10-27
 License: MIT + file LICENSE
 Authors@R: c(
     person("Lee", "Marsh", role = c("aut", "cre"), email = "lee@usanpn.org"),
