@@ -4,9 +4,9 @@ context("npn_geospatial")
 test_that("npn_get_layer_details works",{
   npn_set_env(get_test_env())
 
-  vcr::use_cassette("npn_get_layer_details_1", {
-    layers <- npn_get_layer_details()
-  })
+  #vcr::use_cassette("npn_get_layer_details_1", {
+  layers <- npn_get_layer_details()
+  #})
 
 
 
