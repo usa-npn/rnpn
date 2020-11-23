@@ -3644,7 +3644,7 @@ http_interactions:
         Indices, Yearly Return Interval - Spring Index Bloom Return Interval</Title>\n
         \       <Abstract>The Spring Index Return Interval for first bloom represents
         the frequency with which spring is as late or early as it is in the current
-        year. It serves to contextualize the current year’s spring onset anomaly.
+        year. It serves to contextualize the current year spring onset anomaly.
         For example, if the Daily Anomaly product shows first bloom occurring 20 days
         earlier than average, for a given location, the Return Interval product shows
         how often that location has experienced first bloom at least 20 days early.
@@ -3654,7 +3654,7 @@ http_interactions:
         to the preceding 40 years). The frequency with which a spring was at least
         this early (or late) is calculated by taking the number of years in the record
         divided by the count of years that were earlier (or later) than the current
-        year. Values of 0 represent average or “on time�\x9D springs. Negative
+        year. Values of 0 represent average or on time springs. Negative
         values represent the frequency of early springs; positive values represent
         the frequency of late springs. Values of 41 represent the earliest (-41) or
         latest (41) spring on record.</Abstract>\n        <KeywordList>\n          <Keyword>six_bloom_return_interval</Keyword>\n
@@ -3907,7 +3907,7 @@ http_interactions:
         Indices, Yearly Return Interval - Spring Index Leaf Return Interval</Title>\n
         \       <Abstract>The Spring Index Return Interval for first leaf represents
         the frequency with which spring is as late or early as it is in the current
-        year. It serves to contextualize the current year’s spring onset anomaly.
+        year. It serves to contextualize the current years spring onset anomaly.
         For example, if the Daily Anomaly product shows first leaf occurring 20 days
         earlier than average, for a given location, the Return Interval product shows
         how often that location has experienced leaf out at least 20 days early. To
@@ -3917,7 +3917,7 @@ http_interactions:
         to the preceding 40 years). The frequency with which a spring was at least
         this early (or late) is calculated by taking the number of years in the record
         divided by the count of years that were earlier (or later) than the current
-        year. Values of 0 represent average or “on time�\x9D springs. Negative
+        year. Values of 0 represent average or on time springs. Negative
         values represent the frequency of early springs; positive values represent
         the frequency of late springs. Values of 41 represent the earliest (-41) or
         latest (41) spring on record.</Abstract>\n        <KeywordList>\n          <Keyword>six_leaf_return_interval</Keyword>\n

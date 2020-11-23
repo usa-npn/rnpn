@@ -25,7 +25,6 @@ Imports:
     rgdal,
     plyr,
     XML,
-    xml2,
     magrittr
 Suggests:
     ggplot2,
