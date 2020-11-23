@@ -18,6 +18,7 @@
 #' }
 npn_get_layer_details <- function(){
   doc <- GET("http://geoserver.usanpn.org/geoserver/ows?service=wms&version=1.3.0&request=GetCapabilities", list())
+  doc <- httr::content(doc, as = "text", encoding = "UTF-8")
   doc.data <- XML::xmlParse(file = doc)
 
   capability.list <- XML::xmlToList(doc.data)[["Capability"]]
