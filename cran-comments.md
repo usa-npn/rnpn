@@ -4,9 +4,9 @@ http://cran.r-project.org/web/packages/policies.html
 
 ## Test environments
 
-R CMD CHECK passed on my local OS X install on R 4.0.2 and
-R development version, Ubuntu running on Travis-CI, and
-R 4.0.2 on Windows 10.
+R CMD CHECK passed on local Windows 10 and Ubuntu 18 using R 4.0.2 
+Also passed checks on Github Actions on macOS, Windows with R 3.6
+and ubuntu 16 using R 3.5.
 
 ## R CMD check results
 

@@ -4,13 +4,11 @@
 [![Project Status: Active – The project has reached a stable, usable
 state and is being actively
 developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
-[![Build
-Status](https://api.travis-ci.org/ropensci/rnpn.png)](https://travis-ci.org/ropensci/rnpn)
-[![Build
-status](https://ci.appveyor.com/api/projects/status/es65utr5jmfmcsrg/branch/master)](https://ci.appveyor.com/project/sckott/rnpn/branch/master)
 [![cran
 checks](https://cranchecks.info/badges/worst/rnpn)](https://cranchecks.info/pkgs/rnpn)
 [![codecov.io](https://codecov.io/github/ropensci/rnpn/coverage.svg?branch=master)](https://codecov.io/github/ropensci/rnpn?branch=master)
+[![R build
+status](https://github.com/usa-npn/rnpn//workflows/R-CMD-check/badge.svg)](https://github.com/usa-npn/rnpn//actions)
 
 `rnpn` is an R client for interacting with the USA National Phenology
 Network data web services. These services include access to a rich set

@@ -14,7 +14,7 @@
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 3.6.2 (2019-12-12)",
+  "runtimePlatform": "R version 4.0.3 (2020-10-10)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -31,8 +31,7 @@
     {
       "@type": "Person",
       "givenName": "Scott",
-      "familyName": "Chamberlain",
-      "email": "myrmecocystus@gmail.com"
+      "familyName": "Chamberlain"
     },
     {
       "@type": "Person",
@@ -139,13 +138,26 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=RColorBrewer"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "vcr",
+      "name": "vcr",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=vcr"
     }
   ],
   "softwareRequirements": [
     {
       "@type": "SoftwareApplication",
-      "identifier": "stats",
-      "name": "stats"
+      "identifier": "R",
+      "name": "R",
+      "version": ">= 3.5.0"
     },
     {
       "@type": "SoftwareApplication",
@@ -188,15 +200,16 @@
     },
     {
       "@type": "SoftwareApplication",
-      "identifier": "sf",
-      "name": "sf",
+      "identifier": "sp",
+      "name": "sp",
+      "version": ">= 1.1-0",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
         "name": "Comprehensive R Archive Network (CRAN)",
         "url": "https://cran.r-project.org"
       },
-      "sameAs": "https://CRAN.R-project.org/package=sf"
+      "sameAs": "https://CRAN.R-project.org/package=sp"
     },
     {
       "@type": "SoftwareApplication",
@@ -248,6 +261,18 @@
     },
     {
       "@type": "SoftwareApplication",
+      "identifier": "plyr",
+      "name": "plyr",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=plyr"
+    },
+    {
+      "@type": "SoftwareApplication",
       "identifier": "XML",
       "name": "XML",
       "provider": {
@@ -260,30 +285,6 @@
     },
     {
       "@type": "SoftwareApplication",
-      "identifier": "sp",
-      "name": "sp",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=sp"
-    },
-    {
-      "@type": "SoftwareApplication",
-      "identifier": "tidyverse",
-      "name": "tidyverse",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=tidyverse"
-    },
-    {
-      "@type": "SoftwareApplication",
       "identifier": "magrittr",
       "name": "magrittr",
       "provider": {
@@ -293,25 +294,13 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=magrittr"
-    },
-    {
-      "@type": "SoftwareApplication",
-      "identifier": "plyr",
-      "name": "plyr",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=plyr"
     }
   ],
-  "codeRepository": "https://github.com/ropensci/rnpn",
-  "contIntegration": ["https://travis-ci.org/usa-npn/rnpn", "https://ci.appveyor.com/project/usa-npn/rnpn/branch/master", "https://codecov.io/github/usa-npn/rnpn?branch=master"],
+  "codeRepository": "https://github.com/ropensci/rnpn/",
+  "contIntegration": "https://codecov.io/github/ropensci/rnpn?branch=master",
   "releaseNotes": "https://github.com/ropensci/rnpn/blob/master/NEWS.md",
   "readme": "https://github.com/ropensci/rnpn/blob/master/README.md",
-  "fileSize": "2111.71KB",
+  "fileSize": "18573.791KB",
   "contributor": {},
   "copyrightHolder": {},
   "funder": {},
@@ -325,5 +314,6 @@
     "phenology",
     "r-package"
   ],
-  "relatedLink": "https://CRAN.R-project.org/package=rnpn"
+  "relatedLink": ["https://CRAN.R-project.org/package=rnpn", "https://docs.ropensci.org/rnpn/"],
+  "developmentStatus": "http://www.repostatus.org/#active"
 }
