@@ -1,0 +1,124 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://www-dev.usanpn.org/npn_portal/stations/getStationsByLocation.json?wkt=POLYGON%28%28-110.94484396954107%2032.23623109416672%2C-110.96166678448247%2032.23594069208043%2C-110.95960684795904%2032.21328646993733%2C-110.94244071026372%2032.21343170728929%2C-110.93935080547857%2032.23216538049456%2C-110.94484396954107%2032.23623109416672%29%29
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      date: Thu, 12 Nov 2020 23:03:33 GMT
+      server: Apache/2.4.7 (Ubuntu) SVN/1.8.8 PHP/5.5.9-1ubuntu4.29 OpenSSL/1.0.1f
+      x-powered-by: PHP/5.5.9-1ubuntu4.29
+      access-control-allow-origin: '*'
+      access-control-allow-headers: origin, x-requested-with, content-type
+      access-control-allow-methods: PUT, GET, POST, DELETE, OPTIONS
+      transfer-encoding: chunked
+      content-type: application/json
+    body:
+      encoding: UTF-8
+      file: no
+      string: '[{"latitude":32.228123,"longitude":-110.942818,"station_name":"Demo","station_id":18},{"latitude":32.223789,"longitude":-110.947220,"station_name":"Home","station_id":28},{"latitude":32.228146,"longitude":-110.942749,"station_name":"Office
+        of Arid Land Studies","station_id":1573},{"latitude":32.228123,"longitude":-110.942818,"station_name":"Work","station_id":2631},{"latitude":32.215366,"longitude":-110.954544,"station_name":"Home","station_id":5069},{"latitude":32.235649,"longitude":-110.950851,"station_name":"work","station_id":5360},{"latitude":32.228123,"longitude":-110.942818,"station_name":"Work","station_id":5935},{"latitude":32.227734,"longitude":-110.943512,"station_name":"Work","station_id":6036},{"latitude":32.231880,"longitude":-110.951012,"station_name":"Joseph
+        Wood Krutch Garden U Arizona mall","station_id":6102},{"latitude":32.228535,"longitude":-110.943207,"station_name":"TPT
+        - USA-NPN National Coordinating Office","station_id":6169},{"latitude":32.231880,"longitude":-110.953888,"station_name":"UA
+        Old Main Loop","station_id":6381},{"latitude":32.231884,"longitude":-110.951035,"station_name":"Krutch
+        garden","station_id":6385},{"latitude":32.231911,"longitude":-110.951050,"station_name":"Tucson
+        Festival of Books 2012","station_id":6556},{"latitude":32.231728,"longitude":-110.953735,"station_name":"Old
+        Main Garden","station_id":8613},{"latitude":32.231556,"longitude":-110.953674,"station_name":"University
+        of Arizona Old Main","station_id":8670},{"latitude":32.233284,"longitude":-110.948799,"station_name":"Univeristy
+        of Arizona - Old Main2","station_id":8682},{"latitude":32.228123,"longitude":-110.942818,"station_name":"Nature''s
+        Notebook Training","station_id":8710},{"latitude":32.228123,"longitude":-110.942818,"station_name":"TPT
+        Office","station_id":9149},{"latitude":32.235600,"longitude":-110.955795,"station_name":"My
+        school","station_id":9337},{"latitude":32.222218,"longitude":-110.950493,"station_name":"front
+        yard","station_id":9696},{"latitude":32.233540,"longitude":-110.960091,"station_name":"student","station_id":9725},{"latitude":32.224331,"longitude":-110.947685,"station_name":"Neighborhood","station_id":10761},{"latitude":32.228123,"longitude":-110.942818,"station_name":"LA
+        backyard","station_id":11101},{"latitude":32.231831,"longitude":-110.950951,"station_name":"joseph
+        wood Krutch Garden","station_id":12437},{"latitude":32.231922,"longitude":-110.951035,"station_name":"UA
+        Krutch Garden","station_id":12439},{"latitude":32.231922,"longitude":-110.951035,"station_name":"U
+        of A Krutch Garden","station_id":12440},{"latitude":32.231949,"longitude":-110.951035,"station_name":"U
+        of A Native Garden","station_id":12441},{"latitude":32.233284,"longitude":-110.948799,"station_name":"univeristy
+        of arizona","station_id":12444},{"latitude":32.231899,"longitude":-110.951027,"station_name":"Joseph
+        Wood Krutch Garden","station_id":12453},{"latitude":32.232101,"longitude":-110.955383,"station_name":"UA
+        Krutch Garden","station_id":12455},{"latitude":32.232658,"longitude":-110.950905,"station_name":"UA
+        krutch gargen","station_id":12461},{"latitude":32.231728,"longitude":-110.951569,"station_name":"University
+        of Arizona","station_id":12462},{"latitude":32.231911,"longitude":-110.951019,"station_name":"UA
+        Krutch Garden","station_id":12473},{"latitude":32.231888,"longitude":-110.951019,"station_name":"Krutch
+        garden","station_id":12476},{"latitude":32.231934,"longitude":-110.950974,"station_name":"UA
+        Krutch Garden","station_id":12479},{"latitude":32.232658,"longitude":-110.950905,"station_name":"
+        Krutch Garden","station_id":12483},{"latitude":32.231930,"longitude":-110.951035,"station_name":"UA
+        Krutch Guarden ","station_id":12501},{"latitude":32.228645,"longitude":-110.954391,"station_name":"U
+        of A campus","station_id":12560},{"latitude":32.231930,"longitude":-110.950989,"station_name":"The
+        University of Arizona","station_id":12563},{"latitude":32.231934,"longitude":-110.950989,"station_name":"krutch
+        garden","station_id":12568},{"latitude":32.232658,"longitude":-110.950905,"station_name":"U
+        of A campus Arboretum","station_id":12579},{"latitude":32.232101,"longitude":-110.955383,"station_name":"school","station_id":16364},{"latitude":32.231930,"longitude":-110.951019,"station_name":"Joseph
+        Wood Krutch Garden","station_id":16896},{"latitude":32.227985,"longitude":-110.951935,"station_name":"University
+        of Arizona","station_id":18197},{"latitude":32.232029,"longitude":-110.951233,"station_name":"krutch
+        garden","station_id":18206},{"latitude":32.233891,"longitude":-110.951683,"station_name":"Joseph
+        Wood Krutch Garden","station_id":18528},{"latitude":32.234688,"longitude":-110.958412,"station_name":"home","station_id":19419},{"latitude":32.222012,"longitude":-110.953629,"station_name":"My
+        Yard","station_id":19440},{"latitude":32.228123,"longitude":-110.942818,"station_name":"NNsite2","station_id":19476},{"latitude":32.228123,"longitude":-110.942818,"station_name":"1955
+        E. 6th Street","station_id":20124},{"latitude":32.223225,"longitude":-110.958115,"station_name":"My
+        Yard","station_id":20314},{"latitude":32.228104,"longitude":-110.942757,"station_name":"test","station_id":20700},{"latitude":32.228104,"longitude":-110.942757,"station_name":"office","station_id":21203},{"latitude":32.228104,"longitude":-110.942757,"station_name":"testoffice","station_id":21368},{"latitude":32.230099,"longitude":-110.951790,"station_name":"rc
+        online","station_id":21571},{"latitude":32.230103,"longitude":-110.951630,"station_name":"rc
+        again","station_id":21574},{"latitude":32.230061,"longitude":-110.951721,"station_name":"zip","station_id":21582},{"latitude":32.230087,"longitude":-110.951584,"station_name":"dip","station_id":21583},{"latitude":32.219196,"longitude":-110.948067,"station_name":"The
+        Yurt","station_id":21601},{"latitude":32.230087,"longitude":-110.951591,"station_name":"rc
+        on 2","station_id":21605},{"latitude":32.231548,"longitude":-110.948814,"station_name":"z1","station_id":21615},{"latitude":32.233498,"longitude":-110.954933,"station_name":"z2","station_id":21616},{"latitude":32.232948,"longitude":-110.949394,"station_name":"pop","station_id":21626},{"latitude":32.230343,"longitude":-110.951622,"station_name":"hello","station_id":21659},{"latitude":32.224308,"longitude":-110.952797,"station_name":"High
+        School Wash 1","station_id":21718},{"latitude":32.226444,"longitude":-110.952347,"station_name":"Mansfeld
+        Platt Perimeter walk","station_id":22064},{"latitude":32.230385,"longitude":-110.951462,"station_name":"tt","station_id":22298},{"latitude":32.230015,"longitude":-110.951538,"station_name":"pals","station_id":22306},{"latitude":32.231880,"longitude":-110.953888,"station_name":"School","station_id":22399},{"latitude":32.234688,"longitude":-110.958412,"station_name":"University
+        of Arizona","station_id":22440},{"latitude":32.231998,"longitude":-110.950867,"station_name":"Crutch
+        Garden","station_id":22462},{"latitude":32.231911,"longitude":-110.951675,"station_name":"crutch
+        garden","station_id":22497},{"latitude":32.230385,"longitude":-110.951462,"station_name":"Work","station_id":22550},{"latitude":32.230385,"longitude":-110.951462,"station_name":"New
+        Office","station_id":22551},{"latitude":32.230385,"longitude":-110.951462,"station_name":"South
+        of BSE","station_id":22976},{"latitude":32.232727,"longitude":-110.950935,"station_name":"Krutch
+        Garden","station_id":23465},{"latitude":32.228519,"longitude":-110.951157,"station_name":"home","station_id":23974},{"latitude":32.231396,"longitude":-110.958138,"station_name":"Arizona","station_id":23977},{"latitude":32.231934,"longitude":-110.950989,"station_name":"U
+        of A Campus Arboretum","station_id":23978},{"latitude":32.223698,"longitude":-110.941849,"station_name":"my
+        front yard","station_id":24086},{"latitude":32.231903,"longitude":-110.950813,"station_name":"Joseph
+        Wood  Kutcher Garden","station_id":24090},{"latitude":32.231937,"longitude":-110.951004,"station_name":"Joseph
+        Wood Krutch Garden","station_id":24171},{"latitude":32.231911,"longitude":-110.950935,"station_name":"Krutch
+        Garden","station_id":24206},{"latitude":32.228764,"longitude":-110.958687,"station_name":"home","station_id":24241},{"latitude":32.231827,"longitude":-110.950882,"station_name":"Krutz
+        Garden","station_id":24396},{"latitude":32.230503,"longitude":-110.954277,"station_name":"krutch
+        garden U of A","station_id":24431},{"latitude":32.230507,"longitude":-110.954262,"station_name":"Tucson","station_id":24432},{"latitude":32.231384,"longitude":-110.949959,"station_name":"u
+        of a campus arboretum","station_id":24433},{"latitude":32.231873,"longitude":-110.951134,"station_name":"krutch
+        Garden","station_id":24434},{"latitude":32.224159,"longitude":-110.948692,"station_name":"High
+        School Wash 2","station_id":25836},{"latitude":32.232723,"longitude":-110.950897,"station_name":"university
+        of arizona arboretum","station_id":26966},{"latitude":32.230595,"longitude":-110.954216,"station_name":"Palmer''s
+        agave at Saguaro Hall","station_id":27362},{"latitude":32.229198,"longitude":-110.950813,"station_name":"garden","station_id":27381},{"latitude":32.233284,"longitude":-110.948799,"station_name":"University
+        of Arizona","station_id":27386},{"latitude":32.229198,"longitude":-110.950813,"station_name":"classroom
+        ","station_id":27388},{"latitude":32.232067,"longitude":-110.950951,"station_name":"UofA
+        Garden","station_id":27389},{"latitude":32.231678,"longitude":-110.957802,"station_name":"UA
+        garden","station_id":27396},{"latitude":32.231934,"longitude":-110.950989,"station_name":"U
+        of A Campus Arboretum","station_id":27400},{"latitude":32.232262,"longitude":-110.950836,"station_name":"Krutch","station_id":27419},{"latitude":32.228050,"longitude":-110.950432,"station_name":"my
+        school","station_id":27650},{"latitude":32.231884,"longitude":-110.950111,"station_name":"Krutch
+        Garden","station_id":27678},{"latitude":32.234623,"longitude":-110.949951,"station_name":"home","station_id":27846},{"latitude":32.234661,"longitude":-110.958366,"station_name":"school","station_id":28098},{"latitude":32.231884,"longitude":-110.950111,"station_name":"Krutch
+        Garden","station_id":28103},{"latitude":32.233284,"longitude":-110.948799,"station_name":"Krutch
+        Garden","station_id":28507},{"latitude":32.231884,"longitude":-110.951004,"station_name":"joseph
+        wood krutch garden","station_id":28508},{"latitude":32.230427,"longitude":-110.951363,"station_name":"Lee
+        Test 3","station_id":29348},{"latitude":32.230427,"longitude":-110.951363,"station_name":"Lee
+        Test 4","station_id":29349},{"latitude":32.230427,"longitude":-110.951363,"station_name":"Lee
+        Test 5","station_id":29350},{"latitude":32.230427,"longitude":-110.951363,"station_name":"Lee
+        Test 6","station_id":29351},{"latitude":32.230427,"longitude":-110.951363,"station_name":"Lee
+        Test7","station_id":29352},{"latitude":32.230427,"longitude":-110.951363,"station_name":"Lee
+        Test 8","station_id":29353},{"latitude":32.230427,"longitude":-110.951363,"station_name":"Lee
+        Test 9","station_id":29354},{"latitude":32.230427,"longitude":-110.951363,"station_name":"Lee
+        10","station_id":29355},{"latitude":32.230427,"longitude":-110.951363,"station_name":"Lee
+        Test 11","station_id":29356},{"latitude":32.230427,"longitude":-110.951363,"station_name":"Lee
+        12","station_id":29357},{"latitude":32.230427,"longitude":-110.951363,"station_name":"Lee
+        13","station_id":29358},{"latitude":32.230427,"longitude":-110.951363,"station_name":"Lee
+        14","station_id":29359},{"latitude":32.230427,"longitude":-110.951363,"station_name":"Lee
+        Test 15","station_id":29360},{"latitude":32.230427,"longitude":-110.951363,"station_name":"Test
+        site","station_id":29366},{"latitude":32.230350,"longitude":-110.951637,"station_name":"jefftest","station_id":29367},{"latitude":32.230427,"longitude":-110.951363,"station_name":"Site
+        pans","station_id":29368},{"latitude":32.225170,"longitude":-110.953484,"station_name":"Test
+        site","station_id":29369},{"latitude":32.230602,"longitude":-110.951637,"station_name":"UA","station_id":29370},{"latitude":32.230247,"longitude":-110.951485,"station_name":"HomeAway
+        ","station_id":29372},{"latitude":32.230415,"longitude":-110.951675,"station_name":"Testing","station_id":29374},{"latitude":32.230270,"longitude":-110.951828,"station_name":"My
+        house","station_id":29381},{"latitude":32.230221,"longitude":-110.951622,"station_name":"Test
+        site 1","station_id":29382},{"latitude":32.230427,"longitude":-110.951363,"station_name":"Work","station_id":29384},{"latitude":32.230225,"longitude":-110.951805,"station_name":"Backyard","station_id":29385},{"latitude":32.230202,"longitude":-110.951607,"station_name":"Office","station_id":29386},{"latitude":32.227661,"longitude":-110.948990,"station_name":"jefftest7","station_id":29413},{"latitude":32.232376,"longitude":-110.953087,"station_name":"test1","station_id":29416},{"latitude":32.225262,"longitude":-110.953949,"station_name":"t1","station_id":29422},{"latitude":32.225262,"longitude":-110.953949,"station_name":"Sup''","station_id":29423},{"latitude":32.225262,"longitude":-110.953949,"station_name":"Superlongnamethisistoolongitshouldntworkdontnamestationlikethis","station_id":29424},{"latitude":32.228580,"longitude":-110.948318,"station_name":"t1","station_id":29428},{"latitude":32.230427,"longitude":-110.951363,"station_name":"57
+        Test Edit","station_id":29430},{"latitude":32.230377,"longitude":-110.951691,"station_name":"Snre
+        building","station_id":29437},{"latitude":32.225822,"longitude":-110.950630,"station_name":"Test","station_id":29457},{"latitude":32.225262,"longitude":-110.953949,"station_name":"5002mysql","station_id":30050},{"latitude":32.225220,"longitude":-110.953911,"station_name":"5002mysql2","station_id":30051}]'
+  recorded_at: 2020-11-12 23:03:21 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.7.0

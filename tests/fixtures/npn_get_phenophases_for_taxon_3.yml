@@ -1,0 +1,156 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://www-dev.usanpn.org/npn_portal/phenophases/getPhenophasesForTaxon.json?family_id%5B1%5D=267&family_id%5B2%5D=268&date=2018-05-05&return_all=0
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      date: Thu, 12 Nov 2020 23:03:26 GMT
+      server: Apache/2.4.7 (Ubuntu) SVN/1.8.8 PHP/5.5.9-1ubuntu4.29 OpenSSL/1.0.1f
+      x-powered-by: PHP/5.5.9-1ubuntu4.29
+      pragma: no-cache
+      cache-control: no-store, no-cache, max-age=0, must-revalidate
+      access-control-allow-origin: '*'
+      access-control-allow-headers: origin, x-requested-with, content-type
+      access-control-allow-methods: PUT, GET, POST, DELETE, OPTIONS
+      transfer-encoding: chunked
+      content-type: application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      file: no
+      string: '[{"family_id":267,"family_name":"Elaeagnaceae","phenophases":[{"phenophase_id":371,"phenophase_name":"Breaking
+        leaf buds","phenophase_category":"Leaves","phenophase_definition":"One or
+        more breaking leaf buds are visible on the plant.  A leaf bud is considered
+        ''breaking'' once a green leaf tip is visible at the end of the bud, but before
+        the first leaf from the bud has unfolded to expose the leaf stalk (petiole)
+        or leaf base.","seq_num":10,"color":"Green1","pheno_class_id":1,"pheno_class_name":"Initial
+        shoot or leaf growth","pheno_class_sequence":10,"phenophase_definition_id":371},{"phenophase_id":483,"phenophase_name":"Leaves","phenophase_category":"Leaves","phenophase_definition":"One
+        or more live, unfolded leaves are visible on the plant. A leaf is considered
+        ''unfolded'' once its entire length has emerged from a breaking bud, stem
+        node or growing stem tip, so that the leaf stalk (petiole) or leaf base is
+        visible at its point of attachment to the stem. Do not include fully dried
+        or dead leaves.","seq_num":30,"color":"Green1","pheno_class_id":3,"pheno_class_name":"Leaves
+        or needles","pheno_class_sequence":30,"phenophase_definition_id":541},{"phenophase_id":467,"phenophase_name":"Increasing
+        leaf size","phenophase_category":"Leaves","phenophase_definition":"A majority
+        of leaves on the plant have not yet reached their full size and are still
+        growing larger. Do not include new leaves that continue to emerge at the ends
+        of elongating stems throughout the growing season. ","seq_num":40,"color":"Green1","pheno_class_id":2,"pheno_class_name":"Young
+        leaves or needles","pheno_class_sequence":20,"phenophase_definition_id":467},{"phenophase_id":498,"phenophase_name":"Colored
+        leaves","phenophase_category":"Leaves","phenophase_definition":"One or more
+        leaves show some of their typical late-season color, or yellow or brown due
+        to drought or other stresses. Do not include small spots of color due to minor
+        leaf damage, or dieback on branches that have broken. Do not include fully
+        dried or dead leaves that remain on the plant.","seq_num":70,"color":"Green1","pheno_class_id":4,"pheno_class_name":"Colored
+        leaves or needles","pheno_class_sequence":40,"phenophase_definition_id":549},{"phenophase_id":471,"phenophase_name":"Falling
+        leaves","phenophase_category":"Leaves","phenophase_definition":"One or more
+        leaves are falling or have recently fallen from the plant.","seq_num":120,"color":"Green1","pheno_class_id":5,"pheno_class_name":"Falling
+        leaves or needles","pheno_class_sequence":50,"phenophase_definition_id":471},{"phenophase_id":500,"phenophase_name":"Flowers
+        or flower buds","phenophase_category":"Flowers","phenophase_definition":"One
+        or more fresh open or unopened flowers or flower buds are visible on the plant.
+        Include flower buds or inflorescences that are swelling or expanding, but
+        do not include those that are tightly closed and not actively growing (dormant).
+        Also do not include wilted or dried flowers.","seq_num":170,"color":"Green2","pheno_class_id":6,"pheno_class_name":"Flowers
+        or pollen cones","pheno_class_sequence":60,"phenophase_definition_id":548},{"phenophase_id":501,"phenophase_name":"Open
+        flowers","phenophase_category":"Flowers","phenophase_definition":"One or more
+        open, fresh flowers are visible on the plant. Flowers are considered ''open''
+        when the reproductive parts (male stamens or female pistils) are visible between
+        or within unfolded or open flower parts (petals, floral tubes or sepals).
+        Do not include wilted or dried flowers. ","seq_num":190,"color":"Green2","pheno_class_id":7,"pheno_class_name":"Open
+        flowers or pollen cones","pheno_class_sequence":70,"phenophase_definition_id":501},{"phenophase_id":516,"phenophase_name":"Fruits","phenophase_category":"Fruits","phenophase_definition":"One
+        or more fruits are visible on the plant.","seq_num":280,"color":"Green3","pheno_class_id":10,"pheno_class_name":"Fruits
+        or seed cones","pheno_class_sequence":100,"phenophase_definition_id":516},{"phenophase_id":390,"phenophase_name":"Ripe
+        fruits","phenophase_category":"Fruits","phenophase_definition":"One or more
+        ripe fruits are visible on the plant. ","seq_num":300,"color":"Green3","pheno_class_id":12,"pheno_class_name":"Ripe
+        fruits or seed cones","pheno_class_sequence":120,"phenophase_definition_id":390},{"phenophase_id":504,"phenophase_name":"Recent
+        fruit or seed drop","phenophase_category":"Fruits","phenophase_definition":"One
+        or more mature fruits or seeds have dropped or been removed from the plant
+        since your last visit. Do not include obviously immature fruits that have
+        dropped before ripening, such as in a heavy rain or wind, or empty fruits
+        that had long ago dropped all of their seeds but remained on the plant.","seq_num":330,"color":"Green3","pheno_class_id":13,"pheno_class_name":"Recent
+        fruit, cone or seed drop","pheno_class_sequence":130,"phenophase_definition_id":504}]},{"family_id":268,"family_name":"Ericaceae","phenophases":[{"phenophase_id":371,"phenophase_name":"Breaking
+        leaf buds","phenophase_category":"Leaves","phenophase_definition":"One or
+        more breaking leaf buds are visible on the plant.  A leaf bud is considered
+        ''breaking'' once a green leaf tip is visible at the end of the bud, but before
+        the first leaf from the bud has unfolded to expose the leaf stalk (petiole)
+        or leaf base.","seq_num":10,"color":"Green1","pheno_class_id":1,"pheno_class_name":"Initial
+        shoot or leaf growth","pheno_class_sequence":10,"phenophase_definition_id":371},{"phenophase_id":482,"phenophase_name":"Initial
+        growth","phenophase_category":"Leaves","phenophase_definition":"New growth
+        of the plant is visible after a period of no growth (winter or drought), either
+        from above-ground buds with green tips, or new green or white shoots breaking
+        through the soil surface. Growth is considered ''initial'' on each bud or
+        shoot until the first leaf has fully unfolded. For seedlings, ''initial''
+        growth includes the presence of the one or two small, round or elongated leaves
+        (cotyledons) before the first true leaf has unfolded.","seq_num":10,"color":"Green1","pheno_class_id":1,"pheno_class_name":"Initial
+        shoot or leaf growth","pheno_class_sequence":10,"phenophase_definition_id":482},{"phenophase_id":484,"phenophase_name":"Young
+        leaves","phenophase_category":"Leaves","phenophase_definition":"One or more
+        young, unfolded leaves are visible on the plant. A leaf is considered ''young''
+        and ''unfolded'' once its entire length has emerged from a breaking bud, stem
+        node or growing stem tip, so that the leaf stalk (petiole) or leaf base is
+        visible at its point of attachment to the stem, but before the leaf has reached
+        full size or turned the darker green color or tougher texture of mature leaves
+        on the plant. Do not include fully dried or dead leaves.","seq_num":20,"color":"Green1","pheno_class_id":2,"pheno_class_name":"Young
+        leaves or needles","pheno_class_sequence":20,"phenophase_definition_id":542},{"phenophase_id":505,"phenophase_name":"Young
+        leaves","phenophase_category":"Leaves","phenophase_definition":"One or more
+        young leaves are visible on the plant. A leaf is considered ''young'' before
+        it has reached full size or turned the darker green color or tougher texture
+        of mature leaves on the plant. Do not include fully dried or dead leaves.","seq_num":20,"color":"Green1","pheno_class_id":2,"pheno_class_name":"Young
+        leaves or needles","pheno_class_sequence":20,"phenophase_definition_id":505},{"phenophase_id":483,"phenophase_name":"Leaves","phenophase_category":"Leaves","phenophase_definition":"One
+        or more live, unfolded leaves are visible on the plant. A leaf is considered
+        ''unfolded'' once its entire length has emerged from a breaking bud, stem
+        node or growing stem tip, so that the leaf stalk (petiole) or leaf base is
+        visible at its point of attachment to the stem. Do not include fully dried
+        or dead leaves.","seq_num":30,"color":"Green1","pheno_class_id":3,"pheno_class_name":"Leaves
+        or needles","pheno_class_sequence":30,"phenophase_definition_id":541},{"phenophase_id":488,"phenophase_name":"Leaves","phenophase_category":"Leaves","phenophase_definition":"One
+        or more live, fully unfolded leaves are visible on the plant. For seedlings,
+        consider only true leaves and do not count the one or two small, round or
+        elongated leaves (cotyledons) that are found on the stem almost immediately
+        after the seedling germinates. Do not include fully dried or dead leaves.","seq_num":30,"color":"Green1","pheno_class_id":3,"pheno_class_name":"Leaves
+        or needles","pheno_class_sequence":30,"phenophase_definition_id":488},{"phenophase_id":467,"phenophase_name":"Increasing
+        leaf size","phenophase_category":"Leaves","phenophase_definition":"A majority
+        of leaves on the plant have not yet reached their full size and are still
+        growing larger. Do not include new leaves that continue to emerge at the ends
+        of elongating stems throughout the growing season. ","seq_num":40,"color":"Green1","pheno_class_id":2,"pheno_class_name":"Young
+        leaves or needles","pheno_class_sequence":20,"phenophase_definition_id":467},{"phenophase_id":498,"phenophase_name":"Colored
+        leaves","phenophase_category":"Leaves","phenophase_definition":"One or more
+        leaves show some of their typical late-season color, or yellow or brown due
+        to drought or other stresses. Do not include small spots of color due to minor
+        leaf damage, or dieback on branches that have broken. Do not include fully
+        dried or dead leaves that remain on the plant.","seq_num":70,"color":"Green1","pheno_class_id":4,"pheno_class_name":"Colored
+        leaves or needles","pheno_class_sequence":40,"phenophase_definition_id":549},{"phenophase_id":471,"phenophase_name":"Falling
+        leaves","phenophase_category":"Leaves","phenophase_definition":"One or more
+        leaves are falling or have recently fallen from the plant.","seq_num":120,"color":"Green1","pheno_class_id":5,"pheno_class_name":"Falling
+        leaves or needles","pheno_class_sequence":50,"phenophase_definition_id":471},{"phenophase_id":500,"phenophase_name":"Flowers
+        or flower buds","phenophase_category":"Flowers","phenophase_definition":"One
+        or more fresh open or unopened flowers or flower buds are visible on the plant.
+        Include flower buds or inflorescences that are swelling or expanding, but
+        do not include those that are tightly closed and not actively growing (dormant).
+        Also do not include wilted or dried flowers.","seq_num":170,"color":"Green2","pheno_class_id":6,"pheno_class_name":"Flowers
+        or pollen cones","pheno_class_sequence":60,"phenophase_definition_id":548},{"phenophase_id":501,"phenophase_name":"Open
+        flowers","phenophase_category":"Flowers","phenophase_definition":"One or more
+        open, fresh flowers are visible on the plant. Flowers are considered ''open''
+        when the reproductive parts (male stamens or female pistils) are visible between
+        or within unfolded or open flower parts (petals, floral tubes or sepals).
+        Do not include wilted or dried flowers. ","seq_num":190,"color":"Green2","pheno_class_id":7,"pheno_class_name":"Open
+        flowers or pollen cones","pheno_class_sequence":70,"phenophase_definition_id":501},{"phenophase_id":516,"phenophase_name":"Fruits","phenophase_category":"Fruits","phenophase_definition":"One
+        or more fruits are visible on the plant.","seq_num":280,"color":"Green3","pheno_class_id":10,"pheno_class_name":"Fruits
+        or seed cones","pheno_class_sequence":100,"phenophase_definition_id":516},{"phenophase_id":390,"phenophase_name":"Ripe
+        fruits","phenophase_category":"Fruits","phenophase_definition":"One or more
+        ripe fruits are visible on the plant. ","seq_num":300,"color":"Green3","pheno_class_id":12,"pheno_class_name":"Ripe
+        fruits or seed cones","pheno_class_sequence":120,"phenophase_definition_id":390},{"phenophase_id":504,"phenophase_name":"Recent
+        fruit or seed drop","phenophase_category":"Fruits","phenophase_definition":"One
+        or more mature fruits or seeds have dropped or been removed from the plant
+        since your last visit. Do not include obviously immature fruits that have
+        dropped before ripening, such as in a heavy rain or wind, or empty fruits
+        that had long ago dropped all of their seeds but remained on the plant.","seq_num":330,"color":"Green3","pheno_class_id":13,"pheno_class_name":"Recent
+        fruit, cone or seed drop","pheno_class_sequence":130,"phenophase_definition_id":504}]}]'
+  recorded_at: 2020-11-12 23:03:13 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.7.0

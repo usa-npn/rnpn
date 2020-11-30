@@ -2,73 +2,67 @@
 % Please edit documentation in R/npn_get_species.R
 \name{npn_species}
 \alias{npn_species}
-\alias{npn_species_itis}
 \alias{npn_species_id}
 \alias{npn_species_state}
-\alias{npn_species_sci}
-\alias{npn_species_comm}
 \alias{npn_species_search}
-\title{Get scientific names.}
+\title{Get Species}
 \usage{
 npn_species(...)
-
-npn_species_itis(ids, ...)
 
 npn_species_id(ids, ...)
 
 npn_species_state(state, kingdom = NULL, ...)
 
-npn_species_sci(genus, species, ...)
-
-npn_species_comm(name, ...)
-
-npn_species_search(network = NULL, year = NULL, groups = NULL,
-  stationid = NULL, ...)
+npn_species_search(
+  network = NULL,
+  start_date = NULL,
+  end_date = NULL,
+  station_id = NULL,
+  ...
+)
 }
 \arguments{
 \item{...}{Curl options passed on to \code{\link[httr]{GET}}}
 
-\item{ids}{One or more ITIS taxonomic serial numbers (tsn), or NPN ID numbers.}
+\item{ids}{List of species ids for which to retrieve information}
 
-\item{state}{Required. A US state, two-letter abbreviation.}
+\item{state}{A US postal state code to filter results}
 
-\item{kingdom}{Optional. A taxonomic kingdom.}
+\item{kingdom}{Filters results by taxonomic kingdom. Takes either 'Animalia' or 'Plantae'}
 
-\item{genus}{A genus name}
+\item{network}{filter species based on a list of unique identifiers of NPN groups that are actually observing data on the species. Takes a list of IDs}
 
-\item{species}{A specific epithet, the second part of a full species name}
+\item{start_date}{filter species by date observed. This sets the start date of the date range and must be used in conjunction with end_date}
 
-\item{name}{A common name}
+\item{end_date}{filter species by date observed. This sets the end date of the date range and must be used in conjunction with start_date}
 
-\item{network}{The primary key of the network for which to filter species.}
-
-\item{year}{Year of obseration}
-
-\item{groups}{One or more primary keys associated with a species type.}
-
-\item{stationid}{Station ID. Use e.g., c(4881, 4882, etc.) if more than one species desired}
+\item{station_id}{filter species by a list of unique site identifiers}
 }
 \value{
 data.frame of species and their IDs
+
+data.frame of the species' information
 }
 \description{
-Get scientific names.
+Returns a complete list of all species information of species represented in the NPN
+database.
+
+Returns information about a species based on the NPN's unique ID for that species
+
+Search for species by state
+
+Search NPN species information using a number of different parameters, which can be used in conjunction with one another, including:
+ - Species on which a particular group or groups are actually collecting data
+ - What species were observed in a given date range
+ - What species were observed at a particular station or stations
 }
 \examples{
 \dontrun{
 npn_species()
-npn_species_itis(ids = 27806)
-npn_species_itis(ids = c(27806,36616))
 npn_species_id(ids = 3)
-npn_species_state(state = "HI")
-npn_species_state(state = "HI", kingdom = "Plantae")
-npn_species_sci(genus = "Clintonia", species = "borealis")
-npn_species_comm(name = "thickleaved wild strawberry")
-npn_species_comm(name = c("thickleaved wild strawberry","bluebead"))
-npn_species_search(groups = 3, year = 2010)
-npn_species_search(groups = c(3,9), year = 2010)
-
-library('httr')
-npn_species_itis(ids = 27806, config=verbose())
+}
+\dontrun{
+npn_species_state(state = "AZ")
+npn_species_state(state = "AZ", kingdom = "Plantae")
 }
 }

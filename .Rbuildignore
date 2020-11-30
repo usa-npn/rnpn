@@ -12,3 +12,8 @@ README.Rmd
 ^CONDUCT\.md$
 cran-comments.md
 ^codemeta\.json$
+^doc$
+^Meta$
+^docs$
+_pkgdown.yml
+^\.github$

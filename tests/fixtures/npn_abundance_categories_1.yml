@@ -1,0 +1,319 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://www-dev.usanpn.org/npn_portal/phenophases/getAbundanceCategories.json
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      date: Thu, 12 Nov 2020 23:03:24 GMT
+      server: Apache/2.4.7 (Ubuntu) SVN/1.8.8 PHP/5.5.9-1ubuntu4.29 OpenSSL/1.0.1f
+      x-powered-by: PHP/5.5.9-1ubuntu4.29
+      pragma: no-cache
+      cache-control: no-store, no-cache, max-age=0, must-revalidate
+      access-control-allow-origin: '*'
+      access-control-allow-headers: origin, x-requested-with, content-type
+      access-control-allow-methods: PUT, GET, POST, DELETE, OPTIONS
+      transfer-encoding: chunked
+      content-type: application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      file: no
+      string: '[{"category_id":10,"category_name":"Frog vocalizing","category_description":"What
+        is the intensity of vocalizing?","category_values":[{"value_id":20,"value_description":"There
+        is space between calls and individuals can be counted.","value_name":"Single
+        calls"},{"value_id":21,"value_description":"Calls of individuals can be distinguished
+        but there is some overlapping of calls.","value_name":"Overlapping calls"},{"value_id":22,"value_description":"Calls
+        are constant and overlapping.","value_name":"Full chorus"}]},{"category_id":11,"category_name":"Breaking
+        leaf buds","category_description":"How many buds are breaking?","category_values":[{"value_id":32,"value_description":"","value_name":"Less
+        than 3"},{"value_id":33,"value_description":"","value_name":"3 to 10"},{"value_id":34,"value_description":"","value_name":"More
+        than 10"}]},{"category_id":12,"category_name":"Leaf canopy fullness","category_description":"What
+        proportion of the canopy is full with leaves?","category_values":[{"value_id":25,"value_description":"","value_name":"Less
+        than 5%"},{"value_id":26,"value_description":"","value_name":"5-24%"},{"value_id":27,"value_description":"","value_name":"25-49%"},{"value_id":28,"value_description":"","value_name":"50-74%"},{"value_id":29,"value_description":"","value_name":"75-94%"},{"value_id":30,"value_description":"","value_name":"95%
+        or more"}]},{"category_id":13,"category_name":"Leaf size","category_description":"What
+        proportion of full size are most leaves?","category_values":[{"value_id":31,"value_description":"","value_name":"Less
+        than 25%"},{"value_id":27,"value_description":"","value_name":"25-49%"},{"value_id":28,"value_description":"","value_name":"50-74%"},{"value_id":29,"value_description":"","value_name":"75-94%"},{"value_id":30,"value_description":"","value_name":"95%
+        or more"}]},{"category_id":14,"category_name":"Colored leaf proportion","category_description":"What
+        proportion of the canopy is still full with green leaves?","category_values":[{"value_id":30,"value_description":"","value_name":"95%
+        or more"},{"value_id":29,"value_description":"","value_name":"75-94%"},{"value_id":28,"value_description":"","value_name":"50-74%"},{"value_id":27,"value_description":"","value_name":"25-49%"},{"value_id":26,"value_description":"","value_name":"5-24%"},{"value_id":25,"value_description":"","value_name":"Less
+        than 5%"}]},{"category_id":15,"category_name":"Young leaves present","category_description":"How
+        many young leaves are present?","category_values":[{"value_id":32,"value_description":"","value_name":"Less
+        than 3"},{"value_id":33,"value_description":"","value_name":"3 to 10"},{"value_id":34,"value_description":"","value_name":"More
+        than 10"}]},{"category_id":16,"category_name":"Young needles present","category_description":"How
+        many young needles are present?","category_values":[{"value_id":32,"value_description":"","value_name":"Less
+        than 3"},{"value_id":33,"value_description":"","value_name":"3 to 10"},{"value_id":34,"value_description":"","value_name":"More
+        than 10"}]},{"category_id":17,"category_name":"Emerging needles","category_description":"How
+        many needles or needle bundles are emerging?","category_values":[{"value_id":32,"value_description":"","value_name":"Less
+        than 3"},{"value_id":33,"value_description":"","value_name":"3 to 10"},{"value_id":34,"value_description":"","value_name":"More
+        than 10"}]},{"category_id":18,"category_name":"Young needle bundles present","category_description":"How
+        many bundles have young needles?","category_values":[{"value_id":32,"value_description":"","value_name":"Less
+        than 3"},{"value_id":33,"value_description":"","value_name":"3 to 10"},{"value_id":34,"value_description":"","value_name":"More
+        than 10"}]},{"category_id":19,"category_name":"Needle canopy fullness","category_description":"What
+        proportion of the canopy is full with needles?","category_values":[{"value_id":25,"value_description":"","value_name":"Less
+        than 5%"},{"value_id":26,"value_description":"","value_name":"5-24%"},{"value_id":27,"value_description":"","value_name":"25-49%"},{"value_id":28,"value_description":"","value_name":"50-74%"},{"value_id":29,"value_description":"","value_name":"75-94%"},{"value_id":30,"value_description":"","value_name":"95%
+        or more"}]},{"category_id":20,"category_name":"Colored needle proportion","category_description":"What
+        proportion of the canopy is still full with green needles?","category_values":[{"value_id":30,"value_description":"","value_name":"95%
+        or more"},{"value_id":29,"value_description":"","value_name":"75-94%"},{"value_id":28,"value_description":"","value_name":"50-74%"},{"value_id":27,"value_description":"","value_name":"25-49%"},{"value_id":26,"value_description":"","value_name":"5-24%"},{"value_id":25,"value_description":"","value_name":"Less
+        than 5%"}]},{"category_id":21,"category_name":"Initial growth of buds or shoots","category_description":"How
+        many buds or shoots have initial growth?","category_values":[{"value_id":32,"value_description":"","value_name":"Less
+        than 3"},{"value_id":33,"value_description":"","value_name":"3 to 10"},{"value_id":34,"value_description":"","value_name":"More
+        than 10"}]},{"category_id":22,"category_name":"Initial growth of shoots","category_description":"How
+        many shoots have initial growth?","category_values":[{"value_id":32,"value_description":"","value_name":"Less
+        than 3"},{"value_id":33,"value_description":"","value_name":"3 to 10"},{"value_id":34,"value_description":"","value_name":"More
+        than 10"}]},{"category_id":23,"category_name":"Fruits present","category_description":"How
+        many fresh fruits are present?","category_values":[{"value_id":32,"value_description":"","value_name":"Less
+        than 3"},{"value_id":33,"value_description":"","value_name":"3 to 10"},{"value_id":34,"value_description":"","value_name":"More
+        than 10"}]},{"category_id":24,"category_name":"Ripe fruits present","category_description":"How
+        many fruits are ripe?","category_values":[{"value_id":32,"value_description":"","value_name":"Less
+        than 3"},{"value_id":33,"value_description":"","value_name":"3 to 10"},{"value_id":34,"value_description":"","value_name":"More
+        than 10"}]},{"category_id":25,"category_name":"Recent fruit drop","category_description":"How
+        many mature fruits have dropped?","category_values":[{"value_id":32,"value_description":"","value_name":"Less
+        than 3"},{"value_id":33,"value_description":"","value_name":"3 to 10"},{"value_id":34,"value_description":"","value_name":"More
+        than 10"}]},{"category_id":26,"category_name":"Unripe seed cones present","category_description":"How
+        many seed cones are unripe?","category_values":[{"value_id":32,"value_description":"","value_name":"Less
+        than 3"},{"value_id":33,"value_description":"","value_name":"3 to 10"},{"value_id":34,"value_description":"","value_name":"More
+        than 10"}]},{"category_id":27,"category_name":"Ripe seed cones present","category_description":"How
+        many seed cones are ripe?","category_values":[{"value_id":32,"value_description":"","value_name":"Less
+        than 3"},{"value_id":33,"value_description":"","value_name":"3 to 10"},{"value_id":34,"value_description":"","value_name":"More
+        than 10"}]},{"category_id":28,"category_name":"Recent seed cone drop","category_description":"How
+        many mature seed cones have dropped seeds or have completely dropped from
+        the plant?","category_values":[{"value_id":32,"value_description":"","value_name":"Less
+        than 3"},{"value_id":33,"value_description":"","value_name":"3 to 10"},{"value_id":34,"value_description":"","value_name":"More
+        than 10"}]},{"category_id":29,"category_name":"Open flowers","category_description":"How
+        many fresh flowers are open?","category_values":[{"value_id":32,"value_description":"","value_name":"Less
+        than 3"},{"value_id":33,"value_description":"","value_name":"3 to 10"},{"value_id":34,"value_description":"","value_name":"More
+        than 10"}]},{"category_id":30,"category_name":"Pollen release of flowers","category_description":"How
+        many flowers release pollen?","category_values":[{"value_id":32,"value_description":"","value_name":"Less
+        than 3"},{"value_id":33,"value_description":"","value_name":"3 to 10"},{"value_id":34,"value_description":"","value_name":"More
+        than 10"}]},{"category_id":31,"category_name":"Open flowers (peak)","category_description":"How
+        many fresh flowers are open?","category_values":[{"value_id":32,"value_description":"","value_name":"Less
+        than 3"},{"value_id":33,"value_description":"","value_name":"3 to 10"},{"value_id":34,"value_description":"","value_name":"More
+        than 10"},{"value_id":35,"value_description":"The plant has a large number
+        of flowers and one half (50%) or more are open and still fresh.","value_name":"Peak
+        flower"}]},{"category_id":32,"category_name":"Pollen release of flowers (peak)","category_description":"How
+        many flowers release pollen?","category_values":[{"value_id":32,"value_description":"","value_name":"Less
+        than 3"},{"value_id":33,"value_description":"","value_name":"3 to 10"},{"value_id":34,"value_description":"","value_name":"More
+        than 10"},{"value_id":36,"value_description":"The plant has a large number
+        of flowers and one half (50%) or more release pollen.","value_name":"Peak
+        pollen"}]},{"category_id":33,"category_name":"Open pollen cones (peak)","category_description":"How
+        many fresh pollen cones are open?","category_values":[{"value_id":32,"value_description":"","value_name":"Less
+        than 3"},{"value_id":33,"value_description":"","value_name":"3 to 10"},{"value_id":34,"value_description":"","value_name":"More
+        than 10"},{"value_id":37,"value_description":"One half (50%) or more of the
+        pollen cones on the plant are open and still fresh.","value_name":"Peak opening"}]},{"category_id":34,"category_name":"Pollen
+        release of cones (peak)","category_description":"How many cones release pollen?","category_values":[{"value_id":32,"value_description":"","value_name":"Less
+        than 3"},{"value_id":33,"value_description":"","value_name":"3 to 10"},{"value_id":34,"value_description":"","value_name":"More
+        than 10"},{"value_id":38,"value_description":"One half (50%) or more of the
+        pollen cones on the plant release pollen.","value_name":"Peak pollen"}]},{"category_id":35,"category_name":"Flowers
+        or flower heads present","category_description":"How many fresh flowers or
+        flower heads are present?","category_values":[{"value_id":32,"value_description":"","value_name":"Less
+        than 3"},{"value_id":33,"value_description":"","value_name":"3 to 10"},{"value_id":34,"value_description":"","value_name":"More
+        than 10"}]},{"category_id":36,"category_name":"Pollen cones present","category_description":"How
+        many fresh pollen cones are present?","category_values":[{"value_id":32,"value_description":"","value_name":"Less
+        than 3"},{"value_id":33,"value_description":"","value_name":"3 to 10"},{"value_id":34,"value_description":"","value_name":"More
+        than 10"}]},{"category_id":37,"category_name":"Flower heads present","category_description":"How
+        many fresh flower heads are present?","category_values":[{"value_id":32,"value_description":"","value_name":"Less
+        than 3"},{"value_id":33,"value_description":"","value_name":"3 to 10"},{"value_id":34,"value_description":"","value_name":"More
+        than 10"}]},{"category_id":38,"category_name":"Plant greeness","category_description":"What
+        percentage of the plant is green?","category_values":[{"value_id":25,"value_description":"","value_name":"Less
+        than 5%"},{"value_id":26,"value_description":"","value_name":"5-24%"},{"value_id":27,"value_description":"","value_name":"25-49%"},{"value_id":28,"value_description":"","value_name":"50-74%"},{"value_id":29,"value_description":"","value_name":"75-94%"},{"value_id":30,"value_description":"","value_name":"95%
+        or more"}]},{"category_id":39,"category_name":"Breaking leaf buds (10000)","category_description":"How
+        many buds are breaking?","category_values":[{"value_id":32,"value_description":"","value_name":"Less
+        than 3"},{"value_id":33,"value_description":"","value_name":"3 to 10"},{"value_id":39,"value_description":"","value_name":"11
+        to 100"},{"value_id":40,"value_description":"","value_name":"101 to 1,000"},{"value_id":41,"value_description":"","value_name":"1,001
+        to 10,000"},{"value_id":42,"value_description":"","value_name":"More than
+        10,000"}]},{"category_id":40,"category_name":"Leaf canopy fullness (dead branch)","category_description":"What
+        percentage of the canopy is full with leaves? Ignore dead branches in your
+        estimate.","category_values":[{"value_id":25,"value_description":"","value_name":"Less
+        than 5%"},{"value_id":26,"value_description":"","value_name":"5-24%"},{"value_id":27,"value_description":"","value_name":"25-49%"},{"value_id":28,"value_description":"","value_name":"50-74%"},{"value_id":29,"value_description":"","value_name":"75-94%"},{"value_id":30,"value_description":"","value_name":"95%
+        or more"}]},{"category_id":41,"category_name":"Leaf size","category_description":"What
+        percentage of full size are most leaves?","category_values":[{"value_id":31,"value_description":"","value_name":"Less
+        than 25%"},{"value_id":27,"value_description":"","value_name":"25-49%"},{"value_id":28,"value_description":"","value_name":"50-74%"},{"value_id":29,"value_description":"","value_name":"75-94%"},{"value_id":30,"value_description":"","value_name":"95%
+        or more"}]},{"category_id":42,"category_name":"Colored leaf percentage","category_description":"What
+        percentage of the canopy is full with colored leaves?","category_values":[{"value_id":25,"value_description":"","value_name":"Less
+        than 5%"},{"value_id":26,"value_description":"","value_name":"5-24%"},{"value_id":27,"value_description":"","value_name":"25-49%"},{"value_id":28,"value_description":"","value_name":"50-74%"},{"value_id":29,"value_description":"","value_name":"75-94%"},{"value_id":30,"value_description":"","value_name":"95%
+        or more"}]},{"category_id":43,"category_name":"Young leaves present (10000)","category_description":"How
+        many young leaves are present?","category_values":[{"value_id":32,"value_description":"","value_name":"Less
+        than 3"},{"value_id":33,"value_description":"","value_name":"3 to 10"},{"value_id":39,"value_description":"","value_name":"11
+        to 100"},{"value_id":40,"value_description":"","value_name":"101 to 1,000"},{"value_id":41,"value_description":"","value_name":"1,001
+        to 10,000"},{"value_id":42,"value_description":"","value_name":"More than
+        10,000"}]},{"category_id":44,"category_name":"Young needles present (10000)","category_description":"How
+        many young needles are present?","category_values":[{"value_id":32,"value_description":"","value_name":"Less
+        than 3"},{"value_id":33,"value_description":"","value_name":"3 to 10"},{"value_id":39,"value_description":"","value_name":"11
+        to 100"},{"value_id":40,"value_description":"","value_name":"101 to 1,000"},{"value_id":41,"value_description":"","value_name":"1,001
+        to 10,000"},{"value_id":42,"value_description":"","value_name":"More than
+        10,000"}]},{"category_id":45,"category_name":"Emerging needles (10000)","category_description":"How
+        many needles or needle bundles are emerging?","category_values":[{"value_id":32,"value_description":"","value_name":"Less
+        than 3"},{"value_id":33,"value_description":"","value_name":"3 to 10"},{"value_id":39,"value_description":"","value_name":"11
+        to 100"},{"value_id":40,"value_description":"","value_name":"101 to 1,000"},{"value_id":41,"value_description":"","value_name":"1,001
+        to 10,000"},{"value_id":42,"value_description":"","value_name":"More than
+        10,000"}]},{"category_id":46,"category_name":"Needle canopy fullness (dead
+        branch)","category_description":"What percentage of the canopy is full with
+        needles? Ignore dead branches in your estimate.","category_values":[{"value_id":25,"value_description":"","value_name":"Less
+        than 5%"},{"value_id":26,"value_description":"","value_name":"5-24%"},{"value_id":27,"value_description":"","value_name":"25-49%"},{"value_id":28,"value_description":"","value_name":"50-74%"},{"value_id":29,"value_description":"","value_name":"75-94%"},{"value_id":30,"value_description":"","value_name":"95%
+        or more"}]},{"category_id":47,"category_name":"Colored needle percentage","category_description":"What
+        percentage of the canopy is full with colored needles? ","category_values":[{"value_id":25,"value_description":"","value_name":"Less
+        than 5%"},{"value_id":26,"value_description":"","value_name":"5-24%"},{"value_id":27,"value_description":"","value_name":"25-49%"},{"value_id":28,"value_description":"","value_name":"50-74%"},{"value_id":29,"value_description":"","value_name":"75-94%"},{"value_id":30,"value_description":"","value_name":"95%
+        or more"}]},{"category_id":48,"category_name":"Flowers and flower buds (10000)","category_description":"How
+        many flowers and flower buds are present? For species in which individual
+        flowers are clustered in flower heads, spikes or catkins (inflorescences),
+        simply estimate the number of flower heads, spikes or catkins and not the
+        number of individual flowers.","category_values":[{"value_id":32,"value_description":"","value_name":"Less
+        than 3"},{"value_id":33,"value_description":"","value_name":"3 to 10"},{"value_id":39,"value_description":"","value_name":"11
+        to 100"},{"value_id":40,"value_description":"","value_name":"101 to 1,000"},{"value_id":41,"value_description":"","value_name":"1,001
+        to 10,000"},{"value_id":42,"value_description":"","value_name":"More than
+        10,000"}]},{"category_id":49,"category_name":"Flowers and flower buds (1000)","category_description":"How
+        many flowers and flower buds are present? For species in which individual
+        flowers are clustered in flower heads, spikes or catkins (inflorescences),
+        simply estimate the number of flower heads, spikes or catkins and not the
+        number of individual flowers.","category_values":[{"value_id":32,"value_description":"","value_name":"Less
+        than 3"},{"value_id":33,"value_description":"","value_name":"3 to 10"},{"value_id":39,"value_description":"","value_name":"11
+        to 100"},{"value_id":40,"value_description":"","value_name":"101 to 1,000"},{"value_id":43,"value_description":"","value_name":"More
+        than 1,000"}]},{"category_id":50,"category_name":"Open flowers percentage
+        (individual)","category_description":"What percentage of all fresh flowers
+        (buds plus unopened plus open) on the plant are open?  For species in which
+        individual flowers are clustered in flower heads, spikes or catkins (inflorescences),
+        estimate the percentage of all individual flowers that are open.","category_values":[{"value_id":25,"value_description":"","value_name":"Less
+        than 5%"},{"value_id":26,"value_description":"","value_name":"5-24%"},{"value_id":27,"value_description":"","value_name":"25-49%"},{"value_id":28,"value_description":"","value_name":"50-74%"},{"value_id":29,"value_description":"","value_name":"75-94%"},{"value_id":30,"value_description":"","value_name":"95%
+        or more"}]},{"category_id":51,"category_name":"Pollen release","category_description":"How
+        much pollen is released?","category_values":[{"value_id":44,"value_description":"Only
+        a few grains are released.","value_name":"Little"},{"value_id":45,"value_description":"Many
+        grains are released.","value_name":"Some"},{"value_id":46,"value_description":"A
+        layer of pollen covers your palm, or a cloud of pollen can be seen in the
+        air when the wind blows ","value_name":"Lots"}]},{"category_id":52,"category_name":"Flower
+        heads present (1000)","category_description":"How many fresh flower heads
+        are present?","category_values":[{"value_id":32,"value_description":"","value_name":"Less
+        than 3"},{"value_id":33,"value_description":"","value_name":"3 to 10"},{"value_id":39,"value_description":"","value_name":"11
+        to 100"},{"value_id":40,"value_description":"","value_name":"101 to 1,000"},{"value_id":43,"value_description":"","value_name":"More
+        than 1,000"}]},{"category_id":53,"category_name":"Open flowers percentage","category_description":"What
+        percentage of all fresh flowers (unopened plus open) on the plant are open?
+        ","category_values":[{"value_id":25,"value_description":"","value_name":"Less
+        than 5%"},{"value_id":26,"value_description":"","value_name":"5-24%"},{"value_id":27,"value_description":"","value_name":"25-49%"},{"value_id":28,"value_description":"","value_name":"50-74%"},{"value_id":29,"value_description":"","value_name":"75-94%"},{"value_id":30,"value_description":"","value_name":"95%
+        or more"}]},{"category_id":54,"category_name":"Pollen cones present (10000)","category_description":"How
+        many fresh pollen cones are present?","category_values":[{"value_id":32,"value_description":"","value_name":"Less
+        than 3"},{"value_id":33,"value_description":"","value_name":"3 to 10"},{"value_id":39,"value_description":"","value_name":"11
+        to 100"},{"value_id":40,"value_description":"","value_name":"101 to 1,000"},{"value_id":41,"value_description":"","value_name":"1,001
+        to 10,000"},{"value_id":42,"value_description":"","value_name":"More than
+        10,000"}]},{"category_id":55,"category_name":"Open pollen cones percentage","category_description":"What
+        percentage of all fresh pollen cones (unopened plus open) on the plant are
+        open? ","category_values":[{"value_id":25,"value_description":"","value_name":"Less
+        than 5%"},{"value_id":26,"value_description":"","value_name":"5-24%"},{"value_id":27,"value_description":"","value_name":"25-49%"},{"value_id":28,"value_description":"","value_name":"50-74%"},{"value_id":29,"value_description":"","value_name":"75-94%"},{"value_id":30,"value_description":"","value_name":"95%
+        or more"}]},{"category_id":56,"category_name":"Fruits present (10000)","category_description":"How
+        many fruits are present?","category_values":[{"value_id":32,"value_description":"","value_name":"Less
+        than 3"},{"value_id":33,"value_description":"","value_name":"3 to 10"},{"value_id":39,"value_description":"","value_name":"11
+        to 100"},{"value_id":40,"value_description":"","value_name":"101 to 1,000"},{"value_id":41,"value_description":"","value_name":"1,001
+        to 10,000"},{"value_id":42,"value_description":"","value_name":"More than
+        10,000"}]},{"category_id":57,"category_name":"Fruits present (1000)","category_description":"How
+        many fruits are present?","category_values":[{"value_id":32,"value_description":"","value_name":"Less
+        than 3"},{"value_id":33,"value_description":"","value_name":"3 to 10"},{"value_id":39,"value_description":"","value_name":"11
+        to 100"},{"value_id":40,"value_description":"","value_name":"101 to 1,000"},{"value_id":43,"value_description":"","value_name":"More
+        than 1,000"}]},{"category_id":58,"category_name":"Ripe fruit percentage","category_description":"What
+        percentage of all fruits (unripe plus ripe) on the plant are ripe? ","category_values":[{"value_id":25,"value_description":"","value_name":"Less
+        than 5%"},{"value_id":26,"value_description":"","value_name":"5-24%"},{"value_id":27,"value_description":"","value_name":"25-49%"},{"value_id":28,"value_description":"","value_name":"50-74%"},{"value_id":29,"value_description":"","value_name":"75-94%"},{"value_id":30,"value_description":"","value_name":"95%
+        or more"}]},{"category_id":59,"category_name":"Recent fruit or seed drop (10000)","category_description":"How
+        many mature fruits have dropped seeds or have completely dropped or been removed
+        from the plant since your last visit?","category_values":[{"value_id":32,"value_description":"","value_name":"Less
+        than 3"},{"value_id":33,"value_description":"","value_name":"3 to 10"},{"value_id":39,"value_description":"","value_name":"11
+        to 100"},{"value_id":40,"value_description":"","value_name":"101 to 1,000"},{"value_id":41,"value_description":"","value_name":"1,001
+        to 10,000"},{"value_id":42,"value_description":"","value_name":"More than
+        10,000"}]},{"category_id":60,"category_name":"Recent fruit or seed drop (1000)","category_description":"How
+        many mature fruits have dropped seeds or have completely dropped or been removed
+        from the plant since your last visit?","category_values":[{"value_id":32,"value_description":"","value_name":"Less
+        than 3"},{"value_id":33,"value_description":"","value_name":"3 to 10"},{"value_id":39,"value_description":"","value_name":"11
+        to 100"},{"value_id":40,"value_description":"","value_name":"101 to 1,000"},{"value_id":43,"value_description":"","value_name":"More
+        than 1,000"}]},{"category_id":61,"category_name":"Unripe seed cones present
+        (10000)","category_description":"How many seed cones are unripe?","category_values":[{"value_id":32,"value_description":"","value_name":"Less
+        than 3"},{"value_id":33,"value_description":"","value_name":"3 to 10"},{"value_id":39,"value_description":"","value_name":"11
+        to 100"},{"value_id":40,"value_description":"","value_name":"101 to 1,000"},{"value_id":41,"value_description":"","value_name":"1,001
+        to 10,000"},{"value_id":42,"value_description":"","value_name":"More than
+        10,000"}]},{"category_id":62,"category_name":"Ripe seed cones present (10000)","category_description":"How
+        many seed cones are ripe?","category_values":[{"value_id":32,"value_description":"","value_name":"Less
+        than 3"},{"value_id":33,"value_description":"","value_name":"3 to 10"},{"value_id":39,"value_description":"","value_name":"11
+        to 100"},{"value_id":40,"value_description":"","value_name":"101 to 1,000"},{"value_id":41,"value_description":"","value_name":"1,001
+        to 10,000"},{"value_id":42,"value_description":"","value_name":"More than
+        10,000"}]},{"category_id":63,"category_name":"Recent cone or seed drop (10000)","category_description":"How
+        many seed cones have dropped seeds or have completely dropped or been removed
+        from the plant since your last visit?","category_values":[{"value_id":32,"value_description":"","value_name":"Less
+        than 3"},{"value_id":33,"value_description":"","value_name":"3 to 10"},{"value_id":39,"value_description":"","value_name":"11
+        to 100"},{"value_id":40,"value_description":"","value_name":"101 to 1,000"},{"value_id":41,"value_description":"","value_name":"1,001
+        to 10,000"},{"value_id":42,"value_description":"","value_name":"More than
+        10,000"}]},{"category_id":64,"category_name":"New side branches (1000)","category_description":"How
+        many new side branches are present?","category_values":[{"value_id":32,"value_description":"","value_name":"Less
+        than 3"},{"value_id":33,"value_description":"","value_name":"3 to 10"},{"value_id":39,"value_description":"","value_name":"11
+        to 100"},{"value_id":40,"value_description":"","value_name":"101 to 1,000"},{"value_id":43,"value_description":"","value_name":"More
+        than 1,000"}]},{"category_id":65,"category_name":"Receptacles (1000)","category_description":"How
+        many receptacles are present?","category_values":[{"value_id":32,"value_description":"","value_name":"Less
+        than 3"},{"value_id":33,"value_description":"","value_name":"3 to 10"},{"value_id":39,"value_description":"","value_name":"11
+        to 100"},{"value_id":40,"value_description":"","value_name":"101 to 1,000"},{"value_id":43,"value_description":"","value_name":"More
+        than 1,000"}]},{"category_id":66,"category_name":"Receptacles percentage","category_description":"What
+        percent of all receptacles on the plant are in this stage?","category_values":[{"value_id":25,"value_description":"","value_name":"Less
+        than 5%"},{"value_id":26,"value_description":"","value_name":"5-24%"},{"value_id":27,"value_description":"","value_name":"25-49%"},{"value_id":28,"value_description":"","value_name":"50-74%"},{"value_id":29,"value_description":"","value_name":"75-94%"},{"value_id":30,"value_description":"","value_name":"95%
+        or more"}]},{"category_id":67,"category_name":"Hexagenia mayfly emergence","category_description":"What
+        is the intensity of emergence?","category_values":[{"value_id":47,"value_description":"Less
+        than 100 individuals are seen within the immediate observation area (approximately
+        5 feet in any direction).","value_name":"Slight"},{"value_id":48,"value_description":"Between
+        100 and 500 individuals are seen within the immediate observation area (approximately
+        5 feet in any direction).","value_name":"Light"},{"value_id":49,"value_description":"Consistent
+        coverage of surfaces is seen (ground, building walls and windows, vegetation,
+        etc.), or small groups of individuals are seen under lights.","value_name":"Moderate"},{"value_id":50,"value_description":"Thick
+        coverage of surfaces is seen, or very noticeable groups of individuals, including
+        small to medium piles, are seen under lights.","value_name":"Heavy"},{"value_id":51,"value_description":"Very
+        thick coverage of surfaces is seen (with minimal surface area exposed), or
+        large groups of individuals, including large piles, are seen under lights.","value_name":"Very
+        heavy"}]},{"category_id":68,"category_name":"Hexagenia mayfly death","category_description":"What
+        is the intensity of death?","category_values":[{"value_id":47,"value_description":"Less
+        than 100 individuals are seen within the immediate observation area (approximately
+        5 feet in any direction).","value_name":"Slight"},{"value_id":48,"value_description":"Between
+        100 and 500 individuals are seen within the immediate observation area (approximately
+        5 feet in any direction).","value_name":"Light"},{"value_id":49,"value_description":"Consistent
+        coverage of surfaces is seen (ground, building walls and windows, vegetation,
+        etc.), or small groups of individuals are seen under lights.","value_name":"Moderate"},{"value_id":50,"value_description":"Thick
+        coverage of surfaces is seen, or very noticeable groups of individuals, including
+        small to medium piles, are seen under lights.","value_name":"Heavy"},{"value_id":51,"value_description":"Very
+        thick coverage of surfaces is seen (with minimal surface area exposed), or
+        large groups of individuals, including large piles, are seen under lights.","value_name":"Very
+        heavy"}]},{"category_id":69,"category_name":"Young needle bundles present
+        (10000)","category_description":"How many bundles with young needles are present?\r","category_values":[{"value_id":32,"value_description":"","value_name":"Less
+        than 3"},{"value_id":33,"value_description":"","value_name":"3 to 10"},{"value_id":39,"value_description":"","value_name":"11
+        to 100"},{"value_id":40,"value_description":"","value_name":"101 to 1,000"},{"value_id":41,"value_description":"","value_name":"1,001
+        to 10,000"},{"value_id":42,"value_description":"","value_name":"More than
+        10,000"}]},{"category_id":70,"category_name":"Emerging needle bundles (10000)","category_description":"How
+        many needle bundles are emerging?\r","category_values":[{"value_id":32,"value_description":"","value_name":"Less
+        than 3"},{"value_id":33,"value_description":"","value_name":"3 to 10"},{"value_id":39,"value_description":"","value_name":"11
+        to 100"},{"value_id":40,"value_description":"","value_name":"101 to 1,000"},{"value_id":41,"value_description":"","value_name":"1,001
+        to 10,000"},{"value_id":42,"value_description":"","value_name":"More than
+        10,000"}]},{"category_id":71,"category_name":"Potential needle canopy fullness
+        (dead branch)","category_description":"What percentage of the potential canopy
+        space is full with needles? Ignore dead branches in your estimate of potential
+        canopy space.\r","category_values":[{"value_id":25,"value_description":"","value_name":"Less
+        than 5%"},{"value_id":26,"value_description":"","value_name":"5-24%"},{"value_id":27,"value_description":"","value_name":"25-49%"},{"value_id":28,"value_description":"","value_name":"50-74%"},{"value_id":29,"value_description":"","value_name":"75-94%"},{"value_id":30,"value_description":"","value_name":"95%
+        or more"}]},{"category_id":72,"category_name":"Potential needle canopy color
+        (dead branch)","category_description":"What percentage of the potential canopy
+        space is full with non-green needle color? Ignore dead branches in your estimate
+        of potential canopy space.\r","category_values":[{"value_id":25,"value_description":"","value_name":"Less
+        than 5%"},{"value_id":26,"value_description":"","value_name":"5-24%"},{"value_id":27,"value_description":"","value_name":"25-49%"},{"value_id":28,"value_description":"","value_name":"50-74%"},{"value_id":29,"value_description":"","value_name":"75-94%"},{"value_id":30,"value_description":"","value_name":"95%
+        or more"}]},{"category_id":73,"category_name":"Potential leaf canopy fullness
+        (dead branch)","category_description":"What percentage of the potential canopy
+        space is full with leaves? Ignore dead branches in your estimate of potential
+        canopy space.\r","category_values":[{"value_id":25,"value_description":"","value_name":"Less
+        than 5%"},{"value_id":26,"value_description":"","value_name":"5-24%"},{"value_id":27,"value_description":"","value_name":"25-49%"},{"value_id":28,"value_description":"","value_name":"50-74%"},{"value_id":29,"value_description":"","value_name":"75-94%"},{"value_id":30,"value_description":"","value_name":"95%
+        or more"}]},{"category_id":74,"category_name":"Potential leaf canopy color
+        (dead branch)","category_description":"What percentage of the potential canopy
+        space is full with non-green leaf color? Ignore dead branches in your estimate
+        of potential canopy space.\r","category_values":[{"value_id":25,"value_description":"","value_name":"Less
+        than 5%"},{"value_id":26,"value_description":"","value_name":"5-24%"},{"value_id":27,"value_description":"","value_name":"25-49%"},{"value_id":28,"value_description":"","value_name":"50-74%"},{"value_id":29,"value_description":"","value_name":"75-94%"},{"value_id":30,"value_description":"","value_name":"95%
+        or more"}]},{"category_id":75,"category_name":"Courtship calling","category_description":"What
+        is the intensity of calling?","category_values":[{"value_id":20,"value_description":"There
+        is space between calls and individuals can be counted.","value_name":"Single
+        calls"},{"value_id":21,"value_description":"Calls of individuals can be distinguished
+        but there is some overlapping of calls.","value_name":"Overlapping calls"},{"value_id":22,"value_description":"Calls
+        are constant and overlapping.","value_name":"Full chorus"}]},{"category_id":77,"category_name":"","category_description":"","category_values":[]}]'
+  recorded_at: 2020-11-12 23:03:11 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.7.0

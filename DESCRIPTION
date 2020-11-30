@@ -4,24 +4,38 @@ Description: Programmatic interface to the
     Web Service methods provided by the National 'Phenology' Network
     (<https://usanpn.org/>), which includes data on various life history
     events that occur at specific times.
-Version: 0.1.4.9100
+Version: 1.1.1
 License: MIT + file LICENSE
 Authors@R: c(
-    person("Scott", "Chamberlain", role = c("aut", "cre"), email = "myrmecocystus@gmail.com"),
-    person("Lee", "Marsh", role = "aut", email = "npnlee85@gmail.com")
+    person("Lee", "Marsh", role = c("aut", "cre"), email = "lee@usanpn.org"),
+    person("Scott", "Chamberlain", role = "aut"),
+    person("Alyssa", "Rosemartin", role= "aut", email = "alyssa@usanpn.org"),
+    person("Kevin", "Wong", role = "aut", email = "kevin@usanpn.org")
     )
 LazyData: yes
+Depends: R (>= 3.5.0)
 Imports:
-    stats,
     httr (>= 1.1.0),
     jsonlite (>= 0.9.19),
-    plyr,
     data.table (>= 1.9.6),
-    tibble
+    sp (>= 1.1-0),
+    tibble,
+    curl,
+    raster,
+    rgdal,
+    plyr,
+    XML,
+    magrittr
 Suggests:
     ggplot2,
     testthat,
-    covr
-URL: https://docs.ropensci.org/rnpn (website)
-    https://github.com/ropensci/rnpn (devel)
-RoxygenNote: 6.0.1
+    covr,
+    knitr,
+    markdown,
+    rmarkdown,
+    RColorBrewer,
+    vcr
+RoxygenNote: 7.1.1
+VignetteBuilder: knitr
+URL: https://docs.ropensci.org/rnpn/ (website)
+    https://github.com/ropensci/rnpn/ (devel)

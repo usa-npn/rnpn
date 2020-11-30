@@ -1,0 +1,250 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://www-dev.usanpn.org/npn_portal/networks/getPartnerNetworks.json
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      date: Thu, 12 Nov 2020 20:04:08 GMT
+      server: Apache/2.4.7 (Ubuntu) SVN/1.8.8 PHP/5.5.9-1ubuntu4.29 OpenSSL/1.0.1f
+      x-powered-by: PHP/5.5.9-1ubuntu4.29
+      pragma: no-cache
+      cache-control: no-store, no-cache, max-age=0, must-revalidate
+      access-control-allow-origin: '*'
+      access-control-allow-headers: origin, x-requested-with, content-type
+      access-control-allow-methods: PUT, GET, POST, DELETE, OPTIONS
+      transfer-encoding: chunked
+      content-type: application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      file: no
+      string: '[{"network_id":44,"network_name":" Channel Islands NP"},{"network_id":302,"network_name":"A.T.
+        Seasons"},{"network_id":603,"network_name":"AAFC-CEF-Building 49"},{"network_id":295,"network_name":"ABQ
+        BioPark Botanic Garden"},{"network_id":27,"network_name":"Acadia NP"},{"network_id":790,"network_name":"ACParks"},{"network_id":695,"network_name":"Agassiz
+        National Wildlife Refuge"},{"network_id":609,"network_name":"Alcuin Montessori
+        School Adolescent Program"},{"network_id":300,"network_name":"Aldo Leopold
+        Nature Center"},{"network_id":69,"network_name":"Appalachian Mountain Club"},{"network_id":66,"network_name":"Appalachian
+        Trail Conservancy"},{"network_id":60,"network_name":"Arbor Day Foundation"},{"network_id":520,"network_name":"Arctic
+        National Wildlife Refuge"},{"network_id":477,"network_name":"Arizona Sonoran
+        Desert Museum"},{"network_id":437,"network_name":"Arnold Arboretum - Native
+        and Indicator Observation Program"},{"network_id":329,"network_name":"Arnold
+        Arboretum - Tree Spotters Program"},{"network_id":110,"network_name":"Ashtabula"},{"network_id":776,"network_name":"ASU
+        Biology"},{"network_id":785,"network_name":"Atrisco Heritage"},{"network_id":252,"network_name":"Audubon"},{"network_id":409,"network_name":"Audubon
+        California"},{"network_id":425,"network_name":"Audubon Canyon Ranch"},{"network_id":294,"network_name":"Audubon
+        Starr Ranch"},{"network_id":308,"network_name":"AZ Project WET"},{"network_id":406,"network_name":"Aztec
+        Ruins NM"},{"network_id":749,"network_name":"Barataria Phenology Trail"},{"network_id":365,"network_name":"Bates
+        College"},{"network_id":787,"network_name":"Bayou Lafourche Phenology Trail"},{"network_id":691,"network_name":"Bayou
+        Sauvage NWR"},{"network_id":322,"network_name":"Belwin"},{"network_id":527,"network_name":"BEMP"},{"network_id":678,"network_name":"BEMP
+        - Mesilla Valley Bosque State Park"},{"network_id":124,"network_name":"Ben
+        Franklin School"},{"network_id":136,"network_name":"Berkshire Schools Board
+        of Education Building"},{"network_id":537,"network_name":"BHWP"},{"network_id":667,"network_name":"Big
+        Branch Marsh NWR"},{"network_id":758,"network_name":"BIOL 103 BHSU Fayer"},{"network_id":782,"network_name":"BIOS
+        1620"},{"network_id":93,"network_name":"Biosphere 2"},{"network_id":248,"network_name":"BLM
+        Arcata Field Office"},{"network_id":195,"network_name":"Borton Elementary
+        School"},{"network_id":106,"network_name":"Boston College"},{"network_id":28,"network_name":"Boston
+        Harbor Islands NRA"},{"network_id":251,"network_name":"Botanic Gardens and
+        Arboretums"},{"network_id":369,"network_name":"Brandeis University"},{"network_id":219,"network_name":"Brazos
+        Bend State Park"},{"network_id":402,"network_name":"Brooklyn Botanic Garden"},{"network_id":299,"network_name":"Brookwood
+        Elementary School"},{"network_id":783,"network_name":"BSCI361"},{"network_id":541,"network_name":"Buck
+        Horn Creek"},{"network_id":226,"network_name":"Buffelgrass Monitoring Network,
+        Tucson"},{"network_id":19,"network_name":"California Phenology Project"},{"network_id":795,"network_name":"CALS
+        CCT"},{"network_id":417,"network_name":"Canaan Valley National Wildlife Refuge"},{"network_id":64,"network_name":"Cape
+        Cod National Seashore Phenology Monitoring"},{"network_id":194,"network_name":"Capitol
+        Reef NP"},{"network_id":266,"network_name":"Cary Institute of Ecosystem Studies"},{"network_id":439,"network_name":"Cascades
+        Phenology Network"},{"network_id":290,"network_name":"Casey Trees"},{"network_id":288,"network_name":"CCA
+        Phenology Project"},{"network_id":731,"network_name":"Cedar Crest College
+        - Cigliano Research Lab"},{"network_id":767,"network_name":"Central Indiana
+        Phenology"},{"network_id":444,"network_name":"Chesapeake & Ohio Canal NHP"},{"network_id":389,"network_name":"Chicago
+        Park District"},{"network_id":549,"network_name":"Chico Creek Nature Center"},{"network_id":741,"network_name":"Chik-Wauk
+        Museum and Nature Center"},{"network_id":327,"network_name":"Chiricahua NM"},{"network_id":613,"network_name":"Citizen
+        Science Team at Trinity Christian College"},{"network_id":485,"network_name":"Citra
+        Plant Science REU"},{"network_id":297,"network_name":"City of Roanoke"},{"network_id":303,"network_name":"Clover
+        Environmental Education"},{"network_id":218,"network_name":"Coal Oil Point
+        Natural Reserve"},{"network_id":249,"network_name":"Colleges and Universities"},{"network_id":746,"network_name":"Colorado
+        National Monument"},{"network_id":320,"network_name":"Community Greenways
+        Collaborative"},{"network_id":412,"network_name":"Community Nature Center
+        (CNC) of Prescott"},{"network_id":533,"network_name":"ConsBio"},{"network_id":374,"network_name":"Cooperative
+        Extension"},{"network_id":326,"network_name":"Coronado NM"},{"network_id":119,"network_name":"Coshocton"},{"network_id":339,"network_name":"Coulee
+        Ranch"},{"network_id":706,"network_name":"Crosby Arboretum"},{"network_id":591,"network_name":"CSU"},{"network_id":351,"network_name":"CSU
+        Chico NSCI 102"},{"network_id":512,"network_name":"CSU Chico NSCI 142"},{"network_id":121,"network_name":"Cuyahoga
+        County"},{"network_id":618,"network_name":"Daniel Stowe Botanical Garden"},{"network_id":715,"network_name":"Darrow
+        School"},{"network_id":105,"network_name":"Denver Botanic Gardens"},{"network_id":242,"network_name":"Desert
+        Botanical Garden"},{"network_id":254,"network_name":"Devils Postpile NM"},{"network_id":781,"network_name":"Dickinson
+        Env Science"},{"network_id":745,"network_name":"Dickinson State University
+        Phenology Group"},{"network_id":503,"network_name":"DMACC Urban"},{"network_id":435,"network_name":"Dogwood
+        Genome Project - UGA"},{"network_id":284,"network_name":"Don Edwards NWR"},{"network_id":769,"network_name":"Earth
+        Discovery Institute Phenology Project"},{"network_id":616,"network_name":"EcoChronos
+        CCSF"},{"network_id":590,"network_name":"Environmental Monitoring and Management
+        Alliance"},{"network_id":89,"network_name":"Environmental Volunteers"},{"network_id":734,"network_name":"ES&T\/ICNL"},{"network_id":523,"network_name":"EXCEL"},{"network_id":177,"network_name":"F.A.
+        Seiberling Nature Realm"},{"network_id":490,"network_name":"Finger Lakes Land
+        Trust"},{"network_id":61,"network_name":"Florida Bluebird Society"},{"network_id":99,"network_name":"Florida
+        State University"},{"network_id":247,"network_name":"Foothill College Nature"},{"network_id":328,"network_name":"Fort
+        Bowie NHS"},{"network_id":721,"network_name":"Foxcroft Farm"},{"network_id":230,"network_name":"Furman
+        University"},{"network_id":340,"network_name":"Gateway NP"},{"network_id":135,"network_name":"Geauga"},{"network_id":355,"network_name":"Gila
+        County Cooperative Extension"},{"network_id":694,"network_name":"Glacial Ridge
+        and Rydell National Wildlife Refuges"},{"network_id":54,"network_name":"Golden
+        Gate NRA"},{"network_id":497,"network_name":"Grand Bay NWR\/NERR"},{"network_id":214,"network_name":"Grand
+        Canyon NP"},{"network_id":331,"network_name":"Grand Teton NP"},{"network_id":73,"network_name":"Great
+        Basin Bird Observatory"},{"network_id":625,"network_name":"Great Bay NERR"},{"network_id":72,"network_name":"Great
+        Smoky Mountains NP"},{"network_id":9,"network_name":"Great Sunflower Project"},{"network_id":345,"network_name":"Guadalupe
+        Mountains NP"},{"network_id":662,"network_name":"Gulf Coast Phenology Trail"},{"network_id":354,"network_name":"Hakalau
+        Forest National Wildlife Refuge"},{"network_id":495,"network_name":"Hannan
+        Nature Observers"},{"network_id":686,"network_name":"Harford Community College"},{"network_id":760,"network_name":"Hassayampa
+        Phenology Trail"},{"network_id":559,"network_name":"Hawthorne Valley"},{"network_id":98,"network_name":"Highlands
+        Ctr for Natural History"},{"network_id":59,"network_name":"HJ Andrews"},{"network_id":626,"network_name":"Hopland
+        Research and Extension Center"},{"network_id":428,"network_name":"HSU-HBNWR
+        Experimental Willows"},{"network_id":332,"network_name":"Hurricane Island"},{"network_id":267,"network_name":"Huyck
+        Preserve"},{"network_id":729,"network_name":"Ijams Phenology"},{"network_id":211,"network_name":"Imperial
+        National Wildlife Refuge"},{"network_id":797,"network_name":"Indiana Backyard
+        Observers"},{"network_id":255,"network_name":"Intermountain Region"},{"network_id":415,"network_name":"Intervale
+        Lowlands Preserve"},{"network_id":789,"network_name":"J.N. Ding Darling National
+        Wildlife Refuge"},{"network_id":798,"network_name":"Jean Lafitte NHPP"},{"network_id":573,"network_name":"Jewel
+        Moore Nature Reserve"},{"network_id":639,"network_name":"John D. MacArthur
+        Beach State Park"},{"network_id":55,"network_name":"John Muir NHS"},{"network_id":492,"network_name":"Johnston
+        High School Science"},{"network_id":46,"network_name":"Joshua Tree NP"},{"network_id":298,"network_name":"Jug
+        Bay Wetlands Sanctuary"},{"network_id":13,"network_name":"Juniper Pollen Project"},{"network_id":387,"network_name":"K-12
+        Schools"},{"network_id":281,"network_name":"Kenneth S. Norris Rancho Marino
+        Reserve"},{"network_id":120,"network_name":"Lake Park Coshocton Park District"},{"network_id":250,"network_name":"Land
+        Trusts and Conservancies"},{"network_id":107,"network_name":"Larson''s Biogeography"},{"network_id":103,"network_name":"Lasell
+        College"},{"network_id":35,"network_name":"Lassen Volcanic NP"},{"network_id":486,"network_name":"Leon
+        Extension\/ Jack McLean Park"},{"network_id":147,"network_name":"Licking"},{"network_id":405,"network_name":"Linda
+        Loring Nature Foundation"},{"network_id":779,"network_name":"Little River
+        Wetlands Project"},{"network_id":440,"network_name":"LPL Network Group"},{"network_id":85,"network_name":"LTER"},{"network_id":588,"network_name":"Madrone
+        Audubon"},{"network_id":76,"network_name":"Manual Entry"},{"network_id":660,"network_name":"Manzano
+        Day School"},{"network_id":631,"network_name":"Manzo Elementary School"},{"network_id":292,"network_name":"Maricopa
+        Cooperative Extension"},{"network_id":83,"network_name":"Marist Chicago"},{"network_id":493,"network_name":"Marist
+        College"},{"network_id":29,"network_name":"Marsh-Billings-Rockefeller NHP"},{"network_id":505,"network_name":"Mauna
+        Kea Forest Restoration Project"},{"network_id":434,"network_name":"Mayfly
+        Watch"},{"network_id":622,"network_name":"McDowell Sonoran Conservancy Phenology
+        Trails"},{"network_id":774,"network_name":"MGCCC Estaurine Education Center"},{"network_id":268,"network_name":"Mianus
+        River Gorge"},{"network_id":390,"network_name":"Middlesex Academy Phenology
+        Club"},{"network_id":630,"network_name":"Midway Atoll National Wildlife Refuge"},{"network_id":348,"network_name":"Midwest
+        Region"},{"network_id":579,"network_name":"Millbrook School Phenology Group"},{"network_id":608,"network_name":"Milner
+        Gardens & Woodland"},{"network_id":239,"network_name":"Minnesota Phenology
+        Network"},{"network_id":275,"network_name":"Minnesota Valley National Wildlife
+        Refuge"},{"network_id":697,"network_name":"Minnewaska State Park Preserve"},{"network_id":668,"network_name":"Mississippi
+        Sandhill Crane NWR"},{"network_id":436,"network_name":"Missouri Botanical
+        Garden"},{"network_id":319,"network_name":"MN Landscape Arboretum"},{"network_id":716,"network_name":"MN
+        Zoo - SES Citizen Science team"},{"network_id":411,"network_name":"Mogollon
+        Highlands Phenology Trail"},{"network_id":269,"network_name":"Mohonk Preserve"},{"network_id":5,"network_name":"Monarch
+        Watch"},{"network_id":234,"network_name":"Montana Audubon Center"},{"network_id":710,"network_name":"Montessori
+        of the Rio Grande Charter School"},{"network_id":408,"network_name":"Mt. Diablo
+        Audubon Society"},{"network_id":277,"network_name":"Mt. St. Helens Institute"},{"network_id":570,"network_name":"Murray
+        State University Phenology"},{"network_id":587,"network_name":"Napa Solano
+        Audubon"},{"network_id":604,"network_name":"Narragansett Bay NERR"},{"network_id":441,"network_name":"National
+        Capital Region"},{"network_id":77,"network_name":"National Ecological Observatory
+        Network (NEON)"},{"network_id":15,"network_name":"National Park Service"},{"network_id":757,"network_name":"National
+        Tropical Botanical Garden"},{"network_id":747,"network_name":"Native American
+        Medicine Gardens"},{"network_id":296,"network_name":"Natural History Institute"},{"network_id":386,"network_name":"Nature
+        Centers"},{"network_id":557,"network_name":"Nature''s Notebook at B2"},{"network_id":70,"network_name":"NatureBridge"},{"network_id":62,"network_name":"NCO"},{"network_id":388,"network_name":"NCSS
+        Lincoln County WI Phenology"},{"network_id":534,"network_name":"Neal Smith
+        National Wildlife Refuge"},{"network_id":88,"network_name":"New England Leaf
+        Out Project"},{"network_id":74,"network_name":"New Hampshire Audubon"},{"network_id":496,"network_name":"New
+        Paltz High School"},{"network_id":273,"network_name":"New York Botanical Garden
+        Forest Phenology"},{"network_id":305,"network_name":"New York Botanical Garden
+        Living Collections"},{"network_id":264,"network_name":"New York Phenology
+        Project"},{"network_id":481,"network_name":"Nez Perce NHP"},{"network_id":666,"network_name":"North
+        Salem High School"},{"network_id":256,"network_name":"Northeast Region"},{"network_id":216,"network_name":"Northern
+        Arizona Phenology Trail"},{"network_id":111,"network_name":"OARDC Ashtabula
+        Research Station"},{"network_id":238,"network_name":"Ohio State University
+        Phenology Gardens"},{"network_id":263,"network_name":"Ohio Wesleyan University"},{"network_id":700,"network_name":"Ohio
+        WILD School Sites"},{"network_id":356,"network_name":"Okaloosa County Extension"},{"network_id":615,"network_name":"Old
+        Woman Creek NERR"},{"network_id":330,"network_name":"Oracle State Park"},{"network_id":366,"network_name":"Oregon
+        Season Trackers"},{"network_id":196,"network_name":"Overland Park Arboretum"},{"network_id":457,"network_name":"Oxy-Biology"},{"network_id":257,"network_name":"Pacific
+        West Region"},{"network_id":458,"network_name":"Parkside Drive Park"},{"network_id":719,"network_name":"Pascagoula
+        River Audubon Center"},{"network_id":791,"network_name":"Patuxent Research
+        Refuge"},{"network_id":236,"network_name":"Pepperwood Preserve"},{"network_id":742,"network_name":"PHENOMET
+        Bajada"},{"network_id":276,"network_name":"Phoenix Phenology Trail"},{"network_id":498,"network_name":"Pickering
+        Creek Audubon Center"},{"network_id":538,"network_name":"Pima Community College
+        - Northwest Campus"},{"network_id":92,"network_name":"Pima County Extension"},{"network_id":378,"network_name":"Pipestone
+        NM"},{"network_id":52,"network_name":"Portland BudWatch"},{"network_id":550,"network_name":"Prairie
+        Ridge Tree Trail"},{"network_id":433,"network_name":"Prairie Wetlands Learning
+        Center"},{"network_id":413,"network_name":"Prescott Creeks\/Watson Woods"},{"network_id":108,"network_name":"Project
+        Tree Watch"},{"network_id":391,"network_name":"ProjectEXPLORE"},{"network_id":563,"network_name":"Pu''u
+        Wa''awa''a"},{"network_id":312,"network_name":"Quarryhill Botanical Garden"},{"network_id":207,"network_name":"Rachel
+        Carson National Wildlife Refuge"},{"network_id":780,"network_name":"Radford
+        University Phenology Monitoring"},{"network_id":796,"network_name":"RCA"},{"network_id":65,"network_name":"Redwood
+        National Park"},{"network_id":462,"network_name":"Redwood\/Roberts Regional
+        Parks"},{"network_id":754,"network_name":"Reginald Chavez Elementary School"},{"network_id":341,"network_name":"Region
+        1 (Pacific)"},{"network_id":283,"network_name":"Region 2 (Southwest)"},{"network_id":347,"network_name":"Region
+        3 (Midwest)"},{"network_id":200,"network_name":"Region 4 (Southeast)"},{"network_id":201,"network_name":"Region
+        5 (Northeast)"},{"network_id":203,"network_name":"Region 7 (Alaska)"},{"network_id":204,"network_name":"Region
+        8 (Pacific Southwest)"},{"network_id":766,"network_name":"Relic Sand Dunes"},{"network_id":793,"network_name":"Rio
+        Grande National Forest"},{"network_id":385,"network_name":"Rio Grande Phenology
+        Trail"},{"network_id":122,"network_name":"Riverside K-8 School"},{"network_id":665,"network_name":"RMC
+        Campus Phenology"},{"network_id":17,"network_name":"RMSSN Academy"},{"network_id":489,"network_name":"RSU\/MSAD
+        54"},{"network_id":483,"network_name":"Rye Nature Center"},{"network_id":504,"network_name":"Sam
+        Hughes Elementary School"},{"network_id":94,"network_name":"Sam Hughes Neighborhood
+        Association"},{"network_id":431,"network_name":"Santa Barbara Botanic Garden"},{"network_id":287,"network_name":"Santa
+        Clara County Parks"},{"network_id":84,"network_name":"Santa Fe Botanical Garden"},{"network_id":43,"network_name":"Santa
+        Monica Mountains NRA"},{"network_id":543,"network_name":"Santa Rita Experimental
+        Range"},{"network_id":502,"network_name":"Santiago Canyon College Biology"},{"network_id":31,"network_name":"Saratoga
+        NHP"},{"network_id":68,"network_name":"Saugus Iron Works NHS"},{"network_id":602,"network_name":"Scenic
+        Hudson"},{"network_id":245,"network_name":"Science and Math Institute"},{"network_id":739,"network_name":"SciStarter"},{"network_id":640,"network_name":"SCMF
+        Naturalists"},{"network_id":352,"network_name":"Scottsdale Community College
+        - CNUW"},{"network_id":410,"network_name":"Sea and Sage Audubon"},{"network_id":282,"network_name":"Sedgwick
+        Reserve"},{"network_id":278,"network_name":"Seeley Lake RD"},{"network_id":51,"network_name":"Sequoia
+        and Kings Canyon NP"},{"network_id":307,"network_name":"Sequoia Riverlands
+        Trust"},{"network_id":629,"network_name":"SERC Pheno Trail"},{"network_id":571,"network_name":"Sevilleta
+        National Wildlife Refuge"},{"network_id":376,"network_name":"SFAI Phenology
+        Project"},{"network_id":740,"network_name":"Shelburne Farms Phenology Walk"},{"network_id":426,"network_name":"Sherburne
+        National Wildlife Refuge"},{"network_id":384,"network_name":"Sierra Seasons"},{"network_id":227,"network_name":"Sierra
+        Streams Institute"},{"network_id":18,"network_name":"Signs of the Seasons"},{"network_id":480,"network_name":"Signs
+        of the Seasons Network"},{"network_id":95,"network_name":"Silicon Valley Phenology
+        Trails"},{"network_id":404,"network_name":"Sisters High School"},{"network_id":786,"network_name":"Smith
+        College Bio 131"},{"network_id":222,"network_name":"Solano Land Trust"},{"network_id":644,"network_name":"South
+        High"},{"network_id":680,"network_name":"Southern Oregon University Farm"},{"network_id":71,"network_name":"St
+        Olaf College"},{"network_id":205,"network_name":"St. Marks National Wildlife
+        Refuge"},{"network_id":540,"network_name":"St. Marks Visitor Center"},{"network_id":334,"network_name":"Stebbins
+        Cold Canyon Reserve"},{"network_id":555,"network_name":"Stella Olson Park"},{"network_id":669,"network_name":"Stetson
+        Biology"},{"network_id":652,"network_name":"SUNY Geneseo"},{"network_id":526,"network_name":"Swarthmore
+        Conservation Biology Course"},{"network_id":601,"network_name":"Sycamore Canyon
+        Wilderness Park - Riverside"},{"network_id":562,"network_name":"Teaching Change"},{"network_id":270,"network_name":"Teatown
+        Lake Reservation"},{"network_id":210,"network_name":"Tetlin National Wildlife
+        Refuge"},{"network_id":690,"network_name":"Texas A and M AgriLife Research
+        Station - Sonora"},{"network_id":484,"network_name":"Texas Nature Challenge
+        Observations"},{"network_id":600,"network_name":"Texas Woman''s University"},{"network_id":653,"network_name":"The
+        606-Chicago"},{"network_id":149,"network_name":"The Dawes Arboretum"},{"network_id":720,"network_name":"The
+        Morton Arboretum"},{"network_id":465,"network_name":"Third House Nature Center"},{"network_id":399,"network_name":"Tin
+        Mountain Conservation Center"},{"network_id":641,"network_name":"Tohono Chul"},{"network_id":784,"network_name":"Tracking
+        Plant Phenology at The Evergreen State College"},{"network_id":572,"network_name":"Trinity
+        University BIOL 1111"},{"network_id":91,"network_name":"Tucson Audubon"},{"network_id":240,"network_name":"Tucson
+        Botanical Garden"},{"network_id":530,"network_name":"Tucson Mission Garden"},{"network_id":63,"network_name":"Tucson
+        Phenology Trail"},{"network_id":659,"network_name":"Tulare Audubon"},{"network_id":343,"network_name":"Tumamoc
+        Hill"},{"network_id":229,"network_name":"U of A Campus Arboretum"},{"network_id":725,"network_name":"UA
+        SEECs"},{"network_id":217,"network_name":"UCNRS"},{"network_id":350,"network_name":"UCSC
+        Arboretum"},{"network_id":301,"network_name":"UF Extension Training"},{"network_id":712,"network_name":"UIdaho"},{"network_id":723,"network_name":"ULV
+        - Mountain and Desert Biology Class"},{"network_id":422,"network_name":"UNCO
+        BIO 111"},{"network_id":633,"network_name":"Union Village Dam"},{"network_id":237,"network_name":"Unity
+        College Honors Biology"},{"network_id":102,"network_name":"University of Oklahoma"},{"network_id":382,"network_name":"UofL
+        campus"},{"network_id":394,"network_name":"Upper Mississippi River National
+        Wildlife Refuge"},{"network_id":703,"network_name":"Ursinus College"},{"network_id":199,"network_name":"USFWS"},{"network_id":335,"network_name":"USGS
+        Headquarters (Public)"},{"network_id":561,"network_name":"UT Gardens Knoxville"},{"network_id":279,"network_name":"Valentine
+        Eastern Sierra Reserve"},{"network_id":262,"network_name":"Valle de Oro National
+        Wildlife Refuge"},{"network_id":518,"network_name":"Vashon Nature Center Phenology
+        Study"},{"network_id":271,"network_name":"Vassar College"},{"network_id":524,"network_name":"Wabash
+        College Ecology"},{"network_id":293,"network_name":"Wakarusa Wetlands Indigenous
+        Trail"},{"network_id":663,"network_name":"Wakefield Tree Observers"},{"network_id":583,"network_name":"Walker
+        Nature Center"},{"network_id":778,"network_name":"Walking with Wildflowers"},{"network_id":414,"network_name":"Walnut
+        Creek Center for Education and Research"},{"network_id":272,"network_name":"Ward
+        Pound Ridge Reservation"},{"network_id":738,"network_name":"Warren Wilson
+        College Phenology Stewardship Program"},{"network_id":581,"network_name":"Watershed
+        Management Group"},{"network_id":232,"network_name":"WCU Plants"},{"network_id":529,"network_name":"Weymouth
+        Woods"},{"network_id":461,"network_name":"Whitfield Wildlife Conservation
+        Area"},{"network_id":396,"network_name":"Wilson''s Creek NB"},{"network_id":548,"network_name":"Winterhaven
+        School"},{"network_id":14,"network_name":"Wisconsin Phenological Society"},{"network_id":645,"network_name":"Woodstock
+        High School"},{"network_id":100,"network_name":"WVCO Science Lab - Phenology
+        Sites"},{"network_id":584,"network_name":"WVU Core Arboretum"},{"network_id":574,"network_name":"Yolo
+        Audubon"},{"network_id":50,"network_name":"Yosemite NP"},{"network_id":75,"network_name":"Zumwalt
+        Prairie Phenology"}]'
+  recorded_at: 2020-11-12 20:03:55 GMT
+  recorded_with: vcr/0.5.4, webmockr/0.7.0
