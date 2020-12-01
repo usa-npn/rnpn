@@ -2,6 +2,15 @@ I have read and agree to the the CRAN policies at
 http://cran.r-project.org/web/packages/policies.html
 
 
+## Resubmission
+
+This is a re-submission. In this version I have fixed invalid and/or redirecting links present in the documentation.
+
+
+
+## Previous cran-comments
+
+
 ## Test environments
 
 R CMD CHECK passed on local Windows 10 and Ubuntu 18 using R 4.0.2 
