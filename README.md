@@ -8,7 +8,7 @@ developed.](http://www.repostatus.org/badges/latest/active.svg)](https://www.rep
 checks](https://cranchecks.info/badges/worst/rnpn)](https://cranchecks.info/pkgs/rnpn)
 [![codecov.io](https://codecov.io/github/ropensci/rnpn/coverage.svg?branch=master)](https://codecov.io/github/ropensci/rnpn?branch=master)
 [![R build
-status](https://github.com/usa-npn/rnpn//workflows/R-CMD-check/badge.svg)](https://github.com/usa-npn/rnpn//actions)
+status](https://github.com/usa-npn/rnpn//workflows/R-CMD-check/badge.svg)](https://github.com/usa-npn/rnpn/actions)
 
 `rnpn` is an R client for interacting with the USA National Phenology
 Network data web services. These services include access to a rich set
@@ -22,23 +22,11 @@ which describes the full set of REST services this package wraps.
 
 There is no need for an API key to grab data from the National Phenology
 Network but users are required to self identify, on an honor system,
-against requests that may draw upon larger datasets. Simply populate the
-request\_source parameter, as necessary, with your name or the name of
-your institution.
-
-Currently there are services for writing to the database but those
-endpoints do require user authentication and are not accessible through
-this R wrapper. Please contact the package authors for more information
-if that’s what you’re trying to do.
+against requests that may draw upon larger datasets. For functions that
+require it, simply populate the request\_source parameter with your name
+or the name of your institution.
 
 ## Installation
-
-This package has evolved slowly and is currently managed in a few
-locations, with varying degrees of available functionality.
-
-The original, v. 0.1, iteration of the package is available through CRAN
-but has limited functionality and a number of endpoints that have been
-deprecated.
 
 CRAN version
 
@@ -46,14 +34,7 @@ CRAN version
 install.packages("rnpn")
 ```
 
-There’s a newer iteration of the package that includes a lot more
-functionality, including the ability to access geospatial data, and is
-up-to-date with the backing data services. This version of the package
-is actively maintained, but is not managed through CRAN yet and as such
-is more bug-prone. This version of the package must be installed through
-devtools.
-
-Development version
+Development version:
 
 ``` r
 install.packages("devtools")
@@ -63,6 +44,15 @@ devtools::install_github("usa-npn/rnpn")
 
 ``` r
 library('rnpn')
+```
+
+This package has dependencies on both curl and gdal. Some Linux based
+systems may require additional system dependencies for the package to
+install correctly. For example, on Ubuntu:
+
+``` r
+sudo apt install libcurl4-openssl-dev
+sudo apt install libproj-dev libgdal-dev
 ```
 
 ## The Basics
