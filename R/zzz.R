@@ -33,11 +33,21 @@ get_skip_long_tests <- function(){
 #'
 check_service <- function() {
   npn_set_env(get_test_env())
+  url <- paste0(base(), 'species/getSpeciesById.json')
+  args <- list(species_id = 3)
+  res <- NULL
+  tryCatch({
+    res <- GET(url, query = args)
+  },
+  error=function(msg){
+    return(FALSE)
+  })
 
-  con_test_res <- npn_species_id(3)
-  if (is.null(con_test_res)) {
-    skip("Service is down")
+  if (is.null(res) || res$status_code != 200) {
+    return(FALSE)
   }
+
+  return(TRUE)
 }
 
 #' Runs a basic check to see if
@@ -48,14 +58,31 @@ check_service <- function() {
 #' tests should be run
 #'
 check_geo_service <- function() {
-  npn_set_env(get_test_env())
 
-  con_test_res <- npn_get_layer_details()
-  if (is.null(con_test_res)) {
-    FALSE
+  if( !is.null(pkg.env$remote_env)){
+    pkg.env$remote_env <- pkg.env$remote_env
   }else{
-    TRUE
+    pkg.env$remote_env <- "ops"
   }
+
+  if(pkg.env$remote_env=="ops"){
+    url <- "http://geoserver.usanpn.org/geoserver/ows?service=wms&version=1.3.0&request=GetCapabilities"
+  }else{
+    url <- "http://geoserver-dev.usanpn.org/geoserver/ows?service=wms&version=1.3.0&request=GetCapabilities"
+  }
+
+  tryCatch({
+    res <- GET(url)
+  },
+  error=function(msg){
+    return(FALSE)
+  })
+
+  if (res$status_code != 200) {
+    return(FALSE)
+  }
+
+  return(TRUE)
 }
 
 
@@ -98,11 +125,7 @@ pop <- function(x, y) {
 ldfply <- function(y){
   res <- lapply(y, function(x){
     x[ sapply(x, is.null) ] <- NA
-    if("nodata" %in% names(x) || x == "servicedown"){
-      NULL
-    }else{
-      data.frame(x, stringsAsFactors = FALSE)
-    }
+    data.frame(x, stringsAsFactors = FALSE)
   })
   do.call(rbind.fill, res)
 }

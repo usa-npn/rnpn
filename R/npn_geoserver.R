@@ -17,8 +17,9 @@
 #' layers <- npn_get_layer_details()
 #' }
 npn_get_layer_details <- function(){
+
   tryCatch({
-  doc <- GET("http://geoserver-dev.usanpn.org/geoserver/ows?service=wms&version=1.3.0&request=GetCapabilities", list())
+  doc <- GET("http://geoserver.usanpn.org/geoserver/ows?service=wms&version=1.3.0&request=GetCapabilities", list())
   doc <- httr::content(doc, as = "text", encoding = "UTF-8")
   doc.data <- XML::xmlParse(file = doc)
 
@@ -115,7 +116,6 @@ npn_download_geospatial <- function (
 
 
   url <- paste0(base_geoserver(), "format=", format , "&coverageId=",coverage_id,param)
-  print (url)
 
   if(is.null(output_path)){
     download.file(url,z,method="libcurl", mode="wb")

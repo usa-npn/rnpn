@@ -4,10 +4,10 @@
 \alias{npn_phenophase_details}
 \title{Get Phenophase Details}
 \usage{
-npn_phenophase_details(ids, ...)
+npn_phenophase_details(ids = list(), ...)
 }
 \arguments{
-\item{ids}{List of phenophase ids for which to retrieve additional details.}
+\item{ids}{Takes a list of phenophase ids for which to retrieve additional details.}
 
 \item{...}{Curl options passed on to \code{\link[httr]{GET}}}
 }

@@ -25,6 +25,7 @@ npn_species <- function(...) {
 #' @param ids List of species ids for which to retrieve information
 #' @return data.frame of the species' information
 npn_species_id <- function(ids, ...) {
+
   tt <- lapply(ids, function(z){
     npn_GET(paste0(base(), 'species/getSpeciesById.json'), list(species_id = z), ...)
   })

@@ -4,8 +4,5 @@ library("rnpn")
 
 
 
-
-
-
 test_check("rnpn")
 
