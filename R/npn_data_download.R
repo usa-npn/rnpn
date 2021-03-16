@@ -679,79 +679,84 @@ npn_get_data <- function(
   i<-0
 
   # Read the data 8MB at a time. This might be further optimized with the backing service.
-
-  jsonlite::stream_in(con, function(df){
-
-
-    # Reconcile all the points in the frame with the SIX leaf raster,
-    # if it's been requested.
-    if(!is.null(six_leaf_raster)){
-      df <- npn_merge_geo_data(six_leaf_raster, "SI-x_Leaf_Value", df)
-    }
-
-    # Reconcile all the points in the frame with the SIX bloom raster,
-    # if it's been requested.
-    if(!is.null(six_bloom_raster)){
-      df <- npn_merge_geo_data(six_bloom_raster, "SI-x_Bloom_Value", df)
-    }
-
-    if(!is.null(additional_layers)){
-      for(j in rownames(additional_layers)){
-        df <- npn_merge_geo_data(additional_layers[j,][['raster']][[1]],as.character(additional_layers[j,][['name']][[1]]),df)
-      }
-    }
+  tryCatch({
+    jsonlite::stream_in(con, function(df){
 
 
-    # Reconcile the AGDD point values with the data points if that
-    # was requested.
-    if(!is.null(agdd_layer)){
-
-      date_col <- NULL
-
-      if("observation_date" %in% colnames(df)){
-        date_col <- "observation_date"
-      }else if("mean_first_yes_doy" %in% colnames(df)){
-        df$cal_date <- as.Date(df[, "mean_first_yes_doy"], origin = paste0(df[, "mean_first_yes_year"], "-01-01")) - 1
-        date_col <- "cal_date"
-      }else if("first_yes_day" %in% colnames(df)){
-        df$cal_date <- as.Date(df[, "first_yes_doy"], origin = paste0(df[, "first_yes_year"], "-01-01")) - 1
-        date_col <- "cal_date"
+      # Reconcile all the points in the frame with the SIX leaf raster,
+      # if it's been requested.
+      if(!is.null(six_leaf_raster)){
+        df <- npn_merge_geo_data(six_leaf_raster, "SI-x_Leaf_Value", df)
       }
 
-      pvalues <- apply(df[,c('latitude','longitude',date_col)],1,function(x){
-        rnpn::npn_get_agdd_point_data(layer=agdd_layer,lat=as.numeric(x['latitude']),long=as.numeric(x['longitude']),date=x[date_col])
-      })
-
-      pvalues <- t(as.data.frame(pvalues))
-      colnames(pvalues) <- c(agdd_layer)
-      df <- cbind(df,pvalues)
-
-      if("cal_date" %in% colnames(df)){
-        df$cal_date <- NULL
+      # Reconcile all the points in the frame with the SIX bloom raster,
+      # if it's been requested.
+      if(!is.null(six_bloom_raster)){
+        df <- npn_merge_geo_data(six_bloom_raster, "SI-x_Bloom_Value", df)
       }
 
-    }
+      if(!is.null(additional_layers)){
+        for(j in rownames(additional_layers)){
+          df <- npn_merge_geo_data(additional_layers[j,][['raster']][[1]],as.character(additional_layers[j,][['name']][[1]]),df)
+        }
+      }
 
 
+      # Reconcile the AGDD point values with the data points if that
+      # was requested.
+      if(!is.null(agdd_layer)){
 
-    # If the user asked for the data to be saved to file, then do that
-    # otherwise append the frame to the dtm (master data table) variable
-    if(is.null(download_path)){
-      dtm <<- rbind(dtm, data.table::as.data.table(df))
-    }else{
-      if(length(df) > 0){
-        set_has_data <- TRUE
-        write.table(df,download_path,append=if(i==0 && !always_append) FALSE else TRUE, sep=",",eol="\n",row.names=FALSE,col.names=if(i==0 && !always_append) TRUE else FALSE)
+        date_col <- NULL
+
+        if("observation_date" %in% colnames(df)){
+          date_col <- "observation_date"
+        }else if("mean_first_yes_doy" %in% colnames(df)){
+          df$cal_date <- as.Date(df[, "mean_first_yes_doy"], origin = paste0(df[, "mean_first_yes_year"], "-01-01")) - 1
+          date_col <- "cal_date"
+        }else if("first_yes_day" %in% colnames(df)){
+          df$cal_date <- as.Date(df[, "first_yes_doy"], origin = paste0(df[, "first_yes_year"], "-01-01")) - 1
+          date_col <- "cal_date"
+        }
+
+        pvalues <- apply(df[,c('latitude','longitude',date_col)],1,function(x){
+          rnpn::npn_get_agdd_point_data(layer=agdd_layer,lat=as.numeric(x['latitude']),long=as.numeric(x['longitude']),date=x[date_col])
+        })
+
+        pvalues <- t(as.data.frame(pvalues))
+        colnames(pvalues) <- c(agdd_layer)
+        df <- cbind(df,pvalues)
+
+        if("cal_date" %in% colnames(df)){
+          df$cal_date <- NULL
+        }
 
       }
-    }
-
-    i<<-i+1
 
 
 
-  },pagesize = 5000)
+      # If the user asked for the data to be saved to file, then do that
+      # otherwise append the frame to the dtm (master data table) variable
+      if(is.null(download_path)){
+        dtm <<- rbind(dtm, data.table::as.data.table(df))
+      }else{
+        if(length(df) > 0){
+          set_has_data <- TRUE
+          write.table(df,download_path,append=if(i==0 && !always_append) FALSE else TRUE, sep=",",eol="\n",row.names=FALSE,col.names=if(i==0 && !always_append) TRUE else FALSE)
 
+        }
+      }
+
+      i<<-i+1
+
+
+
+    },pagesize = 5000)
+  },
+  error=function(cond){
+    message("Service is currently unavailable. Please try again later!")
+    set_has_data <- FALSE
+    dtm <- data.table::data.table()
+  })
 
 
   # If the user asks for the data to be saved to file then

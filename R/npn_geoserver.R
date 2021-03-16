@@ -17,7 +17,8 @@
 #' layers <- npn_get_layer_details()
 #' }
 npn_get_layer_details <- function(){
-  doc <- GET("http://geoserver.usanpn.org/geoserver/ows?service=wms&version=1.3.0&request=GetCapabilities", list())
+  tryCatch({
+  doc <- GET("http://geoserver-dev.usanpn.org/geoserver/ows?service=wms&version=1.3.0&request=GetCapabilities", list())
   doc <- httr::content(doc, as = "text", encoding = "UTF-8")
   doc.data <- XML::xmlParse(file = doc)
 
@@ -57,6 +58,10 @@ npn_get_layer_details <- function(){
 
 
   return (data.frame(name=name.vector,title=title.vector,abstract=abstract.vector,dimension.name=dimension.name.vector,dimension.range=dimension.range.vector))
+  },error=function(msg){
+    message("Geodata service not available. Please try again later")
+    NULL
+  })
 
 }
 

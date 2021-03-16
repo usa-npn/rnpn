@@ -31,6 +31,7 @@ test_that("no request source blocked", {
 
 test_that("basic function works", {
   npn_set_env(get_test_env())
+  check_service()
 
   vcr::use_cassette("npn_download_status_data_basic_1", {
     some_data <- npn_download_status_data(
@@ -174,6 +175,7 @@ test_that("file download works", {
 test_that("climate data flag works", {
 
   skip_on_cran()
+  check_service()
   if(skip_long_tests){
     skip("Skipping long tests")
   }
@@ -221,6 +223,7 @@ test_that("climate data flag works", {
 test_that("higher taxonomic ordering works for status data", {
 
   skip_on_cran()
+  check_service()
   if(skip_long_tests){
     skip("Skipping long tests")
   }
@@ -292,6 +295,7 @@ test_that("higher taxonomic ordering works for status data", {
 test_that("higher taxonomic ordering works for individual phenometrics", {
 
   skip_on_cran()
+  check_service()
   if(skip_long_tests){
     skip("Skipping long tests")
   }
@@ -366,6 +370,7 @@ test_that("higher taxonomic ordering works for individual phenometrics", {
 test_that("higher taxonomic ordering works for site phenometrics", {
 
   skip_on_cran()
+  check_service()
   if(skip_long_tests){
     skip("Skipping long tests")
   }
@@ -439,6 +444,7 @@ test_that("higher taxonomic ordering works for site phenometrics", {
 test_that("higher taxonomic ordering works for magnitude phenometrics", {
 
   skip_on_cran()
+  check_service()
   if(skip_long_tests){
     skip("Skipping long tests")
   }
@@ -513,6 +519,7 @@ test_that("higher taxonomic ordering works for magnitude phenometrics", {
 test_that("higher level taxonomic agg and pheno agg works for site level",{
 
   skip_on_cran()
+  check_service()
   if(skip_long_tests){
     skip("Skipping long tests")
   }
@@ -571,6 +578,7 @@ test_that("higher level taxonomic agg and pheno agg works for site level",{
 test_that("higher level taxonomic agg works for magnitude", {
 
   skip_on_cran()
+  check_service()
   if(skip_long_tests){
     skip("Skipping long tests")
   }
@@ -627,6 +635,7 @@ test_that("higher level taxonomic agg works for magnitude", {
 test_that("six concordance works for status", {
 
   skip_on_cran()
+  check_service()
   if(skip_long_tests){
     skip("Skipping long tests")
   }
@@ -717,6 +726,7 @@ test_that("six concordance works for status", {
 test_that("wkt filter works", {
 
   skip_on_cran()
+  check_service()
   if(skip_long_tests){
     skip("Skipping long tests")
   }
@@ -830,6 +840,7 @@ test_that("wkt filter works", {
 test_that("frequency params work", {
 
   skip_on_cran()
+  check_service()
   if(skip_long_tests){
     skip("Skipping long tests")
   }

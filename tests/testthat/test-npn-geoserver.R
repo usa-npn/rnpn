@@ -1,12 +1,16 @@
 context("npn_geospatial")
 
 
+is_geo_service_up <- check_geo_service()
+
 test_that("npn_get_layer_details works",{
   npn_set_env(get_test_env())
-
-  vcr::use_cassette("npn_get_layer_details_1", {
+  if(!is_geo_service_up){
+    skip("Geo Service is down")
+  }
+  #vcr::use_cassette("npn_get_layer_details_1", {
     layers <- npn_get_layer_details()
-  })
+  #})
 
 
 
@@ -17,7 +21,7 @@ test_that("npn_get_layer_details works",{
 
 
 test_that("npn_download_geospatial works", {
-#  skip_on_cran()
+
   skip("No file downloads")
 
   npn_set_env(get_test_env())
@@ -95,7 +99,9 @@ test_that("npn_download_geospatial format param working", {
 
 test_that("npn_get_point_data functions", {
   npn_set_env(get_test_env())
-
+  if(!is_geo_service_up){
+    skip("Geo Service is down")
+  }
   vcr::use_cassette("npn_get_point_data_1", {
     value <- npn_get_point_data("gdd:agdd",38.8,-110.5,"2019-05-05")
   })

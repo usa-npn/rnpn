@@ -22,6 +22,42 @@ get_skip_long_tests <- function(){
   return(TRUE)
 }
 
+#' Runs a basic check to see if
+#' a valid response is returned by
+#' the NPN Portal service
+#' and returns TRUE/FALSE
+#'
+#' Used in unit tests to determine if
+#' tests should be run
+#'
+#'
+check_service <- function() {
+  npn_set_env(get_test_env())
+
+  con_test_res <- npn_species_id(3)
+  if (is.null(con_test_res)) {
+    skip("Service is down")
+  }
+}
+
+#' Runs a basic check to see if
+#' a valid response is returned by
+#' Geoserver and returns TRUE/FALSE
+#'
+#' Used in unit tests to determine if
+#' tests should be run
+#'
+check_geo_service <- function() {
+  npn_set_env(get_test_env())
+
+  con_test_res <- npn_get_layer_details()
+  if (is.null(con_test_res)) {
+    FALSE
+  }else{
+    TRUE
+  }
+}
+
 
 base <- function(){
 
@@ -62,16 +98,32 @@ pop <- function(x, y) {
 ldfply <- function(y){
   res <- lapply(y, function(x){
     x[ sapply(x, is.null) ] <- NA
-    data.frame(x, stringsAsFactors = FALSE)
+    if("nodata" %in% names(x) || x == "servicedown"){
+      NULL
+    }else{
+      data.frame(x, stringsAsFactors = FALSE)
+    }
   })
   do.call(rbind.fill, res)
 }
 
 npn_GET <- function(url, args, parse = FALSE, ...) {
-  tmp <- GET(url, query = args, ...)
-  stop_for_status(tmp)
-  tt <- content(tmp, as = "text", encoding = "UTF-8")
-  if (nchar(tt) == 0) tt else jsonlite::fromJSON(tt, parse, flatten = TRUE)
+  res <- tryCatch(
+    {
+      tmp <- GET(url, query = args, ...)
+      stop_for_status(tmp)
+      tt <- content(tmp, as = "text", encoding = "UTF-8")
+      if (nchar(tt) == 0) tt else jsonlite::fromJSON(tt, parse, flatten = TRUE)
+    },
+    error=function(cond){
+      # If the service is down for some reason give the user
+      # a message and return an empty list with n = 0
+      message("Service is unavailable. Try again later!")
+      tt <- "{\"nodata\":\"servicedown\"}"
+      if (nchar(tt) == 0) tt else jsonlite::fromJSON(tt, parse, flatten = TRUE)
+    }
+  )
+
 }
 
 #Utility function. Helps create URL strings for requests to NPN data services in the format variable_name[number]=Value
@@ -82,3 +134,5 @@ npn_createArgList <- function(arg_name, arg_list){
   }
   return(args)
 }
+
+

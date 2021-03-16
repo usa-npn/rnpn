@@ -34,13 +34,25 @@ npn_phenophase_definitions <- function ( ... ){
 #' Retrieves additional details for select phenophases, including full list of applicable phenophase definition IDs and phenophase
 #' revision notes over time
 #'
-#' @param ids List of phenophase ids for which to retrieve additional details.
+#' @param ids Takes a list of phenophase ids for which to retrieve additional details.
 #' @template curl
 #' @export
-npn_phenophase_details <- function (ids, ...){
+npn_phenophase_details <- function (ids=list(), ...){
+
+  if(typeof(ids) == "character"){
+    message("Invalid input, function expects a list or double as input")
+    return(NULL)
+  }
+
+  if(typeof(ids) == "double"){
+    ids <- list(ids)
+  }
+
   tibble::as_tibble(
+
     npn_GET(paste0(base(), 'phenophases/getPhenophaseDetails.json'), list(ids = paste(ids,sep="",collapse = ',')), TRUE, ...)
   )
+
 }
 
 
