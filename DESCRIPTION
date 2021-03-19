@@ -39,5 +39,3 @@ RoxygenNote: 7.1.1
 VignetteBuilder: knitr
 URL: https://docs.ropensci.org/rnpn/ (website)
     https://github.com/ropensci/rnpn/ (devel)
-Remotes:
-    r-lib/xml2
