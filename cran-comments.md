@@ -2,36 +2,23 @@ I have read and agree to the the CRAN policies at
 http://cran.r-project.org/web/packages/policies.html
 
 
-## Resubmission
-
-This is a re-submission. In this version I have fixed invalid and/or redirecting links present in the documentation.
-
-
-
-## Previous cran-comments
-
-
 ## Test environments
 
 R CMD CHECK passed on local Windows 10 and Ubuntu 18 using R 4.0.2 
-Also passed checks on Github Actions on macOS, Windows with R 3.6
+Also passed checks on Github Actions on macOS, Windows with R 4.0
 and ubuntu 16 using R 3.5.
 
 ## R CMD check results
 
 There were no ERRORs or WARNINGs. 
 
-There was 1 NOTE:
-
-Changing maintainers. This project is transitioning to a new maintainer.
-
 ## Downstream dependencies
 
 There were no downstream dependencies.
 
-
 ## Other Notes
 
-This version is a total overhaul of the previous version of the package currently available on CRAN.
+This version is a response to a test failure that occurred when a remote resource went down. It became apparent that the package didn't gracefully fail in these cases. This release adds actual graceful failing mechanisms for end users and prevents the tests from outright failing when the resource is down.
+
 
 Thanks! 
