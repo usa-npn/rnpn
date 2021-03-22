@@ -14,7 +14,12 @@ and ubuntu 16 using R 3.5.
 
 ## R CMD check results
 
-There were no ERRORs or WARNINGs. 
+There were no ERRORs or WARNINGs.
+
+There is one note: "Namespace in Imports field not imported from: ‘rgdal’"
+While rgdal isn't used directly, the raster package which is directly used
+has dependencies on rgdal that will causes tests to fail if the package is
+not installed on the system.
 
 ## Downstream dependencies
 
