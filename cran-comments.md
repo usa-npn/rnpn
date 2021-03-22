@@ -1,6 +1,10 @@
 I have read and agree to the the CRAN policies at
 http://cran.r-project.org/web/packages/policies.html
 
+## Resubmission
+
+This is a re-submission. In this iteration I am providing additional unit tests and remote resource checks to provide graceful fails when remote resources are unavailble. This is in addition to providing that functionality for the tests that were already failing in 1.1.1.
+
 
 ## Test environments
 

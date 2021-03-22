@@ -50,6 +50,24 @@ check_service <- function() {
   return(TRUE)
 }
 
+check_data_service <- function() {
+  npn_set_env(get_test_env())
+  url <- paste0(base_data_domain(), 'web-services/geo.html')
+  res <- NULL
+  tryCatch({
+    res <- GET(url)
+  },
+  error=function(msg){
+    return(FALSE)
+  })
+
+  if (is.null(res) || res$status_code != 200) {
+    return(FALSE)
+  }
+
+  return(TRUE)
+}
+
 #' Runs a basic check to see if
 #' a valid response is returned by
 #' Geoserver and returns TRUE/FALSE
@@ -98,6 +116,21 @@ base <- function(){
       return('https://www.usanpn.org/npn_portal/')
   }else{
       return('https://www-dev.usanpn.org/npn_portal/')
+  }
+}
+
+base_data_domain <- function(){
+
+  if( !is.null(pkg.env$remote_env)){
+    pkg.env$remote_env <- pkg.env$remote_env
+  }else{
+    pkg.env$remote_env <- "ops"
+  }
+
+  if(pkg.env$remote_env=="ops"){
+    return('https://data.usanpn.org/')
+  }else{
+    return('https://data-dev.usanpn.org/')
   }
 }
 

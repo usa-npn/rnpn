@@ -116,16 +116,19 @@ npn_download_geospatial <- function (
 
 
   url <- paste0(base_geoserver(), "format=", format , "&coverageId=",coverage_id,param)
+  tryCatch({
+    if(is.null(output_path)){
+      download.file(url,z,method="libcurl", mode="wb")
 
-  if(is.null(output_path)){
-    download.file(url,z,method="libcurl", mode="wb")
-
-    ras <- raster::raster(z)
+      ras <- raster::raster(z)
 
 
-  }else{
-    download.file(url,destfile=output_path,method="libcurl", mode="wb")
-  }
+    }else{
+      download.file(url,destfile=output_path,method="libcurl", mode="wb")
+    }
+  },error=function(msg){
+    message("There was an issue downloading data from the Geoservice. It's possible the server is temporarily down. Please try again later.")
+  })
 
 }
 
@@ -163,18 +166,22 @@ npn_get_agdd_point_data <- function(
   if(!is.null(cached_value)){
     return(cached_value)
   }
-
-  url <- paste0(base(), "stations/getTimeSeries.json?latitude=", lat, "&longitude=", long, "&start_date=", as.Date(date) - 1, "&end_date=", date, "&layer=", layer)
-  data = httr::GET(url,
-                   query = list(),
-                   httr::progress())
+  tryCatch({
+    url <- paste0(base(), "stations/getTimeSeries.json?latitude=", lat, "&longitude=", long, "&start_date=", as.Date(date) - 1, "&end_date=", date, "&layer=", layer)
+    data = httr::GET(url,
+                     query = list(),
+                     httr::progress())
+  },error=function(msg){
+    message("Unable to download AGDD data. The service is temporarily down, please try again later.")
+    return(NULL)
+  })
 
   # If the server returns an error then in that case,
   # just return the -9999 value.
   json_data <- tryCatch({
     jsonlite::fromJSON(httr::content(data, as = "text"))
   },error=function(msg){
-    print(paste("Failed:", url))
+    message("Unable to parse server response. Please try again later.")
     return(-9999)
   })
 
@@ -183,7 +190,7 @@ npn_get_agdd_point_data <- function(
   v <- tryCatch({
     as.numeric(json_data[json_data$date==date,"point_value"])
   },error=function(msg){
-    print(paste("Failed:", url))
+    message("Unable to parse server response. Please try again later.")
     return(-9999)
   })
 
@@ -233,11 +240,15 @@ npn_get_point_data <- function(
   if(!is.null(cached_value)){
     return(cached_value)
   }
-
-  url <- paste0(base_geoserver(), "coverageId=",layer,"&format=application/gml+xml&subset=http://www.opengis.net/def/axis/OGC/0/Long(",long,")&subset=http://www.opengis.net/def/axis/OGC/0/Lat(",lat,")&subset=http://www.opengis.net/def/axis/OGC/0/time(\"",date,"T00:00:00.000Z\")")
-  data = httr::GET(url,
-                   query = list(),
-                   httr::progress())
+  tryCatch({
+    url <- paste0(base_geoserver(), "coverageId=",layer,"&format=application/gml+xml&subset=http://www.opengis.net/def/axis/OGC/0/Long(",long,")&subset=http://www.opengis.net/def/axis/OGC/0/Lat(",lat,")&subset=http://www.opengis.net/def/axis/OGC/0/time(\"",date,"T00:00:00.000Z\")")
+    data = httr::GET(url,
+                     query = list(),
+                     httr::progress())
+  },error=function(msg){
+    message("Geoserver is temporarily unavailable. Please try again later.")
+    return(NULL)
+  })
   #Download the data as XML and store it as an XML doc
   xml_data <- httr::content(data, as = "text")
   doc <- XML::xmlInternalTreeParse(xml_data)
@@ -445,9 +456,9 @@ npn_get_custom_agdd_time_series <- function(
   method <- tolower(method)
 
   if(method == "simple"){
-    base_url <- "https://data.usanpn.org/geoservices/v1/agdd/simple/pointTimeSeries?"
+    base_url <- paste0(base_data_domain(), "geoservices/v1/agdd/simple/pointTimeSeries?")
   }else{
-    base_url <- "https://data.usanpn.org/geoservices/v1/agdd/double-sine/pointTimeSeries?"
+    base_url <- paste0(base_data_domain(), "geoservices/v1/agdd/double-sine/pointTimeSeries?")
   }
 
   url <- paste0(base_url, "climateProvider=", climate_data_source)
@@ -477,9 +488,14 @@ npn_get_custom_agdd_time_series <- function(
 
   }
 
-  data = httr::GET(url,
-                   query = list(),
-                   httr::progress())
+  tryCatch({
+    data = httr::GET(url,
+                     query = list(),
+                     httr::progress())
+  },error=function(msg){
+    message("Service is temporarily unavailable. Please try again later.")
+    return(NULL)
+  })
 
 
   return(jsonlite::fromJSON(httr::content(data, as = "text"))$timeSeries)
@@ -522,9 +538,9 @@ npn_get_custom_agdd_raster <- function(
   ras <- NULL
 
   if(method == "simple"){
-    base_url <- "https://data.usanpn.org/geoservices/v1/agdd/simple/map?"
+    base_url <- paste0(base_data_domain(),"geoservices/v1/agdd/simple/map?")
   }else{
-    base_url <- "https://data.usanpn.org/geoservices/v1/agdd/double-sine/map?"
+    base_url <- paste0(base_data_domain(),"geoservices/v1/agdd/double-sine/map?")
   }
 
 
@@ -552,16 +568,22 @@ npn_get_custom_agdd_raster <- function(
 
   }
 
-  data = httr::GET(url,
-                   query = list(),
-                   httr::progress())
+  tryCatch({
+    data = httr::GET(url,
+                     query = list(),
+                     httr::progress())
+  },error=function(msg){
+    message("Data service is currently unavailable, please try again later.")
+    return(NULL)
+  })
 
   mapURL <- jsonlite::fromJSON(httr::content(data, as = "text"))$mapUrl
 
   if(!is.null(mapURL)){
     z <- tempfile()
+    h <- function(w) if( any( grepl( "Discarded datum", w) ) ) invokeRestart( "muffleWarning" )
     download.file(mapURL,z,method="libcurl", mode="wb")
-    ras <- raster::raster(z)
+    ras <- withCallingHandlers( raster::raster(z), warning = h )
   }
 
   return(ras)

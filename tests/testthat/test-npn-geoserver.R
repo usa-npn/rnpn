@@ -4,6 +4,7 @@ context("npn_geospatial")
 is_geo_service_up <- check_geo_service()
 
 test_that("npn_get_layer_details works",{
+
   npn_set_env(get_test_env())
   if(!is_geo_service_up){
     skip("Geo Service is down")
@@ -98,6 +99,7 @@ test_that("npn_download_geospatial format param working", {
 
 
 test_that("npn_get_point_data functions", {
+
   npn_set_env(get_test_env())
   if(!is_geo_service_up){
     skip("Geo Service is down")
@@ -120,6 +122,7 @@ test_that("npn_get_point_data functions", {
 
 
 test_that("npn_custom_agdd functions",{
+
   npn_set_env(get_test_env())
 
   vcr::use_cassette("npn_get_custom_agdd_time_series_1", {
@@ -140,3 +143,33 @@ test_that("npn_custom_agdd functions",{
   expect_equal(round(res[15,"agdd"]),34)
 
 })
+
+test_that("npn_get_agdd_point_data works",{
+
+  npn_set_env(get_test_env())
+
+  if(!check_data_service()){
+    skip("Data Service is down")
+  }
+
+  res <- npn_get_agdd_point_data("gdd:agdd",32.4,-110,"2020-01-15")
+
+  expect_is(res,"numeric")
+  expect_equal(round(res), 146)
+})
+
+
+test_that("npn_get_custom_agdd_raster works",{
+
+  npn_set_env(get_test_env())
+
+  if(!check_data_service()){
+    skip("Data Service is down")
+  }
+
+  res <- npn_get_custom_agdd_raster("simple","NCEP","Fahrenheit","2020-01-01","2020-01-15",32)
+
+  expect_is(res,"RasterLayer")
+})
+
+
