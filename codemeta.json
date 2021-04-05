@@ -8,7 +8,7 @@
   "description": "Programmatic interface to the\n    Web Service methods provided by the National 'Phenology' Network\n    (<https://usanpn.org/>), which includes data on various life history\n    events that occur at specific times.",
   "name": "rnpn: Interface to the National 'Phenology' Network 'API'",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -300,7 +300,7 @@
   "contIntegration": "https://codecov.io/github/ropensci/rnpn?branch=master",
   "releaseNotes": "https://github.com/ropensci/rnpn/blob/master/NEWS.md",
   "readme": "https://github.com/ropensci/rnpn/blob/master/README.md",
-  "fileSize": "18582.563KB",
+  "fileSize": "18585.057KB",
   "contributor": {},
   "copyrightHolder": {},
   "funder": {},

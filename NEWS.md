@@ -1,4 +1,12 @@
-rnpn 1.2.1 (2021-03-19)
+rnpn 1.2.1 (2021-04-05)
+=======================
+
+### NEW FEATURES
+
+* Fixing failing unit tests
+
+
+rnpn 1.2.0 (2021-03-19)
 =======================
 
 ### NEW FEATURES
