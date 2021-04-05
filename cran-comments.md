@@ -1,6 +1,11 @@
 I have read and agree to the the CRAN policies at
 http://cran.r-project.org/web/packages/policies.html
 
+## Resubmission
+
+This is a resubmission to address a NOTE pertaining to an usused
+LazyData directive in the DESCRIPTION
+
 
 ## Test environments
 
