@@ -96,7 +96,7 @@ check_geo_service <- function() {
     return(FALSE)
   })
 
-  if (res$status_code != 200) {
+  if (is.null(res) || res$status_code != 200) {
     return(FALSE)
   }
 

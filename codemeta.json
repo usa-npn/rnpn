@@ -8,7 +8,7 @@
   "description": "Programmatic interface to the\n    Web Service methods provided by the National 'Phenology' Network\n    (<https://usanpn.org/>), which includes data on various life history\n    events that occur at specific times.",
   "name": "rnpn: Interface to the National 'Phenology' Network 'API'",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -49,9 +49,9 @@
   "maintainer": [
     {
       "@type": "Person",
-      "givenName": "Lee",
-      "familyName": "Marsh",
-      "email": "lee@usanpn.org"
+      "givenName": "Alyssa",
+      "familyName": "Rosemartin",
+      "email": "alyssa@usanpn.org"
     }
   ],
   "softwareSuggestions": [
