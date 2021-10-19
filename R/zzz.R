@@ -89,6 +89,7 @@ check_geo_service <- function() {
     url <- "http://geoserver-dev.usanpn.org/geoserver/ows?service=wms&version=1.3.0&request=GetCapabilities"
   }
 
+  res <- NULL
   tryCatch({
     res <- GET(url)
   },

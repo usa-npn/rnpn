@@ -1,10 +1,9 @@
 context("npn_geospatial")
 
-
 is_geo_service_up <- check_geo_service()
 
 test_that("npn_get_layer_details works",{
-
+  skip_on_cran()
   npn_set_env(get_test_env())
   if(!is_geo_service_up){
     skip("Geo Service is down")
@@ -14,7 +13,6 @@ test_that("npn_get_layer_details works",{
   #})
 
 
-
   expect_is(layers,"data.frame")
   expect_gt(nrow(layers),50)
 
@@ -22,7 +20,7 @@ test_that("npn_get_layer_details works",{
 
 
 test_that("npn_download_geospatial works", {
-
+  skip_on_cran()
   skip("No file downloads")
 
   npn_set_env(get_test_env())
@@ -52,7 +50,7 @@ test_that("npn_download_geospatial works", {
 })
 
 test_that("npn_download_geospatial format param working", {
-  #skip_on_cran()
+  skip_on_cran()
   skip("No file downloads")
   npn_set_env("ops")
 
@@ -99,7 +97,7 @@ test_that("npn_download_geospatial format param working", {
 
 
 test_that("npn_get_point_data functions", {
-
+  skip_on_cran()
   npn_set_env(get_test_env())
   if(!is_geo_service_up){
     skip("Geo Service is down")
@@ -122,7 +120,7 @@ test_that("npn_get_point_data functions", {
 
 
 test_that("npn_custom_agdd functions",{
-
+  skip_on_cran()
   npn_set_env(get_test_env())
 
   vcr::use_cassette("npn_get_custom_agdd_time_series_1", {
@@ -145,7 +143,7 @@ test_that("npn_custom_agdd functions",{
 })
 
 test_that("npn_get_agdd_point_data works",{
-
+  skip_on_cran()
   npn_set_env(get_test_env())
 
   if(!check_service()){
@@ -162,7 +160,7 @@ test_that("npn_get_agdd_point_data works",{
 
 
 test_that("npn_get_custom_agdd_raster works",{
-
+  skip_on_cran()
   npn_set_env(get_test_env())
 
   if(!check_data_service()){
