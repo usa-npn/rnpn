@@ -8,12 +8,12 @@ npn_stations_with_spp(speciesid, ...)
 }
 \arguments{
 \item{speciesid}{Required. Species id numbers, from 1 to infinity, potentially,
-use e.g., c(52, 53, etc.) if more than one species desired (numeric)}
+use e.g., c(52, 53, etc.) if more than one species desired (numeric).}
 
 \item{...}{Curl options passed on to \code{\link[httr]{GET}}}
 }
 \value{
-Stations' latitude and longitude, names, and ids.
+A data frame with stations' latitude and longitude, names, and ids.
 }
 \description{
 Get a list of all stations which have an individual whom is a member of a

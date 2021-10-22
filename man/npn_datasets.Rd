@@ -10,11 +10,11 @@ npn_datasets(...)
 \item{...}{Curl options passed on to \code{\link[httr]{GET}}}
 }
 \value{
-data.frame of datasets and their IDs
+data.frame of datasets and their IDs.
 }
 \description{
 Returns a complete list of information about all datasets integrated into the NPN
-dataset. Data can then be pulled for individual datasets using their unique IDs
+dataset. Data can then be pulled for individual datasets using their unique IDs.
 }
 \examples{
 \dontrun{

@@ -556,13 +556,13 @@ npn_download_magnitude_phenometrics <- function(
 #' Utility function to chain multiple requests to npn_get_data for requests where data should only be retrieved on an annual basis, or otherwise automatically be
 #' delineated in some way. Results in a data table that's a combined set of the results from each request to the data service.
 #'
-#' @param endpoint String, the endpoint to query
+#' @param endpoint String, the endpoint to query.
 #' @param query Base query string to use. This includes all the user selected parameters but doesn't include start/end date which will be automatically generated and
-#' added
+#' added.
 #' @param years List of strings; the years for which to retrieve data. There will be one request to the service for each year
 #' @param download_path String, optional file path to the file for which to output the results.
 #'
-#' @return Data table - a data table combining each requests results from the service
+#' @return Data table - a data table combining each requests results from the service.
 #' @keywords internal
 #'
 npn_get_data_by_year <- function(
@@ -780,9 +780,9 @@ npn_get_data <- function(
 #' This function will manually put those query parameters into the proper GET syntax.
 #'
 #' @param endpoint The service point, e.g. "observations/getObservations.json?"
-#' @param query_vars List of query params
+#' @param query_vars List of query parameters.
 #'
-#' @return The URL, as a string
+#' @return The URL, as a string.
 #' @keywords internal
 npn_get_download_url <- function(
   endpoint
@@ -800,7 +800,7 @@ npn_get_download_url <- function(
 #' so this function helps put them together.
 #'
 #'
-#' @return List of query string variables
+#' @return List of query string variables.
 #' @keywords internal
 npn_get_common_query_vars <- function(
   request_source,

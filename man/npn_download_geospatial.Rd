@@ -26,7 +26,7 @@ requested. More information available from the npn_get_layer_details() function.
 path specified. When left unset, this function will return a raster object.}
 }
 \value{
-Data frame containing all layer details as specified in function description.
+Raster object meeting the coverage_id, date and format parameters specified.
 }
 \description{
 Function for directly downloading any arbitrary Geospatial layer data from the NPN Geospatial web services.

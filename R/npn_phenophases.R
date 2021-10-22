@@ -4,8 +4,9 @@
 
 #' Get Phenophases
 #'
-#' Retrieves a complete list of all phenophases in the NPN database
+#' Retrieves a complete list of all phenophases in the NPN database.
 #' @template curl
+#' @return A data frame listing all phenophases available in the NPN database.
 #' @export
 #'
 npn_phenophases <- function( ...) {
@@ -21,6 +22,7 @@ npn_phenophases <- function( ...) {
 #' Retrieves a complete list of all phenophase definitions.
 #'
 #' @template curl
+#' @return A data frame listing all phenophases in the NPN database and their definitions.
 #' @export
 npn_phenophase_definitions <- function ( ... ){
   tibble::as_tibble(
@@ -36,6 +38,7 @@ npn_phenophase_definitions <- function ( ... ){
 #'
 #' @param ids Takes a list of phenophase ids for which to retrieve additional details.
 #' @template curl
+#' @return A data frame listing phenophases in the NPN database, including detailed information for each, filtered by the phenophase ID.
 #' @export
 npn_phenophase_details <- function (ids=list(), ...){
 
@@ -59,10 +62,11 @@ npn_phenophase_details <- function (ids=list(), ...){
 #' Get Phenophase for Species
 #'
 #' Retrieves the phenophases applicable to species for a given date. It's important to specify a date since protocols/phenophases for
-#' any given species can change from year to year
-#' @param species_ids List of species_ids for which to get phenophase information
-#' @param date The applicable date for which to retrieve phenophases for the given species
+#' any given species can change from year to year.
+#' @param species_ids List of species_ids for which to get phenophase information.
+#' @param date The applicable date for which to retrieve phenophases for the given species.
 #' @template curl
+#' @return A data frame listing phenophases in the NPN database for the specified species and date.
 #' @export
 npn_phenophases_by_species <- function (species_ids, date, ...){
   arg_list<-npn_createArgList("species_id", species_ids)
@@ -73,9 +77,10 @@ npn_phenophases_by_species <- function (species_ids, date, ...){
 
 #' Get Pheno Classes
 #'
-#' Gets information about all pheno classes, which a higher-level order of phenophases
+#' Gets information about all pheno classes, which are a higher-level order of phenophases.
 #'
 #' @export
+#' @return A data frame listing the pheno classes in the NPN database.
 #' @template curl
 npn_pheno_classes <- function (...){
   tibble::as_tibble(
@@ -104,6 +109,7 @@ npn_pheno_classes <- function (...){
 #' @param date Specify the date of interest. For this function to return anything, either this value must be set of return_all must be 1.
 #' @param return_all Takes either 0 or 1 as input and defaults to 0. For this function to return anything, either this value must be set to 1
 #' or date must be set.
+#' @return A data frame listing phenophases in the NPN database for the specified taxon and date.
 #' @export
 #' @template curl
 npn_get_phenophases_for_taxon <- function (family_ids=NULL,order_ids=NULL,class_ids=NULL,genus_ids=NULL,date=NULL,return_all=0, ...){
@@ -118,6 +124,7 @@ npn_get_phenophases_for_taxon <- function (family_ids=NULL,order_ids=NULL,class_
 #'
 #' Gets data on all abundance/intensity categories and includes a data frame of
 #' applicable abundance/intensity values for each category
+#' @return A data frame listing all abundance/intensity categories and their corresponding values.
 #' @export
 #' @template curl
 npn_abundance_categories <- function ( ...){

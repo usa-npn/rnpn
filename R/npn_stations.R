@@ -6,7 +6,7 @@
 #' @param state_code The postal code of the US state by which to filter
 #' the results returned. Leave empty to get all stations.
 #' @template curl
-#' @return Stations' latitude and longitude, names, and ids.
+#' @return A data frame with stations' latitude and longitude, names, and ids.
 #' @examples \dontrun{
 #' npn_stations()
 #' npn_stations('AZ')
@@ -28,13 +28,11 @@ npn_stations <- function(state_code=NULL, ...) {
 
 
 
-
-
 #' Get number of stations by state.
 #'
 #' @export
 #' @template curl
-#' @return Number of stations by state as a data.frame.
+#' @return A data frame listing stations by state.
 #' @examples \dontrun{
 #' head( npn_stations_by_state() )
 #' }
@@ -61,7 +59,7 @@ npn_stations_by_state <- function(...) {
 #' @export
 #' @template curl
 #' @param wkt Required field specifying the WKT geography to use.
-#' @return Station data as as data.frame.
+#' @return A data frame listing stations filterd based on the WKT geography.
 #' @examples \dontrun{
 #' head( npn_stations_by_state(wkt="POLYGON((
 #' -110.94484396954107 32.23623109416672,-110.96166678448247 32.23594069208043,
@@ -95,9 +93,9 @@ npn_stations_by_location <- function( wkt, ...){
 #'
 #' @export
 #' @param speciesid Required. Species id numbers, from 1 to infinity, potentially,
-#'    use e.g., c(52, 53, etc.) if more than one species desired (numeric)
+#'    use e.g., c(52, 53, etc.) if more than one species desired (numeric).
 #' @template curl
-#' @return Stations' latitude and longitude, names, and ids.
+#' @return A data frame with stations' latitude and longitude, names, and ids.
 #' @examples \dontrun{
 #' npn_stations_with_spp(speciesid = c(52,53,54))
 #' npn_stations_with_spp(speciesid = 53)

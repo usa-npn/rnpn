@@ -9,10 +9,10 @@ npn_get_download_url(endpoint)
 \arguments{
 \item{endpoint}{The service point, e.g. "observations/getObservations.json?"}
 
-\item{query_vars}{List of query params}
+\item{query_vars}{List of query parameters.}
 }
 \value{
-The URL, as a string
+The URL, as a string.
 }
 \description{
 Utility function to create the service point URL. Base URL comes from zzz.R, endpoint is specified in the code, and query_vars should be a list of parameters.

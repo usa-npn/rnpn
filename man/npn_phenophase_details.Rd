@@ -11,6 +11,9 @@ npn_phenophase_details(ids = list(), ...)
 
 \item{...}{Curl options passed on to \code{\link[httr]{GET}}}
 }
+\value{
+A data frame listing phenophases in the NPN database, including detailed information for each, filtered by the phenophase ID.
+}
 \description{
 Retrieves additional details for select phenophases, including full list of applicable phenophase definition IDs and phenophase
 revision notes over time

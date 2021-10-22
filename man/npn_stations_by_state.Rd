@@ -10,7 +10,7 @@ npn_stations_by_state(...)
 \item{...}{Curl options passed on to \code{\link[httr]{GET}}}
 }
 \value{
-Number of stations by state as a data.frame.
+A data frame listing stations by state.
 }
 \description{
 Get number of stations by state.

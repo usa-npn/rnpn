@@ -7,12 +7,12 @@
 npn_groups(use_hierarchy = FALSE, ...)
 }
 \arguments{
-\item{use_hierarchy}{Boolean indicating whether or not the list of networks should be represented in a hierarchy. Defaults to FALSE}
+\item{use_hierarchy}{Boolean indicating whether or not the list of networks should be represented in a hierarchy. Defaults to FALSE.}
 
 \item{...}{Curl options passed on to \code{\link[httr]{GET}}}
 }
 \value{
-List of partner groups, including ID and name
+A data frame of partner groups, including ID and name.
 }
 \description{
 Returns a list of all groups participating in the NPN's data collection program. These details can be used to further filter

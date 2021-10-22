@@ -30,6 +30,9 @@ or date must be set.}
 
 \item{...}{Curl options passed on to \code{\link[httr]{GET}}}
 }
+\value{
+A data frame listing phenophases in the NPN database for the specified taxon and date.
+}
 \description{
 This function gets a list of phenophases that are applicable for a provided taxonomic grouping, e.g. family, order.
 Note that since a higher taxononmic order will aggregate individual species not every phenophase returned through this

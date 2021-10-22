@@ -12,7 +12,10 @@ npn_lookup_names(name, type = "genus", fuzzy = FALSE)
 \item{type}{One of common_name, genus, or species}
 
 \item{fuzzy}{One of TRUE or FALSE, if FALSE, uses fuzzy search via agrep, if
-FALSE, uses grep}
+FALSE, uses grep.}
+}
+\value{
+A data frame with species ID numbers based on the name and type parameters.
 }
 \description{
 Look up species IDs by taxonomic or common name

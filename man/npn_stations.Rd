@@ -13,7 +13,7 @@ the results returned. Leave empty to get all stations.}
 \item{...}{Curl options passed on to \code{\link[httr]{GET}}}
 }
 \value{
-Stations' latitude and longitude, names, and ids.
+A data frame with stations' latitude and longitude, names, and ids.
 }
 \description{
 Get a list of all stations, optionally filtered by state

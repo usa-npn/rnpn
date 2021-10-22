@@ -7,16 +7,16 @@
 npn_check_point_cached(layer, lat, long, date)
 }
 \arguments{
-\item{layer}{The name of the queried layer}
+\item{layer}{The name of the queried layer.}
 
-\item{lat}{The latitude of the queried point}
+\item{lat}{The latitude of the queried point.}
 
-\item{long}{The longitude of the queried point}
+\item{long}{The longitude of the queried point.}
 
-\item{date}{The queried date}
+\item{date}{The queried date.}
 }
 \value{
-The value of the cell located at the specified coordinates and date if the value has been queried, otherwise NULL
+The numeric value of the cell located at the specified coordinates and date if the value has been queried, otherwise NULL.
 }
 \description{
 Checks in the global variable "point values" to see if the exact data point being requested

@@ -11,6 +11,9 @@ npn_species_types(kingdom = "Plantae", ...)
 
 \item{...}{Curl options passed on to \code{\link[httr]{GET}}}
 }
+\value{
+A data frame with a list of the functional types used in the NPN database, filtered by the specified kingdom.
+}
 \description{
 Return all plant or animal functional types used in the NPN database.
 }
