@@ -4,7 +4,7 @@ Description: Programmatic interface to the
     Web Service methods provided by the National 'Phenology' Network
     (<https://usanpn.org/>), which includes data on various life history
     events that occur at specific times.
-Version: 1.2.3
+Version: 1.2.4
 License: MIT + file LICENSE
 Authors@R: c(
     person("Alyssa", "Rosemartin", role = c("aut", "cre"), email = "alyssa@usanpn.org"),

@@ -19,6 +19,8 @@ context("npn_observations")
 skip_long_tests <- get_skip_long_tests()
 
 test_that("no request source blocked", {
+
+  skip_on_cran()
   npn_set_env(get_test_env())
 
   expect_error(npn_download_status_data(NULL,c(2013)))
@@ -30,6 +32,8 @@ test_that("no request source blocked", {
 
 
 test_that("basic function works", {
+
+  skip_on_cran()
   npn_set_env(get_test_env())
 
   if(!check_service()){

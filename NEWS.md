@@ -1,3 +1,11 @@
+rnpn 1.2.4 (2021-11-10)
+=======================
+
+### NEW FEATURES
+
+* Skipping more API-dependent unit tests.
+
+
 rnpn 1.2.3 (2021-10-22)
 =======================
 

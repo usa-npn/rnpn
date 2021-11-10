@@ -3,7 +3,7 @@ http://cran.r-project.org/web/packages/policies.html
 
 ## Resubmission
 
-This is a resubmission where I have corrected the issue identified with documentation.
+This is a resubmission where I have reduced testing API-dependent tests.
 
 ## Test environments
 
@@ -24,8 +24,4 @@ There were no downstream dependencies.
 
 ## Other Notes
 
-I am not able to reproduce the recent CRAN failures using rhub (see https://github.com/r-hub/rhub/issues/489). In this version I skipped tests reliant on geoserver API calls using skip_on_cran. We will continue to run all tests in multiple environments using other tools. 
 
-In response to review, I added values to all the .Rd files that were missing value definitions.
-
-Thanks! 
