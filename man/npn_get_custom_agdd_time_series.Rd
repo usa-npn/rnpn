@@ -37,6 +37,9 @@ data point. Simple refers to simple averaging.}
 \item{upper_threshold}{This parameter is only applicable for the double-sine method. This sets the highest temperature
 to be considered in any given day's AGDD calculation}
 }
+\value{
+A data frame containing the numeric AGDD values for each day for the specified time period/location/method/base temp/data source.
+}
 \description{
 This function takes a series of variables used in calculating AGDD and returns an AGDD time series,
 based on start and end date, for a given location in the continental US.

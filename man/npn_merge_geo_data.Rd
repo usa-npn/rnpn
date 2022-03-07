@@ -15,7 +15,7 @@ npn_merge_geo_data(ras, col_label, df)
 this function to work, df must contain two columns: "longitude", and "latitude"}
 }
 \value{
-The data frame, now appended with the new geospatial data values' column
+The data frame, now appended with a new column for geospatial data numeric values.
 }
 \description{
 Utility function to intersect point based observational data with Geospatial

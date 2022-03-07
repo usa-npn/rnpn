@@ -35,7 +35,7 @@ npn_download_magnitude_phenometrics(
 ```
 
 
-In this example we're able to see all of the magnitude phenometric fields, including proportion_yes_records, and mean_num_animals_in-phase. See the [https://pubs.usgs.gov/of/2018/1060/ofr20181060.pdf](Open File Report on USA-NPN Observational Data) for full field descriptions.
+In this example we're able to see all of the magnitude phenometric fields, including proportion_yes_records, and mean_num_animals_in-phase. See the [Open File Report on USA-NPN Observational Data](https://pubs.usgs.gov/of/2018/1060/ofr20181060.pdf) for full field descriptions.
 
 
 From this dataset we can view the Proportion_Yes_Records (of all the records submitted on this species, what proportion are positive/yes records) by weekly interval:

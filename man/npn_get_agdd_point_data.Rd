@@ -7,13 +7,13 @@
 npn_get_agdd_point_data(layer, lat, long, date, store_data = TRUE)
 }
 \arguments{
-\item{layer}{The name of the queried layer}
+\item{layer}{The name of the queried layer.}
 
-\item{lat}{The latitude of the queried point}
+\item{lat}{The latitude of the queried point.}
 
-\item{long}{The longitude of the queried point}
+\item{long}{The longitude of the queried point.}
 
-\item{date}{The queried date}
+\item{date}{The queried date.}
 
 \item{store_data}{Boolean value. If set TRUE then the value retrieved will be stored in a global variable named point_values for
 later use}

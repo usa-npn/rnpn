@@ -30,7 +30,7 @@ npn_get_common_query_vars(
 )
 }
 \value{
-List of query string variables
+List of query string variables.
 }
 \description{
 Utility function to generate a list of query string variables for requests to NPN data service points. Some parameters are basically present in all requests,

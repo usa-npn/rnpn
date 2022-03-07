@@ -26,9 +26,9 @@ npn_species_search(
 
 \item{ids}{List of species ids for which to retrieve information}
 
-\item{state}{A US postal state code to filter results}
+\item{state}{A US postal state code to filter results.}
 
-\item{kingdom}{Filters results by taxonomic kingdom. Takes either 'Animalia' or 'Plantae'}
+\item{kingdom}{Filters results by taxonomic kingdom. Takes either 'Animalia' or 'Plantae'.}
 
 \item{network}{filter species based on a list of unique identifiers of NPN groups that are actually observing data on the species. Takes a list of IDs}
 
@@ -39,9 +39,13 @@ npn_species_search(
 \item{station_id}{filter species by a list of unique site identifiers}
 }
 \value{
-data.frame of species and their IDs
+A data frame with information on species in the NPN database and their IDs.
 
-data.frame of the species' information
+A data frame with information on species in the NPN database and their IDs, filtered by the species ID parameter.
+
+A data frame with information on species in the NPN database whose distribution includes a given state.
+
+A data frame with information on species in the NPN database filtered by partner group, dates and station/site IDs.
 }
 \description{
 Returns a complete list of all species information of species represented in the NPN

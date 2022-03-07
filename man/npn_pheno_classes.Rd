@@ -9,6 +9,9 @@ npn_pheno_classes(...)
 \arguments{
 \item{...}{Curl options passed on to \code{\link[httr]{GET}}}
 }
+\value{
+A data frame listing the pheno classes in the NPN database.
+}
 \description{
-Gets information about all pheno classes, which a higher-level order of phenophases
+Gets information about all pheno classes, which are a higher-level order of phenophases.
 }

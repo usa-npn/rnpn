@@ -22,18 +22,21 @@ data point. Simple refers to simple averaging.}
 
 \item{temp_unit}{The unit of temperature to use in the calculation. Takes either "Fahrenheit" or "Celsius" as input.}
 
-\item{start_date}{Date at which to begin the AGDD calculations}
+\item{start_date}{Date at which to begin the AGDD calculations.}
 
-\item{end_date}{Date at which to end the AGDD calculations}
+\item{end_date}{Date at which to end the AGDD calculations.}
 
 \item{base_temp}{This is the lowest temperature for each day  for it to be considered in the calculation.}
 
 \item{upper_threshold}{This parameter is only applicable for the double-sine method. This sets the highest temperature
-to be considered in any given day's AGDD calculation}
+to be considered in any given day's AGDD calculation.}
+}
+\value{
+A raster object of each calculated AGDD numeric values based on specified time period/method/base temp/data source.
 }
 \description{
 This function takes a series of variables used in calculating AGDD and returns
 a raster of the continental USA with each pixel representing the calculated AGDD value
 based on start and end date.
-This function leverages the USA-NPN geo web services
+This function leverages the USA-NPN geo web services.
 }

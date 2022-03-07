@@ -4,7 +4,9 @@ context("npn_species")
 
 test_that("npn_species returns a data frame", {
   npn_set_env(get_test_env())
-
+  if(!check_service()){
+    skip("Service is down")
+  }
   vcr::use_cassette("npn_species_1", {
     species <- npn_species()
   })
@@ -18,7 +20,9 @@ test_that("npn_species returns a data frame", {
 
 test_that("npn_species_id working", {
   npn_set_env(get_test_env())
-
+  if(!check_service()){
+    skip("Service is down")
+  }
   vcr::use_cassette("npn_species_id_1", {
     species <- npn_species_id(3)
   })
@@ -31,7 +35,9 @@ test_that("npn_species_id working", {
 
 test_that("npn_species_state works",{
   npn_set_env(get_test_env())
-
+  if(!check_service()){
+    skip("Service is down")
+  }
   vcr::use_cassette("npn_species_state_1", {
     species_state <- npn_species_state("AZ")
   })
@@ -57,7 +63,9 @@ test_that("npn_species_state works",{
 
 test_that("npn_species_search works",{
   npn_set_env(get_test_env())
-
+  if(!check_service()){
+    skip("Service is down")
+  }
   vcr::use_cassette("npn_species_search_1", {
     species <- npn_species_search()
   })
@@ -77,7 +85,9 @@ test_that("npn_species_search works",{
 
 test_that("npn_species_types",{
   npn_set_env(get_test_env())
-
+  if(!check_service()){
+    skip("Service is down")
+  }
 
   #There's at least 15 things in any of these cases
   vcr::use_cassette("npn_species_types_1", {

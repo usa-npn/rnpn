@@ -1,8 +1,11 @@
 context("npn_partners")
 
+
 test_that("npn_groups works",{
   npn_set_env(get_test_env())
-
+  if(!check_service()){
+    skip("Service is down")
+  }
   vcr::use_cassette("npn_groups_1", {
     groups <- npn_groups()
   })

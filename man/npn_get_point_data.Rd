@@ -10,14 +10,17 @@ npn_get_point_data(layer, lat, long, date, store_data = TRUE)
 \item{layer}{The coverage id (machine name) of the layer for which to retrieve.
 Applicable values can be found via the npn_get_layer_details() function under the 'name' column.}
 
-\item{lat}{The latitude of the point}
+\item{lat}{The latitude of the point.}
 
-\item{long}{The longitude of the point}
+\item{long}{The longitude of the point.}
 
-\item{date}{The date for which to get a value}
+\item{date}{The date for which to get a value.}
 
 \item{store_data}{Boolean value. If set TRUE then the value retrieved will be stored in a global variable named point_values for
-later use}
+later use.}
+}
+\value{
+Returns a numeric value for any NPN geospatial data layer at the specified lat/long/date. If no value can be retrieved, then -9999 is returned.
 }
 \description{
 This function can get point data about any of the NPN geospatial layers.

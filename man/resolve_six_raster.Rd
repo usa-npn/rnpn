@@ -7,14 +7,14 @@
 resolve_six_raster(year, phenophase = "leaf", sub_model = NULL)
 }
 \arguments{
-\item{year}{String representation of the year being requested}
+\item{year}{String representation of the year being requested.}
 
-\item{phenophase}{The SI-x phenophase being requested, 'leaf' or 'bloom'; defaults to 'leaf'}
+\item{phenophase}{The SI-x phenophase being requested, 'leaf' or 'bloom'; defaults to 'leaf'.}
 
-\item{sub_model}{The SI-x sub model to use. Defaults to NULL (no sub-model)}
+\item{sub_model}{The SI-x sub model to use. Defaults to NULL (no sub-model).}
 }
 \value{
-Returns a raster object of the appropriate SI-x layer
+Returns a raster object of the appropriate SI-x layer.
 }
 \description{
 Utility function used to resolve the appropriate SI-x layer to use

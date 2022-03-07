@@ -1,28 +1,27 @@
 I have read and agree to the the CRAN policies at
 http://cran.r-project.org/web/packages/policies.html
 
+## Resubmission
+
+This is a resubmission where I have reduced testing API-dependent tests.
 
 ## Test environments
 
-R CMD CHECK passed on local Windows 10 and Ubuntu 18 using R 4.0.2 
-Also passed checks on Github Actions on macOS, Windows with R 3.6
-and ubuntu 16 using R 3.5.
+rhub::check_for_cran passed.
 
 ## R CMD check results
 
-There were no ERRORs or WARNINGs. 
+There were no ERRORs or WARNINGs.
 
-There was 1 NOTE:
-
-Changing maintainers. This project is transitioning to a new maintainer.
+There is one note: "Namespace in Imports field not imported from: ‘rgdal’"
+While rgdal isn't used directly, the raster package which is directly used
+has dependencies on rgdal that will causes tests to fail if the package is
+not installed on the system.
 
 ## Downstream dependencies
 
 There were no downstream dependencies.
 
-
 ## Other Notes
 
-This version is a total overhaul of the previous version of the package currently available on CRAN.
 
-Thanks! 

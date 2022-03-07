@@ -7,13 +7,16 @@
 npn_phenophases_by_species(species_ids, date, ...)
 }
 \arguments{
-\item{species_ids}{List of species_ids for which to get phenophase information}
+\item{species_ids}{List of species_ids for which to get phenophase information.}
 
-\item{date}{The applicable date for which to retrieve phenophases for the given species}
+\item{date}{The applicable date for which to retrieve phenophases for the given species.}
 
 \item{...}{Curl options passed on to \code{\link[httr]{GET}}}
 }
+\value{
+A data frame listing phenophases in the NPN database for the specified species and date.
+}
 \description{
 Retrieves the phenophases applicable to species for a given date. It's important to specify a date since protocols/phenophases for
-any given species can change from year to year
+any given species can change from year to year.
 }

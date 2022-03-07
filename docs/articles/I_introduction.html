@@ -91,14 +91,14 @@
 
       
 
-      </header><link href="I_introduction_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
+      </header><script src="I_introduction_files/accessible-code-block-0.0.1/empty-anchor.js"></script><link href="I_introduction_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
 <script src="I_introduction_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>I. Introduction to National Phenology Network Observational Data</h1>
                         <h4 class="author">Lee Marsh</h4>
             
-            <h4 class="date">2020-11-23</h4>
+            <h4 class="date">2020-12-07</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/ropensci/rnpn/blob/master/vignettes/I_introduction.Rmd"><code>vignettes/I_introduction.Rmd</code></a></small>
       <div class="hidden name"><code>I_introduction.Rmd</code></div>
@@ -122,11 +122,11 @@
 <h3 class="hasAnchor">
 <a href="#basic-format-for-for-observational-data-calls" class="anchor"></a>Basic format for for Observational data calls</h3>
 <p>The basic format for an observational data call in the rnpn library is:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1">npn_download_[NAME OF DATA TYPE] (</a>
-<a class="sourceLine" id="cb1-2" title="2">  <span class="dt">request_source =</span> [<span class="ot">NULL</span>]</a>
-<a class="sourceLine" id="cb1-3" title="3">  <span class="dt">year =</span>  [<span class="ot">NULL</span>]</a>
-<a class="sourceLine" id="cb1-4" title="4">  <span class="dt">species_ID =</span> [<span class="ot">NULL</span>]</a>
-<a class="sourceLine" id="cb1-5" title="5">)                  </a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>npn_download_[NAME OF DATA TYPE] (</span>
+<span id="cb1-2"><a href="#cb1-2"></a>  <span class="dt">request_source =</span> [<span class="ot">NULL</span>]</span>
+<span id="cb1-3"><a href="#cb1-3"></a>  <span class="dt">year =</span>  [<span class="ot">NULL</span>]</span>
+<span id="cb1-4"><a href="#cb1-4"></a>  <span class="dt">species_ID =</span> [<span class="ot">NULL</span>]</span>
+<span id="cb1-5"><a href="#cb1-5"></a>)                  </span></code></pre></div>
 <p>‘Request source’ should usually be populated with your full name or the name of the organization you represent. Species_ID is the unique identifier for all the available plants and animals in the USA-NPN database. You can create a table of all available species and their ID numbers:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">species</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/npn_species.html">npn_species</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>

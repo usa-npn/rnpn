@@ -12,7 +12,7 @@ npn_stations_by_location(wkt, ...)
 \item{...}{Curl options passed on to \code{\link[httr]{GET}}}
 }
 \value{
-Station data as as data.frame.
+A data frame listing stations filterd based on the WKT geography.
 }
 \description{
 Takes a Well-Known Text based geography as input and returns data for all

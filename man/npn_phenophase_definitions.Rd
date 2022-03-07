@@ -9,6 +9,9 @@ npn_phenophase_definitions(...)
 \arguments{
 \item{...}{Curl options passed on to \code{\link[httr]{GET}}}
 }
+\value{
+A data frame listing all phenophases in the NPN database and their definitions.
+}
 \description{
 Retrieves a complete list of all phenophase definitions.
 }

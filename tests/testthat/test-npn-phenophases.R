@@ -3,7 +3,9 @@ context("npn_phenophases")
 
 test_that("npn_phenophases works", {
   npn_set_env(get_test_env())
-
+  if(!check_service()){
+    skip("Service is down")
+  }
   vcr::use_cassette("npn_phenophases_1", {
     pp <- npn_phenophases()
   })
@@ -18,7 +20,9 @@ test_that("npn_phenophases works", {
 
 test_that("npn_phenophase_definitions works", {
   npn_set_env(get_test_env())
-
+  if(!check_service()){
+    skip("Service is down")
+  }
   vcr::use_cassette("npn_phenophase_definitions_1", {
     pp <- npn_phenophase_definitions()
   })
@@ -33,7 +37,9 @@ test_that("npn_phenophase_definitions works", {
 
 test_that("npn_phenophase_details works", {
   npn_set_env(get_test_env())
-
+  if(!check_service()){
+    skip("Service is down")
+  }
   vcr::use_cassette("npn_phenophase_details_1", {
     pd <- npn_phenophase_details(56)
   })
@@ -43,23 +49,23 @@ test_that("npn_phenophase_details works", {
   expect_is(pd$phenophase_names, "character")
   expect_equal(trimws(pd[1,"phenophase_names"]),"First leaf")
 
-  vcr::use_cassette("npn_phenophase_details_2", {
-    pd <- npn_phenophase_details("56,61")
-  })
+
+  pd <- npn_phenophase_details(list(56,57))
 
   expect_is(pd, "data.frame")
   expect_is(pd$phenophase_names, "character")
   expect_equal(trimws(pd[1,"phenophase_names"]),"First leaf")
 
-  expect_error(npn_phenophase_details())
-  expect_error(npn_phenophase_details(56,61))
+  expect_null(npn_phenophase_details("56,61"))
 
 })
 
 
 test_that("npn_phenophases_by_species works",{
   npn_set_env(get_test_env())
-
+  if(!check_service()){
+    skip("Service is down")
+  }
   vcr::use_cassette("npn_phenophases_by_species_1", {
     pp <- npn_phenophases_by_species(3,"2018-05-05")
   })
@@ -72,7 +78,9 @@ test_that("npn_phenophases_by_species works",{
 
 test_that("npn_pheno_classes works",{
   npn_set_env(get_test_env())
-
+  if(!check_service()){
+    skip("Service is down")
+  }
   vcr::use_cassette("npn_pheno_classes_1", {
     pc <- npn_pheno_classes()
   })
@@ -84,7 +92,9 @@ test_that("npn_pheno_classes works",{
 
 test_that("npn_abundance_categories works",{
   npn_set_env(get_test_env())
-
+  if(!check_service()){
+    skip("Service is down")
+  }
   vcr::use_cassette("npn_abundance_categories_1", {
     ac <- npn_abundance_categories()
   })
@@ -98,7 +108,9 @@ test_that("npn_abundance_categories works",{
 
 test_that("npn_get_phenophases_for_taxon works", {
   npn_set_env(get_test_env())
-
+  if(!check_service()){
+    skip("Service is down")
+  }
   vcr::use_cassette("npn_get_phenophases_for_taxon_1", {
     pp <- npn_get_phenophases_for_taxon(class_ids=5,date="2018-05-05")
   })

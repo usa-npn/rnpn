@@ -6,7 +6,7 @@
 #' database.
 #' @export
 #' @template curl
-#' @return data.frame of species and their IDs
+#' @return A data frame with information on species in the NPN database and their IDs.
 #' @examples \dontrun{
 #' npn_species()
 #' npn_species_id(ids = 3)
@@ -23,8 +23,9 @@ npn_species <- function(...) {
 #' @export
 #' @rdname npn_species
 #' @param ids List of species ids for which to retrieve information
-#' @return data.frame of the species' information
+#' @return A data frame with information on species in the NPN database and their IDs, filtered by the species ID parameter.
 npn_species_id <- function(ids, ...) {
+
   tt <- lapply(ids, function(z){
     npn_GET(paste0(base(), 'species/getSpeciesById.json'), list(species_id = z), ...)
   })
@@ -38,8 +39,9 @@ npn_species_id <- function(ids, ...) {
 #'
 #' @export
 #' @rdname npn_species
-#' @param state A US postal state code to filter results
-#' @param kingdom Filters results by taxonomic kingdom. Takes either 'Animalia' or 'Plantae'
+#' @param state A US postal state code to filter results.
+#' @param kingdom Filters results by taxonomic kingdom. Takes either 'Animalia' or 'Plantae'.
+#' @return A data frame with information on species in the NPN database whose distribution includes a given state.
 #' @examples \dontrun{
 #' npn_species_state(state = "AZ")
 #' npn_species_state(state = "AZ", kingdom = "Plantae")
@@ -61,6 +63,7 @@ npn_species_state <- function(state, kingdom = NULL, ...) {
 #' @param start_date filter species by date observed. This sets the start date of the date range and must be used in conjunction with end_date
 #' @param end_date filter species by date observed. This sets the end date of the date range and must be used in conjunction with start_date
 #' @param station_id filter species by a list of unique site identifiers
+#' @return A data frame with information on species in the NPN database filtered by partner group, dates and station/site IDs.
 #' @export
 #' @rdname npn_species
 npn_species_search <- function(network=NULL, start_date=NULL, end_date=NULL, station_id=NULL, ...) {
@@ -79,6 +82,7 @@ npn_species_search <- function(network=NULL, start_date=NULL, end_date=NULL, sta
 #'
 #' @param kingdom The kingdom for which to return functional types; either 'Animalia' or 'Plantae'. Defaults to Plantae.
 #' @template curl
+#' @return A data frame with a list of the functional types used in the NPN database, filtered by the specified kingdom.
 #' @export
 npn_species_types <- function(kingdom="Plantae", ...) {
   end_point = NULL

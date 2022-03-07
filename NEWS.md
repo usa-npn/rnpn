@@ -1,3 +1,42 @@
+rnpn 1.2.4 (2021-11-10)
+=======================
+
+### NEW FEATURES
+
+* Skipping more API-dependent unit tests.
+
+
+rnpn 1.2.3 (2021-10-22)
+=======================
+
+### NEW FEATURES
+
+* Skipping failing API-dependent unit tests and improved documentation.
+
+
+rnpn 1.2.2 (2021-10-04)
+=======================
+
+### NEW FEATURES
+
+* Fixing failing unit tests
+
+
+rnpn 1.2.1 (2021-04-05)
+=======================
+
+### NEW FEATURES
+
+* Fixing failing unit tests
+
+
+rnpn 1.2.0 (2021-03-19)
+=======================
+
+### NEW FEATURES
+
+* Graceful fails when NPN data services are unavailable
+
 rnpn 1.1.1 (2020-10-27)
 =======================
 
