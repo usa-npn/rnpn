@@ -37,5 +37,4 @@ Suggests:
     vcr
 RoxygenNote: 7.1.2
 VignetteBuilder: knitr
-URL: https://docs.ropensci.org/rnpn/ (website)
-    https://github.com/ropensci/rnpn/ (devel)
+URL: https://github.com/usa-npn/rnpn/ (devel)
