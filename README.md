@@ -6,7 +6,7 @@ state and is being actively
 developed.](http://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/)
 [![cran
 checks](https://cranchecks.info/badges/worst/rnpn)](https://cranchecks.info/pkgs/rnpn)
-[![codecov.io](https://codecov.io/github/ropensci/rnpn/coverage.svg?branch=master)](https://codecov.io/github/ropensci/rnpn?branch=master)
+[![codecov.io](https://codecov.io/github/usa-npn/rnpn/coverage.svg?branch=master)](https://codecov.io/github/usa-npn/rnpn?branch=master)
 [![R build
 status](https://github.com/usa-npn/rnpn//workflows/R-CMD-check/badge.svg)](https://github.com/usa-npn/rnpn/actions)
 
@@ -118,25 +118,19 @@ point_value <- npn_get_point_data('si-x:lilac_leaf_ncep_historic',date='2016-12-
 
 ## What’s Next
 
-Please read and review the vignettes for this package to get further
-information about the full scope of functionality available.
+Please read and review the vignettes for this package to get further information about the full scope of functionality available.
 
-## Acknowledgements
+## Acknowledgments
 
 This code was developed, in part, as part of the integrated
 [Pheno-Synthesis Software Suite
 (PS3)](https://git.earthdata.nasa.gov/projects/APIS/repos/pheno-synthesis-software-suite/browse).
-The authors acknowledge funding for this work through NASA’s AIST
-program (80NSSC17K0582, 80NSSC17K0435, 80NSSC17K0538, and
-80GSFC18T0003). The University of Arizona and the USA National Phenology
-Network’s efforts with this package are supported in part by US
-Geological Survey (G14AC00405, G18AC00135) and the US Fish and Wildlife
-Service (F16AC01075 and F19AC00168).
+The authors acknowledge funding for this work through NASA’s AIST program (80NSSC17K0582, 80NSSC17K0435, 80NSSC17K0538, and 80GSFC18T0003). The University of Arizona and the USA National Phenology Network’s efforts with this package are supported in part by US Geological Survey (G14AC00405, G18AC00135) and the US Fish and Wildlife Service (F16AC01075 and F19AC00168).
 
 ## Meta
 
   - Please [report any issues or
-    bugs](https://github.com/ropensci/rnpn/issues).
+    bugs](https://github.com/usa-npn/rnpn/issues).
   - License: MIT
   - Get citation information for `rnpn` in R doing `citation(package =
     'rnpn')`

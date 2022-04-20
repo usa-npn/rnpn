@@ -1,3 +1,12 @@
+rnpn 1.2.5 (2022-04-20)
+=======================
+
+### NEW FEATURES
+
+* New vignette, #8 on Data Cleaning
+* Changes to reflect repository being transferred from ropensci to usa-npn in github
+
+
 rnpn 1.2.4 (2021-11-10)
 =======================
 

@@ -3,7 +3,7 @@ http://cran.r-project.org/web/packages/policies.html
 
 ## Resubmission
 
-This is a resubmission where I have reduced testing API-dependent tests.
+This is a resubmission where I have added a vignette on data cleaning.
 
 ## Test environments
 
@@ -24,4 +24,4 @@ There were no downstream dependencies.
 
 ## Other Notes
 
-
+NA

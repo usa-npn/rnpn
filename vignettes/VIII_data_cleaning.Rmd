@@ -76,10 +76,10 @@ Note that the prior two steps can be repeated, replacing "site_id" with "phenoph
 
 Further investigation of these patterns may inform what the user does next. A user may opt to allow yes records to override no records (as done in individual and site phenometrics), to investigate conflicts further or remove all conflicting records. 
 
-To drop all records at sites where more than 5% of the records are in conflict:
+Some sites where many observers collect data on the same plants (eg, some college classes) have high percentages of conflicting records. To drop all records at sites where more than 5% of the records are in conflict:
 
 ````{r eval=FALSE}
-hi_conflict_sites <- subset(conflicts, Percent_Conflict > 0.05)
+df_hi_conflict_sites <- subset(conflicts, Percent_Conflict > 0.05)
 df_low_conflict_sites <- subset(df, !site_id %in% hi_conflict_sites$site_id) 
 ````
 
@@ -99,16 +99,16 @@ When collecting data, observers report the presence (Yes) or absence (No) of the
 
 In Status and Intensity data this must be done manually (assembling first yes and prior no from the status records; not demonstrated here). 
 
-In Individual Phenometrics, data can be readily explored and filtered based on prior no, demonstrated below.
+In Individual Phenometrics, data can be readily explored and filtered based on the timing of a prior no, demonstrated below.
 
-In Site Phenometrics, since values for individual plants are averaged, the mean_numdays_since_prior_no field can be used to explore and filter the data. Note that in Site Phenometrics the user can control the first yeses included in the site-level average using 'num_days_quality_filter = "[insert # days here]"', as an additional parameter in the data call. By default first yeses without a prior no within 30 days are excluded.
+In Site Phenometrics, since values for individual plants are averaged, the mean_numdays_since_prior_no field can be used to explore and filter the data. Note that in Site Phenometrics the user can control the first yeses included in the site-level average using 'num_days_quality_filter = "[insert # days here]"', as an additional parameter in the data call. By default first yeses without a prior no within 30 days are excluded in this data type.
 
-Note that there is a parallel field for last yes (the end of the phenophase): numdays_until_next_no (in Individual Phenometrics) and mean_numdays_until_next_no (in Site Phenometrics).
+Note that there is a parallel field reflecting number of days between the last yes (end of the phenophase) and the next no: numdays_until_next_no (in Individual Phenometrics) and mean_numdays_until_next_no (in Site Phenometrics).
 
 To explore and filter data based on prior no in Individual Phenometrics, first download all the flowering dogwood (Species ID 12) for 2021: 
 
 ````{r eval=FALSE}
-df <- npn_download_site_phenometrics(
+df <- npn_download_individual_phenometrics(
   request_source = 'Your Name Here',
   years = c(2021),
   species_ids = c(12)
@@ -117,7 +117,7 @@ df <- npn_download_site_phenometrics(
 
 ### Viewing Data by Prior No
 
-Next, set the -9999 values to NA, and plot a histogram of the number of days since the prior no, for all the first yes records in this dataset:
+Next, set the -9999 values to NA, and plot a histogram and identify the quantiles of the distribution of the number of days since the prior no, for all the first yes records in this dataset:
 
 ````{r eval=FALSE}
 library(dplyr)
@@ -127,6 +127,11 @@ df <- df %>%
 hist(df$numdays_since_prior_no,
      breaks = c(0,3,7,14,21,28,35,42,100,250),
      main = "Histogram of Number of Days Since Prior No")
+
+quantile(x = df$numdays_since_prior_no,
+         probs = c(0.01, 0.05, 0.25, 0.75, 0.95, 0.99),
+         na.rm = TRUE)
+
 ````
 
 ```{r, echo=FALSE, out.width = "75%", fig.pos="h"}
@@ -136,9 +141,10 @@ knitr::include_graphics("figures/HistogramPriorNo.png", dpi = NULL,
 
 ### Filtering Data by Prior No
 
-The histogram can inform the user's decision regarding where to set the filter, balancing how much data will be lost against certainty of the date of true onset of the phenophase. Here we show how to drop records without a prior no within 21 days.
+The histogram and quantile information can inform the user's decision regarding where to set the filter, balancing how much data will be lost against certainty of the date of true onset of the phenophase. Here we show how to drop records without a prior no within 21 days.
 
 ````{r eval=FALSE}
+library(dplyr)
 df_21d_prior_no <- df %>%
   filter(numdays_since_prior_no < 21)
 ````
@@ -148,7 +154,7 @@ df_21d_prior_no <- df %>%
 
 The Multiple First Yes field is only available for Individual Phenometrics.
 
-If the Multiple First Yes flag is set to "1" it indicates that for that individual plant, for that phenophase, for that year, there were multiple instances where the plant transitioned from a status of No to a status of Yes. These can represent real phenomena, for instance a drought deciduous tree that leafs out several times in a year, or a dogwood that reblooms after a killing frost. This can also occur when observers are reporting on the same plant on sequential days but are not in agreement on phenophase status with other observers. Note that by design, Site Phenometrics don't have Multiple First Yeses. For Site Phenometrics, each series represents the average first yes date of all the individuals of the species at the site, for that year, as described in the Observational Data Documentation (https://pubs.usgs.gov/of/2018/1060/ofr20181060.pdf).
+If the Multiple First Yes flag is set to "1" it indicates that for that individual plant, for that phenophase, for that year, there were multiple instances where the plant transitioned from a status of No to a status of Yes. These can represent real phenomena, for instance a drought deciduous tree that leafs out several times in a year, or a dogwood that reblooms after a frost event. This can also occur when observers are reporting on the same plant on sequential days but are not in agreement on phenophase status with other observers. Note that by design, Site Phenometrics don't have Multiple First Yeses. For Site Phenometrics, each series represents the average first yes date of all the individuals of the species at the site, for that year, as described in the Observational Data Documentation (https://pubs.usgs.gov/of/2018/1060/ofr20181060.pdf).
 
 A similar approach to the above workflow for status conflicts can be followed in Individual Phenometrics to explore and exclude series with multiple first yeses: 
 
@@ -171,7 +177,6 @@ Next we can look at the frequency of series with multiple first yeses, by phenop
 
 ````{r eval=FALSE}
 library(dplyr)
-
 mfy_summary <- df %>%
   count(phenophase_description, multiple_firsty) %>%
   group_by(phenophase_description) %>%
@@ -204,7 +209,7 @@ In this example, there is a high frequency of series with multiple first yeses! 
 
 ## Taking the Mean of Multiple First Yeses
 
-Depending on users' data explorations and planned uses, it may be appropriate to take the earliest first yes for the phenophase-individual-plant-year combination, or the latest or the mean. Here is how to take the average first yes across all the series for each phenophase-invidual-plant combination, for the 2021 dogwood data we downloaded above (be sure to also group by year if using multiple years of data). This is done by grouping by phenophase and individual ID (and year if multi year), and then adding a new column with the mean date of first yes day of year. Then the user should drop the duplicate records based on phenophase and individual ID (and year if multi year). Note that there will still be a multiple first year column in this dataset, but it no longer applies.
+Depending on users' data explorations and planned uses, it may be appropriate to take the earliest first yes for the phenophase-individual-plant-year combination, or the latest or the mean. Here is how to take the average first yes across all the series for each phenophase-individual-plant combination, for the 2021 dogwood data we downloaded above (be sure to also group by year if using multiple years of data). This is done by grouping by phenophase and individual ID (and year if multi year), and then adding a new column with the mean date of first yes day of year. Then the user should drop the duplicate records based on phenophase and individual ID (and year if multi year). Note that there will still be a multiple first year column in this dataset, but it no longer applies.
 
 ````{r eval=FALSE}
 df_one_firsty <- df %>%
@@ -215,7 +220,7 @@ df_one_firsty <- df %>%
 
 # 4. Removing Outliers for Individual Plants over Time
 
-When observers have looked at the same individual plant over many years, certain records can be excluded based on falling to the extreme of distribution of records (this is the approach used in Rosemartin et al 2014, lilac dataset).
+When observers have looked at the same individual plant over many years, certain records can be excluded based on falling to the extreme of distribution of records (this is the approach used in Rosemartin et al 2015, https://doi.org/10.1038/sdata.2015.38).
 
 First, download 11 years of Red Oak (Species ID 102) Breaking Leaf Bud (Phenophase ID 371) data, in the Individual Phenometrics format:
 
@@ -299,4 +304,4 @@ knitr::include_graphics("figures/RedOak3.png", dpi = NULL,
   error = getOption("knitr.graphics.error", TRUE))
 ```
 
-Thanks to Jeff Oliver and Amanda Gallinat for helpful review of this vignette.
+Huge thanks to Amanda Gallinat and Jeff Oliver for very helpful review of this vignette.

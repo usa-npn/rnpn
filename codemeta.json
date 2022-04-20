@@ -8,13 +8,13 @@
   "description": "Programmatic interface to the\n    Web Service methods provided by the National 'Phenology' Network\n    (<https://usanpn.org/>), which includes data on various life history\n    events that occur at specific times.",
   "name": "rnpn: Interface to the National 'Phenology' Network 'API'",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.0.3 (2020-11-10)",
+  "runtimePlatform": "R version 4.1.1 (2021-08-10)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -294,12 +294,36 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=magrittr"
+    },
+      {
+      "@type": "SoftwareApplication",
+      "identifier": "dplyr",
+      "name": "dplyr",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=dplyr"
+      },
+      {
+      "@type": "SoftwareApplication",
+      "identifier": "ggplot2",
+      "name": "ggplot2",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=ggplot2"
     }
   ],
-  "codeRepository": "https://github.com/ropensci/rnpn/",
+  "codeRepository": "https://github.com/usa-npn/rnpn",
   "contIntegration": "https://codecov.io/github/ropensci/rnpn?branch=master",
-  "releaseNotes": "https://github.com/ropensci/rnpn/blob/master/NEWS.md",
-  "readme": "https://github.com/ropensci/rnpn/blob/master/README.md",
+  "releaseNotes": "https://github.com/usa-npn/rnpn/blob/master/NEWS.md",
+  "readme": "https://github.com/usa-npn/rnpn/blob/master/README.md",
   "fileSize": "18585.042KB",
   "contributor": {},
   "copyrightHolder": {},
@@ -315,8 +339,7 @@
     "r-package"
   ],
   "relatedLink": [
-    "https://CRAN.R-project.org/package=rnpn",
-    "https://docs.ropensci.org/rnpn/"
+    "https://CRAN.R-project.org/package=rnpn"
   ],
   "developmentStatus": "https://www.repostatus.org/"
 }
