@@ -22,7 +22,6 @@ Imports:
     tibble,
     curl,
     raster,
-    rgdal,
     plyr,
     XML,
     magrittr
