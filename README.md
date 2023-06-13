@@ -1,14 +1,17 @@
 
 # rnpn
 
+<!-- badges: start -->
+
 [![Project Status: Active – The project has reached a stable, usable
 state and is being actively
 developed.](http://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/)
-[![cran
-checks](https://cranchecks.info/badges/worst/rnpn)](https://cranchecks.info/pkgs/rnpn)
-[![codecov.io](https://codecov.io/github/usa-npn/rnpn/coverage.svg?branch=master)](https://codecov.io/github/usa-npn/rnpn?branch=master)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/rnpn)](https://CRAN.R-project.org/package=rnpn)
+[![codecov.io](https://codecov.io/github/ropensci/rnpn/coverage.svg?branch=master)](https://codecov.io/github/ropensci/rnpn?branch=master)
 [![R build
 status](https://github.com/usa-npn/rnpn//workflows/R-CMD-check/badge.svg)](https://github.com/usa-npn/rnpn/actions)
+<!-- badges: end -->
 
 `rnpn` is an R client for interacting with the USA National Phenology
 Network data web services. These services include access to a rich set
@@ -23,7 +26,7 @@ which describes the full set of REST services this package wraps.
 There is no need for an API key to grab data from the National Phenology
 Network but users are required to self identify, on an honor system,
 against requests that may draw upon larger datasets. For functions that
-require it, simply populate the request\_source parameter with your name
+require it, simply populate the request_source parameter with your name
 or the name of your institution.
 
 ## Installation
@@ -86,7 +89,7 @@ some_data <- npn_download_status_data(request_source='Your Name or Org Here',yea
 
 Note that through this API, data can only be filtered chronologically by
 full calendar years. You can specify any number of years in each API
-call. Also note that request\_source is a required parameter and should
+call. Also note that request_source is a required parameter and should
 be populated with your name or the name of the organization you
 represent. All other parameters are optional but it is highly
 recommended that you filter your data search further.
@@ -118,24 +121,30 @@ point_value <- npn_get_point_data('si-x:lilac_leaf_ncep_historic',date='2016-12-
 
 ## What’s Next
 
-Please read and review the vignettes for this package to get further information about the full scope of functionality available.
+Please read and review the vignettes for this package to get further
+information about the full scope of functionality available.
 
-## Acknowledgments
+## Acknowledgements
 
 This code was developed, in part, as part of the integrated
 [Pheno-Synthesis Software Suite
 (PS3)](https://git.earthdata.nasa.gov/projects/APIS/repos/pheno-synthesis-software-suite/browse).
-The authors acknowledge funding for this work through NASA’s AIST program (80NSSC17K0582, 80NSSC17K0435, 80NSSC17K0538, and 80GSFC18T0003). The University of Arizona and the USA National Phenology Network’s efforts with this package are supported in part by US Geological Survey (G14AC00405, G18AC00135) and the US Fish and Wildlife Service (F16AC01075 and F19AC00168).
+The authors acknowledge funding for this work through NASA’s AIST
+program (80NSSC17K0582, 80NSSC17K0435, 80NSSC17K0538, and
+80GSFC18T0003). The University of Arizona and the USA National Phenology
+Network’s efforts with this package are supported in part by US
+Geological Survey (G14AC00405, G18AC00135) and the US Fish and Wildlife
+Service (F16AC01075 and F19AC00168).
 
 ## Meta
 
-  - Please [report any issues or
-    bugs](https://github.com/usa-npn/rnpn/issues).
-  - License: MIT
-  - Get citation information for `rnpn` in R doing `citation(package =
-    'rnpn')`
-  - Please note that this package is released with a [Contributor Code
-    of Conduct](https://ropensci.org/code-of-conduct/). By contributing
-    to this project, you agree to abide by its terms.
+- Please [report any issues or
+  bugs](https://github.com/ropensci/rnpn/issues).
+- License: MIT
+- Get citation information for `rnpn` in R doing
+  `citation(package = 'rnpn')`
+- Please note that this package is released with a [Contributor Code of
+  Conduct](https://ropensci.org/code-of-conduct/). By contributing to
+  this project, you agree to abide by its terms.
 
 [![image](http://ropensci.org/public_images/github_footer.png)](https://ropensci.org/)
