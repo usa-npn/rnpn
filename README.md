@@ -49,14 +49,13 @@ devtools::install_github("usa-npn/rnpn")
 library('rnpn')
 ```
 
-This package has dependencies on both curl and gdal. Some Linux based
+This package has dependencies on curl. Some Linux based
 systems may require additional system dependencies for those required
 packages, and accordingly this package, to install correctly. For
 example, on Ubuntu:
 
 ``` r
 sudo apt install libcurl4-openssl-dev
-sudo apt install libproj-dev libgdal-dev
 ```
 
 ## The Basics

@@ -1,32 +1,30 @@
 {
-  "@context": [
-    "http://purl.org/codemeta/2.0",
-    "http://schema.org"
-  ],
+  "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
   "@type": "SoftwareSourceCode",
   "identifier": "rnpn",
-  "description": "Programmatic interface to the\n    Web Service methods provided by the National 'Phenology' Network\n    (<https://usanpn.org/>), which includes data on various life history\n    events that occur at specific times.",
+  "description": "Programmatic interface to the Web Service methods provided by the National 'Phenology' Network (<https://usanpn.org/>), which includes data on various life history events that occur at specific times.",
   "name": "rnpn: Interface to the National 'Phenology' Network 'API'",
+  "codeRepository": "https://github.com/usa-npn/rnpn/",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "1.2.5",
+  "version": "1.2.6",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.1.1 (2021-08-10)",
+  "runtimePlatform": "R version 4.3.0 (2023-04-21)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
-    "name": "Central R Archive Network (CRAN)",
+    "name": "Comprehensive R Archive Network (CRAN)",
     "url": "https://cran.r-project.org"
   },
   "author": [
     {
       "@type": "Person",
-      "givenName": "Lee",
-      "familyName": "Marsh",
-      "email": "lee@usanpn.org"
+      "givenName": "Jeff",
+      "familyName": "Switzer",
+      "email": "jeff@usanpn.org"
     },
     {
       "@type": "Person",
@@ -35,23 +33,33 @@
     },
     {
       "@type": "Person",
-      "givenName": "Alyssa",
-      "familyName": "Rosemartin",
-      "email": "alyssa@usanpn.org"
+      "givenName": "Lee",
+      "familyName": "Marsh"
     },
     {
       "@type": "Person",
       "givenName": "Kevin",
-      "familyName": "Wong",
-      "email": "kevin@usanpn.org"
+      "familyName": "Wong"
+    }
+  ],
+  "contributor": [
+    {
+      "@type": "Person",
+      "givenName": "David",
+      "familyName": "LeBauer"
+    },
+    {
+      "@type": "Person",
+      "givenName": "Eric R",
+      "familyName": "Scott"
     }
   ],
   "maintainer": [
     {
       "@type": "Person",
-      "givenName": "Alyssa",
-      "familyName": "Rosemartin",
-      "email": "alyssa@usanpn.org"
+      "givenName": "Jeff",
+      "familyName": "Switzer",
+      "email": "jeff@usanpn.org"
     }
   ],
   "softwareSuggestions": [
@@ -152,14 +160,14 @@
       "sameAs": "https://CRAN.R-project.org/package=vcr"
     }
   ],
-  "softwareRequirements": [
-    {
+  "softwareRequirements": {
+    "1": {
       "@type": "SoftwareApplication",
       "identifier": "R",
       "name": "R",
       "version": ">= 3.5.0"
     },
-    {
+    "2": {
       "@type": "SoftwareApplication",
       "identifier": "httr",
       "name": "httr",
@@ -172,7 +180,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=httr"
     },
-    {
+    "3": {
       "@type": "SoftwareApplication",
       "identifier": "jsonlite",
       "name": "jsonlite",
@@ -185,7 +193,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=jsonlite"
     },
-    {
+    "4": {
       "@type": "SoftwareApplication",
       "identifier": "data.table",
       "name": "data.table",
@@ -198,7 +206,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=data.table"
     },
-    {
+    "5": {
       "@type": "SoftwareApplication",
       "identifier": "sp",
       "name": "sp",
@@ -211,7 +219,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=sp"
     },
-    {
+    "6": {
       "@type": "SoftwareApplication",
       "identifier": "tibble",
       "name": "tibble",
@@ -223,7 +231,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=tibble"
     },
-    {
+    "7": {
       "@type": "SoftwareApplication",
       "identifier": "curl",
       "name": "curl",
@@ -235,7 +243,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=curl"
     },
-    {
+    "8": {
       "@type": "SoftwareApplication",
       "identifier": "raster",
       "name": "raster",
@@ -247,19 +255,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=raster"
     },
-    {
-      "@type": "SoftwareApplication",
-      "identifier": "rgdal",
-      "name": "rgdal",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=rgdal"
-    },
-    {
+    "9": {
       "@type": "SoftwareApplication",
       "identifier": "plyr",
       "name": "plyr",
@@ -271,7 +267,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=plyr"
     },
-    {
+    "10": {
       "@type": "SoftwareApplication",
       "identifier": "XML",
       "name": "XML",
@@ -283,7 +279,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=XML"
     },
-    {
+    "11": {
       "@type": "SoftwareApplication",
       "identifier": "magrittr",
       "name": "magrittr",
@@ -295,51 +291,13 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=magrittr"
     },
-      {
-      "@type": "SoftwareApplication",
-      "identifier": "dplyr",
-      "name": "dplyr",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=dplyr"
-      },
-      {
-      "@type": "SoftwareApplication",
-      "identifier": "ggplot2",
-      "name": "ggplot2",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=ggplot2"
-    }
-  ],
-  "codeRepository": "https://github.com/usa-npn/rnpn",
-  "contIntegration": "https://codecov.io/github/ropensci/rnpn?branch=master",
+    "SystemRequirements": null
+  },
+  "fileSize": "16963.726KB",
   "releaseNotes": "https://github.com/usa-npn/rnpn/blob/master/NEWS.md",
   "readme": "https://github.com/usa-npn/rnpn/blob/master/README.md",
-  "fileSize": "18585.042KB",
-  "contributor": {},
-  "copyrightHolder": {},
-  "funder": {},
-  "keywords": [
-    "web-api",
-    "species",
-    "data",
-    "rstats",
-    "r",
-    "national-phenology-network",
-    "phenology",
-    "r-package"
-  ],
-  "relatedLink": [
-    "https://CRAN.R-project.org/package=rnpn"
-  ],
-  "developmentStatus": "https://www.repostatus.org/"
+  "contIntegration": ["https://codecov.io/github/usa-npn/rnpn?branch=master", "https://github.com/usa-npn/rnpn/actions"],
+  "developmentStatus": "https://www.repostatus.org/",
+  "keywords": ["web-api", "species", "data", "rstats", "r", "national-phenology-network", "phenology", "r-package"],
+  "relatedLink": "https://CRAN.R-project.org/package=rnpn"
 }
