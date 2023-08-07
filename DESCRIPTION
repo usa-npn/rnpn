@@ -9,10 +9,10 @@ License: MIT + file LICENSE
 Authors@R: c(
     person("Jeff", "Switzer", role = c("aut", "cre"), email = "jeff@usanpn.org")
     person("Scott", "Chamberlain", role = "aut"),
-    person("Lee", "Marsh", role = "aut"),
-    person("Alyssa", "Rosemartin", role = "aut"),
-    person("Kevin", "Wong", role = "aut"),
-    person("David", "LeBauer", role = "ctb")
+    person("Lee", "Marsh", role= "aut", email = "lee@usanpn.org"),
+    person("Kevin", "Wong", role = "aut", email = "kevin@usanpn.org"),
+    person("David", "LeBauer", role = "ctb", email = "dlebauer@arizona.edu"),
+    person("Eric R", "Scott", role = "ctb", email = "scottericr@gmail.com")
     )
 Depends: R (>= 3.5.0)
 Imports:
@@ -23,7 +23,6 @@ Imports:
     tibble,
     curl,
     raster,
-    rgdal,
     plyr,
     XML,
     magrittr
@@ -36,6 +35,7 @@ Suggests:
     rmarkdown,
     RColorBrewer,
     vcr
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.3
+Encoding: UTF-8
 VignetteBuilder: knitr
 URL: https://github.com/usa-npn/rnpn/ (devel)
