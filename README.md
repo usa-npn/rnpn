@@ -112,12 +112,11 @@ geospatial data as a raster.
 npn_download_geospatial(coverage_id = 'si-x:lilac_leaf_ncep_historic',date='2016-12-31',format='geotiff',output_path='./six-test-raster.tiff')
 ```
 
-If you’re looking for a grid value at a specific latitude/longitude,
-that is also possible.
+## Example of combined observational and geospatial data
 
-``` r
-point_value <- npn_get_point_data('si-x:lilac_leaf_ncep_historic',date='2016-12-31',lat=38.5,long=-110.7)
-```
+For more details see Vignette VII
+
+<img src="vignettes/figures/7-plot.png" width="70%" />
 
 ## What’s Next
 

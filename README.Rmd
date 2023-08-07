@@ -98,9 +98,11 @@ You can then use the name of the layers to select and download geospatial data a
 npn_download_geospatial(coverage_id = 'si-x:lilac_leaf_ncep_historic',date='2016-12-31',format='geotiff',output_path='./six-test-raster.tiff')
 ```
 
-If you're looking for a grid value at a specific latitude/longitude, that is also possible.
-```{r eval=FALSE}
-point_value <- npn_get_point_data('si-x:lilac_leaf_ncep_historic',date='2016-12-31',lat=38.5,long=-110.7)
+## Example of combined observational and geospatial data
+For more details see Vignette VII
+
+```{r, echo=FALSE, out.width = "70%", fig.pos="h"}
+knitr::include_graphics("vignettes/figures/7-plot.png")
 ```
 
 ## What's Next
