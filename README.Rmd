@@ -19,7 +19,7 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/)
 [![CRAN status](https://www.r-pkg.org/badges/version/rnpn)](https://CRAN.R-project.org/package=rnpn)
-[![codecov.io](https://codecov.io/github/ropensci/rnpn/coverage.svg?branch=master)](https://codecov.io/github/ropensci/rnpn?branch=master)
+[![codecov.io](https://codecov.io/github/usa-npn/rnpn/coverage.svg?branch=master)](https://codecov.io/github/usa-npn/rnpn?branch=master)
 [![R build status](https://github.com/usa-npn/rnpn//workflows/R-CMD-check/badge.svg)](https://github.com/usa-npn/rnpn/actions)
 <!-- badges: end -->
 
@@ -116,7 +116,7 @@ This code was developed, in part, as part of the integrated [Pheno-Synthesis Sof
 
 ## Meta
 
-* Please [report any issues or bugs](https://github.com/ropensci/rnpn/issues).
+* Please [report any issues or bugs](https://github.com/usa-npn/rnpn/issues).
 * License: MIT
 * Get citation information for `rnpn` in R doing `citation(package = 'rnpn')`
 * Please note that this package is released with a [Contributor Code of Conduct](https://ropensci.org/code-of-conduct/). By contributing to this project, you agree to abide by its terms.
