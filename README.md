@@ -7,8 +7,8 @@
 state and is being actively
 developed.](http://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/)
 [![cran
-checks](https://cranchecks.info/badges/worst/rnpn)](https://cranchecks.info/pkgs/rnpn)
-[![codecov.io](https://codecov.io/github/ropensci/rnpn/coverage.svg?branch=master)](https://codecov.io/github/ropensci/rnpn?branch=master)
+checks](https://badges.cranchecks.info/worst/rnpn.svg)](https://cranchecks.info/pkgs/rnpn)
+[![codecov.io](https://codecov.io/github/usa-npn/rnpn/coverage.svg?branch=master)](https://codecov.io/github/usa-npn/rnpn?branch=master)
 [![R-CMD-check](https://github.com/usa-npn/rnpn/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/usa-npn/rnpn/actions/workflows/R-CMD-check.yaml)
 
 <!-- badges: end -->
