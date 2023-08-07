@@ -266,7 +266,7 @@ quantiles <- as.data.frame(df_8Y %>%
                         group_by(individual_id) %>%
                         summarize(Q1 = quantile(first_yes_doy, .25), 
                                   Q3 = quantile(first_yes_doy, .75),
-                                  IQR <- IQR(first_yes_doy)))
+                                  IQR = IQR(first_yes_doy)))
 ````
 
 Create a reference data frame which gives the quantiles and IQR by individual ID
@@ -274,9 +274,6 @@ Create a reference data frame which gives the quantiles and IQR by individual ID
 ````{r eval=FALSE}
 df_8Y_Q = df_8Y %>% 
   right_join(quantiles, by = "individual_id")
-
-df_8Y_Q  <- df_8Y_Q  %>%
-  rename('IQR' = 'IQR <- IQR(first_yes_doy)')
 ````
 
 Remove first yes records that fall outside of 1.5 times the interquartile range for the individual plant.
