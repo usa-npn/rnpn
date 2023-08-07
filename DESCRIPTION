@@ -11,7 +11,8 @@ Authors@R: c(
     person("Scott", "Chamberlain", role = "aut"),
     person("Lee", "Marsh", role= "aut", email = "lee@usanpn.org"),
     person("Kevin", "Wong", role = "aut", email = "kevin@usanpn.org"),
-    person("David", "LeBauer", role = "ctb", email = "dlebauer@arizona.edu")
+    person("David", "LeBauer", role = "ctb", email = "dlebauer@arizona.edu"),
+    person("Eric R", "Scott", role = "ctb", email = "scottericr@gmail.com")
     )
 Depends: R (>= 3.5.0)
 Imports:
