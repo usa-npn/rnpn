@@ -7,12 +7,12 @@ Description: Programmatic interface to the
 Version: 1.2.6
 License: MIT + file LICENSE
 Authors@R: c(
-    person("Jeff", "Switzer", role = c("aut", "cre"), email = "jeff@usanpn.org")
+    person("Jeff", "Switzer", role = c("aut", "cre"), email = "jeff@usanpn.org"),
     person("Scott", "Chamberlain", role = "aut"),
-    person("Lee", "Marsh", role= "aut", email = "lee@usanpn.org"),
-    person("Kevin", "Wong", role = "aut", email = "kevin@usanpn.org"),
-    person("David", "LeBauer", role = "ctb", email = "dlebauer@arizona.edu"),
-    person("Eric R", "Scott", role = "ctb", email = "scottericr@gmail.com")
+    person("Lee", "Marsh", role= "aut"),
+    person("Kevin", "Wong", role = "aut"),
+    person("David", "LeBauer", role = "ctb"),
+    person("Eric R", "Scott", role = "ctb")
     )
 Depends: R (>= 3.5.0)
 Imports:
