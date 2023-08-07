@@ -6,11 +6,11 @@
 [![Project Status: Active – The project has reached a stable, usable
 state and is being actively
 developed.](http://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/)
-[![cran
-checks](https://badges.cranchecks.info/worst/rnpn.svg)](https://cranchecks.info/pkgs/rnpn)
-[![codecov.io](https://codecov.io/github/usa-npn/rnpn/coverage.svg?branch=master)](https://codecov.io/github/usa-npn/rnpn?branch=master)
-[![R-CMD-check](https://github.com/usa-npn/rnpn/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/usa-npn/rnpn/actions/workflows/R-CMD-check.yaml)
-
+[![CRAN
+status](https://www.r-pkg.org/badges/version/rnpn)](https://CRAN.R-project.org/package=rnpn)
+[![codecov.io](https://codecov.io/github/ropensci/rnpn/coverage.svg?branch=master)](https://codecov.io/github/ropensci/rnpn?branch=master)
+[![R build
+status](https://github.com/usa-npn/rnpn//workflows/R-CMD-check/badge.svg)](https://github.com/usa-npn/rnpn/actions)
 <!-- badges: end -->
 
 `rnpn` is an R client for interacting with the USA National Phenology
@@ -112,12 +112,11 @@ geospatial data as a raster.
 npn_download_geospatial(coverage_id = 'si-x:lilac_leaf_ncep_historic',date='2016-12-31',format='geotiff',output_path='./six-test-raster.tiff')
 ```
 
-If you’re looking for a grid value at a specific latitude/longitude,
-that is also possible.
+## Example of combined observational and geospatial data
 
-``` r
-point_value <- npn_get_point_data('si-x:lilac_leaf_ncep_historic',date='2016-12-31',lat=38.5,long=-110.7)
-```
+For more details see Vignette VII
+
+<img src="vignettes/figures/7-plot.png" width="70%" />
 
 ## What’s Next
 

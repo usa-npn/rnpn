@@ -21,9 +21,10 @@ npn_get_layer_details <- function(){
   tryCatch({
   doc <- GET("http://geoserver.usanpn.org/geoserver/ows?service=wms&version=1.3.0&request=GetCapabilities", list())
   doc <- httr::content(doc, as = "text", encoding = "UTF-8")
-  doc.data <- XML::xmlParse(file = doc)
+  doc.data <- XML::read_xml(file = doc)
 
-  capability.list <- XML::xmlToList(doc.data)[["Capability"]]
+  capability.list <- XML::as_list(x = doc.data) #note to self - lost the [["Capability"]] parameter, was it a title?
+
   layer.list <- capability.list$Layer
   layers <- layer.list[names(layer.list) == "Layer"]
 
@@ -252,9 +253,10 @@ npn_get_point_data <- function(
   })
   #Download the data as XML and store it as an XML doc
   xml_data <- httr::content(data, as = "text")
-  doc <- XML::xmlInternalTreeParse(xml_data)
+  doc <- XML::read_xml(xml_data) #note to self replaced InternalTreeParse - does read_xml assume a tree?
 
   df <- XML::xmlToDataFrame(XML::xpathApply(doc, "//gml:RectifiedGridCoverage/gml:rangeSet/gml:DataBlock/tupleList"))
+#note to self cannot find a solution to the ToDataFrame - the xpathApply solution is at line 63 https://github.com/DOI-USGS/geoknife/pull/362/files#diff-580bc730038e74accf0289eb2f9bfae59d84a9d79a9b096546f57bafaf85f9a7L63
 
   v <- as.numeric(as.list(strsplit(gsub("\n","",df[1,"text"]),' ')[[1]])[1])
 
