@@ -116,7 +116,7 @@ knitr::include_graphics("vignettes/figures/7-plot.png")
 
 Please read and review the vignettes for this package to get further information about the full scope of functionality available.
 
-## Acknowledgements
+## Acknowledgments
 
 This code was developed, in part, as part of the integrated [Pheno-Synthesis Software Suite (PS3)](https://git.earthdata.nasa.gov/projects/APIS/repos/pheno-synthesis-software-suite/browse).
 The authors acknowledge funding for this work through NASA's AIST program (80NSSC17K0582, 80NSSC17K0435, 80NSSC17K0538, and 80GSFC18T0003).

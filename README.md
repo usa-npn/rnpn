@@ -123,7 +123,7 @@ For more details see Vignette VII
 Please read and review the vignettes for this package to get further
 information about the full scope of functionality available.
 
-## Acknowledgements
+## Acknowledgments
 
 This code was developed, in part, as part of the integrated
 [Pheno-Synthesis Software Suite
