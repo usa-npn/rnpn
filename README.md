@@ -8,7 +8,6 @@ state and is being actively
 developed.](http://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/rnpn)](https://CRAN.R-project.org/package=rnpn)
-[![codecov.io](https://codecov.io/github/ropensci/rnpn/coverage.svg?branch=master)](https://codecov.io/github/ropensci/rnpn?branch=master)
 [![R build
 status](https://github.com/usa-npn/rnpn//workflows/R-CMD-check/badge.svg)](https://github.com/usa-npn/rnpn/actions)
 <!-- badges: end -->
@@ -49,13 +48,14 @@ devtools::install_github("usa-npn/rnpn")
 library('rnpn')
 ```
 
-This package has dependencies on curl. Some Linux based
+This package has dependencies on both curl and gdal. Some Linux based
 systems may require additional system dependencies for those required
 packages, and accordingly this package, to install correctly. For
 example, on Ubuntu:
 
 ``` r
 sudo apt install libcurl4-openssl-dev
+sudo apt install libproj-dev libgdal-dev
 ```
 
 ## The Basics
@@ -137,7 +137,7 @@ Service (F16AC01075 and F19AC00168).
 ## Meta
 
 - Please [report any issues or
-  bugs](https://github.com/ropensci/rnpn/issues).
+  bugs](https://github.com/usa-npn/rnpn/issues).
 - License: MIT
 - Get citation information for `rnpn` in R doing
   `citation(package = 'rnpn')`
