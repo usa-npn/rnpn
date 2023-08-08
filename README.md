@@ -8,7 +8,6 @@ state and is being actively
 developed.](http://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/rnpn)](https://CRAN.R-project.org/package=rnpn)
-[![codecov.io](https://codecov.io/github/ropensci/rnpn/coverage.svg?branch=master)](https://codecov.io/github/ropensci/rnpn?branch=master)
 [![R build
 status](https://github.com/usa-npn/rnpn//workflows/R-CMD-check/badge.svg)](https://github.com/usa-npn/rnpn/actions)
 <!-- badges: end -->
@@ -138,7 +137,7 @@ Service (F16AC01075 and F19AC00168).
 ## Meta
 
 - Please [report any issues or
-  bugs](https://github.com/ropensci/rnpn/issues).
+  bugs](https://github.com/usa-npn/rnpn/issues).
 - License: MIT
 - Get citation information for `rnpn` in R doing
   `citation(package = 'rnpn')`

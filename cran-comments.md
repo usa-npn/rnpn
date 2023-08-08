@@ -3,20 +3,17 @@ http://cran.r-project.org/web/packages/policies.html
 
 ## Resubmission
 
-This is a resubmission where I have added a vignette on data cleaning.
+This is a resubmission to clean up files, remove rgdal dependencies and change maintainer.
 
 ## Test environments
 
-rhub::check_for_cran passed.
+devtools::check and devtools::check_win_release passed.
 
 ## R CMD check results
 
-There were no ERRORs or WARNINGs.
+There were no NOTEs or WARNINGs.
 
-There is one note: "Namespace in Imports field not imported from: ‘rgdal’"
-While rgdal isn't used directly, the raster package which is directly used
-has dependencies on rgdal that will causes tests to fail if the package is
-not installed on the system.
+There is an ERORR pertaining to a test, however the test is skipped on CRAN and should not present an issue. As this package is an API wrapper, many tests do not pass.
 
 ## Downstream dependencies
 

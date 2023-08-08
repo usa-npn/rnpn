@@ -1,3 +1,13 @@
+rnpn 1.2.6 (2023-08-07)
+=======================
+
+### NEW FEATURES
+
+* Remove rgdal dependencies
+* Update maintainer to Jeff Switzer
+
+
+
 rnpn 1.2.5 (2022-04-20)
 =======================
 
