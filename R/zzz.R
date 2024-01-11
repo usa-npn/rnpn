@@ -114,9 +114,9 @@ base <- function(){
   }
 
   if(pkg.env$remote_env=="ops"){
-      return('https://www.usanpn.org/npn_portal/')
+      return('https://services.usanpn.org/npn_portal/')
   }else{
-      return('https://www-dev.usanpn.org/npn_portal/')
+      return('https://services-staging.usanpn.org/npn_portal/')
   }
 }
 
