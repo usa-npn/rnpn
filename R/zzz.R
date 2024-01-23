@@ -129,9 +129,9 @@ base_data_domain <- function(){
   }
 
   if(pkg.env$remote_env=="ops"){
-    return('https://data.usanpn.org/')
+    return('https://services.usanpn.org/')
   }else{
-    return('https://data-dev.usanpn.org/')
+    return('https://services-staging.usanpn.org/')
   }
 }
 

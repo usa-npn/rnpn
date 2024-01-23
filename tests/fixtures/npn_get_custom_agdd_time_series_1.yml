@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://data-dev.usanpn.org/geoservices/v1/agdd/double-sine/pointTimeSeries?climateProvider=NCEP&temperatureUnit=fahrenheit&startDate=2019-01-01&endDate=2019-01-15&latitude=39.7&longitude=-107.5&lowerThreshold=25&upperThreshold=90
+    uri: https://services.usanpn.org/geo-services/v1/agdd/double-sine/pointTimeSeries?climateProvider=NCEP&temperatureUnit=fahrenheit&startDate=2019-01-01&endDate=2019-01-15&latitude=39.7&longitude=-107.5&lowerThreshold=25&upperThreshold=90
     body:
       encoding: ''
       string: ''
