@@ -38,4 +38,5 @@ Suggests:
 RoxygenNote: 7.2.3
 Encoding: UTF-8
 VignetteBuilder: knitr
-URL: https://github.com/usa-npn/rnpn/ (devel)
+URL: https://github.com/usa-npn/rnpn/ (devel), https://github.com/usa-npn/rnpn
+BugReports: https://github.com/usa-npn/rnpn/issues
