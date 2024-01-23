@@ -293,10 +293,10 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "16963.726KB",
+  "fileSize": "16963.586KB",
   "releaseNotes": "https://github.com/usa-npn/rnpn/blob/master/NEWS.md",
   "readme": "https://github.com/usa-npn/rnpn/blob/master/README.md",
-  "contIntegration": ["https://codecov.io/github/usa-npn/rnpn?branch=master", "https://github.com/usa-npn/rnpn/actions"],
+  "contIntegration": "https://github.com/usa-npn/rnpn/actions",
   "developmentStatus": "https://www.repostatus.org/",
   "keywords": ["web-api", "species", "data", "rstats", "r", "national-phenology-network", "phenology", "r-package"],
   "relatedLink": "https://CRAN.R-project.org/package=rnpn"

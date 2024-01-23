@@ -458,9 +458,9 @@ npn_get_custom_agdd_time_series <- function(
   method <- tolower(method)
 
   if(method == "simple"){
-    base_url <- paste0(base_data_domain(), "geoservices/v1/agdd/simple/pointTimeSeries?")
+    base_url <- paste0(base_data_domain(), "geo-services/v1/agdd/simple/pointTimeSeries?")
   }else{
-    base_url <- paste0(base_data_domain(), "geoservices/v1/agdd/double-sine/pointTimeSeries?")
+    base_url <- paste0(base_data_domain(), "geo-services/v1/agdd/double-sine/pointTimeSeries?")
   }
 
   url <- paste0(base_url, "climateProvider=", climate_data_source)
@@ -541,9 +541,9 @@ npn_get_custom_agdd_raster <- function(
   ras <- NULL
 
   if(method == "simple"){
-    base_url <- paste0(base_data_domain(),"geoservices/v1/agdd/simple/map?")
+    base_url <- paste0(base_data_domain(),"geo-services/v1/agdd/simple/map?")
   }else{
-    base_url <- paste0(base_data_domain(),"geoservices/v1/agdd/double-sine/map?")
+    base_url <- paste0(base_data_domain(),"geo-services/v1/agdd/double-sine/map?")
   }
 
 

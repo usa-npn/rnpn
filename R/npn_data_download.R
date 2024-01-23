@@ -776,11 +776,10 @@ npn_get_data <- function(
 
 #' Generate Download URL
 #'
-#' Utility function to create the service point URL. Base URL comes from zzz.R, endpoint is specified in the code, and query_vars should be a list of parameters.
+#' Utility function to create the service point URL. Base URL comes from zzz.R, endpoint is specified in the code.
 #' This function will manually put those query parameters into the proper GET syntax.
 #'
 #' @param endpoint The service point, e.g. "observations/getObservations.json?"
-#' @param query_vars List of query parameters.
 #'
 #' @return The URL, as a string.
 #' @keywords internal
