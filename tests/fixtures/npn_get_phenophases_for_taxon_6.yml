@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www-dev.usanpn.org/npn_portal/phenophases/getPhenophasesForTaxon.json?order_id%5B1%5D=74&order_id%5B2%5D=75&return_all=TRUE
+    uri: https://services-staging.usanpn.org/npn_portal/phenophases/getPhenophasesForTaxon.json?order_id%5B1%5D=74&order_id%5B2%5D=75&return_all=TRUE
     body:
       encoding: ''
       string: ''
@@ -14,19 +14,19 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Thu, 12 Nov 2020 23:03:27 GMT
-      server: Apache/2.4.7 (Ubuntu) SVN/1.8.8 PHP/5.5.9-1ubuntu4.29 OpenSSL/1.0.1f
-      x-powered-by: PHP/5.5.9-1ubuntu4.29
+      date: Tue, 23 Jan 2024 19:53:29 GMT
+      content-type: application/json; charset=utf-8
+      content-length: '2'
+      server: Apache/2.4.58 () PHP/5.5.38
+      x-powered-by: PHP/5.5.38
       pragma: no-cache
       cache-control: no-store, no-cache, max-age=0, must-revalidate
       access-control-allow-origin: '*'
       access-control-allow-headers: origin, x-requested-with, content-type
       access-control-allow-methods: PUT, GET, POST, DELETE, OPTIONS
-      content-length: '2'
-      content-type: application/json; charset=utf-8
     body:
-      encoding: UTF-8
+      encoding: ''
       file: no
       string: '[]'
-  recorded_at: 2020-11-12 23:03:14 GMT
-  recorded_with: vcr/0.5.4, webmockr/0.7.0
+  recorded_at: 2024-01-23 19:53:30 GMT
+  recorded_with: vcr/1.2.2, webmockr/0.9.0

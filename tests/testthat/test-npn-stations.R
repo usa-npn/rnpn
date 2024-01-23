@@ -64,7 +64,8 @@ test_that("npn_stations_by_location functions",{
 })
 
 test_that("npn_stations_with_spp functions",{
-  npn_set_env(get_test_env())
+  # npn_set_env(get_test_env())
+  npn_set_env()
   if(!check_service()){
     skip("Service is down")
   }

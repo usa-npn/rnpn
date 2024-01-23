@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www-dev.usanpn.org/npn_portal/phenophases/getPhenophaseDetails.json?ids=56
+    uri: https://services-staging.usanpn.org/npn_portal/phenophases/getPhenophaseDetails.json?ids=56
     body:
       encoding: ''
       string: ''
@@ -14,18 +14,18 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Thu, 12 Nov 2020 23:03:22 GMT
-      server: Apache/2.4.7 (Ubuntu) SVN/1.8.8 PHP/5.5.9-1ubuntu4.29 OpenSSL/1.0.1f
-      x-powered-by: PHP/5.5.9-1ubuntu4.29
+      date: Tue, 23 Jan 2024 19:53:25 GMT
+      content-type: application/json
+      content-length: '164'
+      server: Apache/2.4.58 () PHP/5.5.38
+      x-powered-by: PHP/5.5.38
       access-control-allow-origin: '*'
       access-control-allow-headers: origin, x-requested-with, content-type
       access-control-allow-methods: PUT, GET, POST, DELETE, OPTIONS
-      content-length: '176'
-      content-type: application/json
     body:
-      encoding: UTF-8
+      encoding: ''
       file: no
       string: '[{"phenophase_id":56,"phenophase_description":"First leaf (3 locations)","definition_ids":"''56''","phenophase_names":"First
-        leaf","phenophase_revision_comments":"Test Comment"}]'
-  recorded_at: 2020-11-12 23:03:10 GMT
-  recorded_with: vcr/0.5.4, webmockr/0.7.0
+        leaf","phenophase_revision_comments":""}]'
+  recorded_at: 2024-01-23 19:53:25 GMT
+  recorded_with: vcr/1.2.2, webmockr/0.9.0
