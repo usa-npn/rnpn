@@ -1,0 +1,65 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://geoserver.usanpn.org/geoserver/wcs?service=WCS&version=2.0.1&request=GetCoverage&coverageId=si-x%3Aaverage_leaf_prism&format=application%2Fgml%2Bxml&subset=http%3A%2F%2Fwww.opengis.net%2Fdef%2Faxis%2FOGC%2F0%2FLong%28-110.5%29&subset=http%3A%2F%2Fwww.opengis.net%2Fdef%2Faxis%2FOGC%2F0%2FLat%2838.8%29&subset=http%3A%2F%2Fwww.opengis.net%2Fdef%2Faxis%2FOGC%2F0%2Ftime%28%221990-01-01T00%3A00%3A00.000Z%22%29
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      date: Tue, 23 Jan 2024 20:17:10 GMT
+      server: Apache/2.4.29 (Ubuntu) mod_jk/1.2.43 OpenSSL/1.1.1
+      access-control-allow-origin: '*'
+      x-frame-options: SAMEORIGIN
+      content-disposition: inline; filename=si-x:average_leaf_prism.gml
+      content-encoding: gzip
+      transfer-encoding: chunked
+      content-type: application/gml+xml
+    body:
+      encoding: ''
+      file: no
+      string: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><gml:RectifiedGridCoverage
+        xmlns:wcscrs=\"http://www.opengis.net/wcs/service-extension/crs/1.0\" xmlns:int=\"http://www.opengis.net/WCS_service-extension_interpolation/1.0\"
+        xmlns:gml=\"http://www.opengis.net/gml/3.2\" xmlns:gmlcov=\"http://www.opengis.net/gmlcov/1.0\"
+        xmlns:swe=\"http://www.opengis.net/swe/2.0\" xmlns:xlink=\"http://www.w3.org/1999/xlink\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" gml:id=\"six_average_leaf_prism\">\n
+        \   <gml:boundedBy>\n        <gml:Envelope srsName=\"http://www.opengis.net/def/crs/EPSG/0/4269\"
+        axisLabels=\"Lat Long\" uomLabels=\"Deg Deg\" srsDimension=\"2\">\n            <gml:lowerCorner>-110.52083333333218
+        38.812500000001144</gml:lowerCorner>\n            <gml:upperCorner>-110.47916666666552
+        38.854166666667815</gml:upperCorner>\n        </gml:Envelope>\n    </gml:boundedBy>\n
+        \   <gml:domainSet>\n        <gml:RectifiedGrid gml:id=\"grid00__six_average_leaf_prism\"
+        dimension=\"2\">\n            <gml:limits>\n                <gml:GridEnvelope>\n
+        \                   <gml:low>0 0</gml:low>\n                    <gml:high>0
+        0</gml:high>\n                </gml:GridEnvelope>\n            </gml:limits>\n
+        \           <gml:axisLabels>i j</gml:axisLabels>\n            <gml:origin>\n
+        \               <gml:Point gml:id=\"p00_six_average_leaf_prism\" srsName=\"http://www.opengis.net/def/crs/EPSG/0/4269\">\n
+        \                   <gml:pos>-110.49999999999885 38.83333333333448</gml:pos>\n
+        \               </gml:Point>\n            </gml:origin>\n            <gml:offsetVector
+        srsName=\"http://www.opengis.net/def/crs/EPSG/0/4269\">0.04166666666667 0.0</gml:offsetVector>\n
+        \           <gml:offsetVector srsName=\"http://www.opengis.net/def/crs/EPSG/0/4269\">0.0
+        -0.04166666666667</gml:offsetVector>\n        </gml:RectifiedGrid>\n    </gml:domainSet>\n
+        \   <gml:rangeType>\n        <swe:DataRecord>\n            <swe:field name=\"LEAF_OUT_DAY\">\n
+        \               <swe:Quantity>\n                    <swe:description>LEAF_OUT_DAY</swe:description>\n
+        \                   <swe:uom code=\"day\"/>\n                    <swe:constraint>\n
+        \                       <swe:AllowedValues>\n                            <swe:interval>0.0
+        300.0</swe:interval>\n                        </swe:AllowedValues>\n                    </swe:constraint>\n
+        \                   <swe:nilValues>\n                        <swe:NilValues>\n
+        \                           <swe:nilValue reason=\"http://www.opengis.net/def/nil/OGC/0/unknown\">-9999.0</swe:nilValue>\n
+        \                       </swe:NilValues>\n                    </swe:nilValues>\n
+        \               </swe:Quantity>\n            </swe:field>\n        </swe:DataRecord>\n
+        \   </gml:rangeType>\n    <gml:coverageFunction>\n        <gml:GridFunction>\n
+        \           <gml:sequenceRule axisOrder=\"+1 +2\">Linear</gml:sequenceRule>\n
+        \           <gml:startPoint>0 0</gml:startPoint>\n        </gml:GridFunction>\n
+        \   </gml:coverageFunction>\n    <gml:rangeSet>\n        <gml:DataBlock>\n
+        \           <gml:rangeParameters/>\n            <tupleList>83 \n</tupleList>\n
+        \       </gml:DataBlock>\n    </gml:rangeSet>\n    <gmlcov:metadata>\n        <gmlcov:Extension/>\n
+        \   </gmlcov:metadata>\n</gml:RectifiedGridCoverage>\n"
+  recorded_at: 2024-01-23 20:17:10 GMT
+  recorded_with: vcr/1.2.2, webmockr/0.9.0

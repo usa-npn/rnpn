@@ -98,7 +98,8 @@ test_that("npn_download_geospatial format param working", {
 
 test_that("npn_get_point_data functions", {
   skip_on_cran()
-  npn_set_env(get_test_env())
+  # npn_set_env(get_test_env())
+  npn_set_env(env = "ops")
   if(!is_geo_service_up){
     skip("Geo Service is down")
   }
@@ -121,7 +122,8 @@ test_that("npn_get_point_data functions", {
 
 test_that("npn_custom_agdd functions",{
   skip_on_cran()
-  npn_set_env(get_test_env())
+  # npn_set_env(get_test_env())
+  npn_set_env()
 
   vcr::use_cassette("npn_get_custom_agdd_time_series_1", {
     res <- npn_get_custom_agdd_time_series(
