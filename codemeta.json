@@ -6,7 +6,7 @@
   "name": "rnpn: Interface to the National 'Phenology' Network 'API'",
   "codeRepository": "https://github.com/usa-npn/rnpn/",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "1.2.6",
+  "version": "1.2.7",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",

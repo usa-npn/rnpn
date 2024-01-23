@@ -1,5 +1,14 @@
 # rnpn (development version)
 
+rnpn 1.2.7 (2024-01-23)
+=======================
+
+### NEW FEATURES
+
+* Migrate back end to cloud instances
+
+
+
 rnpn 1.2.6 (2023-08-28)
 =======================
 
