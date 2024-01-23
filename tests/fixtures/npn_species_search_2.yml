@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www-dev.usanpn.org/npn_portal/species/getSpeciesFilter.json?start_date=2013-01-01&end_date=2013-05-15
+    uri: https://services-staging.usanpn.org/npn_portal/species/getSpeciesFilter.json?start_date=2013-01-01&end_date=2013-05-15
     body:
       encoding: ''
       string: ''
@@ -14,18 +14,17 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Thu, 12 Nov 2020 21:19:37 GMT
-      server: Apache/2.4.7 (Ubuntu) SVN/1.8.8 PHP/5.5.9-1ubuntu4.29 OpenSSL/1.0.1f
-      x-powered-by: PHP/5.5.9-1ubuntu4.29
+      date: Tue, 23 Jan 2024 19:53:04 GMT
+      content-type: application/json; charset=utf-8
+      server: Apache/2.4.58 () PHP/5.5.38
+      x-powered-by: PHP/5.5.38
       pragma: no-cache
       cache-control: no-store, no-cache, max-age=0, must-revalidate
       access-control-allow-origin: '*'
       access-control-allow-headers: origin, x-requested-with, content-type
       access-control-allow-methods: PUT, GET, POST, DELETE, OPTIONS
-      transfer-encoding: chunked
-      content-type: application/json; charset=utf-8
     body:
-      encoding: UTF-8
+      encoding: ''
       file: no
       string: '[{"common_name":"''ohi''a lehua","genus":"Metrosideros","genus_common_name":"Lehuas
         (Metrosideros)","genus_id":798,"species":"polymorpha","species_id":120,"family_id":301,"family_name":"Myrtaceae","family_common_name":"Myrtle
@@ -62,7 +61,7 @@ http_interactions:
         Family","class_id":15,"class_name":"Magnoliopsida","class_common_name":"Flowering
         Plants","order_id":79,"order_name":"Fagales","order_common_name":"Birch, Beech,
         Walnut and Bayberry Families","itis_taxonomic_sn":19462,"functional_type":"Deciduous
-        broadleaf","kingdom":"Plantae","number_observations":7374},{"common_name":"American
+        broadleaf","kingdom":"Plantae","number_observations":7404},{"common_name":"American
         black duck","genus":"Anas","genus_common_name":"Dabbling Ducks (Anas)","genus_id":407,"species":"rubripes","species_id":1082,"family_id":114,"family_name":"Anatidae","family_common_name":"Ducks,
         Geese and Waterfowl","class_id":5,"class_name":"Aves","class_common_name":"Birds","order_id":20,"order_name":"Anseriformes","order_common_name":"Ducks,
         Geese and Waterfowl","itis_taxonomic_sn":175068,"functional_type":"Bird","kingdom":"Animalia","number_observations":157},{"common_name":"American
@@ -113,7 +112,7 @@ http_interactions:
         Birds","itis_taxonomic_sn":178979,"functional_type":"Bird","kingdom":"Animalia","number_observations":180},{"common_name":"American
         robin","genus":"Turdus","genus_common_name":"Robins (Turdus)","genus_id":1073,"species":"migratorius","species_id":246,"family_id":153,"family_name":"Turdidae","family_common_name":"Thrushes
         and Allies","class_id":5,"class_name":"Aves","class_common_name":"Birds","order_id":31,"order_name":"Passeriformes","order_common_name":"Perching
-        Birds","itis_taxonomic_sn":179759,"functional_type":"Bird","kingdom":"Animalia","number_observations":6887},{"common_name":"American
+        Birds","itis_taxonomic_sn":179759,"functional_type":"Bird","kingdom":"Animalia","number_observations":6888},{"common_name":"American
         skunkcabbage","genus":"Lysichiton","genus_common_name":"Skunkcabbages (Lysichiton)","genus_id":774,"species":"americanus","species_id":922,"family_id":237,"family_name":"Araceae","family_common_name":"Arum
         Family","class_id":15,"class_name":"Magnoliopsida","class_common_name":"Flowering
         Plants","order_id":64,"order_name":"Alismatales","order_common_name":"Arum
@@ -133,7 +132,7 @@ http_interactions:
         Family","class_id":15,"class_name":"Magnoliopsida","class_common_name":"Flowering
         Plants","order_id":98,"order_name":"Saxifragales","order_common_name":"Currant,
         Witch-hazel and Saxifrage Families","itis_taxonomic_sn":19033,"functional_type":"Deciduous
-        broadleaf","kingdom":"Plantae","number_observations":1052},{"common_name":"American
+        broadleaf","kingdom":"Plantae","number_observations":1062},{"common_name":"American
         woodcock","genus":"Scolopax","genus_common_name":"Woodcocks (Scolopax)","genus_id":985,"species":"minor","species_id":1118,"family_id":122,"family_name":"Scolopacidae","family_common_name":"Sandpipers
         and Allies","class_id":5,"class_name":"Aves","class_common_name":"Birds","order_id":23,"order_name":"Charadriiformes","order_common_name":"Shorebirds,
         Gulls and Auks","itis_taxonomic_sn":176580,"functional_type":"Bird","kingdom":"Animalia","number_observations":207},{"common_name":"Amur
@@ -203,7 +202,8 @@ http_interactions:
         strawberry ","genus":"Fragaria","genus_common_name":"Strawberries (Fragaria)","genus_id":656,"species":"chiloensis","species_id":870,"family_id":325,"family_name":"Rosaceae","family_common_name":"Rose
         Family","class_id":15,"class_name":"Magnoliopsida","class_common_name":"Flowering
         Plants","order_id":96,"order_name":"Rosales","order_common_name":"Oleaster,
-        Buckthorn, Rose and Elm Families","itis_taxonomic_sn":24625,"functional_type":"Forb","kingdom":"Plantae","number_observations":7},{"common_name":"beaked
+        Buckthorn, Rose and Elm Families","itis_taxonomic_sn":24625,"functional_type":"Semi-evergreen
+        forb","kingdom":"Plantae","number_observations":7},{"common_name":"beaked
         hazelnut","genus":"Corylus","genus_common_name":"Hazelnuts (Corylus)","genus_id":563,"species":"cornuta","species_id":72,"family_id":245,"family_name":"Betulaceae","family_common_name":"Birch
         Family","class_id":15,"class_name":"Magnoliopsida","class_common_name":"Flowering
         Plants","order_id":79,"order_name":"Fagales","order_common_name":"Birch, Beech,
@@ -259,7 +259,7 @@ http_interactions:
         Family","class_id":15,"class_name":"Magnoliopsida","class_common_name":"Flowering
         Plants","order_id":79,"order_name":"Fagales","order_common_name":"Birch, Beech,
         Walnut and Bayberry Families","itis_taxonomic_sn":19227,"functional_type":"Deciduous
-        broadleaf","kingdom":"Plantae","number_observations":172},{"common_name":"black
+        broadleaf","kingdom":"Plantae","number_observations":205},{"common_name":"black
         ash","genus":"Fraxinus","genus_common_name":"Ashes (Fraxinus)","genus_id":657,"species":"nigra","species_id":873,"family_id":305,"family_name":"Oleaceae","family_common_name":"Olive
         Family","class_id":15,"class_name":"Magnoliopsida","class_common_name":"Flowering
         Plants","order_id":83,"order_name":"Lamiales","order_common_name":"Mint, Olive
@@ -269,7 +269,7 @@ http_interactions:
         Family","class_id":15,"class_name":"Magnoliopsida","class_common_name":"Flowering
         Plants","order_id":96,"order_name":"Rosales","order_common_name":"Oleaster,
         Buckthorn, Rose and Elm Families","itis_taxonomic_sn":24764,"functional_type":"Deciduous
-        broadleaf","kingdom":"Plantae","number_observations":4418},{"common_name":"black
+        broadleaf","kingdom":"Plantae","number_observations":4428},{"common_name":"black
         elderberry","genus":"Sambucus","genus_common_name":"Elderberries (Sambucus)","genus_id":973,"species":"nigra","species_id":90,"family_id":228,"family_name":"Adoxaceae","family_common_name":"Moschatel
         Family","class_id":15,"class_name":"Magnoliopsida","class_common_name":"Flowering
         Plants","order_id":76,"order_name":"Dipsacales","order_common_name":"Moschatel
@@ -361,7 +361,7 @@ http_interactions:
         (Clintonia)","genus_id":546,"species":"borealis","species_id":9,"family_id":289,"family_name":"Liliaceae","family_common_name":"Lily
         Family","class_id":15,"class_name":"Magnoliopsida","class_common_name":"Flowering
         Plants","order_id":85,"order_name":"Liliales","order_common_name":"Colchicum,
-        Lily and Bunchflower Families","itis_taxonomic_sn":42903,"functional_type":"Forb","kingdom":"Plantae","number_observations":84},{"common_name":"blueblossom","genus":"Ceanothus","genus_common_name":"Ceanothuses
+        Lily and Bunchflower Families","itis_taxonomic_sn":42903,"functional_type":"Forb","kingdom":"Plantae","number_observations":91},{"common_name":"blueblossom","genus":"Ceanothus","genus_common_name":"Ceanothuses
         (Ceanothus)","genus_id":506,"species":"thyrsiflorus","species_id":1178,"family_id":323,"family_name":"Rhamnaceae","family_common_name":"Buckthorn
         Family","class_id":15,"class_name":"Magnoliopsida","class_common_name":"Flowering
         Plants","order_id":96,"order_name":"Rosales","order_common_name":"Oleaster,
@@ -440,8 +440,9 @@ http_interactions:
         dogwood","genus":"Cornus","genus_common_name":"Dogwoods (Cornus)","genus_id":560,"species":"canadensis","species_id":11,"family_id":262,"family_name":"Cornaceae","family_common_name":"Dogwood
         Family","class_id":15,"class_name":"Magnoliopsida","class_common_name":"Flowering
         Plants","order_id":75,"order_name":"Cornales","order_common_name":"Dogwood,
-        Hydrangea and Tupelo Families","itis_taxonomic_sn":27816,"functional_type":"Forb","kingdom":"Plantae","number_observations":756},{"common_name":"bur
-        oak","genus":"Quercus","genus_common_name":"Oaks (Quercus)","genus_id":946,"species":"macrocarpa","species_id":101,"family_id":271,"family_name":"Fagaceae","family_common_name":"Beech
+        Hydrangea and Tupelo Families","itis_taxonomic_sn":27816,"functional_type":"Semi-evergreen
+        forb","kingdom":"Plantae","number_observations":763},{"common_name":"bur oak","genus":"Quercus","genus_common_name":"Oaks
+        (Quercus)","genus_id":946,"species":"macrocarpa","species_id":101,"family_id":271,"family_name":"Fagaceae","family_common_name":"Beech
         Family","class_id":15,"class_name":"Magnoliopsida","class_common_name":"Flowering
         Plants","order_id":79,"order_name":"Fagales","order_common_name":"Birch, Beech,
         Walnut and Bayberry Families","itis_taxonomic_sn":19287,"functional_type":"Deciduous
@@ -460,7 +461,7 @@ http_interactions:
         blackberry","genus":"Rubus","genus_common_name":"Blackberries (Rubus)","genus_id":967,"species":"ursinus","species_id":1004,"family_id":325,"family_name":"Rosaceae","family_common_name":"Rose
         Family","class_id":15,"class_name":"Magnoliopsida","class_common_name":"Flowering
         Plants","order_id":96,"order_name":"Rosales","order_common_name":"Oleaster,
-        Buckthorn, Rose and Elm Families","itis_taxonomic_sn":25073,"functional_type":"Deciduous
+        Buckthorn, Rose and Elm Families","itis_taxonomic_sn":25073,"functional_type":"Semi-evergreen
         broadleaf","kingdom":"Plantae","number_observations":740},{"common_name":"California
         brittlebush","genus":"Encelia","genus_common_name":"Brittlebushes (Encelia)","genus_id":613,"species":"californica","species_id":858,"family_id":242,"family_name":"Asteraceae","family_common_name":"Aster
         Family","class_id":15,"class_name":"Magnoliopsida","class_common_name":"Flowering
@@ -493,13 +494,13 @@ http_interactions:
         Plants","order_id":96,"order_name":"Rosales","order_common_name":"Oleaster,
         Buckthorn, Rose and Elm Families","itis_taxonomic_sn":24818,"functional_type":"Deciduous
         broadleaf","kingdom":"Plantae","number_observations":980},{"common_name":"calliope
-        hummingbird","genus":"Stellula","genus_common_name":"Calliope Hummingbirds
-        (Stellula)","genus_id":1019,"species":"calliope","species_id":1120,"family_id":116,"family_name":"Trochilidae","family_common_name":"Hummingbirds","class_id":5,"class_name":"Aves","class_common_name":"Birds","order_id":21,"order_name":"Apodiformes","order_common_name":"Hummingbirds
-        and Swifts","itis_taxonomic_sn":178048,"functional_type":"Bird","kingdom":"Animalia","number_observations":47},{"common_name":"Canada
+        hummingbird","genus":"Selasphorus","genus_common_name":"Rufous Hummingbirds
+        (Selasphorus)","genus_id":989,"species":"calliope","species_id":1120,"family_id":116,"family_name":"Trochilidae","family_common_name":"Hummingbirds","class_id":5,"class_name":"Aves","class_common_name":"Birds","order_id":21,"order_name":"Apodiformes","order_common_name":"Hummingbirds
+        and Swifts","itis_taxonomic_sn":1149434,"functional_type":"Bird","kingdom":"Animalia","number_observations":47},{"common_name":"Canada
         mayflower","genus":"Maianthemum","genus_common_name":"Mayflowers (Maianthemum)","genus_id":778,"species":"canadense","species_id":173,"family_id":241,"family_name":"Asparagaceae","family_common_name":"Asparagas
         Family","class_id":15,"class_name":"Magnoliopsida","class_common_name":"Flowering
         Plants","order_id":68,"order_name":"Asparagales","order_common_name":"Asparagas,
-        Iris, Orchid and Aloe Families","itis_taxonomic_sn":503653,"functional_type":"Forb","kingdom":"Plantae","number_observations":740},{"common_name":"Canada
+        Iris, Orchid and Aloe Families","itis_taxonomic_sn":503653,"functional_type":"Forb","kingdom":"Plantae","number_observations":747},{"common_name":"Canada
         thistle","genus":"Cirsium","genus_common_name":"Thistles (Cirsium)","genus_id":538,"species":"arvense","species_id":156,"family_id":242,"family_name":"Asteraceae","family_common_name":"Aster
         Family","class_id":15,"class_name":"Magnoliopsida","class_common_name":"Flowering
         Plants","order_id":69,"order_name":"Asterales","order_common_name":"Aster,
@@ -651,7 +652,7 @@ http_interactions:
         Family","class_id":15,"class_name":"Magnoliopsida","class_common_name":"Flowering
         Plants","order_id":83,"order_name":"Lamiales","order_common_name":"Mint, Olive
         and Plantain Families","itis_taxonomic_sn":32996,"functional_type":"Deciduous
-        broadleaf","kingdom":"Plantae","number_observations":15195},{"common_name":"common
+        broadleaf","kingdom":"Plantae","number_observations":15190},{"common_name":"common
         loon","genus":"Gavia","genus_common_name":"Loons (Gavia)","genus_id":667,"species":"immer","species_id":243,"family_id":129,"family_name":"Gaviidae","family_common_name":"Loons","class_id":5,"class_name":"Aves","class_common_name":"Birds","order_id":29,"order_name":"Gaviiformes","order_common_name":"Loons","itis_taxonomic_sn":174469,"functional_type":"Bird","kingdom":"Animalia","number_observations":818},{"common_name":"common
         milkweed","genus":"Asclepias","genus_common_name":"Milkweeds (Asclepias)","genus_id":440,"species":"syriaca","species_id":199,"family_id":235,"family_name":"Apocynaceae","family_common_name":"Dogbane
         Family","class_id":15,"class_name":"Magnoliopsida","class_common_name":"Flowering
@@ -669,6 +670,11 @@ http_interactions:
         Family","class_id":15,"class_name":"Magnoliopsida","class_common_name":"Flowering
         Plants","order_id":93,"order_name":"Poales","order_common_name":"Grass, Sedge,
         Rush and Cattail Families","itis_taxonomic_sn":41072,"functional_type":"Graminoid","kingdom":"Plantae","number_observations":16},{"common_name":"common
+        serviceberry","genus":"Amelanchier","genus_common_name":"Serviceberries (Amelanchier)","genus_id":402,"species":"arborea","species_id":1431,"family_id":325,"family_name":"Rosaceae","family_common_name":"Rose
+        Family","class_id":15,"class_name":"Magnoliopsida","class_common_name":"Flowering
+        Plants","order_id":96,"order_name":"Rosales","order_common_name":"Oleaster,
+        Buckthorn, Rose and Elm Families","itis_taxonomic_sn":25110,"functional_type":"Deciduous
+        broadleaf","kingdom":"Plantae","number_observations":120},{"common_name":"common
         snowberry","genus":"Symphoricarpos","genus_common_name":"Snowberries (Symphoricarpos)","genus_id":1031,"species":"albus","species_id":92,"family_id":254,"family_name":"Caprifoliaceae","family_common_name":"Honeysuckle
         Family","class_id":15,"class_name":"Magnoliopsida","class_common_name":"Flowering
         Plants","order_id":76,"order_name":"Dipsacales","order_common_name":"Moschatel
@@ -749,7 +755,7 @@ http_interactions:
         Family","class_id":15,"class_name":"Magnoliopsida","class_common_name":"Flowering
         Plants","order_id":71,"order_name":"Brassicales","order_common_name":"Mustard
         and Meadow-foam Families","itis_taxonomic_sn":22787,"functional_type":"Forb","kingdom":"Plantae","number_observations":443},{"common_name":"dark-eyed
-        junco","genus":"Junco","genus_common_name":"Juncos (Junco)","genus_id":727,"species":"hyemalis","species_id":362,"family_id":139,"family_name":"Emberizidae","family_common_name":"New
+        junco","genus":"Junco","genus_common_name":"Juncos (Junco)","genus_id":727,"species":"hyemalis","species_id":362,"family_id":1280,"family_name":"Passerellidae","family_common_name":"New
         World Sparrows","class_id":5,"class_name":"Aves","class_common_name":"Birds","order_id":31,"order_name":"Passeriformes","order_common_name":"Perching
         Birds","itis_taxonomic_sn":179410,"functional_type":"Bird","kingdom":"Animalia","number_observations":2848},{"common_name":"darkthroat
         shooting star","genus":"Primula","genus_common_name":"Primroses (Primula)","genus_id":926,"species":"pauciflora","species_id":159,"family_id":321,"family_name":"Primulaceae","family_common_name":"Primrose
@@ -798,7 +804,7 @@ http_interactions:
         (Pseudotsuga)","genus_id":938,"species":"menziesii","species_id":55,"family_id":349,"family_name":"Pinaceae","family_common_name":"Pine
         Family","class_id":16,"class_name":"Pinopsida","class_common_name":"Conifers","order_id":102,"order_name":"Pinales","order_common_name":"Conifers","itis_taxonomic_sn":183424,"functional_type":"Evergreen
         conifer","kingdom":"Plantae","number_observations":922},{"common_name":"downy
-        woodpecker","genus":"Picoides","genus_common_name":"Pied Woodpeckers (Picoides)","genus_id":894,"species":"pubescens","species_id":1113,"family_id":158,"family_name":"Picidae","family_common_name":"Woodpeckers","class_id":5,"class_name":"Aves","class_common_name":"Birds","order_id":33,"order_name":"Piciformes","order_common_name":"Woodpeckers","itis_taxonomic_sn":178259,"functional_type":"Bird","kingdom":"Animalia","number_observations":1727},{"common_name":"dutchman''s
+        woodpecker","genus":"Dryobates","genus_common_name":"Pied Woodpeckers (Dryobates)","genus_id":1159,"species":"pubescens","species_id":1113,"family_id":158,"family_name":"Picidae","family_common_name":"Woodpeckers","class_id":5,"class_name":"Aves","class_common_name":"Birds","order_id":33,"order_name":"Piciformes","order_common_name":"Woodpeckers","itis_taxonomic_sn":1145276,"functional_type":"Bird","kingdom":"Animalia","number_observations":1727},{"common_name":"dutchman''s
         breeches","genus":"Dicentra","genus_common_name":"Bleeding Hearts (Dicentra)","genus_id":588,"species":"cucullaria","species_id":850,"family_id":310,"family_name":"Papaveraceae","family_common_name":"Poppy
         Family","class_id":15,"class_name":"Magnoliopsida","class_common_name":"Flowering
         Plants","order_id":95,"order_name":"Ranunculales","order_common_name":"Barberry,
@@ -949,8 +955,8 @@ http_interactions:
         Family","class_id":15,"class_name":"Magnoliopsida","class_common_name":"Flowering
         Plants","order_id":69,"order_name":"Asterales","order_common_name":"Aster,
         Bellflower and Buckbean Families","itis_taxonomic_sn":37410,"functional_type":"Forb","kingdom":"Plantae","number_observations":7},{"common_name":"five-lined
-        skink","genus":"Eumeces","genus_common_name":"Holarctic Skinks (Eumeces)","genus_id":638,"species":"fasciatus","species_id":425,"family_id":210,"family_name":"Scincidae","family_common_name":"Skinks","class_id":10,"class_name":"Reptilia","class_common_name":"Reptiles","order_id":54,"order_name":"Squamata","order_common_name":"Snakes
-        and Lizards","itis_taxonomic_sn":173959,"functional_type":"Reptile","kingdom":"Animalia","number_observations":468},{"common_name":"Florida
+        skink","genus":"Plestiodon","genus_common_name":"Toothy Skinks (Plestiodon)","genus_id":1323,"species":"fasciatus","species_id":425,"family_id":210,"family_name":"Scincidae","family_common_name":"Skinks","class_id":10,"class_name":"Reptilia","class_common_name":"Reptiles","order_id":54,"order_name":"Squamata","order_common_name":"Snakes
+        and Lizards","itis_taxonomic_sn":1182143,"functional_type":"Reptile","kingdom":"Animalia","number_observations":468},{"common_name":"Florida
         hopbush","genus":"Dodonaea","genus_common_name":"Hopbushes (Dodonaea)","genus_id":597,"species":"viscosa","species_id":221,"family_id":329,"family_name":"Sapindaceae","family_common_name":"Soapberry
         Family","class_id":15,"class_name":"Magnoliopsida","class_common_name":"Flowering
         Plants","order_id":97,"order_name":"Sapindales","order_common_name":"Sumac,
@@ -960,12 +966,12 @@ http_interactions:
         Family","class_id":15,"class_name":"Magnoliopsida","class_common_name":"Flowering
         Plants","order_id":75,"order_name":"Cornales","order_common_name":"Dogwood,
         Hydrangea and Tupelo Families","itis_taxonomic_sn":27806,"functional_type":"Deciduous
-        broadleaf","kingdom":"Plantae","number_observations":4718},{"common_name":"forsythia","genus":"Forsythia","genus_common_name":"Forsythias
+        broadleaf","kingdom":"Plantae","number_observations":4570},{"common_name":"forsythia","genus":"Forsythia","genus_common_name":"Forsythias
         (Forsythia)","genus_id":654,"species":"spp.","species_id":73,"family_id":305,"family_name":"Oleaceae","family_common_name":"Olive
         Family","class_id":15,"class_name":"Magnoliopsida","class_common_name":"Flowering
         Plants","order_id":83,"order_name":"Lamiales","order_common_name":"Mint, Olive
         and Plantain Families","itis_taxonomic_sn":32961,"functional_type":"Deciduous
-        broadleaf","kingdom":"Plantae","number_observations":4136},{"common_name":"fourwing
+        broadleaf","kingdom":"Plantae","number_observations":4085},{"common_name":"fourwing
         saltbush","genus":"Atriplex","genus_common_name":"Saltbushes (Atriplex)","genus_id":444,"species":"canescens","species_id":435,"family_id":230,"family_name":"Amaranthaceae","family_common_name":"Amaranth
         Family","class_id":15,"class_name":"Magnoliopsida","class_common_name":"Flowering
         Plants","order_id":72,"order_name":"Caryophyllales","order_common_name":"Cactus,
@@ -980,7 +986,7 @@ http_interactions:
         Family","class_id":15,"class_name":"Magnoliopsida","class_common_name":"Flowering
         Plants","order_id":87,"order_name":"Malpighiales","order_common_name":"Spurge,
         Willow and Violet Families","itis_taxonomic_sn":22459,"functional_type":"Deciduous
-        broadleaf","kingdom":"Plantae","number_observations":944},{"common_name":"Gambel
+        broadleaf","kingdom":"Plantae","number_observations":988},{"common_name":"Gambel
         oak","genus":"Quercus","genus_common_name":"Oaks (Quercus)","genus_id":946,"species":"gambelii","species_id":988,"family_id":271,"family_name":"Fagaceae","family_common_name":"Beech
         Family","class_id":15,"class_name":"Magnoliopsida","class_common_name":"Flowering
         Plants","order_id":79,"order_name":"Fagales","order_common_name":"Birch, Beech,
@@ -1010,7 +1016,7 @@ http_interactions:
         Family","class_id":15,"class_name":"Magnoliopsida","class_common_name":"Flowering
         Plants","order_id":87,"order_name":"Malpighiales","order_common_name":"Spurge,
         Willow and Violet Families","itis_taxonomic_sn":22539,"functional_type":"Deciduous
-        broadleaf","kingdom":"Plantae","number_observations":22},{"common_name":"gopher
+        broadleaf","kingdom":"Plantae","number_observations":66},{"common_name":"gopher
         snake","genus":"Pituophis","genus_common_name":"Gopher Snakes (Pituophis)","genus_id":904,"species":"catenifer","species_id":283,"family_id":206,"family_name":"Colubridae","family_common_name":"Non-venomous
         Snakes","class_id":10,"class_name":"Reptilia","class_common_name":"Reptiles","order_id":54,"order_name":"Squamata","order_common_name":"Snakes
         and Lizards","itis_taxonomic_sn":209400,"functional_type":"Reptile","kingdom":"Animalia","number_observations":17},{"common_name":"gray
@@ -1097,7 +1103,7 @@ http_interactions:
         Family","class_id":15,"class_name":"Magnoliopsida","class_common_name":"Flowering
         Plants","order_id":76,"order_name":"Dipsacales","order_common_name":"Moschatel
         and Honeysuckle Families","itis_taxonomic_sn":35265,"functional_type":"Deciduous
-        broadleaf","kingdom":"Plantae","number_observations":380},{"common_name":"hollyleaved
+        broadleaf","kingdom":"Plantae","number_observations":388},{"common_name":"hollyleaved
         barberry","genus":"Berberis","genus_common_name":"Barberries (Berberis)","genus_id":455,"species":"aquifolium","species_id":924,"family_id":244,"family_name":"Berberidaceae","family_common_name":"Barberry
         Family","class_id":15,"class_name":"Magnoliopsida","class_common_name":"Flowering
         Plants","order_id":95,"order_name":"Ranunculales","order_common_name":"Barberry,
@@ -1389,7 +1395,7 @@ http_interactions:
         Family","class_id":15,"class_name":"Magnoliopsida","class_common_name":"Flowering
         Plants","order_id":79,"order_name":"Fagales","order_common_name":"Birch, Beech,
         Walnut and Bayberry Families","itis_taxonomic_sn":19408,"functional_type":"Deciduous
-        broadleaf","kingdom":"Plantae","number_observations":3755},{"common_name":"northern
+        broadleaf","kingdom":"Plantae","number_observations":3788},{"common_name":"northern
         spicebush","genus":"Lindera","genus_common_name":"Spicebushes (Lindera)","genus_id":760,"species":"benzoin","species_id":915,"family_id":287,"family_name":"Lauraceae","family_common_name":"Laurel
         Family","class_id":15,"class_name":"Magnoliopsida","class_common_name":"Flowering
         Plants","order_id":84,"order_name":"Laurales","order_common_name":"Laurel
@@ -1453,7 +1459,8 @@ http_interactions:
         daisy","genus":"Leucanthemum","genus_common_name":"Daisies (Leucanthemum)","genus_id":747,"species":"vulgare","species_id":908,"family_id":242,"family_name":"Asteraceae","family_common_name":"Aster
         Family","class_id":15,"class_name":"Magnoliopsida","class_common_name":"Flowering
         Plants","order_id":69,"order_name":"Asterales","order_common_name":"Aster,
-        Bellflower and Buckbean Families","itis_taxonomic_sn":37903,"functional_type":"Forb","kingdom":"Plantae","number_observations":19},{"common_name":"Pacific
+        Bellflower and Buckbean Families","itis_taxonomic_sn":37903,"functional_type":"Semi-evergreen
+        forb","kingdom":"Plantae","number_observations":19},{"common_name":"Pacific
         bleeding heart","genus":"Dicentra","genus_common_name":"Bleeding Hearts (Dicentra)","genus_id":588,"species":"formosa","species_id":310,"family_id":310,"family_name":"Papaveraceae","family_common_name":"Poppy
         Family","class_id":15,"class_name":"Magnoliopsida","class_common_name":"Flowering
         Plants","order_id":95,"order_name":"Ranunculales","order_common_name":"Barberry,
@@ -1512,7 +1519,7 @@ http_interactions:
         Family","class_id":15,"class_name":"Magnoliopsida","class_common_name":"Flowering
         Plants","order_id":86,"order_name":"Magnoliales","order_common_name":"Custard-apple
         and Magnolia Families","itis_taxonomic_sn":18117,"functional_type":"Deciduous
-        broadleaf","kingdom":"Plantae","number_observations":257},{"common_name":"peach","genus":"Prunus","genus_common_name":"Cherries
+        broadleaf","kingdom":"Plantae","number_observations":261},{"common_name":"peach","genus":"Prunus","genus_common_name":"Cherries
         (Prunus)","genus_id":933,"species":"persica","species_id":88,"family_id":325,"family_name":"Rosaceae","family_common_name":"Rose
         Family","class_id":15,"class_name":"Magnoliopsida","class_common_name":"Flowering
         Plants","order_id":96,"order_name":"Rosales","order_common_name":"Oleaster,
@@ -1624,7 +1631,7 @@ http_interactions:
         columbine","genus":"Aquilegia","genus_common_name":"Columbines (Aquilegia)","genus_id":425,"species":"canadensis","species_id":147,"family_id":322,"family_name":"Ranunculaceae","family_common_name":"Buttercup
         Family","class_id":15,"class_name":"Magnoliopsida","class_common_name":"Flowering
         Plants","order_id":95,"order_name":"Ranunculales","order_common_name":"Barberry,
-        Poppy and Buttercup Families","itis_taxonomic_sn":18730,"functional_type":"Forb","kingdom":"Plantae","number_observations":369},{"common_name":"red
+        Poppy and Buttercup Families","itis_taxonomic_sn":18730,"functional_type":"Forb","kingdom":"Plantae","number_observations":373},{"common_name":"red
         elderberry","genus":"Sambucus","genus_common_name":"Elderberries (Sambucus)","genus_id":973,"species":"racemosa","species_id":325,"family_id":228,"family_name":"Adoxaceae","family_common_name":"Moschatel
         Family","class_id":15,"class_name":"Magnoliopsida","class_common_name":"Flowering
         Plants","order_id":76,"order_name":"Dipsacales","order_common_name":"Moschatel
@@ -1642,14 +1649,14 @@ http_interactions:
         Family","class_id":15,"class_name":"Magnoliopsida","class_common_name":"Flowering
         Plants","order_id":97,"order_name":"Sapindales","order_common_name":"Sumac,
         Rue and Soapberry Families","itis_taxonomic_sn":28728,"functional_type":"Deciduous
-        broadleaf","kingdom":"Plantae","number_observations":37751},{"common_name":"red
+        broadleaf","kingdom":"Plantae","number_observations":21156},{"common_name":"red
         pine","genus":"Pinus","genus_common_name":"Pines (Pinus)","genus_id":897,"species":"resinosa","species_id":968,"family_id":349,"family_name":"Pinaceae","family_common_name":"Pine
         Family","class_id":16,"class_name":"Pinopsida","class_common_name":"Conifers","order_id":102,"order_name":"Pinales","order_common_name":"Conifers","itis_taxonomic_sn":183375,"functional_type":"Pine","kingdom":"Plantae","number_observations":8},{"common_name":"Red
         Rothomagensis lilac","genus":"Syringa","genus_common_name":"Lilacs (Syringa)","genus_id":1035,"species":"chinensis","species_id":35,"family_id":305,"family_name":"Oleaceae","family_common_name":"Olive
         Family","class_id":15,"class_name":"Magnoliopsida","class_common_name":"Flowering
         Plants","order_id":83,"order_name":"Lamiales","order_common_name":"Mint, Olive
         and Plantain Families","itis_taxonomic_sn":832915,"functional_type":"Deciduous
-        broadleaf","kingdom":"Plantae","number_observations":5390},{"common_name":"red
+        broadleaf","kingdom":"Plantae","number_observations":4915},{"common_name":"red
         spruce","genus":"Picea","genus_common_name":"Spruces (Picea)","genus_id":893,"species":"rubens","species_id":49,"family_id":349,"family_name":"Pinaceae","family_common_name":"Pine
         Family","class_id":16,"class_name":"Pinopsida","class_common_name":"Conifers","order_id":102,"order_name":"Pinales","order_common_name":"Conifers","itis_taxonomic_sn":18034,"functional_type":"Evergreen
         conifer","kingdom":"Plantae","number_observations":8},{"common_name":"red
@@ -1721,12 +1728,13 @@ http_interactions:
         Family","class_id":15,"class_name":"Magnoliopsida","class_common_name":"Flowering
         Plants","order_id":96,"order_name":"Rosales","order_common_name":"Oleaster,
         Buckthorn, Rose and Elm Families","itis_taxonomic_sn":24811,"functional_type":"Deciduous
-        broadleaf","kingdom":"Plantae","number_observations":570},{"common_name":"rush
-        milkweed","genus":"Asclepias","genus_common_name":"Milkweeds (Asclepias)","genus_id":440,"species":"subulata","species_id":801,"family_id":235,"family_name":"Apocynaceae","family_common_name":"Dogbane
+        broadleaf","kingdom":"Plantae","number_observations":570},{"common_name":"rush-desert-milkweed","genus":"Asclepias","genus_common_name":"Milkweeds
+        (Asclepias)","genus_id":440,"species":"subulata","species_id":801,"family_id":235,"family_name":"Apocynaceae","family_common_name":"Dogbane
         Family","class_id":15,"class_name":"Magnoliopsida","class_common_name":"Flowering
         Plants","order_id":81,"order_name":"Gentianales","order_common_name":"Dogbane,
-        Gentian and Madder Families","itis_taxonomic_sn":30307,"functional_type":"Forb","kingdom":"Plantae","number_observations":2},{"common_name":"rusty
-        blackbird","genus":"Euphagus","genus_common_name":"American Blackbirds (Euphagus)","genus_id":640,"species":"carolinus","species_id":1101,"family_id":141,"family_name":"Icteridae","family_common_name":"Troupials
+        Gentian and Madder Families","itis_taxonomic_sn":30307,"functional_type":"Semi-evergreen
+        forb","kingdom":"Plantae","number_observations":2},{"common_name":"rusty blackbird","genus":"Euphagus","genus_common_name":"American
+        Blackbirds (Euphagus)","genus_id":640,"species":"carolinus","species_id":1101,"family_id":141,"family_name":"Icteridae","family_common_name":"Troupials
         and Allies","class_id":5,"class_name":"Aves","class_common_name":"Birds","order_id":31,"order_name":"Passeriformes","order_common_name":"Perching
         Birds","itis_taxonomic_sn":179091,"functional_type":"Bird","kingdom":"Animalia","number_observations":137},{"common_name":"saguaro","genus":"Carnegiea","genus_common_name":"Saguaro
         (Carnegiea)","genus_id":497,"species":"gigantea","species_id":210,"family_id":251,"family_name":"Cactaceae","family_common_name":"Cactus
@@ -1907,6 +1915,11 @@ http_interactions:
         Plants","order_id":77,"order_name":"Ericales","order_common_name":"Heath,
         Phlox and Pitcher-plant Families","itis_taxonomic_sn":23690,"functional_type":"Deciduous
         broadleaf","kingdom":"Plantae","number_observations":857},{"common_name":"southern
+        arrowwood","genus":"Viburnum","genus_common_name":"Viburnums (Viburnum)","genus_id":1093,"species":"dentatum","species_id":1217,"family_id":228,"family_name":"Adoxaceae","family_common_name":"Moschatel
+        Family","class_id":15,"class_name":"Magnoliopsida","class_common_name":"Flowering
+        Plants","order_id":76,"order_name":"Dipsacales","order_common_name":"Moschatel
+        and Honeysuckle Families","itis_taxonomic_sn":35251,"functional_type":"Deciduous
+        broadleaf","kingdom":"Plantae","number_observations":3},{"common_name":"southern
         leopard frog","genus":"Lithobates","genus_common_name":"American Water Frogs
         (Lithobates)","genus_id":764,"species":"sphenocephalus","species_id":344,"family_id":107,"family_name":"Ranidae","family_common_name":"True
         Frogs","class_id":4,"class_name":"Amphibia","class_common_name":"Amphibians","order_id":17,"order_name":"Anura","order_common_name":"Frogs
@@ -1986,7 +1999,7 @@ http_interactions:
         Family","class_id":15,"class_name":"Magnoliopsida","class_common_name":"Flowering
         Plants","order_id":79,"order_name":"Fagales","order_common_name":"Birch, Beech,
         Walnut and Bayberry Families","itis_taxonomic_sn":19487,"functional_type":"Deciduous
-        broadleaf","kingdom":"Plantae","number_observations":2415},{"common_name":"sweetbay","genus":"Magnolia","genus_common_name":"Magnolias
+        broadleaf","kingdom":"Plantae","number_observations":2596},{"common_name":"sweetbay","genus":"Magnolia","genus_common_name":"Magnolias
         (Magnolia)","genus_id":777,"species":"virginiana","species_id":923,"family_id":293,"family_name":"Magnoliaceae","family_common_name":"Magnolia
         Family","class_id":15,"class_name":"Magnoliopsida","class_common_name":"Flowering
         Plants","order_id":86,"order_name":"Magnoliales","order_common_name":"Custard-apple
@@ -1996,7 +2009,7 @@ http_interactions:
         Family","class_id":15,"class_name":"Magnoliopsida","class_common_name":"Flowering
         Plants","order_id":98,"order_name":"Saxifragales","order_common_name":"Currant,
         Witch-hazel and Saxifrage Families","itis_taxonomic_sn":19027,"functional_type":"Deciduous
-        broadleaf","kingdom":"Plantae","number_observations":3817},{"common_name":"switchgrass","genus":"Panicum","genus_common_name":"Panicgrasses
+        broadleaf","kingdom":"Plantae","number_observations":3847},{"common_name":"switchgrass","genus":"Panicum","genus_common_name":"Panicgrasses
         (Panicum)","genus_id":854,"species":"virgatum","species_id":137,"family_id":317,"family_name":"Poaceae","family_common_name":"Grass
         Family","class_id":15,"class_name":"Magnoliopsida","class_common_name":"Flowering
         Plants","order_id":93,"order_name":"Poales","order_common_name":"Grass, Sedge,
@@ -2066,7 +2079,7 @@ http_interactions:
         Family","class_id":15,"class_name":"Magnoliopsida","class_common_name":"Flowering
         Plants","order_id":86,"order_name":"Magnoliales","order_common_name":"Custard-apple
         and Magnolia Families","itis_taxonomic_sn":18086,"functional_type":"Deciduous
-        broadleaf","kingdom":"Plantae","number_observations":6519},{"common_name":"tussock
+        broadleaf","kingdom":"Plantae","number_observations":6603},{"common_name":"tussock
         cottongrass","genus":"Eriophorum","genus_common_name":"Cottongrasses (Eriophorum)","genus_id":627,"species":"vaginatum","species_id":431,"family_id":264,"family_name":"Cyperaceae","family_common_name":"Sedge
         Family","class_id":15,"class_name":"Magnoliopsida","class_common_name":"Flowering
         Plants","order_id":93,"order_name":"Poales","order_common_name":"Grass, Sedge,
@@ -2098,7 +2111,7 @@ http_interactions:
         Family","class_id":15,"class_name":"Magnoliopsida","class_common_name":"Flowering
         Plants","order_id":96,"order_name":"Rosales","order_common_name":"Oleaster,
         Buckthorn, Rose and Elm Families","itis_taxonomic_sn":25344,"functional_type":"Deciduous
-        broadleaf","kingdom":"Plantae","number_observations":150},{"common_name":"velvet
+        broadleaf","kingdom":"Plantae","number_observations":120},{"common_name":"velvet
         mesquite","genus":"Prosopis","genus_common_name":"Mesquites (Prosopis)","genus_id":931,"species":"velutina","species_id":317,"family_id":270,"family_name":"Fabaceae","family_common_name":"Pea
         Family","class_id":15,"class_name":"Magnoliopsida","class_common_name":"Flowering
         Plants","order_id":78,"order_name":"Fabales","order_common_name":"Pea and
@@ -2114,7 +2127,7 @@ http_interactions:
         bluebells","genus":"Mertensia","genus_common_name":"Bluebells (Mertensia)","genus_id":796,"species":"virginica","species_id":176,"family_id":247,"family_name":"Boraginaceae","family_common_name":"Borage
         Family","class_id":15,"class_name":"Magnoliopsida","class_common_name":"Flowering
         Plants","order_id":70,"order_name":"Boraginales","order_common_name":"Borage
-        and Waterleaf Families","itis_taxonomic_sn":31673,"functional_type":"Forb","kingdom":"Plantae","number_observations":677},{"common_name":"Virginia
+        and Waterleaf Families","itis_taxonomic_sn":31673,"functional_type":"Forb","kingdom":"Plantae","number_observations":685},{"common_name":"Virginia
         creeper","genus":"Parthenocissus","genus_common_name":"Creepers (Parthenocissus)","genus_id":859,"species":"quinquefolia","species_id":952,"family_id":344,"family_name":"Vitaceae","family_common_name":"Grape
         Family","class_id":15,"class_name":"Magnoliopsida","class_common_name":"Flowering
         Plants","order_id":100,"order_name":"Vitales","order_common_name":"Grape Family","itis_taxonomic_sn":28602,"functional_type":"Deciduous
@@ -2131,7 +2144,8 @@ http_interactions:
         strawberry","genus":"Fragaria","genus_common_name":"Strawberries (Fragaria)","genus_id":656,"species":"virginiana","species_id":17,"family_id":325,"family_name":"Rosaceae","family_common_name":"Rose
         Family","class_id":15,"class_name":"Magnoliopsida","class_common_name":"Flowering
         Plants","order_id":96,"order_name":"Rosales","order_common_name":"Oleaster,
-        Buckthorn, Rose and Elm Families","itis_taxonomic_sn":24639,"functional_type":"Forb","kingdom":"Plantae","number_observations":1856},{"common_name":"wavyleaf
+        Buckthorn, Rose and Elm Families","itis_taxonomic_sn":24639,"functional_type":"Semi-evergreen
+        forb","kingdom":"Plantae","number_observations":1857},{"common_name":"wavyleaf
         silktassel","genus":"Garrya","genus_common_name":"Silktassels (Garrya)","genus_id":664,"species":"elliptica","species_id":878,"family_id":273,"family_name":"Garryaceae","family_common_name":"Silk-tassel
         Family","class_id":15,"class_name":"Magnoliopsida","class_common_name":"Flowering
         Plants","order_id":80,"order_name":"Garryales","order_common_name":"Silk-tassel
@@ -2161,6 +2175,9 @@ http_interactions:
         fence lizard","genus":"Sceloporus","genus_common_name":"Spiny Lizards (Sceloporus)","genus_id":979,"species":"occidentalis","species_id":427,"family_id":208,"family_name":"Iguanidae","family_common_name":"Spiny
         and Side-blotched Lizards","class_id":10,"class_name":"Reptilia","class_common_name":"Reptiles","order_id":54,"order_name":"Squamata","order_common_name":"Snakes
         and Lizards","itis_taxonomic_sn":173875,"functional_type":"Reptile","kingdom":"Animalia","number_observations":108},{"common_name":"western
+        larch","genus":"Larix","genus_common_name":"Larches (Larix)","genus_id":738,"species":"occidentalis","species_id":1183,"family_id":349,"family_name":"Pinaceae","family_common_name":"Pine
+        Family","class_id":16,"class_name":"Pinopsida","class_common_name":"Conifers","order_id":102,"order_name":"Pinales","order_common_name":"Conifers","itis_taxonomic_sn":183417,"functional_type":"Deciduous
+        conifer","kingdom":"Plantae","number_observations":1},{"common_name":"western
         pygmy-blue","genus":"Brephidium","genus_common_name":"Pygmy-blue Butterflies
         (Brephidium)","genus_id":466,"species":"exilis","species_id":1130,"family_id":179,"family_name":"Lycaenidae","family_common_name":"Blue,
         Copper and Hairstreak Butterflies","class_id":8,"class_name":"Insecta","class_common_name":"Insects","order_id":43,"order_name":"Lepidoptera","order_common_name":"Butterflies
@@ -2179,9 +2196,9 @@ http_interactions:
         Family","class_id":15,"class_name":"Magnoliopsida","class_common_name":"Flowering
         Plants","order_id":93,"order_name":"Poales","order_common_name":"Grass, Sedge,
         Rush and Cattail Families","itis_taxonomic_sn":784287,"functional_type":"Graminoid","kingdom":"Plantae","number_observations":16},{"common_name":"western
-        whiptail","genus":"Cnemidophorus","genus_common_name":"Whiptails (Cnemidophorus)","genus_id":548,"species":"tigris","species_id":423,"family_id":211,"family_name":"Teiidae","family_common_name":"Whiptail
+        whiptail","genus":"Aspidoscelis","genus_common_name":"Whiptails (Aspidoscelis)","genus_id":1322,"species":"tigris","species_id":423,"family_id":211,"family_name":"Teiidae","family_common_name":"Whiptail
         Lizards","class_id":10,"class_name":"Reptilia","class_common_name":"Reptiles","order_id":54,"order_name":"Squamata","order_common_name":"Snakes
-        and Lizards","itis_taxonomic_sn":208940,"functional_type":"Reptile","kingdom":"Animalia","number_observations":111},{"common_name":"western
+        and Lizards","itis_taxonomic_sn":1172378,"functional_type":"Reptile","kingdom":"Animalia","number_observations":111},{"common_name":"western
         white pine","genus":"Pinus","genus_common_name":"Pines (Pinus)","genus_id":897,"species":"monticola","species_id":966,"family_id":349,"family_name":"Pinaceae","family_common_name":"Pine
         Family","class_id":16,"class_name":"Pinopsida","class_common_name":"Conifers","order_id":102,"order_name":"Pinales","order_common_name":"Conifers","itis_taxonomic_sn":183356,"functional_type":"Pine","kingdom":"Plantae","number_observations":40},{"common_name":"white
         ash","genus":"Fraxinus","genus_common_name":"Ashes (Fraxinus)","genus_id":657,"species":"americana","species_id":74,"family_id":305,"family_name":"Oleaceae","family_common_name":"Olive
@@ -2199,7 +2216,7 @@ http_interactions:
         leadtree","genus":"Leucaena","genus_common_name":"Leadtrees (Leucaena)","genus_id":746,"species":"leucocephala","species_id":118,"family_id":270,"family_name":"Fabaceae","family_common_name":"Pea
         Family","class_id":15,"class_name":"Magnoliopsida","class_common_name":"Flowering
         Plants","order_id":78,"order_name":"Fabales","order_common_name":"Pea and
-        Milkwort Families","itis_taxonomic_sn":26766,"functional_type":"Evergreen
+        Milkwort Families","itis_taxonomic_sn":26766,"functional_type":"Drought deciduous
         broadleaf","kingdom":"Plantae","number_observations":55},{"common_name":"white
         meadowsweet","genus":"Spiraea","genus_common_name":"Meadowsweets (Spiraea)","genus_id":1014,"species":"alba","species_id":326,"family_id":325,"family_name":"Rosaceae","family_common_name":"Rose
         Family","class_id":15,"class_name":"Magnoliopsida","class_common_name":"Flowering
@@ -2226,7 +2243,7 @@ http_interactions:
         Elk and Moose","class_id":9,"class_name":"Mammalia","class_common_name":"Mammals","order_id":47,"order_name":"Artiodactyla","order_common_name":"Ungulates","itis_taxonomic_sn":180699,"functional_type":"Mammal","kingdom":"Animalia","number_observations":1140},{"common_name":"white-tailed
         prairie dog","genus":"Cynomys","genus_common_name":"Prairie Dogs (Cynomys)","genus_id":574,"species":"leucurus","species_id":262,"family_id":203,"family_name":"Sciuridae","family_common_name":"Squirrels,
         Chipmunks and Marmots","class_id":9,"class_name":"Mammalia","class_common_name":"Mammals","order_id":51,"order_name":"Rodentia","order_common_name":"Rodents","itis_taxonomic_sn":180185,"functional_type":"Mammal","kingdom":"Animalia","number_observations":4},{"common_name":"white-throated
-        sparrow","genus":"Zonotrichia","genus_common_name":"Crowned Sparrows (Zonotrichia)","genus_id":1110,"species":"albicollis","species_id":739,"family_id":139,"family_name":"Emberizidae","family_common_name":"New
+        sparrow","genus":"Zonotrichia","genus_common_name":"Crowned Sparrows (Zonotrichia)","genus_id":1110,"species":"albicollis","species_id":739,"family_id":1280,"family_name":"Passerellidae","family_common_name":"New
         World Sparrows","class_id":5,"class_name":"Aves","class_common_name":"Birds","order_id":31,"order_name":"Passeriformes","order_common_name":"Perching
         Birds","itis_taxonomic_sn":179462,"functional_type":"Bird","kingdom":"Animalia","number_observations":737},{"common_name":"white-winged
         dove","genus":"Zenaida","genus_common_name":"Zenaida Doves (Zenaida)","genus_id":1106,"species":"asiatica","species_id":1128,"family_id":123,"family_name":"Columbidae","family_common_name":"Pigeons
@@ -2235,8 +2252,8 @@ http_interactions:
         blue phlox","genus":"Phlox","genus_common_name":"Phloxes (Phlox)","genus_id":884,"species":"divaricata","species_id":961,"family_id":318,"family_name":"Polemoniaceae","family_common_name":"Phlox
         Family","class_id":15,"class_name":"Magnoliopsida","class_common_name":"Flowering
         Plants","order_id":77,"order_name":"Ericales","order_common_name":"Heath,
-        Phlox and Pitcher-plant Families","itis_taxonomic_sn":30934,"functional_type":"Forb","kingdom":"Plantae","number_observations":44},{"common_name":"willet","genus":"Tringa","genus_common_name":"Redshanks
-        (Tringa)","genus_id":1068,"species":"semipalmatus","species_id":1092,"family_id":122,"family_name":"Scolopacidae","family_common_name":"Sandpipers
+        Phlox and Pitcher-plant Families","itis_taxonomic_sn":30934,"functional_type":"Forb","kingdom":"Plantae","number_observations":37},{"common_name":"willet","genus":"Tringa","genus_common_name":"Redshanks
+        (Tringa)","genus_id":1068,"species":"semipalmata","species_id":1092,"family_id":122,"family_name":"Scolopacidae","family_common_name":"Sandpipers
         and Allies","class_id":5,"class_name":"Aves","class_common_name":"Birds","order_id":23,"order_name":"Charadriiformes","order_common_name":"Shorebirds,
         Gulls and Auks","itis_taxonomic_sn":824147,"functional_type":"Bird","kingdom":"Animalia","number_observations":10},{"common_name":"wine
         grape","genus":"Vitis","genus_common_name":"Grapes (Vitis)","genus_id":1097,"species":"vinifera","species_id":96,"family_id":344,"family_name":"Vitaceae","family_common_name":"Grape
@@ -2320,5 +2337,5 @@ http_interactions:
         Plants","order_id":96,"order_name":"Rosales","order_common_name":"Oleaster,
         Buckthorn, Rose and Elm Families","itis_taxonomic_sn":836663,"functional_type":"Deciduous
         broadleaf","kingdom":"Plantae","number_observations":20}]'
-  recorded_at: 2020-11-12 21:19:25 GMT
-  recorded_with: vcr/0.5.4, webmockr/0.7.0
+  recorded_at: 2024-01-23 19:53:05 GMT
+  recorded_with: vcr/1.2.2, webmockr/0.9.0
