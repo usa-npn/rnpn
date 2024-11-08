@@ -1,7 +1,7 @@
 ---
 title: "VI. USA-NPN Geospatial Data"
 author: "Lee Marsh"
-date: "2024-08-12"
+date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteEngine{knitr::knitr}
@@ -9,7 +9,11 @@ vignette: >
   %\usepackage[UTF-8]{inputenc}
 ---
 
-
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(rnpn)
+library(raster)
+```
 
 # USA-NPN Geospatial Data
 
@@ -26,8 +30,7 @@ Both suites are available as:
  
 All of these products can be downloaded using the npn_download_geospatial call. There is a number of other products and permutations of the above listed AGDD and Spring Index products, so you can get a complete list of available layers and additional details about them including resolution, extent and the abstract/layer description. 
 
-
-```r
+```{r eval=FALSE}
 layers <- npn_get_layer_details()
 ```
 
@@ -35,8 +38,7 @@ The following sections describe how to parameterize calls for both AGDD and Spri
 
 If you are interested in how many GDDs had accumulated when the red maple in your backyard leafed out, or what day the Spring Index requirements for leaf out were met for your location, you may wish to query the layers for these values, based on location and date. There are two ways to accomplish this, using the npn_get_point_data function which works for all layers and the npn_get_AGDD_point_data function, which only works for AGDD layers and provides a more precise result.
 
-
-```r
+```{r eval=FALSE}
 npn_get_agdd_point_data(
  'gdd:agdd_50f', 
  '38', 
@@ -48,8 +50,7 @@ npn_get_agdd_point_data(
 This returns a value of 7.64098 GDD, base 50F, for the coordinates 38 north, -90 west on February 25th, 2019.
 
 
-
-```r
+```{r eval=FALSE}
 npn_get_point_data(
  'si-x:lilac_bloom_ncep', 
  '30', 
@@ -63,8 +64,7 @@ This returns a value for lilac bloom of day 48, for the coordinates 30 north, -9
 The above mentioned AGDD products use base temperatures of 32F or 50F and are managed through WCS services. There is also a function to get dynamic AGDD calculations based on a user defined base temperature and a number of other parameters.
 
 
-
-```r
+```{r eval=FALSE}
 custom_agdd_raster <- npn_get_custom_agdd_raster(
  method = 'double-sine',
  climate_data_source = 'NCEP',
@@ -85,8 +85,7 @@ Heat accumulation is commonly used as a way of predicting the timing of phenolog
 
 When querying certain layers, the underlying data is agnostic about the specific year, and in these cases it makes sense to use the day of year to request data, since that will provide a standardized result, (i.e., April 1st is day 91 in some years and day 92 in others). 
 
-
-```r
+```{r eval=FALSE}
 npn_download_geospatial(
  'gdd:30yr_avg_agdd_50f', 
  95
@@ -95,8 +94,7 @@ npn_download_geospatial(
 
 But if you're looking at a specific year, such as a current year layer, it makes sense to use a specific calendar date (formatted YYYY-MM-DD). It's also possible to save the raster directly to file instead of loading it into memory.
 
-
-```r
+```{r eval=FALSE}
 npn_download_geospatial(
  'gdd:agdd', 
  '2018-05-05',
@@ -106,8 +104,7 @@ npn_download_geospatial(
 
 In the case of the historic Spring Index layers, however, the product represents the overall outcome for the entire year, so while the year component of the date matters, the month and day do not. In this case, specify January 1 as the month and date.
 
-
-```r
+```{r eval=FALSE}
 npn_download_geospatial(
  "si-x:average_bloom_prism",
  "1995-01-01"
@@ -118,28 +115,23 @@ The dimension.range value, returned in the npn_get_layer_details() function, cla
 
 Of course, it's also easy to grab raster data and load it into a visual plot as in this example, showing a map of AGDD base 50 on 2019-06-25:
 
-
-```r
+```{r}
 AGDDJun2019<-npn_download_geospatial(
  "gdd:agdd_50f", 
  "2019-06-25"
 )
 ```
 
-
-```r
+```{r}
 plot(
  AGDDJun2019, 
  main = "AGDD base 50 on June 25th, 2019"
 )
 ```
 
-![plot of chunk unnamed-chunk-9](figures/unnamed-chunk-9-1.png)
-
 An important layer to know of is the 30 year average for AGDD products. This is useful for many comparative analyses. This layer takes DOY as the date input, since it's the average AGDD value for each day of year for 1981 - 2010.
 
-
-```r
+```{r eval=FALSE}
 average_30yr <- npn_download_geospatial(
  "gdd:30yr_avg_agdd",
  45
@@ -156,8 +148,7 @@ The Extended Spring Indices are mathematical models that predict the "start of s
 
 Data for the Spring Index is available through an enumeration of layers that represents each of the three sub-models as well as an 'average' model which represents the aggregation of the three sub-models. These layers are further enumerated by both of the represented phenophases, leaf and bloom. In the example below, first the layer representing only the Arnold Red model for 1987 is retrieved, while the second function call gets the model averaging all three of the models for the same year.
 
-
-```r
+```{r eval=FALSE}
 npn_download_geospatial(
  "si-x:arnoldred_bloom_prism",
  "1987-01-01"
@@ -167,13 +158,13 @@ average_model <- npn_download_geospatial(
  "si-x:average_bloom_prism",
  "1987-01-01"
 )
+
 ```
 
 
 The Spring Indices are also unique in that the algorithm has been run against the BEST climate data set, so historic data going back to 1880 is available.
 
-
-```r
+```{r warning = FALSE, message=FALSE}
 BESTSIxData1905 <- npn_download_geospatial(
  'si-x:average_bloom_best', 
  '1905-01-01'
@@ -181,15 +172,13 @@ BESTSIxData1905 <- npn_download_geospatial(
 NAvalue(BESTSIxData1905) <- -9999
 ```
 
-
-```r
+```{r}
 plot(
  BESTSIxData1905, 
  main = "Spring Index, 1905"
 )
-```
 
-![plot of chunk unnamed-chunk-13](figures/unnamed-chunk-13-1.png)
+```
 
 
 
@@ -199,8 +188,7 @@ Besides the AGDD and Spring Index layers there are a number of other useful laye
 
 The daily temperature minimum and maximum values are the underlying climate data used to generate current year AGDD and Spring Index maps. These data are generated by NOAA's National Centers for Environmental Prediction (NCEP) and are reserved through NPN's geospatial services.
 
-
-```r
+```{r}
 daily_max_20190505 <- npn_download_geospatial(
  'climate:tmax', 
  '2019-05-05'
@@ -212,14 +200,11 @@ plot(
 )
 ```
 
-![plot of chunk unnamed-chunk-14](figures/unnamed-chunk-14-1.png)
-
 
 The MODISv6 layers are aggregate values for remote sensing values from the MODISv6 data set, representing a subset of the following phenometrics, aggregated across 2001 - 2017: EVI Area, Mid-Greenup, Mid-Greendown. The available aggregate values for each layer are: median, TSslope, and mean absolute deviation.
 This example shows the median green up value, as DOY. Note that because this layer has a fixed date, the date parameter is input as a blank string.
 
-
-```r
+```{r eval=FALSE}
 median_greenup <- npn_download_geospatial(
  'inca:midgup_median_nad83_02deg',
  ''

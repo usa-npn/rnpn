@@ -3,7 +3,7 @@ http://cran.r-project.org/web/packages/policies.html
 
 ## Resubmission
 
-This is a resubmission to clean up files, remove rgdal dependencies and change maintainer.
+This is a resubmission to fix backend service urls that have been migrated to the cloud.
 
 ## Test environments
 

@@ -103,10 +103,10 @@ test_that("npn_get_point_data functions", {
     skip("Geo Service is down")
   }
   vcr::use_cassette("npn_get_point_data_1", {
-    value <- npn_get_point_data("gdd:agdd",38.8,-110.5,"2019-05-05")
+    value <- npn_get_point_data("gdd:agdd",38.8,-110.5,"2022-05-05")
   })
-  expect_lt(round(value), 1235)
-  expect_gt(round(value), 1232)
+  expect_lt(round(value), 1201)
+  expect_gt(round(value), 1198)
 
   vcr::use_cassette("npn_get_point_data_2", {
     value <- npn_get_point_data("si-x:average_leaf_prism",38.8,-110.5,"1990-01-01")

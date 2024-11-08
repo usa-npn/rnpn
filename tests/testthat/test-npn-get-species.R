@@ -67,7 +67,7 @@ test_that("npn_species_search works",{
     skip("Service is down")
   }
   vcr::use_cassette("npn_species_search_1", {
-    species <- npn_species_search()
+    species <- npn_species_search(start_date="2023-01-01",end_date="2023-05-15")
   })
 
   expect_is(species, "data.frame")
