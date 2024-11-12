@@ -9,7 +9,9 @@ developed.](http://www.repostatus.org/badges/latest/active.svg)](https://www.rep
 [![CRAN
 status](https://www.r-pkg.org/badges/version/rnpn)](https://CRAN.R-project.org/package=rnpn)
 [![R build
-status](https://github.com/usa-npn/rnpn//workflows/R-CMD-check/badge.svg)](https://github.com/usa-npn/rnpn/actions)
+status](https://github.com/usa-npn/rnpn//workflows/R-CMD-check/badge.svg)](https://github.com/usa-npn/rnpn/actions/workflows/R-CMD-check.yaml)
+[![Codecov test
+coverage](https://codecov.io/gh/usa-npn/rnpn/branch/master/graph/badge.svg)](https://app.codecov.io/gh/usa-npn/rnpn?branch=master)
 <!-- badges: end -->
 
 `rnpn` is an R client for interacting with the USA National Phenology
