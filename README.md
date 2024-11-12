@@ -11,7 +11,7 @@ status](https://www.r-pkg.org/badges/version/rnpn)](https://CRAN.R-project.org/p
 [![R build
 status](https://github.com/usa-npn/rnpn//workflows/R-CMD-check/badge.svg)](https://github.com/usa-npn/rnpn/actions/workflows/R-CMD-check.yaml)
 [![Codecov test
-coverage](https://codecov.io/gh/usa-npn/rnpn/branch/master/graph/badge.svg)](https://app.codecov.io/gh/usa-npn/rnpn?branch=master)
+coverage](https://codecov.io/gh/usa-npn/rnpn/graph/badge.svg)](https://app.codecov.io/gh/usa-npn/rnpn)
 <!-- badges: end -->
 
 `rnpn` is an R client for interacting with the USA National Phenology
