@@ -32,7 +32,7 @@ get_skip_long_tests <- function(){
 #'
 #'
 check_service <- function() {
-  npn_set_env(get_test_env())
+  # npn_set_env(get_test_env())
   url <- paste0(base(), 'species/getSpeciesById.json')
   args <- list(species_id = 3)
   res <- NULL
@@ -51,7 +51,7 @@ check_service <- function() {
 }
 
 check_data_service <- function() {
-  npn_set_env(get_test_env())
+  # npn_set_env(get_test_env())
   url <- paste0(base_data_domain(), 'web-services/geo.html')
   res <- NULL
   tryCatch({

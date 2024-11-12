@@ -34,7 +34,8 @@ Suggests:
     markdown,
     rmarkdown,
     RColorBrewer,
-    vcr
+    vcr,
+    withr
 RoxygenNote: 7.2.3
 Encoding: UTF-8
 VignetteBuilder: knitr

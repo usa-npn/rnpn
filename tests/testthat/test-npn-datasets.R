@@ -1,7 +1,6 @@
 test_that("datasets endpoint working", {
-  if(!check_service()){
-    skip("Service is down")
-  }
+  skip_if_not(check_service(), "Service is down")
+
   vcr::use_cassette("npn_datasets_1", {
     datasets <- npn_datasets()
   })
