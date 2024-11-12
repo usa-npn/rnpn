@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www-dev.usanpn.org/npn_portal/observations/getDatasetDetails.json
+    uri: https://services-staging.usanpn.org/npn_portal/observations/getDatasetDetails.json
     body:
       encoding: ''
       string: ''
@@ -14,18 +14,18 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Thu, 12 Nov 2020 21:18:55 GMT
-      server: Apache/2.4.7 (Ubuntu) SVN/1.8.8 PHP/5.5.9-1ubuntu4.29 OpenSSL/1.0.1f
-      x-powered-by: PHP/5.5.9-1ubuntu4.29
+      date: Tue, 23 Jan 2024 19:48:44 GMT
+      content-type: application/json; charset=utf-8
+      content-length: '6339'
+      server: Apache/2.4.58 () PHP/5.5.38
+      x-powered-by: PHP/5.5.38
       pragma: no-cache
       cache-control: no-store, no-cache, max-age=0, must-revalidate
       access-control-allow-origin: '*'
       access-control-allow-headers: origin, x-requested-with, content-type
       access-control-allow-methods: PUT, GET, POST, DELETE, OPTIONS
-      content-length: '6347'
-      content-type: application/json; charset=utf-8
     body:
-      encoding: UTF-8
+      encoding: ''
       file: no
       string: '[{"dataset_id":1,"dataset_name":"Legacy Lilac Data","dataset_description":"Legacy
         lilac phenology data for Eastern US (SCSV) and Western US","contact_name":"Mark
@@ -67,11 +67,12 @@ http_interactions:
         at Tremont phenology using modified Nature''s Notebook protocols, 2010-2012","contact_name":"Tiffany
         Beachy","contact_institution":"Great Smoky Mountains Institute at Tremont","contact_email":"tiffany@gsmit.org","contact_phone":"","contact_address":"Great
         Smoky Mountains Institute at Tremont in Great Smoky Mountains National Park,
-        9275 Tremomt Rd., Townsend, TN 37882","dataset_comments":null,"dataset_documentation_url":"https:\/\/docs.google.com\/document\/d\/1ZtAMXg-LY4BRNyYMwAoKpJA_ChUVDeklErR9gb1k8tw\/pub"},{"dataset_id":16,"dataset_name":"lb_test","dataset_description":null,"contact_name":"
-        Marsh","contact_institution":"","contact_email":"rlmarsh85@gmail.com","contact_phone":null,"contact_address":null,"dataset_comments":null,"dataset_documentation_url":null},{"dataset_id":17,"dataset_name":"NEON
+        9275 Tremomt Rd., Townsend, TN 37882","dataset_comments":null,"dataset_documentation_url":"https:\/\/docs.google.com\/document\/d\/1ZtAMXg-LY4BRNyYMwAoKpJA_ChUVDeklErR9gb1k8tw\/pub"},{"dataset_id":16,"dataset_name":"NEON
         2013-Present","dataset_description":"National Ecological Observatory Network
         phenology using USA-NPN protocols, 2013 to present","contact_name":"Katie
-        Jones","contact_institution":"NEON","contact_email":"kjones@BattelleEcology.org","contact_phone":null,"contact_address":null,"dataset_comments":null,"dataset_documentation_url":"https:\/\/docs.google.com\/document\/d\/e\/2PACX-1vRquPEazk0c99ShLV5_t_hGSjJPp7tPgEXVxhhOrrCyoFxzwruNcthbH3Z_jnaCglQfxsRGP0zVz6mA\/pub"},{"dataset_id":18,"dataset_name":"Morton
-        Arboretum","dataset_description":null,"contact_name":"Christy Rollinson","contact_institution":"","contact_email":"crollinson@gmail.com","contact_phone":null,"contact_address":null,"dataset_comments":null,"dataset_documentation_url":null}]'
-  recorded_at: 2020-11-12 21:18:42 GMT
-  recorded_with: vcr/0.5.4, webmockr/0.7.0
+        Jones","contact_institution":"NEON","contact_email":"kjones@BattelleEcology.org","contact_phone":null,"contact_address":null,"dataset_comments":null,"dataset_documentation_url":"https:\/\/docs.google.com\/document\/d\/e\/2PACX-1vRquPEazk0c99ShLV5_t_hGSjJPp7tPgEXVxhhOrrCyoFxzwruNcthbH3Z_jnaCglQfxsRGP0zVz6mA\/pub"},{"dataset_id":17,"dataset_name":"Patuxent
+        NWR 2012-2019","dataset_description":"Patuxent National Wildlife Refuge phenology
+        using Project Budburst protocols, 2012-2019","contact_name":"Ken Lavish","contact_institution":"Patuxent
+        National Wildlife Refuge ","contact_email":"kalavish@hotmail.com","contact_phone":null,"contact_address":null,"dataset_comments":null,"dataset_documentation_url":"https:\/\/docs.google.com\/document\/d\/e\/2PACX-1vTJlxNy5k8x3gzKBksCa0NpFQ88SC7qwMlmmjcD4MVnzMPLSQpp5_hm56BOeIOq1hJAdzfq7UmFtWZe\/pub"}]'
+  recorded_at: 2024-01-23 19:48:45 GMT
+  recorded_with: vcr/1.2.2, webmockr/0.9.0

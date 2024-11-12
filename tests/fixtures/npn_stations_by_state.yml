@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www-dev.usanpn.org/npn_portal/stations/getStationCountByState.json
+    uri: https://services-staging.usanpn.org/npn_portal/stations/getStationCountByState.json
     body:
       encoding: ''
       string: ''
@@ -14,30 +14,24 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Thu, 12 Nov 2020 23:03:33 GMT
-      server: Apache/2.4.7 (Ubuntu) SVN/1.8.8 PHP/5.5.9-1ubuntu4.29 OpenSSL/1.0.1f
-      x-powered-by: PHP/5.5.9-1ubuntu4.29
+      date: Tue, 12 Nov 2024 20:42:36 GMT
+      content-type: application/json; charset=utf-8
+      content-length: '0'
+      x-powered-by: PHP/5.5.38
       pragma: no-cache
       cache-control: no-store, no-cache, max-age=0, must-revalidate
       access-control-allow-origin: '*'
       access-control-allow-headers: origin, x-requested-with, content-type
       access-control-allow-methods: PUT, GET, POST, DELETE, OPTIONS
-      content-length: '4122'
-      content-type: application/json; charset=utf-8
+      cf-cache-status: DYNAMIC
+      report-to: '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v4?s=RT297nhCJz35D%2BdpSoR86It1Yx6%2BYjr0F6qtkn%2FepI5wopYjC1cBza4%2B9l2UOcWNxfBaak82Z1rjw5k4Bpl31%2Bj2kBQcMz0PVPG9rbiNgm9tYVfytD9hqdgGXaXxZZ6khtX467P4rXc6NWjivA%3D%3D"}],"group":"cf-nel","max_age":604800}'
+      nel: '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
+      server: cloudflare
+      cf-ray: 8e1959764a6d2acb-LAX
+      server-timing: cfL4;desc="?proto=TCP&rtt=72906&sent=132&recv=84&lost=0&retrans=4&sent_bytes=32470&recv_bytes=2899&delivery_rate=256280&cwnd=211&unsent_bytes=0&cid=3807723b6edea19c&ts=113586&x=0"
     body:
-      encoding: UTF-8
+      encoding: ''
       file: no
-      string: '[{"state":"CA","number_stations":2439},{"state":"MN","number_stations":1344},{"state":"AZ","number_stations":1073},{"state":"ME","number_stations":1070},{"state":"VA","number_stations":1010},{"state":"NY","number_stations":990},{"state":"CO","number_stations":969},{"state":"IL","number_stations":912},{"state":"MA","number_stations":863},{"state":"NC","number_stations":796},{"state":"OR","number_stations":755},{"state":"KY","number_stations":671},{"state":"WA","number_stations":662},{"state":"WI","number_stations":614},{"state":"PA","number_stations":522},{"state":"TX","number_stations":514},{"state":"FL","number_stations":513},{"state":"OH","number_stations":484},{"state":"TN","number_stations":443},{"state":"NM","number_stations":437},{"state":"MD","number_stations":436},{"state":"MI","number_stations":404},{"state":"NH","number_stations":396},{"state":"MT","number_stations":324},{"state":"ID","number_stations":316},{"state":"IN","number_stations":288},{"state":"KS","number_stations":260},{"state":"GA","number_stations":255},{"state":"MO","number_stations":255},{"state":"VT","number_stations":242},{"state":"NJ","number_stations":220},{"state":"UT","number_stations":213},{"state":"SD","number_stations":204},{"state":"AK","number_stations":203},{"state":"CT","number_stations":203},{"state":"SC","number_stations":183},{"state":"WY","number_stations":182},{"state":"IA","number_stations":180},{"state":"ND","number_stations":147},{"state":"NE","number_stations":142},{"state":"OK","number_stations":142},{"state":"WV","number_stations":140},{"state":"NV","number_stations":114},{"state":null,"number_stations":96},{"state":"DC","number_stations":94},{"state":"LA","number_stations":94},{"state":"AL","number_stations":81},{"state":"AR","number_stations":64},{"state":"MS","number_stations":52},{"state":"RI","number_stations":48},{"state":"DE","number_stations":39},{"state":"HI","number_stations":33},{"state":"BC","number_stations":29},{"state":"ON","number_stations":23},{"state":"AB","number_stations":13},{"state":"QC","number_stations":9},{"state":"MB","number_stations":8},{"state":"PR","number_stations":6},{"state":"Neimenggu
-        Zizhiq","number_stations":3},{"state":"NS","number_stations":2},{"state":"Son.","number_stations":2},{"state":"Occitanie","number_stations":2},{"state":"Canada","number_stations":2},{"state":"SK","number_stations":2},{"state":"PE","number_stations":1},{"state":"Colon","number_stations":1},{"state":"Kyiv
-        city","number_stations":1},{"state":"San Juan","number_stations":1},{"state":"Central
-        Luzon","number_stations":1},{"state":"EC","number_stations":1},{"state":"Saint
-        Andrew","number_stations":1},{"state":"Bogota","number_stations":1},{"state":"Toscana","number_stations":1},{"state":"England","number_stations":1},{"state":"Ile-de-France","number_stations":1},{"state":"BA","number_stations":1},{"state":"Shanghai
-        Shi","number_stations":1},{"state":"Vlaanderen","number_stations":1},{"state":"Humacao","number_stations":1},{"state":"","number_stations":1},{"state":"Sardegna","number_stations":1},{"state":"Buenos
-        Aires","number_stations":1},{"state":"NSW","number_stations":1},{"state":"Qro.","number_stations":1},{"state":"Western
-        Region","number_stations":1},{"state":"Lajas","number_stations":1},{"state":"FM","number_stations":1},{"state":"MH","number_stations":1},{"state":"Hebei
-        Sheng","number_stations":1},{"state":"Lara","number_stations":1},{"state":"NB","number_stations":1},{"state":"Tehran
-        Province","number_stations":1},{"state":"AS","number_stations":1},{"state":"ML","number_stations":1},{"state":"Panana","number_stations":1},{"state":"RP","number_stations":1},{"state":"QLD","number_stations":1},{"state":"MG","number_stations":1},{"state":"Kanagawa-ken","number_stations":1},{"state":"Jambyl
-        Region","number_stations":1},{"state":"Tibet","number_stations":1},{"state":"Erzincan","number_stations":1},{"state":"PW","number_stations":1},{"state":"Thueringen","number_stations":1},{"state":"Gyeonggi-do","number_stations":1},{"state":"Shandong
-        Sheng","number_stations":1},{"state":"NRW","number_stations":1},{"state":"N.W.F.P","number_stations":1}]'
-  recorded_at: 2020-11-12 23:03:20 GMT
-  recorded_with: vcr/0.5.4, webmockr/0.7.0
+      string: ''
+  recorded_at: 2024-11-12 20:42:33 GMT
+  recorded_with: vcr/1.6.0, webmockr/1.0.0
