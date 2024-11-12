@@ -1,7 +1,4 @@
-context("npn_datasets")
-
 test_that("datasets endpoint working", {
-  npn_set_env(get_test_env())
   if(!check_service()){
     skip("Service is down")
   }
@@ -9,8 +6,7 @@ test_that("datasets endpoint working", {
     datasets <- npn_datasets()
   })
 
-  expect_is(datasets, "data.frame")
-  expect_is(datasets$dataset_name, "character")
+  expect_s3_class(datasets, "data.frame")
+  expect_type(datasets$dataset_name, "character")
   expect_gt(nrow(datasets), 5)
-
 })
