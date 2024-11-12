@@ -30,7 +30,7 @@ test_that("npn_stations functions", {
 
 
 test_that("npn_stations_by_state functions", {
-  npn_set_env(get_test_env())
+  npn_set_env()
   if(!check_service()){
     skip("Service is down")
   }

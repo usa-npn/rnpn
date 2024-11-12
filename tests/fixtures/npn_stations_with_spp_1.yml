@@ -14,19 +14,24 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Tue, 23 Jan 2024 19:53:51 GMT
+      date: Tue, 12 Nov 2024 20:42:43 GMT
       content-type: application/json; charset=utf-8
       content-length: '0'
-      server: Apache/2.4.58 () PHP/5.5.38
       x-powered-by: PHP/5.5.38
       pragma: no-cache
       cache-control: no-store, no-cache, max-age=0, must-revalidate
       access-control-allow-origin: '*'
       access-control-allow-headers: origin, x-requested-with, content-type
       access-control-allow-methods: PUT, GET, POST, DELETE, OPTIONS
+      cf-cache-status: DYNAMIC
+      report-to: '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v4?s=uDwZ11Nk%2Bd0fZTFz247WlUnwqKiAO8vC9ELhjHuw8ubgIYxnIcgESSynrmEOpF89570z3inERcsCZTqa4pXVHrLqPo%2B%2Fe4tOkyoYK3L07UYCyAbYjy71680SBls%2BAENkH8E7WSul0k7ZjRLtZA%3D%3D"}],"group":"cf-nel","max_age":604800}'
+      nel: '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
+      server: cloudflare
+      cf-ray: 8e19598078f52acb-LAX
+      server-timing: cfL4;desc="?proto=TCP&rtt=97096&sent=143&recv=92&lost=0&retrans=5&sent_bytes=34270&recv_bytes=3138&delivery_rate=256280&cwnd=211&unsent_bytes=0&cid=3807723b6edea19c&ts=121204&x=0"
     body:
       encoding: ''
       file: no
       string: ''
-  recorded_at: 2024-01-23 19:53:51 GMT
-  recorded_with: vcr/1.2.2, webmockr/0.9.0
+  recorded_at: 2024-11-12 20:42:40 GMT
+  recorded_with: vcr/1.6.0, webmockr/1.0.0
