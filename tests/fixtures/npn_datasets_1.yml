@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://services-staging.usanpn.org/npn_portal/observations/getDatasetDetails.json
+    uri: https://services.usanpn.org/npn_portal/observations/getDatasetDetails.json
     body:
       encoding: ''
       string: ''
@@ -14,21 +14,16 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Tue, 12 Nov 2024 22:56:02 GMT
+      date: Wed, 13 Nov 2024 00:52:12 GMT
       content-type: application/json; charset=utf-8
+      content-length: '6339'
+      server: Apache/2.4.62 () PHP/5.5.38
       x-powered-by: PHP/5.5.38
       pragma: no-cache
       cache-control: no-store, no-cache, max-age=0, must-revalidate
       access-control-allow-origin: '*'
       access-control-allow-headers: origin, x-requested-with, content-type
       access-control-allow-methods: PUT, GET, POST, DELETE, OPTIONS
-      cf-cache-status: DYNAMIC
-      report-to: '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v4?s=o4kHqmch6YBZEHFUUNxOOEr1zqDX57fpIy%2BsF4H2MV4%2BfnH2FU0tXQ9R2eoFEAk6BhvBu3D0Y839zxTtVR2U3Hj5HLR9hPRJUiCgmJzSnxtMxlnN1m%2BsMYpwTnRKInSaLVWHm%2FqsHtNjm3pFDQ%3D%3D"}],"group":"cf-nel","max_age":604800}'
-      nel: '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
-      server: cloudflare
-      cf-ray: 8e1a1cec6de0dbd1-LAX
-      content-encoding: gzip
-      server-timing: cfL4;desc="?proto=TCP&rtt=44552&sent=13&recv=13&lost=0&retrans=0&sent_bytes=3847&recv_bytes=771&delivery_rate=86702&cwnd=231&unsent_bytes=0&cid=834252571b92ab82&ts=542&x=0"
     body:
       encoding: ''
       file: no
@@ -79,5 +74,5 @@ http_interactions:
         NWR 2012-2019","dataset_description":"Patuxent National Wildlife Refuge phenology
         using Project Budburst protocols, 2012-2019","contact_name":"Ken Lavish","contact_institution":"Patuxent
         National Wildlife Refuge ","contact_email":"kalavish@hotmail.com","contact_phone":null,"contact_address":null,"dataset_comments":null,"dataset_documentation_url":"https:\/\/docs.google.com\/document\/d\/e\/2PACX-1vTJlxNy5k8x3gzKBksCa0NpFQ88SC7qwMlmmjcD4MVnzMPLSQpp5_hm56BOeIOq1hJAdzfq7UmFtWZe\/pub"}]'
-  recorded_at: 2024-11-12 22:56:02 GMT
+  recorded_at: 2024-11-13 00:52:12 GMT
   recorded_with: vcr/1.6.0, webmockr/1.0.0
