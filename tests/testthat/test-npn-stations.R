@@ -52,7 +52,7 @@ test_that("npn_stations_with_spp functions",{
   skip_if_not(check_service(), "Service is down")
 
   vcr::use_cassette("npn_stations_with_spp_1", {
-    stations <- npn_stations_with_spp(3)
+    stations <- npn_stations_with_spp(100)
   })
 
   expect_s3_class(stations, "data.frame")
