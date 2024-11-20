@@ -14,9 +14,8 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Tue, 23 Jan 2024 20:17:10 GMT
+      date: Tue, 12 Nov 2024 23:24:38 GMT
       server: Apache/2.4.29 (Ubuntu) mod_jk/1.2.43 OpenSSL/1.1.1
-      access-control-allow-origin: '*'
       x-frame-options: SAMEORIGIN
       content-disposition: inline; filename=si-x:average_leaf_prism.gml
       content-encoding: gzip
@@ -61,5 +60,5 @@ http_interactions:
         \           <gml:rangeParameters/>\n            <tupleList>83 \n</tupleList>\n
         \       </gml:DataBlock>\n    </gml:rangeSet>\n    <gmlcov:metadata>\n        <gmlcov:Extension/>\n
         \   </gmlcov:metadata>\n</gml:RectifiedGridCoverage>\n"
-  recorded_at: 2024-01-23 20:17:10 GMT
-  recorded_with: vcr/1.2.2, webmockr/0.9.0
+  recorded_at: 2024-11-12 23:24:38 GMT
+  recorded_with: vcr/1.6.0, webmockr/1.0.0

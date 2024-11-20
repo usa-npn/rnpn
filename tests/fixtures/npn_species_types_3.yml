@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://services-staging.usanpn.org/npn_portal/species/getAnimalTypes.json
+    uri: https://services.usanpn.org/npn_portal/species/getAnimalTypes.json
     body:
       encoding: ''
       string: ''
@@ -14,10 +14,10 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Tue, 23 Jan 2024 19:53:07 GMT
+      date: Tue, 12 Nov 2024 23:37:24 GMT
       content-type: application/json; charset=utf-8
       content-length: '1457'
-      server: Apache/2.4.58 () PHP/5.5.38
+      server: Apache/2.4.62 () PHP/5.5.38
       x-powered-by: PHP/5.5.38
       pragma: no-cache
       cache-control: no-store, no-cache, max-age=0, must-revalidate
@@ -27,19 +27,19 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: '[{"species_type":"Amphibian","species_type_id":14,"species_count":40},{"species_type":"Bird","species_type_id":15,"species_count":165},{"species_type":"Fish","species_type_id":16,"species_count":22},{"species_type":"Insect
-        - Butterfly\/Moth","species_type_id":17,"species_count":39},{"species_type":"Mammal","species_type_id":18,"species_count":40},{"species_type":"Dragonfly\/Damselfly","species_type_id":19,"species_count":1},{"species_type":"Reptile","species_type_id":20,"species_count":28},{"species_type":"Insect
+      string: '[{"species_type":"Amphibian","species_type_id":14,"species_count":41},{"species_type":"Bird","species_type_id":15,"species_count":168},{"species_type":"Fish","species_type_id":16,"species_count":22},{"species_type":"Insect
+        - Butterfly\/Moth","species_type_id":17,"species_count":40},{"species_type":"Mammal","species_type_id":18,"species_count":40},{"species_type":"Dragonfly\/Damselfly","species_type_id":19,"species_count":1},{"species_type":"Reptile","species_type_id":20,"species_count":28},{"species_type":"Insect
         - Beetle","species_type_id":21,"species_count":12},{"species_type":"Insect
-        - Bee\/Ant\/Termite","species_type_id":22,"species_count":13},{"species_type":"Insect
+        - Bee\/Ant\/Termite","species_type_id":22,"species_count":14},{"species_type":"Insect
         - Aquatic","species_type_id":23,"species_count":18},{"species_type":"Insect
         - Grasshopper\/Cricket","species_type_id":24,"species_count":2},{"species_type":"Insect
-        - All","species_type_id":25,"species_count":94},{"species_type":"Reptile and
+        - All","species_type_id":25,"species_count":96},{"species_type":"Reptile and
         Amphibian","species_type_id":27,"species_count":68},{"species_type":"Invasive
-        Animals","species_type_id":28,"species_count":15},{"species_type":"Insect
+        Animals","species_type_id":28,"species_count":16},{"species_type":"Insect
         - Plant Pest","species_type_id":30,"species_count":19},{"species_type":"Insect
         - True Bug\/Cicada\/Aphid\/Scale","species_type_id":36,"species_count":7},{"species_type":"Insect
         - Fly","species_type_id":37,"species_count":3},{"species_type":"Pest Patrol
         Campaign","species_type_id":38,"species_count":13},{"species_type":"Mayfly
         Watch Campaign","species_type_id":39,"species_count":3}]'
-  recorded_at: 2024-01-23 19:53:07 GMT
-  recorded_with: vcr/1.2.2, webmockr/0.9.0
+  recorded_at: 2024-11-12 23:37:24 GMT
+  recorded_with: vcr/1.6.0, webmockr/1.0.0

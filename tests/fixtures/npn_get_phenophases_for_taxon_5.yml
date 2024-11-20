@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://services-staging.usanpn.org/npn_portal/phenophases/getPhenophasesForTaxon.json?order_id%5B1%5D=74&order_id%5B2%5D=75&return_all=1
+    uri: https://services.usanpn.org/npn_portal/phenophases/getPhenophasesForTaxon.json?order_id%5B1%5D=74&order_id%5B2%5D=75&return_all=1
     body:
       encoding: ''
       string: ''
@@ -14,9 +14,9 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Tue, 23 Jan 2024 19:53:29 GMT
+      date: Wed, 13 Nov 2024 00:26:34 GMT
       content-type: application/json; charset=utf-8
-      server: Apache/2.4.58 () PHP/5.5.38
+      server: Apache/2.4.62 () PHP/5.5.38
       x-powered-by: PHP/5.5.38
       pragma: no-cache
       cache-control: no-store, no-cache, max-age=0, must-revalidate
@@ -298,7 +298,45 @@ http_interactions:
         young leaves are visible on the plant. A leaf is considered ''young'' before
         it has reached full size or turned the darker green color or tougher texture
         of mature leaves on the plant. Do not include fully dried or dead leaves.","seq_num":20,"color":"Green1","pheno_class_id":2,"pheno_class_name":"Young
-        leaves or needles","pheno_class_sequence":20,"phenophase_definition_id":505},{"phenophase_id":488,"phenophase_name":"Unfolded
+        leaves or needles","pheno_class_sequence":20,"phenophase_definition_id":505},{"phenophase_id":484,"phenophase_name":"Young
+        unfolded leaves","phenophase_category":"Leaves","phenophase_definition":"In
+        at least 3 locations on the plant, a young unfolded leaf is visible. A leaf
+        is considered ''young'' and ''unfolded'' once the petiole (leaf stalk) or
+        leaf base is visible, but before the leaf has reached full size or turned
+        the darker green color of mature leaves on the plant. The leaf may need to
+        be bent backwards to see whether the petiole or leaf base is visible.","seq_num":20,"color":"Green1","pheno_class_id":2,"pheno_class_name":"Young
+        leaves or needles","pheno_class_sequence":20,"phenophase_definition_id":214},{"phenophase_id":484,"phenophase_name":"Young
+        leaves","phenophase_category":"Leaves","phenophase_definition":"One or more
+        young unfolded leaves are visible on the plant. A leaf is considered ''young''
+        and ''unfolded'' once the leaf stalk (petiole) or leaf base is visible, but
+        before the leaf has reached full size or turned the darker green color of
+        mature leaves on the plant. The leaf may need to be bent backwards to see
+        whether the leaf stalk or leaf base is visible.","seq_num":20,"color":"Green1","pheno_class_id":2,"pheno_class_name":"Young
+        leaves or needles","pheno_class_sequence":20,"phenophase_definition_id":381},{"phenophase_id":484,"phenophase_name":"Young
+        leaves","phenophase_category":"Leaves","phenophase_definition":"One or more
+        young, unfolded leaves are visible on the plant. A leaf is considered ''young''
+        and ''unfolded'' once its entire length has emerged from the breaking bud
+        so that the leaf stalk (petiole) or leaf base is visible at its point of attachment
+        to the stem, but before the leaf has reached full size or turned the darker
+        green color or tougher texture of mature leaves on the plant. Do not include
+        fully dried or dead leaves.","seq_num":20,"color":"Green1","pheno_class_id":2,"pheno_class_name":"Young
+        leaves or needles","pheno_class_sequence":20,"phenophase_definition_id":484},{"phenophase_id":484,"phenophase_name":"Young
+        leaves","phenophase_category":"Leaves","phenophase_definition":"One or more
+        young, unfolded leaves are visible on the plant. A leaf is considered ''young''
+        and ''unfolded'' once its entire length has emerged from a breaking bud, stem
+        node or growing stem tip, so that the leaf stalk (petiole) or leaf base is
+        visible at its point of attachment to the stem, but before the leaf has reached
+        full size or turned the darker green color or tougher texture of mature leaves
+        on the plant. Do not include fully dried or dead leaves.","seq_num":20,"color":"Green1","pheno_class_id":2,"pheno_class_name":"Young
+        leaves or needles","pheno_class_sequence":20,"phenophase_definition_id":542},{"phenophase_id":484,"phenophase_name":"Young
+        leaves","phenophase_category":"Leaves","phenophase_definition":"One or more
+        young, unfolded leaves are visible on the plant. A leaf is considered ''young''
+        and ''unfolded'' once its entire length has emerged from a breaking bud, stem
+        node or growing stem tip, so that the leaf base is visible at its point of
+        attachment to the leaf stalk (petiole) or stem, but before the leaf has reached
+        full size or turned the darker green color or tougher texture of mature leaves
+        on the plant. Do not include fully dried or dead leaves.","seq_num":20,"color":"Green1","pheno_class_id":2,"pheno_class_name":"Young
+        leaves or needles","pheno_class_sequence":20,"phenophase_definition_id":634},{"phenophase_id":488,"phenophase_name":"Unfolded
         leaves","phenophase_category":"Leaves","phenophase_definition":"In at least
         one location on the plant, a fully unfolded leaf is visible. For seedlings,
         consider only true leaves and do not count the cotyledons (one or two small,
@@ -712,5 +750,5 @@ http_interactions:
         visit. Do not include obviously immature acorns that have dropped before ripening,
         such as in a heavy rain or wind.","seq_num":330,"color":"Green3","pheno_class_id":13,"pheno_class_name":"Recent
         fruit, cone or seed drop","pheno_class_sequence":130,"phenophase_definition_id":528}]}]'
-  recorded_at: 2024-01-23 19:53:29 GMT
-  recorded_with: vcr/1.2.2, webmockr/0.9.0
+  recorded_at: 2024-11-13 00:26:34 GMT
+  recorded_with: vcr/1.6.0, webmockr/1.0.0

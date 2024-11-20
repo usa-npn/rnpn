@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://services-staging.usanpn.org/npn_portal/species/getSpeciesByState.json?state=AZ
+    uri: https://services.usanpn.org/npn_portal/species/getSpeciesByState.json?state=AZ
     body:
       encoding: ''
       string: ''
@@ -14,21 +14,15 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Tue, 19 Nov 2024 23:52:45 GMT
+      date: Wed, 20 Nov 2024 17:57:35 GMT
       content-type: application/json; charset=utf-8
+      server: Apache/2.4.62 () PHP/5.5.38
       x-powered-by: PHP/5.5.38
       pragma: no-cache
       cache-control: no-store, no-cache, max-age=0, must-revalidate
       access-control-allow-origin: '*'
       access-control-allow-headers: origin, x-requested-with, content-type
       access-control-allow-methods: PUT, GET, POST, DELETE, OPTIONS
-      cf-cache-status: DYNAMIC
-      report-to: '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v4?s=%2FXFM6T0FOeA%2F%2BC9Ly5lPeU0RLhaC1cg9KibbslAWHigoh7rtsrDlCTCEDP9GiNLGRWtmrZ9RGQcHLdqRKUAKH9IZ%2BjjFGqVdNGLDob4IWLdmc6YYVZfAQWT8W11gG0n7qphDMpqRtYCNJ7l0IA%3D%3D"}],"group":"cf-nel","max_age":604800}'
-      nel: '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
-      server: cloudflare
-      cf-ray: 8e541da14ba77baa-LAX
-      content-encoding: gzip
-      server-timing: cfL4;desc="?proto=TCP&rtt=45002&sent=142&recv=91&lost=0&retrans=3&sent_bytes=34471&recv_bytes=3191&delivery_rate=295355&cwnd=187&unsent_bytes=0&cid=69b3b236eff9cf59&ts=258257&x=0"
     body:
       encoding: ''
       file: no
@@ -626,5 +620,5 @@ http_interactions:
         warbler","genus":"Setophaga","kingdom":"Animalia","species":"coronata","itis_taxonomic_sn":950046},{"species_id":1671,"common_name":"yerba
         mansa","genus":"Anemopsis","kingdom":"Plantae","species":"californica","itis_taxonomic_sn":18223},{"species_id":1395,"common_name":"zebra-tailed
         lizard","genus":"Callisaurus","kingdom":"Animalia","species":"draconoides","itis_taxonomic_sn":173906}]'
-  recorded_at: 2024-11-19 23:52:45 GMT
+  recorded_at: 2024-11-20 17:57:35 GMT
   recorded_with: vcr/1.6.0, webmockr/1.0.0

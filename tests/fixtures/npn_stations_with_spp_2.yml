@@ -11,7 +11,7 @@ http_interactions:
       status_code: 200
       message: OK
     headers:
-      date: Wed, 20 Nov 2024 00:56:27 GMT
+      date: Wed, 20 Nov 2024 17:59:22 GMT
       content-type: application/json; charset=utf-8
       content-length: '2'
       server: Apache/2.4.62 () PHP/5.5.38
@@ -25,5 +25,5 @@ http_interactions:
       encoding: ''
       file: no
       string: '[]'
-  recorded_at: 2024-11-20 00:56:28 GMT
+  recorded_at: 2024-11-20 17:59:22 GMT
   recorded_with: vcr/1.6.0, webmockr/1.0.0

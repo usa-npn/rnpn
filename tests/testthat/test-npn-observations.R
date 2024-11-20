@@ -12,33 +12,25 @@ context("npn_observations")
 # be enabled to run on a workstation by flipping the skip_long_tests flag that
 # is setup in the R/zzz.R file.
 #
-# The references to VCR are still in place, even though they generally don't work
-# just to be consistent with the rest of the code which does use VCR correctly.
-# Maybe someday it will be adapted to work with curl.
+# The references to VCR are still in place, even though they generally don't
+# work just to be consistent with the rest of the code which does use VCR
+# correctly. Maybe someday it will be adapted to work with curl (or the download
+# functionality will use a supported package instead of curl).
 
 skip_long_tests <- get_skip_long_tests()
 
 test_that("no request source blocked", {
-
   skip_on_cran()
-  npn_set_env(get_test_env())
 
-  expect_error(npn_download_status_data(NULL,c(2013)))
-  expect_error(npn_download_individual_phenometrics(NULL,c(2013)))
-  expect_error(npn_download_site_phenometrics(NULL,c(2013)))
-  expect_error(npn_download_magnitude_phenometrics(NULL,c(2013)))
-
+  expect_error(npn_download_status_data(NULL, c(2013)))
+  expect_error(npn_download_individual_phenometrics(NULL, c(2013)))
+  expect_error(npn_download_site_phenometrics(NULL, c(2013)))
+  expect_error(npn_download_magnitude_phenometrics(NULL, c(2013)))
 })
 
-
 test_that("basic function works", {
-
   skip_on_cran()
-  npn_set_env(get_test_env())
-
-  if(!check_service()){
-    skip("Service is down")
-  }
+  skip_if_not(check_service(), "Service is down")
 
   vcr::use_cassette("npn_download_status_data_basic_1", {
     some_data <- npn_download_status_data(
@@ -48,12 +40,10 @@ test_that("basic function works", {
     )
   })
 
-
-  expect_is(some_data,"data.frame")
+  expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 1000)
-  expect_is(some_data$species_id, "integer")
-  expect_equal(some_data[1,]$species_id,6)
-
+  expect_type(some_data$species_id, "integer")
+  expect_equal(some_data[1,]$species_id, 6)
 
   vcr::use_cassette("npn_download_individual_phenometrics_basic_1", {
     some_data <- npn_download_individual_phenometrics(
@@ -63,11 +53,10 @@ test_that("basic function works", {
     )
   })
 
-  expect_is(some_data,"data.frame")
+  expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 10)
-  expect_is(some_data$species_id, "integer")
-  expect_equal(some_data[1,]$species_id,6)
-
+  expect_type(some_data$species_id, "integer")
+  expect_equal(some_data[1,]$species_id, 6)
 
   vcr::use_cassette("npn_download_site_phenometrics_basic_1", {
     some_data <- npn_download_site_phenometrics(
@@ -78,10 +67,10 @@ test_that("basic function works", {
   })
 
   num_site_default <- nrow(some_data)
-  expect_is(some_data,"data.frame")
+  expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 10)
-  expect_is(some_data$species_id, "integer")
-  expect_equal(some_data[1,]$species_id,6)
+  expect_type(some_data$species_id, "integer")
+  expect_equal(some_data[1,]$species_id, 6)
 
   vcr::use_cassette("npn_download_site_phenometrics_basic_2", {
     some_data <- npn_download_site_phenometrics(
@@ -91,11 +80,12 @@ test_that("basic function works", {
       num_days_quality_filter = "5"
     )
   })
+
   num_site_custom <- nrow(some_data)
-  expect_is(some_data,"data.frame")
+  expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 1)
-  expect_is(some_data$species_id, "integer")
-  expect_equal(some_data[1,]$species_id,6)
+  expect_type(some_data$species_id, "integer")
+  expect_equal(some_data[1,]$species_id, 6)
   expect_gt(num_site_default, num_site_custom)
 
   vcr::use_cassette("npn_download_magnitude_phenometrics_basic_1", {
@@ -105,11 +95,12 @@ test_that("basic function works", {
       species_ids = c(6)
     )
   })
+
   num_mag_default <- nrow(some_data)
-  expect_is(some_data,"data.frame")
+  expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 10)
-  expect_is(some_data$species_id, "integer")
-  expect_equal(some_data[1,]$species_id,6)
+  expect_type(some_data$species_id, "integer")
+  expect_equal(some_data[1,]$species_id, 6)
 
   vcr::use_cassette("npn_download_magnitude_phenometrics_basic_2", {
     some_data <- npn_download_magnitude_phenometrics(
@@ -119,28 +110,21 @@ test_that("basic function works", {
       period_frequency = "14"
     )
   })
+
   num_mag_custom <- nrow(some_data)
-  expect_is(some_data,"data.frame")
+  expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 25)
-  expect_is(some_data$species_id, "integer")
-  expect_equal(some_data[1,]$species_id,6)
+  expect_type(some_data$species_id, "integer")
+  expect_equal(some_data[1,]$species_id, 6)
 
-  expect_gt(num_mag_custom,num_mag_default)
-
+  expect_gt(num_mag_custom, num_mag_default)
 })
 
 
 test_that("file download works", {
-
   skip_on_cran()
-  if(skip_long_tests){
-    skip("Skipping long tests")
-  }
-
-  npn_set_env(get_test_env())
-  if(!check_service()){
-    skip("Service is down")
-  }
+  skip_if(skip_long_tests, "Skipping long tests")
+  skip_if_not(check_service(), "Service is down")
 
   test_download_path <- "unit-test-download.csv"
 
@@ -155,9 +139,9 @@ test_that("file download works", {
   expect_equal(file.exists(test_download_path), TRUE)
   some_data <- read.csv(test_download_path)
 
-  expect_is(some_data,"data.frame")
+  expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 1000)
-  expect_is(some_data$species_id, "integer")
+  expect_type(some_data$species_id, "integer")
   expect_equal(some_data[1,]$species_id,6)
 
   file.remove(test_download_path)
@@ -172,9 +156,9 @@ test_that("file download works", {
   expect_equal(file.exists(test_download_path), TRUE)
   some_data <- read.csv(test_download_path)
 
-  expect_is(some_data,"data.frame")
+  expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 10)
-  expect_is(some_data$species_id, "integer")
+  expect_type(some_data$species_id, "integer")
   expect_equal(some_data[1,]$species_id,6)
 
   file.remove(test_download_path)
@@ -183,16 +167,10 @@ test_that("file download works", {
 
 
 test_that("climate data flag works", {
-
   skip_on_cran()
-  if(skip_long_tests){
-    skip("Skipping long tests")
-  }
+  skip_if(skip_long_tests, "Skipping long tests")
+  skip_if_not(check_service(), "Service is down")
 
-  npn_set_env(get_test_env())
-  if(!check_service()){
-    skip("Service is down")
-  }
   vcr::use_cassette("npn_download_status_data_climate_flag_1", {
     some_data <- npn_download_status_data(
       "Unit Test",
@@ -202,8 +180,8 @@ test_that("climate data flag works", {
     )
   })
 
-  expect_is(some_data,"data.frame")
-  expect_is(some_data$tmin_winter, "numeric")
+  expect_s3_class(some_data, "data.frame")
+  expect_type(some_data$tmin_winter, "double")
 
   vcr::use_cassette("npn_download_individual_phenometrics_climate_flag_1", {
     some_data <- npn_download_individual_phenometrics(
@@ -214,8 +192,8 @@ test_that("climate data flag works", {
     )
   })
 
-  expect_is(some_data,"data.frame")
-  expect_is(some_data$tmin_winter, "numeric")
+  expect_s3_class(some_data, "data.frame")
+  expect_type(some_data$tmin_winter, "double")
 
   vcr::use_cassette("npn_download_magnitude_phenometrics_climate_flag_1", {
     some_data <- npn_download_magnitude_phenometrics(
@@ -226,23 +204,16 @@ test_that("climate data flag works", {
     )
   })
 
-  expect_is(some_data,"data.frame")
+  expect_s3_class(some_data, "data.frame")
   expect_null(some_data$tmin_winter)
 
 })
 
 
 test_that("higher taxonomic ordering works for status data", {
-
   skip_on_cran()
-  if(skip_long_tests){
-    skip("Skipping long tests")
-  }
-
-  npn_set_env(get_test_env())
-  if(!check_service()){
-    skip("Service is down")
-  }
+  skip_if(skip_long_tests, "Skipping long tests")
+  skip_if_not(check_service(), "Service is down")
 
   #Check the different taxonomic levels for
   #status data
@@ -256,9 +227,9 @@ test_that("higher taxonomic ordering works for status data", {
       additional_fields = c("Family_ID")
     )
   })
-  expect_is(some_data,"data.frame")
+  expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 1000)
-  expect_is(some_data$family_id, "integer")
+  expect_type(some_data$family_id, "integer")
   expect_equal(some_data[1,]$family_id,322)
 
   less_data <- subset(some_data,species_id==6)
@@ -274,9 +245,9 @@ test_that("higher taxonomic ordering works for status data", {
       additional_fields = c("Order_ID")
     )
   })
-  expect_is(some_data,"data.frame")
+  expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 1000)
-  expect_is(some_data$order_id, "integer")
+  expect_type(some_data$order_id, "integer")
   expect_equal(some_data[1,]$order_id,95)
 
   less_data <- subset(some_data,species_id==6)
@@ -293,9 +264,9 @@ test_that("higher taxonomic ordering works for status data", {
     )
   })
 
-  expect_is(some_data,"data.frame")
+  expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 1000)
-  expect_is(some_data$class_id, "integer")
+  expect_type(some_data$class_id, "integer")
   expect_equal(some_data[1,]$class_id,15)
 
   less_data <- subset(some_data,species_id==6)
@@ -307,16 +278,9 @@ test_that("higher taxonomic ordering works for status data", {
 
 
 test_that("higher taxonomic ordering works for individual phenometrics", {
-
   skip_on_cran()
-  if(skip_long_tests){
-    skip("Skipping long tests")
-  }
-
-  npn_set_env(get_test_env())
-  if(!check_service()){
-    skip("Service is down")
-  }
+  skip_if(skip_long_tests, "Skipping long tests")
+  skip_if_not(check_service(), "Service is down")
 
   #Check the different taxonomic levels for
   #status data
@@ -330,9 +294,9 @@ test_that("higher taxonomic ordering works for individual phenometrics", {
       additional_fields = c("Family_ID")
     )
   })
-  expect_is(some_data,"data.frame")
+  expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 100)
-  expect_is(some_data$family_id, "integer")
+  expect_type(some_data$family_id, "integer")
   expect_equal(some_data[1,]$family_id,322)
 
   less_data <- subset(some_data,species_id==6)
@@ -349,9 +313,9 @@ test_that("higher taxonomic ordering works for individual phenometrics", {
     )
   })
 
-  expect_is(some_data,"data.frame")
+  expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 100)
-  expect_is(some_data$order_id, "integer")
+  expect_type(some_data$order_id, "integer")
   expect_equal(some_data[1,]$order_id,95)
 
   less_data <- subset(some_data,species_id==6)
@@ -369,9 +333,9 @@ test_that("higher taxonomic ordering works for individual phenometrics", {
     )
   })
 
-  expect_is(some_data,"data.frame")
+  expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 1000)
-  expect_is(some_data$class_id, "integer")
+  expect_type(some_data$class_id, "integer")
   expect_equal(some_data[1,]$class_id,15)
 
   less_data <- subset(some_data,species_id==6)
@@ -383,16 +347,10 @@ test_that("higher taxonomic ordering works for individual phenometrics", {
 
 
 test_that("higher taxonomic ordering works for site phenometrics", {
-
   skip_on_cran()
-  if(skip_long_tests){
-    skip("Skipping long tests")
-  }
+  skip_if(skip_long_tests, "Skipping long tests")
+  skip_if_not(check_service(), "Service is down")
 
-  npn_set_env(get_test_env())
-  if(!check_service()){
-    skip("Service is down")
-  }
   #Check the different taxonomic levels for
   #status data
 
@@ -405,9 +363,9 @@ test_that("higher taxonomic ordering works for site phenometrics", {
       additional_fields = c("Family_ID")
     )
   })
-  expect_is(some_data,"data.frame")
+  expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 10)
-  expect_is(some_data$family_id, "integer")
+  expect_type(some_data$family_id, "integer")
   expect_equal(some_data[1,]$family_id,322)
 
   less_data <- subset(some_data,species_id==6)
@@ -424,9 +382,9 @@ test_that("higher taxonomic ordering works for site phenometrics", {
     )
   })
 
-  expect_is(some_data,"data.frame")
+  expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 10)
-  expect_is(some_data$order_id, "integer")
+  expect_type(some_data$order_id, "integer")
   expect_equal(some_data[1,]$order_id,95)
 
   less_data <- subset(some_data,species_id==6)
@@ -444,9 +402,9 @@ test_that("higher taxonomic ordering works for site phenometrics", {
     )
   })
 
-  expect_is(some_data,"data.frame")
+  expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 1000)
-  expect_is(some_data$class_id, "integer")
+  expect_type(some_data$class_id, "integer")
   expect_equal(some_data[1,]$class_id,15)
 
   less_data <- subset(some_data,species_id==6)
@@ -458,16 +416,9 @@ test_that("higher taxonomic ordering works for site phenometrics", {
 
 
 test_that("higher taxonomic ordering works for magnitude phenometrics", {
-
   skip_on_cran()
-  if(skip_long_tests){
-    skip("Skipping long tests")
-  }
-
-  npn_set_env(get_test_env())
-  if(!check_service()){
-    skip("Service is down")
-  }
+  skip_if(skip_long_tests, "Skipping long tests")
+  skip_if_not(check_service(), "Service is down")
 
   #Check the different taxonomic levels for
   #status data
@@ -482,9 +433,9 @@ test_that("higher taxonomic ordering works for magnitude phenometrics", {
     )
   })
 
-  expect_is(some_data,"data.frame")
+  expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 10)
-  expect_is(some_data$family_id, "integer")
+  expect_type(some_data$family_id, "integer")
   expect_equal(some_data[1,]$family_id,322)
 
   less_data <- subset(some_data,species_id==6)
@@ -501,9 +452,9 @@ test_that("higher taxonomic ordering works for magnitude phenometrics", {
     )
   })
 
-  expect_is(some_data,"data.frame")
+  expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 100)
-  expect_is(some_data$order_id, "integer")
+  expect_type(some_data$order_id, "integer")
   expect_equal(some_data[1,]$order_id,95)
 
   less_data <- subset(some_data,species_id==6)
@@ -520,9 +471,9 @@ test_that("higher taxonomic ordering works for magnitude phenometrics", {
     )
   })
 
-  expect_is(some_data,"data.frame")
+  expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 1000)
-  expect_is(some_data$class_id, "integer")
+  expect_type(some_data$class_id, "integer")
   expect_equal(some_data[1,]$class_id,15)
 
   less_data <- subset(some_data,species_id==6)
@@ -534,16 +485,9 @@ test_that("higher taxonomic ordering works for magnitude phenometrics", {
 
 
 test_that("higher level taxonomic agg and pheno agg works for site level",{
-
   skip_on_cran()
-  if(skip_long_tests){
-    skip("Skipping long tests")
-  }
-
-  npn_set_env(get_test_env())
-  if(!check_service()){
-    skip("Service is down")
-  }
+  skip_if(skip_long_tests, "Skipping long tests")
+  skip_if_not(check_service(), "Service is down")
 
   vcr::use_cassette("npn_download_site_phenometrics_pheno_agg_1", {
     some_data <- npn_download_site_phenometrics(
@@ -554,9 +498,9 @@ test_that("higher level taxonomic agg and pheno agg works for site level",{
     )
   })
 
-  expect_is(some_data,"data.frame")
+  expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 10)
-  expect_is(some_data$family_id, "integer")
+  expect_type(some_data$family_id, "integer")
   expect_equal(some_data[1,]$family_id,322)
   expect_null(some_data$species_id)
 
@@ -570,7 +514,7 @@ test_that("higher level taxonomic agg and pheno agg works for site level",{
     )
   })
 
-  expect_is(some_data,"data.frame")
+  expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 10)
   expect_null(some_data$phenophase_id)
 
@@ -585,26 +529,19 @@ test_that("higher level taxonomic agg and pheno agg works for site level",{
     )
   })
 
-  expect_is(some_data,"data.frame")
+  expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 100)
-  expect_is(some_data$pheno_class_name, "character")
-  expect_is(some_data$order_id, "integer")
+  expect_type(some_data$pheno_class_name, "character")
+  expect_type(some_data$order_id, "integer")
   expect_null(some_data$phenophase_id)
 
 
 })
 
 test_that("higher level taxonomic agg works for magnitude", {
-
   skip_on_cran()
-  if(skip_long_tests){
-    skip("Skipping long tests")
-  }
-
-  npn_set_env(get_test_env())
-  if(!check_service()){
-    skip("Service is down")
-  }
+  skip_if(skip_long_tests, "Skipping long tests")
+  skip_if_not(check_service(), "Service is down")
 
   vcr::use_cassette("npn_download_magnitude_phenometrics_pheno_agg_1", {
     some_data <- npn_download_magnitude_phenometrics(
@@ -615,9 +552,9 @@ test_that("higher level taxonomic agg works for magnitude", {
     )
   })
 
-  expect_is(some_data,"data.frame")
+  expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 10)
-  expect_is(some_data$family_id, "integer")
+  expect_type(some_data$family_id, "integer")
   expect_equal(some_data[1,]$family_id,322)
   expect_null(some_data$species_id)
 
@@ -630,7 +567,7 @@ test_that("higher level taxonomic agg works for magnitude", {
     )
   })
 
-  expect_is(some_data,"data.frame")
+  expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 10)
   expect_null(some_data$phenophase_id)
 
@@ -645,25 +582,19 @@ test_that("higher level taxonomic agg works for magnitude", {
     )
   })
 
-  expect_is(some_data,"data.frame")
+  expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 10)
-  expect_is(some_data$pheno_class_name, "character")
-  expect_is(some_data$order_id, "integer")
+  expect_type(some_data$pheno_class_name, "character")
+  expect_type(some_data$order_id, "integer")
   expect_null(some_data$phenophase_id)
 
 })
 
 test_that("six concordance works for status", {
-
   skip_on_cran()
-  if(skip_long_tests){
-    skip("Skipping long tests")
-  }
+  skip_if(skip_long_tests, "Skipping long tests")
+  skip_if_not(check_service(), "Service is down")
 
-  npn_set_env(get_test_env())
-  if(!check_service()){
-    skip("Service is down")
-  }
   vcr::use_cassette("npn_download_status_data_six_concord_1", {
     some_data <- npn_download_status_data(
      "Unit Test",
@@ -676,19 +607,19 @@ test_that("six concordance works for status", {
     )
   })
 
-  expect_is(some_data,"data.frame")
-  expect_is(some_data$`SI-x_Bloom_Value`,"numeric")
-  expect_is(some_data$`SI-x_Leaf_Value`,"numeric")
-  expect_is(some_data$`si-x:30yr_avg_4k_leaf`,"numeric")
-  expect_is(some_data$`gdd:agdd`,"numeric")
-  expect_gt(some_data[1,"SI-x_Bloom_Value"],-1)
-  expect_lt(some_data[1,"SI-x_Bloom_Value"],250)
+  expect_s3_class(some_data, "data.frame")
+  expect_type(some_data$`SI-x_Bloom_Value`, "double")
+  expect_type(some_data$`SI-x_Leaf_Value`, "double")
+  expect_type(some_data$`si-x:30yr_avg_4k_leaf`, "double")
+  expect_type(some_data$`gdd:agdd`, "double")
+  expect_gt(some_data[1,"SI-x_Bloom_Value"], -1)
+  expect_lt(some_data[1,"SI-x_Bloom_Value"], 250)
 
-  expect_gt(some_data[1,"SI-x_Leaf_Value"],-1)
-  expect_lt(some_data[1,"SI-x_Leaf_Value"],250)
+  expect_gt(some_data[1,"SI-x_Leaf_Value"], -1)
+  expect_lt(some_data[1,"SI-x_Leaf_Value"], 250)
 
-  expect_gt(some_data[1,"si-x:30yr_avg_4k_leaf"],-1)
-  expect_lt(some_data[1,"si-x:30yr_avg_4k_leaf"],250)
+  expect_gt(some_data[1,"si-x:30yr_avg_4k_leaf"], -1)
+  expect_lt(some_data[1,"si-x:30yr_avg_4k_leaf"], 250)
 
   expect_gt(some_data[1,"gdd:agdd"],-1)
 
@@ -746,17 +677,10 @@ test_that("six concordance works for status", {
 
 
 test_that("wkt filter works", {
-
   skip_on_cran()
-  if(skip_long_tests){
-    skip("Skipping long tests")
-  }
+  skip_if(skip_long_tests, "Skipping long tests")
+  skip_if_not(check_service(), "Service is down")
 
-
-  npn_set_env(get_test_env())
-  if(!check_service()){
-    skip("Service is down")
-  }
   #wkt is for CO
   wkt_def <- "POLYGON ((-102.04224 36.993083,-109.045223 36.999084,-109.050076 41.000659,-102.051614 41.002377,-102.04224 36.993083))"
 
@@ -780,8 +704,8 @@ test_that("wkt filter works", {
   })
   rows_w_filter <- nrow(some_data)
 
-  expect_is(some_data, "data.frame")
-  expect_is(some_data$species_id, "integer")
+  expect_s3_class(some_data, "data.frame")
+  expect_type(some_data$species_id, "integer")
   expect_equal(some_data[1,]$state,"CO")
   expect_gt(rows_wo_filter, rows_w_filter)
 
@@ -804,8 +728,8 @@ test_that("wkt filter works", {
   })
   rows_w_filter <- nrow(some_data)
 
-  expect_is(some_data, "data.frame")
-  expect_is(some_data$species_id, "integer")
+  expect_s3_class(some_data, "data.frame")
+  expect_type(some_data$species_id, "integer")
   expect_equal(some_data[1,]$state,"CO")
   expect_gt(rows_wo_filter, rows_w_filter)
 
@@ -829,8 +753,8 @@ test_that("wkt filter works", {
     rows_w_filter <- nrow(some_data)
   })
 
-  expect_is(some_data, "data.frame")
-  expect_is(some_data$species_id, "integer")
+  expect_s3_class(some_data, "data.frame")
+  expect_type(some_data$species_id, "integer")
   expect_equal(some_data[1,]$state,"CO")
   expect_gt(rows_wo_filter, rows_w_filter)
 
@@ -854,24 +778,17 @@ test_that("wkt filter works", {
   })
   rows_w_filter <- nrow(some_data)
 
-  expect_is(some_data, "data.frame")
-  expect_is(some_data$species_id, "integer")
+  expect_s3_class(some_data, "data.frame")
+  expect_type(some_data$species_id, "integer")
   expect_gt(rows_wo_filter, rows_w_filter)
 
 })
 
 
 test_that("frequency params work", {
-
   skip_on_cran()
-  if(skip_long_tests){
-    skip("Skipping long tests")
-  }
-
-  npn_set_env(get_test_env())
-  if(!check_service()){
-    skip("Service is down")
-  }
+  skip_if(skip_long_tests, "Skipping long tests")
+  skip_if_not(check_service(), "Service is down")
 
   vcr::use_cassette("npn_download_site_phenometrics_frequency_1", {
     some_data <- npn_download_site_phenometrics(

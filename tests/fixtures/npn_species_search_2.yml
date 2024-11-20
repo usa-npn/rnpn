@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://services-staging.usanpn.org/npn_portal/species/getSpeciesFilter.json?start_date=2013-01-01&end_date=2013-05-15
+    uri: https://services.usanpn.org/npn_portal/species/getSpeciesFilter.json?start_date=2013-01-01&end_date=2013-05-15
     body:
       encoding: ''
       string: ''
@@ -14,21 +14,15 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Tue, 19 Nov 2024 23:57:18 GMT
+      date: Wed, 20 Nov 2024 17:58:50 GMT
       content-type: application/json; charset=utf-8
+      server: Apache/2.4.62 () PHP/5.5.38
       x-powered-by: PHP/5.5.38
       pragma: no-cache
       cache-control: no-store, no-cache, max-age=0, must-revalidate
       access-control-allow-origin: '*'
       access-control-allow-headers: origin, x-requested-with, content-type
       access-control-allow-methods: PUT, GET, POST, DELETE, OPTIONS
-      cf-cache-status: DYNAMIC
-      report-to: '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v4?s=Piq%2BiyavbaJDz3id62xAlqfJG11ROjUwEP61XxQD%2F7m8eU86XKXrm9xFeEwUP0etxjns1a8ThTOUPUdKXsVAhEKR0BacAAjGngjXvw%2F2m6R1M8Oeu5mblVtD0cABV5cQY7Wb01HXa%2BwOXrqCqg%3D%3D"}],"group":"cf-nel","max_age":604800}'
-      nel: '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
-      server: cloudflare
-      cf-ray: 8e5423960d49e9e1-LAX
-      content-encoding: gzip
-      server-timing: cfL4;desc="?proto=TCP&rtt=48878&sent=96&recv=43&lost=0&retrans=1&sent_bytes=73576&recv_bytes=1291&delivery_rate=914893&cwnd=107&unsent_bytes=0&cid=7bb4ec05f65b8448&ts=68177&x=0"
     body:
       encoding: ''
       file: no
@@ -1695,8 +1689,8 @@ http_interactions:
         Family","class_id":15,"class_name":"Magnoliopsida","class_common_name":"Flowering
         Plants","order_id":93,"order_name":"Poales","order_common_name":"Grass, Sedge,
         Rush and Cattail Families","itis_taxonomic_sn":41335,"functional_type":"Graminoid","kingdom":"Plantae","number_observations":16},{"common_name":"river
-        chub","genus":"Nocomis","genus_common_name":"Hornyhead Chubs (Nocomis)","genus_id":825,"species":"micropogon","species_id":386,"family_id":222,"family_name":"Cyprinidae","family_common_name":"Carps
-        and Minnows","class_id":11,"class_name":"Teleostei","class_common_name":"Advanced
+        chub","genus":"Nocomis","genus_common_name":"Hornyhead Chubs (Nocomis)","genus_id":825,"species":"micropogon","species_id":386,"family_id":1331,"family_name":"Leuciscidae","family_common_name":"True
+        Minnows","class_id":11,"class_name":"Teleostei","class_common_name":"Advanced
         Ray-finned Fishes","order_id":58,"order_name":"Cypriniformes","order_common_name":"Carp-like
         Fishes","itis_taxonomic_sn":163392,"functional_type":"Fish","kingdom":"Animalia","number_observations":10},{"common_name":"Robert
         geranium","genus":"Geranium","genus_common_name":"Geraniums (Geranium)","genus_id":674,"species":"robertianum","species_id":883,"family_id":276,"family_name":"Geraniaceae","family_common_name":"Geranium
@@ -2112,7 +2106,7 @@ http_interactions:
         Family","class_id":15,"class_name":"Magnoliopsida","class_common_name":"Flowering
         Plants","order_id":79,"order_name":"Fagales","order_common_name":"Birch, Beech,
         Walnut and Bayberry Families","itis_taxonomic_sn":19370,"functional_type":"Deciduous
-        broadleaf","kingdom":"Plantae","number_observations":11255},{"common_name":"Van
+        broadleaf","kingdom":"Plantae","number_observations":10925},{"common_name":"Van
         Houtt''s spirea ","genus":"Spiraea","genus_common_name":"Meadowsweets (Spiraea)","genus_id":1014,"species":"vanhouttei","species_id":1031,"family_id":325,"family_name":"Rosaceae","family_common_name":"Rose
         Family","class_id":15,"class_name":"Magnoliopsida","class_common_name":"Flowering
         Plants","order_id":96,"order_name":"Rosales","order_common_name":"Oleaster,
@@ -2343,5 +2337,5 @@ http_interactions:
         Plants","order_id":96,"order_name":"Rosales","order_common_name":"Oleaster,
         Buckthorn, Rose and Elm Families","itis_taxonomic_sn":836663,"functional_type":"Deciduous
         broadleaf","kingdom":"Plantae","number_observations":20}]'
-  recorded_at: 2024-11-19 23:57:19 GMT
+  recorded_at: 2024-11-20 17:58:51 GMT
   recorded_with: vcr/1.6.0, webmockr/1.0.0
