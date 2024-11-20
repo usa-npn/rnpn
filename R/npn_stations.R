@@ -63,8 +63,8 @@ npn_stations_by_state <- function(...) {
 #' stations, including unique IDs, within that boundary.
 #'
 #' @export
-#' @template curl
 #' @param wkt Required field specifying the WKT geography to use.
+#' @param ... currently unused
 #' @return A data frame listing stations filtered based on the WKT geography.
 #' @examples \dontrun{
 #' head( npn_stations_by_state(wkt="POLYGON((
