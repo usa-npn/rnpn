@@ -5,7 +5,7 @@
 #' @export
 #' @param state_code The postal code of the US state by which to filter the
 #'   results returned. Leave empty to get all stations.
-#' @param ... currently unused
+#' @param ... Currently unused.
 #' @return A data frame with stations' latitude and longitude, names, and ids.
 #' @examples \dontrun{
 #' npn_stations()
@@ -33,28 +33,23 @@ npn_stations <- function(state_code=NULL, ...) {
 }
 
 
-
 #' Get number of stations by state.
 #'
 #' @export
-#' @template curl
+#' @param ... Currently unused.
 #' @return A data frame listing stations by state.
 #' @examples \dontrun{
-#' head( npn_stations_by_state() )
+#' head(npn_stations_by_state())
 #' }
 npn_stations_by_state <- function(...) {
-  tt <- npn_GET(paste0(base(), 'stations/getStationCountByState.json'), list(), ...)
-  states <- sapply(tt, function(x){
-    if (is.null(x[[1]]) == TRUE) {
-      x[[1]] <- "emptyvalue"
-    } else{
-      x[[1]] <- x[[1]]
-    }
-  })
-  data <- sapply(tt, "[[", "number_stations")
-  structure(
-    data.frame(states, data, stringsAsFactors = FALSE),
-    .Names = c("state", "number_stations"))
+  req <- base_req %>%
+    httr2::req_url_path_append('stations/getStationCountByState.json')
+  resp <- httr2::req_perform(req)
+  out <- httr2::resp_body_json(resp, simplifyVector = TRUE)
+  #Note: this function previously sanitized NULL values to "emptyvalue", but now
+  #they are automatically coerced to NAs by httr2.  I think that's ok
+  #return:
+  tibble::as_tibble(out)
 }
 
 #' Get station data based on a WKT defined geography.
@@ -64,7 +59,7 @@ npn_stations_by_state <- function(...) {
 #'
 #' @export
 #' @param wkt Required field specifying the WKT geography to use.
-#' @param ... currently unused
+#' @param ... Currently unused.
 #' @return A data frame listing stations filtered based on the WKT geography.
 #' @examples \dontrun{
 #' head( npn_stations_by_state(wkt="POLYGON((
@@ -93,8 +88,8 @@ npn_stations_by_location <- function(wkt, ...) {
 #'
 #' @export
 #' @param speciesid Required. Species id numbers, from 1 to infinity, potentially,
-#'    use e.g., c(52, 53, etc.) if more than one species desired (numeric).
-#' @param ... currently unused
+#'    use e.g., `c(52, 53, etc.)` if more than one species desired (numeric).
+#' @param ... Currently unused.
 #' @return A data frame with stations' latitude and longitude, names, and ids.
 #' @examples \dontrun{
 #' npn_stations_with_spp(speciesid = c(52,53,54))

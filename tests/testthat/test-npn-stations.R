@@ -23,7 +23,7 @@ test_that("npn_stations functions", {
 
 test_that("npn_stations_by_state functions", {
   skip_if_not(check_service(), "Service is down")
-  skip("API issues—skip for now")
+
   vcr::use_cassette("npn_stations_by_state", {
    res <- npn_stations_by_state()
   })
