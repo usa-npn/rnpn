@@ -172,16 +172,18 @@ npn_get_phenophases_for_taxon <- function(family_ids = NULL,
 #'
 #' Gets data on all abundance/intensity categories and includes a data frame of
 #' applicable abundance/intensity values for each category
-#' @return A data frame listing all abundance/intensity categories and their corresponding values.
+#' @param ... Currently unused.
+#' @return A data frame listing all abundance/intensity categories and their
+#'   corresponding values.
 #' @export
-#' @template curl
-npn_abundance_categories <- function ( ...){
+npn_abundance_categories <- function(...) {
   req <- base_req %>%
     httr2::req_url_path_append('phenophases/getAbundanceCategories.json')
-
-  tibble::as_tibble(
-    npn_GET(paste0(base(), 'phenophases/getAbundanceCategories.json'), list(), TRUE, ...)
-  )
-
+  resp <- httr2::req_perform(req)
+  out <- httr2::resp_body_json(resp, simplifyVector = TRUE)
+  #return:
+  tibble::as_tibble(out)
+  #TODO: consider unnesting
+  #tibble::as_tibble(out) %>% tidyr::unnest(category_values)
 }
 
