@@ -1,61 +1,61 @@
-
-
-
-
 #' Get Phenophases
 #'
 #' Retrieves a complete list of all phenophases in the NPN database.
-#' @template curl
-#' @return A data frame listing all phenophases available in the NPN database.
+#' @param ... Currently unused.
+#' @return A tibble listing all phenophases available in the NPN database.
 #' @export
-#'
-npn_phenophases <- function( ...) {
-
-  tibble::as_tibble(
-    npn_GET(paste0(base(), 'phenophases/getPhenophases.json'), list(), TRUE, ...)
-  )
-
+npn_phenophases <- function(...) {
+  req <-
+    base_req %>%
+    httr2::req_url_path_append('phenophases/getPhenophases.json')
+  resp <- httr2::req_perform(req)
+  out <- httr2::resp_body_json(resp, simplifyVector = TRUE)
+  #return:
+  tibble::as_tibble(out)
 }
 
 #' Get Phenophase Definitions
 #'
 #' Retrieves a complete list of all phenophase definitions.
 #'
-#' @template curl
-#' @return A data frame listing all phenophases in the NPN database and their definitions.
+#' @param ... Currently unused.
+#' @return A tibble listing all phenophases in the NPN database and their
+#'   definitions.
 #' @export
-npn_phenophase_definitions <- function ( ... ){
-  tibble::as_tibble(
-    npn_GET(paste0(base(), 'phenophases/getPhenophaseDefinitionDetails.json'), list(), TRUE, ...)
-  )
+npn_phenophase_definitions <- function(...) {
+  req <- base_req %>%
+    httr2::req_url_path_append('phenophases/getPhenophaseDefinitionDetails.json')
+  resp <- httr2::req_perform(req)
+  out <- httr2::resp_body_json(resp, simplifyVector = TRUE)
+  #return:
+  tibble::as_tibble(out)
 }
 
 
 #' Get Phenophase Details
 #'
-#' Retrieves additional details for select phenophases, including full list of applicable phenophase definition IDs and phenophase
-#' revision notes over time
+#' Retrieves additional details for select phenophases, including full list of
+#' applicable phenophase definition IDs and phenophase revision notes over time
 #'
-#' @param ids Takes a list of phenophase ids for which to retrieve additional details.
-#' @template curl
-#' @return A data frame listing phenophases in the NPN database, including detailed information for each, filtered by the phenophase ID.
+#' @param ids Takes a vector of phenophase ids for which to retrieve additional
+#'   details.
+#' @param ... Currently unused.
+#' @return A tibble listing phenophases in the NPN database, including
+#'   detailed information for each, filtered by the phenophase ID.
 #' @export
-npn_phenophase_details <- function (ids=list(), ...){
-
-  if(typeof(ids) == "character"){
-    message("Invalid input, function expects a list or double as input")
-    return(NULL)
+npn_phenophase_details <- function(ids = NULL, ...) {
+  if (!is.null(ids) & !is.numeric(ids)) {
+      message("Invalid input, function expects a numeric vector as input")
+      return(tibble::tibble())
   }
+  req <- base_req %>%
+    httr2::req_url_path_append('phenophases/getPhenophaseDetails.json') %>%
+    httr2::req_url_query(ids = ids, .multi = "comma")
 
-  if(typeof(ids) == "double"){
-    ids <- list(ids)
-  }
-
-  tibble::as_tibble(
-
-    npn_GET(paste0(base(), 'phenophases/getPhenophaseDetails.json'), list(ids = paste(ids,sep="",collapse = ',')), TRUE, ...)
-  )
-
+  resp <- httr2::req_perform(req)
+  out <- httr2::resp_body_json(resp, simplifyVector = TRUE)
+  #return:
+  tibble::as_tibble(out)
 }
 
 
@@ -69,10 +69,15 @@ npn_phenophase_details <- function (ids=list(), ...){
 #' @return A data frame listing phenophases in the NPN database for the specified species and date.
 #' @export
 npn_phenophases_by_species <- function (species_ids, date, ...){
-  arg_list<-npn_createArgList("species_id", species_ids)
-  tibble::as_tibble(
-    npn_GET(paste0(base(), 'phenophases/getPhenophasesForSpecies.json'), c(arg_list, date=date), TRUE, ...)
-  )
+  species_ids <- npn_createArgList("species_id", species_ids)
+  req <- base_req %>%
+    httr2::req_url_path_append('phenophases/getPhenophasesForSpecies.json') %>%
+    httr2::req_url_query(!!!species_ids) %>%
+    httr2::req_url_query(date = date)
+
+  resp <- httr2::req_perform(req)
+  out <- httr2::resp_body_json(resp, simplifyVector = TRUE)
+  tidyr::unnest(tibble::as_tibble(out), phenophases)
 }
 
 #' Get Pheno Classes

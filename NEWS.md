@@ -1,5 +1,8 @@
 # rnpn (development version)
 
+* `npn_phenophase_details()` now takes a vector of phenophase IDs rather than a list
+* Functions that previously returned `data.frame` objects now return tibbles. Where they previously returned `NULL` on errors, they now return empty 0x0 tibbles.
+
 # rnpn 1.2.9 (2024-08-18)
 
 ### NEW FEATURES

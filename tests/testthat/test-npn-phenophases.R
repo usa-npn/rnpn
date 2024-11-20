@@ -36,13 +36,13 @@ test_that("npn_phenophase_details works", {
   expect_type(pd$phenophase_names, "character")
   expect_equal(trimws(pd[1,"phenophase_names"]), "First leaf")
 
-  pd <- npn_phenophase_details(list(56,57))
+  pd <- npn_phenophase_details(c(56, 57))
 
   expect_s3_class(pd, "data.frame")
   expect_type(pd$phenophase_names, "character")
   expect_equal(trimws(pd[1,"phenophase_names"]), "First leaf")
 
-  expect_null(npn_phenophase_details("56,61"))
+  expect_identical(npn_phenophase_details("56,61"), tibble::tibble())
 })
 
 
