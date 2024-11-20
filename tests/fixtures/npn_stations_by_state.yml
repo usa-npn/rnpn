@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://services-staging.usanpn.org/npn_portal/stations/getStationCountByState.json
+    uri: https://services.usanpn.org/npn_portal/stations/getStationCountByState.json
     body:
       encoding: ''
       string: ''
@@ -14,24 +14,19 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Tue, 12 Nov 2024 20:42:36 GMT
+      date: Wed, 13 Nov 2024 00:28:47 GMT
       content-type: application/json; charset=utf-8
       content-length: '0'
+      server: Apache/2.4.62 () PHP/5.5.38
       x-powered-by: PHP/5.5.38
       pragma: no-cache
       cache-control: no-store, no-cache, max-age=0, must-revalidate
       access-control-allow-origin: '*'
       access-control-allow-headers: origin, x-requested-with, content-type
       access-control-allow-methods: PUT, GET, POST, DELETE, OPTIONS
-      cf-cache-status: DYNAMIC
-      report-to: '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v4?s=RT297nhCJz35D%2BdpSoR86It1Yx6%2BYjr0F6qtkn%2FepI5wopYjC1cBza4%2B9l2UOcWNxfBaak82Z1rjw5k4Bpl31%2Bj2kBQcMz0PVPG9rbiNgm9tYVfytD9hqdgGXaXxZZ6khtX467P4rXc6NWjivA%3D%3D"}],"group":"cf-nel","max_age":604800}'
-      nel: '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
-      server: cloudflare
-      cf-ray: 8e1959764a6d2acb-LAX
-      server-timing: cfL4;desc="?proto=TCP&rtt=72906&sent=132&recv=84&lost=0&retrans=4&sent_bytes=32470&recv_bytes=2899&delivery_rate=256280&cwnd=211&unsent_bytes=0&cid=3807723b6edea19c&ts=113586&x=0"
     body:
       encoding: ''
       file: no
       string: ''
-  recorded_at: 2024-11-12 20:42:33 GMT
+  recorded_at: 2024-11-13 00:28:46 GMT
   recorded_with: vcr/1.6.0, webmockr/1.0.0
