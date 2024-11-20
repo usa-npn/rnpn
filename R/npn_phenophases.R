@@ -109,32 +109,63 @@ npn_pheno_classes <- function(...) {
 #' Get Phenophases for Taxon
 #'
 #'
-#' This function gets a list of phenophases that are applicable for a provided taxonomic grouping, e.g. family, order.
-#' Note that since a higher taxononmic order will aggregate individual species not every phenophase returned through this
-#' function will be applicable for every species belonging to that taxonomic group.
+#' This function gets a list of phenophases that are applicable for a provided
+#' taxonomic grouping, e.g. family, order. Note that since a higher taxononmic
+#' order will aggregate individual species not every phenophase returned through
+#' this function will be applicable for every species belonging to that
+#' taxonomic group.
 #'
-#' It's also important to note that phenophase definitions can change for individual species over time, so there's a need
-#' to specify either a date of interest, or to explicitly state that the function should return all phenophases that were
-#' ever applicable for any species belonging to the specified taxonomic group.
+#' It's also important to note that phenophase definitions can change for
+#' individual species over time, so there's a need to specify either a date of
+#' interest, or to explicitly state that the function should return all
+#' phenophases that were ever applicable for any species belonging to the
+#' specified taxonomic group.
 #'
-#' When called, this function requires of these three parameters, exactly one of family_ids, order_ids or class_ids to be set.
+#' When called, this function requires of these three parameters, exactly one of
+#' `family_ids`, `order_ids` or `class_ids` to be set.
 #'
 #' @param family_ids List of taxonomic family ids to search for.
 #' @param order_ids List of taxonomic order ids to search for.
 #' @param class_ids List of taxonomic class ids to search for
 #' @param genus_ids List of taxonomic genus ids to search for
-#' @param date Specify the date of interest. For this function to return anything, either this value must be set of return_all must be 1.
-#' @param return_all Takes either 0 or 1 as input and defaults to 0. For this function to return anything, either this value must be set to 1
-#' or date must be set.
-#' @return A data frame listing phenophases in the NPN database for the specified taxon and date.
+#' @param date Specify the date of interest. For this function to return
+#'   anything, either this value must be set or `return_all` must be 1.
+#' @param return_all Takes either 0 or 1 as input and defaults to 0. For this
+#'   function to return anything, either this value must be set to 1 or date
+#'   must be set.
+#' @param ... Currently unused.
+#' @return A data frame listing phenophases in the NPN database for the
+#'   specified taxon and date.
 #' @export
-#' @template curl
-npn_get_phenophases_for_taxon <- function (family_ids=NULL,order_ids=NULL,class_ids=NULL,genus_ids=NULL,date=NULL,return_all=0, ...){
+npn_get_phenophases_for_taxon <- function(family_ids = NULL,
+                                          order_ids = NULL,
+                                          class_ids = NULL,
+                                          genus_ids = NULL,
+                                          date = NULL,
+                                          return_all = 0, #TODO switch to TRUE or FALSE?
+                                          ...) {
   family_list <- npn_createArgList("family_id", family_ids)
   class_list <- npn_createArgList("class_id", class_ids)
   order_list <- npn_createArgList("order_id", order_ids)
   genus_list <- npn_createArgList("genus_id", genus_ids)
-  npn_GET(paste0(base(), 'phenophases/getPhenophasesForTaxon.json'), c(family_list, class_list, order_list, genus_list, date=date,return_all=return_all), FALSE, ...)
+
+  req <- base_req %>%
+    httr2::req_url_path_append('phenophases/getPhenophasesForTaxon.json') %>%
+    httr2::req_url_query(
+      !!!family_list,
+      !!!class_list,
+      !!!order_list,
+      !!!genus_list,
+      date = date,
+      return_all = return_all
+    )
+  resp <- httr2::req_perform(req)
+  out <- httr2::resp_body_json(resp, simplifyVector = TRUE)
+
+  #return:
+  tibble::as_tibble(out)
+  #TODO this data frame has a list-column.  Consider unnesting?
+  # tidyr::unnest(tibble::as_tibble(out), phenophases)
 }
 
 #' Get Abundance Categories
@@ -145,7 +176,8 @@ npn_get_phenophases_for_taxon <- function (family_ids=NULL,order_ids=NULL,class_
 #' @export
 #' @template curl
 npn_abundance_categories <- function ( ...){
-
+  req <- base_req %>%
+    httr2::req_url_path_append('phenophases/getAbundanceCategories.json')
 
   tibble::as_tibble(
     npn_GET(paste0(base(), 'phenophases/getAbundanceCategories.json'), list(), TRUE, ...)
