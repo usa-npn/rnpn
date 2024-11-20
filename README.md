@@ -11,7 +11,7 @@ status](https://www.r-pkg.org/badges/version/rnpn)](https://CRAN.R-project.org/p
 [![R build
 status](https://github.com/usa-npn/rnpn//workflows/R-CMD-check/badge.svg)](https://github.com/usa-npn/rnpn/actions/workflows/R-CMD-check.yaml)
 [![Codecov test
-coverage](https://codecov.io/gh/usa-npn/rnpn/branch/master/graph/badge.svg)](https://app.codecov.io/gh/usa-npn/rnpn?branch=master)
+coverage](https://codecov.io/gh/usa-npn/rnpn/graph/badge.svg)](https://app.codecov.io/gh/usa-npn/rnpn)
 <!-- badges: end -->
 
 `rnpn` is an R client for interacting with the USA National Phenology
@@ -85,7 +85,12 @@ various levels of aggregation. At the most basic level you can download
 the raw status and intensity data.
 
 ``` r
-some_data <- npn_download_status_data(request_source='Your Name or Org Here',years=c(2015),species_id=c(35),states=c('AZ','IL'))
+some_data <- npn_download_status_data(
+  request_source = 'Your Name or Org Here',
+  years = c(2015),
+  species_id = c(35),
+  states = c('AZ', 'IL')
+)
 ```
 
 Note that through this API, data can only be filtered chronologically by
@@ -110,7 +115,12 @@ You can then use the name of the layers to select and download
 geospatial data as a raster.
 
 ``` r
-npn_download_geospatial(coverage_id = 'si-x:lilac_leaf_ncep_historic',date='2016-12-31',format='geotiff',output_path='./six-test-raster.tiff')
+npn_download_geospatial(
+  coverage_id = 'si-x:lilac_leaf_ncep_historic',
+  date = '2016-12-31',
+  format = 'geotiff',
+  output_path = './six-test-raster.tiff'
+)
 ```
 
 ## Example of combined observational and geospatial data
@@ -146,5 +156,3 @@ Service (F16AC01075 and F19AC00168).
 - Please note that this package is released with a [Contributor Code of
   Conduct](https://ropensci.org/code-of-conduct/). By contributing to
   this project, you agree to abide by its terms.
-
-[![image](http://ropensci.org/public_images/github_footer.png)](https://ropensci.org/)
