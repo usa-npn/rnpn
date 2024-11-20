@@ -104,9 +104,7 @@ npn_stations_by_location <- function(wkt, ...) {
 npn_stations_with_spp <- function(speciesid, ...) {
   #TODO this doesn't work with speciesid = 3 (and possibly others) for some reason
   #https://github.com/usa-npn/rnpn/issues/38
-  speciesid <- as.list(
-    rlang::set_names(speciesid, paste0("species_id[", seq_along(speciesid), "]"))
-  )
+  speciesid <- npn_createArgList("species_id", speciesid)
   req <- base_req %>%
     httr2::req_url_path_append('stations/getStationsWithSpecies.json') %>%
     httr2::req_url_query(!!!speciesid)
