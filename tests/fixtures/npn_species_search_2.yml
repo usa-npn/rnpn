@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://services-staging.usanpn.org/npn_portal/species/getSpeciesFilter.json?start_date=2013-01-01&end_date=2013-05-15
+    uri: https://services.usanpn.org/npn_portal/species/getSpeciesFilter.json?start_date=2013-01-01&end_date=2013-05-15
     body:
       encoding: ''
       string: ''
@@ -14,9 +14,9 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Tue, 23 Jan 2024 19:53:04 GMT
+      date: Tue, 12 Nov 2024 23:37:21 GMT
       content-type: application/json; charset=utf-8
-      server: Apache/2.4.58 () PHP/5.5.38
+      server: Apache/2.4.62 () PHP/5.5.38
       x-powered-by: PHP/5.5.38
       pragma: no-cache
       cache-control: no-store, no-cache, max-age=0, must-revalidate
@@ -1689,8 +1689,8 @@ http_interactions:
         Family","class_id":15,"class_name":"Magnoliopsida","class_common_name":"Flowering
         Plants","order_id":93,"order_name":"Poales","order_common_name":"Grass, Sedge,
         Rush and Cattail Families","itis_taxonomic_sn":41335,"functional_type":"Graminoid","kingdom":"Plantae","number_observations":16},{"common_name":"river
-        chub","genus":"Nocomis","genus_common_name":"Hornyhead Chubs (Nocomis)","genus_id":825,"species":"micropogon","species_id":386,"family_id":222,"family_name":"Cyprinidae","family_common_name":"Carps
-        and Minnows","class_id":11,"class_name":"Teleostei","class_common_name":"Advanced
+        chub","genus":"Nocomis","genus_common_name":"Hornyhead Chubs (Nocomis)","genus_id":825,"species":"micropogon","species_id":386,"family_id":1331,"family_name":"Leuciscidae","family_common_name":"True
+        Minnows","class_id":11,"class_name":"Teleostei","class_common_name":"Advanced
         Ray-finned Fishes","order_id":58,"order_name":"Cypriniformes","order_common_name":"Carp-like
         Fishes","itis_taxonomic_sn":163392,"functional_type":"Fish","kingdom":"Animalia","number_observations":10},{"common_name":"Robert
         geranium","genus":"Geranium","genus_common_name":"Geraniums (Geranium)","genus_id":674,"species":"robertianum","species_id":883,"family_id":276,"family_name":"Geraniaceae","family_common_name":"Geranium
@@ -2106,7 +2106,7 @@ http_interactions:
         Family","class_id":15,"class_name":"Magnoliopsida","class_common_name":"Flowering
         Plants","order_id":79,"order_name":"Fagales","order_common_name":"Birch, Beech,
         Walnut and Bayberry Families","itis_taxonomic_sn":19370,"functional_type":"Deciduous
-        broadleaf","kingdom":"Plantae","number_observations":11255},{"common_name":"Van
+        broadleaf","kingdom":"Plantae","number_observations":10925},{"common_name":"Van
         Houtt''s spirea ","genus":"Spiraea","genus_common_name":"Meadowsweets (Spiraea)","genus_id":1014,"species":"vanhouttei","species_id":1031,"family_id":325,"family_name":"Rosaceae","family_common_name":"Rose
         Family","class_id":15,"class_name":"Magnoliopsida","class_common_name":"Flowering
         Plants","order_id":96,"order_name":"Rosales","order_common_name":"Oleaster,
@@ -2337,5 +2337,5 @@ http_interactions:
         Plants","order_id":96,"order_name":"Rosales","order_common_name":"Oleaster,
         Buckthorn, Rose and Elm Families","itis_taxonomic_sn":836663,"functional_type":"Deciduous
         broadleaf","kingdom":"Plantae","number_observations":20}]'
-  recorded_at: 2024-01-23 19:53:05 GMT
-  recorded_with: vcr/1.2.2, webmockr/0.9.0
+  recorded_at: 2024-11-12 23:37:22 GMT
+  recorded_with: vcr/1.6.0, webmockr/1.0.0

@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://services-staging.usanpn.org/npn_portal/species/getPlantTypes.json
+    uri: https://services.usanpn.org/npn_portal/species/getPlantTypes.json
     body:
       encoding: ''
       string: ''
@@ -14,10 +14,10 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Tue, 23 Jan 2024 19:53:08 GMT
+      date: Tue, 12 Nov 2024 23:37:24 GMT
       content-type: application/json; charset=utf-8
       content-length: '1736'
-      server: Apache/2.4.58 () PHP/5.5.38
+      server: Apache/2.4.62 () PHP/5.5.38
       x-powered-by: PHP/5.5.38
       pragma: no-cache
       cache-control: no-store, no-cache, max-age=0, must-revalidate
@@ -27,8 +27,8 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: '[{"species_type":"Ornamental","species_type_id":1,"species_count":523},{"species_type":"Deciduous","species_type_id":2,"species_count":489},{"species_type":"Forb","species_type_id":3,"species_count":609},{"species_type":"Invasive
-        Plants","species_type_id":4,"species_count":154},{"species_type":"Allergen","species_type_id":5,"species_count":196},{"species_type":"Crop","species_type_id":6,"species_count":67},{"species_type":"Aquatic","species_type_id":7,"species_count":33},{"species_type":"Vine","species_type_id":8,"species_count":39},{"species_type":"Evergreen","species_type_id":9,"species_count":322},{"species_type":"Cloned","species_type_id":10,"species_count":3},{"species_type":"Coniferous","species_type_id":11,"species_count":50},{"species_type":"Grass\/Sedge\/Rush","species_type_id":12,"species_count":124},{"species_type":"Cactus","species_type_id":13,"species_count":18},{"species_type":"Calibration","species_type_id":29,"species_count":20},{"species_type":"Green
+      string: '[{"species_type":"Ornamental","species_type_id":1,"species_count":556},{"species_type":"Deciduous","species_type_id":2,"species_count":517},{"species_type":"Forb","species_type_id":3,"species_count":644},{"species_type":"Invasive
+        Plants","species_type_id":4,"species_count":167},{"species_type":"Allergen","species_type_id":5,"species_count":204},{"species_type":"Crop","species_type_id":6,"species_count":81},{"species_type":"Aquatic","species_type_id":7,"species_count":33},{"species_type":"Vine","species_type_id":8,"species_count":45},{"species_type":"Evergreen","species_type_id":9,"species_count":338},{"species_type":"Cloned","species_type_id":10,"species_count":3},{"species_type":"Coniferous","species_type_id":11,"species_count":52},{"species_type":"Grass\/Sedge\/Rush","species_type_id":12,"species_count":140},{"species_type":"Cactus","species_type_id":13,"species_count":18},{"species_type":"Calibration","species_type_id":29,"species_count":20},{"species_type":"Green
         Wave Campaign","species_type_id":31,"species_count":47},{"species_type":"Shady
         Invaders Campaign","species_type_id":32,"species_count":15},{"species_type":"Southwest
         Season Trackers Campaign","species_type_id":33,"species_count":14},{"species_type":"Nectar
@@ -38,11 +38,11 @@ http_interactions:
         Plant Trackers Campaign","species_type_id":41,"species_count":3},{"species_type":"The
         Redbud Phenology Project Campaign","species_type_id":42,"species_count":2},{"species_type":"Quercus
         Quest Campaign","species_type_id":43,"species_count":11}]'
-  recorded_at: 2024-01-23 19:53:08 GMT
-  recorded_with: vcr/1.2.2, webmockr/0.9.0
+  recorded_at: 2024-11-12 23:37:24 GMT
+  recorded_with: vcr/1.6.0, webmockr/1.0.0
 - request:
     method: get
-    uri: https://services-staging.usanpn.org/npn_portal/species/getAnimalTypes.json
+    uri: https://services.usanpn.org/npn_portal/species/getAnimalTypes.json
     body:
       encoding: ''
       string: ''
@@ -55,10 +55,10 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Tue, 23 Jan 2024 19:53:08 GMT
+      date: Tue, 12 Nov 2024 23:37:24 GMT
       content-type: application/json; charset=utf-8
       content-length: '1457'
-      server: Apache/2.4.58 () PHP/5.5.38
+      server: Apache/2.4.62 () PHP/5.5.38
       x-powered-by: PHP/5.5.38
       pragma: no-cache
       cache-control: no-store, no-cache, max-age=0, must-revalidate
@@ -68,19 +68,19 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: '[{"species_type":"Amphibian","species_type_id":14,"species_count":40},{"species_type":"Bird","species_type_id":15,"species_count":165},{"species_type":"Fish","species_type_id":16,"species_count":22},{"species_type":"Insect
-        - Butterfly\/Moth","species_type_id":17,"species_count":39},{"species_type":"Mammal","species_type_id":18,"species_count":40},{"species_type":"Dragonfly\/Damselfly","species_type_id":19,"species_count":1},{"species_type":"Reptile","species_type_id":20,"species_count":28},{"species_type":"Insect
+      string: '[{"species_type":"Amphibian","species_type_id":14,"species_count":41},{"species_type":"Bird","species_type_id":15,"species_count":168},{"species_type":"Fish","species_type_id":16,"species_count":22},{"species_type":"Insect
+        - Butterfly\/Moth","species_type_id":17,"species_count":40},{"species_type":"Mammal","species_type_id":18,"species_count":40},{"species_type":"Dragonfly\/Damselfly","species_type_id":19,"species_count":1},{"species_type":"Reptile","species_type_id":20,"species_count":28},{"species_type":"Insect
         - Beetle","species_type_id":21,"species_count":12},{"species_type":"Insect
-        - Bee\/Ant\/Termite","species_type_id":22,"species_count":13},{"species_type":"Insect
+        - Bee\/Ant\/Termite","species_type_id":22,"species_count":14},{"species_type":"Insect
         - Aquatic","species_type_id":23,"species_count":18},{"species_type":"Insect
         - Grasshopper\/Cricket","species_type_id":24,"species_count":2},{"species_type":"Insect
-        - All","species_type_id":25,"species_count":94},{"species_type":"Reptile and
+        - All","species_type_id":25,"species_count":96},{"species_type":"Reptile and
         Amphibian","species_type_id":27,"species_count":68},{"species_type":"Invasive
-        Animals","species_type_id":28,"species_count":15},{"species_type":"Insect
+        Animals","species_type_id":28,"species_count":16},{"species_type":"Insect
         - Plant Pest","species_type_id":30,"species_count":19},{"species_type":"Insect
         - True Bug\/Cicada\/Aphid\/Scale","species_type_id":36,"species_count":7},{"species_type":"Insect
         - Fly","species_type_id":37,"species_count":3},{"species_type":"Pest Patrol
         Campaign","species_type_id":38,"species_count":13},{"species_type":"Mayfly
         Watch Campaign","species_type_id":39,"species_count":3}]'
-  recorded_at: 2024-01-23 19:53:08 GMT
-  recorded_with: vcr/1.2.2, webmockr/0.9.0
+  recorded_at: 2024-11-12 23:37:24 GMT
+  recorded_with: vcr/1.6.0, webmockr/1.0.0

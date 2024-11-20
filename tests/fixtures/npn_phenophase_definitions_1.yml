@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://services-staging.usanpn.org/npn_portal/phenophases/getPhenophaseDefinitionDetails.json
+    uri: https://services.usanpn.org/npn_portal/phenophases/getPhenophaseDefinitionDetails.json
     body:
       encoding: ''
       string: ''
@@ -14,9 +14,9 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Tue, 23 Jan 2024 19:53:24 GMT
+      date: Wed, 13 Nov 2024 00:26:31 GMT
       content-type: application/json; charset=utf-8
-      server: Apache/2.4.58 () PHP/5.5.38
+      server: Apache/2.4.62 () PHP/5.5.38
       x-powered-by: PHP/5.5.38
       pragma: no-cache
       cache-control: no-store, no-cache, max-age=0, must-revalidate
@@ -1327,5 +1327,5 @@ http_interactions:
         dried or dead leaves.","start_date":"2022-03-10 00:00:00","end_date":null,"comments":null},{"definition_id":635,"dataset_id":null,"phenophase_id":549,"phenophase_name":"Mating","definition":"A
         male and female are seen coupled in a mating position, usually one on top
         of the other or end to end.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null}]'
-  recorded_at: 2024-01-23 19:53:24 GMT
-  recorded_with: vcr/1.2.2, webmockr/0.9.0
+  recorded_at: 2024-11-13 00:26:31 GMT
+  recorded_with: vcr/1.6.0, webmockr/1.0.0

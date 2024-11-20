@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://services-staging.usanpn.org/npn_portal/stations/getStationsByLocation.json?wkt=POLYGON%28%28-110.94484396954107%2032.23623109416672%2C-110.96166678448247%2032.23594069208043%2C-110.95960684795904%2032.21328646993733%2C-110.94244071026372%2032.21343170728929%2C-110.93935080547857%2032.23216538049456%2C-110.94484396954107%2032.23623109416672%29%29
+    uri: https://services.usanpn.org/npn_portal/stations/getStationsByLocation.json?wkt=POLYGON%28%28-110.94484396954107%2032.23623109416672%2C-110.96166678448247%2032.23594069208043%2C-110.95960684795904%2032.21328646993733%2C-110.94244071026372%2032.21343170728929%2C-110.93935080547857%2032.23216538049456%2C-110.94484396954107%2032.23623109416672%29%29
     body:
       encoding: ''
       string: ''
@@ -14,9 +14,9 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Tue, 23 Jan 2024 19:53:41 GMT
+      date: Wed, 13 Nov 2024 00:28:47 GMT
       content-type: application/json
-      server: Apache/2.4.58 () PHP/5.5.38
+      server: Apache/2.4.62 () PHP/5.5.38
       x-powered-by: PHP/5.5.38
       access-control-allow-origin: '*'
       access-control-allow-headers: origin, x-requested-with, content-type
@@ -192,6 +192,15 @@ http_interactions:
         Gardens","station_id":50307},{"latitude":32.226910,"longitude":-110.949234,"station_name":"Whitewater
         Draw","station_id":50448},{"latitude":32.231373,"longitude":-110.960030,"station_name":"back
         lot","station_id":50713},{"latitude":32.225021,"longitude":-110.944588,"station_name":"Home
-        Wash","station_id":52167}]'
-  recorded_at: 2024-01-23 19:53:41 GMT
-  recorded_with: vcr/1.2.2, webmockr/0.9.0
+        Wash","station_id":52167},{"latitude":32.231895,"longitude":-110.950989,"station_name":"Garden","station_id":52320},{"latitude":32.234650,"longitude":-110.960335,"station_name":"Home","station_id":52522},{"latitude":32.227001,"longitude":-110.960197,"station_name":"THMS","station_id":52603},{"latitude":32.227100,"longitude":-110.960197,"station_name":"T
+        building ","station_id":52604},{"latitude":32.233284,"longitude":-110.948799,"station_name":"University
+        of Arizona","station_id":52667},{"latitude":32.228298,"longitude":-110.955276,"station_name":"campus
+        ","station_id":52731},{"latitude":32.227112,"longitude":-110.951454,"station_name":"Community
+        Garden","station_id":52795},{"latitude":32.233345,"longitude":-110.959702,"station_name":"My
+        Apartment Complex","station_id":52899},{"latitude":32.228828,"longitude":-110.951393,"station_name":"Home","station_id":52915},{"latitude":32.230801,"longitude":-110.950401,"station_name":"Campus","station_id":53193},{"latitude":32.222237,"longitude":-110.949326,"station_name":"My
+        backyard","station_id":53210},{"latitude":32.230240,"longitude":-110.949959,"station_name":"Dorm","station_id":53213},{"latitude":32.228901,"longitude":-110.953300,"station_name":"TheearthwormUA","station_id":53216},{"latitude":32.231636,"longitude":-110.949326,"station_name":"University
+        of Arizona","station_id":53223},{"latitude":32.230499,"longitude":-110.952400,"station_name":"W
+        Rush Desert Milkweed W of BSE","station_id":53597},{"latitude":32.230862,"longitude":-110.951500,"station_name":"Campus","station_id":53872},{"latitude":32.231899,"longitude":-110.950897,"station_name":"Tucson","station_id":53962},{"latitude":32.230427,"longitude":-110.951363,"station_name":"My
+        backyard","station_id":54230},{"latitude":32.228352,"longitude":-110.955147,"station_name":"Theearthworm","station_id":54783}]'
+  recorded_at: 2024-11-13 00:28:47 GMT
+  recorded_with: vcr/1.6.0, webmockr/1.0.0

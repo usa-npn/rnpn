@@ -9,7 +9,6 @@
 #' @importFrom utils URLencode download.file object.size write.table
 #' @name rnpn-package
 #' @aliases rnpn
-#' @docType package
 #' @keywords package
-NULL
+"_PACKAGE"
 

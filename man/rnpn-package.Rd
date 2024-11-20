@@ -8,4 +8,29 @@
 \description{
 This package allows for easy access to the National Phenology Network's Data API. To learn more, take a look at the vignettes.
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/usa-npn/rnpn}
+  \item Report bugs at \url{https://github.com/usa-npn/rnpn/issues}
+}
+
+}
+\author{
+\strong{Maintainer}: Jeff Switzer \email{jeff@usanpn.org}
+
+Authors:
+\itemize{
+  \item Scott Chamberlain
+  \item Lee Marsh
+  \item Kevin Wong
+}
+
+Other contributors:
+\itemize{
+  \item David LeBauer [contributor]
+  \item Eric R Scott [contributor]
+}
+
+}
 \keyword{package}

@@ -34,8 +34,9 @@ Suggests:
     markdown,
     rmarkdown,
     RColorBrewer,
-    vcr
-RoxygenNote: 7.2.3
+    vcr,
+    withr
+RoxygenNote: 7.3.2
 Encoding: UTF-8
 VignetteBuilder: knitr
 URL: https://github.com/usa-npn/rnpn

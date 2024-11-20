@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://services-staging.usanpn.org/npn_portal/observations/getDatasetDetails.json
+    uri: https://services.usanpn.org/npn_portal/observations/getDatasetDetails.json
     body:
       encoding: ''
       string: ''
@@ -14,10 +14,10 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Tue, 23 Jan 2024 19:48:44 GMT
+      date: Wed, 13 Nov 2024 00:52:12 GMT
       content-type: application/json; charset=utf-8
       content-length: '6339'
-      server: Apache/2.4.58 () PHP/5.5.38
+      server: Apache/2.4.62 () PHP/5.5.38
       x-powered-by: PHP/5.5.38
       pragma: no-cache
       cache-control: no-store, no-cache, max-age=0, must-revalidate
@@ -74,5 +74,5 @@ http_interactions:
         NWR 2012-2019","dataset_description":"Patuxent National Wildlife Refuge phenology
         using Project Budburst protocols, 2012-2019","contact_name":"Ken Lavish","contact_institution":"Patuxent
         National Wildlife Refuge ","contact_email":"kalavish@hotmail.com","contact_phone":null,"contact_address":null,"dataset_comments":null,"dataset_documentation_url":"https:\/\/docs.google.com\/document\/d\/e\/2PACX-1vTJlxNy5k8x3gzKBksCa0NpFQ88SC7qwMlmmjcD4MVnzMPLSQpp5_hm56BOeIOq1hJAdzfq7UmFtWZe\/pub"}]'
-  recorded_at: 2024-01-23 19:48:45 GMT
-  recorded_with: vcr/1.2.2, webmockr/0.9.0
+  recorded_at: 2024-11-13 00:52:12 GMT
+  recorded_with: vcr/1.6.0, webmockr/1.0.0
