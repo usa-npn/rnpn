@@ -156,38 +156,42 @@ base_geoserver <- function(){
   }
 }
 
-npnc <- function(l) Filter(Negate(is.null), l)
+# TODO: no longer needed
+# npnc <- function(l) Filter(Negate(is.null), l)
 
+#not used?
 pop <- function(x, y) {
   x[!names(x) %in% y]
 }
 
-ldfply <- function(y){
-  res <- lapply(y, function(x){
-    x[ sapply(x, is.null) ] <- NA
-    tibble::as_tibble(x)
-  })
-  do.call(dplyr::bind_rows, res)
-}
+# TODO: can be removed once we're satisfied NULLs are handled correctly
+# ldfply <- function(y){
+#   res <- lapply(y, function(x){
+#     x[ sapply(x, is.null) ] <- NA
+#     tibble::as_tibble(x)
+#   })
+#   do.call(dplyr::bind_rows, res)
+# }
 
-npn_GET <- function(url, args, parse = FALSE, ...) {
-  res <- tryCatch(
-    {
-      tmp <- GET(url, query = args, ...)
-      stop_for_status(tmp)
-      tt <- content(tmp, as = "text", encoding = "UTF-8")
-      if (nchar(tt) == 0) tt else jsonlite::fromJSON(tt, parse, flatten = TRUE)
-    },
-    error=function(cond){
-      # If the service is down for some reason give the user
-      # a message and return an empty list with n = 0
-      message("Service is unavailable. Try again later!")
-      tt <- "{\"nodata\":\"servicedown\"}"
-      if (nchar(tt) == 0) tt else jsonlite::fromJSON(tt, parse, flatten = TRUE)
-    }
-  )
-
-}
+# TODO: remove completely once we're sure
+# npn_GET <- function(url, args, parse = FALSE, ...) {
+#   res <- tryCatch(
+#     {
+#       tmp <- GET(url, query = args, ...)
+#       stop_for_status(tmp)
+#       tt <- content(tmp, as = "text", encoding = "UTF-8")
+#       if (nchar(tt) == 0) tt else jsonlite::fromJSON(tt, parse, flatten = TRUE)
+#     },
+#     error=function(cond){
+#       # If the service is down for some reason give the user
+#       # a message and return an empty list with n = 0
+#       message("Service is unavailable. Try again later!")
+#       tt <- "{\"nodata\":\"servicedown\"}"
+#       if (nchar(tt) == 0) tt else jsonlite::fromJSON(tt, parse, flatten = TRUE)
+#     }
+#   )
+#
+# }
 
 #Utility function. Helps create URL strings for requests to NPN data services in the format variable_name[number]=Value
 npn_createArgList <- function(arg_name, arg_list){
@@ -197,5 +201,3 @@ npn_createArgList <- function(arg_name, arg_list){
   }
   return(args)
 }
-
-
