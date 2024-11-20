@@ -5,16 +5,13 @@ http_interactions:
     body:
       encoding: ''
       string: ''
-    headers:
-      Accept: application/json, text/xml, application/xml, */*
+    headers: []
   response:
     status:
       status_code: 200
-      category: Success
-      reason: OK
-      message: 'Success: (200) OK'
+      message: OK
     headers:
-      date: Wed, 20 Nov 2024 17:57:35 GMT
+      date: Wed, 20 Nov 2024 22:39:40 GMT
       content-type: application/json; charset=utf-8
       server: Apache/2.4.62 () PHP/5.5.38
       x-powered-by: PHP/5.5.38
@@ -244,5 +241,5 @@ http_interactions:
         warbler","genus":"Setophaga","kingdom":"Animalia","species":"petechia","itis_taxonomic_sn":950039},{"species_id":1097,"common_name":"yellow-rumped
         warbler","genus":"Setophaga","kingdom":"Animalia","species":"coronata","itis_taxonomic_sn":950046},{"species_id":1395,"common_name":"zebra-tailed
         lizard","genus":"Callisaurus","kingdom":"Animalia","species":"draconoides","itis_taxonomic_sn":173906}]'
-  recorded_at: 2024-11-20 17:57:35 GMT
+  recorded_at: 2024-11-20 22:39:40 GMT
   recorded_with: vcr/1.6.0, webmockr/1.0.0

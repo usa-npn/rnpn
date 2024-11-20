@@ -5,16 +5,13 @@ http_interactions:
     body:
       encoding: ''
       string: ''
-    headers:
-      Accept: application/json, text/xml, application/xml, */*
+    headers: []
   response:
     status:
       status_code: 200
-      category: Success
-      reason: OK
-      message: 'Success: (200) OK'
+      message: OK
     headers:
-      date: Tue, 12 Nov 2024 23:37:24 GMT
+      date: Wed, 20 Nov 2024 23:03:16 GMT
       content-type: application/json; charset=utf-8
       content-length: '1736'
       server: Apache/2.4.62 () PHP/5.5.38
@@ -38,7 +35,7 @@ http_interactions:
         Plant Trackers Campaign","species_type_id":41,"species_count":3},{"species_type":"The
         Redbud Phenology Project Campaign","species_type_id":42,"species_count":2},{"species_type":"Quercus
         Quest Campaign","species_type_id":43,"species_count":11}]'
-  recorded_at: 2024-11-12 23:37:24 GMT
+  recorded_at: 2024-11-20 23:03:16 GMT
   recorded_with: vcr/1.6.0, webmockr/1.0.0
 - request:
     method: get
@@ -46,16 +43,13 @@ http_interactions:
     body:
       encoding: ''
       string: ''
-    headers:
-      Accept: application/json, text/xml, application/xml, */*
+    headers: []
   response:
     status:
       status_code: 200
-      category: Success
-      reason: OK
-      message: 'Success: (200) OK'
+      message: OK
     headers:
-      date: Tue, 12 Nov 2024 23:37:24 GMT
+      date: Wed, 20 Nov 2024 23:03:16 GMT
       content-type: application/json; charset=utf-8
       content-length: '1457'
       server: Apache/2.4.62 () PHP/5.5.38
@@ -82,5 +76,5 @@ http_interactions:
         - Fly","species_type_id":37,"species_count":3},{"species_type":"Pest Patrol
         Campaign","species_type_id":38,"species_count":13},{"species_type":"Mayfly
         Watch Campaign","species_type_id":39,"species_count":3}]'
-  recorded_at: 2024-11-12 23:37:24 GMT
+  recorded_at: 2024-11-20 23:03:16 GMT
   recorded_with: vcr/1.6.0, webmockr/1.0.0

@@ -3,6 +3,7 @@
 * `npn_phenophase_details()` now takes a vector of phenophase IDs rather than a list
 * Functions that previously returned `data.frame` objects now return tibbles. Where they previously returned `NULL` on errors, they now return empty 0x0 tibbles.
 * `npn_get_phenophases_for_taxon()` now returns a tibble rather than a list.
+* `rnpn` now has `dplyr` as a dependency instead of `plyr`
 
 # rnpn 1.2.9 (2024-08-18)
 

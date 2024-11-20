@@ -44,8 +44,8 @@ test_that("npn_species_state works", {
   expect_gt(nrow(species_state), 10)
   expect_type(species_state$species, "character")
 
-  expect_identical(npn_species_state("AZ", "Something else"), tibble::tibble())
-  expect_identical(npn_species_state("ZZ"), tibble::tibble())
+  expect_error(npn_species_state("AZ", "Something else"))
+  expect_error(npn_species_state("ZZ"))
 })
 
 test_that("npn_species_search works", {
