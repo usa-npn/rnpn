@@ -1,22 +1,19 @@
 http_interactions:
 - request:
     method: get
-    uri: https://services-staging.usanpn.org/npn_portal/stations/getAllStations.json?state_code=AZ
+    uri: https://services.usanpn.org/npn_portal/stations/getAllStations.json?state_code=AZ
     body:
       encoding: ''
       string: ''
-    headers:
-      Accept: application/json, text/xml, application/xml, */*
+    headers: []
   response:
     status:
       status_code: 200
-      category: Success
-      reason: OK
-      message: 'Success: (200) OK'
+      message: OK
     headers:
-      date: Tue, 23 Jan 2024 19:53:39 GMT
+      date: Wed, 20 Nov 2024 00:22:00 GMT
       content-type: application/json; charset=utf-8
-      server: Apache/2.4.58 () PHP/5.5.38
+      server: Apache/2.4.62 () PHP/5.5.38
       x-powered-by: PHP/5.5.38
       pragma: no-cache
       cache-control: no-store, no-cache, max-age=0, must-revalidate
@@ -548,7 +545,7 @@ http_interactions:
         Chico","station_id":24822,"network_id":"","file_url":null},{"latitude":32.233105,"longitude":-110.992485,"station_name":"Manzo
         Elementary ","station_id":24840,"network_id":"","file_url":null},{"latitude":32.226891,"longitude":-110.933418,"station_name":"2609home","station_id":24926,"network_id":"","file_url":null},{"latitude":32.226891,"longitude":-110.933418,"station_name":"home","station_id":24928,"network_id":"","file_url":null},{"latitude":32.25465,"longitude":-110.944702,"station_name":"Krutch
         Garden","station_id":24967,"network_id":"","file_url":null},{"latitude":35.214291,"longitude":-111.619972,"station_name":"Home","station_id":24987,"network_id":"","file_url":null},{"latitude":34.652405,"longitude":-111.768654,"station_name":"Home","station_id":25014,"network_id":"","file_url":null},{"latitude":34.048927,"longitude":-111.093735,"station_name":"Pinnacle
-        Peak Park Trail","station_id":25034,"network_id":622,"file_url":null},{"latitude":32.633926,"longitude":-110.78875,"station_name":"4
+        Peak Park Trail","station_id":25034,"network_id":"","file_url":null},{"latitude":32.633926,"longitude":-110.78875,"station_name":"4
         acre yard","station_id":25043,"network_id":"","file_url":null},{"latitude":33.455517,"longitude":-111.920471,"station_name":"Home","station_id":25047,"network_id":"","file_url":null},{"latitude":35.207294,"longitude":-111.651672,"station_name":"Marshall
         Heritage Garden","station_id":25068,"network_id":"","file_url":null},{"latitude":32.233105,"longitude":-110.992485,"station_name":"Manzo
         Elementary''s Desert Biome","station_id":25177,"network_id":"","file_url":null},{"latitude":33.624126,"longitude":-112.336273,"station_name":"front
@@ -588,7 +585,7 @@ http_interactions:
         River Preserve","station_id":27033,"network_id":"","file_url":null},{"latitude":34.580006,"longitude":-112.484894,"station_name":"Dad''s","station_id":27082,"network_id":"","file_url":null},{"latitude":32.206654,"longitude":-110.95858,"station_name":"Borton
         Interior Courtyard","station_id":27134,"network_id":725,"file_url":null},{"latitude":32.128849,"longitude":-111.029121,"station_name":"Sonoran
         Desert","station_id":27146,"network_id":"","file_url":null},{"latitude":32.124981,"longitude":-111.031166,"station_name":"yard","station_id":27148,"network_id":"","file_url":null},{"latitude":33.426144,"longitude":-111.863075,"station_name":"AZ
-        Neighborhood ","station_id":27175,"network_id":"","file_url":null},{"latitude":32.248676,"longitude":-110.910782,"station_name":"tucson
+        Neighborhood ","station_id":27175,"network_id":"","file_url":null},{"latitude":32.254002,"longitude":110.974197,"station_name":"amesbury","station_id":27193,"network_id":440,"file_url":null},{"latitude":32.248676,"longitude":-110.910782,"station_name":"tucson
         botanical garden","station_id":27307,"network_id":"","file_url":null},{"latitude":32.313759,"longitude":-110.822266,"station_name":"defunct
         site","station_id":27327,"network_id":"","file_url":null},{"latitude":36.106964,"longitude":-112.112999,"station_name":"AD","station_id":27342,"network_id":214,"file_url":null},{"latitude":33.747662,"longitude":-111.764999,"station_name":"Yard","station_id":27347,"network_id":"","file_url":null},{"latitude":32.230595,"longitude":-110.954216,"station_name":"Palmer''s
         agave at Saguaro Hall","station_id":27362,"network_id":229,"file_url":null},{"latitude":32.25465,"longitude":-110.944702,"station_name":"UA
@@ -787,7 +784,8 @@ http_interactions:
         Elementary School","station_id":33360,"network_id":"","file_url":null},{"latitude":34.222878,"longitude":-112.094414,"station_name":"Badger
         Spgs Wash","station_id":33489,"network_id":"","file_url":null},{"latitude":32.245964,"longitude":-110.950035,"station_name":"Mayfly
         test site","station_id":33525,"network_id":"","file_url":null},{"latitude":32.245964,"longitude":-110.950035,"station_name":"Plant
-        test site","station_id":33526,"network_id":"","file_url":null},{"latitude":33.481022,"longitude":-111.919273,"station_name":"AZ","station_id":33593,"network_id":"","file_url":null},{"latitude":32.219685,"longitude":-111.004028,"station_name":"2.0
+        test site","station_id":33526,"network_id":"","file_url":null},{"latitude":33.481022,"longitude":-111.919273,"station_name":"AZ
+        7502","station_id":33593,"network_id":"","file_url":null},{"latitude":32.219685,"longitude":-111.004028,"station_name":"2.0
         Tumamoc Phenology Trail","station_id":33609,"network_id":343,"file_url":null},{"latitude":32.206074,"longitude":-110.688728,"station_name":"saguaro
         park east tucson","station_id":33662,"network_id":"","file_url":null},{"latitude":33.350819,"longitude":-112.076096,"station_name":"Arizona-
         South Mountain","station_id":33723,"network_id":"","file_url":null},{"latitude":31.522985,"longitude":-110.488853,"station_name":"Brushy
@@ -872,9 +870,7 @@ http_interactions:
         back yard","station_id":35621,"network_id":"","file_url":null},{"latitude":32.218987,"longitude":-110.991203,"station_name":"Home","station_id":35697,"network_id":"","file_url":null},{"latitude":32.208508,"longitude":-110.972466,"station_name":"Drachman
         Montessori K-8","station_id":35731,"network_id":"","file_url":null},{"latitude":32.312008,"longitude":-110.827446,"station_name":"Esperero
         Canyon MS","station_id":35734,"network_id":"","file_url":null},{"latitude":32.147041,"longitude":-110.9478,"station_name":"Sierra
-        2-8","station_id":35735,"network_id":"","file_url":null},{"latitude":32.291374,"longitude":-110.946632,"station_name":"Office","station_id":35753,"network_id":"","file_url":null},{"latitude":32.227707,"longitude":-110.90049,"station_name":"Home","station_id":35816,"network_id":"","file_url":null},{"latitude":31.909029,"longitude":-110.834198,"station_name":"SRER_061.phenology.phe
-        - primary","station_id":35912,"network_id":77,"file_url":null},{"latitude":31.911873,"longitude":-110.835487,"station_name":"SRER_060.phenology.phe
-        - phenocam","station_id":35913,"network_id":77,"file_url":null},{"latitude":31.893299,"longitude":-110.007401,"station_name":"A
+        2-8","station_id":35735,"network_id":"","file_url":null},{"latitude":32.291374,"longitude":-110.946632,"station_name":"Office","station_id":35753,"network_id":"","file_url":null},{"latitude":32.227707,"longitude":-110.90049,"station_name":"Home","station_id":35816,"network_id":"","file_url":null},{"latitude":31.893299,"longitude":-110.007401,"station_name":"A
         forest","station_id":35932,"network_id":"","file_url":null},{"latitude":34.540024,"longitude":-112.468498,"station_name":"Schoolhouse
         Gulch","station_id":35950,"network_id":"","file_url":null},{"latitude":31.685228,"longitude":-109.687454,"station_name":"Homestead","station_id":35951,"network_id":"","file_url":null},{"latitude":34.554352,"longitude":-112.480103,"station_name":"Walnut
         Creek Center for Education and Research ","station_id":35997,"network_id":"","file_url":null},{"latitude":33.566975,"longitude":-112.49778,"station_name":"White
@@ -996,8 +992,8 @@ http_interactions:
         Sunflower Site","station_id":40271,"network_id":"","file_url":null},{"latitude":35.181618,"longitude":-111.67112,"station_name":"Sunflower
         Site","station_id":40272,"network_id":"","file_url":null},{"latitude":35.182758,"longitude":-111.670235,"station_name":"Tree
         Site","station_id":40273,"network_id":"","file_url":null},{"latitude":35.179699,"longitude":-111.6698,"station_name":"Flagstaff
-        Urban Trails","station_id":40304,"network_id":"","file_url":null},{"latitude":32.208195,"longitude":-110.921318,"station_name":"Brewer
-        - Reid Park Zoo Pollinator Garden","station_id":40312,"network_id":"","file_url":null},{"latitude":32.147797,"longitude":-110.765213,"station_name":"Some
+        Urban Trails","station_id":40304,"network_id":"","file_url":null},{"latitude":32.208195,"longitude":-110.921318,"station_name":"RPZ
+        PG","station_id":40312,"network_id":"","file_url":null},{"latitude":32.147797,"longitude":-110.765213,"station_name":"Some
         scrub","station_id":40323,"network_id":"","file_url":null},{"latitude":32.051941,"longitude":-111.266678,"station_name":"My
         Pasture","station_id":40324,"network_id":"","file_url":null},{"latitude":32.23835,"longitude":-110.951027,"station_name":"University
         of Arizona Community Garden","station_id":40325,"network_id":"","file_url":null},{"latitude":32.25465,"longitude":-110.944702,"station_name":"Home","station_id":40326,"network_id":"","file_url":null},{"latitude":32.228428,"longitude":-110.928871,"station_name":"front
@@ -1242,7 +1238,8 @@ http_interactions:
         Road","station_id":44547,"network_id":895,"file_url":null},{"latitude":31.835184,"longitude":-110.356827,"station_name":"Windmill","station_id":44548,"network_id":895,"file_url":null},{"latitude":31.836029,"longitude":-110.3489,"station_name":"Pollinator
         Garden","station_id":44549,"network_id":895,"file_url":null},{"latitude":32.409863,"longitude":-110.983147,"station_name":"Naranja
         Park","station_id":44604,"network_id":"","file_url":null},{"latitude":33.788746,"longitude":-111.95137,"station_name":"Neighborhood","station_id":44606,"network_id":"","file_url":null},{"latitude":32.00565,"longitude":-109.356171,"station_name":"Chiricahua
-        National Monument","station_id":44709,"network_id":"","file_url":null},{"latitude":34.048927,"longitude":-111.093735,"station_name":"home","station_id":44760,"network_id":"","file_url":null},{"latitude":31.336445,"longitude":-109.551903,"station_name":"douglas","station_id":44833,"network_id":"","file_url":null},{"latitude":34.567734,"longitude":-112.474571,"station_name":"Home","station_id":44873,"network_id":"","file_url":null},{"latitude":33.38636,"longitude":-110.745163,"station_name":"HDMS
+        National Monument","station_id":44709,"network_id":"","file_url":null},{"latitude":34.048927,"longitude":-111.093735,"station_name":"home","station_id":44760,"network_id":"","file_url":null},{"latitude":31.336445,"longitude":-109.551903,"station_name":"douglas
+        house","station_id":44833,"network_id":"","file_url":null},{"latitude":34.567734,"longitude":-112.474571,"station_name":"Home","station_id":44873,"network_id":"","file_url":null},{"latitude":33.38636,"longitude":-110.745163,"station_name":"HDMS
         Campus","station_id":44878,"network_id":"","file_url":null},{"latitude":34.048927,"longitude":-111.093735,"station_name":"nathan_test","station_id":44903,"network_id":"","file_url":null},{"latitude":32.466717,"longitude":-111.214424,"station_name":"Home","station_id":44927,"network_id":"","file_url":null},{"latitude":32.145954,"longitude":-110.944504,"station_name":"Martin
         Barreras Park","station_id":44928,"network_id":"","file_url":null},{"latitude":32.222843,"longitude":-110.951134,"station_name":"Tuscon
         Veronica","station_id":44982,"network_id":"","file_url":null},{"latitude":33.209919,"longitude":-111.912735,"station_name":"Tempe
@@ -1499,7 +1496,7 @@ http_interactions:
         side yard","station_id":49099,"network_id":"","file_url":null},{"latitude":33.538651,"longitude":-112.185989,"station_name":"Thunderbird
         Conservation Park Glendale","station_id":49124,"network_id":1051,"file_url":null},{"latitude":32.313828,"longitude":-110.980392,"station_name":"Arches
         apartments","station_id":49125,"network_id":"","file_url":null},{"latitude":32.246052,"longitude":-110.950104,"station_name":"Milkweed
-        Testing Site","station_id":49126,"network_id":"","file_url":null},{"latitude":33.318382,"longitude":-112.052811,"station_name":"Milkweed
+        Test Site","station_id":49126,"network_id":"","file_url":null},{"latitude":33.318382,"longitude":-112.052811,"station_name":"Milkweed
         Garden","station_id":49127,"network_id":"","file_url":null},{"latitude":32.287518,"longitude":-110.959023,"station_name":"Tanner
         Skaare - Rillito Wash","station_id":49129,"network_id":"","file_url":null},{"latitude":33.505138,"longitude":-111.913704,"station_name":"Linda''s
         garden","station_id":49130,"network_id":"","file_url":null},{"latitude":32.205578,"longitude":-110.953491,"station_name":"H","station_id":49150,"network_id":"","file_url":null},{"latitude":32.234901,"longitude":-110.955315,"station_name":"UA
@@ -1534,7 +1531,7 @@ http_interactions:
         patch","station_id":49563,"network_id":"","file_url":null},{"latitude":32.318405,"longitude":-110.9468,"station_name":"Backyard","station_id":49578,"network_id":"","file_url":null},{"latitude":32.298901,"longitude":-110.730103,"station_name":"Milagrosa
         Canyon","station_id":49580,"network_id":"","file_url":null},{"latitude":32.217579,"longitude":-110.908821,"station_name":"Vivianas
         Backyard","station_id":49583,"network_id":"","file_url":null},{"latitude":32.245453,"longitude":-110.955551,"station_name":"Front
-        yard","station_id":49595,"network_id":"","file_url":null},{"latitude":32.231884,"longitude":-110.950111,"station_name":"Campus","station_id":49596,"network_id":"","file_url":null},{"latitude":33.665276,"longitude":-112.01506,"station_name":"home","station_id":49598,"network_id":"","file_url":null},{"latitude":32.219616,"longitude":-110.964478,"station_name":"Desert
+        yard","station_id":49595,"network_id":"","file_url":null},{"latitude":32.231884,"longitude":-110.950111,"station_name":"Campus","station_id":49596,"network_id":"","file_url":null},{"latitude":33.61512,"longitude":-112.314697,"station_name":"home","station_id":49598,"network_id":"","file_url":null},{"latitude":32.219616,"longitude":-110.964478,"station_name":"Desert
         Refuge - Back Yard","station_id":49614,"network_id":"","file_url":null},{"latitude":33.600811,"longitude":-111.722702,"station_name":"Townhouse","station_id":49615,"network_id":"","file_url":null},{"latitude":34.600777,"longitude":-112.437904,"station_name":"WILLOW
         LAKE SOUTH","station_id":49616,"network_id":"","file_url":null},{"latitude":33.472267,"longitude":-111.990471,"station_name":"Home","station_id":49630,"network_id":"","file_url":null},{"latitude":32.208794,"longitude":-110.921379,"station_name":"Quintana","station_id":49631,"network_id":440,"file_url":null},{"latitude":33.748039,"longitude":-111.798721,"station_name":"Rennert","station_id":49633,"network_id":440,"file_url":null},{"latitude":33.403202,"longitude":-111.899239,"station_name":"Beside
         deiveway","station_id":49634,"network_id":"","file_url":null},{"latitude":33.403202,"longitude":-111.899239,"station_name":"Beside
@@ -1655,7 +1652,7 @@ http_interactions:
         backyard ","station_id":51889,"network_id":"","file_url":null},{"latitude":32.400185,"longitude":-111.066696,"station_name":"Flying
         K Farm","station_id":51906,"network_id":"","file_url":null},{"latitude":32.243118,"longitude":-110.921394,"station_name":"Casa
         de la Luna","station_id":51923,"network_id":"","file_url":null},{"latitude":33.465252,"longitude":-112.349915,"station_name":"Wash
-        Behind Home","station_id":51949,"network_id":"","file_url":null},{"latitude":31.835329,"longitude":-110.342567,"station_name":"Kartchner
+        Behind Home","station_id":51949,"network_id":"","file_url":null},{"latitude":31.833288,"longitude":-110.349007,"station_name":"Kartchner
         Caverns State Park","station_id":51963,"network_id":"","file_url":null},{"latitude":34.098396,"longitude":-109.322914,"station_name":"Backyard","station_id":52067,"network_id":"","file_url":null},{"latitude":31.936001,"longitude":-110.801201,"station_name":"Copper
         Ridge","station_id":52090,"network_id":"","file_url":null},{"latitude":34.070984,"longitude":-112.151848,"station_name":"Black
         Canyon Heritage Park ","station_id":52154,"network_id":"","file_url":null},{"latitude":32.225021,"longitude":-110.944588,"station_name":"Home
@@ -1667,7 +1664,189 @@ http_interactions:
         2023","station_id":52206,"network_id":328,"file_url":null},{"latitude":33.600815,"longitude":-111.810806,"station_name":"Lost
         dog","station_id":52212,"network_id":"","file_url":null},{"latitude":33.726799,"longitude":-112.210762,"station_name":"Home","station_id":52221,"network_id":"","file_url":null},{"latitude":35.171806,"longitude":-111.678642,"station_name":"Front
         yard","station_id":52245,"network_id":"","file_url":null},{"latitude":32.995621,"longitude":-111.536476,"station_name":"Pollinator
-        Garden","station_id":52251,"network_id":1228,"file_url":null},{"latitude":31.340296,"longitude":-109.537193,"station_name":"flower
-        center","station_id":52322,"network_id":1250,"file_url":null}]'
-  recorded_at: 2024-01-23 19:53:40 GMT
-  recorded_with: vcr/1.2.2, webmockr/0.9.0
+        Garden","station_id":52251,"network_id":1228,"file_url":null},{"latitude":32.231895,"longitude":-110.950989,"station_name":"Garden","station_id":52320,"network_id":"","file_url":null},{"latitude":31.835402,"longitude":-110.349052,"station_name":"Parking
+        Lot","station_id":52322,"network_id":895,"file_url":null},{"latitude":33.412991,"longitude":-111.924911,"station_name":"Bedroom","station_id":52345,"network_id":"","file_url":null},{"latitude":31.835112,"longitude":-110.356796,"station_name":"Trailhead","station_id":52358,"network_id":895,"file_url":null},{"latitude":32.224136,"longitude":-111.021965,"station_name":"Star
+        Pass ","station_id":52366,"network_id":"","file_url":null},{"latitude":32.165916,"longitude":-110.998337,"station_name":"El
+        Charro","station_id":52367,"network_id":"","file_url":null},{"latitude":34.5975,"longitude":-112.460136,"station_name":"Home","station_id":52387,"network_id":"","file_url":null},{"latitude":32.24017,"longitude":-110.806198,"station_name":"Backyard
+        Mesquite Tree","station_id":52388,"network_id":"","file_url":null},{"latitude":31.584772,"longitude":-109.515701,"station_name":"2023
+        Agave 1","station_id":52395,"network_id":831,"file_url":null},{"latitude":31.588476,"longitude":-109.512077,"station_name":"2023
+        Agave 3","station_id":52397,"network_id":831,"file_url":null},{"latitude":31.588696,"longitude":-109.510445,"station_name":"2023
+        Agave 4","station_id":52398,"network_id":831,"file_url":null},{"latitude":31.926346,"longitude":-110.267715,"station_name":"Auntsquared
+        ","station_id":52422,"network_id":"","file_url":null},{"latitude":33.462063,"longitude":-111.945122,"station_name":"garden","station_id":52423,"network_id":"","file_url":null},{"latitude":33.448547,"longitude":-112.31366,"station_name":"Links
+        Dr","station_id":52427,"network_id":"","file_url":null},{"latitude":32.215225,"longitude":-110.850311,"station_name":"kellond
+        elementary","station_id":52462,"network_id":"","file_url":null},{"latitude":32.354588,"longitude":-111.10936,"station_name":"Coyote
+        Trail Elementary","station_id":52463,"network_id":"","file_url":null},{"latitude":33.600548,"longitude":-111.811249,"station_name":"Beta
+        Testing","station_id":52492,"network_id":622,"file_url":null},{"latitude":33.677326,"longitude":-112.152542,"station_name":"Dvpp","station_id":52502,"network_id":"","file_url":null},{"latitude":32.23465,"longitude":-110.960335,"station_name":"Home","station_id":52522,"network_id":"","file_url":null},{"latitude":32.191891,"longitude":-111.017609,"station_name":"Thrasher","station_id":52577,"network_id":"","file_url":null},{"latitude":32.136131,"longitude":-110.903908,"station_name":"desert
+        view ","station_id":52584,"network_id":"","file_url":null},{"latitude":31.838951,"longitude":-110.345772,"station_name":"Back
+        Road","station_id":52591,"network_id":895,"file_url":null},{"latitude":33.6152,"longitude":-112.000504,"station_name":"Thunderbird","station_id":52593,"network_id":"","file_url":null},{"latitude":32.227001,"longitude":-110.960197,"station_name":"THMS","station_id":52603,"network_id":1247,"file_url":null},{"latitude":32.2271,"longitude":-110.960197,"station_name":"T
+        building ","station_id":52604,"network_id":1247,"file_url":null},{"latitude":31.51841,"longitude":-110.268265,"station_name":"My
+        Yard- Mission Shadows","station_id":52626,"network_id":"","file_url":null},{"latitude":33.726799,"longitude":-112.210762,"station_name":"testing","station_id":52662,"network_id":"","file_url":null},{"latitude":32.233284,"longitude":-110.948799,"station_name":"University
+        of Arizona","station_id":52667,"network_id":"","file_url":null},{"latitude":32.253979,"longitude":-110.974174,"station_name":"Home","station_id":52707,"network_id":"","file_url":null},{"latitude":32.228298,"longitude":-110.955276,"station_name":"campus
+        ","station_id":52731,"network_id":"","file_url":null},{"latitude":32.415356,"longitude":-110.935776,"station_name":"Catalina
+        State Park","station_id":52736,"network_id":"","file_url":null},{"latitude":31.413425,"longitude":-109.877655,"station_name":"Home","station_id":52758,"network_id":"","file_url":null},{"latitude":31.39362,"longitude":-109.926491,"station_name":"Hereford
+        home","station_id":52759,"network_id":"","file_url":null},{"latitude":31.474199,"longitude":-110.262802,"station_name":"Front
+        yard ","station_id":52760,"network_id":"","file_url":null},{"latitude":31.4795,"longitude":-110.261902,"station_name":"My
+        home ","station_id":52761,"network_id":"","file_url":null},{"latitude":31.411982,"longitude":-109.870911,"station_name":"Neptune","station_id":52762,"network_id":"","file_url":null},{"latitude":31.393616,"longitude":-109.926437,"station_name":"Heredia
+        Home","station_id":52763,"network_id":"","file_url":null},{"latitude":31.393698,"longitude":-109.926422,"station_name":"Bisbee
+        science lab","station_id":52764,"network_id":"","file_url":null},{"latitude":31.386826,"longitude":-110.220322,"station_name":"Hereford
+        Home 2","station_id":52786,"network_id":"","file_url":null},{"latitude":32.227112,"longitude":-110.951454,"station_name":"Community
+        Garden","station_id":52795,"network_id":"","file_url":null},{"latitude":32.5839,"longitude":-110.294502,"station_name":"Testing","station_id":52804,"network_id":229,"file_url":null},{"latitude":32.189262,"longitude":-111.001579,"station_name":"San
+        Mateo Apartments","station_id":52837,"network_id":"","file_url":null},{"latitude":32.253532,"longitude":-111.021454,"station_name":"Ironwood
+        Apartment","station_id":52871,"network_id":"","file_url":null},{"latitude":32.233345,"longitude":-110.959702,"station_name":"My
+        Apartment Complex","station_id":52899,"network_id":"","file_url":null},{"latitude":34.048927,"longitude":-111.093735,"station_name":"UA
+        Campus or home","station_id":52902,"network_id":"","file_url":null},{"latitude":32.228828,"longitude":-110.951393,"station_name":"Home","station_id":52915,"network_id":"","file_url":null},{"latitude":32.269104,"longitude":-110.969398,"station_name":"Literacy
+        Garden","station_id":53010,"network_id":"","file_url":null},{"latitude":32.253979,"longitude":-110.974174,"station_name":"Home","station_id":53048,"network_id":"","file_url":null},{"latitude":32.000526,"longitude":-110.70092,"station_name":"main","station_id":53096,"network_id":"","file_url":null},{"latitude":32.209625,"longitude":-110.99781,"station_name":"Sentinel
+        Peak Park","station_id":53105,"network_id":"","file_url":null},{"latitude":32.242435,"longitude":-110.790436,"station_name":"Isabella
+        Lee Natural Preserve","station_id":53110,"network_id":"","file_url":null},{"latitude":32.217098,"longitude":-110.934402,"station_name":"Arroyo
+        Chico Wash","station_id":53111,"network_id":"","file_url":null},{"latitude":32.29723,"longitude":-110.867828,"station_name":"Milkweed
+        plant ","station_id":53149,"network_id":"","file_url":null},{"latitude":32.24345,"longitude":-110.954903,"station_name":"My
+        house","station_id":53182,"network_id":"","file_url":null},{"latitude":32.230801,"longitude":-110.950401,"station_name":"Campus","station_id":53193,"network_id":"","file_url":null},{"latitude":32.365654,"longitude":-111.048019,"station_name":"Tucson
+        Audubon Mason Center","station_id":53195,"network_id":"","file_url":null},{"latitude":31.956709,"longitude":-110.760223,"station_name":"L","station_id":53203,"network_id":"","file_url":null},{"latitude":32.223618,"longitude":-110.899979,"station_name":"Collection
+        Site 1","station_id":53206,"network_id":"","file_url":null},{"latitude":32.222237,"longitude":-110.949326,"station_name":"My
+        backyard","station_id":53210,"network_id":"","file_url":null},{"latitude":32.141811,"longitude":-110.759018,"station_name":"my
+        backyard","station_id":53211,"network_id":"","file_url":null},{"latitude":32.23024,"longitude":-110.949959,"station_name":"Dorm","station_id":53213,"network_id":"","file_url":null},{"latitude":32.228901,"longitude":-110.9533,"station_name":"TheearthwormUA","station_id":53216,"network_id":"","file_url":null},{"latitude":32.253979,"longitude":-110.974174,"station_name":"Unviersity","station_id":53218,"network_id":"","file_url":null},{"latitude":33.265785,"longitude":-111.871552,"station_name":"home","station_id":53219,"network_id":"","file_url":null},{"latitude":32.227547,"longitude":-110.966553,"station_name":"home","station_id":53221,"network_id":"","file_url":null},{"latitude":32.223125,"longitude":-110.963737,"station_name":"home","station_id":53222,"network_id":"","file_url":null},{"latitude":32.231636,"longitude":-110.949326,"station_name":"University
+        of Arizona","station_id":53223,"network_id":"","file_url":null},{"latitude":32.29668,"longitude":-110.993271,"station_name":"Home","station_id":53224,"network_id":"","file_url":null},{"latitude":34.573288,"longitude":-112.435562,"station_name":"Prescott
+        Creeks","station_id":53278,"network_id":"","file_url":null},{"latitude":32.07695,"longitude":-110.755043,"station_name":"Vail
+        AZ","station_id":53292,"network_id":"","file_url":null},{"latitude":32.31385,"longitude":-110.947807,"station_name":"North","station_id":53307,"network_id":440,"file_url":null},{"latitude":32.243813,"longitude":-110.944702,"station_name":"Campus
+        ","station_id":53335,"network_id":"","file_url":null},{"latitude":32.240273,"longitude":-110.942657,"station_name":"Saints
+        Peter and Paul School","station_id":53357,"network_id":"","file_url":null},{"latitude":36.772545,"longitude":-114.03566,"station_name":"Home
+        Neighborhood","station_id":53399,"network_id":"","file_url":null},{"latitude":32.365654,"longitude":-111.048019,"station_name":"Tucson
+        Audubon Mason Center 1","station_id":53406,"network_id":1254,"file_url":null},{"latitude":32.344147,"longitude":-111.026489,"station_name":"Pima
+        Community College ","station_id":53407,"network_id":"","file_url":null},{"latitude":32.343513,"longitude":-111.027237,"station_name":"northwest
+        campus","station_id":53408,"network_id":"","file_url":null},{"latitude":32.343513,"longitude":-111.027237,"station_name":"Pima
+        Community College","station_id":53409,"network_id":"","file_url":null},{"latitude":32.343513,"longitude":-111.027237,"station_name":"Pima
+        Community College - Northwest Campus","station_id":53410,"network_id":"","file_url":null},{"latitude":32.343513,"longitude":-111.027237,"station_name":"Pima
+        Community College Northwest Campus","station_id":53411,"network_id":"","file_url":null},{"latitude":32.343513,"longitude":-111.027237,"station_name":"Pima
+        Community College ","station_id":53412,"network_id":"","file_url":null},{"latitude":32.343513,"longitude":-111.027237,"station_name":"pima
+        community college northwest campus ","station_id":53413,"network_id":"","file_url":null},{"latitude":32.343513,"longitude":-111.027237,"station_name":"Pima
+        Community College ","station_id":53414,"network_id":"","file_url":null},{"latitude":32.342693,"longitude":-111.027153,"station_name":"Pima","station_id":53415,"network_id":"","file_url":null},{"latitude":32.342686,"longitude":-111.027229,"station_name":"North
+        campus Pima","station_id":53416,"network_id":"","file_url":null},{"latitude":32.342743,"longitude":-111.027122,"station_name":"EXAMPLE
+        1","station_id":53418,"network_id":1254,"file_url":null},{"latitude":32.343513,"longitude":-111.027237,"station_name":"Pima
+        Community College Northwest ","station_id":53419,"network_id":"","file_url":null},{"latitude":32.343513,"longitude":-111.027237,"station_name":"Pima
+        Community College NW","station_id":53420,"network_id":"","file_url":null},{"latitude":32.343513,"longitude":-111.027237,"station_name":"Northwest
+        campus","station_id":53422,"network_id":"","file_url":null},{"latitude":32.343513,"longitude":-111.027237,"station_name":"PCC
+        NW","station_id":53426,"network_id":"","file_url":null},{"latitude":32.343296,"longitude":-111.02739,"station_name":"NW
+        Campus","station_id":53427,"network_id":1254,"file_url":null},{"latitude":32.3437,"longitude":-111.027199,"station_name":"Pima
+        NW","station_id":53428,"network_id":"","file_url":null},{"latitude":32.342785,"longitude":-111.027184,"station_name":"Tucson","station_id":53430,"network_id":"","file_url":null},{"latitude":32.343513,"longitude":-111.027237,"station_name":"Pima
+        Community College","station_id":53431,"network_id":"","file_url":null},{"latitude":32.343513,"longitude":-111.027237,"station_name":"Pima
+        Community College Northwest Campus","station_id":53432,"network_id":1254,"file_url":null},{"latitude":32.343513,"longitude":-111.027237,"station_name":"Pima
+        Community College","station_id":53433,"network_id":"","file_url":null},{"latitude":32.308559,"longitude":-110.914902,"station_name":"city
+        place","station_id":53434,"network_id":"","file_url":null},{"latitude":32.368736,"longitude":-111.128265,"station_name":"Front
+        yard ","station_id":53435,"network_id":"","file_url":null},{"latitude":32.343513,"longitude":-111.027237,"station_name":"Pima
+        Community College","station_id":53436,"network_id":"","file_url":null},{"latitude":32.343513,"longitude":-111.027237,"station_name":"pimacommunitycollege.com","station_id":53437,"network_id":"","file_url":null},{"latitude":32.281857,"longitude":-110.848877,"station_name":"Pima
+        Northwest Campus","station_id":53438,"network_id":"","file_url":null},{"latitude":32.342365,"longitude":-111.02726,"station_name":"Pima
+        Community College Northwest Campus","station_id":53439,"network_id":"","file_url":null},{"latitude":32.348927,"longitude":-110.961563,"station_name":"Pima
+        Community College Northwest","station_id":53440,"network_id":"","file_url":null},{"latitude":32.343372,"longitude":-111.027328,"station_name":"Bio","station_id":53441,"network_id":"","file_url":null},{"latitude":32.343384,"longitude":-111.02726,"station_name":"Pima
+        Community College","station_id":53442,"network_id":"","file_url":null},{"latitude":32.365921,"longitude":-111.047585,"station_name":"Tucson
+        Mason Center","station_id":53476,"network_id":"","file_url":null},{"latitude":32.365818,"longitude":-111.047791,"station_name":"Autobahn
+        Mason Center","station_id":53477,"network_id":"","file_url":null},{"latitude":32.365734,"longitude":-111.047729,"station_name":"Audubon
+        mason center","station_id":53478,"network_id":"","file_url":null},{"latitude":32.365761,"longitude":-111.048111,"station_name":"Tucson
+        Mason Center","station_id":53479,"network_id":"","file_url":null},{"latitude":32.365784,"longitude":-111.048256,"station_name":"Audubon
+        center ","station_id":53480,"network_id":"","file_url":null},{"latitude":32.365799,"longitude":-111.047867,"station_name":"Mason
+        center","station_id":53481,"network_id":"","file_url":null},{"latitude":32.365856,"longitude":-111.047913,"station_name":"Audoban
+        Mason Center","station_id":53482,"network_id":"","file_url":null},{"latitude":32.365654,"longitude":-111.048019,"station_name":"Audubon
+        Mason Center","station_id":53483,"network_id":"","file_url":null},{"latitude":32.253979,"longitude":-110.974174,"station_name":"Tuscon
+        Audubon Center","station_id":53538,"network_id":"","file_url":null},{"latitude":32.349171,"longitude":-111.232063,"station_name":"Site
+        1 ","station_id":53575,"network_id":"","file_url":null},{"latitude":32.353436,"longitude":-110.947929,"station_name":"Pima
+        Canyon Trail","station_id":53586,"network_id":"","file_url":null},{"latitude":32.218979,"longitude":-110.868507,"station_name":"Park","station_id":53587,"network_id":"","file_url":null},{"latitude":32.245945,"longitude":-110.950104,"station_name":"Test
+        site november 2023","station_id":53589,"network_id":"","file_url":null},{"latitude":32.246017,"longitude":-110.950027,"station_name":"Test
+        site 2 November 2023","station_id":53590,"network_id":"","file_url":null},{"latitude":32.246029,"longitude":-110.950027,"station_name":"Test
+        site 3 November 2023","station_id":53591,"network_id":"","file_url":null},{"latitude":33.445755,"longitude":-112.316803,"station_name":"My
+        side yard","station_id":53595,"network_id":"","file_url":null},{"latitude":32.230499,"longitude":-110.9524,"station_name":"W
+        Rush Desert Milkweed W of BSE","station_id":53597,"network_id":229,"file_url":null},{"latitude":33.472649,"longitude":-112.412727,"station_name":"Flora
+        s Waystation ","station_id":53599,"network_id":"","file_url":null},{"latitude":33.313126,"longitude":-111.938675,"station_name":"Home
+        garden","station_id":53607,"network_id":"","file_url":null},{"latitude":32.246754,"longitude":-110.854919,"station_name":"Golf
+        N Stuff","station_id":53615,"network_id":"","file_url":null},{"latitude":33.517673,"longitude":-112.127815,"station_name":"My
+        front yard","station_id":53623,"network_id":"","file_url":null},{"latitude":35.119595,"longitude":-114.607956,"station_name":"Back
+        courtyard ","station_id":53627,"network_id":"","file_url":null},{"latitude":33.525085,"longitude":-112.235794,"station_name":"Heroes
+        Regional Park","station_id":53628,"network_id":"","file_url":null},{"latitude":33.433197,"longitude":-111.722786,"station_name":"Backyard","station_id":53630,"network_id":"","file_url":null},{"latitude":33.483223,"longitude":-111.981834,"station_name":"Front
+        Yard","station_id":53638,"network_id":"","file_url":null},{"latitude":33.477837,"longitude":-112.062309,"station_name":"Side
+        Patch","station_id":53641,"network_id":"","file_url":null},{"latitude":32.309872,"longitude":-110.947334,"station_name":"5681Home","station_id":53642,"network_id":"","file_url":null},{"latitude":33.538258,"longitude":-112.05629,"station_name":"Home","station_id":53648,"network_id":"","file_url":null},{"latitude":32.209099,"longitude":-110.9207,"station_name":"Reid
+        Park Zoo","station_id":53649,"network_id":"","file_url":null},{"latitude":31.545156,"longitude":-110.233109,"station_name":"Home","station_id":53650,"network_id":"","file_url":null},{"latitude":33.295029,"longitude":-112.028702,"station_name":"Ahwatukee
+        property","station_id":53651,"network_id":"","file_url":null},{"latitude":33.306393,"longitude":-112.031509,"station_name":"Home","station_id":53653,"network_id":"","file_url":null},{"latitude":33.531391,"longitude":-112.086502,"station_name":"Maryland
+        11A","station_id":53656,"network_id":"","file_url":null},{"latitude":33.301949,"longitude":-112.022652,"station_name":"Backyard","station_id":53666,"network_id":"","file_url":null},{"latitude":33.534946,"longitude":-112.03949,"station_name":"A-J
+        Phx milkweed ","station_id":53669,"network_id":"","file_url":null},{"latitude":33.758942,"longitude":-111.933792,"station_name":"Back
+        yard","station_id":53675,"network_id":"","file_url":null},{"latitude":32.282486,"longitude":-110.942604,"station_name":"master
+        gardeners demonstration gardens","station_id":53701,"network_id":1067,"file_url":null},{"latitude":33.510906,"longitude":-112.066986,"station_name":"Home","station_id":53710,"network_id":"","file_url":null},{"latitude":33.671894,"longitude":-112.354706,"station_name":"SKM
+        yard","station_id":53712,"network_id":"","file_url":null},{"latitude":31.996836,"longitude":-110.973457,"station_name":"Rancho
+        Sahuarita home","station_id":53746,"network_id":"","file_url":null},{"latitude":33.647961,"longitude":-112.225243,"station_name":"Glendale
+        ","station_id":53750,"network_id":"","file_url":null},{"latitude":32.242928,"longitude":-110.927521,"station_name":"Blenman
+        Elementary School","station_id":53760,"network_id":"","file_url":null},{"latitude":33.593063,"longitude":-111.836716,"station_name":"My
+        Home ","station_id":53763,"network_id":1142,"file_url":null},{"latitude":33.585854,"longitude":-112.012405,"station_name":"Home","station_id":53764,"network_id":"","file_url":null},{"latitude":32.340599,"longitude":-110.983498,"station_name":"Tohono
+        Chul","station_id":53798,"network_id":"","file_url":null},{"latitude":32.2784,"longitude":-111.0215,"station_name":"Sweetwater
+        Wetlands","station_id":53840,"network_id":"","file_url":null},{"latitude":33.460838,"longitude":-111.945137,"station_name":"Arizona
+        milkweed-portal","station_id":53867,"network_id":242,"file_url":null},{"latitude":32.230862,"longitude":-110.9515,"station_name":"Campus","station_id":53872,"network_id":"","file_url":null},{"latitude":33.394558,"longitude":-111.621552,"station_name":"Mesa
+        neighborhood","station_id":53889,"network_id":"","file_url":null},{"latitude":32.230869,"longitude":-110.924706,"station_name":"Home","station_id":53939,"network_id":"","file_url":null},{"latitude":33.353905,"longitude":-111.884552,"station_name":"Home","station_id":53948,"network_id":"","file_url":null},{"latitude":33.479939,"longitude":-111.679451,"station_name":"home","station_id":53951,"network_id":"","file_url":null},{"latitude":32.241413,"longitude":-110.955536,"station_name":"E
+        Lee Street Tucson","station_id":53960,"network_id":"","file_url":null},{"latitude":32.231899,"longitude":-110.950897,"station_name":"Tucson","station_id":53962,"network_id":"","file_url":null},{"latitude":33.888248,"longitude":-111.873856,"station_name":"Desert
+        Mountain","station_id":53966,"network_id":"","file_url":null},{"latitude":33.748192,"longitude":-111.794708,"station_name":"McDowell
+        Sonoran Preserve","station_id":53967,"network_id":"","file_url":null},{"latitude":33.323997,"longitude":-111.87365,"station_name":"Backyard3az","station_id":53976,"network_id":"","file_url":null},{"latitude":33.323997,"longitude":-111.87365,"station_name":"Backyard4pn","station_id":53977,"network_id":"","file_url":null},{"latitude":33.460835,"longitude":-111.766006,"station_name":"MenloAz","station_id":53992,"network_id":"","file_url":null},{"latitude":33.511078,"longitude":-111.884094,"station_name":"Scottsdale1","station_id":53994,"network_id":"","file_url":null},{"latitude":33.511078,"longitude":-111.884094,"station_name":"SCC2024","station_id":53995,"network_id":"","file_url":null},{"latitude":33.5872,"longitude":-112.548798,"station_name":"White
+        Tank Mountain Regional Park ","station_id":53998,"network_id":"","file_url":null},{"latitude":33.4804,"longitude":-112.559601,"station_name":"Skyline
+        Regional Park","station_id":53999,"network_id":"","file_url":null},{"latitude":33.477402,"longitude":-111.620796,"station_name":"Usery
+        Mountain Regional Park ","station_id":54000,"network_id":"","file_url":null},{"latitude":33.609921,"longitude":-112.297585,"station_name":"Winter
+        home","station_id":54008,"network_id":"","file_url":null},{"latitude":33.312061,"longitude":-111.752312,"station_name":"Home","station_id":54010,"network_id":"","file_url":null},{"latitude":32.222065,"longitude":-110.966759,"station_name":"hannahs
+        ovservations","station_id":54032,"network_id":"","file_url":null},{"latitude":33.579929,"longitude":-112.071785,"station_name":"Cochise
+        ","station_id":54095,"network_id":"","file_url":null},{"latitude":33.712234,"longitude":-112.067841,"station_name":"Beaudets
+        In AZ","station_id":54184,"network_id":"","file_url":null},{"latitude":32.230427,"longitude":-110.951363,"station_name":"My
+        backyard","station_id":54230,"network_id":"","file_url":null},{"latitude":33.43895,"longitude":-111.708435,"station_name":"Bucks
+        Backyard","station_id":54285,"network_id":"","file_url":null},{"latitude":33.376957,"longitude":-111.916359,"station_name":"My
+        back yard","station_id":54328,"network_id":"","file_url":null},{"latitude":33.376957,"longitude":-111.916359,"station_name":"Backyard
+        dock","station_id":54329,"network_id":"","file_url":null},{"latitude":33.625534,"longitude":-111.712631,"station_name":"Front
+        Yard","station_id":54380,"network_id":"","file_url":null},{"latitude":32.270901,"longitude":-110.896736,"station_name":"Tucson
+        Botanic Gardens","station_id":54421,"network_id":"","file_url":null},{"latitude":32.292171,"longitude":-111.087608,"station_name":"My
+        front yard ","station_id":54433,"network_id":"","file_url":null},{"latitude":32.46867,"longitude":-110.995125,"station_name":"Stone
+        Canyon","station_id":54445,"network_id":"","file_url":null},{"latitude":32.342762,"longitude":-111.027107,"station_name":"Ps1","station_id":54447,"network_id":"","file_url":null},{"latitude":32.404709,"longitude":-111.060127,"station_name":"Front
+        Yard","station_id":54454,"network_id":"","file_url":null},{"latitude":34.048927,"longitude":-111.093735,"station_name":"tucson
+        audubo mason center","station_id":54472,"network_id":"","file_url":null},{"latitude":32.343513,"longitude":-111.027237,"station_name":"Pima
+        Community College Northwest","station_id":54473,"network_id":"","file_url":null},{"latitude":32.365662,"longitude":-111.047974,"station_name":"Tucson
+        Audubon Mason Center","station_id":54474,"network_id":"","file_url":null},{"latitude":32.342716,"longitude":-111.027275,"station_name":"Northwest
+        Campus","station_id":54475,"network_id":"","file_url":null},{"latitude":32.3438,"longitude":-111.027199,"station_name":"Pima
+        northwest community college ","station_id":54476,"network_id":"","file_url":null},{"latitude":32.343513,"longitude":-111.027237,"station_name":"Northwest
+        Campus","station_id":54477,"network_id":"","file_url":null},{"latitude":32.343513,"longitude":-111.027237,"station_name":"pima","station_id":54478,"network_id":"","file_url":null},{"latitude":32.342762,"longitude":-111.027122,"station_name":"Pima
+        Community College northwest","station_id":54479,"network_id":"","file_url":null},{"latitude":32.263275,"longitude":-111.024658,"station_name":"Desert
+        Refuge","station_id":54572,"network_id":"","file_url":null},{"latitude":32.311703,"longitude":-110.919647,"station_name":"5781
+        N Calle Grandeza Tucson","station_id":54573,"network_id":"","file_url":null},{"latitude":32.170437,"longitude":-111.131989,"station_name":"Casa
+        ","station_id":54574,"network_id":"","file_url":null},{"latitude":32.487976,"longitude":-111.040314,"station_name":"Tortolita
+        Horses","station_id":54575,"network_id":"","file_url":null},{"latitude":32.255146,"longitude":-110.77562,"station_name":"My
+        yard","station_id":54576,"network_id":"","file_url":null},{"latitude":32.256844,"longitude":-110.722702,"station_name":"Home
+        ","station_id":54577,"network_id":"","file_url":null},{"latitude":32.218189,"longitude":-110.869659,"station_name":"SteveL","station_id":54578,"network_id":"","file_url":null},{"latitude":31.567051,"longitude":-110.245102,"station_name":"Work
+        Office","station_id":54593,"network_id":"","file_url":null},{"latitude":31.602663,"longitude":-109.675842,"station_name":"Home","station_id":54594,"network_id":"","file_url":null},{"latitude":33.575348,"longitude":-112.183777,"station_name":"Mountain
+        View","station_id":54603,"network_id":"","file_url":null},{"latitude":32.238552,"longitude":-110.950966,"station_name":"Community
+        Garden LUWA","station_id":54609,"network_id":"","file_url":null},{"latitude":32.365765,"longitude":-111.047806,"station_name":"Mason
+        Center","station_id":54627,"network_id":"","file_url":null},{"latitude":32.365917,"longitude":-111.047897,"station_name":"Final","station_id":54628,"network_id":"","file_url":null},{"latitude":32.103981,"longitude":-110.782974,"station_name":"Purple
+        Heart Park","station_id":54660,"network_id":"","file_url":null},{"latitude":32.363998,"longitude":-110.9804,"station_name":"Lucys
+        Box 1","station_id":54699,"network_id":"","file_url":null},{"latitude":33.769299,"longitude":-112.045898,"station_name":"Apache
+        Wash-Ridgeback","station_id":54741,"network_id":"","file_url":null},{"latitude":33.7164,"longitude":-112.245102,"station_name":"Sunrise
+        loop - Peoria AZ","station_id":54742,"network_id":"","file_url":null},{"latitude":32.228352,"longitude":-110.955147,"station_name":"Theearthworm","station_id":54783,"network_id":"","file_url":null},{"latitude":32.227547,"longitude":-111.038948,"station_name":"Painted
+        Hills Trailhead","station_id":54795,"network_id":"","file_url":null},{"latitude":34.545677,"longitude":-112.477066,"station_name":"Prescott
+        College","station_id":54843,"network_id":"","file_url":null},{"latitude":33.448185,"longitude":-111.482605,"station_name":"Desert
+        Refuge - Bell Street","station_id":54881,"network_id":"","file_url":null},{"latitude":32.242374,"longitude":-110.781807,"station_name":"ISABELLA
+        LEE","station_id":54887,"network_id":"","file_url":null},{"latitude":32.24754,"longitude":-110.781296,"station_name":"Bonanza
+        Ave and Forest Grove Saguaro ","station_id":54888,"network_id":"","file_url":null},{"latitude":32.246616,"longitude":-110.854263,"station_name":"Golf
+        and stuff","station_id":54889,"network_id":"","file_url":null},{"latitude":32.339401,"longitude":-110.716698,"station_name":"Gordon
+        Hirayabashi Gate","station_id":54896,"network_id":817,"file_url":null},{"latitude":32.340302,"longitude":-110.721703,"station_name":"Gordon
+        Hirayabashi Peak","station_id":54897,"network_id":817,"file_url":null},{"latitude":32.293224,"longitude":-110.688408,"station_name":"County
+        Road 39 Agave","station_id":54898,"network_id":817,"file_url":null},{"latitude":32.384296,"longitude":-111.162209,"station_name":"Law","station_id":54899,"network_id":"","file_url":null},{"latitude":33.870903,"longitude":-112.104156,"station_name":"West
+        Raised Flower Garden","station_id":54926,"network_id":"","file_url":null},{"latitude":31.83296,"longitude":-110.345215,"station_name":"Maintenance","station_id":54929,"network_id":895,"file_url":null},{"latitude":31.835836,"longitude":-110.355721,"station_name":"PM
+        House","station_id":54971,"network_id":895,"file_url":null},{"latitude":32.281181,"longitude":-110.729645,"station_name":"Agua
+        Caliente Park","station_id":55001,"network_id":"","file_url":null},{"latitude":32.005371,"longitude":-109.356522,"station_name":"CHIR
+        2024","station_id":55005,"network_id":327,"file_url":null},{"latitude":32.325577,"longitude":-109.484177,"station_name":"FOBO
+        2024","station_id":55014,"network_id":328,"file_url":null},{"latitude":31.346325,"longitude":-110.253609,"station_name":"CORO
+        2024","station_id":55015,"network_id":326,"file_url":null},{"latitude":32.284023,"longitude":-110.953201,"station_name":"Javelina
+        Haven","station_id":55017,"network_id":"","file_url":null},{"latitude":32.332546,"longitude":-111.102432,"station_name":"V-N
+        RANCH","station_id":55019,"network_id":"","file_url":null},{"latitude":31.836279,"longitude":-110.357018,"station_name":"Upper
+        Vol Village","station_id":55054,"network_id":895,"file_url":null},{"latitude":31.591743,"longitude":-109.508804,"station_name":"2024
+        Agave 5","station_id":55062,"network_id":831,"file_url":null},{"latitude":32.284096,"longitude":-110.953362,"station_name":"My
+        Site","station_id":55063,"network_id":"","file_url":null},{"latitude":31.547613,"longitude":-110.355911,"station_name":"Alison
+        Hillside","station_id":55100,"network_id":1316,"file_url":null},{"latitude":33.450813,"longitude":-111.947166,"station_name":"Zoo","station_id":55104,"network_id":"","file_url":null},{"latitude":33.677399,"longitude":-112.152512,"station_name":"Deer
+        Valley","station_id":55123,"network_id":"","file_url":null},{"latitude":31.489899,"longitude":-110.305092,"station_name":"TInker
+        Turnoff","station_id":55135,"network_id":1316,"file_url":null},{"latitude":31.515846,"longitude":-110.326492,"station_name":"Woodcutters
+        overlook","station_id":55136,"network_id":1316,"file_url":null},{"latitude":32.609444,"longitude":-110.733612,"station_name":"Oracle","station_id":55211,"network_id":"","file_url":null},{"latitude":33.844063,"longitude":-112.114182,"station_name":"W
+        Coyote Creek Dr wash","station_id":55521,"network_id":"","file_url":null},{"latitude":32.254002,"longitude":110.974197,"station_name":"amesbury","station_id":55592,"network_id":440,"file_url":null},{"latitude":33.648685,"longitude":-111.857452,"station_name":"FOWLER
+        GWphenotrail","station_id":55627,"network_id":440,"file_url":"https:\/\/naturesnotebook.usanpn.org\/images\/f410a4781aab1661d7e5d6589a65391-71903.jpg"},{"latitude":32.25346,"longitude":-110.911789,"station_name":"Samesbury","station_id":55633,"network_id":440,"file_url":null},{"latitude":32.318119,"longitude":-110.996773,"station_name":"Rsilverberg","station_id":55634,"network_id":440,"file_url":null},{"latitude":32.318119,"longitude":-110.996773,"station_name":"Silverberg","station_id":55635,"network_id":440,"file_url":null},{"latitude":32.318119,"longitude":-110.996773,"station_name":"Silverberg2","station_id":55636,"network_id":440,"file_url":null},{"latitude":33.606056,"longitude":-112.110077,"station_name":"FOWLERr
+        neighborhoodpark","station_id":55638,"network_id":440,"file_url":null},{"latitude":33.606594,"longitude":-112.114357,"station_name":"FOWLER
+        yard","station_id":55641,"network_id":440,"file_url":null},{"latitude":33.429703,"longitude":-111.789177,"station_name":"Michelle''s
+        Milkweed Patch","station_id":55684,"network_id":"","file_url":null},{"latitude":32.194706,"longitude":-110.785004,"station_name":"Home","station_id":55740,"network_id":"","file_url":null},{"latitude":33.41291,"longitude":-111.605148,"station_name":"Home","station_id":55767,"network_id":"","file_url":null},{"latitude":31.909029,"longitude":-110.834198,"station_name":"SRER_061.phenology.phe
+        - primary","station_id":55858,"network_id":77,"file_url":null},{"latitude":31.911873,"longitude":-110.835487,"station_name":"SRER_060.phenology.phe
+        - phenocam","station_id":55859,"network_id":77,"file_url":null}]'
+  recorded_at: 2024-11-20 00:22:01 GMT
+  recorded_with: vcr/1.6.0, webmockr/1.0.0

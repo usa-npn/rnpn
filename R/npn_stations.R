@@ -72,22 +72,15 @@ npn_stations_by_state <- function(...) {
 #' -110.93935080547857 32.23216538049456,-110.94484396954107 32.23623109416672))")
 #' )
 #' }
-npn_stations_by_location <- function( wkt, ...){
-
-  end_point <- 'stations/getStationsByLocation.json'
-  if(!is.null(wkt)){
-
-    tt <- lapply(wkt, function(z){
-      npn_GET(paste0(base(), end_point), list("wkt" = wkt), TRUE, ...)
-    })
-    ldfply(tt)
-
-  }else{
-    tibble::as.tibble(
-      npn_GET(paste0(base(), end_point), list(), TRUE, ...)
-    )
-  }
-
+npn_stations_by_location <- function(wkt, ...) {
+  req <- base_req %>%
+    httr2::req_url_path_append('stations/getStationsByLocation.json') %>%
+    httr2::req_url_query(wkt = wkt)
+  resp <- httr2::req_perform(req)
+  #TODO: capture `response_message` and convert to error? E.g. if wkt = "hello"
+  resp %>%
+    httr2::resp_body_json(simplifyVector = TRUE) %>%
+    tibble::as_tibble()
 }
 
 
