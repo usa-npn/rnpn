@@ -1,37 +1,29 @@
 http_interactions:
 - request:
     method: get
-    uri: https://services-staging.usanpn.org/npn_portal/stations/getStationsWithSpecies.json?species_id%5B1%5D=9000
+    uri: https://services.usanpn.org/npn_portal/stations/getStationsWithSpecies.json?species_id%5B1%5D=9000
     body:
       encoding: ''
       string: ''
-    headers:
-      Accept: application/json, text/xml, application/xml, */*
+    headers: []
   response:
     status:
       status_code: 200
-      category: Success
-      reason: OK
-      message: 'Success: (200) OK'
+      message: OK
     headers:
-      date: Tue, 12 Nov 2024 20:42:44 GMT
+      date: Wed, 20 Nov 2024 00:56:27 GMT
       content-type: application/json; charset=utf-8
       content-length: '2'
+      server: Apache/2.4.62 () PHP/5.5.38
       x-powered-by: PHP/5.5.38
       pragma: no-cache
       cache-control: no-store, no-cache, max-age=0, must-revalidate
       access-control-allow-origin: '*'
       access-control-allow-headers: origin, x-requested-with, content-type
       access-control-allow-methods: PUT, GET, POST, DELETE, OPTIONS
-      cf-cache-status: DYNAMIC
-      report-to: '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v4?s=oC0vzDVK7QYQbSEiYzdz0DOHL753muoYldTnwcvwuIq9FpeDq%2FQ%2Fi6EI80r%2Fqc7eE2KN%2Fc83zfKuMrHuEKDP2eHsq90HkM178mrRIa7AvJ2BOEPwsujB%2BihRPTaFdyA6uKpcBfmbRtw1y2jcCw%3D%3D"}],"group":"cf-nel","max_age":604800}'
-      nel: '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
-      server: cloudflare
-      cf-ray: 8e1959ab28032acb-LAX
-      server-timing: cfL4;desc="?proto=TCP&rtt=97532&sent=145&recv=94&lost=0&retrans=5&sent_bytes=34910&recv_bytes=3227&delivery_rate=256280&cwnd=211&unsent_bytes=0&cid=3807723b6edea19c&ts=121992&x=0"
     body:
       encoding: ''
       file: no
       string: '[]'
-  recorded_at: 2024-11-12 20:42:41 GMT
+  recorded_at: 2024-11-20 00:56:28 GMT
   recorded_with: vcr/1.6.0, webmockr/1.0.0

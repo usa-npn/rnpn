@@ -10,7 +10,7 @@ npn_stations_with_spp(speciesid, ...)
 \item{speciesid}{Required. Species id numbers, from 1 to infinity, potentially,
 use e.g., c(52, 53, etc.) if more than one species desired (numeric).}
 
-\item{...}{Curl options passed on to \code{\link[httr]{GET}}}
+\item{...}{currently unused}
 }
 \value{
 A data frame with stations' latitude and longitude, names, and ids.

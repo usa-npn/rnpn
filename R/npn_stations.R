@@ -74,6 +74,7 @@ npn_stations_by_state <- function(...) {
 #' )
 #' }
 npn_stations_by_location <- function(wkt, ...) {
+  #TODO: check if wkt is valid with something like wk package?
   req <- base_req %>%
     httr2::req_url_path_append('stations/getStationsByLocation.json') %>%
     httr2::req_url_query(wkt = wkt)
@@ -93,7 +94,7 @@ npn_stations_by_location <- function(wkt, ...) {
 #' @export
 #' @param speciesid Required. Species id numbers, from 1 to infinity, potentially,
 #'    use e.g., c(52, 53, etc.) if more than one species desired (numeric).
-#' @template curl
+#' @param ... currently unused
 #' @return A data frame with stations' latitude and longitude, names, and ids.
 #' @examples \dontrun{
 #' npn_stations_with_spp(speciesid = c(52,53,54))
@@ -101,10 +102,18 @@ npn_stations_by_location <- function(wkt, ...) {
 #' }
 
 npn_stations_with_spp <- function(speciesid, ...) {
-  args <- list()
-  for (i in seq_along(speciesid)) {
-    args[paste0('species_id[',i,']')] <- speciesid[i]
-  }
-  ldfply(npn_GET(paste0(base(), 'stations/getStationsWithSpecies.json'), args, ...))
+  #TODO this doesn't work with speciesid = 3 (and possibly others) for some reason
+  #https://github.com/usa-npn/rnpn/issues/38
+  speciesid <- as.list(
+    rlang::set_names(speciesid, paste0("species_id[", seq_along(speciesid), "]"))
+  )
+  req <- base_req %>%
+    httr2::req_url_path_append('stations/getStationsWithSpecies.json') %>%
+    httr2::req_url_query(!!!speciesid)
+  resp <- httr2::req_perform(req)
+  out <- httr2::resp_body_json(resp, simplifyVector = TRUE)
+
+  #return:
+  tibble::as_tibble(out)
 }
 
