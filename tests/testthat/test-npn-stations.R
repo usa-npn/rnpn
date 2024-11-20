@@ -83,6 +83,6 @@ test_that("npn_stations_with_spp functions",{
   vcr::use_cassette("npn_stations_with_spp_2", {
     stations <- npn_stations_with_spp(9000)
   })
-  expect_null(stations)
+  expect_identical(stations, tibble::tibble())
 
 })

@@ -14,15 +14,21 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Tue, 23 Jan 2024 19:49:05 GMT
+      date: Tue, 19 Nov 2024 23:52:45 GMT
       content-type: application/json; charset=utf-8
-      server: Apache/2.4.58 () PHP/5.5.38
       x-powered-by: PHP/5.5.38
       pragma: no-cache
       cache-control: no-store, no-cache, max-age=0, must-revalidate
       access-control-allow-origin: '*'
       access-control-allow-headers: origin, x-requested-with, content-type
       access-control-allow-methods: PUT, GET, POST, DELETE, OPTIONS
+      cf-cache-status: DYNAMIC
+      report-to: '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v4?s=EDD7sSIMp6WvCqfQ4mBu7klGsFjgSejcD5lqs08M0wsgFq7S%2B2YkbhPPFSvJorpsXtzieyM%2BoMkfEBYqj9eqQrjIlsacvZGW%2Fw9tC4AlNjJm5j8vgh%2F3Z1wG%2BE4P39VoliIrDaslDAYuBGSFSQ%3D%3D"}],"group":"cf-nel","max_age":604800}'
+      nel: '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
+      server: cloudflare
+      cf-ray: 8e541da3cf3e7baa-LAX
+      content-encoding: gzip
+      server-timing: cfL4;desc="?proto=TCP&rtt=47440&sent=160&recv=97&lost=0&retrans=3&sent_bytes=53701&recv_bytes=3279&delivery_rate=381362&cwnd=187&unsent_bytes=0&cid=69b3b236eff9cf59&ts=258647&x=0"
     body:
       encoding: ''
       file: no
@@ -62,7 +68,8 @@ http_interactions:
         jackrabbit","genus":"Lepus","kingdom":"Animalia","species":"californicus","itis_taxonomic_sn":180115},{"species_id":403,"common_name":"black-tailed
         prairie dog","genus":"Cynomys","kingdom":"Animalia","species":"ludovicianus","itis_taxonomic_sn":180186},{"species_id":1226,"common_name":"black-throated
         blue warbler","genus":"Setophaga","kingdom":"Animalia","species":"caerulescens","itis_taxonomic_sn":950042},{"species_id":1402,"common_name":"bobcat","genus":"Lynx","kingdom":"Animalia","species":"rufus","itis_taxonomic_sn":180582},{"species_id":736,"common_name":"bobolink","genus":"Dolichonyx","kingdom":"Animalia","species":"oryzivorus","itis_taxonomic_sn":179032},{"species_id":336,"common_name":"boreal
-        chorus frog","genus":"Pseudacris","kingdom":"Animalia","species":"maculata","itis_taxonomic_sn":207312},{"species_id":354,"common_name":"broad-tailed
+        chorus frog","genus":"Pseudacris","kingdom":"Animalia","species":"maculata","itis_taxonomic_sn":207312},{"species_id":2297,"common_name":"broad-billed
+        hummingbird","genus":"Cynanthus","kingdom":"Animalia","species":"latirostris","itis_taxonomic_sn":178073},{"species_id":354,"common_name":"broad-tailed
         hummingbird","genus":"Selasphorus","kingdom":"Animalia","species":"platycercus","itis_taxonomic_sn":178038},{"species_id":1085,"common_name":"broad-winged
         hawk","genus":"Buteo","kingdom":"Animalia","species":"platypterus","itis_taxonomic_sn":175365},{"species_id":1789,"common_name":"bronze
         birch borer","genus":"Agrilus","kingdom":"Animalia","species":"anxius","itis_taxonomic_sn":809380},{"species_id":1397,"common_name":"brown
@@ -131,7 +138,8 @@ http_interactions:
         gull","genus":"Larus","kingdom":"Animalia","species":"argentatus","itis_taxonomic_sn":176824},{"species_id":1236,"common_name":"hooded
         warbler","genus":"Setophaga","kingdom":"Animalia","species":"citrina","itis_taxonomic_sn":950029},{"species_id":1114,"common_name":"horned
         grebe","genus":"Podiceps","kingdom":"Animalia","species":"auritus","itis_taxonomic_sn":174482},{"species_id":1400,"common_name":"horned
-        lark","genus":"Eremophila","kingdom":"Animalia","species":"alpestris","itis_taxonomic_sn":554256},{"species_id":1110,"common_name":"house
+        lark","genus":"Eremophila","kingdom":"Animalia","species":"alpestris","itis_taxonomic_sn":554256},{"species_id":2298,"common_name":"house
+        finch","genus":"Haemorhous","kingdom":"Animalia","species":"mexicanus","itis_taxonomic_sn":997805},{"species_id":1110,"common_name":"house
         sparrow","genus":"Passer","kingdom":"Animalia","species":"domesticus","itis_taxonomic_sn":179628},{"species_id":355,"common_name":"house
         wren","genus":"Troglodytes","kingdom":"Animalia","species":"aedon","itis_taxonomic_sn":178541},{"species_id":244,"common_name":"killdeer","genus":"Charadrius","kingdom":"Animalia","species":"vociferus","itis_taxonomic_sn":176520},{"species_id":383,"common_name":"largemouth
         bass","genus":"Micropterus","kingdom":"Animalia","species":"salmoides","itis_taxonomic_sn":168160},{"species_id":1656,"common_name":"lark
@@ -143,7 +151,8 @@ http_interactions:
         yellowlegs","genus":"Tringa","kingdom":"Animalia","species":"flavipes","itis_taxonomic_sn":176620},{"species_id":1243,"common_name":"lilac
         borer","genus":"Podosesia","kingdom":"Animalia","species":"syringae","itis_taxonomic_sn":null},{"species_id":2200,"common_name":"Lucy''s
         warbler","genus":"Leiothlypis","kingdom":"Animalia","species":"luciae","itis_taxonomic_sn":950017},{"species_id":1136,"common_name":"Lyside
-        sulphur","genus":"Kricogonia","kingdom":"Animalia","species":"lyside","itis_taxonomic_sn":777722},{"species_id":1375,"common_name":"mallard","genus":"Anas","kingdom":"Animalia","species":"platyrhynchos","itis_taxonomic_sn":175063},{"species_id":2103,"common_name":"mason
+        sulphur","genus":"Kricogonia","kingdom":"Animalia","species":"lyside","itis_taxonomic_sn":777722},{"species_id":1375,"common_name":"mallard","genus":"Anas","kingdom":"Animalia","species":"platyrhynchos","itis_taxonomic_sn":175063},{"species_id":2301,"common_name":"marine
+        blue","genus":"Leptotes","kingdom":"Animalia","species":"marina","itis_taxonomic_sn":777885},{"species_id":2103,"common_name":"mason
         bee","genus":"Osmia","kingdom":"Animalia","species":"spp.","itis_taxonomic_sn":154377},{"species_id":396,"common_name":"monarch","genus":"Danaus","kingdom":"Animalia","species":"plexippus","itis_taxonomic_sn":117273},{"species_id":1411,"common_name":"mountain
         chickadee","genus":"Poecile","kingdom":"Animalia","species":"gambeli","itis_taxonomic_sn":554385},{"species_id":1715,"common_name":"mountain
         cottontail","genus":"Sylvilagus","kingdom":"Animalia","species":"nuttallii","itis_taxonomic_sn":180126},{"species_id":1137,"common_name":"mourning
@@ -207,7 +216,8 @@ http_interactions:
         jay","genus":"Cyanocitta","kingdom":"Animalia","species":"stelleri","itis_taxonomic_sn":179685},{"species_id":1711,"common_name":"subterranean
         termite","genus":"Reticulitermes","kingdom":"Animalia","species":"spp.","itis_taxonomic_sn":623930},{"species_id":1086,"common_name":"Swainson''s
         hawk","genus":"Buteo","kingdom":"Animalia","species":"swainsoni","itis_taxonomic_sn":175367},{"species_id":1882,"common_name":"sweat
-        bee","genus":"Lasioglossum","kingdom":"Animalia","species":"spp.","itis_taxonomic_sn":154357},{"species_id":1667,"common_name":"thirteen-lined
+        bee","genus":"Lasioglossum","kingdom":"Animalia","species":"spp.","itis_taxonomic_sn":154357},{"species_id":2300,"common_name":"sweat
+        bee","genus":"Agapostemon","kingdom":"Animalia","species":"spp.","itis_taxonomic_sn":154351},{"species_id":1667,"common_name":"thirteen-lined
         ground squirrel","genus":"Ictidomys","kingdom":"Animalia","species":"tridecemlineatus","itis_taxonomic_sn":930308},{"species_id":229,"common_name":"tiger
         salamander","genus":"Ambystoma","kingdom":"Animalia","species":"mavortium-tigrinum","itis_taxonomic_sn":668193},{"species_id":1124,"common_name":"tree
         swallow","genus":"Tachycineta","kingdom":"Animalia","species":"bicolor","itis_taxonomic_sn":178431},{"species_id":1701,"common_name":"turkey
@@ -240,5 +250,5 @@ http_interactions:
         warbler","genus":"Setophaga","kingdom":"Animalia","species":"petechia","itis_taxonomic_sn":950039},{"species_id":1097,"common_name":"yellow-rumped
         warbler","genus":"Setophaga","kingdom":"Animalia","species":"coronata","itis_taxonomic_sn":950046},{"species_id":1395,"common_name":"zebra-tailed
         lizard","genus":"Callisaurus","kingdom":"Animalia","species":"draconoides","itis_taxonomic_sn":173906}]'
-  recorded_at: 2024-01-23 19:49:05 GMT
-  recorded_with: vcr/1.2.2, webmockr/0.9.0
+  recorded_at: 2024-11-19 23:52:46 GMT
+  recorded_with: vcr/1.6.0, webmockr/1.0.0

@@ -14,15 +14,21 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Tue, 23 Jan 2024 19:49:04 GMT
+      date: Tue, 19 Nov 2024 23:52:45 GMT
       content-type: application/json; charset=utf-8
-      server: Apache/2.4.58 () PHP/5.5.38
       x-powered-by: PHP/5.5.38
       pragma: no-cache
       cache-control: no-store, no-cache, max-age=0, must-revalidate
       access-control-allow-origin: '*'
       access-control-allow-headers: origin, x-requested-with, content-type
       access-control-allow-methods: PUT, GET, POST, DELETE, OPTIONS
+      cf-cache-status: DYNAMIC
+      report-to: '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v4?s=%2FXFM6T0FOeA%2F%2BC9Ly5lPeU0RLhaC1cg9KibbslAWHigoh7rtsrDlCTCEDP9GiNLGRWtmrZ9RGQcHLdqRKUAKH9IZ%2BjjFGqVdNGLDob4IWLdmc6YYVZfAQWT8W11gG0n7qphDMpqRtYCNJ7l0IA%3D%3D"}],"group":"cf-nel","max_age":604800}'
+      nel: '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
+      server: cloudflare
+      cf-ray: 8e541da14ba77baa-LAX
+      content-encoding: gzip
+      server-timing: cfL4;desc="?proto=TCP&rtt=45002&sent=142&recv=91&lost=0&retrans=3&sent_bytes=34471&recv_bytes=3191&delivery_rate=295355&cwnd=187&unsent_bytes=0&cid=69b3b236eff9cf59&ts=258257&x=0"
     body:
       encoding: ''
       file: no
@@ -52,7 +58,8 @@ http_interactions:
         pokeweed","genus":"Phytolacca","kingdom":"Plantae","species":"americana","itis_taxonomic_sn":19523},{"species_id":1762,"common_name":"American
         red raspberry","genus":"Rubus","kingdom":"Plantae","species":"idaeus","itis_taxonomic_sn":24947},{"species_id":1193,"common_name":"American
         redstart","genus":"Setophaga","kingdom":"Animalia","species":"ruticilla","itis_taxonomic_sn":178979},{"species_id":246,"common_name":"American
-        robin","genus":"Turdus","kingdom":"Animalia","species":"migratorius","itis_taxonomic_sn":179759},{"species_id":1455,"common_name":"American
+        robin","genus":"Turdus","kingdom":"Animalia","species":"migratorius","itis_taxonomic_sn":179759},{"species_id":2272,"common_name":"American
+        star-thistle","genus":"Plectocephalus","kingdom":"Plantae","species":"americanus","itis_taxonomic_sn":780479},{"species_id":1455,"common_name":"American
         tarwort","genus":"Flourensia","kingdom":"Plantae","species":"cernua","itis_taxonomic_sn":37392},{"species_id":1416,"common_name":"American
         tree sparrow","genus":"Spizelloides","kingdom":"Animalia","species":"arborea","itis_taxonomic_sn":997961},{"species_id":1709,"common_name":"American
         white pelican","genus":"Pelecanus","kingdom":"Animalia","species":"erythrorhynchos","itis_taxonomic_sn":174684},{"species_id":938,"common_name":"American
@@ -113,7 +120,8 @@ http_interactions:
         wheatgrass","genus":"Pseudoroegneria","kingdom":"Plantae","species":"spicata","itis_taxonomic_sn":504637},{"species_id":851,"common_name":"bluedicks","genus":"Dichelostemma","kingdom":"Plantae","species":"capitatum","itis_taxonomic_sn":524921},{"species_id":811,"common_name":"bluejoint","genus":"Calamagrostis","kingdom":"Plantae","species":"canadensis","itis_taxonomic_sn":40544},{"species_id":1402,"common_name":"bobcat","genus":"Lynx","kingdom":"Animalia","species":"rufus","itis_taxonomic_sn":180582},{"species_id":736,"common_name":"bobolink","genus":"Dolichonyx","kingdom":"Animalia","species":"oryzivorus","itis_taxonomic_sn":179032},{"species_id":336,"common_name":"boreal
         chorus frog","genus":"Pseudacris","kingdom":"Animalia","species":"maculata","itis_taxonomic_sn":207312},{"species_id":2,"common_name":"boxelder","genus":"Acer","kingdom":"Plantae","species":"negundo","itis_taxonomic_sn":28749},{"species_id":2189,"common_name":"branched
         noseburn","genus":"Tragia","kingdom":"Plantae","species":"ramosa","itis_taxonomic_sn":28433},{"species_id":1801,"common_name":"bristly
-        fiddleneck","genus":"Amsinckia","kingdom":"Plantae","species":"tessellata","itis_taxonomic_sn":31706},{"species_id":859,"common_name":"brittlebush","genus":"Encelia","kingdom":"Plantae","species":"farinosa","itis_taxonomic_sn":37308},{"species_id":354,"common_name":"broad-tailed
+        fiddleneck","genus":"Amsinckia","kingdom":"Plantae","species":"tessellata","itis_taxonomic_sn":31706},{"species_id":859,"common_name":"brittlebush","genus":"Encelia","kingdom":"Plantae","species":"farinosa","itis_taxonomic_sn":37308},{"species_id":2297,"common_name":"broad-billed
+        hummingbird","genus":"Cynanthus","kingdom":"Animalia","species":"latirostris","itis_taxonomic_sn":178073},{"species_id":354,"common_name":"broad-tailed
         hummingbird","genus":"Selasphorus","kingdom":"Animalia","species":"platycercus","itis_taxonomic_sn":178038},{"species_id":1085,"common_name":"broad-winged
         hawk","genus":"Buteo","kingdom":"Animalia","species":"platypterus","itis_taxonomic_sn":175365},{"species_id":1697,"common_name":"broadleaf
         cattail","genus":"Typha","kingdom":"Plantae","species":"latifolia","itis_taxonomic_sn":42326},{"species_id":767,"common_name":"broadleaf
@@ -146,7 +154,8 @@ http_interactions:
         thistle","genus":"Cirsium","kingdom":"Plantae","species":"arvense","itis_taxonomic_sn":36335},{"species_id":2196,"common_name":"Canadian
         white violet","genus":"Viola","kingdom":"Plantae","species":"canadensis","itis_taxonomic_sn":22053},{"species_id":867,"common_name":"candy
         barrelcactus","genus":"Ferocactus","kingdom":"Plantae","species":"wislizeni","itis_taxonomic_sn":502595},{"species_id":1373,"common_name":"canyon
-        grape","genus":"Vitis","kingdom":"Plantae","species":"arizonica","itis_taxonomic_sn":28612},{"species_id":1220,"common_name":"canyon
+        grape","genus":"Vitis","kingdom":"Plantae","species":"arizonica","itis_taxonomic_sn":28612},{"species_id":2274,"common_name":"canyon
+        live oak","genus":"Quercus","kingdom":"Plantae","species":"chrysolepis","itis_taxonomic_sn":19312},{"species_id":1220,"common_name":"canyon
         spotted whiptail","genus":"Aspidoscelis","kingdom":"Animalia","species":"burti","itis_taxonomic_sn":1172338},{"species_id":916,"common_name":"cardinalflower","genus":"Lobelia","kingdom":"Plantae","species":"cardinalis","itis_taxonomic_sn":34505},{"species_id":2174,"common_name":"Carolina
         horsenettle","genus":"Solanum","kingdom":"Plantae","species":"carolinense","itis_taxonomic_sn":30413},{"species_id":417,"common_name":"Carolina
         locust","genus":"Dissosteira","kingdom":"Animalia","species":"carolina","itis_taxonomic_sn":102209},{"species_id":776,"common_name":"catclaw
@@ -186,7 +195,8 @@ http_interactions:
         wood-nymph","genus":"Cercyonis","kingdom":"Animalia","species":"pegala","itis_taxonomic_sn":778122},{"species_id":144,"common_name":"common
         yarrow","genus":"Achillea","kingdom":"Plantae","species":"millefolium","itis_taxonomic_sn":35423},{"species_id":2152,"common_name":"common
         yellow oxalis","genus":"Oxalis","kingdom":"Plantae","species":"stricta","itis_taxonomic_sn":29095},{"species_id":1197,"common_name":"common
-        yellowthroat","genus":"Geothlypis","kingdom":"Animalia","species":"trichas","itis_taxonomic_sn":178944},{"species_id":1428,"common_name":"convergent
+        yellowthroat","genus":"Geothlypis","kingdom":"Animalia","species":"trichas","itis_taxonomic_sn":178944},{"species_id":2285,"common_name":"composite
+        dropseed","genus":"Sporobolus","kingdom":"Plantae","species":"compositus","itis_taxonomic_sn":507182},{"species_id":1428,"common_name":"convergent
         lady beetle","genus":"Hippodamia","kingdom":"Animalia","species":"convergens","itis_taxonomic_sn":114331},{"species_id":1946,"common_name":"Cooley''s
         bundleflower","genus":"Desmanthus","kingdom":"Plantae","species":"cooleyi","itis_taxonomic_sn":26659},{"species_id":1218,"common_name":"Cooper''s
         hawk","genus":"Accipiter","kingdom":"Animalia","species":"cooperii","itis_taxonomic_sn":175309},{"species_id":1729,"common_name":"coriander","genus":"Coriandrum","kingdom":"Plantae","species":"sativum","itis_taxonomic_sn":29622},{"species_id":1511,"common_name":"corn","genus":"Zea","kingdom":"Plantae","species":"mays","itis_taxonomic_sn":42269},{"species_id":1089,"common_name":"Costa''s
@@ -282,11 +292,14 @@ http_interactions:
         bully","genus":"Sideroxylon","kingdom":"Plantae","species":"lanuginosum","itis_taxonomic_sn":505219},{"species_id":1399,"common_name":"Gunnison''s
         prairie dog","genus":"Cynomys","kingdom":"Animalia","species":"gunnisoni","itis_taxonomic_sn":180184},{"species_id":1914,"common_name":"hairy
         bittercress","genus":"Cardamine","kingdom":"Plantae","species":"hirsuta","itis_taxonomic_sn":22797},{"species_id":1978,"common_name":"hairy
-        false goldenaster","genus":"Heterotheca","kingdom":"Plantae","species":"villosa","itis_taxonomic_sn":37689},{"species_id":805,"common_name":"hairyseed
+        false goldenaster","genus":"Heterotheca","kingdom":"Plantae","species":"villosa","itis_taxonomic_sn":37689},{"species_id":2250,"common_name":"hairy
+        woollygrass","genus":"Erioneuron","kingdom":"Plantae","species":"pilosum","itis_taxonomic_sn":41731},{"species_id":805,"common_name":"hairyseed
         bahia","genus":"Bahia","kingdom":"Plantae","species":"absinthifolia","itis_taxonomic_sn":36791},{"species_id":1020,"common_name":"hardstem
         bulrush","genus":"Schoenoplectus","kingdom":"Plantae","species":"acutus","itis_taxonomic_sn":507785},{"species_id":1601,"common_name":"Hartweg''s
-        sundrops","genus":"Oenothera","kingdom":"Plantae","species":"hartwegii","itis_taxonomic_sn":517700},{"species_id":1608,"common_name":"hawthorn","genus":"Crataegus","kingdom":"Plantae","species":"spp.","itis_taxonomic_sn":24539},{"species_id":814,"common_name":"hedge
-        false bindweed","genus":"Calystegia","kingdom":"Plantae","species":"sepium","itis_taxonomic_sn":30650},{"species_id":2126,"common_name":"herb
+        sundrops","genus":"Oenothera","kingdom":"Plantae","species":"hartwegii","itis_taxonomic_sn":517700},{"species_id":1608,"common_name":"hawthorn","genus":"Crataegus","kingdom":"Plantae","species":"spp.","itis_taxonomic_sn":24539},{"species_id":2218,"common_name":"heartleaf
+        arnica","genus":"Arnica","kingdom":"Plantae","species":"cordifolia","itis_taxonomic_sn":36561},{"species_id":814,"common_name":"hedge
+        false bindweed","genus":"Calystegia","kingdom":"Plantae","species":"sepium","itis_taxonomic_sn":30650},{"species_id":2246,"common_name":"Heller''s
+        rosette grass","genus":"Dichanthelium","kingdom":"Plantae","species":"oligosanthes","itis_taxonomic_sn":41667},{"species_id":2126,"common_name":"herb
         sophia","genus":"Descurainia","kingdom":"Plantae","species":"sophia","itis_taxonomic_sn":22843},{"species_id":1106,"common_name":"herring
         gull","genus":"Larus","kingdom":"Animalia","species":"argentatus","itis_taxonomic_sn":176824},{"species_id":1002,"common_name":"Himalayan
         blackberry","genus":"Rubus","kingdom":"Plantae","species":"discolor","itis_taxonomic_sn":24852},{"species_id":1651,"common_name":"hoary
@@ -295,12 +308,14 @@ http_interactions:
         warbler","genus":"Setophaga","kingdom":"Animalia","species":"citrina","itis_taxonomic_sn":950029},{"species_id":1114,"common_name":"horned
         grebe","genus":"Podiceps","kingdom":"Animalia","species":"auritus","itis_taxonomic_sn":174482},{"species_id":1400,"common_name":"horned
         lark","genus":"Eremophila","kingdom":"Animalia","species":"alpestris","itis_taxonomic_sn":554256},{"species_id":1336,"common_name":"horsetail
-        milkweed","genus":"Asclepias","kingdom":"Plantae","species":"subverticillata","itis_taxonomic_sn":30308},{"species_id":1110,"common_name":"house
+        milkweed","genus":"Asclepias","kingdom":"Plantae","species":"subverticillata","itis_taxonomic_sn":30308},{"species_id":2298,"common_name":"house
+        finch","genus":"Haemorhous","kingdom":"Animalia","species":"mexicanus","itis_taxonomic_sn":997805},{"species_id":1110,"common_name":"house
         sparrow","genus":"Passer","kingdom":"Animalia","species":"domesticus","itis_taxonomic_sn":179628},{"species_id":355,"common_name":"house
         wren","genus":"Troglodytes","kingdom":"Animalia","species":"aedon","itis_taxonomic_sn":178541},{"species_id":763,"common_name":"hummingbird
         trumpet","genus":"Epilobium","kingdom":"Plantae","species":"canum","itis_taxonomic_sn":27289},{"species_id":869,"common_name":"Idaho
         fescue ","genus":"Festuca","kingdom":"Plantae","species":"idahoensis","itis_taxonomic_sn":40816},{"species_id":1884,"common_name":"Indian
-        ricegrass","genus":"Achnatherum","kingdom":"Plantae","species":"hymenoides","itis_taxonomic_sn":507943},{"species_id":1695,"common_name":"Indiangrass","genus":"Sorghastrum","kingdom":"Plantae","species":"nutans","itis_taxonomic_sn":42102},{"species_id":1434,"common_name":"indianhemp","genus":"Apocynum","kingdom":"Plantae","species":"cannabinum","itis_taxonomic_sn":30157},{"species_id":2023,"common_name":"Ives''
+        ricegrass","genus":"Achnatherum","kingdom":"Plantae","species":"hymenoides","itis_taxonomic_sn":507943},{"species_id":2302,"common_name":"Indian
+        woodoats","genus":"Chasmanthium","kingdom":"Plantae","species":"latifolium","itis_taxonomic_sn":41547},{"species_id":1695,"common_name":"Indiangrass","genus":"Sorghastrum","kingdom":"Plantae","species":"nutans","itis_taxonomic_sn":42102},{"species_id":1434,"common_name":"indianhemp","genus":"Apocynum","kingdom":"Plantae","species":"cannabinum","itis_taxonomic_sn":30157},{"species_id":2023,"common_name":"Ives''
         phacelia","genus":"Phacelia","kingdom":"Plantae","species":"ivesiana","itis_taxonomic_sn":504273},{"species_id":1158,"common_name":"Jacob''s-ladder","genus":"Polemonium","kingdom":"Plantae","species":"pulcherrimum","itis_taxonomic_sn":31023},{"species_id":1464,"common_name":"James''
         galleta","genus":"Hilaria","kingdom":"Plantae","species":"jamesii","itis_taxonomic_sn":41768},{"species_id":2035,"common_name":"James''
         holdback","genus":"Pomaria","kingdom":"Plantae","species":"jamesii","itis_taxonomic_sn":820272},{"species_id":1247,"common_name":"Japanese
@@ -326,7 +341,8 @@ http_interactions:
         woollygrass","genus":"Dasyochloa","kingdom":"Plantae","species":"pulchella","itis_taxonomic_sn":512087},{"species_id":2200,"common_name":"Lucy''s
         warbler","genus":"Leiothlypis","kingdom":"Animalia","species":"luciae","itis_taxonomic_sn":950017},{"species_id":2078,"common_name":"lyreleaf
         jewelflower","genus":"Streptanthus","kingdom":"Plantae","species":"carinatus","itis_taxonomic_sn":23347},{"species_id":1136,"common_name":"Lyside
-        sulphur","genus":"Kricogonia","kingdom":"Animalia","species":"lyside","itis_taxonomic_sn":777722},{"species_id":1375,"common_name":"mallard","genus":"Anas","kingdom":"Animalia","species":"platyrhynchos","itis_taxonomic_sn":175063},{"species_id":1477,"common_name":"mariola","genus":"Parthenium","kingdom":"Plantae","species":"incanum","itis_taxonomic_sn":38165},{"species_id":2103,"common_name":"mason
+        sulphur","genus":"Kricogonia","kingdom":"Animalia","species":"lyside","itis_taxonomic_sn":777722},{"species_id":1375,"common_name":"mallard","genus":"Anas","kingdom":"Animalia","species":"platyrhynchos","itis_taxonomic_sn":175063},{"species_id":2301,"common_name":"marine
+        blue","genus":"Leptotes","kingdom":"Animalia","species":"marina","itis_taxonomic_sn":777885},{"species_id":1477,"common_name":"mariola","genus":"Parthenium","kingdom":"Plantae","species":"incanum","itis_taxonomic_sn":38165},{"species_id":2103,"common_name":"mason
         bee","genus":"Osmia","kingdom":"Animalia","species":"spp.","itis_taxonomic_sn":154377},{"species_id":1497,"common_name":"mesa
         dropseed","genus":"Sporobolus","kingdom":"Plantae","species":"flexuosus","itis_taxonomic_sn":42137},{"species_id":2162,"common_name":"mesquite","genus":"Prosopis","kingdom":"Plantae","species":"spp.","itis_taxonomic_sn":26878},{"species_id":986,"common_name":"Mexican
         cliffrose","genus":"Purshia","kingdom":"Plantae","species":"mexicana","itis_taxonomic_sn":836733},{"species_id":834,"common_name":"miner''s
@@ -364,7 +380,8 @@ http_interactions:
         leopard frog","genus":"Lithobates","kingdom":"Animalia","species":"pipiens","itis_taxonomic_sn":775108},{"species_id":1108,"common_name":"northern
         mockingbird","genus":"Mimus","kingdom":"Animalia","species":"polyglottos","itis_taxonomic_sn":178620},{"species_id":1230,"common_name":"northern
         parula","genus":"Setophaga","kingdom":"Animalia","species":"americana","itis_taxonomic_sn":950033},{"species_id":1081,"common_name":"northern
-        pintail","genus":"Anas","kingdom":"Animalia","species":"acuta","itis_taxonomic_sn":175074},{"species_id":312,"common_name":"oceanspray","genus":"Holodiscus","kingdom":"Plantae","species":"discolor","itis_taxonomic_sn":25177},{"species_id":16,"common_name":"ocotillo","genus":"Fouquieria","kingdom":"Plantae","species":"splendens","itis_taxonomic_sn":502645},{"species_id":1385,"common_name":"oleander
+        pintail","genus":"Anas","kingdom":"Animalia","species":"acuta","itis_taxonomic_sn":175074},{"species_id":312,"common_name":"oceanspray","genus":"Holodiscus","kingdom":"Plantae","species":"discolor","itis_taxonomic_sn":25177},{"species_id":16,"common_name":"ocotillo","genus":"Fouquieria","kingdom":"Plantae","species":"splendens","itis_taxonomic_sn":502645},{"species_id":2252,"common_name":"old
+        man''s whiskers","genus":"Geum","kingdom":"Plantae","species":"triflorum","itis_taxonomic_sn":24662},{"species_id":2279,"common_name":"old-man-in-the-spring","genus":"Senecio","kingdom":"Plantae","species":"vulgaris","itis_taxonomic_sn":36194},{"species_id":1385,"common_name":"oleander
         aphid","genus":"Aphis","kingdom":"Animalia","species":"nerii","itis_taxonomic_sn":200580},{"species_id":247,"common_name":"olive-sided
         flycatcher","genus":"Contopus","kingdom":"Animalia","species":"cooperi","itis_taxonomic_sn":554221},{"species_id":289,"common_name":"oneseed
         juniper","genus":"Juniperus","kingdom":"Plantae","species":"monosperma","itis_taxonomic_sn":194853},{"species_id":2026,"common_name":"oppositeleaf
@@ -380,7 +397,8 @@ http_interactions:
         century plant","genus":"Agave","kingdom":"Plantae","species":"palmeri","itis_taxonomic_sn":182682},{"species_id":956,"common_name":"Palmer''s
         penstemon","genus":"Penstemon","kingdom":"Plantae","species":"palmeri","itis_taxonomic_sn":33738},{"species_id":1808,"common_name":"Panamint
         cryptantha","genus":"Cryptantha","kingdom":"Plantae","species":"angustifolia","itis_taxonomic_sn":31784},{"species_id":1021,"common_name":"panicled
-        bulrush","genus":"Scirpus","kingdom":"Plantae","species":"microcarpus","itis_taxonomic_sn":40235},{"species_id":1322,"common_name":"Parry''s
+        bulrush","genus":"Scirpus","kingdom":"Plantae","species":"microcarpus","itis_taxonomic_sn":40235},{"species_id":2278,"common_name":"park
+        willow","genus":"Salix","kingdom":"Plantae","species":"monticola","itis_taxonomic_sn":22558},{"species_id":1322,"common_name":"Parry''s
         agave","genus":"Agave","kingdom":"Plantae","species":"parryi","itis_taxonomic_sn":182683},{"species_id":957,"common_name":"Parry''s
         beardtongue","genus":"Penstemon","kingdom":"Plantae","species":"parryi","itis_taxonomic_sn":33741},{"species_id":88,"common_name":"peach","genus":"Prunus","kingdom":"Plantae","species":"persica","itis_taxonomic_sn":24765},{"species_id":1102,"common_name":"peregrine
         falcon","genus":"Falco","kingdom":"Animalia","species":"peregrinus","itis_taxonomic_sn":175604},{"species_id":1382,"common_name":"phainopepla","genus":"Phainopepla","kingdom":"Animalia","species":"nitens","itis_taxonomic_sn":179877},{"species_id":1239,"common_name":"pine
@@ -389,13 +407,15 @@ http_interactions:
         dropseed","genus":"Sporobolus","kingdom":"Plantae","species":"junceus","itis_taxonomic_sn":42142},{"species_id":1894,"common_name":"pink
         funnel lily","genus":"Androstephium","kingdom":"Plantae","species":"breviflorum","itis_taxonomic_sn":42777},{"species_id":1628,"common_name":"pink
         mountainheath","genus":"Phyllodoce","kingdom":"Plantae","species":"empetriformis","itis_taxonomic_sn":23697},{"species_id":180,"common_name":"pinkladies","genus":"Oenothera","kingdom":"Plantae","species":"speciosa","itis_taxonomic_sn":27415},{"species_id":1129,"common_name":"pipevine
-        swallowtail ","genus":"Battus","kingdom":"Animalia","species":"philenor","itis_taxonomic_sn":777692},{"species_id":1150,"common_name":"pipsissewa","genus":"Chimaphila","kingdom":"Plantae","species":"umbellata","itis_taxonomic_sn":23769},{"species_id":2012,"common_name":"plains
+        swallowtail ","genus":"Battus","kingdom":"Animalia","species":"philenor","itis_taxonomic_sn":777692},{"species_id":1150,"common_name":"pipsissewa","genus":"Chimaphila","kingdom":"Plantae","species":"umbellata","itis_taxonomic_sn":23769},{"species_id":2216,"common_name":"plains
+        dozedaisy","genus":"Aphanostephus","kingdom":"Plantae","species":"ramosissimus","itis_taxonomic_sn":36541},{"species_id":2012,"common_name":"plains
         pricklypear","genus":"Opuntia","kingdom":"Plantae","species":"polyacantha","itis_taxonomic_sn":19726},{"species_id":231,"common_name":"Plains
         spadefoot","genus":"Spea","kingdom":"Animalia","species":"bombifrons","itis_taxonomic_sn":206989},{"species_id":1324,"common_name":"pointleaf
         manzanita","genus":"Arctostaphylos","kingdom":"Plantae","species":"pungens","itis_taxonomic_sn":23519},{"species_id":25,"common_name":"ponderosa
         pine","genus":"Pinus","kingdom":"Plantae","species":"ponderosa","itis_taxonomic_sn":183365},{"species_id":1953,"common_name":"poorjoe","genus":"Diodella","kingdom":"Plantae","species":"teres","itis_taxonomic_sn":512309},{"species_id":1900,"common_name":"prairie
         sagewort","genus":"Artemisia","kingdom":"Plantae","species":"frigida","itis_taxonomic_sn":35465},{"species_id":1699,"common_name":"prairie
-        violet","genus":"Viola","kingdom":"Plantae","species":"pedatifida","itis_taxonomic_sn":22131},{"species_id":1685,"common_name":"proso
+        violet","genus":"Viola","kingdom":"Plantae","species":"pedatifida","itis_taxonomic_sn":22131},{"species_id":2262,"common_name":"prickly
+        lettuce","genus":"Lactuca","kingdom":"Plantae","species":"serriola","itis_taxonomic_sn":36608},{"species_id":1685,"common_name":"proso
         millet","genus":"Panicum","kingdom":"Plantae","species":"miliaceum","itis_taxonomic_sn":40946},{"species_id":1710,"common_name":"prothonotary
         warbler","genus":"Protonotaria","kingdom":"Animalia","species":"citrea","itis_taxonomic_sn":178846},{"species_id":286,"common_name":"punctured
         tiger beetle","genus":"Cicindela","kingdom":"Animalia","species":"punctulata","itis_taxonomic_sn":697729},{"species_id":1194,"common_name":"purple
@@ -422,7 +442,8 @@ http_interactions:
         stork''s bill","genus":"Erodium","kingdom":"Plantae","species":"cicutarium","itis_taxonomic_sn":29147},{"species_id":960,"common_name":"reed
         canarygrass","genus":"Phalaris","kingdom":"Plantae","species":"arundinacea","itis_taxonomic_sn":41335},{"species_id":1407,"common_name":"ring-necked
         pheasant","genus":"Phasianus","kingdom":"Animalia","species":"colchicus","itis_taxonomic_sn":175905},{"species_id":1600,"common_name":"ripgut
-        brome","genus":"Bromus","kingdom":"Plantae","species":"diandrus","itis_taxonomic_sn":40498},{"species_id":1765,"common_name":"riverhemp","genus":"Sesbania","kingdom":"Plantae","species":"spp.","itis_taxonomic_sn":26949},{"species_id":290,"common_name":"Rocky
+        brome","genus":"Bromus","kingdom":"Plantae","species":"diandrus","itis_taxonomic_sn":40498},{"species_id":1765,"common_name":"riverhemp","genus":"Sesbania","kingdom":"Plantae","species":"spp.","itis_taxonomic_sn":26949},{"species_id":2258,"common_name":"Rocky
+        Mountain iris","genus":"Iris","kingdom":"Plantae","species":"missouriensis","itis_taxonomic_sn":43221},{"species_id":290,"common_name":"Rocky
         Mountain juniper","genus":"Juniperus","kingdom":"Plantae","species":"scopulorum","itis_taxonomic_sn":194872},{"species_id":59,"common_name":"Rocky
         Mountain maple","genus":"Acer","kingdom":"Plantae","species":"glabrum","itis_taxonomic_sn":28742},{"species_id":1896,"common_name":"Rocky
         Mountain pussytoes","genus":"Antennaria","kingdom":"Plantae","species":"media","itis_taxonomic_sn":185151},{"species_id":1652,"common_name":"Rocky
@@ -449,7 +470,8 @@ http_interactions:
         globemallow","genus":"Sphaeralcea","kingdom":"Plantae","species":"coccinea","itis_taxonomic_sn":21920},{"species_id":1010,"common_name":"Scouler''s
         willow","genus":"Salix","kingdom":"Plantae","species":"scouleriana","itis_taxonomic_sn":504980},{"species_id":1482,"common_name":"screwbean
         mesquite","genus":"Prosopis","kingdom":"Plantae","species":"pubescens","itis_taxonomic_sn":26881},{"species_id":439,"common_name":"seep
-        monkeyflower","genus":"Mimulus","kingdom":"Plantae","species":"guttatus","itis_taxonomic_sn":33236},{"species_id":1928,"common_name":"sensitive
+        monkeyflower","genus":"Mimulus","kingdom":"Plantae","species":"guttatus","itis_taxonomic_sn":33236},{"species_id":2223,"common_name":"sego
+        lily","genus":"Calochortus","kingdom":"Plantae","species":"nuttallii","itis_taxonomic_sn":42863},{"species_id":1928,"common_name":"sensitive
         partridge pea","genus":"Chamaecrista","kingdom":"Plantae","species":"nictitans","itis_taxonomic_sn":501388},{"species_id":2132,"common_name":"shaggy
         dwarf morning-glory","genus":"Evolvulus","kingdom":"Plantae","species":"nuttallianus","itis_taxonomic_sn":502573},{"species_id":1787,"common_name":"short-billed
         dowitcher","genus":"Limnodromus","kingdom":"Animalia","species":"griseus","itis_taxonomic_sn":176675},{"species_id":224,"common_name":"showy
@@ -499,7 +521,8 @@ http_interactions:
         azure","genus":"Celastrina","kingdom":"Animalia","species":"ladon complex","itis_taxonomic_sn":777893},{"species_id":1960,"common_name":"squirreltail","genus":"Elymus","kingdom":"Plantae","species":"elymoides","itis_taxonomic_sn":502264},{"species_id":1398,"common_name":"Steller''s
         jay","genus":"Cyanocitta","kingdom":"Animalia","species":"stelleri","itis_taxonomic_sn":179685},{"species_id":2083,"common_name":"stemless
         four-nerve daisy","genus":"Tetraneuris","kingdom":"Plantae","species":"acaulis","itis_taxonomic_sn":38508},{"species_id":2136,"common_name":"stickywilly","genus":"Galium","kingdom":"Plantae","species":"aparine","itis_taxonomic_sn":34797},{"species_id":1050,"common_name":"stinging
-        nettle","genus":"Urtica","kingdom":"Plantae","species":"dioica","itis_taxonomic_sn":19152},{"species_id":2170,"common_name":"streambed
+        nettle","genus":"Urtica","kingdom":"Plantae","species":"dioica","itis_taxonomic_sn":19152},{"species_id":2236,"common_name":"streambank
+        springbeauty","genus":"Claytonia","kingdom":"Plantae","species":"parviflora","itis_taxonomic_sn":20394},{"species_id":2170,"common_name":"streambed
         bristlegrass","genus":"Setaria","kingdom":"Plantae","species":"leucopila","itis_taxonomic_sn":41249},{"species_id":1456,"common_name":"stretchberry","genus":"Forestiera","kingdom":"Plantae","species":"pubescens","itis_taxonomic_sn":32957},{"species_id":42,"common_name":"subalpine
         fir","genus":"Abies","kingdom":"Plantae","species":"lasiocarpa","itis_taxonomic_sn":181830},{"species_id":1711,"common_name":"subterranean
         termite","genus":"Reticulitermes","kingdom":"Animalia","species":"spp.","itis_taxonomic_sn":623930},{"species_id":1368,"common_name":"sugar
@@ -508,13 +531,15 @@ http_interactions:
         beardtongue","genus":"Penstemon","kingdom":"Plantae","species":"superbus","itis_taxonomic_sn":33779},{"species_id":1086,"common_name":"Swainson''s
         hawk","genus":"Buteo","kingdom":"Animalia","species":"swainsoni","itis_taxonomic_sn":175367},{"species_id":1837,"common_name":"swamp
         verbena","genus":"Verbena","kingdom":"Plantae","species":"hastata","itis_taxonomic_sn":32071},{"species_id":1882,"common_name":"sweat
-        bee","genus":"Lasioglossum","kingdom":"Animalia","species":"spp.","itis_taxonomic_sn":154357},{"species_id":1745,"common_name":"sweet
+        bee","genus":"Lasioglossum","kingdom":"Animalia","species":"spp.","itis_taxonomic_sn":154357},{"species_id":2300,"common_name":"sweat
+        bee","genus":"Agapostemon","kingdom":"Animalia","species":"spp.","itis_taxonomic_sn":154351},{"species_id":1745,"common_name":"sweet
         basil","genus":"Ocimum","kingdom":"Plantae","species":"basilicum","itis_taxonomic_sn":32627},{"species_id":137,"common_name":"switchgrass","genus":"Panicum","kingdom":"Plantae","species":"virgatum","itis_taxonomic_sn":40913},{"species_id":1955,"common_name":"tall
         cinquefoil","genus":"Drymocallis","kingdom":"Plantae","species":"arguta","itis_taxonomic_sn":512537},{"species_id":2104,"common_name":"tall
         hairy agrimony","genus":"Agrimonia","kingdom":"Plantae","species":"gryposepala","itis_taxonomic_sn":25095},{"species_id":2172,"common_name":"tall
         tumblemustard","genus":"Sisymbrium","kingdom":"Plantae","species":"altissimum","itis_taxonomic_sn":23312},{"species_id":128,"common_name":"tamarisk","genus":"Tamarix","kingdom":"Plantae","species":"spp.","itis_taxonomic_sn":22303},{"species_id":2128,"common_name":"tapered
         rosette grass","genus":"Dichanthelium","kingdom":"Plantae","species":"acuminatum","itis_taxonomic_sn":41646},{"species_id":909,"common_name":"Texas
-        barometer bush","genus":"Leucophyllum","kingdom":"Plantae","species":"frutescens","itis_taxonomic_sn":33629},{"species_id":321,"common_name":"thimbleberry","genus":"Rubus","kingdom":"Plantae","species":"parviflorus","itis_taxonomic_sn":25007},{"species_id":1056,"common_name":"thinleaf
+        barometer bush","genus":"Leucophyllum","kingdom":"Plantae","species":"frutescens","itis_taxonomic_sn":33629},{"species_id":321,"common_name":"thimbleberry","genus":"Rubus","kingdom":"Plantae","species":"parviflorus","itis_taxonomic_sn":25007},{"species_id":2268,"common_name":"thin
+        paspalum","genus":"Paspalum","kingdom":"Plantae","species":"setaceum","itis_taxonomic_sn":41042},{"species_id":1056,"common_name":"thinleaf
         huckleberry","genus":"Vaccinium","kingdom":"Plantae","species":"membranaceum","itis_taxonomic_sn":23601},{"species_id":1667,"common_name":"thirteen-lined
         ground squirrel","genus":"Ictidomys","kingdom":"Animalia","species":"tridecemlineatus","itis_taxonomic_sn":930308},{"species_id":1918,"common_name":"threadleaf
         sedge","genus":"Carex","kingdom":"Plantae","species":"filifolia","itis_taxonomic_sn":39600},{"species_id":229,"common_name":"tiger
@@ -563,7 +588,8 @@ http_interactions:
         clover","genus":"Trifolium","kingdom":"Plantae","species":"repens","itis_taxonomic_sn":26206},{"species_id":40,"common_name":"white
         fir","genus":"Abies","kingdom":"Plantae","species":"concolor","itis_taxonomic_sn":181826},{"species_id":207,"common_name":"white
         heath aster","genus":"Symphyotrichum","kingdom":"Plantae","species":"ericoides","itis_taxonomic_sn":522202},{"species_id":118,"common_name":"white
-        leadtree","genus":"Leucaena","kingdom":"Plantae","species":"leucocephala","itis_taxonomic_sn":26766},{"species_id":1809,"common_name":"white
+        leadtree","genus":"Leucaena","kingdom":"Plantae","species":"leucocephala","itis_taxonomic_sn":26766},{"species_id":2266,"common_name":"white
+        mulberry","genus":"Morus","kingdom":"Plantae","species":"alba","itis_taxonomic_sn":19066},{"species_id":1809,"common_name":"white
         prairie clover","genus":"Dalea","kingdom":"Plantae","species":"candida","itis_taxonomic_sn":26603},{"species_id":1901,"common_name":"white
         sagebrush","genus":"Artemisia","kingdom":"Plantae","species":"ludoviciana","itis_taxonomic_sn":35474},{"species_id":1415,"common_name":"white-breasted
         nuthatch","genus":"Sitta","kingdom":"Animalia","species":"carolinensis","itis_taxonomic_sn":178775},{"species_id":1669,"common_name":"white-crowned
@@ -600,5 +626,5 @@ http_interactions:
         warbler","genus":"Setophaga","kingdom":"Animalia","species":"coronata","itis_taxonomic_sn":950046},{"species_id":1671,"common_name":"yerba
         mansa","genus":"Anemopsis","kingdom":"Plantae","species":"californica","itis_taxonomic_sn":18223},{"species_id":1395,"common_name":"zebra-tailed
         lizard","genus":"Callisaurus","kingdom":"Animalia","species":"draconoides","itis_taxonomic_sn":173906}]'
-  recorded_at: 2024-01-23 19:49:05 GMT
-  recorded_with: vcr/1.2.2, webmockr/0.9.0
+  recorded_at: 2024-11-19 23:52:45 GMT
+  recorded_with: vcr/1.6.0, webmockr/1.0.0

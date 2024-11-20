@@ -14,15 +14,21 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Tue, 23 Jan 2024 19:53:04 GMT
+      date: Tue, 19 Nov 2024 23:57:18 GMT
       content-type: application/json; charset=utf-8
-      server: Apache/2.4.58 () PHP/5.5.38
       x-powered-by: PHP/5.5.38
       pragma: no-cache
       cache-control: no-store, no-cache, max-age=0, must-revalidate
       access-control-allow-origin: '*'
       access-control-allow-headers: origin, x-requested-with, content-type
       access-control-allow-methods: PUT, GET, POST, DELETE, OPTIONS
+      cf-cache-status: DYNAMIC
+      report-to: '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v4?s=Piq%2BiyavbaJDz3id62xAlqfJG11ROjUwEP61XxQD%2F7m8eU86XKXrm9xFeEwUP0etxjns1a8ThTOUPUdKXsVAhEKR0BacAAjGngjXvw%2F2m6R1M8Oeu5mblVtD0cABV5cQY7Wb01HXa%2BwOXrqCqg%3D%3D"}],"group":"cf-nel","max_age":604800}'
+      nel: '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
+      server: cloudflare
+      cf-ray: 8e5423960d49e9e1-LAX
+      content-encoding: gzip
+      server-timing: cfL4;desc="?proto=TCP&rtt=48878&sent=96&recv=43&lost=0&retrans=1&sent_bytes=73576&recv_bytes=1291&delivery_rate=914893&cwnd=107&unsent_bytes=0&cid=7bb4ec05f65b8448&ts=68177&x=0"
     body:
       encoding: ''
       file: no
@@ -2337,5 +2343,5 @@ http_interactions:
         Plants","order_id":96,"order_name":"Rosales","order_common_name":"Oleaster,
         Buckthorn, Rose and Elm Families","itis_taxonomic_sn":836663,"functional_type":"Deciduous
         broadleaf","kingdom":"Plantae","number_observations":20}]'
-  recorded_at: 2024-01-23 19:53:05 GMT
-  recorded_with: vcr/1.2.2, webmockr/0.9.0
+  recorded_at: 2024-11-19 23:57:19 GMT
+  recorded_with: vcr/1.6.0, webmockr/1.0.0

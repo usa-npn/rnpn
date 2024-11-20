@@ -3,9 +3,9 @@
 #' Get a list of all stations, optionally filtered by state
 #'
 #' @export
-#' @param state_code The postal code of the US state by which to filter
-#' the results returned. Leave empty to get all stations.
-#' @template curl
+#' @param state_code The postal code of the US state by which to filter the
+#'   results returned. Leave empty to get all stations.
+#' @param ... currently unused
 #' @return A data frame with stations' latitude and longitude, names, and ids.
 #' @examples \dontrun{
 #' npn_stations()
@@ -13,17 +13,22 @@
 #' }
 
 npn_stations <- function(state_code=NULL, ...) {
-  end_point <- 'stations/getAllStations.json'
-  if(!is.null(state_code)){
-    tt <- lapply(state_code, function(z){
-      npn_GET(paste0(base(), end_point), list(state_code = z), TRUE, ...)
-    })
-    ldfply(tt)
-  }else{
-    tibble::as_tibble(
-      npn_GET(paste0(base(), end_point), list(), TRUE, ...)
-    )
+  req <-
+    base_req %>%
+    httr2::req_url_path_append('stations/getAllStations.json')
+
+  if (!is.null(state_code)) {
+    reqs <- lapply(state_code, function(x) httr2::req_url_query(req, state_code = x))
+    resps <- httr2::req_perform_sequential(reqs)
+    tt <- lapply(resps, function(x) httr2::resp_body_json(x, simplifyVector = TRUE))
+    out <- dplyr::bind_rows(tt)
+  } else {
+    resp <- httr2::req_perform(req)
+    out <- httr2::resp_body_json(resp, simplifyVector = TRUE)
   }
+
+  #return:
+  tibble::as_tibble(out)
 }
 
 

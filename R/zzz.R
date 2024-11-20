@@ -120,6 +120,12 @@ base <- function(){
   }
 }
 
+#TODO consider adding retry and rate-limiting
+base_req <-
+  httr2::request(base()) |>
+  httr2::req_user_agent("rnpn (https://github.com/usa-npn/rnpn/)")
+
+
 base_data_domain <- function(){
 
   if( !is.null(pkg.env$remote_env)){
@@ -159,9 +165,9 @@ pop <- function(x, y) {
 ldfply <- function(y){
   res <- lapply(y, function(x){
     x[ sapply(x, is.null) ] <- NA
-    data.frame(x, stringsAsFactors = FALSE)
+    tibble::as_tibble(x)
   })
-  do.call(rbind.fill, res)
+  do.call(dplyr::bind_rows, res)
 }
 
 npn_GET <- function(url, args, parse = FALSE, ...) {

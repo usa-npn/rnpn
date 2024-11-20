@@ -4,12 +4,10 @@
 #' @importFrom data.table rbindlist
 #' @importFrom httr GET stop_for_status content
 #' @importFrom jsonlite fromJSON
-#' @importFrom plyr rbind.fill
-#' @importFrom magrittr "%>%"
+#' @importFrom magrittr %>%
 #' @importFrom utils URLencode download.file object.size write.table
 #' @name rnpn-package
 #' @aliases rnpn
-#' @docType package
 #' @keywords package
-NULL
+"_PACKAGE"
 
