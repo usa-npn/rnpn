@@ -4,17 +4,19 @@
 \alias{npn_phenophase_details}
 \title{Get Phenophase Details}
 \usage{
-npn_phenophase_details(ids = list(), ...)
+npn_phenophase_details(ids = NULL, ...)
 }
 \arguments{
-\item{ids}{Takes a list of phenophase ids for which to retrieve additional details.}
+\item{ids}{Takes a vector of phenophase ids for which to retrieve additional
+details.}
 
-\item{...}{Curl options passed on to \code{\link[httr]{GET}}}
+\item{...}{Currently unused.}
 }
 \value{
-A data frame listing phenophases in the NPN database, including detailed information for each, filtered by the phenophase ID.
+A tibble listing phenophases in the NPN database, including detailed
+  information for each, filtered by the phenophase ID.
 }
 \description{
-Retrieves additional details for select phenophases, including full list of applicable phenophase definition IDs and phenophase
-revision notes over time
+Retrieves additional details for select phenophases, including full list of
+applicable phenophase definition IDs and phenophase revision notes over time
 }

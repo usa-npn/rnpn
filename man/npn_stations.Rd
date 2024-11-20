@@ -10,7 +10,7 @@ npn_stations(state_code = NULL, ...)
 \item{state_code}{The postal code of the US state by which to filter the
 results returned. Leave empty to get all stations.}
 
-\item{...}{currently unused}
+\item{...}{Currently unused.}
 }
 \value{
 A data frame with stations' latitude and longitude, names, and ids.

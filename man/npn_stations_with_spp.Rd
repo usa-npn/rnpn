@@ -8,9 +8,9 @@ npn_stations_with_spp(speciesid, ...)
 }
 \arguments{
 \item{speciesid}{Required. Species id numbers, from 1 to infinity, potentially,
-use e.g., c(52, 53, etc.) if more than one species desired (numeric).}
+use e.g., `c(52, 53, etc.)` if more than one species desired (numeric).}
 
-\item{...}{currently unused}
+\item{...}{Currently unused.}
 }
 \value{
 A data frame with stations' latitude and longitude, names, and ids.
