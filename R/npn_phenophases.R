@@ -40,8 +40,8 @@ npn_phenophase_definitions <- function(...) {
 #' @param ids Takes a vector of phenophase ids for which to retrieve additional
 #'   details.
 #' @param ... Currently unused.
-#' @return A tibble listing phenophases in the NPN database, including
-#'   detailed information for each, filtered by the phenophase ID.
+#' @return A tibble listing phenophases in the NPN database, including detailed
+#'   information for each, filtered by the phenophase ID.
 #' @export
 npn_phenophase_details <- function(ids = NULL, ...) {
   if (!is.null(ids) & !is.numeric(ids)) {
@@ -61,14 +61,18 @@ npn_phenophase_details <- function(ids = NULL, ...) {
 
 #' Get Phenophase for Species
 #'
-#' Retrieves the phenophases applicable to species for a given date. It's important to specify a date since protocols/phenophases for
-#' any given species can change from year to year.
-#' @param species_ids List of species_ids for which to get phenophase information.
-#' @param date The applicable date for which to retrieve phenophases for the given species.
-#' @template curl
-#' @return A data frame listing phenophases in the NPN database for the specified species and date.
+#' Retrieves the phenophases applicable to species for a given date. It's
+#' important to specify a date since protocols/phenophases for any given species
+#' can change from year to year.
+#' @param species_ids List of species_ids for which to get phenophase
+#'   information.
+#' @param date The applicable date for which to retrieve phenophases for the
+#'   given species.
+#' @param ... Currently unused.
+#' @return A tibble listing phenophases in the NPN database for the
+#'   specified species and date.
 #' @export
-npn_phenophases_by_species <- function (species_ids, date, ...){
+npn_phenophases_by_species <- function(species_ids, date, ...) {
   species_ids <- npn_createArgList("species_id", species_ids)
   req <- base_req %>%
     httr2::req_url_path_append('phenophases/getPhenophasesForSpecies.json') %>%
@@ -77,20 +81,28 @@ npn_phenophases_by_species <- function (species_ids, date, ...){
 
   resp <- httr2::req_perform(req)
   out <- httr2::resp_body_json(resp, simplifyVector = TRUE)
-  tidyr::unnest(tibble::as_tibble(out), phenophases)
+
+  #return:
+  tibble::as_tibble(out)
+  #TODO this data frame has a list-column.  Consider unnesting?
+  # tidyr::unnest(tibble::as_tibble(out), phenophases)
 }
 
 #' Get Pheno Classes
 #'
-#' Gets information about all pheno classes, which are a higher-level order of phenophases.
+#' Gets information about all pheno classes, which are a higher-level order of
+#' phenophases.
 #'
+#' @param ... Currently unused.
+#' @return A tibble listing the pheno classes in the NPN database.
 #' @export
-#' @return A data frame listing the pheno classes in the NPN database.
-#' @template curl
-npn_pheno_classes <- function (...){
-  tibble::as_tibble(
-    npn_GET(paste0(base(), 'phenophases/getPhenoClasses.json'), list(), TRUE, ...)
-  )
+npn_pheno_classes <- function(...) {
+  req <- base_req %>%
+    httr2::req_url_path_append('phenophases/getPhenoClasses.json')
+  resp <- httr2::req_perform(req)
+  out <- httr2::resp_body_json(resp, simplifyVector = TRUE)
+  #return:
+  tibble::as_tibble(out)
 }
 
 
