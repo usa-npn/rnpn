@@ -1,0 +1,13 @@
+pandoc: 3.1.11
+pkgdown: 2.1.1
+pkgdown_sha: ~
+articles:
+  I_introduction: I_introduction.html
+  II_status_intensity: II_status_intensity.html
+  III_individual_phenometrics: III_individual_phenometrics.html
+  IV_site_phenometrics: IV_site_phenometrics.html
+  V_magnitude_phenometrics: V_magnitude_phenometrics.html
+  VI_geospatial: VI_geospatial.html
+  VII_combine_raster_point: VII_combine_raster_point.html
+  VIII_data_cleaning: VIII_data_cleaning.html
+last_built: 2024-11-26T22:34Z
