@@ -49,8 +49,7 @@ npn_species_id <- function(ids, ...) {
 #' @rdname npn_species
 #' @param state A US postal state code to filter results.
 #' @param kingdom Filters results by taxonomic kingdom. Valid values include
-#'   `'Animalia'`, `'Plantae'`, or `NULL` (the default, which returns results
-#'   for both).
+#'   `'Animalia'`, `'Plantae'`.
 #' @param ... Currently unused.
 #' @return A tibble with information on species in the NPN database whose
 #'   distribution includes a given state.
@@ -59,12 +58,13 @@ npn_species_id <- function(ids, ...) {
 #' npn_species_state(state = "AZ", kingdom = "Plantae")
 #' }
 npn_species_state <- function(state, kingdom = NULL, ...) {
-  #TODO: clarify if multiple states are accepted or not.
-  # The state[1]=CA&state[2]=AZ form appears to work with the API
-  state <- rlang::arg_match(state, datasets::state.abb)
-  if (!is.null(kingdom)) {
-    kingdom <- rlang::arg_match0(kingdom, values = c("Plantae", "Animalia"))
-  }
+  # The API does accept multiple states in the form `?state[1]=CA&state[2]=AZ`.
+  # However, it isn't clear which results belong to which state, so for now this only accepts a single state.
+  # Entries other than US states appear to be valid, otherwise we could check for valid input with:
+  # state <- rlang::arg_match(state, datasets::state.abb)
+  # TODO:
+  # set kingdom default to something other than NULL
+  # kingdom <- rlang::arg_match0(kingdom, values = c("Plantae", "Animalia"))
   req <- base_req %>%
     httr2::req_url_path_append('species/getSpeciesByState.json') %>%
     httr2::req_url_query(state = state, kingdom = kingdom)
@@ -118,16 +118,17 @@ npn_species_search <- function(network = NULL,
 #'
 #' Return all plant or animal functional types used in the NPN database.
 #'
-#' @param kingdom The kingdom for which to return functional types; either
-#'   'Animalia' or 'Plantae'. Defaults to Plantae.
+#' @param kingdom Filters results by taxonomic kingdom. Valid values include
+#'   `'Animalia'`, `'Plantae'`, or `NULL` (which returns results
+#'   for both). Defaults to `'Plantae'`.
 #' @param ... Currently unused.
 #' @return A data frame with a list of the functional types used in the NPN
 #'   database, filtered by the specified kingdom.
 #' @export
 npn_species_types <- function(kingdom = "Plantae", ...) {
-  #TODO: better handling of possibilities for `kingdom` E.g.
-  # kingdom = c("plantae", "animaila", "both")
-  # kingdom <- rlang::arg_match(kingdom)
+  # if (!is.null(kingdom)) {
+  #   kingdom <- rlang::arg_match0(kingdom, values = c("Plantae", "Animalia"))
+  # }
   req_plant <- base_req %>%
     httr2::req_url_path_append('species/getPlantTypes.json')
   req_animal <- base_req %>%

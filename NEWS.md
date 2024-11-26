@@ -3,7 +3,7 @@
 * `npn_phenophase_details()` now takes a vector of phenophase IDs rather than a list
 * Functions that previously returned `data.frame` objects now return tibbles. Where they previously returned `NULL` on errors, they now return empty 0x0 tibbles.
 * `npn_get_phenophases_for_taxon()` now returns a tibble rather than a list.
-* `npn_species_state()` now errors instead of returning `NULL` when given invalid arguments.
+* Documented a behavior of `npn_species_type()` where setting `kingdom` to `NULL` returns results for *both* `Plantae` and `Animalia`. 
 * `rnpn` now has `dplyr` as a dependency instead of `plyr`
 * `rnpn` now uses `httr2` instead of `httr` internally for functions that get observational data
 * `...` is no longer used for functions that get observational data
