@@ -7,8 +7,9 @@
 npn_species_types(kingdom = "Plantae", ...)
 }
 \arguments{
-\item{kingdom}{The kingdom for which to return functional types; either
-'Animalia' or 'Plantae'. Defaults to Plantae.}
+\item{kingdom}{Filters results by taxonomic kingdom. Valid values include
+`'Animalia'`, `'Plantae'`, or `NULL` (which returns results
+for both). Defaults to `'Plantae'`.}
 
 \item{...}{Currently unused.}
 }

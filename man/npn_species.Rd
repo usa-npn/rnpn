@@ -29,8 +29,7 @@ npn_species_search(
 \item{state}{A US postal state code to filter results.}
 
 \item{kingdom}{Filters results by taxonomic kingdom. Valid values include
-`'Animalia'`, `'Plantae'`, or `NULL` (the default, which returns results
-for both).}
+`'Animalia'`, `'Plantae'`.}
 
 \item{network}{filter species based on identifiers of NPN groups that are
 actually observing data on the species. Takes a single numeric ID.}
