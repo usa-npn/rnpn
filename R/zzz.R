@@ -156,24 +156,7 @@ base_geoserver <- function(){
   }
 }
 
-# TODO: no longer needed
-# npnc <- function(l) Filter(Negate(is.null), l)
-
-#not used?
-pop <- function(x, y) {
-  x[!names(x) %in% y]
-}
-
-# TODO: can be removed once we're satisfied NULLs are handled correctly
-# ldfply <- function(y){
-#   res <- lapply(y, function(x){
-#     x[ sapply(x, is.null) ] <- NA
-#     tibble::as_tibble(x)
-#   })
-#   do.call(dplyr::bind_rows, res)
-# }
-
-# TODO: remove completely once we're sure
+# TODO: remove completely once we're sure error handling is equivalent or better
 # npn_GET <- function(url, args, parse = FALSE, ...) {
 #   res <- tryCatch(
 #     {
@@ -193,7 +176,7 @@ pop <- function(x, y) {
 #
 # }
 
-#Utility function. Helps create URL strings for requests to NPN data services in the format variable_name[number]=Value
+# Helps create URL strings for requests to NPN data services in the format variable_name[number]=Value
 npn_createArgList <- function(arg_name, arg_list){
   args <- list()
   for (i in seq_along(arg_list)) {
