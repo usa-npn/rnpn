@@ -102,8 +102,7 @@ npn_species_search <- function(network = NULL,
                                end_date = NULL,
                                station_id = NULL,
                                ...) {
-  #TODO: clarify if multiple network IDs are allowed.  Can't test beause I don't
-  #know what IDs are valid
+  #TODO: multiple network IDs may be allowed in the API, but for now this function only takes a single network
   station_ids <- npn_createArgList("station_id", station_id)
   req <- base_req %>%
     httr2::req_url_path_append('species/getSpeciesFilter.json') %>%

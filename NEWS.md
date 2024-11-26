@@ -4,6 +4,7 @@
 * Functions that previously returned `data.frame` objects now return tibbles. Where they previously returned `NULL` on errors, they now return empty 0x0 tibbles.
 * `npn_get_phenophases_for_taxon()` now returns a tibble rather than a list.
 * Documented a behavior of `npn_species_type()` where setting `kingdom` to `NULL` returns results for *both* `Plantae` and `Animalia`. 
+* Missing values returned by `npn_stations_by_state()` previously returned as the string `"emptyvalue"` are now returned as `NA`s.
 * `rnpn` now has `dplyr` as a dependency instead of `plyr`
 * `rnpn` now uses `httr2` instead of `httr` internally for functions that get observational data
 * `...` is no longer used for functions that get observational data
