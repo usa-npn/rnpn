@@ -200,20 +200,20 @@ npn_createArgList <- function(arg_name, arg_list){
 #' Modified version of null coalescing operator (%||%) from rlang/soon to be in base R. This version also coalesces empty lists and vectors
 #' @param lhs left hand side; an object that is potentially NULL or of length 0
 #' @param rhs right hand side; what to replace `lhs` with if NULL or lenght 0
-#' @examples
 #' @noRd
+#' @examples
 #' # with rlang's %||%
 #'
 #' NULL %||% 5
-#' > 5
+#' #> 5
 #' list() %||% 5
-#' > list()
+#' #> list()
 #'
 #' # with modified version
 #' NULL %|||% 5
-#' > 5
+#' #> 5
 #' list() %|||% 5
-#' > 5
+#' #> 5
 `%|||%` <- function(lhs, rhs) {
   if (is.null(lhs) | length(lhs) == 0) {
     rhs
