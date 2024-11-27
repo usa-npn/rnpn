@@ -12,13 +12,13 @@
 #' directly: https://geoserver.usanpn.org/geoserver/wms?request=GetCapabilities
 #'
 #'
-#' @return Data frame containing all layer details as specified in function
+#' @return A tibble containing all layer details as specified in function
 #'   description.
 #' @export
 #' @examples \dontrun{
 #' layers <- npn_get_layer_details()
 #' }
-npn_get_layer_details <- function(){
+npn_get_layer_details <- function() {
   #TODO handle http errors with httr2 instead of tryCatch()
   tryCatch({
     req <- base_req_geoserver %>%
@@ -53,7 +53,7 @@ npn_get_layer_details <- function(){
       })
     )
 
-    out <- data.frame(
+    out <- tibble::tibble(
       name = name.vector,
       title = title.vector,
       abstract = abstract.vector,
