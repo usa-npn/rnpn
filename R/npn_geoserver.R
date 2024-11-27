@@ -1,70 +1,70 @@
-
-#'  Get Geospatial Data Layer Details
+#' Get Geospatial Data Layer Details
 #'
-#'  This function will return information about the various data layers available via the NPN's geospatial web services.
-#'  Specifically, this function will query the NPN's GetCapabilities endpoint and parse the information on that page
-#'  about the layers. For each layer, this function will retrieve the layer name (as to be specified elsewhere programmatically),
-#'  the title (human readable), the abstract, which describes the data in the layer, the dimension name and dimension range for
-#'  specifying specific date values from the layer.
+#' This function will return information about the various data layers available
+#' via the NPN's geospatial web services. Specifically, this function will query
+#' the NPN's GetCapabilities endpoint and parse the information on that page
+#' about the layers. For each layer, this function will retrieve the layer name
+#' (as to be specified elsewhere programmatically), the title (human readable),
+#' the abstract, which describes the data in the layer, the dimension name and
+#' dimension range for specifying specific date values from the layer.
 #'
-#'  Information about the layers can also be viewed at the getCapbilities page directly:
-#'  https://geoserver.usanpn.org/geoserver/wms?request=GetCapabilities
+#' Information about the layers can also be viewed at the getCapbilities page
+#' directly: https://geoserver.usanpn.org/geoserver/wms?request=GetCapabilities
 #'
 #'
-#' @return Data frame containing all layer details as specified in function description.
+#' @return Data frame containing all layer details as specified in function
+#'   description.
 #' @export
 #' @examples \dontrun{
 #' layers <- npn_get_layer_details()
 #' }
 npn_get_layer_details <- function(){
-
   tryCatch({
-  doc <- GET("http://geoserver.usanpn.org/geoserver/ows?service=wms&version=1.3.0&request=GetCapabilities", list())
-  doc <- httr::content(doc, as = "text", encoding = "UTF-8")
-  doc.data <- XML::xmlParse(file = doc)
+    req <- base_req_geoserver %>%
+      httr2::req_url_path_append("ows") %>%
+      httr2::req_url_query(
+        service = "wms",
+        version = "1.3.0",
+        request = "GetCapabilities"
+      )
+    resp <- httr2::req_perform(req)
+    out <- httr2::resp_body_xml(resp, encoding = "UTF-8")
 
-  capability.list <- XML::xmlToList(doc.data)[["Capability"]]
+    capability_list <- xml2::as_list(out)[[1]][["Capability"]]
+    layer_list <- capability_list[["Layer"]]
+    layers <- layer_list[names(layer_list) == "Layer"]
 
-  layer.list <- capability.list$Layer
-  layers <- layer.list[names(layer.list) == "Layer"]
+    unnest_layer <- function(layers, name) {
+      name_list <-
+        lapply(layers, function(x) {
+          x[[name]] %|||% NA_character_
+        })
+      unlist(name_list) %|||% NA_character_
+    }
+    name.vector <- unnest_layer(layers, "Name")
+    title.vector <- unnest_layer(layers, "Title")
+    abstract.vector <- unnest_layer(layers, "Abstract")
+    dimension.range.vector <- unnest_layer(layers, "Dimension")
 
-  name.vector <- unlist(lapply(X = layers, FUN = function(x) {
-    if (!is.null(x$Name)) {
-      x$Name
-    } else NA
-  }))
+    dimension.name.vector <- unlist(
+      lapply(layers, function(x) {
+        attr(x[["Dimension"]], "name") %|||% NA_character_
+      })
+    )
 
-  title.vector <- unlist(lapply(X = layers, FUN = function(x) {
-    if (!is.null(x$Title)) {
-      x$Title
-    } else NA
-  }))
-
-  abstract.vector <- unlist(lapply(X = layers, FUN = function(x) {
-    if (!is.null(x$Abstract)) {
-      x$Abstract
-    } else NA
-  }))
-
-  dimension.range.vector <- unlist(lapply(X = layers, FUN = function(x) {
-    if (!is.null(x$Dimension)) {
-      x$Dimension$text
-    } else NA
-  }))
-
-  dimension.name.vector <- unlist(lapply(X = layers, FUN = function(x) {
-    if (!is.null(x$Dimension)) {
-      x$Dimension$.attrs['name']
-    } else NA
-  }))
-
-
-  return (data.frame(name=name.vector,title=title.vector,abstract=abstract.vector,dimension.name=dimension.name.vector,dimension.range=dimension.range.vector))
-  },error=function(msg){
+    out <- data.frame(
+      name = name.vector,
+      title = title.vector,
+      abstract = abstract.vector,
+      dimension.name = dimension.name.vector,
+      dimension.range = dimension.range.vector
+    )
+    return(out)
+  },
+  error = function(msg) {
     message("Geodata service not available. Please try again later")
     NULL
   })
-
 }
 
 #'  Download Geospatial Data

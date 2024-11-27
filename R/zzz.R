@@ -104,6 +104,9 @@ check_geo_service <- function() {
   return(TRUE)
 }
 
+base_req_geoserver <-
+  httr2::request("http://geoserver.usanpn.org/geoserver/") %>%
+  httr2::req_user_agent("rnpn (https://github.com/usa-npn/rnpn/)")
 
 base <- function(){
 
@@ -192,4 +195,30 @@ npn_createArgList <- function(arg_name, arg_list){
   return(args)
 }
 
+#' Null and empty coalescing operator
+#'
+#' Modified version of null coalescing operator (%||%) from rlang/soon to be in base R. This version also coalesces empty lists and vectors
+#' @param lhs left hand side; an object that is potentially NULL or of length 0
+#' @param rhs right hand side; what to replace `lhs` with if NULL or lenght 0
+#' @examples
+#' @noRd
+#' # with rlang's %||%
+#'
+#' NULL %||% 5
+#' > 5
+#' list() %||% 5
+#' > list()
+#'
+#' # with modified version
+#' NULL %|||% 5
+#' > 5
+#' list() %|||% 5
+#' > 5
+`%|||%` <- function(lhs, rhs) {
+  if (is.null(lhs) | length(lhs) == 0) {
+    rhs
+  } else {
+    lhs
+  }
+}
 

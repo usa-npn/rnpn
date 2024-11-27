@@ -25,7 +25,8 @@ Imports:
     raster,
     plyr,
     XML,
-    magrittr
+    magrittr,
+    xml2
 Suggests:
     ggplot2,
     testthat (>= 3.0.0),
