@@ -24,7 +24,6 @@ Imports:
     curl,
     raster,
     plyr,
-    XML,
     magrittr,
     xml2
 Suggests:

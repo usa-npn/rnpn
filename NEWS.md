@@ -1,6 +1,7 @@
 # rnpn (development version)
 
 * `npn_get_point_data()` now uses https instead of http
+* `rnpn` now requires the `xml2` package instead of `XML`
 
 # rnpn 1.2.9 (2024-08-18)
 
