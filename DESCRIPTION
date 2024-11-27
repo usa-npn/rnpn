@@ -28,7 +28,7 @@ Imports:
     magrittr
 Suggests:
     ggplot2,
-    testthat,
+    testthat (>= 3.0.0),
     covr,
     knitr,
     markdown,
@@ -41,3 +41,4 @@ Encoding: UTF-8
 VignetteBuilder: knitr
 URL: https://github.com/usa-npn/rnpn
 BugReports: https://github.com/usa-npn/rnpn/issues
+Config/testthat/edition: 3
