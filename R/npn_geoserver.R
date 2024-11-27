@@ -19,6 +19,7 @@
 #' layers <- npn_get_layer_details()
 #' }
 npn_get_layer_details <- function(){
+  #TODO handle http errors with httr2 instead of tryCatch()
   tryCatch({
     req <- base_req_geoserver %>%
       httr2::req_url_path_append("ows") %>%
@@ -212,63 +213,80 @@ npn_get_agdd_point_data <- function(
 }
 
 
-
-
-
-
 #' Get Point Data Value
 #'
 #' This function can get point data about any of the NPN geospatial layers.
 #'
-#' Please note that this function pulls this from the NPN's WCS service so the data may not be totally precise. If
-#' you need precise AGDD values try using the npn_get_agdd_point_data function.
-#' @param layer The coverage id (machine name) of the layer for which to retrieve.
-#' Applicable values can be found via the npn_get_layer_details() function under the 'name' column.
+#' Please note that this function pulls this from the NPN's WCS service so the
+#' data may not be totally precise. If you need precise AGDD values try using
+#' the [npn_get_agdd_point_data()] function.
+#' @param layer The coverage id (machine name) of the layer for which to
+#'   retrieve. Applicable values can be found via the [npn_get_layer_details()]
+#'   function under the `name` column.
 #' @param lat The latitude of the point.
 #' @param long The longitude of the point.
 #' @param date The date for which to get a value.
-#' @param store_data Boolean value. If set TRUE then the value retrieved will be stored in a global variable named point_values for
-#' later use.
-#' @return Returns a numeric value for any NPN geospatial data layer at the specified lat/long/date. If no value can be retrieved, then -9999 is returned.
+#' @param store_data Boolean value. If set `TRUE` then the value retrieved will
+#'   be stored in a global variable named `point_values` for later use.
+#' @return Returns a numeric value for any NPN geospatial data layer at the
+#'   specified lat/long/date. If no value can be retrieved, then `-9999` is
+#'   returned.
 #' @export
-npn_get_point_data <- function(
-  layer,
-  lat,
-  long,
-  date,
-  store_data=TRUE){
+npn_get_point_data <- function(layer,
+                               lat,
+                               long,
+                               date,
+                               store_data = TRUE) {
 
-  cached_value <- npn_check_point_cached(layer,lat,long,date)
-  if(!is.null(cached_value)){
+  #TODO cached value is data frame, not numeric
+  cached_value <- npn_check_point_cached(layer, lat, long, date)
+  if (!is.null(cached_value)) {
     return(cached_value)
   }
-  tryCatch({
-    url <- paste0(base_geoserver(), "coverageId=",layer,"&format=application/gml+xml&subset=http://www.opengis.net/def/axis/OGC/0/Long(",long,")&subset=http://www.opengis.net/def/axis/OGC/0/Lat(",lat,")&subset=http://www.opengis.net/def/axis/OGC/0/time(\"",date,"T00:00:00.000Z\")")
-    data = httr::GET(url,
-                     query = list(),
-                     httr::progress())
-  },error=function(msg){
+  resp <- tryCatch({
+    req <- base_req_geoserver %>%
+      httr2::req_url_path_append("wcs") %>%
+      httr2::req_url_query(
+        service = "WCS",
+        version = "2.0.1",
+        request = "GetCoverage",
+        coverageId = layer,
+        format = "application/gml+xml",
+        subset = paste0("http://www.opengis.net/def/axis/OGC/0/Long(", long, ")"),
+        subset = paste0("http://www.opengis.net/def/axis/OGC/0/Lat(", lat, ")"),
+        subset = paste0("http://www.opengis.net/def/axis/OGC/0/time(\"", date, "T00:00:00.000Z\")")
+      ) %>%
+      httr2::req_progress("down")
+    httr2::req_perform(req)
+  },
+  error = function(msg) {
     message("Geoserver is temporarily unavailable. Please try again later.")
     return(NULL)
   })
   #Download the data as XML and store it as an XML doc
-  xml_data <- httr::content(data, as = "text")
-  doc <- XML::xmlInternalTreeParse(xml_data)
+  out <- httr2::resp_body_xml(resp)
+  l <-
+    xml2::xml_find_all(
+      out,
+      "//gml:RectifiedGridCoverage/gml:rangeSet/gml:DataBlock/tupleList"
+    ) %>% xml2::as_list()
 
-  df <- XML::xmlToDataFrame(XML::xpathApply(doc, "//gml:RectifiedGridCoverage/gml:rangeSet/gml:DataBlock/tupleList"))
+  v <- as.numeric(unlist(l))
 
-  v <- as.numeric(as.list(strsplit(gsub("\n","",df[1,"text"]),' ')[[1]])[1])
-
-  if(store_data){
-    if(!is.null(pkg.env$point_values)){
-      pkg.env$point_values <- data.frame(layer=layer,lat=lat,long=long,date=date,value=v)
-    }else{
-      pkg.env$point_values <- rbind(pkg.env$point_values, data.frame(layer=layer,lat=lat,long=long,date=date,value=v))
+  if (store_data) {
+    if (!is.null(pkg.env$point_values)) {
+      pkg.env$point_values <-
+        data.frame(layer = layer, lat = lat, long = long, date = date, value = v)
+    } else {
+      pkg.env$point_values <-
+        rbind(
+          pkg.env$point_values,
+          data.frame(layer = layer, lat = lat, long = long, date = date, value = v)
+        )
     }
   }
 
   return(v)
-
 }
 
 

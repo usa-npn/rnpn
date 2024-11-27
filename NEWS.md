@@ -1,5 +1,7 @@
 # rnpn (development version)
 
+* `npn_get_point_data()` now uses https instead of http
+
 # rnpn 1.2.9 (2024-08-18)
 
 ### NEW FEATURES
