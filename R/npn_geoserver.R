@@ -35,13 +35,16 @@ npn_get_layer_details <- function() {
     layer_list <- capability_list[["Layer"]]
     layers <- layer_list[names(layer_list) == "Layer"]
 
+    # pulls out and flattens a layer by name while ensuring all NULLs and empty
+    # vectors get replaced with NA instead of being dropped silently
     unnest_layer <- function(layers, name) {
       name_list <-
         lapply(layers, function(x) {
-          x[[name]] %|||% NA_character_
+          x[[name]] %|||% NA_character_ #replace NULL and length 0 vectors with NA
         })
       unlist(name_list) %|||% NA_character_
     }
+
     name.vector <- unnest_layer(layers, "Name")
     title.vector <- unnest_layer(layers, "Title")
     abstract.vector <- unnest_layer(layers, "Abstract")
