@@ -352,17 +352,15 @@ npn_merge_geo_data <- function(
 
   # Convert the lat/long coordinates, presumed present in the input data frame
   # into coordinate objects
-  coords <- data.frame(lon=df[,"longitude"],lat=df[,"latitude"])
-  sp::coordinates(coords)
+  coords <- data.frame(lon = df[ , "longitude"], lat = df[ , "latitude"])
 
   # Use the raster library's extract function to pull out the relevant
   # geospatial values, then add them to the the data frame as a new column.
-  values <- raster::extract(x=ras,y=coords)
+  values <- terra::extract(x = ras, y = coords, ID = FALSE)
+  names(values) <- col_label
+  out <- dplyr::bind_cols(df, values)
 
-  df <- cbind(df,values)
-  names(df)[names(df) == "values"] <- col_label
-
-  return(df)
+  return(out)
 }
 
 
@@ -591,7 +589,7 @@ npn_get_custom_agdd_raster <- function(
     z <- tempfile()
     h <- function(w) if( any( grepl( "Discarded datum", w) ) ) invokeRestart( "muffleWarning" )
     download.file(mapURL,z,method="libcurl", mode="wb")
-    ras <- withCallingHandlers( raster::raster(z), warning = h )
+    ras <- withCallingHandlers( terra::rast(z), warning = h )
   }
 
   return(ras)
