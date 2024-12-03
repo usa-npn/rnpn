@@ -15,10 +15,11 @@ cran-comments.md
 ^doc$
 ^Meta$
 ^docs$
-_pkgdown.yml
 ^\.github$
 ^CRAN-RELEASE$
 ^CRAN-SUBMISSION$
 ^codecov\.yml$
 ^LICENSE\.md$
 notes/
+^_pkgdown\.yml$
+^pkgdown$
