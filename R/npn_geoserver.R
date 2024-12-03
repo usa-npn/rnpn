@@ -101,11 +101,10 @@ npn_download_geospatial <- function (
   format = "geotiff",
   output_path = NULL
 ) {
-
-  z = NULL
-
   if(is.null(output_path)){
-    z <- tempfile() #TODO use withr::local_tempdir() instead
+    z <- tempfile()
+    # can't clean this up because returned SpatRaster will be broken due to missing file
+    # on.exit(unlink(z), add = TRUE)
   }
 
   s <- "&"
