@@ -1,7 +1,6 @@
 # rnpn (development version)
 
-* `rnpn` depends on the `terra` package instead of `raster`
-* `nnpn` no longer depends on the `sp` package
+* `nnpn` no longer depends on the `sp` or `raster` packages
 
 # rnpn 1.2.9 (2024-08-18)
 
