@@ -67,27 +67,32 @@ npn_get_layer_details <- function(){
 
 }
 
-#'  Download Geospatial Data
+#' Download Geospatial Data
 #'
-#'  Function for directly downloading any arbitrary Geospatial layer data from the NPN Geospatial web services.
+#' Function for directly downloading any arbitrary Geospatial layer data from
+#' the NPN Geospatial web services.
 #'
-#'  Information about the layers can also be viewed at the getCapbilities page directly:
-#'  https://geoserver.usanpn.org/geoserver/wms?request=GetCapabilities
+#' Information about the layers can also be viewed at the getCapbilities page
+#' directly: https://geoserver.usanpn.org/geoserver/wms?request=GetCapabilities
 #'
-#'
-#' @return Raster object meeting the coverage_id, date and format parameters specified.
-#' @export
-#' @param coverage_id The coverage id (machine name) of the layer for which to retrieve.
-#' Applicable values can be found via the npn_get_layer_details() function under the 'name' column.
-#' @param date Specify the date param for the layer retrieved. This can be a calendar
-#' date formatted YYYY-mm-dd or it could be a string integer representing day of year.
-#' It can also be NULL in some cases. Which to use depends entirely on the layer being
-#' requested. More information available from the npn_get_layer_details() function.
-#' @param format The output format of the raster layer retrieved. Defaults to GeoTIFF.
-#' @param output_path Optional value. When set, the raster will be piped to the file
-#' path specified. When left unset, this function will return a raster object.
+#' @param coverage_id The coverage id (machine name) of the layer for which to
+#'   retrieve. Applicable values can be found via the [npn_get_layer_details()]
+#'   function under the 'name' column.
+#' @param date Specify the date param for the layer retrieved. This can be a
+#'   calendar date formatted YYYY-mm-dd or it could be a string integer
+#'   representing day of year. It can also be `NULL` in some cases. Which to use
+#'   depends entirely on the layer being requested. More information available
+#'   from the [npn_get_layer_details()] function.
+#' @param format The output format of the raster layer retrieved. Defaults to
+#'   GeoTIFF.
+#' @param output_path Optional value. When set, the raster will be piped to the
+#'   file path specified. When left unset, this function will return a raster
+#'   object.
+#' @returns returns nothing when `output_path` is set, otherwise a `terra`
+#'   `SpatRaster` object meeting the `coverage_id`, `date` and `format`
+#'   parameters specified.
 #' @examples \dontrun{
-#' ras<-npn_download_geospatial("si-x:30yr_avg_six_bloom","255")
+#' ras <- npn_download_geospatial("si-x:30yr_avg_six_bloom", "255")
 #' }
 #' @export
 npn_download_geospatial <- function (
@@ -95,12 +100,12 @@ npn_download_geospatial <- function (
   date,
   format = "geotiff",
   output_path = NULL
-){
+) {
 
   z = NULL
 
   if(is.null(output_path)){
-    z <- tempfile()
+    z <- tempfile() #TODO use withr::local_tempdir() instead
   }
 
   s <- "&"
@@ -121,7 +126,7 @@ npn_download_geospatial <- function (
     if(is.null(output_path)){
       download.file(url,z,method="libcurl", mode="wb")
 
-      ras <- raster::raster(z)
+      ras <- terra::rast(z)
 
 
     }else{
