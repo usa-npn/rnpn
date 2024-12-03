@@ -120,6 +120,12 @@ base <- function(){
   }
 }
 
+#TODO consider adding retry and rate-limiting
+base_req <-
+  httr2::request(base()) |>
+  httr2::req_user_agent("rnpn (https://github.com/usa-npn/rnpn/)")
+
+
 base_data_domain <- function(){
 
   if( !is.null(pkg.env$remote_env)){
@@ -150,40 +156,27 @@ base_geoserver <- function(){
   }
 }
 
-npnc <- function(l) Filter(Negate(is.null), l)
+# TODO: remove completely once we're sure error handling is equivalent or better
+# npn_GET <- function(url, args, parse = FALSE, ...) {
+#   res <- tryCatch(
+#     {
+#       tmp <- GET(url, query = args, ...)
+#       stop_for_status(tmp)
+#       tt <- content(tmp, as = "text", encoding = "UTF-8")
+#       if (nchar(tt) == 0) tt else jsonlite::fromJSON(tt, parse, flatten = TRUE)
+#     },
+#     error=function(cond){
+#       # If the service is down for some reason give the user
+#       # a message and return an empty list with n = 0
+#       message("Service is unavailable. Try again later!")
+#       tt <- "{\"nodata\":\"servicedown\"}"
+#       if (nchar(tt) == 0) tt else jsonlite::fromJSON(tt, parse, flatten = TRUE)
+#     }
+#   )
+#
+# }
 
-pop <- function(x, y) {
-  x[!names(x) %in% y]
-}
-
-ldfply <- function(y){
-  res <- lapply(y, function(x){
-    x[ sapply(x, is.null) ] <- NA
-    data.frame(x, stringsAsFactors = FALSE)
-  })
-  do.call(rbind.fill, res)
-}
-
-npn_GET <- function(url, args, parse = FALSE, ...) {
-  res <- tryCatch(
-    {
-      tmp <- GET(url, query = args, ...)
-      stop_for_status(tmp)
-      tt <- content(tmp, as = "text", encoding = "UTF-8")
-      if (nchar(tt) == 0) tt else jsonlite::fromJSON(tt, parse, flatten = TRUE)
-    },
-    error=function(cond){
-      # If the service is down for some reason give the user
-      # a message and return an empty list with n = 0
-      message("Service is unavailable. Try again later!")
-      tt <- "{\"nodata\":\"servicedown\"}"
-      if (nchar(tt) == 0) tt else jsonlite::fromJSON(tt, parse, flatten = TRUE)
-    }
-  )
-
-}
-
-#Utility function. Helps create URL strings for requests to NPN data services in the format variable_name[number]=Value
+# Helps create URL strings for requests to NPN data services in the format variable_name[number]=Value
 npn_createArgList <- function(arg_name, arg_list){
   args <- list()
   for (i in seq_along(arg_list)) {
@@ -191,5 +184,3 @@ npn_createArgList <- function(arg_name, arg_list){
   }
   return(args)
 }
-
-

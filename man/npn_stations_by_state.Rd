@@ -7,7 +7,7 @@
 npn_stations_by_state(...)
 }
 \arguments{
-\item{...}{Curl options passed on to \code{\link[httr]{GET}}}
+\item{...}{Currently unused.}
 }
 \value{
 A data frame listing stations by state.
@@ -17,6 +17,6 @@ Get number of stations by state.
 }
 \examples{
 \dontrun{
-head( npn_stations_by_state() )
+head(npn_stations_by_state())
 }
 }

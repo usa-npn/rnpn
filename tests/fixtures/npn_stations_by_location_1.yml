@@ -5,16 +5,13 @@ http_interactions:
     body:
       encoding: ''
       string: ''
-    headers:
-      Accept: application/json, text/xml, application/xml, */*
+    headers: []
   response:
     status:
       status_code: 200
-      category: Success
-      reason: OK
-      message: 'Success: (200) OK'
+      message: OK
     headers:
-      date: Wed, 13 Nov 2024 00:28:47 GMT
+      date: Wed, 20 Nov 2024 17:59:18 GMT
       content-type: application/json
       server: Apache/2.4.62 () PHP/5.5.38
       x-powered-by: PHP/5.5.38
@@ -202,5 +199,5 @@ http_interactions:
         of Arizona","station_id":53223},{"latitude":32.230499,"longitude":-110.952400,"station_name":"W
         Rush Desert Milkweed W of BSE","station_id":53597},{"latitude":32.230862,"longitude":-110.951500,"station_name":"Campus","station_id":53872},{"latitude":32.231899,"longitude":-110.950897,"station_name":"Tucson","station_id":53962},{"latitude":32.230427,"longitude":-110.951363,"station_name":"My
         backyard","station_id":54230},{"latitude":32.228352,"longitude":-110.955147,"station_name":"Theearthworm","station_id":54783}]'
-  recorded_at: 2024-11-13 00:28:47 GMT
+  recorded_at: 2024-11-20 17:59:18 GMT
   recorded_with: vcr/1.6.0, webmockr/1.0.0

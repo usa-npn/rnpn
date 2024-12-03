@@ -5,16 +5,13 @@ http_interactions:
     body:
       encoding: ''
       string: ''
-    headers:
-      Accept: application/json, text/xml, application/xml, */*
+    headers: []
   response:
     status:
       status_code: 200
-      category: Success
-      reason: OK
-      message: 'Success: (200) OK'
+      message: OK
     headers:
-      date: Tue, 12 Nov 2024 23:35:59 GMT
+      date: Wed, 20 Nov 2024 22:39:37 GMT
       content-type: application/json; charset=utf-8
       server: Apache/2.4.62 () PHP/5.5.38
       x-powered-by: PHP/5.5.38
@@ -8715,5 +8712,5 @@ http_interactions:
         Plants","class_name":"Magnoliopsida","order_id":74,"order_common_name":"Spiderwort
         and Water-hyacinth Families","order_name":"Commelinales","family_id":260,"family_name":"Commelinaceae","family_common_name":"Spiderwort
         Family","species_type":[{"Species_Type_ID":1,"Species_Type":"Ornamental","Comment":null,"User_Display":1,"Kingdom":"Plantae","Image_Path":null},{"Species_Type_ID":3,"Species_Type":"Forb","Comment":null,"User_Display":1,"Kingdom":"Plantae","Image_Path":"http:\/\/www.usanpn.org\/files\/shared\/images\/ss11western_columbine_forbs_final.png"}]}]'
-  recorded_at: 2024-11-12 23:36:00 GMT
+  recorded_at: 2024-11-20 22:39:39 GMT
   recorded_with: vcr/1.6.0, webmockr/1.0.0

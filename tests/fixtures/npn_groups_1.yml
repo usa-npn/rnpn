@@ -5,16 +5,13 @@ http_interactions:
     body:
       encoding: ''
       string: ''
-    headers:
-      Accept: application/json, text/xml, application/xml, */*
+    headers: []
   response:
     status:
       status_code: 200
-      category: Success
-      reason: OK
-      message: 'Success: (200) OK'
+      message: OK
     headers:
-      date: Wed, 13 Nov 2024 00:22:18 GMT
+      date: Wed, 20 Nov 2024 20:46:25 GMT
       content-type: application/json; charset=utf-8
       server: Apache/2.4.62 () PHP/5.5.38
       x-powered-by: PHP/5.5.38
@@ -516,5 +513,5 @@ http_interactions:
         Nature Preserve"},{"network_id":1128,"network_name":"Yellowwood"},{"network_id":574,"network_name":"Yolo
         Audubon"},{"network_id":50,"network_name":"Yosemite NP"},{"network_id":1277,"network_name":"Zumbrota"},{"network_id":75,"network_name":"Zumwalt
         Prairie Phenology"}]'
-  recorded_at: 2024-11-13 00:22:18 GMT
+  recorded_at: 2024-11-20 20:46:25 GMT
   recorded_with: vcr/1.6.0, webmockr/1.0.0

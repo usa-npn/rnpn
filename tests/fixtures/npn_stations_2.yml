@@ -5,16 +5,13 @@ http_interactions:
     body:
       encoding: ''
       string: ''
-    headers:
-      Accept: application/json, text/xml, application/xml, */*
+    headers: []
   response:
     status:
       status_code: 200
-      category: Success
-      reason: OK
-      message: 'Success: (200) OK'
+      message: OK
     headers:
-      date: Wed, 13 Nov 2024 00:28:46 GMT
+      date: Wed, 20 Nov 2024 17:59:17 GMT
       content-type: application/json; charset=utf-8
       server: Apache/2.4.62 () PHP/5.5.38
       x-powered-by: PHP/5.5.38
@@ -1851,5 +1848,5 @@ http_interactions:
         Milkweed Patch","station_id":55684,"network_id":"","file_url":null},{"latitude":32.194706,"longitude":-110.785004,"station_name":"Home","station_id":55740,"network_id":"","file_url":null},{"latitude":33.41291,"longitude":-111.605148,"station_name":"Home","station_id":55767,"network_id":"","file_url":null},{"latitude":31.909029,"longitude":-110.834198,"station_name":"SRER_061.phenology.phe
         - primary","station_id":55858,"network_id":77,"file_url":null},{"latitude":31.911873,"longitude":-110.835487,"station_name":"SRER_060.phenology.phe
         - phenocam","station_id":55859,"network_id":77,"file_url":null}]'
-  recorded_at: 2024-11-13 00:28:46 GMT
+  recorded_at: 2024-11-20 17:59:17 GMT
   recorded_with: vcr/1.6.0, webmockr/1.0.0
