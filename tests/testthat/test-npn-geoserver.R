@@ -16,20 +16,23 @@ test_that("npn_download_geospatial works", {
   skip_if_not(check_geo_service(), "Geo Service is down")
 
   ras <- npn_download_geospatial("gdd:agdd", date="2018-05-05")
-  expect_s4_class(ras, "RasterLayer")
+  expect_s4_class(ras, "SpatRaster")
 
   withr::with_tempfile("test_tiff", {
     npn_download_geospatial("gdd:agdd", date="2018-05-05", output_path = test_tiff)
     expect_true(file.exists(test_tiff))
-    file_raster <- raster::raster(test_tiff)
-    expect_equal(raster::cellStats(ras, max), raster::cellStats(file_raster, max))
+    file_raster <- terra::rast(test_tiff)
+    expect_equal(
+      max(terra::values(ras), na.rm = TRUE),
+      max(terra::values(file_raster), na.rm = TRUE)
+    )
   })
 
   ras <- npn_download_geospatial("gdd:30yr_avg_agdd", date = "50")
-  expect_s4_class(ras, "RasterLayer")
+  expect_s4_class(ras, "SpatRaster")
 
   ras <- npn_download_geospatial("inca:midgup_median_nad83_02deg", date = NULL)
-  expect_s4_class(ras, "RasterLayer")
+  expect_s4_class(ras, "SpatRaster")
 })
 
 
@@ -141,7 +144,7 @@ test_that("npn_get_custom_agdd_raster works", {
     base_temp = 32
   )
 
-  expect_s4_class(res, "RasterLayer")
+  expect_s4_class(res, "SpatRaster")
 })
 
 
