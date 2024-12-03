@@ -23,8 +23,7 @@ Imports:
     curl,
     plyr,
     XML,
-    magrittr,
-    terra
+    magrittr
 Suggests:
     ggplot2,
     testthat,
@@ -35,7 +34,8 @@ Suggests:
     RColorBrewer,
     vcr,
     withr,
-    sf
+    sf,
+    terra
 RoxygenNote: 7.3.2
 Encoding: UTF-8
 VignetteBuilder: knitr

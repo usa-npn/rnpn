@@ -1,6 +1,7 @@
 # rnpn (development version)
 
 * `nnpn` no longer depends on the `sp` or `raster` packages
+* `terra` is now a suggested dependency and users will be prompted to install it only when it is needed
 
 # rnpn 1.2.9 (2024-08-18)
 

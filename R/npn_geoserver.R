@@ -123,6 +123,8 @@ npn_download_geospatial <- function (
   url <- paste0(base_geoserver(), "format=", format , "&coverageId=",coverage_id,param)
   tryCatch({
     if(is.null(output_path)){
+      rlang::check_installed("terra", reason = "when `output_path` is `NULL`")
+
       download.file(url,z,method="libcurl", mode="wb")
 
       ras <- terra::rast(z)
@@ -348,6 +350,7 @@ npn_merge_geo_data <- function(
   col_label,
   df
 ){
+  rlang::check_installed("terra")
 
   # Convert the lat/long coordinates, presumed present in the input data frame
   # into coordinate objects
@@ -535,7 +538,7 @@ npn_get_custom_agdd_raster <- function(
   base_temp,
   upper_threshold=NULL
 ){
-
+  rlang::check_installed("terra")
   base_url <- ""
   climate_data_source <- toupper(climate_data_source)
   temp_unit <- tolower(temp_unit)
