@@ -12,7 +12,7 @@
 #' directly: https://geoserver.usanpn.org/geoserver/wms?request=GetCapabilities
 #'
 #'
-#' @return A tibble containing all layer details as specified in function
+#' @returns A tibble containing all layer details as specified in function
 #'   description.
 #' @export
 #' @examples \dontrun{
@@ -163,7 +163,7 @@ npn_download_geospatial <- function (
 #' @param date The queried date.
 #' @param store_data Boolean value. If set TRUE then the value retrieved will be
 #'   stored in a global variable named point_values for later use
-#' @return Returns a numeric value of the AGDD value at the specified
+#' @returns Returns a numeric value of the AGDD value at the specified
 #'   lat/long/date. If no value can be retrieved, then -9999 is returned.
 #' @export
 npn_get_agdd_point_data <- function(
@@ -239,7 +239,7 @@ npn_get_agdd_point_data <- function(
 #' @param date The date for which to get a value.
 #' @param store_data Boolean value. If set `TRUE` then the value retrieved will
 #'   be stored in a global variable named `point_values` for later use.
-#' @return Returns a numeric value for any NPN geospatial data layer at the
+#' @returns Returns a numeric value for any NPN geospatial data layer at the
 #'   specified lat/long/date. If no value can be retrieved, then `-9999` is
 #'   returned.
 #' @export
@@ -321,7 +321,7 @@ npn_get_point_data <- function(layer,
 #' @param phenophase The SI-x phenophase being requested, 'leaf' or 'bloom';
 #'   defaults to 'leaf'.
 #' @param sub_model The SI-x sub model to use. Defaults to NULL (no sub-model).
-#' @return Returns a raster object of the appropriate SI-x layer.
+#' @returns Returns a [terra::SpatRaster] object of the appropriate SI-x layer.
 #' @keywords internal
 resolve_six_raster <- function(
   year,
@@ -367,7 +367,7 @@ resolve_six_raster <- function(
 #' @param df The data frame which to append the new column of geospatial point
 #'   values. For this function to work, df must contain two columns:
 #'   "longitude", and "latitude"
-#' @return The data frame, now appended with a new column for geospatial data
+#' @returns The data frame, now appended with a new column for geospatial data
 #'   numeric values.
 #' @keywords internal
 npn_merge_geo_data <- function(
@@ -415,8 +415,8 @@ resolve_agdd_raster <- function(
 #' @param lat The latitude of the queried point.
 #' @param long The longitude of the queried point.
 #' @param date The queried date.
-#' @return The numeric value of the cell located at the specified coordinates
-#'   and date if the value has been queried, otherwise NULL.
+#' @returns The numeric value of the cell located at the specified coordinates
+#'   and date if the value has been queried, otherwise `NULL`.
 #' @keywords internal
 npn_check_point_cached <- function(
   layer,lat,long,date
@@ -440,7 +440,7 @@ npn_check_point_cached <- function(
 #'   names of the layer for which to retrieve data and the second column named
 #'   'param' and containing string representations of the time/elevation subset
 #'   parameter to pass.
-#' @return Returns a data frame containing the raster objects related to the
+#' @returns Returns a data frame containing the raster objects related to the
 #'   specified layers.
 #' @keywords internal
 get_additional_rasters <- function(data){
@@ -480,7 +480,7 @@ get_additional_rasters <- function(data){
 #'   series
 #' @param long The longitude of the location for which to calculate the time
 #'   series
-#' @return A data frame containing the numeric AGDD values for each day for the
+#' @returns A data frame containing the numeric AGDD values for each day for the
 #'   specified time period/location/method/base temp/data source.
 #'
 #' @export
@@ -566,7 +566,7 @@ npn_get_custom_agdd_time_series <- function(
 #' to be considered in any given day's AGDD calculation.
 #' @param climate_data_source Specified the climate data set to use. Takes either "PRISM" or "NCEP" as input.
 #' @param temp_unit The unit of temperature to use in the calculation. Takes either "Fahrenheit" or "Celsius" as input.
-#' @return A raster object of each calculated AGDD numeric values based on specified time period/method/base temp/data source.
+#' @returns A [terra::SpatRaster] object of each calculated AGDD numeric values based on specified time period/method/base temp/data source.
 #' @export
 npn_get_custom_agdd_raster <- function(
   method,

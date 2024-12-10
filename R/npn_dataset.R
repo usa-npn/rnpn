@@ -5,7 +5,7 @@
 #' unique IDs.
 #' @export
 #' @param ... Currently unused.
-#' @return tibble of datasets and their IDs.
+#' @returns tibble of datasets and their IDs.
 #' @examples \dontrun{
 #' npn_datasets()
 #' }

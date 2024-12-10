@@ -15,7 +15,7 @@ defaults to 'leaf'.}
 \item{sub_model}{The SI-x sub model to use. Defaults to NULL (no sub-model).}
 }
 \value{
-Returns a raster object of the appropriate SI-x layer.
+Returns a \link[terra:SpatRaster-class]{terra::SpatRaster} object of the appropriate SI-x layer.
 }
 \description{
 Utility function used to resolve the appropriate SI-x layer to use based on
