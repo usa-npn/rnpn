@@ -5,7 +5,7 @@ test_that("npn_get_layer_details works", {
   vcr::use_cassette("npn_get_layer_details_1", {
     layers <- npn_get_layer_details()
   })
-
+  expect_snapshot(layers)
   expect_s3_class(layers, "data.frame")
   expect_gt(nrow(layers), 50)
 })

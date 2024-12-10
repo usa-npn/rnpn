@@ -1,70 +1,74 @@
-
-#'  Get Geospatial Data Layer Details
+#' Get Geospatial Data Layer Details
 #'
-#'  This function will return information about the various data layers available via the NPN's geospatial web services.
-#'  Specifically, this function will query the NPN's GetCapabilities endpoint and parse the information on that page
-#'  about the layers. For each layer, this function will retrieve the layer name (as to be specified elsewhere programmatically),
-#'  the title (human readable), the abstract, which describes the data in the layer, the dimension name and dimension range for
-#'  specifying specific date values from the layer.
+#' This function will return information about the various data layers available
+#' via the NPN's geospatial web services. Specifically, this function will query
+#' the NPN's GetCapabilities endpoint and parse the information on that page
+#' about the layers. For each layer, this function will retrieve the layer name
+#' (as to be specified elsewhere programmatically), the title (human readable),
+#' the abstract, which describes the data in the layer, the dimension name and
+#' dimension range for specifying specific date values from the layer.
 #'
-#'  Information about the layers can also be viewed at the getCapbilities page directly:
-#'  https://geoserver.usanpn.org/geoserver/wms?request=GetCapabilities
+#' Information about the layers can also be viewed at the getCapbilities page
+#' directly: https://geoserver.usanpn.org/geoserver/wms?request=GetCapabilities
 #'
 #'
-#' @return Data frame containing all layer details as specified in function description.
+#' @return A tibble containing all layer details as specified in function
+#'   description.
 #' @export
 #' @examples \dontrun{
 #' layers <- npn_get_layer_details()
 #' }
-npn_get_layer_details <- function(){
-
+npn_get_layer_details <- function() {
+  #TODO handle http errors with httr2 instead of tryCatch()
   tryCatch({
-  doc <- GET("http://geoserver.usanpn.org/geoserver/ows?service=wms&version=1.3.0&request=GetCapabilities", list())
-  doc <- httr::content(doc, as = "text", encoding = "UTF-8")
-  doc.data <- XML::xmlParse(file = doc)
+    req <- base_req_geoserver %>%
+      httr2::req_url_path_append("ows") %>%
+      httr2::req_url_query(
+        service = "wms",
+        version = "1.3.0",
+        request = "GetCapabilities"
+      )
+    resp <- httr2::req_perform(req)
+    out <- httr2::resp_body_xml(resp, encoding = "UTF-8")
 
-  capability.list <- XML::xmlToList(doc.data)[["Capability"]]
+    capability_list <- xml2::as_list(out)[[1]][["Capability"]]
+    layer_list <- capability_list[["Layer"]]
+    layers <- layer_list[names(layer_list) == "Layer"]
 
-  layer.list <- capability.list$Layer
-  layers <- layer.list[names(layer.list) == "Layer"]
+    # pulls out and flattens a layer by name while ensuring all NULLs and empty
+    # vectors get replaced with NA instead of being dropped silently
+    unnest_layer <- function(layers, name) {
+      name_list <-
+        lapply(layers, function(x) {
+          x[[name]] %|||% NA_character_ #replace NULL and length 0 vectors with NA
+        })
+      unlist(name_list) %|||% NA_character_
+    }
 
-  name.vector <- unlist(lapply(X = layers, FUN = function(x) {
-    if (!is.null(x$Name)) {
-      x$Name
-    } else NA
-  }))
+    name.vector <- unnest_layer(layers, "Name")
+    title.vector <- unnest_layer(layers, "Title")
+    abstract.vector <- unnest_layer(layers, "Abstract")
+    dimension.range.vector <- unnest_layer(layers, "Dimension")
 
-  title.vector <- unlist(lapply(X = layers, FUN = function(x) {
-    if (!is.null(x$Title)) {
-      x$Title
-    } else NA
-  }))
+    dimension.name.vector <- unlist(
+      lapply(layers, function(x) {
+        attr(x[["Dimension"]], "name") %|||% NA_character_
+      })
+    )
 
-  abstract.vector <- unlist(lapply(X = layers, FUN = function(x) {
-    if (!is.null(x$Abstract)) {
-      x$Abstract
-    } else NA
-  }))
-
-  dimension.range.vector <- unlist(lapply(X = layers, FUN = function(x) {
-    if (!is.null(x$Dimension)) {
-      x$Dimension$text
-    } else NA
-  }))
-
-  dimension.name.vector <- unlist(lapply(X = layers, FUN = function(x) {
-    if (!is.null(x$Dimension)) {
-      x$Dimension$.attrs['name']
-    } else NA
-  }))
-
-
-  return (data.frame(name=name.vector,title=title.vector,abstract=abstract.vector,dimension.name=dimension.name.vector,dimension.range=dimension.range.vector))
-  },error=function(msg){
+    out <- tibble::tibble(
+      name = name.vector,
+      title = title.vector,
+      abstract = abstract.vector,
+      dimension.name = dimension.name.vector,
+      dimension.range = dimension.range.vector
+    )
+    return(out)
+  },
+  error = function(msg) {
     message("Geodata service not available. Please try again later")
     NULL
   })
-
 }
 
 #'  Download Geospatial Data
@@ -212,63 +216,80 @@ npn_get_agdd_point_data <- function(
 }
 
 
-
-
-
-
 #' Get Point Data Value
 #'
 #' This function can get point data about any of the NPN geospatial layers.
 #'
-#' Please note that this function pulls this from the NPN's WCS service so the data may not be totally precise. If
-#' you need precise AGDD values try using the npn_get_agdd_point_data function.
-#' @param layer The coverage id (machine name) of the layer for which to retrieve.
-#' Applicable values can be found via the npn_get_layer_details() function under the 'name' column.
+#' Please note that this function pulls this from the NPN's WCS service so the
+#' data may not be totally precise. If you need precise AGDD values try using
+#' the [npn_get_agdd_point_data()] function.
+#' @param layer The coverage id (machine name) of the layer for which to
+#'   retrieve. Applicable values can be found via the [npn_get_layer_details()]
+#'   function under the `name` column.
 #' @param lat The latitude of the point.
 #' @param long The longitude of the point.
 #' @param date The date for which to get a value.
-#' @param store_data Boolean value. If set TRUE then the value retrieved will be stored in a global variable named point_values for
-#' later use.
-#' @return Returns a numeric value for any NPN geospatial data layer at the specified lat/long/date. If no value can be retrieved, then -9999 is returned.
+#' @param store_data Boolean value. If set `TRUE` then the value retrieved will
+#'   be stored in a global variable named `point_values` for later use.
+#' @return Returns a numeric value for any NPN geospatial data layer at the
+#'   specified lat/long/date. If no value can be retrieved, then `-9999` is
+#'   returned.
 #' @export
-npn_get_point_data <- function(
-  layer,
-  lat,
-  long,
-  date,
-  store_data=TRUE){
+npn_get_point_data <- function(layer,
+                               lat,
+                               long,
+                               date,
+                               store_data = TRUE) {
 
-  cached_value <- npn_check_point_cached(layer,lat,long,date)
-  if(!is.null(cached_value)){
+  #TODO cached value is data frame, not numeric
+  cached_value <- npn_check_point_cached(layer, lat, long, date)
+  if (!is.null(cached_value)) {
     return(cached_value)
   }
-  tryCatch({
-    url <- paste0(base_geoserver(), "coverageId=",layer,"&format=application/gml+xml&subset=http://www.opengis.net/def/axis/OGC/0/Long(",long,")&subset=http://www.opengis.net/def/axis/OGC/0/Lat(",lat,")&subset=http://www.opengis.net/def/axis/OGC/0/time(\"",date,"T00:00:00.000Z\")")
-    data = httr::GET(url,
-                     query = list(),
-                     httr::progress())
-  },error=function(msg){
+  resp <- tryCatch({
+    req <- base_req_geoserver %>%
+      httr2::req_url_path_append("wcs") %>%
+      httr2::req_url_query(
+        service = "WCS",
+        version = "2.0.1",
+        request = "GetCoverage",
+        coverageId = layer,
+        format = "application/gml+xml",
+        subset = paste0("http://www.opengis.net/def/axis/OGC/0/Long(", long, ")"),
+        subset = paste0("http://www.opengis.net/def/axis/OGC/0/Lat(", lat, ")"),
+        subset = paste0("http://www.opengis.net/def/axis/OGC/0/time(\"", date, "T00:00:00.000Z\")")
+      ) %>%
+      httr2::req_progress("down")
+    httr2::req_perform(req)
+  },
+  error = function(msg) {
     message("Geoserver is temporarily unavailable. Please try again later.")
     return(NULL)
   })
   #Download the data as XML and store it as an XML doc
-  xml_data <- httr::content(data, as = "text")
-  doc <- XML::xmlInternalTreeParse(xml_data)
+  out <- httr2::resp_body_xml(resp)
+  l <-
+    xml2::xml_find_all(
+      out,
+      "//gml:RectifiedGridCoverage/gml:rangeSet/gml:DataBlock/tupleList"
+    ) %>% xml2::as_list()
 
-  df <- XML::xmlToDataFrame(XML::xpathApply(doc, "//gml:RectifiedGridCoverage/gml:rangeSet/gml:DataBlock/tupleList"))
+  v <- as.numeric(unlist(l))
 
-  v <- as.numeric(as.list(strsplit(gsub("\n","",df[1,"text"]),' ')[[1]])[1])
-
-  if(store_data){
-    if(!is.null(pkg.env$point_values)){
-      pkg.env$point_values <- data.frame(layer=layer,lat=lat,long=long,date=date,value=v)
-    }else{
-      pkg.env$point_values <- rbind(pkg.env$point_values, data.frame(layer=layer,lat=lat,long=long,date=date,value=v))
+  if (store_data) {
+    if (!is.null(pkg.env$point_values)) {
+      pkg.env$point_values <-
+        data.frame(layer = layer, lat = lat, long = long, date = date, value = v)
+    } else {
+      pkg.env$point_values <-
+        rbind(
+          pkg.env$point_values,
+          data.frame(layer = layer, lat = lat, long = long, date = date, value = v)
+        )
     }
   }
 
   return(v)
-
 }
 
 

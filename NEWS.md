@@ -1,5 +1,8 @@
 # rnpn (development version)
 
+* `npn_get_point_data()` now uses https instead of http
+* `npn_get_layer_details()` now returns a tibble instead of a data frame
+* `rnpn` now requires the `xml2` package instead of `XML`
 * `npn_phenophase_details()` now takes a vector of phenophase IDs rather than a list
 * Functions that previously returned `data.frame` objects now return tibbles. Where they previously returned `NULL` on errors, they now return empty 0x0 tibbles.
 * `npn_get_phenophases_for_taxon()` now returns a tibble rather than a list.
