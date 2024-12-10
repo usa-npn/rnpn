@@ -80,7 +80,21 @@
 
     <div class="section level2">
 <h2 class="page-header" data-toc-text="development version" id="rnpn-development-version">rnpn (development version)<a class="anchor" aria-label="anchor" href="#rnpn-development-version"></a></h2>
-</div>
+<ul><li>
+<code><a href="../reference/npn_phenophase_details.html">npn_phenophase_details()</a></code> now takes a vector of phenophase IDs rather than a list</li>
+<li>Functions that previously returned <code>data.frame</code> objects now return tibbles. Where they previously returned <code>NULL</code> on errors, they now return empty 0x0 tibbles.</li>
+<li>
+<code><a href="../reference/npn_get_phenophases_for_taxon.html">npn_get_phenophases_for_taxon()</a></code> now returns a tibble rather than a list.</li>
+<li>Documented a behavior of <code>npn_species_type()</code> where setting <code>kingdom</code> to <code>NULL</code> returns results for <em>both</em> <code>Plantae</code> and <code>Animalia</code>.</li>
+<li>Missing values returned by <code><a href="../reference/npn_stations_by_state.html">npn_stations_by_state()</a></code> previously returned as the string <code>"emptyvalue"</code> are now returned as <code>NA</code>s.</li>
+<li>
+<code>rnpn</code> now has <code>dplyr</code> as a dependency instead of <code>plyr</code>
+</li>
+<li>
+<code>rnpn</code> now uses <code>httr2</code> instead of <code>httr</code> internally for functions that get observational data</li>
+<li>
+<code>...</code> is no longer used for functions that get observational data</li>
+</ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="1.2.9" id="rnpn-129-2024-08-18">rnpn 1.2.9 (2024-08-18)<a class="anchor" aria-label="anchor" href="#rnpn-129-2024-08-18"></a></h2>
 <div class="section level4">

@@ -92,16 +92,19 @@
 
 
 <dl><dt id="arg-kingdom">kingdom<a class="anchor" aria-label="anchor" href="#arg-kingdom"></a></dt>
-<dd><p>The kingdom for which to return functional types; either 'Animalia' or 'Plantae'. Defaults to Plantae.</p></dd>
+<dd><p>Filters results by taxonomic kingdom. Valid values include
+`'Animalia'`, `'Plantae'`, or `NULL` (which returns results
+for both). Defaults to `'Plantae'`.</p></dd>
 
 
 <dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
-<dd><p>Curl options passed on to <code><a href="https://httr.r-lib.org/reference/GET.html" class="external-link">GET</a></code></p></dd>
+<dd><p>Currently unused.</p></dd>
 
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A data frame with a list of the functional types used in the NPN database, filtered by the specified kingdom.</p>
+    <p>A data frame with a list of the functional types used in the NPN
+  database, filtered by the specified kingdom.</p>
     </div>
 
   </div>
