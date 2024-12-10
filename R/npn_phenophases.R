@@ -144,18 +144,13 @@ npn_get_phenophases_for_taxon <- function(family_ids = NULL,
                                           date = NULL,
                                           return_all = 0, #TODO switch to TRUE or FALSE?
                                           ...) {
-  family_list <- npn_createArgList("family_id", family_ids)
-  class_list <- npn_createArgList("class_id", class_ids)
-  order_list <- npn_createArgList("order_id", order_ids)
-  genus_list <- npn_createArgList("genus_id", genus_ids)
-
   req <- base_req %>%
     httr2::req_url_path_append('phenophases/getPhenophasesForTaxon.json') %>%
     httr2::req_url_query(
-      !!!family_list,
-      !!!class_list,
-      !!!order_list,
-      !!!genus_list,
+      !!!explode_query("family_id", family_ids),
+      !!!explode_query("class_id", class_ids),
+      !!!explode_query("order_id", order_ids),
+      !!!explode_query("genus_id", genus_ids),
       date = date,
       return_all = return_all
     )

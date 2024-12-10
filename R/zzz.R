@@ -176,6 +176,7 @@ base_geoserver <- function(){
 #
 # }
 
+#TODO: eventually remove this in favor of explode_query() once httr->httr2 is complete
 # Helps create URL strings for requests to NPN data services in the format variable_name[number]=Value
 npn_createArgList <- function(arg_name, arg_list){
   args <- list()
@@ -183,4 +184,23 @@ npn_createArgList <- function(arg_name, arg_list){
     args[paste0(arg_name,'[',i,']')] <- URLencode(toString(arg_list[i]))
   }
   return(args)
+}
+
+#' Explode multiple queries NPN style
+#'
+#' Alternative helper function that works in `httr2::req_url_query()` by naming
+#' a vector `query_name[1]`, `query_name[2]`, etc
+#' @noRd
+#' @examples
+#' species_id <- c(100, 103)
+#' base_req %>%
+#'   httr2::req_url_path_append('phenophases/getPhenophasesForSpecies.json') %>%
+#'   httr2::req_url_query(!!!explode_query("species_id", species_id))
+#'
+explode_query <- function(arg_name, arg_vals) {
+  if (!is.null(arg_vals)) {
+    setNames(arg_vals, paste0(arg_name, "[", seq_along(arg_vals), "]"))
+  } else {
+    NULL
+  }
 }

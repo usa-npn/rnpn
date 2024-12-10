@@ -103,10 +103,14 @@ npn_species_search <- function(network = NULL,
                                station_id = NULL,
                                ...) {
   #TODO: multiple network IDs may be allowed in the API, but for now this function only takes a single network
-  station_ids <- npn_createArgList("station_id", station_id)
   req <- base_req %>%
     httr2::req_url_path_append('species/getSpeciesFilter.json') %>%
-    httr2::req_url_query(network = network, start_date = start_date, end_date = end_date, !!!station_ids)
+    httr2::req_url_query(
+      network = network,
+      start_date = start_date,
+      end_date = end_date,
+      !!!explode_query("station_id", station_id)
+    )
   resp <- httr2::req_perform(req)
   out <- httr2::resp_body_json(resp, simplifyVector = TRUE)
   #return:
