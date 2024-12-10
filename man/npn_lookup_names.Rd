@@ -11,8 +11,8 @@ npn_lookup_names(name, type = "genus", fuzzy = FALSE)
 
 \item{type}{One of \code{"common_name"}, \code{"genus"}, or \code{"species"}.}
 
-\item{fuzzy}{Logical; if \code{TRUE}, uses fuzzy search via \code{\link[base:agrep]{base::agrep()}}, if \code{FALSE},
-uses \code{\link[base:grep]{base::grep()}}.}
+\item{fuzzy}{Logical; if \code{TRUE}, uses fuzzy search via \code{\link[=agrep]{agrep()}}, if
+\code{FALSE}, uses \code{\link[=grep]{grep()}}.}
 }
 \value{
 A data frame with species ID numbers based on the name and type
