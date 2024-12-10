@@ -8,8 +8,6 @@
 "_PACKAGE"
 
 ## usethis namespace: start
-#' @importFrom httr GET stop_for_status content
-#' @importFrom jsonlite fromJSON
 #' @importFrom httr2 %>%
 #' @importFrom utils URLencode download.file write.table
 ## usethis namespace: end
