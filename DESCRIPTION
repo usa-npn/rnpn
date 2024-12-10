@@ -19,10 +19,8 @@ Imports:
     httr (>= 1.1.0),
     jsonlite (>= 0.9.19),
     data.table (>= 1.9.6),
-    sp (>= 1.1-0),
     tibble,
     curl,
-    raster,
     xml2,
     httr2,
     dplyr,
@@ -37,7 +35,9 @@ Suggests:
     rmarkdown,
     RColorBrewer,
     vcr,
-    withr
+    withr,
+    sf,
+    terra
 RoxygenNote: 7.3.2
 Encoding: UTF-8
 VignetteBuilder: knitr

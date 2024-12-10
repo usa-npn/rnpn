@@ -12,7 +12,7 @@ vignette: >
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(rnpn)
-library(raster)
+library(terra)
 ```
 
 # USA-NPN Geospatial Data
@@ -27,22 +27,22 @@ Both suites are available as:
 * Historical years
     + AGDD - 2016-Prior Year
     + Extended Spring Index - 1880-Prior Year
- 
-All of these products can be downloaded using the npn_download_geospatial call. There is a number of other products and permutations of the above listed AGDD and Spring Index products, so you can get a complete list of available layers and additional details about them including resolution, extent and the abstract/layer description. 
+
+All of these products can be downloaded using the npn_download_geospatial call. There is a number of other products and permutations of the above listed AGDD and Spring Index products, so you can get a complete list of available layers and additional details about them including resolution, extent and the abstract/layer description.
 
 ```{r eval=FALSE}
 layers <- npn_get_layer_details()
 ```
 
-The following sections describe how to parameterize calls for both AGDD and Spring Index layers. These calls result in raster data sets for the contiguous United States. 
+The following sections describe how to parameterize calls for both AGDD and Spring Index layers. These calls result in raster data sets for the contiguous United States.
 
 If you are interested in how many GDDs had accumulated when the red maple in your backyard leafed out, or what day the Spring Index requirements for leaf out were met for your location, you may wish to query the layers for these values, based on location and date. There are two ways to accomplish this, using the npn_get_point_data function which works for all layers and the npn_get_AGDD_point_data function, which only works for AGDD layers and provides a more precise result.
 
 ```{r eval=FALSE}
 npn_get_agdd_point_data(
- 'gdd:agdd_50f', 
- '38', 
- '-90', 
+ 'gdd:agdd_50f',
+ '38',
+ '-90',
  '2019-02-25'
 )
 ```
@@ -52,9 +52,9 @@ This returns a value of 7.64098 GDD, base 50F, for the coordinates 38 north, -90
 
 ```{r eval=FALSE}
 npn_get_point_data(
- 'si-x:lilac_bloom_ncep', 
- '30', 
- '-90', 
+ 'si-x:lilac_bloom_ncep',
+ '30',
+ '-90',
  '2019-02-25'
 )
 ```
@@ -80,14 +80,14 @@ custom_agdd_raster <- npn_get_custom_agdd_raster(
 
 ## Accumulated Growing Degree Day Products
 
-Heat accumulation is commonly used as a way of predicting the timing of phenological transitions in plants and animals, including when plants exhibit leaf out, flowering, or fruit ripening, or when insects emerge from dormancy. This is typically expressed as accumulated heat units, either Growing Degree Hours or Growing Degree Days. Growing degree day thresholds have been established for many species, and are commonly used in agriculture, horticulture, and pest management to schedule activities such as harvesting, pesticide treatment, and flower collection. The USA-NPN is currently generating Accumulated Growing Degree Days (AGDD) rasters using a January 1 start date, calculated using simple averaging. These are available calculated using two base temperatures, 32 degrees Fahrenheit (F) and 50 F. 
+Heat accumulation is commonly used as a way of predicting the timing of phenological transitions in plants and animals, including when plants exhibit leaf out, flowering, or fruit ripening, or when insects emerge from dormancy. This is typically expressed as accumulated heat units, either Growing Degree Hours or Growing Degree Days. Growing degree day thresholds have been established for many species, and are commonly used in agriculture, horticulture, and pest management to schedule activities such as harvesting, pesticide treatment, and flower collection. The USA-NPN is currently generating Accumulated Growing Degree Days (AGDD) rasters using a January 1 start date, calculated using simple averaging. These are available calculated using two base temperatures, 32 degrees Fahrenheit (F) and 50 F.
 
 
-When querying certain layers, the underlying data is agnostic about the specific year, and in these cases it makes sense to use the day of year to request data, since that will provide a standardized result, (i.e., April 1st is day 91 in some years and day 92 in others). 
+When querying certain layers, the underlying data is agnostic about the specific year, and in these cases it makes sense to use the day of year to request data, since that will provide a standardized result, (i.e., April 1st is day 91 in some years and day 92 in others).
 
 ```{r eval=FALSE}
 npn_download_geospatial(
- 'gdd:30yr_avg_agdd_50f', 
+ 'gdd:30yr_avg_agdd_50f',
  95
 )
 ```
@@ -96,7 +96,7 @@ But if you're looking at a specific year, such as a current year layer, it makes
 
 ```{r eval=FALSE}
 npn_download_geospatial(
- 'gdd:agdd', 
+ 'gdd:agdd',
  '2018-05-05',
  output_path='20180505-agdd-value.tiff'
 )
@@ -117,14 +117,14 @@ Of course, it's also easy to grab raster data and load it into a visual plot as 
 
 ```{r}
 AGDDJun2019<-npn_download_geospatial(
- "gdd:agdd_50f", 
+ "gdd:agdd_50f",
  "2019-06-25"
 )
 ```
 
 ```{r}
 plot(
- AGDDJun2019, 
+ AGDDJun2019,
  main = "AGDD base 50 on June 25th, 2019"
 )
 ```
@@ -144,7 +144,7 @@ average_30yr <- npn_download_geospatial(
 ## Extended Spring Indices
 
 
-The Extended Spring Indices are mathematical models that predict the "start of spring" (timing of first leaf or first bloom) at a particular location. These models were constructed using historical observations of the timing of first leaf and first bloom in a cloned lilac cultivar (Syringa X chinensis 'Red Rothomagensis') and two cloned honeysuckle cultivars (Lonicera tatarica L. 'Arnold Red' and Lonicera korolkowii Stapf, also known as 'Zabelii'), which were selected based on the availability of historical observations from across a wide geographic area. Primary inputs to the model are temperature and weather events, beginning January 1 of each year. The model outputs are first leaf and first bloom date for a given location. 
+The Extended Spring Indices are mathematical models that predict the "start of spring" (timing of first leaf or first bloom) at a particular location. These models were constructed using historical observations of the timing of first leaf and first bloom in a cloned lilac cultivar (Syringa X chinensis 'Red Rothomagensis') and two cloned honeysuckle cultivars (Lonicera tatarica L. 'Arnold Red' and Lonicera korolkowii Stapf, also known as 'Zabelii'), which were selected based on the availability of historical observations from across a wide geographic area. Primary inputs to the model are temperature and weather events, beginning January 1 of each year. The model outputs are first leaf and first bloom date for a given location.
 
 Data for the Spring Index is available through an enumeration of layers that represents each of the three sub-models as well as an 'average' model which represents the aggregation of the three sub-models. These layers are further enumerated by both of the represented phenophases, leaf and bloom. In the example below, first the layer representing only the Arnold Red model for 1987 is retrieved, while the second function call gets the model averaging all three of the models for the same year.
 
@@ -166,7 +166,7 @@ The Spring Indices are also unique in that the algorithm has been run against th
 
 ```{r warning = FALSE, message=FALSE}
 BESTSIxData1905 <- npn_download_geospatial(
- 'si-x:average_bloom_best', 
+ 'si-x:average_bloom_best',
  '1905-01-01'
 )
 NAvalue(BESTSIxData1905) <- -9999
@@ -174,7 +174,7 @@ NAvalue(BESTSIxData1905) <- -9999
 
 ```{r}
 plot(
- BESTSIxData1905, 
+ BESTSIxData1905,
  main = "Spring Index, 1905"
 )
 
@@ -190,12 +190,12 @@ The daily temperature minimum and maximum values are the underlying climate data
 
 ```{r}
 daily_max_20190505 <- npn_download_geospatial(
- 'climate:tmax', 
+ 'climate:tmax',
  '2019-05-05'
 )
 
 plot(
- daily_max_20190505, 
+ daily_max_20190505,
  main = "Daily Temperature Max (C), May 5th, 2019"
 )
 ```
@@ -211,7 +211,7 @@ median_greenup <- npn_download_geospatial(
 )
 
 plot(
- median_greenup, 
+ median_greenup,
  main = "MODIS Median Mid-Greenup, 2001 - 2017"
 )
 ```

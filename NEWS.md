@@ -1,5 +1,7 @@
 # rnpn (development version)
 
+* `nnpn` no longer depends on the `sp` or `raster` packages
+* `terra` is now a suggested dependency and users will be prompted to install it only when it is needed
 * `npn_get_point_data()` now uses https instead of http
 * `npn_get_layer_details()` now returns a tibble instead of a data frame
 * `rnpn` now requires the `xml2` package instead of `XML`

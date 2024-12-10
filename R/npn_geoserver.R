@@ -71,27 +71,32 @@ npn_get_layer_details <- function() {
   })
 }
 
-#'  Download Geospatial Data
+#' Download Geospatial Data
 #'
-#'  Function for directly downloading any arbitrary Geospatial layer data from the NPN Geospatial web services.
+#' Function for directly downloading any arbitrary Geospatial layer data from
+#' the NPN Geospatial web services.
 #'
-#'  Information about the layers can also be viewed at the getCapbilities page directly:
-#'  https://geoserver.usanpn.org/geoserver/wms?request=GetCapabilities
+#' Information about the layers can also be viewed at the getCapbilities page
+#' directly: https://geoserver.usanpn.org/geoserver/wms?request=GetCapabilities
 #'
-#'
-#' @return Raster object meeting the coverage_id, date and format parameters specified.
-#' @export
-#' @param coverage_id The coverage id (machine name) of the layer for which to retrieve.
-#' Applicable values can be found via the npn_get_layer_details() function under the 'name' column.
-#' @param date Specify the date param for the layer retrieved. This can be a calendar
-#' date formatted YYYY-mm-dd or it could be a string integer representing day of year.
-#' It can also be NULL in some cases. Which to use depends entirely on the layer being
-#' requested. More information available from the npn_get_layer_details() function.
-#' @param format The output format of the raster layer retrieved. Defaults to GeoTIFF.
-#' @param output_path Optional value. When set, the raster will be piped to the file
-#' path specified. When left unset, this function will return a raster object.
+#' @param coverage_id The coverage id (machine name) of the layer for which to
+#'   retrieve. Applicable values can be found via the [npn_get_layer_details()]
+#'   function under the 'name' column.
+#' @param date Specify the date param for the layer retrieved. This can be a
+#'   calendar date formatted YYYY-mm-dd or it could be a string integer
+#'   representing day of year. It can also be `NULL` in some cases. Which to use
+#'   depends entirely on the layer being requested. More information available
+#'   from the [npn_get_layer_details()] function.
+#' @param format The output format of the raster layer retrieved. Defaults to
+#'   GeoTIFF.
+#' @param output_path Optional value. When set, the raster will be piped to the
+#'   file path specified. When left unset, this function will return a raster
+#'   object.
+#' @returns returns nothing when `output_path` is set, otherwise a `terra`
+#'   `SpatRaster` object meeting the `coverage_id`, `date` and `format`
+#'   parameters specified.
 #' @examples \dontrun{
-#' ras<-npn_download_geospatial("si-x:30yr_avg_six_bloom","255")
+#' ras <- npn_download_geospatial("si-x:30yr_avg_six_bloom", "255")
 #' }
 #' @export
 npn_download_geospatial <- function (
@@ -99,12 +104,11 @@ npn_download_geospatial <- function (
   date,
   format = "geotiff",
   output_path = NULL
-){
-
-  z = NULL
-
+) {
   if(is.null(output_path)){
     z <- tempfile()
+    # can't clean this up because returned SpatRaster will be broken due to missing file
+    # on.exit(unlink(z), add = TRUE)
   }
 
   s <- "&"
@@ -123,9 +127,11 @@ npn_download_geospatial <- function (
   url <- paste0(base_geoserver(), "format=", format , "&coverageId=",coverage_id,param)
   tryCatch({
     if(is.null(output_path)){
+      rlang::check_installed("terra", reason = "when `output_path` is `NULL`")
+
       download.file(url,z,method="libcurl", mode="wb")
 
-      ras <- raster::raster(z)
+      ras <- terra::rast(z)
 
 
     }else{
@@ -365,20 +371,19 @@ npn_merge_geo_data <- function(
   col_label,
   df
 ){
+  rlang::check_installed("terra")
 
   # Convert the lat/long coordinates, presumed present in the input data frame
   # into coordinate objects
-  coords <- data.frame(lon=df[,"longitude"],lat=df[,"latitude"])
-  sp::coordinates(coords)
+  coords <- data.frame(lon = df[ , "longitude"], lat = df[ , "latitude"])
 
   # Use the raster library's extract function to pull out the relevant
   # geospatial values, then add them to the the data frame as a new column.
-  values <- raster::extract(x=ras,y=coords)
+  values <- terra::extract(x = ras, y = coords, ID = FALSE)
+  names(values) <- col_label
+  out <- dplyr::bind_cols(df, values)
 
-  df <- cbind(df,values)
-  names(df)[names(df) == "values"] <- col_label
-
-  return(df)
+  return(out)
 }
 
 
@@ -554,7 +559,7 @@ npn_get_custom_agdd_raster <- function(
   base_temp,
   upper_threshold=NULL
 ){
-
+  rlang::check_installed("terra")
   base_url <- ""
   climate_data_source <- toupper(climate_data_source)
   temp_unit <- tolower(temp_unit)
@@ -607,7 +612,7 @@ npn_get_custom_agdd_raster <- function(
     z <- tempfile()
     h <- function(w) if( any( grepl( "Discarded datum", w) ) ) invokeRestart( "muffleWarning" )
     download.file(mapURL,z,method="libcurl", mode="wb")
-    ras <- withCallingHandlers( raster::raster(z), warning = h )
+    ras <- withCallingHandlers( terra::rast(z), warning = h )
   }
 
   return(ras)
