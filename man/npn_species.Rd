@@ -29,32 +29,32 @@ npn_species_search(
 \item{state}{A US postal state code to filter results.}
 
 \item{kingdom}{Filters results by taxonomic kingdom. Valid values include
-`'Animalia'`, `'Plantae'`.}
+\code{'Animalia'}, \code{'Plantae'}.}
 
 \item{network}{filter species based on identifiers of NPN groups that are
 actually observing data on the species. Takes a single numeric ID.}
 
 \item{start_date}{filter species by date observed. This sets the start date
-of the date range and must be used in conjunction with `end_date`.}
+of the date range and must be used in conjunction with \code{end_date}.}
 
 \item{end_date}{filter species by date observed. This sets the end date of
-the date range and must be used in conjunction with `start_date`.}
+the date range and must be used in conjunction with \code{start_date}.}
 
 \item{station_id}{filter species by a numeric vector of unique site
 identifiers.}
 }
 \value{
 A tibble with information on species in the NPN database and their
-  IDs.
+IDs.
 
 A tibble with information on species in the NPN database and their
-  IDs, filtered by the species ID parameter.
+IDs, filtered by the species ID parameter.
 
 A tibble with information on species in the NPN database whose
-  distribution includes a given state.
+distribution includes a given state.
 
 A tibble with information on species in the NPN database filtered by
-  partner group, dates and station/site IDs.
+partner group, dates and station/site IDs.
 }
 \description{
 Returns a complete list of all species information of species represented in
@@ -67,9 +67,11 @@ Search for species by state
 
 Search NPN species information using a number of different parameters, which
 can be used in conjunction with one another, including:
- - Species on which a particular group or groups are actually collecting data
- - What species were observed in a given date range
- - What species were observed at a particular station or stations
+\itemize{
+\item Species on which a particular group or groups are actually collecting data
+\item What species were observed in a given date range
+\item What species were observed at a particular station or stations
+}
 }
 \examples{
 \dontrun{

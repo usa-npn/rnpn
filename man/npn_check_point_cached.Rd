@@ -17,7 +17,7 @@ npn_check_point_cached(layer, lat, long, date)
 }
 \value{
 The numeric value of the cell located at the specified coordinates
-  and date if the value has been queried, otherwise NULL.
+and date if the value has been queried, otherwise NULL.
 }
 \description{
 Checks in the global variable "point values" to see if the exact data point

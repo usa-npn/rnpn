@@ -31,7 +31,7 @@ output the results.}
 }
 \value{
 Data table - a data table combining each requests results from the
-  service.
+service.
 }
 \description{
 Utility function to chain multiple requests to npn_get_data for requests

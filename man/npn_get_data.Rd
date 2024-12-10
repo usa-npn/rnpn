@@ -29,7 +29,7 @@ to the service would truncate the output file.}
 }
 \value{
 Data table of the requested data. NULL if a download_path was
-  specified.
+specified.
 }
 \description{
 Generic utility function for querying data from the NPN data services.

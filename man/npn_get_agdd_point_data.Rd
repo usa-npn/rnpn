@@ -20,7 +20,7 @@ stored in a global variable named point_values for later use}
 }
 \value{
 Returns a numeric value of the AGDD value at the specified
-  lat/long/date. If no value can be retrieved, then -9999 is returned.
+lat/long/date. If no value can be retrieved, then -9999 is returned.
 }
 \description{
 This function is for requesting AGDD point values. Because the NPN has a

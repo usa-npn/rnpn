@@ -8,14 +8,14 @@ npn_species_types(kingdom = "Plantae", ...)
 }
 \arguments{
 \item{kingdom}{Filters results by taxonomic kingdom. Valid values include
-`'Animalia'`, `'Plantae'`, or `NULL` (which returns results for both).
-Defaults to `'Plantae'`.}
+\code{'Animalia'}, \code{'Plantae'}, or \code{NULL} (which returns results for both).
+Defaults to \code{'Plantae'}.}
 
 \item{...}{Currently unused.}
 }
 \value{
 A data frame with a list of the functional types used in the NPN
-  database, filtered by the specified kingdom.
+database, filtered by the specified kingdom.
 }
 \description{
 Return all plant or animal functional types used in the NPN database.

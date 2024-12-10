@@ -156,7 +156,7 @@ that WKT.}
 }
 \value{
 Data table of all status records returned as per the search
-  parameters. Null if output directed to file.
+parameters. Null if output directed to file.
 }
 \description{
 This function allows for a parameterized search of all site phenometrics

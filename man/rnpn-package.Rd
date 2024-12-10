@@ -7,7 +7,7 @@
 \title{Interface to the National Phenology Network API}
 \description{
 This package allows for easy access to the National Phenology
-  Network's Data API. To learn more, take a look at the vignettes.
+Network's Data API. To learn more, take a look at the vignettes.
 }
 \seealso{
 Useful links:

@@ -11,7 +11,7 @@ npn_phenophase_definitions(...)
 }
 \value{
 A tibble listing all phenophases in the NPN database and their
-  definitions.
+definitions.
 }
 \description{
 Retrieves a complete list of all phenophase definitions.

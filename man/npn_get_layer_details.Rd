@@ -8,7 +8,7 @@ npn_get_layer_details()
 }
 \value{
 A tibble containing all layer details as specified in function
-  description.
+description.
 }
 \description{
 This function will return information about the various data layers available

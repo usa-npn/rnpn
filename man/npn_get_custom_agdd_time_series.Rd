@@ -46,7 +46,7 @@ day's AGDD calculation}
 }
 \value{
 A data frame containing the numeric AGDD values for each day for the
-  specified time period/location/method/base temp/data source.
+specified time period/location/method/base temp/data source.
 }
 \description{
 This function takes a series of variables used in calculating AGDD and

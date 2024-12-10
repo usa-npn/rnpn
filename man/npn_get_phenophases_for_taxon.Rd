@@ -24,7 +24,7 @@ npn_get_phenophases_for_taxon(
 \item{genus_ids}{List of taxonomic genus ids to search for}
 
 \item{date}{Specify the date of interest. For this function to return
-anything, either this value must be set or `return_all` must be 1.}
+anything, either this value must be set or \code{return_all} must be 1.}
 
 \item{return_all}{Takes either 0 or 1 as input and defaults to 0. For this
 function to return anything, either this value must be set to 1 or date
@@ -34,7 +34,7 @@ must be set.}
 }
 \value{
 A data frame listing phenophases in the NPN database for the
-  specified taxon and date.
+specified taxon and date.
 }
 \description{
 This function gets a list of phenophases that are applicable for a provided
@@ -51,5 +51,5 @@ phenophases that were ever applicable for any species belonging to the
 specified taxonomic group.
 
 When called, this function requires of these three parameters, exactly one of
-`family_ids`, `order_ids` or `class_ids` to be set.
+\code{family_ids}, \code{order_ids} or \code{class_ids} to be set.
 }

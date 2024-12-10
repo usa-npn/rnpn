@@ -14,7 +14,7 @@ parameter to pass.}
 }
 \value{
 Returns a data frame containing the raster objects related to the
-  specified layers.
+specified layers.
 }
 \description{
 Utility function to easily take arbitrary layer name parameters as a data

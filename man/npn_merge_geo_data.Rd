@@ -17,7 +17,7 @@ values. For this function to work, df must contain two columns:
 }
 \value{
 The data frame, now appended with a new column for geospatial data
-  numeric values.
+numeric values.
 }
 \description{
 Utility function to intersect point based observational data with Geospatial

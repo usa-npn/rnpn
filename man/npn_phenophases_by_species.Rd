@@ -17,7 +17,7 @@ given species.}
 }
 \value{
 A tibble listing phenophases in the NPN database for the specified
-  species and date.
+species and date.
 }
 \description{
 Retrieves the phenophases applicable to species for a given date. It's
