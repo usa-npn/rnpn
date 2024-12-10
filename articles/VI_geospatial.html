@@ -101,7 +101,7 @@
       <h1 data-toc-skip>VI. USA-NPN Geospatial Data</h1>
                         <h4 data-toc-skip class="author">Lee Marsh</h4>
             
-            <h4 data-toc-skip class="date">2024-08-12</h4>
+            <h4 data-toc-skip class="date">2024-12-10</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/usa-npn/rnpn/blob/master/vignettes/VI_geospatial.Rmd" class="external-link"><code>vignettes/VI_geospatial.Rmd</code></a></small>
       <div class="hidden name"><code>VI_geospatial.Rmd</code></div>
@@ -156,18 +156,18 @@ works for all layers and the npn_get_AGDD_point_data function, which
 only works for AGDD layers and provides a more precise result.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/npn_get_agdd_point_data.html">npn_get_agdd_point_data</a></span><span class="op">(</span></span>
-<span> <span class="st">'gdd:agdd_50f'</span>, </span>
-<span> <span class="st">'38'</span>, </span>
-<span> <span class="st">'-90'</span>, </span>
+<span> <span class="st">'gdd:agdd_50f'</span>,</span>
+<span> <span class="st">'38'</span>,</span>
+<span> <span class="st">'-90'</span>,</span>
 <span> <span class="st">'2019-02-25'</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <p>This returns a value of 7.64098 GDD, base 50F, for the coordinates 38
 north, -90 west on February 25th, 2019.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/npn_get_point_data.html">npn_get_point_data</a></span><span class="op">(</span></span>
-<span> <span class="st">'si-x:lilac_bloom_ncep'</span>, </span>
-<span> <span class="st">'30'</span>, </span>
-<span> <span class="st">'-90'</span>, </span>
+<span> <span class="st">'si-x:lilac_bloom_ncep'</span>,</span>
+<span> <span class="st">'30'</span>,</span>
+<span> <span class="st">'-90'</span>,</span>
 <span> <span class="st">'2019-02-25'</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <p>This returns a value for lilac bloom of day 48, for the coordinates
@@ -207,7 +207,7 @@ year to request data, since that will provide a standardized result,
 (i.e., April 1st is day 91 in some years and day 92 in others).</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/npn_download_geospatial.html">npn_download_geospatial</a></span><span class="op">(</span></span>
-<span> <span class="st">'gdd:30yr_avg_agdd_50f'</span>, </span>
+<span> <span class="st">'gdd:30yr_avg_agdd_50f'</span>,</span>
 <span> <span class="fl">95</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <p>But if you’re looking at a specific year, such as a current year
@@ -216,7 +216,7 @@ YYYY-MM-DD). It’s also possible to save the raster directly to file
 instead of loading it into memory.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/npn_download_geospatial.html">npn_download_geospatial</a></span><span class="op">(</span></span>
-<span> <span class="st">'gdd:agdd'</span>, </span>
+<span> <span class="st">'gdd:agdd'</span>,</span>
 <span> <span class="st">'2018-05-05'</span>,</span>
 <span> output_path<span class="op">=</span><span class="st">'20180505-agdd-value.tiff'</span></span>
 <span><span class="op">)</span></span></code></pre></div>
@@ -236,16 +236,16 @@ visual plot as in this example, showing a map of AGDD base 50 on
 2019-06-25:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">AGDDJun2019</span><span class="op">&lt;-</span><span class="fu"><a href="../reference/npn_download_geospatial.html">npn_download_geospatial</a></span><span class="op">(</span></span>
-<span> <span class="st">"gdd:agdd_50f"</span>, </span>
+<span> <span class="st">"gdd:agdd_50f"</span>,</span>
 <span> <span class="st">"2019-06-25"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span></span>
-<span> <span class="va">AGDDJun2019</span>, </span>
+<span> <span class="va">AGDDJun2019</span>,</span>
 <span> main <span class="op">=</span> <span class="st">"AGDD base 50 on June 25th, 2019"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <div class="float">
-<img src="figures%2Funnamed-chunk-9-1.png" alt="plot of chunk unnamed-chunk-9"><div class="figcaption">plot of chunk unnamed-chunk-9</div>
+<img src="figure/unnamed-chunk-9-1.png" alt="plot of chunk unnamed-chunk-9"><div class="figcaption">plot of chunk unnamed-chunk-9</div>
 </div>
 <p>An important layer to know of is the 30 year average for AGDD
 products. This is useful for many comparative analyses. This layer takes
@@ -294,17 +294,18 @@ against the BEST climate data set, so historic data going back to 1880
 is available.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">BESTSIxData1905</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/npn_download_geospatial.html">npn_download_geospatial</a></span><span class="op">(</span></span>
-<span> <span class="st">'si-x:average_bloom_best'</span>, </span>
+<span> <span class="st">'si-x:average_bloom_best'</span>,</span>
 <span> <span class="st">'1905-01-01'</span></span>
 <span><span class="op">)</span></span>
 <span><span class="fu">NAvalue</span><span class="op">(</span><span class="va">BESTSIxData1905</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="op">-</span><span class="fl">9999</span></span></code></pre></div>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<pre><code><span><span class="co">## Error in NAvalue(BESTSIxData1905) &lt;- -9999: could not find function "NAvalue&lt;-"</span></span></code></pre>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span></span>
-<span> <span class="va">BESTSIxData1905</span>, </span>
+<span> <span class="va">BESTSIxData1905</span>,</span>
 <span> main <span class="op">=</span> <span class="st">"Spring Index, 1905"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <div class="float">
-<img src="figures%2Funnamed-chunk-13-1.png" alt="plot of chunk unnamed-chunk-13"><div class="figcaption">plot of chunk unnamed-chunk-13</div>
+<img src="figure/unnamed-chunk-13-1.png" alt="plot of chunk unnamed-chunk-13"><div class="figcaption">plot of chunk unnamed-chunk-13</div>
 </div>
 <div class="section level4">
 <h4 id="other-layers">Other Layers<a class="anchor" aria-label="anchor" href="#other-layers"></a>
@@ -318,18 +319,18 @@ climate data used to generate current year AGDD and Spring Index maps.
 These data are generated by NOAA’s National Centers for Environmental
 Prediction (NCEP) and are reserved through NPN’s geospatial
 services.</p>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">daily_max_20190505</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/npn_download_geospatial.html">npn_download_geospatial</a></span><span class="op">(</span></span>
-<span> <span class="st">'climate:tmax'</span>, </span>
+<span> <span class="st">'climate:tmax'</span>,</span>
 <span> <span class="st">'2019-05-05'</span></span>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span></span>
-<span> <span class="va">daily_max_20190505</span>, </span>
+<span> <span class="va">daily_max_20190505</span>,</span>
 <span> main <span class="op">=</span> <span class="st">"Daily Temperature Max (C), May 5th, 2019"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <div class="float">
-<img src="figures%2Funnamed-chunk-14-1.png" alt="plot of chunk unnamed-chunk-14"><div class="figcaption">plot of chunk unnamed-chunk-14</div>
+<img src="figure/unnamed-chunk-14-1.png" alt="plot of chunk unnamed-chunk-14"><div class="figcaption">plot of chunk unnamed-chunk-14</div>
 </div>
 <p>The MODISv6 layers are aggregate values for remote sensing values
 from the MODISv6 data set, representing a subset of the following
@@ -338,14 +339,14 @@ Mid-Greendown. The available aggregate values for each layer are:
 median, TSslope, and mean absolute deviation. This example shows the
 median green up value, as DOY. Note that because this layer has a fixed
 date, the date parameter is input as a blank string.</p>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">median_greenup</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/npn_download_geospatial.html">npn_download_geospatial</a></span><span class="op">(</span></span>
 <span> <span class="st">'inca:midgup_median_nad83_02deg'</span>,</span>
 <span> <span class="st">''</span></span>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span></span>
-<span> <span class="va">median_greenup</span>, </span>
+<span> <span class="va">median_greenup</span>,</span>
 <span> main <span class="op">=</span> <span class="st">"MODIS Median Mid-Greenup, 2001 - 2017"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 </div>

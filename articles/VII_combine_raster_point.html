@@ -110,6 +110,11 @@
 
     
     
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">RColorBrewer</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/usa-npn/rnpn" class="external-link">rnpn</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/" class="external-link">sf</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rspatial.org/" class="external-link">terra</a></span><span class="op">)</span></span></code></pre></div>
 <div class="section level2">
 <h2 id="combine-point-and-raster-data">Combine Point and Raster Data<a class="anchor" aria-label="anchor" href="#combine-point-and-raster-data"></a>
 </h2>
@@ -125,7 +130,7 @@ observational and gridded data.</p>
 additionally get a gridded layer value for each observation
 location/date. Note that if you don’t specify which sub model of the
 Spring Index you want, you will get the SI-x Average layers.</p>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/npn_download_site_phenometrics.html">npn_download_site_phenometrics</a></span><span class="op">(</span></span>
 <span>  request_source <span class="op">=</span> <span class="st">'Your Name Here'</span>, </span>
 <span>  years <span class="op">=</span> <span class="st">'2013'</span>,</span>
@@ -152,14 +157,14 @@ predicted by the lilac leaf sub model of the Spring Index.</p>
 <div class="section level3">
 <h3 id="step-1-get-the-data">Step 1: Get the data<a class="anchor" aria-label="anchor" href="#step-1-get-the-data"></a>
 </h3>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">LilacLeaf2018</span><span class="op">&lt;-</span><span class="fu"><a href="../reference/npn_download_geospatial.html">npn_download_geospatial</a></span><span class="op">(</span></span>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">LilacLeaf2018</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/npn_download_geospatial.html">npn_download_geospatial</a></span><span class="op">(</span></span>
 <span>  <span class="st">'si-x:lilac_leaf_ncep_historic'</span>, </span>
 <span>  <span class="st">'2018-01-01'</span>, </span>
 <span><span class="op">)</span></span>
 <span></span>
 <span></span>
-<span><span class="va">LilacLeaf2018Obs</span> <span class="op">&lt;-</span><span class="fu"><a href="../reference/npn_download_individual_phenometrics.html">npn_download_individual_phenometrics</a></span><span class="op">(</span></span>
+<span><span class="va">LilacLeaf2018Obs</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/npn_download_individual_phenometrics.html">npn_download_individual_phenometrics</a></span><span class="op">(</span></span>
 <span>  request_source <span class="op">=</span> <span class="st">'Your Name Here'</span>, </span>
 <span>  years <span class="op">=</span> <span class="st">'2018'</span>,</span>
 <span>  species_ids <span class="op">=</span> <span class="st">'35'</span>,</span>
@@ -169,50 +174,50 @@ predicted by the lilac leaf sub model of the Spring Index.</p>
 <div class="section level3">
 <h3 id="step-2-preparing-the-data">Step 2: Preparing the data<a class="anchor" aria-label="anchor" href="#step-2-preparing-the-data"></a>
 </h3>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">coords</span> <span class="op">&lt;-</span> <span class="va">LilacLeaf2018Obs</span><span class="op">[</span> , <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"longitude"</span>, <span class="st">"latitude"</span><span class="op">)</span><span class="op">]</span></span>
-<span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="va">LilacLeaf2018Obs</span><span class="op">$</span><span class="va">first_yes_doy</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># coords &lt;- LilacLeaf2018Obs[ , c("longitude", "latitude")]</span></span>
+<span><span class="co"># data &lt;- as.data.frame(LilacLeaf2018Obs$first_yes_doy)</span></span>
 <span></span>
-<span><span class="va">crs</span> <span class="op">&lt;-</span> <span class="fu">CRS</span><span class="op">(</span><span class="st">"+proj=utm +zone=18 +datum=WGS84 +units=m +no_defs </span></span>
+<span><span class="va">crs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_crs.html" class="external-link">st_crs</a></span><span class="op">(</span><span class="st">"+proj=utm +zone=18 +datum=WGS84 +units=m +no_defs </span></span>
 <span><span class="st">                 +ellps=WGS84 +towgs84=0,0,0"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">LL_spdf</span> <span class="op">&lt;-</span> <span class="fu">SpatialPointsDataFrame</span><span class="op">(</span></span>
-<span>  coords <span class="op">=</span> <span class="va">coords</span>,</span>
-<span>  data <span class="op">=</span> <span class="va">data</span>, </span>
-<span>  proj4string <span class="op">=</span> <span class="va">crs</span></span>
+<span><span class="va">LL_sf</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_as_sf.html" class="external-link">st_as_sf</a></span><span class="op">(</span></span>
+<span>  <span class="va">LilacLeaf2018Obs</span>,</span>
+<span>  coords <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"longitude"</span>, <span class="st">"latitude"</span><span class="op">)</span>,</span>
+<span>  crs <span class="op">=</span> <span class="va">crs</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="step-3-define-style-options-and-create-graph">Step 3: Define style options and create graph<a class="anchor" aria-label="anchor" href="#step-3-define-style-options-and-create-graph"></a>
 </h3>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">my.palette</span> <span class="op">&lt;-</span> <span class="fu">brewer.pal</span><span class="op">(</span>n<span class="op">=</span><span class="fl">9</span>,name<span class="op">=</span><span class="st">"OrRd"</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">my.palette</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/RColorBrewer/man/ColorBrewer.html" class="external-link">brewer.pal</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">9</span>, name <span class="op">=</span> <span class="st">"OrRd"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span></span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/plot.html" class="external-link">plot</a></span><span class="op">(</span></span>
 <span>  <span class="va">LilacLeaf2018</span>, </span>
 <span>  col <span class="op">=</span> <span class="va">my.palette</span>,</span>
-<span>  main<span class="op">=</span><span class="st">"2018 Observed and Predicted Lilac Leaf Out"</span></span>
+<span>  main <span class="op">=</span> <span class="st">"2018 Observed and Predicted Lilac Leaf Out"</span></span>
 <span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span></span>
-<span>  <span class="va">LL_spdf</span>,</span>
-<span>  main<span class="op">=</span><span class="st">"Lilac Obs"</span>,</span>
+<span><span class="fu"><a href="https://rspatial.github.io/terra/reference/plot.html" class="external-link">plot</a></span><span class="op">(</span></span>
+<span>  <span class="va">LL_sf</span>,</span>
+<span>  main <span class="op">=</span> <span class="st">"Lilac Obs"</span>,</span>
 <span>  pch <span class="op">=</span> <span class="fl">21</span>,</span>
 <span>  bg <span class="op">=</span> <span class="va">my.palette</span>,</span>
 <span>  col <span class="op">=</span> <span class="st">'black'</span>,</span>
-<span>  xlim<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">125.0208</span>,<span class="op">-</span><span class="fl">66.47917</span><span class="op">)</span>,</span>
-<span>  ylim<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">24.0625</span> ,<span class="fl">49.9375</span><span class="op">)</span>,</span>
+<span>  xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">125.0208</span>, <span class="op">-</span><span class="fl">66.47917</span><span class="op">)</span>,</span>
+<span>  ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">24.0625</span>, <span class="fl">49.9375</span><span class="op">)</span>,</span>
 <span>  add <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/legend.html" class="external-link">legend</a></span><span class="op">(</span></span>
 <span>  <span class="st">"bottomright"</span>, </span>
-<span>  legend<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Cloned Lilac Leaf Out Observations"</span><span class="op">)</span>,</span>
+<span>  legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Cloned Lilac Leaf Out Observations"</span><span class="op">)</span>,</span>
 <span>  pch <span class="op">=</span> <span class="fl">21</span>,</span>
 <span>  bg <span class="op">=</span> <span class="st">'white'</span>,</span>
 <span>  col <span class="op">=</span> <span class="st">'black'</span>,</span>
-<span>  bty<span class="op">=</span><span class="st">"n"</span>, </span>
-<span>  cex<span class="op">=</span><span class="fl">.8</span></span>
+<span>  bty <span class="op">=</span> <span class="st">"n"</span>, </span>
+<span>  cex <span class="op">=</span> <span class="fl">0.8</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <p><img src="figures%2F7-plot.png" width="50%"></p>
 </div>
