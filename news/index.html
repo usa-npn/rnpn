@@ -81,6 +81,13 @@
     <div class="section level2">
 <h2 class="page-header" data-toc-text="development version" id="rnpn-development-version">rnpn (development version)<a class="anchor" aria-label="anchor" href="#rnpn-development-version"></a></h2>
 <ul><li>
+<code><a href="../reference/npn_get_point_data.html">npn_get_point_data()</a></code> now uses https instead of http</li>
+<li>
+<code><a href="../reference/npn_get_layer_details.html">npn_get_layer_details()</a></code> now returns a tibble instead of a data frame</li>
+<li>
+<code>rnpn</code> now requires the <code>xml2</code> package instead of <code>XML</code>
+</li>
+<li>
 <code><a href="../reference/npn_phenophase_details.html">npn_phenophase_details()</a></code> now takes a vector of phenophase IDs rather than a list</li>
 <li>Functions that previously returned <code>data.frame</code> objects now return tibbles. Where they previously returned <code>NULL</code> on errors, they now return empty 0x0 tibbles.</li>
 <li>
