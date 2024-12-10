@@ -9,7 +9,7 @@
 #' dimension range for specifying specific date values from the layer.
 #'
 #' Information about the layers can also be viewed at the getCapbilities page
-#' directly: https://geoserver.usanpn.org/geoserver/wms?request=GetCapabilities
+#' directly: <https://geoserver.usanpn.org/geoserver/wms?request=GetCapabilities>
 #'
 #'
 #' @returns A tibble containing all layer details as specified in function
@@ -77,23 +77,23 @@ npn_get_layer_details <- function() {
 #' the NPN Geospatial web services.
 #'
 #' Information about the layers can also be viewed at the getCapbilities page
-#' directly: https://geoserver.usanpn.org/geoserver/wms?request=GetCapabilities
+#' directly: <https://geoserver.usanpn.org/geoserver/wms?request=GetCapabilities>
 #'
 #' @param coverage_id The coverage id (machine name) of the layer for which to
 #'   retrieve. Applicable values can be found via the [npn_get_layer_details()]
-#'   function under the 'name' column.
+#'   function under the `name` column.
 #' @param date Specify the date param for the layer retrieved. This can be a
 #'   calendar date formatted YYYY-mm-dd or it could be a string integer
 #'   representing day of year. It can also be `NULL` in some cases. Which to use
 #'   depends entirely on the layer being requested. More information available
 #'   from the [npn_get_layer_details()] function.
 #' @param format The output format of the raster layer retrieved. Defaults to
-#'   GeoTIFF.
+#'   `"GeoTIFF"`.
 #' @param output_path Optional value. When set, the raster will be piped to the
-#'   file path specified. When left unset, this function will return a raster
-#'   object.
-#' @returns returns nothing when `output_path` is set, otherwise a `terra`
-#'   `SpatRaster` object meeting the `coverage_id`, `date` and `format`
+#'   file path specified. When left unset, this function will return a
+#'   [terra::SpatRaster] object.
+#' @returns returns nothing when `output_path` is set, otherwise a
+#'   [terra::SpatRaster] object meeting the `coverage_id`, `date` and `format`
 #'   parameters specified.
 #' @examples \dontrun{
 #' ras <- npn_download_geospatial("si-x:30yr_avg_six_bloom", "255")
@@ -154,24 +154,23 @@ npn_download_geospatial <- function (
 #' than Geoserver this function is ideal when requested AGDD point values.
 #'
 #' As this function only works for AGDD point values, if it's necessary to
-#' retrieve point values for other layers please try the npn_get_point_data
+#' retrieve point values for other layers please try the [npn_get_point_data()]
 #' function.
 #'
 #' @param layer The name of the queried layer.
 #' @param lat The latitude of the queried point.
 #' @param long The longitude of the queried point.
 #' @param date The queried date.
-#' @param store_data Boolean value. If set TRUE then the value retrieved will be
-#'   stored in a global variable named point_values for later use
+#' @param store_data Boolean value. If set `TRUE` then the value retrieved will
+#'   be stored in a global variable named `point_values` for later use.
 #' @returns Returns a numeric value of the AGDD value at the specified
-#'   lat/long/date. If no value can be retrieved, then -9999 is returned.
+#'   lat/long/date. If no value can be retrieved, then `-9999` is returned.
 #' @export
-npn_get_agdd_point_data <- function(
-  layer,
-  lat,
-  long,
-  date,
-  store_data=TRUE){
+npn_get_agdd_point_data <- function(layer,
+                                    lat,
+                                    long,
+                                    date,
+                                    store_data=TRUE) {
 
   # If we already have this value stored in global memory then
   # pull it from there.
@@ -318,9 +317,10 @@ npn_get_point_data <- function(layer,
 #' layer to retrieve based on those parameters.
 #'
 #' @param year String representation of the year being requested.
-#' @param phenophase The SI-x phenophase being requested, 'leaf' or 'bloom';
-#'   defaults to 'leaf'.
-#' @param sub_model The SI-x sub model to use. Defaults to NULL (no sub-model).
+#' @param phenophase The SI-x phenophase being requested, `'leaf'` or `'bloom'`;
+#'   defaults to `'leaf'`.
+#' @param sub_model The SI-x sub model to use. Defaults to `NULL` (no
+#'   sub-model).
 #' @returns Returns a [terra::SpatRaster] object of the appropriate SI-x layer.
 #' @keywords internal
 resolve_six_raster <- function(
@@ -365,8 +365,8 @@ resolve_six_raster <- function(
 #' @param ras Raster containing geospatial data
 #' @param col_label The name of the column to append to the data frame
 #' @param df The data frame which to append the new column of geospatial point
-#'   values. For this function to work, df must contain two columns:
-#'   "longitude", and "latitude"
+#'   values. For this function to work, `df` must contain two columns:
+#'   `longitude`, and `latitude`.
 #' @returns The data frame, now appended with a new column for geospatial data
 #'   numeric values.
 #' @keywords internal
@@ -436,9 +436,9 @@ npn_check_point_cached <- function(
 #'
 #' Utility function to easily take arbitrary layer name parameters as a data
 #' frame and return the raster data from NPN Geospatial data services.
-#' @param data Data frame with first column named 'name' and containing the
+#' @param data Data frame with first column named `name` and containing the
 #'   names of the layer for which to retrieve data and the second column named
-#'   'param' and containing string representations of the time/elevation subset
+#'   `param` and containing string representations of the time/elevation subset
 #'   parameter to pass.
 #' @returns Returns a data frame containing the raster objects related to the
 #'   specified layers.
@@ -462,24 +462,24 @@ get_additional_rasters <- function(data){
 #' location in the continental US. This function leverages the USA-NPN geo web
 #' services
 #'
-#' @param method Takes "simple" or "double-sine" as input. This is the AGDD
+#' @param method Takes `"simple"` or `"double-sine"` as input. This is the AGDD
 #'   calculation method to use for each data point. Simple refers to simple
 #'   averaging.
-#' @param start_date Date at which to begin the AGDD calculations
-#' @param end_date Date at which to end the AGDD calculations
-#' @param base_temp This is the lowest temperature for each day  for it to be
+#' @param start_date Date at which to begin the AGDD calculations.
+#' @param end_date Date at which to end the AGDD calculations.
+#' @param base_temp This is the lowest temperature for each day for it to be
 #'   considered in the calculation.
 #' @param upper_threshold This parameter is only applicable for the double-sine
 #'   method. This sets the highest temperature to be considered in any given
-#'   day's AGDD calculation
+#'   day's AGDD calculation.
 #' @param climate_data_source Specified the climate data set to use. Takes
-#'   either "PRISM" or "NCEP" as input.
+#'   either `"PRISM"` or `"NCEP"` as input.
 #' @param temp_unit The unit of temperature to use in the calculation. Takes
-#'   either "Fahrenheit" or "Celsius" as input.
+#'   either `"Fahrenheit"` or `"Celsius"` as input.
 #' @param lat The latitude of the location for which to calculate the time
-#'   series
+#'   series.
 #' @param long The longitude of the location for which to calculate the time
-#'   series
+#'   series.
 #' @returns A data frame containing the numeric AGDD values for each day for the
 #'   specified time period/location/method/base temp/data source.
 #'
@@ -552,21 +552,26 @@ npn_get_custom_agdd_time_series <- function(
 
 #' Get Custom AGDD Raster Map
 #'
-#' This function takes a series of variables used in calculating AGDD and returns
-#' a raster of the continental USA with each pixel representing the calculated AGDD value
-#' based on start and end date.
-#' This function leverages the USA-NPN geo web services.
-
-#' @param method Takes "simple" or "double-sine" as input. This is the AGDD calculation method to use for each
-#' data point. Simple refers to simple averaging.
+#' This function takes a series of variables used in calculating AGDD and
+#' returns a raster of the continental USA with each pixel representing the
+#' calculated AGDD value based on start and end date. This function leverages
+#' the USA-NPN geo web services.
+#' @param method Takes `"simple"` or `"double-sine"` as input. This is the AGDD
+#'   calculation method to use for each data point. Simple refers to simple
+#'   averaging.
 #' @param start_date Date at which to begin the AGDD calculations.
 #' @param end_date Date at which to end the AGDD calculations.
-#' @param base_temp This is the lowest temperature for each day  for it to be considered in the calculation.
-#' @param upper_threshold This parameter is only applicable for the double-sine method. This sets the highest temperature
-#' to be considered in any given day's AGDD calculation.
-#' @param climate_data_source Specified the climate data set to use. Takes either "PRISM" or "NCEP" as input.
-#' @param temp_unit The unit of temperature to use in the calculation. Takes either "Fahrenheit" or "Celsius" as input.
-#' @returns A [terra::SpatRaster] object of each calculated AGDD numeric values based on specified time period/method/base temp/data source.
+#' @param base_temp This is the lowest temperature for each day  for it to be
+#'   considered in the calculation.
+#' @param upper_threshold This parameter is only applicable for the double-sine
+#'   method. This sets the highest temperature to be considered in any given
+#'   day's AGDD calculation.
+#' @param climate_data_source Specified the climate data set to use. Takes
+#'   either `"PRISM"` or `"NCEP"` as input.
+#' @param temp_unit The unit of temperature to use in the calculation. Takes
+#'   either `"Fahrenheit"` or `"Celsius"` as input.
+#' @returns A [terra::SpatRaster] object of each calculated AGDD numeric values
+#'   based on specified time period/method/base temp/data source.
 #' @export
 npn_get_custom_agdd_raster <- function(
   method,

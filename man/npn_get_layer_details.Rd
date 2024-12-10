@@ -21,7 +21,7 @@ dimension range for specifying specific date values from the layer.
 }
 \details{
 Information about the layers can also be viewed at the getCapbilities page
-directly: https://geoserver.usanpn.org/geoserver/wms?request=GetCapabilities
+directly: \url{https://geoserver.usanpn.org/geoserver/wms?request=GetCapabilities}
 }
 \examples{
 \dontrun{

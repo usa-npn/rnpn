@@ -9,10 +9,11 @@ resolve_six_raster(year, phenophase = "leaf", sub_model = NULL)
 \arguments{
 \item{year}{String representation of the year being requested.}
 
-\item{phenophase}{The SI-x phenophase being requested, 'leaf' or 'bloom';
-defaults to 'leaf'.}
+\item{phenophase}{The SI-x phenophase being requested, \code{'leaf'} or \code{'bloom'};
+defaults to \code{'leaf'}.}
 
-\item{sub_model}{The SI-x sub model to use. Defaults to NULL (no sub-model).}
+\item{sub_model}{The SI-x sub model to use. Defaults to \code{NULL} (no
+sub-model).}
 }
 \value{
 Returns a \link[terra:SpatRaster-class]{terra::SpatRaster} object of the appropriate SI-x layer.

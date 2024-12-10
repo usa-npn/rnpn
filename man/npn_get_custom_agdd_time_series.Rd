@@ -17,32 +17,32 @@ npn_get_custom_agdd_time_series(
 )
 }
 \arguments{
-\item{method}{Takes "simple" or "double-sine" as input. This is the AGDD
+\item{method}{Takes \code{"simple"} or \code{"double-sine"} as input. This is the AGDD
 calculation method to use for each data point. Simple refers to simple
 averaging.}
 
-\item{start_date}{Date at which to begin the AGDD calculations}
+\item{start_date}{Date at which to begin the AGDD calculations.}
 
-\item{end_date}{Date at which to end the AGDD calculations}
+\item{end_date}{Date at which to end the AGDD calculations.}
 
-\item{base_temp}{This is the lowest temperature for each day  for it to be
+\item{base_temp}{This is the lowest temperature for each day for it to be
 considered in the calculation.}
 
 \item{climate_data_source}{Specified the climate data set to use. Takes
-either "PRISM" or "NCEP" as input.}
+either \code{"PRISM"} or \code{"NCEP"} as input.}
 
 \item{temp_unit}{The unit of temperature to use in the calculation. Takes
-either "Fahrenheit" or "Celsius" as input.}
+either \code{"Fahrenheit"} or \code{"Celsius"} as input.}
 
 \item{lat}{The latitude of the location for which to calculate the time
-series}
+series.}
 
 \item{long}{The longitude of the location for which to calculate the time
-series}
+series.}
 
 \item{upper_threshold}{This parameter is only applicable for the double-sine
 method. This sets the highest temperature to be considered in any given
-day's AGDD calculation}
+day's AGDD calculation.}
 }
 \value{
 A data frame containing the numeric AGDD values for each day for the
