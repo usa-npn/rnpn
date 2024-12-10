@@ -23,10 +23,11 @@ Imports:
     tibble,
     curl,
     raster,
-    plyr,
-    magrittr,
     xml2,
-    httr2
+    magrittr,
+    httr2,
+    dplyr,
+    rlang
 Suggests:
     ggplot2,
     testthat (>= 3.0.0),
@@ -40,6 +41,6 @@ Suggests:
 RoxygenNote: 7.3.2
 Encoding: UTF-8
 VignetteBuilder: knitr
-URL: https://github.com/usa-npn/rnpn
+URL: https://github.com/usa-npn/rnpn, http://usa-npn.github.io/rnpn/
 BugReports: https://github.com/usa-npn/rnpn/issues
 Config/testthat/edition: 3

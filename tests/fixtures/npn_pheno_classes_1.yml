@@ -5,16 +5,13 @@ http_interactions:
     body:
       encoding: ''
       string: ''
-    headers:
-      Accept: application/json, text/xml, application/xml, */*
+    headers: []
   response:
     status:
       status_code: 200
-      category: Success
-      reason: OK
-      message: 'Success: (200) OK'
+      message: OK
     headers:
-      date: Wed, 13 Nov 2024 00:26:32 GMT
+      date: Wed, 20 Nov 2024 19:11:26 GMT
       content-type: application/json; charset=utf-8
       content-length: '6544'
       server: Apache/2.4.62 () PHP/5.5.38
@@ -85,5 +82,5 @@ http_interactions:
         caterpillars","description":"","sequence":720},{"id":134,"name":"Dead nymphs","description":"","sequence":730},{"id":135,"name":"Baited
         or captured individuals","description":"","sequence":740},{"id":136,"name":"Egg
         laying","description":"","sequence":285}]'
-  recorded_at: 2024-11-13 00:26:32 GMT
+  recorded_at: 2024-11-20 19:11:26 GMT
   recorded_with: vcr/1.6.0, webmockr/1.0.0

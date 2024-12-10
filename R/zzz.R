@@ -123,6 +123,12 @@ base <- function(){
   }
 }
 
+#TODO consider adding retry and rate-limiting
+base_req <-
+  httr2::request(base()) |>
+  httr2::req_user_agent("rnpn (https://github.com/usa-npn/rnpn/)")
+
+
 base_data_domain <- function(){
 
   if( !is.null(pkg.env$remote_env)){
@@ -153,40 +159,28 @@ base_geoserver <- function(){
   }
 }
 
-npnc <- function(l) Filter(Negate(is.null), l)
+# TODO: remove completely once we're sure error handling is equivalent or better
+# npn_GET <- function(url, args, parse = FALSE, ...) {
+#   res <- tryCatch(
+#     {
+#       tmp <- GET(url, query = args, ...)
+#       stop_for_status(tmp)
+#       tt <- content(tmp, as = "text", encoding = "UTF-8")
+#       if (nchar(tt) == 0) tt else jsonlite::fromJSON(tt, parse, flatten = TRUE)
+#     },
+#     error=function(cond){
+#       # If the service is down for some reason give the user
+#       # a message and return an empty list with n = 0
+#       message("Service is unavailable. Try again later!")
+#       tt <- "{\"nodata\":\"servicedown\"}"
+#       if (nchar(tt) == 0) tt else jsonlite::fromJSON(tt, parse, flatten = TRUE)
+#     }
+#   )
+#
+# }
 
-pop <- function(x, y) {
-  x[!names(x) %in% y]
-}
-
-ldfply <- function(y){
-  res <- lapply(y, function(x){
-    x[ sapply(x, is.null) ] <- NA
-    data.frame(x, stringsAsFactors = FALSE)
-  })
-  do.call(rbind.fill, res)
-}
-
-npn_GET <- function(url, args, parse = FALSE, ...) {
-  res <- tryCatch(
-    {
-      tmp <- GET(url, query = args, ...)
-      stop_for_status(tmp)
-      tt <- content(tmp, as = "text", encoding = "UTF-8")
-      if (nchar(tt) == 0) tt else jsonlite::fromJSON(tt, parse, flatten = TRUE)
-    },
-    error=function(cond){
-      # If the service is down for some reason give the user
-      # a message and return an empty list with n = 0
-      message("Service is unavailable. Try again later!")
-      tt <- "{\"nodata\":\"servicedown\"}"
-      if (nchar(tt) == 0) tt else jsonlite::fromJSON(tt, parse, flatten = TRUE)
-    }
-  )
-
-}
-
-#Utility function. Helps create URL strings for requests to NPN data services in the format variable_name[number]=Value
+#TODO: eventually remove this in favor of explode_query() once httr->httr2 is complete
+# Helps create URL strings for requests to NPN data services in the format variable_name[number]=Value
 npn_createArgList <- function(arg_name, arg_list){
   args <- list()
   for (i in seq_along(arg_list)) {
@@ -223,3 +217,21 @@ npn_createArgList <- function(arg_name, arg_list){
   }
 }
 
+#' Explode multiple queries NPN style
+#'
+#' Alternative helper function that works in `httr2::req_url_query()` by naming
+#' a vector `query_name[1]`, `query_name[2]`, etc
+#' @noRd
+#' @examples
+#' species_id <- c(100, 103)
+#' base_req %>%
+#'   httr2::req_url_path_append('phenophases/getPhenophasesForSpecies.json') %>%
+#'   httr2::req_url_query(!!!explode_query("species_id", species_id))
+#'
+explode_query <- function(arg_name, arg_vals) {
+  if (!is.null(arg_vals)) {
+    setNames(arg_vals, paste0(arg_name, "[", seq_along(arg_vals), "]"))
+  } else {
+    NULL
+  }
+}

@@ -7,14 +7,15 @@
 npn_datasets(...)
 }
 \arguments{
-\item{...}{Curl options passed on to \code{\link[httr]{GET}}}
+\item{...}{Currently unused.}
 }
 \value{
-data.frame of datasets and their IDs.
+tibble of datasets and their IDs.
 }
 \description{
-Returns a complete list of information about all datasets integrated into the NPN
-dataset. Data can then be pulled for individual datasets using their unique IDs.
+Returns a complete list of information about all datasets integrated into the
+NPN dataset. Data can then be pulled for individual datasets using their
+unique IDs.
 }
 \examples{
 \dontrun{
