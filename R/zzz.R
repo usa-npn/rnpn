@@ -37,7 +37,7 @@ check_service <- function() {
   args <- list(species_id = 3)
   res <- NULL
   tryCatch({
-    res <- GET(url, query = args)
+    res <- httr::GET(url, query = args)
   },
   error=function(msg){
     return(FALSE)
@@ -55,7 +55,7 @@ check_data_service <- function() {
   url <- paste0(base_data_domain(), 'web-services/geo.html')
   res <- NULL
   tryCatch({
-    res <- GET(url)
+    res <- httr::GET(url)
   },
   error=function(msg){
     return(FALSE)
@@ -91,7 +91,7 @@ check_geo_service <- function() {
 
   res <- NULL
   tryCatch({
-    res <- GET(url)
+    res <- httr::GET(url)
   },
   error=function(msg){
     return(FALSE)
@@ -160,12 +160,13 @@ base_geoserver <- function(){
 }
 
 # TODO: remove completely once we're sure error handling is equivalent or better
+# Remember to remove from importFrom in rnpn-package.R also
 # npn_GET <- function(url, args, parse = FALSE, ...) {
 #   res <- tryCatch(
 #     {
-#       tmp <- GET(url, query = args, ...)
-#       stop_for_status(tmp)
-#       tt <- content(tmp, as = "text", encoding = "UTF-8")
+#       tmp <- httr::GET(url, query = args, ...)
+#       httr::stop_for_status(tmp)
+#       tt <- httr::content(tmp, as = "text", encoding = "UTF-8")
 #       if (nchar(tt) == 0) tt else jsonlite::fromJSON(tt, parse, flatten = TRUE)
 #     },
 #     error=function(cond){
@@ -230,7 +231,7 @@ npn_createArgList <- function(arg_name, arg_list){
 #'
 explode_query <- function(arg_name, arg_vals) {
   if (!is.null(arg_vals)) {
-    setNames(arg_vals, paste0(arg_name, "[", seq_along(arg_vals), "]"))
+    stats::setNames(arg_vals, paste0(arg_name, "[", seq_along(arg_vals), "]"))
   } else {
     NULL
   }

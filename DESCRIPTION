@@ -24,10 +24,10 @@ Imports:
     curl,
     raster,
     xml2,
-    magrittr,
     httr2,
     dplyr,
-    rlang
+    rlang,
+    magrittr
 Suggests:
     ggplot2,
     testthat (>= 3.0.0),

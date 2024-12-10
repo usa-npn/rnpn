@@ -6,12 +6,14 @@
 \alias{rnpn}
 \title{Interface to the National Phenology Network API}
 \description{
-This package allows for easy access to the National Phenology Network's Data API. To learn more, take a look at the vignettes.
+This package allows for easy access to the National Phenology
+  Network's Data API. To learn more, take a look at the vignettes.
 }
 \seealso{
 Useful links:
 \itemize{
   \item \url{https://github.com/usa-npn/rnpn}
+  \item \url{http://usa-npn.github.io/rnpn/}
   \item Report bugs at \url{https://github.com/usa-npn/rnpn/issues}
 }
 
