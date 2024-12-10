@@ -26,7 +26,8 @@ Imports:
     XML,
     httr2,
     dplyr,
-    rlang
+    rlang,
+    magrittr
 Suggests:
     ggplot2,
     testthat,

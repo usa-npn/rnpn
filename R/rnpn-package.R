@@ -8,7 +8,7 @@
 "_PACKAGE"
 
 ## usethis namespace: start
-#' @importFrom httr2 %>%
+#' @importFrom magrittr %>%
 #' @importFrom utils URLencode download.file write.table
 ## usethis namespace: end
 NULL
