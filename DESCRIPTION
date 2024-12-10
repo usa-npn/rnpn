@@ -23,9 +23,11 @@ Imports:
     tibble,
     curl,
     raster,
-    plyr,
     XML,
-    magrittr
+    magrittr,
+    httr2,
+    dplyr,
+    rlang
 Suggests:
     ggplot2,
     testthat,

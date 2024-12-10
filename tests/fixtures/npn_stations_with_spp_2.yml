@@ -5,16 +5,13 @@ http_interactions:
     body:
       encoding: ''
       string: ''
-    headers:
-      Accept: application/json, text/xml, application/xml, */*
+    headers: []
   response:
     status:
       status_code: 200
-      category: Success
-      reason: OK
-      message: 'Success: (200) OK'
+      message: OK
     headers:
-      date: Wed, 13 Nov 2024 00:28:55 GMT
+      date: Wed, 20 Nov 2024 17:59:22 GMT
       content-type: application/json; charset=utf-8
       content-length: '2'
       server: Apache/2.4.62 () PHP/5.5.38
@@ -28,5 +25,5 @@ http_interactions:
       encoding: ''
       file: no
       string: '[]'
-  recorded_at: 2024-11-13 00:28:55 GMT
+  recorded_at: 2024-11-20 17:59:22 GMT
   recorded_with: vcr/1.6.0, webmockr/1.0.0

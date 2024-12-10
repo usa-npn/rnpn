@@ -1,35 +1,43 @@
-
-
 #' Get Species
 #'
-#' Returns a complete list of all species information of species represented in the NPN
-#' database.
+#' Returns a complete list of all species information of species represented in
+#' the NPN database.
 #' @export
-#' @template curl
-#' @return A data frame with information on species in the NPN database and their IDs.
+#' @param ... Currently unused.
+#' @return A tibble with information on species in the NPN database and their
+#'   IDs.
 #' @examples \dontrun{
 #' npn_species()
 #' npn_species_id(ids = 3)
 #' }
 npn_species <- function(...) {
-  tibble::as_tibble(
-    npn_GET(paste0(base(), 'species/getSpecies.json'), list(), TRUE, ...)
-  )
+  req <- base_req %>%
+    httr2::req_url_path_append('species/getSpecies.json')
+  resp <- httr2::req_perform(req)
+  out <- httr2::resp_body_json(resp, simplifyVector = TRUE)
+  #return:
+  tibble::as_tibble(out)
 }
 
 #' Get Species By ID
 #'
-#' Returns information about a species based on the NPN's unique ID for that species
+#' Returns information about a species based on the NPN's unique ID for that
+#' species
 #' @export
 #' @rdname npn_species
 #' @param ids List of species ids for which to retrieve information
-#' @return A data frame with information on species in the NPN database and their IDs, filtered by the species ID parameter.
+#' @param ... Currently unused.
+#' @return A tibble with information on species in the NPN database and their
+#'   IDs, filtered by the species ID parameter.
 npn_species_id <- function(ids, ...) {
+  req <- base_req %>%
+    httr2::req_url_path_append('species/getSpeciesById.json')
+  reqs <- lapply(ids, function(z) httr2::req_url_query(req, species_id = z))
+  resps <- httr2::req_perform_sequential(reqs)
+  out <- lapply(resps, function(x) httr2::resp_body_json(x, simplifyVector = TRUE) %>% tibble::as_tibble())
 
-  tt <- lapply(ids, function(z){
-    npn_GET(paste0(base(), 'species/getSpeciesById.json'), list(species_id = z), ...)
-  })
-  ldfply(tt)
+  #return
+  dplyr::bind_rows(out)
 }
 
 
@@ -40,74 +48,111 @@ npn_species_id <- function(ids, ...) {
 #' @export
 #' @rdname npn_species
 #' @param state A US postal state code to filter results.
-#' @param kingdom Filters results by taxonomic kingdom. Takes either 'Animalia' or 'Plantae'.
-#' @return A data frame with information on species in the NPN database whose distribution includes a given state.
+#' @param kingdom Filters results by taxonomic kingdom. Valid values include
+#'   `'Animalia'`, `'Plantae'`.
+#' @param ... Currently unused.
+#' @return A tibble with information on species in the NPN database whose
+#'   distribution includes a given state.
 #' @examples \dontrun{
 #' npn_species_state(state = "AZ")
 #' npn_species_state(state = "AZ", kingdom = "Plantae")
 #' }
 npn_species_state <- function(state, kingdom = NULL, ...) {
-  args <- npnc(list(state = state, kingdom = kingdom))
-  ldfply(npn_GET(paste0(base(), 'species/getSpeciesByState.json'), args, ...))
+  # The API does accept multiple states in the form `?state[1]=CA&state[2]=AZ`.
+  # However, it isn't clear which results belong to which state, so for now this only accepts a single state.
+  # Entries other than US states appear to be valid, otherwise we could check for valid input with:
+  # state <- rlang::arg_match(state, datasets::state.abb)
+  # TODO:
+  # set kingdom default to something other than NULL
+  # kingdom <- rlang::arg_match0(kingdom, values = c("Plantae", "Animalia"))
+  req <- base_req %>%
+    httr2::req_url_path_append('species/getSpeciesByState.json') %>%
+    httr2::req_url_query(state = state, kingdom = kingdom)
+
+  resp <- httr2::req_perform(req)
+  out <- httr2::resp_body_json(resp, simplifyVector = TRUE)
+  #return:
+  tibble::as_tibble(out)
 }
 
 
 
 #' Species Search
 #'
-#' Search NPN species information using a number of different parameters, which can be used in conjunction with one another, including:
+#' Search NPN species information using a number of different parameters, which
+#' can be used in conjunction with one another, including:
 #'  - Species on which a particular group or groups are actually collecting data
 #'  - What species were observed in a given date range
 #'  - What species were observed at a particular station or stations
-#' @param network filter species based on a list of unique identifiers of NPN groups that are actually observing data on the species. Takes a list of IDs
-#' @param start_date filter species by date observed. This sets the start date of the date range and must be used in conjunction with end_date
-#' @param end_date filter species by date observed. This sets the end date of the date range and must be used in conjunction with start_date
-#' @param station_id filter species by a list of unique site identifiers
-#' @return A data frame with information on species in the NPN database filtered by partner group, dates and station/site IDs.
+#' @param network filter species based on identifiers of NPN groups that are
+#'   actually observing data on the species. Takes a single numeric ID.
+#' @param start_date filter species by date observed. This sets the start date
+#'   of the date range and must be used in conjunction with `end_date`.
+#' @param end_date filter species by date observed. This sets the end date of
+#'   the date range and must be used in conjunction with `start_date`.
+#' @param station_id filter species by a numeric vector of unique site
+#'   identifiers.
+#' @param ... Currently unused.
+#' @return A tibble with information on species in the NPN database filtered by
+#'   partner group, dates and station/site IDs.
 #' @export
 #' @rdname npn_species
-npn_species_search <- function(network=NULL, start_date=NULL, end_date=NULL, station_id=NULL, ...) {
-  args <- npnc(list(network_id = network, start_date = start_date,end_date = end_date))
-
-  for (i in seq_along(station_id)) {
-    args[paste0('station_ids[',i,']')] <- station_id[i]
-  }
-
-  ldfply(npn_GET(paste0(base(), 'species/getSpeciesFilter.json'), args, ...))
+npn_species_search <- function(network = NULL,
+                               start_date = NULL,
+                               end_date = NULL,
+                               station_id = NULL,
+                               ...) {
+  #TODO: multiple network IDs may be allowed in the API, but for now this function only takes a single network
+  req <- base_req %>%
+    httr2::req_url_path_append('species/getSpeciesFilter.json') %>%
+    httr2::req_url_query(
+      network = network,
+      start_date = start_date,
+      end_date = end_date,
+      !!!explode_query("station_id", station_id)
+    )
+  resp <- httr2::req_perform(req)
+  out <- httr2::resp_body_json(resp, simplifyVector = TRUE)
+  #return:
+  tibble::as_tibble(out)
 }
 
 #' Get Species Types
 #'
 #' Return all plant or animal functional types used in the NPN database.
 #'
-#' @param kingdom The kingdom for which to return functional types; either 'Animalia' or 'Plantae'. Defaults to Plantae.
-#' @template curl
-#' @return A data frame with a list of the functional types used in the NPN database, filtered by the specified kingdom.
+#' @param kingdom Filters results by taxonomic kingdom. Valid values include
+#'   `'Animalia'`, `'Plantae'`, or `NULL` (which returns results
+#'   for both). Defaults to `'Plantae'`.
+#' @param ... Currently unused.
+#' @return A data frame with a list of the functional types used in the NPN
+#'   database, filtered by the specified kingdom.
 #' @export
-npn_species_types <- function(kingdom="Plantae", ...) {
-  end_point = NULL
+npn_species_types <- function(kingdom = "Plantae", ...) {
+  # if (!is.null(kingdom)) {
+  #   kingdom <- rlang::arg_match0(kingdom, values = c("Plantae", "Animalia"))
+  # }
+  req_plant <- base_req %>%
+    httr2::req_url_path_append('species/getPlantTypes.json')
+  req_animal <- base_req %>%
+    httr2::req_url_path_append('species/getAnimalTypes.json')
 
-  if(kingdom == "Plantae"){
-    end_point = 'species/getPlantTypes.json'
-
-  }else if(kingdom == "Animalia"){
-    end_point = 'species/getAnimalTypes.json'
+  resp <- NULL
+  if (kingdom == "Plantae") {
+    resp <- httr2::req_perform(req_plant)
+  } else if (kingdom == "Animalia") {
+    resp <- httr2::req_perform(req_animal)
   }
 
-  if(!is.null(end_point)){
-    tibble::as_tibble(
-      npn_GET(paste0(base(), end_point), list(), TRUE, ...)
-    )
-  }else{
-    plant_types <- tibble::as_tibble(
-      npn_GET(paste0(base(), 'species/getPlantTypes.json'), list(), TRUE, ...)
-    )
-
-    animal_types <- tibble::as_tibble(
-      npn_GET(paste0(base(), 'species/getAnimalTypes.json'), list(), TRUE, ...)
-    )
-
-    rbindlist(list(plant_types, animal_types))
+  if (!is.null(resp)) {
+    out <- httr2::resp_body_json(resp, simplifyVector = TRUE)
+    return(tibble::as_tibble(out))
+  } else {
+    resps <- httr2::req_perform_sequential(list(req_plant, req_animal))
+    out <-
+      lapply(resps, function(x) httr2::resp_body_json(x, simplifyVector = TRUE)) %>%
+      dplyr::bind_rows()
+    #TODO add a column for `kingdom`?
+    return(tibble::as_tibble(out))
   }
-
 }

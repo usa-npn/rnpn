@@ -5,16 +5,13 @@ http_interactions:
     body:
       encoding: ''
       string: ''
-    headers:
-      Accept: application/json, text/xml, application/xml, */*
+    headers: []
   response:
     status:
       status_code: 200
-      category: Success
-      reason: OK
-      message: 'Success: (200) OK'
+      message: OK
     headers:
-      date: Tue, 19 Nov 2024 20:20:41 GMT
+      date: Wed, 20 Nov 2024 17:59:21 GMT
       content-type: application/json; charset=utf-8
       server: Apache/2.4.62 () PHP/5.5.38
       x-powered-by: PHP/5.5.38
@@ -486,5 +483,5 @@ http_interactions:
         - primary","station_id":55825},{"latitude":32.542336,"longitude":-87.806023,"station_name":"DELA_057.phenology.phe
         - primary","station_id":55828},{"latitude":32.542931,"longitude":-87.803902,"station_name":"DELA_058.phenology.phe
         - phenocam","station_id":55829}]'
-  recorded_at: 2024-11-19 20:20:41 GMT
+  recorded_at: 2024-11-20 17:59:21 GMT
   recorded_with: vcr/1.6.0, webmockr/1.0.0
