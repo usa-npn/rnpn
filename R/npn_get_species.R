@@ -122,8 +122,8 @@ npn_species_search <- function(network = NULL,
 #' Return all plant or animal functional types used in the NPN database.
 #'
 #' @param kingdom Filters results by taxonomic kingdom. Valid values include
-#'   `'Animalia'`, `'Plantae'`, or `NULL` (which returns results
-#'   for both). Defaults to `'Plantae'`.
+#'   `'Animalia'`, `'Plantae'`, or `NULL` (which returns results for both).
+#'   Defaults to `'Plantae'`.
 #' @param ... Currently unused.
 #' @return A data frame with a list of the functional types used in the NPN
 #'   database, filtered by the specified kingdom.

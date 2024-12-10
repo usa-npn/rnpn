@@ -8,8 +8,8 @@ npn_species_types(kingdom = "Plantae", ...)
 }
 \arguments{
 \item{kingdom}{Filters results by taxonomic kingdom. Valid values include
-`'Animalia'`, `'Plantae'`, or `NULL` (which returns results
-for both). Defaults to `'Plantae'`.}
+`'Animalia'`, `'Plantae'`, or `NULL` (which returns results for both).
+Defaults to `'Plantae'`.}
 
 \item{...}{Currently unused.}
 }

@@ -33,7 +33,8 @@ npn_get_common_query_vars(
 List of query string variables.
 }
 \description{
-Utility function to generate a list of query string variables for requests to NPN data service points. Some parameters are basically present in all requests,
-so this function helps put them together.
+Utility function to generate a list of query string variables for requests to
+NPN data service points. Some parameters are basically present in all
+requests, so this function helps put them together.
 }
 \keyword{internal}

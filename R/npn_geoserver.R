@@ -149,20 +149,22 @@ npn_download_geospatial <- function (
 
 #' Get AGDD Point Value
 #'
-#' This function is for requesting AGDD point values. Because the NPN has a separate
-#' data service that can provide AGDD values which is more accurate than Geoserver
-#' this function is ideal when requested AGDD point values.
+#' This function is for requesting AGDD point values. Because the NPN has a
+#' separate data service that can provide AGDD values which is more accurate
+#' than Geoserver this function is ideal when requested AGDD point values.
 #'
-#' As this function only works for AGDD point values, if it's necessary to retrieve point values
-#' for other layers please try the npn_get_point_data function.
+#' As this function only works for AGDD point values, if it's necessary to
+#' retrieve point values for other layers please try the npn_get_point_data
+#' function.
 #'
 #' @param layer The name of the queried layer.
 #' @param lat The latitude of the queried point.
 #' @param long The longitude of the queried point.
 #' @param date The queried date.
-#' @param store_data Boolean value. If set TRUE then the value retrieved will be stored in a global variable named point_values for
-#' later use
-#' @return Returns a numeric value of the AGDD value at the specified lat/long/date. If no value can be retrieved, then -9999 is returned.
+#' @param store_data Boolean value. If set TRUE then the value retrieved will be
+#'   stored in a global variable named point_values for later use
+#' @return Returns a numeric value of the AGDD value at the specified
+#'   lat/long/date. If no value can be retrieved, then -9999 is returned.
 #' @export
 npn_get_agdd_point_data <- function(
   layer,
@@ -301,23 +303,23 @@ npn_get_point_data <- function(layer,
 
 #' Resolve SIX Raster
 #'
-#' Utility function used to resolve the appropriate SI-x layer to use
-#' based on the year being retrieved, the phenophase and sub-model being
-#' requested.
+#' Utility function used to resolve the appropriate SI-x layer to use based on
+#' the year being retrieved, the phenophase and sub-model being requested.
 #'
-#' If the year being requested is more than two years older than the current year
-#' then use the prism based layers rather than the NCEP based layers.
-#' This is because the PRISM data is not available in whole until midway through
-#' the year after it was initially recorded. Hence, the 'safest' approach is to only
-#' refer to the PRISM data when we knows for sure it's available in full, i.e. two years
-#' prior.
+#' If the year being requested is more than two years older than the current
+#' year then use the prism based layers rather than the NCEP based layers. This
+#' is because the PRISM data is not available in whole until midway through the
+#' year after it was initially recorded. Hence, the 'safest' approach is to only
+#' refer to the PRISM data when we knows for sure it's available in full, i.e.
+#' two years prior.
 #'
-#' Sub-model and phenophase on the other hand are appended to the name of the layer
-#' to request, no special logic is present in making the decision which layer to retrieve
-#' based on those parameters.
+#' Sub-model and phenophase on the other hand are appended to the name of the
+#' layer to request, no special logic is present in making the decision which
+#' layer to retrieve based on those parameters.
 #'
 #' @param year String representation of the year being requested.
-#' @param phenophase The SI-x phenophase being requested, 'leaf' or 'bloom'; defaults to 'leaf'.
+#' @param phenophase The SI-x phenophase being requested, 'leaf' or 'bloom';
+#'   defaults to 'leaf'.
 #' @param sub_model The SI-x sub model to use. Defaults to NULL (no sub-model).
 #' @return Returns a raster object of the appropriate SI-x layer.
 #' @keywords internal
@@ -362,9 +364,11 @@ resolve_six_raster <- function(
 #' data values. This will take a data frame and append a new column to it.
 #' @param ras Raster containing geospatial data
 #' @param col_label The name of the column to append to the data frame
-#' @param df The data frame which to append the new column of geospatial point values. For
-#' this function to work, df must contain two columns: "longitude", and "latitude"
-#' @return The data frame, now appended with a new column for geospatial data numeric values.
+#' @param df The data frame which to append the new column of geospatial point
+#'   values. For this function to work, df must contain two columns:
+#'   "longitude", and "latitude"
+#' @return The data frame, now appended with a new column for geospatial data
+#'   numeric values.
 #' @keywords internal
 npn_merge_geo_data <- function(
   ras,
@@ -404,13 +408,15 @@ resolve_agdd_raster <- function(
 
 #' Check Point Cached
 #'
-#' Checks in the global variable "point values" to see if the exact data point being requested
-#' has already been asked for and returns the value if it's already saved.
+#' Checks in the global variable "point values" to see if the exact data point
+#' being requested has already been asked for and returns the value if it's
+#' already saved.
 #' @param layer The name of the queried layer.
 #' @param lat The latitude of the queried point.
 #' @param long The longitude of the queried point.
 #' @param date The queried date.
-#' @return The numeric value of the cell located at the specified coordinates and date if the value has been queried, otherwise NULL.
+#' @return The numeric value of the cell located at the specified coordinates
+#'   and date if the value has been queried, otherwise NULL.
 #' @keywords internal
 npn_check_point_cached <- function(
   layer,lat,long,date
@@ -428,11 +434,14 @@ npn_check_point_cached <- function(
 
 #' Get Additional Layers
 #'
-#' Utility function to easily take arbitrary layer name parameters as a data frame and
-#' return the raster data from NPN Geospatial data services.
-#' @param data Data frame with first column named 'name' and containing the names of the layer for which to retrieve data and the second column
-#' named 'param' and containing string representations of the time/elevation subset parameter to pass.
-#' @return Returns a data frame containing the raster objects related to the specified layers.
+#' Utility function to easily take arbitrary layer name parameters as a data
+#' frame and return the raster data from NPN Geospatial data services.
+#' @param data Data frame with first column named 'name' and containing the
+#'   names of the layer for which to retrieve data and the second column named
+#'   'param' and containing string representations of the time/elevation subset
+#'   parameter to pass.
+#' @return Returns a data frame containing the raster objects related to the
+#'   specified layers.
 #' @keywords internal
 get_additional_rasters <- function(data){
 
@@ -448,22 +457,31 @@ get_additional_rasters <- function(data){
 
 #' Get Custom AGDD Time Series
 #'
-#' This function takes a series of variables used in calculating AGDD and returns an AGDD time series,
-#' based on start and end date, for a given location in the continental US.
-#' This function leverages the USA-NPN geo web services
+#' This function takes a series of variables used in calculating AGDD and
+#' returns an AGDD time series, based on start and end date, for a given
+#' location in the continental US. This function leverages the USA-NPN geo web
+#' services
 #'
-#' @param method Takes "simple" or "double-sine" as input. This is the AGDD calculation method to use for each
-#' data point. Simple refers to simple averaging.
+#' @param method Takes "simple" or "double-sine" as input. This is the AGDD
+#'   calculation method to use for each data point. Simple refers to simple
+#'   averaging.
 #' @param start_date Date at which to begin the AGDD calculations
 #' @param end_date Date at which to end the AGDD calculations
-#' @param base_temp This is the lowest temperature for each day  for it to be considered in the calculation.
-#' @param upper_threshold This parameter is only applicable for the double-sine method. This sets the highest temperature
-#' to be considered in any given day's AGDD calculation
-#' @param climate_data_source Specified the climate data set to use. Takes either "PRISM" or "NCEP" as input.
-#' @param temp_unit The unit of temperature to use in the calculation. Takes either "Fahrenheit" or "Celsius" as input.
-#' @param lat The latitude of the location for which to calculate the time series
-#' @param long The longitude of the location for which to calculate the time series
-#' @return A data frame containing the numeric AGDD values for each day for the specified time period/location/method/base temp/data source.
+#' @param base_temp This is the lowest temperature for each day  for it to be
+#'   considered in the calculation.
+#' @param upper_threshold This parameter is only applicable for the double-sine
+#'   method. This sets the highest temperature to be considered in any given
+#'   day's AGDD calculation
+#' @param climate_data_source Specified the climate data set to use. Takes
+#'   either "PRISM" or "NCEP" as input.
+#' @param temp_unit The unit of temperature to use in the calculation. Takes
+#'   either "Fahrenheit" or "Celsius" as input.
+#' @param lat The latitude of the location for which to calculate the time
+#'   series
+#' @param long The longitude of the location for which to calculate the time
+#'   series
+#' @return A data frame containing the numeric AGDD values for each day for the
+#'   specified time period/location/method/base temp/data source.
 #'
 #' @export
 npn_get_custom_agdd_time_series <- function(

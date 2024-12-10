@@ -11,7 +11,6 @@
 #' npn_stations()
 #' npn_stations('AZ')
 #' }
-
 npn_stations <- function(state_code=NULL, ...) {
   req <-
     base_req %>%

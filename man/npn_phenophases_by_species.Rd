@@ -16,8 +16,8 @@ given species.}
 \item{...}{Currently unused.}
 }
 \value{
-A tibble listing phenophases in the NPN database for the
-  specified species and date.
+A tibble listing phenophases in the NPN database for the specified
+  species and date.
 }
 \description{
 Retrieves the phenophases applicable to species for a given date. It's

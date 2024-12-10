@@ -13,7 +13,8 @@ npn_get_download_url(endpoint)
 The URL, as a string.
 }
 \description{
-Utility function to create the service point URL. Base URL comes from zzz.R, endpoint is specified in the code.
-This function will manually put those query parameters into the proper GET syntax.
+Utility function to create the service point URL. Base URL comes from zzz.R,
+endpoint is specified in the code. This function will manually put those
+query parameters into the proper GET syntax.
 }
 \keyword{internal}

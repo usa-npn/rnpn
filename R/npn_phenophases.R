@@ -69,8 +69,8 @@ npn_phenophase_details <- function(ids = NULL, ...) {
 #' @param date The applicable date for which to retrieve phenophases for the
 #'   given species.
 #' @param ... Currently unused.
-#' @return A tibble listing phenophases in the NPN database for the
-#'   specified species and date.
+#' @return A tibble listing phenophases in the NPN database for the specified
+#'   species and date.
 #' @export
 npn_phenophases_by_species <- function(species_ids, date, ...) {
   species_ids <- npn_createArgList("species_id", species_ids)

@@ -19,18 +19,24 @@ npn_get_data_by_year(
 \arguments{
 \item{endpoint}{String, the endpoint to query.}
 
-\item{query}{Base query string to use. This includes all the user selected parameters but doesn't include start/end date which will be automatically generated and
-added.}
+\item{query}{Base query string to use. This includes all the user selected
+parameters but doesn't include start/end date which will be automatically
+generated and added.}
 
-\item{years}{List of strings; the years for which to retrieve data. There will be one request to the service for each year}
+\item{years}{List of strings; the years for which to retrieve data. There
+will be one request to the service for each year}
 
-\item{download_path}{String, optional file path to the file for which to output the results.}
+\item{download_path}{String, optional file path to the file for which to
+output the results.}
 }
 \value{
-Data table - a data table combining each requests results from the service.
+Data table - a data table combining each requests results from the
+  service.
 }
 \description{
-Utility function to chain multiple requests to npn_get_data for requests where data should only be retrieved on an annual basis, or otherwise automatically be
-delineated in some way. Results in a data table that's a combined set of the results from each request to the data service.
+Utility function to chain multiple requests to npn_get_data for requests
+where data should only be retrieved on an annual basis, or otherwise
+automatically be delineated in some way. Results in a data table that's a
+combined set of the results from each request to the data service.
 }
 \keyword{internal}

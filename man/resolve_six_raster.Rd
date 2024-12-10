@@ -9,7 +9,8 @@ resolve_six_raster(year, phenophase = "leaf", sub_model = NULL)
 \arguments{
 \item{year}{String representation of the year being requested.}
 
-\item{phenophase}{The SI-x phenophase being requested, 'leaf' or 'bloom'; defaults to 'leaf'.}
+\item{phenophase}{The SI-x phenophase being requested, 'leaf' or 'bloom';
+defaults to 'leaf'.}
 
 \item{sub_model}{The SI-x sub model to use. Defaults to NULL (no sub-model).}
 }
@@ -17,20 +18,19 @@ resolve_six_raster(year, phenophase = "leaf", sub_model = NULL)
 Returns a raster object of the appropriate SI-x layer.
 }
 \description{
-Utility function used to resolve the appropriate SI-x layer to use
-based on the year being retrieved, the phenophase and sub-model being
-requested.
+Utility function used to resolve the appropriate SI-x layer to use based on
+the year being retrieved, the phenophase and sub-model being requested.
 }
 \details{
-If the year being requested is more than two years older than the current year
-then use the prism based layers rather than the NCEP based layers.
-This is because the PRISM data is not available in whole until midway through
-the year after it was initially recorded. Hence, the 'safest' approach is to only
-refer to the PRISM data when we knows for sure it's available in full, i.e. two years
-prior.
+If the year being requested is more than two years older than the current
+year then use the prism based layers rather than the NCEP based layers. This
+is because the PRISM data is not available in whole until midway through the
+year after it was initially recorded. Hence, the 'safest' approach is to only
+refer to the PRISM data when we knows for sure it's available in full, i.e.
+two years prior.
 
-Sub-model and phenophase on the other hand are appended to the name of the layer
-to request, no special logic is present in making the decision which layer to retrieve
-based on those parameters.
+Sub-model and phenophase on the other hand are appended to the name of the
+layer to request, no special logic is present in making the decision which
+layer to retrieve based on those parameters.
 }
 \keyword{internal}
