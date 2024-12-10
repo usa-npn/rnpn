@@ -23,18 +23,47 @@ npn_get_data_by_year(
 parameters but doesn't include start/end date which will be automatically
 generated and added.}
 
-\item{years}{List of strings; the years for which to retrieve data. There
+\item{years}{Character vector; the years for which to retrieve data. There
 will be one request to the service for each year}
 
-\item{download_path}{String, optional file path to the file for which to
+\item{download_path}{Character, optional file path to the file for which to
 output the results.}
+
+\item{six_leaf_layer}{Boolean value when set to \code{TRUE} will attempt to
+resolve the date of the observation to a spring index, leafing value for
+the location at which the observations was taken.}
+
+\item{six_bloom_layer}{Boolean value when set to \code{TRUE} will attempt to
+resolve the date of the observation to a spring index, bloom value for the
+location at which the observations was taken.}
+
+\item{agdd_layer}{Numeric value, accepts \code{32} or \code{50}. When set, the results
+will attempt to resolve the date of the observation to an AGDD value for
+the location; the \code{32} or \code{50} represents the base value of the AGDD value
+returned. All AGDD values are based on a January 1st start date of the year
+in which the observation was taken.}
+
+\item{six_sub_model}{Affects the results of the six layers returned. Can be
+used to specify one of three submodels used to calculate the spring index
+values. Thus setting this field will change the results of \code{six_leaf_layer}
+and \code{six_bloom_layer}. Valid values include: \code{'lilac'}, \code{'zabelli'} and
+\code{'arnoldred'}. For more information see the NPN's Spring Index Maps
+documentation: \url{https://www.usanpn.org/data/spring_indices}.}
+
+\item{additional_layers}{Data frame with first column named \code{name} and
+containing the names of the layer for which to retrieve data and the second
+column named \code{param} and containing string representations of the
+time/elevation subset parameter to use. This variable can be used to append
+additional geospatial layer data fields to the results, such that the date
+of observation in each row will resolve to a value from the specified
+layers, given the location of the observation.}
 }
 \value{
-Data table - a data table combining each requests results from the
+Data table—a data table combining each requests results from the
 service.
 }
 \description{
-Utility function to chain multiple requests to npn_get_data for requests
+Utility function to chain multiple requests to \link{npn_get_data} for requests
 where data should only be retrieved on an annual basis, or otherwise
 automatically be delineated in some way. Results in a data table that's a
 combined set of the results from each request to the data service.

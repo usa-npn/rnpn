@@ -9,9 +9,9 @@
 #' handling of the data if the search otherwise returns more data than can be
 #' handled at once in memory.
 #'
-#' Most search parameters are optional, however, users are encouraged to supply
+#' Most search parameters are optional. However, users are encouraged to supply
 #' additional search parameters to get results that are easier to work with.
-#' Request_Source must be provided. This is a self-identifying string, telling
+#' `request_source` must be provided. This is a self-identifying string, telling
 #' the service who is asking for the data or from where the request is being
 #' made. It is recommended you provide your name or organization name. If the
 #' call to this function is acting as an intermediary for a client, then you may
@@ -20,87 +20,62 @@
 #'
 #' Additional fields provides the ability to specify more, non-critical fields
 #' to include in the search results. A complete list of additional fields can be
-#' found in the NPN service's companion documentation
-#' https://docs.google.com/document/d/1yNjupricKOAXn6tY1sI7-EwkcfwdGUZ7lxYv7fcPjO8/edit#heading=h.w0nctgedhaop
+#' found in the NPN service's [companion
+#' documentation](https://docs.google.com/document/d/1yNjupricKOAXn6tY1sI7-EwkcfwdGUZ7lxYv7fcPjO8/edit#heading=h.w0nctgedhaop).
 #' Metadata on all fields can be found in the following Excel sheet:
-#' http://www.usanpn.org/files/metadata/status_intensity_datafield_descriptions.xlsx
+#' <http://www.usanpn.org/files/metadata/status_intensity_datafield_descriptions.xlsx>
 #'
-#' @param request_source Required field, string. Self-identify who is making
-#'   requests to the data service
-#' @param years Required field, list of strings. Specify the years to include in
-#'   the search, e.g. c('2013','2014'). You must specify at least one year.
-#' @param coords List of float values, used to specify a bounding box as a
-#'   search parameter, e.g. c ( lower_left_lat,
-#'   lower_left_long,upper_right,lat,upper_right_long )
-#' @param species_ids List of unique IDs for searching based on species, e.g. c
-#'   ( 3, 34, 35 )
-#' @param genus_ids List of unique IDs for searching based on taxonomic family,
-#'   e.g. c ( 3, 34, 35 ) . This parameter will take precedence if species_ids
-#'   is also set.
-#' @param family_ids List of unique IDs for searching based on taxonomic family,
-#'   e.g. c ( 3, 34, 35 ) . This parameter will take precedence if species_ids
-#'   is also set.
-#' @param order_ids List of unique IDs for searching based on taxonomic order,
-#'   e.g. c ( 3, 34, 35 ) . This parameter will take precedence if species_ids
-#'   or family_ids are also set.
-#' @param class_ids List of unique IDs for searching based on taxonomic class,
-#'   e.g. c ( 3, 34, 35 ) . This parameter will take precedence if species_ids,
-#'   family_ids or order_ids are also set.
-#' @param station_ids List of unique IDs for searching based on site location,
-#'   e.g. c ( 5, 9, ... )
-#' @param species_types List of unique species type names for searching based on
-#'   species types, e.g. c ( "Deciduous", "Evergreen" )
-#' @param network_ids List of unique IDs for searching based on partner
-#'   group/network, e.g. ( 500, 300, ... )
-#' @param states List of US postal states to be used as search params, e.g. c (
-#'   "AZ", "IL" )
-#' @param phenophase_ids List of unique IDs for searching based on phenophase,
-#'   e.g. c ( 323, 324, ... )
-#' @param functional_types List of unique functional type names, e.g. c (
-#'   "Birds"  )
-#' @param additional_fields List of additional fields to be included in the
-#'   search results, e.g. c( "Station_Name", "Plant_Nickname" )
+#' @param request_source Required field, character Self-identify who is making
+#'   requests to the data service.
+#' @param years Required field, character vector. Specify the years to include
+#'   in the search, e.g. `c('2013','2014')`. You must specify at least one year.
+#' @param coords Numeric vector, used to specify a bounding box as a search
+#'   parameter, e.g. `c(lower_left_lat, lower_left_long, upper_right,
+#'   lat,upper_right_long)`.
+#' @param species_ids Integer vector of unique IDs for searching based on
+#'   species, e.g. `c(3, 34, 35)`.
+#' @param genus_ids Integer vector of unique IDs for searching based on
+#'   taxonomic family, e.g. `c(3, 34, 35)`. This parameter will take precedence
+#'   if `species_ids` is also set.
+#' @param family_ids Integer vector of unique IDs for searching based on
+#'   taxonomic family, e.g. `c(3, 34, 35)`. This parameter will take precedence
+#'   if `species_ids` is also set.
+#' @param order_ids Integer vector of unique IDs for searching based on
+#'   taxonomic order, e.g. `c(3, 34, 35)`. This parameter will take precedence
+#'   if `species_ids` or `family_ids` are also set.
+#' @param class_ids Integer vector of unique IDs for searching based on
+#'   taxonomic class, e.g. `c(3, 34, 35)`. This parameter will take precedence
+#'   if `species_ids`, `family_ids` or `order_ids` are also set.
+#' @param station_ids Integer vector of unique IDs for searching based on site
+#'   location, e.g. `c(5, 9)`.
+#' @param species_types Character vector of unique species type names for
+#'   searching based on species types, e.g. `c("Deciduous", "Evergreen")`.
+#' @param network_ids Integer vector of unique IDs for searching based on
+#'   partner group/network, e.g. `c(500, 300)`.
+#' @param states Character vector of US postal states to be used as search
+#'   params, e.g. `c("AZ", "IL")`.
+#' @param phenophase_ids Integer vector of unique IDs for searching based on
+#'   phenophase, e.g. `c(323, 324)`.
+#' @param functional_types Character vector of unique functional type names,
+#'   e.g. `c("Birds").
+#' @param additional_fields Character vector of additional fields to be included
+#'   in the search results, e.g. `c("Station_Name", "Plant_Nickname")`.
 #' @param climate_data Boolean value indicating that all climate variables
-#'   should be included in additional_fields
+#'   should be included in `additional_fields`.
 #' @param ip_address Optional field, string. IP Address of user requesting data.
-#'   Used for generating data reports
-#' @param dataset_ids List of unique IDs for searching based on dataset, e.g.
-#'   NEON or GRSM c(17,15)
+#'   Used for generating data reports.
+#' @param dataset_ids Integer vector of unique IDs for searching based on
+#'   dataset, e.g. NEON or GRSM `c(17,15)`.
 #' @param email Optional field, string. Email of user requesting data.
-#' @param download_path Optional file path to which search results should be
-#'   re-directed for later use.
-#' @param six_leaf_layer Boolean value when set to true will attempt to resolve
-#'   the date of the observation to a spring index, leafing value for the
-#'   location at which the observations was taken
-#' @param six_bloom_layer Boolean value when set to true will attempt to resolve
-#'   the date of the observation to a spring index, bloom value for the location
-#'   at which the observations was taken
-#' @param six_sub_model Affects the results of the six layers returned. Can be
-#'   used to specify one of three submodels used to calculate the spring index
-#'   values. Thus setting this field will change the results of six_leaf_layer
-#'   and six_bloom_layer. Valid values include: 'lilac','zabelli' and
-#'   'arnoldred'. For more information see the NPN's Spring Index Maps
-#'   documentation: https://www.usanpn.org/data/spring_indices
-#' @param agdd_layer numeric value, accepts 32 or 50. When set, the results will
-#'   attempt to resolve the date of the observation to an AGDD value for the
-#'   location; the 32 or 50 represents the base value of the AGDD value
-#'   returned. All AGDD values are based on a January 1st start date of the year
-#'   in which the observation was taken.
-#' @param additional_layers Data frame with first column named 'name' and
-#'   containing the names of the layer for which to retrieve data and the second
-#'   column named 'param' and containing string representations of the
-#'   time/elevation subset parameter to use. This variable can be used to append
-#'   additional geospatial layer data fields to the results, such that the date
-#'   of observation in each row will resolve to a value from the specified
-#'   layers, given the location of the observation.
-#' @param pheno_class_ids List of unique IDs for searching based on pheno class.
-#'   Note that if both pheno_class_id and phenophase_id are provided in the same
-#'   request, phenophase_id will be ignored.
+#' @inheritParams npn_get_data_by_year
+#' @param pheno_class_ids Integer vector of unique IDs for searching based on
+#'   pheno class. Note that if both `pheno_class_id` and `phenophase_id` are
+#'   provided in the same request, `phenophase_id` will be ignored.
 #' @param wkt WKT geometry by which filter data. Specifying a valid WKT within
 #'   the contiguous US will filter data based on the locations which fall within
 #'   that WKT.
-#' @return Data table of all status records returned as per the search
-#'   parameters. Null if output directed to file.
+#' @returns Data table of all status records returned as per the search
+#'   parameters. `NULL` if output directed to file.
 #' @export
 #' @examples \dontrun{
 #' #Download all saguaro data for 2016
@@ -195,7 +170,7 @@ npn_download_status_data = function(
 #'
 #' Most search parameters are optional, however, users are encouraged to supply
 #' additional search parameters to get results that are easier to work with.
-#' Request_Source must be provided. This is a self-identifying string, telling
+#' `request_source` must be provided. This is a self-identifying string, telling
 #' the service who is asking for the data or from where the request is being
 #' made. It is recommended you provide your name or organization name. If the
 #' call to this function is acting as an intermediary for a client, then you may
@@ -204,89 +179,15 @@ npn_download_status_data = function(
 #'
 #' Additional fields provides the ability to specify additional, non-critical
 #' fields to include in the search results. A complete list of additional fields
-#' can be found in the NPN service's companion documentation
-#' https://docs.google.com/document/d/1yNjupricKOAXn6tY1sI7-EwkcfwdGUZ7lxYv7fcPjO8/edit#heading=h.7yy4i3278v7u
+#' can be found in the NPN service's [companion
+#' documentation](https://docs.google.com/document/d/1yNjupricKOAXn6tY1sI7-EwkcfwdGUZ7lxYv7fcPjO8/edit#heading=h.7yy4i3278v7u)
 #' Metadata on all fields can be found in the following Excel sheet:
-#' http://www.usanpn.org/files/metadata/individual_phenometrics_datafield_descriptions.xlsx
-#'
-#' @param request_source Required field, string. Self-identify who is making
-#'   requests to the data service
-#' @param years Required field, list of strings. Specify the years to include in
-#'   the search, e.g. c('2013','2014'). You must specify at least one year.
-#' @param coords List of float values, used to specify a bounding box as a
-#'   search parameter, e.g. c ( lower_left_lat,
-#'   lower_left_long,upper_right,lat,upper_right_long )
-#' @param species_ids List of unique IDs for searching based on species, e.g. c
-#'   ( 3, 34, 35 )
-#' @param genus_ids List of unique IDs for searching based on taxonomic family,
-#'   e.g. c ( 3, 34, 35 ) . This parameter will take precedence if species_ids
-#'   is also set.
-#' @param family_ids List of unique IDs for searching based on taxonomic family,
-#'   e.g. c ( 3, 34, 35 ) . This parameter will take precedence if species_ids
-#'   is also set.
-#' @param order_ids List of unique IDs for searching based on taxonomic order,
-#'   e.g. c ( 3, 34, 35 ) . This parameter will take precedence if species_ids
-#'   or family_ids are also set.
-#' @param class_ids List of unique IDs for searching based on taxonomic class,
-#'   e.g. c ( 3, 34, 35 ) . This parameter will take precedence if species_ids,
-#'   family_ids or order_ids are also set.
-#' @param station_ids List of unique IDs for searching based on site location,
-#'   e.g. c ( 5, 9, ... )
-#' @param species_types List of unique species type names for searching based on
-#'   species types, e.g. c ( "Deciduous", "Evergreen" )
-#' @param network_ids List of unique IDs for searching based on partner
-#'   group/network, e.g. c( 500, 300, ... )
-#' @param states List of US postal states to be used as search params, e.g. c (
-#'   "AZ", "IL" )
-#' @param phenophase_ids List of unique IDs for searching based on phenophase,
-#'   e.g. c ( 323, 324, ... )
-#' @param functional_types List of unique functional type names, e.g. c (
-#'   "Birds"  )
-#' @param additional_fields List of additional fields to be included in the
-#'   search results, e.g. c ( "Station_Name", "Plant_Nickname" )
-#' @param climate_data Boolean value indicating that all climate variables
-#'   should be included in additional_fields.
-#' @param ip_address Optional field, string. IP Address of user requesting data.
-#'   Used for generating data reports
-#' @param dataset_ids List of unique IDs for searching based on dataset, e.g.
-#'   NEON or GRSM c(17,15)
+#' <http://www.usanpn.org/files/metadata/individual_phenometrics_datafield_descriptions.xlsx>
+#' @inheritParams npn_download_status_data
 #' @param individual_ids Comma-separated string of unique IDs for individual
-#'   plants/animal species by which to filter the data
-#' @param pheno_class_ids List of unique IDs for searching based on pheno class.
-#'   Note that if both pheno_class_id and phenophase_id are provided in the same
-#'   request, phenophase_id will be ignored.
-#' @param email Optional field, string. Email of user requesting data.
-#' @param download_path Optional file path to which search results should be
-#'   re-directed for later use.
-#' @param six_leaf_layer Boolean value when set to true will attempt to resolve
-#'   the date of the observation to a spring index, leafing value for the
-#'   location at which the observations was taken
-#' @param six_bloom_layer Boolean value when set to true will attempt to resolve
-#'   the date of the observation to a spring index, bloom value for the location
-#'   at which the observations was taken
-#' @param six_sub_model Affects the results of the six layers returned. Can be
-#'   used to specify one of three submodels used to calculate the spring index
-#'   values. Thus setting this field will change the results of six_leaf_layer
-#'   and six_bloom_layer. Valid values include: 'lilac','zabelli' and
-#'   'arnoldred'. For more information see the NPN's Spring Index Maps
-#'   documentation: https://www.usanpn.org/data/spring_indices
-#' @param agdd_layer numeric value, accepts 32 or 50. When set, the results will
-#'   attempt to resolve the date of the observation to an AGDD value for the
-#'   location; the 32 or 50 represents the base value of the AGDD value
-#'   returned. All AGDD values are based on a January 1st start date of the year
-#'   in which the observation was taken.
-#' @param additional_layers Data frame with first column named 'name' and
-#'   containing the names of the layer for which to retrieve data and the second
-#'   column named 'param' and containing string representations of the
-#'   time/elevation subset parameter to use. This variable can be used to append
-#'   additional geospatial layer data fields to the results, such that the date
-#'   of observation in each row will resolve to a value from the specified
-#'   layers, given the location of the observation.
-#' @param wkt WKT geometry by which filter data. Specifying a valid WKT within
-#'   the contiguous US will filter data based on the locations which fall within
-#'   that WKT.
-#' @return Data table of all status records returned as per the search
-#'   parameters. Null if output directed to file.
+#'   plants/animal species by which to filter the data.
+#' @returns Data table of all status records returned as per the search
+#'   parameters. `NULL` if output directed to file.
 #' @export
 #' @examples \dontrun{
 #' #Download all saguaro data for 2013 and 2014
@@ -387,7 +288,7 @@ npn_download_individual_phenometrics <- function(
 #'
 #' Most search parameters are optional, however, users are encouraged to supply
 #' additional search parameters to get results that are easier to work with.
-#' Request_Source must be provided. This is a self-identifying string, telling
+#' `request_source` must be provided. This is a self-identifying string, telling
 #' the service who is asking for the data or from where the request is being
 #' made. It is recommended you provide your name or organization name. If the
 #' call to this function is acting as an intermediary for a client, then you may
@@ -396,99 +297,27 @@ npn_download_individual_phenometrics <- function(
 #'
 #' Additional fields provides the ability to specify additional, non-critical
 #' fields to include in the search results. A complete list of additional fields
-#' can be found in the NPN service's companion documentation
-#' https://docs.google.com/document/d/1yNjupricKOAXn6tY1sI7-EwkcfwdGUZ7lxYv7fcPjO8/edit#heading=h.ueaexz9bczti
+#' can be found in the NPN service's [companion
+#' documentation](https://docs.google.com/document/d/1yNjupricKOAXn6tY1sI7-EwkcfwdGUZ7lxYv7fcPjO8/edit#heading=h.ueaexz9bczti).
 #' Metadata on all fields can be found in the following Excel sheet:
-#' http://www.usanpn.org/files/metadata/site_phenometrics_datafield_descriptions.xlsx
+#' <http://www.usanpn.org/files/metadata/site_phenometrics_datafield_descriptions.xlsx>
 #'
-#' @param request_source Required field, string. Self-identify who is making
-#'   requests to the data service
-#' @param years Required field, list of strings. Specify the years to include in
-#'   the search, e.g. c('2013','2014'). You must specify at least one year.
-#' @param num_days_quality_filter Required field, defaults to 30. The integer
+#' @inheritParams npn_download_status_data
+#' @param num_days_quality_filter Required field, defaults to `30`. The integer
 #'   value sets the upper limit on the number of days difference between the
 #'   first Y value and the previous N value for each individual to be included
 #'   in the data aggregation.
-#' @param coords List of float values, used to specify a bounding box as a
-#'   search parameter, e.g. c ( lower_left_lat,
-#'   lower_left_long,upper_right,lat,upper_right_long )
-#' @param species_ids List of unique IDs for searching based on species, e.g. c
-#'   ( 3, 34, 35 )
-#' @param genus_ids List of unique IDs for searching based on taxonomic family,
-#'   e.g. c ( 3, 34, 35 ) . This parameter will take precedence if species_ids
-#'   is also set.
-#' @param family_ids List of unique IDs for searching based on taxonomic family,
-#'   e.g. c ( 3, 34, 35 ) . This parameter will take precedence if species_ids
-#'   is also set.
-#' @param order_ids List of unique IDs for searching based on taxonomic order,
-#'   e.g. c ( 3, 34, 35 ) . This parameter will take precedence if species_ids
-#'   or family_ids are also set.
-#' @param class_ids List of unique IDs for searching based on taxonomic class,
-#'   e.g. c ( 3, 34, 35 ) . This parameter will take precedence if species_ids,
-#'   family_ids or order_ids are also set.
 #' @param taxonomy_aggregate Boolean value indicating whether to aggregate data
 #'   by a taxonomic order higher than species. This will be based on the values
-#'   set in family_ids, order_ids, or class_ids. If one of those three fields
-#'   are not set, then this value is ignored.
-#' @param pheno_class_ids List of unique IDs for searching based on pheno class
-#'   id, e.g. c (1, 5, 13)
+#'   set in `family_ids`, `order_ids`, or `class_ids`. If one of those three
+#'   fields are not set, then this value is ignored.
 #' @param pheno_class_aggregate Boolean value indicating whether to aggregate
-#'   data by the pheno class ids as per the pheno_class_ids parameter. If the
-#'   pheno_class_ids value is not set, then this parameter is ignored. This can
-#'   be used in conjunction with taxonomy_aggregate and higher taxonomic level
-#'   data filtering.
-#' @param station_ids List of unique IDs for searching based on site location,
-#'   e.g. c ( 5, 9, ... )
-#' @param species_types List of unique species type names for searching based on
-#'   species types, e.g. c ( "Deciduous", "Evergreen" )
-#' @param network_ids List of unique IDs for searching based on partner
-#'   group/network, e.g. ( 500, 300, ... )
-#' @param states List of US postal states to be used as search params, e.g. c (
-#'   "AZ", "IL" )
-#' @param phenophase_ids List of unique IDs for searching based on phenophase,
-#'   e.g. c ( 323, 324, ... )
-#' @param functional_types List of unique functional type names, e.g. c (
-#'   "Birds"  )
-#' @param additional_fields List of additional fields to be included in the
-#'   search results, e.g. ( "Station_Name", "Plant_Nickname" )
-#' @param climate_data Boolean value indicating that all climate variables
-#'   should be included in additional_fields
-#' @param ip_address Optional field, string. IP Address of user requesting data.
-#'   Used for generating data reports
-#' @param dataset_ids List of unique IDs for searching based on dataset, e.g.
-#'   NEON or GRSM c(17,15)
-#' @param email Optional field, string. Email of user requesting data.
-#' @param download_path Optional file path to which search results should be
-#'   re-directed for later use.
-#' @param six_leaf_layer Boolean value when set to true will attempt to resolve
-#'   the date of the observation to a spring index, leafing value for the
-#'   location at which the observations was taken
-#' @param six_bloom_layer Boolean value when set to true will attempt to resolve
-#'   the date of the observation to a spring index, bloom value for the location
-#'   at which the observations was taken
-#' @param six_sub_model Affects the results of the six layers returned. Can be
-#'   used to specify one of three submodels used to calculate the spring index
-#'   values. Thus setting this field will change the results of six_leaf_layer
-#'   and six_bloom_layer. Valid values include: 'lilac','zabelli' and
-#'   'arnoldred'. For more information see the NPN's Spring Index Maps
-#'   documentation: https://www.usanpn.org/data/spring_indices
-#' @param agdd_layer numeric value, accepts 32 or 50. When set, the results will
-#'   attempt to resolve the date of the observation to an AGDD value for the
-#'   location; the 32 or 50 represents the base value of the AGDD value
-#'   returned. All AGDD values are based on a January 1st start date of the year
-#'   in which the observation was taken.
-#' @param additional_layers Data frame with first column named 'name' and
-#'   containing the names of the layer for which to retrieve data and the second
-#'   column named 'param' and containing string representations of the
-#'   time/elevation subset parameter to use. This variable can be used to append
-#'   additional geospatial layer data fields to the results, such that the date
-#'   of observation in each row will resolve to a value from the specified
-#'   layers, given the location of the observation.
-#' @param wkt WKT geometry by which filter data. Specifying a valid WKT within
-#'   the contiguous US will filter data based on the locations which fall within
-#'   that WKT.
-#' @return Data table of all status records returned as per the search
-#'   parameters. Null if output directed to file.
+#'   data by the pheno class ids as per the `pheno_class_ids` parameter. If the
+#'   `pheno_class_ids` value is not set, then this parameter is ignored. This
+#'   can be used in conjunction with `taxonomy_aggregate` and higher taxonomic
+#'   level data filtering.
+#' @returns Data table of all status records returned as per the search
+#'   parameters. `NULL` if output directed to file.
 #' @export
 #' @examples \dontrun{
 #' #Download all saguaro data for 2013 and 2014
@@ -600,15 +429,11 @@ npn_download_site_phenometrics <- function(
 #'
 #' Additional fields provides the ability to specify more, non-critical fields
 #' to include in the search results. A complete list of additional fields can be
-#' found in the NPN service's companion documentation
-#' https://docs.google.com/document/d/1yNjupricKOAXn6tY1sI7-EwkcfwdGUZ7lxYv7fcPjO8/edit#heading=h.df3zspopwq98
+#' found in the NPN service's [companion documentation](https://docs.google.com/document/d/1yNjupricKOAXn6tY1sI7-EwkcfwdGUZ7lxYv7fcPjO8/edit#heading=h.df3zspopwq98).
 #' Metadata on all fields can be found in the following Excel sheet:
-#' http://www.usanpn.org/files/metadata/magnitude_phenometrics_datafield_descriptions.xlsx
+#' <http://www.usanpn.org/files/metadata/magnitude_phenometrics_datafield_descriptions.xlsx>
 #'
-#' @param request_source Required field, string. Self-identify who is making
-#'   requests to the data service
-#' @param years Required field, list of strings. Specify the years to include in
-#'   the search, e.g. c('2013','2014'). You must specify at least one year.
+#' @inheritParams npn_download_status_data
 #' @param period_frequency Required field, integer. The integer value specifies
 #'   the number of days by which to delineate the period of time specified by
 #'   the start_date and end_date, i.e. a value of 7 will delineate the period of
@@ -616,63 +441,10 @@ npn_download_site_phenometrics <- function(
 #'   This parameter, while typically an int, also allows for a "special" string
 #'   value, "months" to be passed in. Specifying this parameter as "months" will
 #'   delineate the period of time by the calendar months regardless of how many
-#'   days are in each month. Defaults to 30 if omitted.
-#' @param coords List of float values, used to specify a bounding box as a
-#'   search parameter, e.g. c ( lower_left_lat,
-#'   lower_left_long,upper_right,lat,upper_right_long )
-#' @param species_ids List of unique IDs for searching based on species, e.g. c
-#'   ( 3, 34, 35 )
-#' @param genus_ids List of unique IDs for searching based on taxonomic family,
-#'   e.g. c ( 3, 34, 35 ) . This parameter will take precedence if species_ids
-#'   is also set.
-#' @param family_ids List of unique IDs for searching based on taxonomic family,
-#'   e.g. c ( 3, 34, 35 ) . This parameter will take precedence if species_ids
-#'   is also set.
-#' @param order_ids List of unique IDs for searching based on taxonomic order,
-#'   e.g. c ( 3, 34, 35 ) . This parameter will take precedence if species_ids
-#'   or family_ids are also set.
-#' @param class_ids List of unique IDs for searching based on taxonomic class,
-#'   e.g. c ( 3, 34, 35 ) . This parameter will take precedence if species_ids,
-#'   family_ids or order_ids are also set.
-#' @param taxonomy_aggregate Boolean value indicating whether to aggregate data
-#'   by a taxonomic order higher than species. This will be based on the values
-#'   set in family_ids, order_ids, or class_ids. If one of those three fields
-#'   are not set, then this value is ignored.
-#' @param pheno_class_ids List of unique IDs for searching based on pheno class
-#'   id, e.g. c (1, 5, 13)
-#' @param pheno_class_aggregate Boolean value indicating whether to aggregate
-#'   data by the pheno class ids as per the pheno_class_ids parameter. If the
-#'   pheno_class_ids value is not set, then this parameter is ignored. This can
-#'   be used in conjunction with taxonomy_aggregate and higher taxonomic level
-#'   data filtering.
-#' @param station_ids List of unique IDs for searching based on site location,
-#'   e.g. c ( 5, 9, ... )
-#' @param species_types List of unique species type names for searching based on
-#'   species types, e.g. c ( "Deciduous", "Evergreen" )
-#' @param network_ids List of unique IDs for searching based on partner
-#'   group/network, e.g. ( 500, 300, ... )
-#' @param states List of US postal states to be used as search params, e.g. c (
-#'   "AZ", "IL" )
-#' @param phenophase_ids List of unique IDs for searching based on phenophase,
-#'   e.g. c ( 323, 324, ... )
-#' @param functional_types List of unique functional type names, e.g. c (
-#'   "Birds"  )
-#' @param additional_fields List of additional fields to be included in the
-#'   search results, e.g. ( "Station_Name", "Plant_Nickname" )
-#' @param climate_data Boolean value indicating that all climate variables
-#'   should be included in additional_fields
-#' @param ip_address Optional field, string. IP Address of user requesting data.
-#'   Used for generating data reports
-#' @param dataset_ids List of unique IDs for searching based on dataset, e.g.
-#'   NEON or GRSM c(17,15)
-#' @param email Optional field, string. Email of user requesting data.
-#' @param download_path Optional file path to which search results should be
-#'   re-directed for later use.
-#' @param wkt WKT geometry by which filter data. Specifying a valid WKT within
-#'   the contiguous US will filter data based on the locations which fall within
-#'   that WKT.
-#' @return Data table of all status records returned as per the search
-#'   parameters. Null if output directed to file.
+#'   days are in each month. Defaults to `30` if omitted.
+#' @inheritParams npn_download_site_phenometrics
+#' @returns Data table of all status records returned as per the search
+#'   parameters. `NULL` if output directed to file.
 #' @export
 #' @examples \dontrun{
 #' #Download book all saguaro data for 2013
@@ -751,12 +523,9 @@ npn_download_magnitude_phenometrics <- function(
 
 
 
-
-
-
 #' Get Data By Year
 #'
-#' Utility function to chain multiple requests to npn_get_data for requests
+#' Utility function to chain multiple requests to [npn_get_data] for requests
 #' where data should only be retrieved on an annual basis, or otherwise
 #' automatically be delineated in some way. Results in a data table that's a
 #' combined set of the results from each request to the data service.
@@ -765,12 +534,35 @@ npn_download_magnitude_phenometrics <- function(
 #' @param query Base query string to use. This includes all the user selected
 #'   parameters but doesn't include start/end date which will be automatically
 #'   generated and added.
-#' @param years List of strings; the years for which to retrieve data. There
+#' @param years Character vector; the years for which to retrieve data. There
 #'   will be one request to the service for each year
-#' @param download_path String, optional file path to the file for which to
+#' @param download_path Character, optional file path to the file for which to
 #'   output the results.
-#'
-#' @return Data table - a data table combining each requests results from the
+#' @param six_leaf_layer Boolean value when set to `TRUE` will attempt to
+#'   resolve the date of the observation to a spring index, leafing value for
+#'   the location at which the observations was taken.
+#' @param six_bloom_layer Boolean value when set to `TRUE` will attempt to
+#'   resolve the date of the observation to a spring index, bloom value for the
+#'   location at which the observations was taken.
+#' @param agdd_layer Numeric value, accepts `32` or `50`. When set, the results
+#'   will attempt to resolve the date of the observation to an AGDD value for
+#'   the location; the `32` or `50` represents the base value of the AGDD value
+#'   returned. All AGDD values are based on a January 1st start date of the year
+#'   in which the observation was taken.
+#' @param six_sub_model Affects the results of the six layers returned. Can be
+#'   used to specify one of three submodels used to calculate the spring index
+#'   values. Thus setting this field will change the results of `six_leaf_layer`
+#'   and `six_bloom_layer`. Valid values include: `'lilac'`, `'zabelli'` and
+#'   `'arnoldred'`. For more information see the NPN's Spring Index Maps
+#'   documentation: <https://www.usanpn.org/data/spring_indices>.
+#' @param additional_layers Data frame with first column named `name` and
+#'   containing the names of the layer for which to retrieve data and the second
+#'   column named `param` and containing string representations of the
+#'   time/elevation subset parameter to use. This variable can be used to append
+#'   additional geospatial layer data fields to the results, such that the date
+#'   of observation in each row will resolve to a value from the specified
+#'   layers, given the location of the observation.
+#' @returns Data table—a data table combining each requests results from the
 #'   service.
 #' @keywords internal
 #'
@@ -858,15 +650,15 @@ npn_get_data_by_year <- function(
 #' Generic utility function for querying data from the NPN data services.
 #'
 #' @param url The URL of the service endpoint to request data from
-#' @param download_path  String, optional file path to the file for which to
+#' @param download_path String, optional file path to the file for which to
 #'   output the results.
-#' @param always_append Boolean flag. When set to true, then we always append
-#'   data to the download path. This is used in the case of npn_get_data_by_year
-#'   where we're making multiple requests to the same service and aggregating
-#'   all data results in a single file. Without this flag, otherwise, each call
-#'   to the service would truncate the output file.
+#' @param always_append Boolean flag. When set to `TRUE`, then we always append
+#'   data to the download path. This is used in the case of
+#'   [npn_get_data_by_year()] where we're making multiple requests to the same
+#'   service and aggregating all data results in a single file. Without this
+#'   flag, otherwise, each call to the service would truncate the output file.
 #'
-#' @return Data table of the requested data. NULL if a download_path was
+#' @return Data table of the requested data. `NULL` if a `download_path` was
 #'   specified.
 #' @keywords internal
 npn_get_data <- function(
