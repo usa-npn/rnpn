@@ -24,7 +24,6 @@ Imports:
     curl,
     raster,
     XML,
-    magrittr,
     httr2,
     dplyr,
     rlang
