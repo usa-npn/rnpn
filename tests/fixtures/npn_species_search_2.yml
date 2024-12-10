@@ -5,16 +5,13 @@ http_interactions:
     body:
       encoding: ''
       string: ''
-    headers:
-      Accept: application/json, text/xml, application/xml, */*
+    headers: []
   response:
     status:
       status_code: 200
-      category: Success
-      reason: OK
-      message: 'Success: (200) OK'
+      message: OK
     headers:
-      date: Tue, 12 Nov 2024 23:37:21 GMT
+      date: Wed, 20 Nov 2024 22:40:54 GMT
       content-type: application/json; charset=utf-8
       server: Apache/2.4.62 () PHP/5.5.38
       x-powered-by: PHP/5.5.38
@@ -2337,5 +2334,5 @@ http_interactions:
         Plants","order_id":96,"order_name":"Rosales","order_common_name":"Oleaster,
         Buckthorn, Rose and Elm Families","itis_taxonomic_sn":836663,"functional_type":"Deciduous
         broadleaf","kingdom":"Plantae","number_observations":20}]'
-  recorded_at: 2024-11-12 23:37:22 GMT
+  recorded_at: 2024-11-20 22:40:54 GMT
   recorded_with: vcr/1.6.0, webmockr/1.0.0

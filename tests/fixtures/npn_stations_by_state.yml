@@ -5,18 +5,15 @@ http_interactions:
     body:
       encoding: ''
       string: ''
-    headers:
-      Accept: application/json, text/xml, application/xml, */*
+    headers: []
   response:
     status:
       status_code: 200
-      category: Success
-      reason: OK
-      message: 'Success: (200) OK'
+      message: OK
     headers:
-      date: Wed, 13 Nov 2024 00:28:47 GMT
+      date: Wed, 20 Nov 2024 20:33:05 GMT
       content-type: application/json; charset=utf-8
-      content-length: '0'
+      content-length: '7958'
       server: Apache/2.4.62 () PHP/5.5.38
       x-powered-by: PHP/5.5.38
       pragma: no-cache
@@ -27,6 +24,39 @@ http_interactions:
     body:
       encoding: ''
       file: no
-      string: ''
-  recorded_at: 2024-11-13 00:28:46 GMT
+      string: '[{"state":"CA","number_stations":5049},{"state":"MN","number_stations":2792},{"state":"NY","number_stations":2773},{"state":"AZ","number_stations":2648},{"state":"NC","number_stations":1994},{"state":"TX","number_stations":1854},{"state":"VA","number_stations":1709},{"state":"ME","number_stations":1662},{"state":"OR","number_stations":1598},{"state":"MA","number_stations":1581},{"state":"CO","number_stations":1414},{"state":"IL","number_stations":1375},{"state":"WI","number_stations":1315},{"state":"WA","number_stations":1300},{"state":"PA","number_stations":1258},{"state":"OH","number_stations":1118},{"state":"KY","number_stations":967},{"state":"MD","number_stations":907},{"state":"MI","number_stations":895},{"state":"FL","number_stations":847},{"state":"IN","number_stations":758},{"state":"TN","number_stations":722},{"state":"VT","number_stations":715},{"state":"NM","number_stations":646},{"state":"NH","number_stations":622},{"state":"NJ","number_stations":603},{"state":"MO","number_stations":602},{"state":"BC","number_stations":545},{"state":"GA","number_stations":485},{"state":"MT","number_stations":454},{"state":"ID","number_stations":437},{"state":"SD","number_stations":435},{"state":"KS","number_stations":423},{"state":"UT","number_stations":392},{"state":null,"number_stations":378},{"state":"LA","number_stations":367},{"state":"WV","number_stations":365},{"state":"CT","number_stations":360},{"state":"SC","number_stations":323},{"state":"IA","number_stations":295},{"state":"OK","number_stations":288},{"state":"AK","number_stations":278},{"state":"WY","number_stations":255},{"state":"RI","number_stations":233},{"state":"NV","number_stations":230},{"state":"NE","number_stations":201},{"state":"AR","number_stations":187},{"state":"ND","number_stations":179},{"state":"AL","number_stations":161},{"state":"DC","number_stations":146},{"state":"MS","number_stations":118},{"state":"DE","number_stations":78},{"state":"ON","number_stations":77},{"state":"HI","number_stations":70},{"state":"AB","number_stations":29},{"state":"QC","number_stations":24},{"state":"MB","number_stations":10},{"state":"PR","number_stations":8},{"state":"","number_stations":8},{"state":"NS","number_stations":7},{"state":"SK","number_stations":7},{"state":"Zhejiang
+        Sheng","number_stations":4},{"state":"Guangdong Sheng","number_stations":4},{"state":"Neimenggu
+        Zizhiq","number_stations":3},{"state":"Son.","number_stations":3},{"state":"Tibet","number_stations":3},{"state":"Toscana","number_stations":3},{"state":"VI","number_stations":3},{"state":"Lamiing","number_stations":3},{"state":"Canada","number_stations":2},{"state":"MH","number_stations":2},{"state":"PE","number_stations":2},{"state":"Sardegna","number_stations":2},{"state":"Gyeonggi-do","number_stations":2},{"state":"NB","number_stations":2},{"state":"Vlaanderen","number_stations":2},{"state":"Occitanie","number_stations":2},{"state":"MG","number_stations":2},{"state":"PW","number_stations":2},{"state":"Central
+        Luzon","number_stations":2},{"state":"B.C.","number_stations":2},{"state":"CDMX","number_stations":2},{"state":"Jiangsu","number_stations":2},{"state":"Antioquia","number_stations":2},{"state":"Beijing
+        Shi","number_stations":2},{"state":"Anhui Sheng","number_stations":2},{"state":"Kowloon","number_stations":2},{"state":"New
+        Territories","number_stations":2},{"state":"BY","number_stations":2},{"state":"Jabal
+        Lubnan","number_stations":2},{"state":"Guainica","number_stations":2},{"state":"FM","number_stations":1},{"state":"AS","number_stations":1},{"state":"EC","number_stations":1},{"state":"BA","number_stations":1},{"state":"Hebei
+        Sheng","number_stations":1},{"state":"ML","number_stations":1},{"state":"Kanagawa-ken","number_stations":1},{"state":"Thueringen","number_stations":1},{"state":"Saint
+        Andrew","number_stations":1},{"state":"Shanghai Shi","number_stations":1},{"state":"Buenos
+        Aires","number_stations":1},{"state":"Lara","number_stations":1},{"state":"Panana","number_stations":1},{"state":"Jambyl
+        Region","number_stations":1},{"state":"Colon","number_stations":1},{"state":"Bogota","number_stations":1},{"state":"NSW","number_stations":1},{"state":"RP","number_stations":1},{"state":"Shandong
+        Sheng","number_stations":1},{"state":"Kyiv city","number_stations":1},{"state":"Qro.","number_stations":1},{"state":"Tehran
+        Province","number_stations":1},{"state":"QLD","number_stations":1},{"state":"Erzincan","number_stations":1},{"state":"NRW","number_stations":1},{"state":"San
+        Juan","number_stations":1},{"state":"England","number_stations":1},{"state":"Humacao","number_stations":1},{"state":"Western
+        Region","number_stations":1},{"state":"N.W.F.P","number_stations":1},{"state":"Ile-de-France","number_stations":1},{"state":"Malanje","number_stations":1},{"state":"Xinjiang
+        Weiwuer","number_stations":1},{"state":"Riyadh Province","number_stations":1},{"state":"Osh
+        Region","number_stations":1},{"state":"SP","number_stations":1},{"state":"New
+        Providence","number_stations":1},{"state":"Inner Mongolia","number_stations":1},{"state":"N.L.","number_stations":1},{"state":"Khovd","number_stations":1},{"state":"Okinawa","number_stations":1},{"state":"Mich.","number_stations":1},{"state":"BW","number_stations":1},{"state":"Provincia
+        de Nap","number_stations":1},{"state":"Wellington","number_stations":1},{"state":"Samarqand
+        Region","number_stations":1},{"state":"Milam","number_stations":1},{"state":"Aichi","number_stations":1},{"state":"Norrbottens
+        lan","number_stations":1},{"state":"HP","number_stations":1},{"state":"Ishikawa","number_stations":1},{"state":"Bretagne","number_stations":1},{"state":"Arecibo","number_stations":1},{"state":"HE","number_stations":1},{"state":"Pays
+        de la Loire","number_stations":1},{"state":"IDF","number_stations":1},{"state":"Narino","number_stations":1},{"state":"County
+        Offaly","number_stations":1},{"state":"Liaoning Sheng","number_stations":1},{"state":"Kaohsiung
+        City","number_stations":1},{"state":"Incheon","number_stations":1},{"state":"UP","number_stations":1},{"state":"VIC","number_stations":1},{"state":"Shanxi","number_stations":1},{"state":"IB","number_stations":1},{"state":"Henan
+        Sheng","number_stations":1},{"state":"Chongqing Shi","number_stations":1},{"state":"YT","number_stations":1},{"state":"Hubei
+        Sheng","number_stations":1},{"state":"TG","number_stations":1},{"state":"Shanghai","number_stations":1},{"state":"Yunnan
+        Sheng","number_stations":1},{"state":"Hyogo","number_stations":1},{"state":"Antalya","number_stations":1},{"state":"Tianjin
+        Shi","number_stations":1},{"state":"KZN","number_stations":1},{"state":"Central","number_stations":1},{"state":"LP","number_stations":1},{"state":"WC","number_stations":1},{"state":"Sandys
+        Parish","number_stations":1},{"state":"Pue.","number_stations":1},{"state":"San
+        Jose","number_stations":1},{"state":"Samut Songkhram","number_stations":1},{"state":"Tamps.","number_stations":1},{"state":"UM","number_stations":1},{"state":"AP","number_stations":1},{"state":"Tabuk
+        Province","number_stations":1},{"state":"KA","number_stations":1},{"state":"Sardinia","number_stations":1},{"state":"Jeollabuk-do","number_stations":1},{"state":"Gto.","number_stations":1},{"state":"BE","number_stations":1},{"state":"Sindh","number_stations":1},{"state":"Oax.","number_stations":1},{"state":"NCR","number_stations":1},{"state":"WB","number_stations":1},{"state":"Lisboa","number_stations":1},{"state":"Lombardia","number_stations":1},{"state":"Guanica","number_stations":1},{"state":"Wales","number_stations":1},{"state":"Dhaka
+        Division","number_stations":1},{"state":"DL","number_stations":1},{"state":"Bei
+        Jing Shi","number_stations":1},{"state":"Selangor","number_stations":1},{"state":"Taipei
+        City","number_stations":1},{"state":"UK","number_stations":1},{"state":"Agder","number_stations":1},{"state":"Tianjin","number_stations":1},{"state":"Piemonte","number_stations":1},{"state":"Manabi","number_stations":1},{"state":"Lajas","number_stations":1}]'
+  recorded_at: 2024-11-20 20:33:05 GMT
   recorded_with: vcr/1.6.0, webmockr/1.0.0

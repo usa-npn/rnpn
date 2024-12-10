@@ -7,18 +7,21 @@
 npn_get_layer_details()
 }
 \value{
-Data frame containing all layer details as specified in function description.
+A tibble containing all layer details as specified in function
+  description.
 }
 \description{
-This function will return information about the various data layers available via the NPN's geospatial web services.
- Specifically, this function will query the NPN's GetCapabilities endpoint and parse the information on that page
- about the layers. For each layer, this function will retrieve the layer name (as to be specified elsewhere programmatically),
- the title (human readable), the abstract, which describes the data in the layer, the dimension name and dimension range for
- specifying specific date values from the layer.
+This function will return information about the various data layers available
+via the NPN's geospatial web services. Specifically, this function will query
+the NPN's GetCapabilities endpoint and parse the information on that page
+about the layers. For each layer, this function will retrieve the layer name
+(as to be specified elsewhere programmatically), the title (human readable),
+the abstract, which describes the data in the layer, the dimension name and
+dimension range for specifying specific date values from the layer.
 }
 \details{
-Information about the layers can also be viewed at the getCapbilities page directly:
- https://geoserver.usanpn.org/geoserver/wms?request=GetCapabilities
+Information about the layers can also be viewed at the getCapbilities page
+directly: https://geoserver.usanpn.org/geoserver/wms?request=GetCapabilities
 }
 \examples{
 \dontrun{

@@ -5,16 +5,13 @@ http_interactions:
     body:
       encoding: ''
       string: ''
-    headers:
-      Accept: application/json, text/xml, application/xml, */*
+    headers: []
   response:
     status:
       status_code: 200
-      category: Success
-      reason: OK
-      message: 'Success: (200) OK'
+      message: OK
     headers:
-      date: Wed, 13 Nov 2024 00:26:30 GMT
+      date: Wed, 20 Nov 2024 19:11:25 GMT
       content-type: application/json; charset=utf-8
       server: Apache/2.4.62 () PHP/5.5.38
       x-powered-by: PHP/5.5.38
@@ -211,5 +208,5 @@ http_interactions:
         laying","phenophase_category":"Reproduction","color":"Brown2","pheno_class_id":136},{"phenophase_id":548,"phenophase_name":"Egg
         laying ","phenophase_category":"Reproduction","color":"Brown2","pheno_class_id":136},{"phenophase_id":549,"phenophase_name":"Mating
         ","phenophase_category":"Reproduction","color":"Brown2","pheno_class_id":82}]'
-  recorded_at: 2024-11-13 00:26:30 GMT
+  recorded_at: 2024-11-20 19:11:25 GMT
   recorded_with: vcr/1.6.0, webmockr/1.0.0

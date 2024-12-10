@@ -7,10 +7,10 @@
 npn_phenophases(...)
 }
 \arguments{
-\item{...}{Curl options passed on to \code{\link[httr]{GET}}}
+\item{...}{Currently unused.}
 }
 \value{
-A data frame listing all phenophases available in the NPN database.
+A tibble listing all phenophases available in the NPN database.
 }
 \description{
 Retrieves a complete list of all phenophases in the NPN database.

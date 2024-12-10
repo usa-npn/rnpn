@@ -9,7 +9,7 @@ npn_stations_by_location(wkt, ...)
 \arguments{
 \item{wkt}{Required field specifying the WKT geography to use.}
 
-\item{...}{Curl options passed on to \code{\link[httr]{GET}}}
+\item{...}{Currently unused.}
 }
 \value{
 A data frame listing stations filtered based on the WKT geography.
