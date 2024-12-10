@@ -7,8 +7,9 @@
 npn_get_point_data(layer, lat, long, date, store_data = TRUE)
 }
 \arguments{
-\item{layer}{The coverage id (machine name) of the layer for which to retrieve.
-Applicable values can be found via the npn_get_layer_details() function under the 'name' column.}
+\item{layer}{The coverage id (machine name) of the layer for which to
+retrieve. Applicable values can be found via the [npn_get_layer_details()]
+function under the `name` column.}
 
 \item{lat}{The latitude of the point.}
 
@@ -16,16 +17,19 @@ Applicable values can be found via the npn_get_layer_details() function under th
 
 \item{date}{The date for which to get a value.}
 
-\item{store_data}{Boolean value. If set TRUE then the value retrieved will be stored in a global variable named point_values for
-later use.}
+\item{store_data}{Boolean value. If set `TRUE` then the value retrieved will
+be stored in a global variable named `point_values` for later use.}
 }
 \value{
-Returns a numeric value for any NPN geospatial data layer at the specified lat/long/date. If no value can be retrieved, then -9999 is returned.
+Returns a numeric value for any NPN geospatial data layer at the
+  specified lat/long/date. If no value can be retrieved, then `-9999` is
+  returned.
 }
 \description{
 This function can get point data about any of the NPN geospatial layers.
 }
 \details{
-Please note that this function pulls this from the NPN's WCS service so the data may not be totally precise. If
-you need precise AGDD values try using the npn_get_agdd_point_data function.
+Please note that this function pulls this from the NPN's WCS service so the
+data may not be totally precise. If you need precise AGDD values try using
+the [npn_get_agdd_point_data()] function.
 }

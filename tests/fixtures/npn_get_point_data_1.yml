@@ -1,26 +1,23 @@
 http_interactions:
 - request:
     method: get
-    uri: https://geoserver.usanpn.org/geoserver/wcs?service=WCS&version=2.0.1&request=GetCoverage&coverageId=gdd%3Aagdd&format=application%2Fgml%2Bxml&subset=http%3A%2F%2Fwww.opengis.net%2Fdef%2Faxis%2FOGC%2F0%2FLong%28-110.5%29&subset=http%3A%2F%2Fwww.opengis.net%2Fdef%2Faxis%2FOGC%2F0%2FLat%2838.8%29&subset=http%3A%2F%2Fwww.opengis.net%2Fdef%2Faxis%2FOGC%2F0%2Ftime%28%222022-05-05T00%3A00%3A00.000Z%22%29
+    uri: http://geoserver.usanpn.org/geoserver/wcs?service=WCS&version=2.0.1&request=GetCoverage&coverageId=gdd%3Aagdd&format=application%2Fgml%2Bxml&subset=http%3A%2F%2Fwww.opengis.net%2Fdef%2Faxis%2FOGC%2F0%2FLong%28-110.5%29&subset=http%3A%2F%2Fwww.opengis.net%2Fdef%2Faxis%2FOGC%2F0%2FLat%2838.8%29&subset=http%3A%2F%2Fwww.opengis.net%2Fdef%2Faxis%2FOGC%2F0%2Ftime%28%222022-05-05T00%3A00%3A00.000Z%22%29
     body:
       encoding: ''
       string: ''
-    headers:
-      Accept: application/json, text/xml, application/xml, */*
+    headers: []
   response:
     status:
       status_code: 200
-      category: Success
-      reason: OK
-      message: 'Success: (200) OK'
+      message: OK
     headers:
-      date: Tue, 12 Nov 2024 23:24:38 GMT
-      server: Apache/2.4.29 (Ubuntu) mod_jk/1.2.43 OpenSSL/1.1.1
-      x-frame-options: SAMEORIGIN
-      content-disposition: inline; filename=gdd:agdd.gml
-      content-encoding: gzip
-      transfer-encoding: chunked
-      content-type: application/gml+xml
+      Date: Wed, 27 Nov 2024 19:02:33 GMT
+      Server: Apache/2.4.29 (Ubuntu) mod_jk/1.2.43 OpenSSL/1.1.1
+      X-Frame-Options: SAMEORIGIN
+      Content-Disposition: inline; filename=gdd:agdd.gml
+      Content-Encoding: gzip
+      Transfer-Encoding: chunked
+      Content-Type: application/gml+xml
     body:
       encoding: ''
       file: no
@@ -60,5 +57,5 @@ http_interactions:
         \           <gml:rangeParameters/>\n            <tupleList>1199.60888671875
         \n</tupleList>\n        </gml:DataBlock>\n    </gml:rangeSet>\n    <gmlcov:metadata>\n
         \       <gmlcov:Extension/>\n    </gmlcov:metadata>\n</gml:RectifiedGridCoverage>\n"
-  recorded_at: 2024-11-12 23:24:38 GMT
+  recorded_at: 2024-11-27 19:02:33 GMT
   recorded_with: vcr/1.6.0, webmockr/1.0.0
