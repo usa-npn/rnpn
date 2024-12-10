@@ -1,3 +1,4 @@
+url: http://usa-npn.github.io/rnpn/
 navbar:
   type: default
   left:
@@ -23,3 +24,4 @@ navbar:
       href: articles/VIII_data_cleaning.html
   - text: Changelog
     href: news/index.html
+

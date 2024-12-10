@@ -3,7 +3,7 @@ http://cran.r-project.org/web/packages/policies.html
 
 ## Resubmission
 
-This is a resubmission to fix backend service urls that have been migrated to the cloud.
+This is a resubmission to fix failed tests due to backend server migrations.
 
 ## Test environments
 
