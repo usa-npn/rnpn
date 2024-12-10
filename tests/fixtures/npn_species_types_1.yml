@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www-dev.usanpn.org/npn_portal/species/getPlantTypes.json
+    uri: https://services.usanpn.org/npn_portal/species/getPlantTypes.json
     body:
       encoding: ''
       string: ''
@@ -14,27 +14,29 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Thu, 12 Nov 2020 21:19:38 GMT
-      server: Apache/2.4.7 (Ubuntu) SVN/1.8.8 PHP/5.5.9-1ubuntu4.29 OpenSSL/1.0.1f
-      x-powered-by: PHP/5.5.9-1ubuntu4.29
+      date: Tue, 12 Nov 2024 23:37:23 GMT
+      content-type: application/json; charset=utf-8
+      content-length: '1736'
+      server: Apache/2.4.62 () PHP/5.5.38
+      x-powered-by: PHP/5.5.38
       pragma: no-cache
       cache-control: no-store, no-cache, max-age=0, must-revalidate
       access-control-allow-origin: '*'
       access-control-allow-headers: origin, x-requested-with, content-type
       access-control-allow-methods: PUT, GET, POST, DELETE, OPTIONS
-      content-length: '1555'
-      content-type: application/json; charset=utf-8
     body:
-      encoding: UTF-8
+      encoding: ''
       file: no
-      string: '[{"species_type":"Ornamental","species_type_id":1,"species_count":426},{"species_type":"Deciduous","species_type_id":2,"species_count":422},{"species_type":"Forb","species_type_id":3,"species_count":398},{"species_type":"Invasive
-        Plants","species_type_id":4,"species_count":117},{"species_type":"Allergen","species_type_id":5,"species_count":152},{"species_type":"Crop","species_type_id":6,"species_count":60},{"species_type":"Aquatic","species_type_id":7,"species_count":29},{"species_type":"Vine","species_type_id":8,"species_count":27},{"species_type":"Evergreen","species_type_id":9,"species_count":279},{"species_type":"Cloned","species_type_id":10,"species_count":3},{"species_type":"Coniferous","species_type_id":11,"species_count":48},{"species_type":"Grass\/Sedge\/Rush","species_type_id":12,"species_count":77},{"species_type":"Cactus","species_type_id":13,"species_count":12},{"species_type":"Calibration","species_type_id":29,"species_count":20},{"species_type":"Green
-        Wave Campaign","species_type_id":31,"species_count":46},{"species_type":"Shady
+      string: '[{"species_type":"Ornamental","species_type_id":1,"species_count":556},{"species_type":"Deciduous","species_type_id":2,"species_count":517},{"species_type":"Forb","species_type_id":3,"species_count":644},{"species_type":"Invasive
+        Plants","species_type_id":4,"species_count":167},{"species_type":"Allergen","species_type_id":5,"species_count":204},{"species_type":"Crop","species_type_id":6,"species_count":81},{"species_type":"Aquatic","species_type_id":7,"species_count":33},{"species_type":"Vine","species_type_id":8,"species_count":45},{"species_type":"Evergreen","species_type_id":9,"species_count":338},{"species_type":"Cloned","species_type_id":10,"species_count":3},{"species_type":"Coniferous","species_type_id":11,"species_count":52},{"species_type":"Grass\/Sedge\/Rush","species_type_id":12,"species_count":140},{"species_type":"Cactus","species_type_id":13,"species_count":18},{"species_type":"Calibration","species_type_id":29,"species_count":20},{"species_type":"Green
+        Wave Campaign","species_type_id":31,"species_count":47},{"species_type":"Shady
         Invaders Campaign","species_type_id":32,"species_count":15},{"species_type":"Southwest
         Season Trackers Campaign","species_type_id":33,"species_count":14},{"species_type":"Nectar
-        Connectors Campaign","species_type_id":34,"species_count":53},{"species_type":"Flowers
-        for Bats Campaign","species_type_id":35,"species_count":8},{"species_type":"Pollen
-        Trackers Campaign","species_type_id":40,"species_count":1},{"species_type":"Pesky
-        Plant Trackers Campaign","species_type_id":41,"species_count":2}]'
-  recorded_at: 2020-11-12 21:19:26 GMT
-  recorded_with: vcr/0.5.4, webmockr/0.7.0
+        Connectors Campaign","species_type_id":34,"species_count":56},{"species_type":"Flowers
+        for Bats Campaign","species_type_id":35,"species_count":9},{"species_type":"Pollen
+        Trackers Campaign","species_type_id":40,"species_count":171},{"species_type":"Pesky
+        Plant Trackers Campaign","species_type_id":41,"species_count":3},{"species_type":"The
+        Redbud Phenology Project Campaign","species_type_id":42,"species_count":2},{"species_type":"Quercus
+        Quest Campaign","species_type_id":43,"species_count":11}]'
+  recorded_at: 2024-11-12 23:37:23 GMT
+  recorded_with: vcr/1.6.0, webmockr/1.0.0

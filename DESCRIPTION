@@ -4,7 +4,7 @@ Description: Programmatic interface to the
     Web Service methods provided by the National 'Phenology' Network
     (<https://usanpn.org/>), which includes data on various life history
     events that occur at specific times.
-Version: 1.2.9.0
+Version: 1.2.9.9000
 License: MIT + file LICENSE
 Authors@R: c(
     person("Jeff", "Switzer", role = c("aut", "cre"), email = "jeff@usanpn.org"),
@@ -34,8 +34,9 @@ Suggests:
     markdown,
     rmarkdown,
     RColorBrewer,
-    vcr
-RoxygenNote: 7.2.3
+    vcr,
+    withr
+RoxygenNote: 7.3.2
 Encoding: UTF-8
 VignetteBuilder: knitr
 URL: https://github.com/usa-npn/rnpn, http://usa-npn.github.io/rnpn/

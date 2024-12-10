@@ -1,77 +1,57 @@
-context("npn_geospatial")
-
-is_geo_service_up <- check_geo_service()
-
-test_that("npn_get_layer_details works",{
+test_that("npn_get_layer_details works", {
   skip_on_cran()
-  npn_set_env(get_test_env())
-  if(!is_geo_service_up){
-    skip("Geo Service is down")
-  }
-  #vcr::use_cassette("npn_get_layer_details_1", {
+  skip_if_not(check_geo_service(), "Geo Service is down")
+
+  vcr::use_cassette("npn_get_layer_details_1", {
     layers <- npn_get_layer_details()
-  #})
+  })
 
-
-  expect_is(layers,"data.frame")
-  expect_gt(nrow(layers),50)
-
+  expect_s3_class(layers, "data.frame")
+  expect_gt(nrow(layers), 50)
 })
 
 
 test_that("npn_download_geospatial works", {
   skip_on_cran()
-  skip("No file downloads")
+  skip_if_not(check_geo_service(), "Geo Service is down")
 
-  npn_set_env(get_test_env())
-  library(raster)
+  ras <- npn_download_geospatial("gdd:agdd", date="2018-05-05")
+  expect_s4_class(ras, "RasterLayer")
 
-  ras <- npn_download_geospatial("gdd:agdd",date="2018-05-05")
+  withr::with_tempfile("test_tiff", {
+    npn_download_geospatial("gdd:agdd", date="2018-05-05", output_path = test_tiff)
+    expect_true(file.exists(test_tiff))
+    file_raster <- raster::raster(test_tiff)
+    expect_equal(raster::cellStats(ras, max), raster::cellStats(file_raster, max))
+  })
 
+  ras <- npn_download_geospatial("gdd:30yr_avg_agdd", date = "50")
+  expect_s4_class(ras, "RasterLayer")
 
-  expect_is(ras,"RasterLayer")
-
-
-  npn_download_geospatial("gdd:agdd",date="2018-05-05",output_path = "testing.tiff")
-  expect_equal(file.exists("testing.tiff"),TRUE)
-  file_raster <- raster("testing.tiff")
-
-  expect_equal(cellStats(ras,max),cellStats(file_raster,max))
-  file.remove("testing.tiff")
-
-  ras <- npn_download_geospatial("gdd:30yr_avg_agdd",date=50)
-  expect_is(ras,"RasterLayer")
-
-  #This layer not on DEV
-  npn_set_env("ops")
-  ras <- npn_download_geospatial("inca:midgup_median_nad83_02deg",date=NULL)
-  expect_is(ras,"RasterLayer")
-
+  ras <- npn_download_geospatial("inca:midgup_median_nad83_02deg", date = NULL)
+  expect_s4_class(ras, "RasterLayer")
 })
+
 
 test_that("npn_download_geospatial format param working", {
   skip_on_cran()
-  skip("No file downloads")
-  npn_set_env("ops")
+  skip_if_not(check_geo_service(), "Geo Service is down")
 
-  npn_download_geospatial(
-    "gdd:30yr_avg_agdd_50f",
-    date="5",
-    output_path = "testing.tiff"
-  )
-
-  npn_download_geospatial(
-    "gdd:30yr_avg_agdd_50f",
-    date="1,3",
-    format="application/x-netcdf",
-    output_path = "testing.netcdf"
-  )
-
-  tiff_size <- file.size("testing.tiff")
-  netcdf_size <- file.size("testing.netcdf")
-
-  file.remove("testing.tiff")
-  file.remove("testing.netcdf")
+  withr::with_tempdir({
+    npn_download_geospatial(
+      "gdd:30yr_avg_agdd_50f",
+      date="5",
+      output_path = "testing.tiff"
+    )
+    tiff_size <- file.size("testing.tiff")
+    npn_download_geospatial(
+      "gdd:30yr_avg_agdd_50f",
+      date="1,3",
+      format="application/x-netcdf",
+      output_path = "testing.netcdf"
+    )
+    netcdf_size <- file.size("testing.netcdf")
+  })
 
   #GeoTIFF and NetCDF are similar enough foramts that they
   # are nearly 1:1 in like sized rasters but there is some margin
@@ -90,38 +70,31 @@ test_that("npn_download_geospatial format param working", {
   # during our install of the new Geoserver), so still a useful test to have.
 
   expect_lt(abs((tiff_size * 2) - netcdf_size), 700000)
-
-
-
 })
 
 
 test_that("npn_get_point_data functions", {
   skip_on_cran()
-  npn_set_env(get_test_env())
-  if(!is_geo_service_up){
-    skip("Geo Service is down")
-  }
+  skip_if_not(check_geo_service(), "Geo Service is down")
+
   vcr::use_cassette("npn_get_point_data_1", {
-    value <- npn_get_point_data("gdd:agdd",38.8,-110.5,"2022-05-05")
+    value <- npn_get_point_data("gdd:agdd", 38.8, -110.5, "2022-05-05")
   })
   expect_lt(round(value), 1201)
   expect_gt(round(value), 1198)
 
   vcr::use_cassette("npn_get_point_data_2", {
-    value <- npn_get_point_data("si-x:average_leaf_prism",38.8,-110.5,"1990-01-01")
+    value <- npn_get_point_data("si-x:average_leaf_prism", 38.8, -110.5, "1990-01-01")
   })
   expect_equal(value, 83)
 
   #No data in Canada
-  expect_error(npn_get_point_data("si-x:average_leaf_prism",60.916600, -123.037793,"1990-01-01"))
-
+  expect_error(npn_get_point_data("si-x:average_leaf_prism", 60.916600, -123.037793, "1990-01-01"))
 })
 
 
 test_that("npn_custom_agdd functions",{
   skip_on_cran()
-  npn_set_env(get_test_env())
 
   vcr::use_cassette("npn_get_custom_agdd_time_series_1", {
     res <- npn_get_custom_agdd_time_series(
@@ -137,39 +110,38 @@ test_that("npn_custom_agdd functions",{
     )
   })
 
-  expect_is(res,"data.frame")
-  expect_equal(round(res[15,"agdd"]),34)
-
+  expect_s3_class(res, "data.frame")
+  expect_equal(round(res[15, "agdd"]), 34)
 })
+
 
 test_that("npn_get_agdd_point_data works",{
   skip_on_cran()
-  npn_set_env(get_test_env())
+  skip_if_not(check_service(), "Data Service is down")
 
-  if(!check_service()){
-    skip("Data Service is down")
-  }
+  res <- npn_get_agdd_point_data("gdd:agdd", 32.4, -110, "2020-01-15")
 
-  res <- npn_get_agdd_point_data("gdd:agdd",32.4,-110,"2020-01-15")
-
-  expect_is(res,"numeric")
+  expect_type(res, "double")
   if(res > 0){
     expect_equal(round(res), 146)
   }
 })
 
 
-test_that("npn_get_custom_agdd_raster works",{
+test_that("npn_get_custom_agdd_raster works", {
   skip_on_cran()
-  npn_set_env(get_test_env())
+  skip_if_not(check_data_service(), "Data Service is down")
 
-  if(!check_data_service()){
-    skip("Data Service is down")
-  }
+  res <- npn_get_custom_agdd_raster(
+    method = "simple",
+    climate_data_source = "NCEP",
+    temp_unit = "Fahrenheit",
+    start_date = "2020-01-01",
+    end_date = "2020-01-15",
+    base_temp = 32
+  )
 
-  res <- npn_get_custom_agdd_raster("simple","NCEP","Fahrenheit","2020-01-01","2020-01-15",32)
-
-  expect_is(res,"RasterLayer")
+  expect_s4_class(res, "RasterLayer")
 })
 
 

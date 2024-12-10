@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www-dev.usanpn.org/npn_portal/phenophases/getPhenoClasses.json
+    uri: https://services.usanpn.org/npn_portal/phenophases/getPhenoClasses.json
     body:
       encoding: ''
       string: ''
@@ -14,18 +14,18 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Thu, 12 Nov 2020 23:03:23 GMT
-      server: Apache/2.4.7 (Ubuntu) SVN/1.8.8 PHP/5.5.9-1ubuntu4.29 OpenSSL/1.0.1f
-      x-powered-by: PHP/5.5.9-1ubuntu4.29
+      date: Wed, 13 Nov 2024 00:26:32 GMT
+      content-type: application/json; charset=utf-8
+      content-length: '6544'
+      server: Apache/2.4.62 () PHP/5.5.38
+      x-powered-by: PHP/5.5.38
       pragma: no-cache
       cache-control: no-store, no-cache, max-age=0, must-revalidate
       access-control-allow-origin: '*'
       access-control-allow-headers: origin, x-requested-with, content-type
       access-control-allow-methods: PUT, GET, POST, DELETE, OPTIONS
-      content-length: '6544'
-      content-type: application/json; charset=utf-8
     body:
-      encoding: UTF-8
+      encoding: ''
       file: no
       string: '[{"id":1,"name":"Initial shoot or leaf growth","description":"Initiation
         of seasonal vegetative growth","sequence":10},{"id":2,"name":"Young leaves
@@ -85,5 +85,5 @@ http_interactions:
         caterpillars","description":"","sequence":720},{"id":134,"name":"Dead nymphs","description":"","sequence":730},{"id":135,"name":"Baited
         or captured individuals","description":"","sequence":740},{"id":136,"name":"Egg
         laying","description":"","sequence":285}]'
-  recorded_at: 2020-11-12 23:03:11 GMT
-  recorded_with: vcr/0.5.4, webmockr/0.7.0
+  recorded_at: 2024-11-13 00:26:32 GMT
+  recorded_with: vcr/1.6.0, webmockr/1.0.0

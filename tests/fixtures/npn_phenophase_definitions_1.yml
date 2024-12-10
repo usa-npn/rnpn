@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www-dev.usanpn.org/npn_portal/phenophases/getPhenophaseDefinitionDetails.json
+    uri: https://services.usanpn.org/npn_portal/phenophases/getPhenophaseDefinitionDetails.json
     body:
       encoding: ''
       string: ''
@@ -14,18 +14,17 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Thu, 12 Nov 2020 23:03:21 GMT
-      server: Apache/2.4.7 (Ubuntu) SVN/1.8.8 PHP/5.5.9-1ubuntu4.29 OpenSSL/1.0.1f
-      x-powered-by: PHP/5.5.9-1ubuntu4.29
+      date: Wed, 13 Nov 2024 00:26:31 GMT
+      content-type: application/json; charset=utf-8
+      server: Apache/2.4.62 () PHP/5.5.38
+      x-powered-by: PHP/5.5.38
       pragma: no-cache
       cache-control: no-store, no-cache, max-age=0, must-revalidate
       access-control-allow-origin: '*'
       access-control-allow-headers: origin, x-requested-with, content-type
       access-control-allow-methods: PUT, GET, POST, DELETE, OPTIONS
-      transfer-encoding: chunked
-      content-type: application/json; charset=utf-8
     body:
-      encoding: UTF-8
+      encoding: ''
       file: no
       string: '[{"definition_id":56,"dataset_id":12,"phenophase_id":56,"phenophase_name":"First
         leaf","definition":"In at least 3 locations on the plant, the very first green
@@ -336,7 +335,7 @@ http_interactions:
         individuals on land","definition":"One or more individuals with a small tail
         stub are seen on land.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":289,"dataset_id":null,"phenophase_id":289,"phenophase_name":"Dead
         adults","definition":"One or more dead adults are seen, including those found
-        on roads.","start_date":"1970-01-01 00:00:00","end_date":"2019-02-03 00:00:00","comments":"Changed
+        on roads.","start_date":"1970-01-01 00:00:00","end_date":"2019-02-04 00:00:00","comments":"Changed
         def from \"A dead adult is seen...\" to \"One or more dead adults are seen...\"
         -EGD 2011-01-24"},{"definition_id":290,"dataset_id":null,"phenophase_id":290,"phenophase_name":"Individuals
         in a net","definition":"One or more individuals are seen caught in a net.","start_date":"1970-01-01
@@ -344,7 +343,7 @@ http_interactions:
         in a trap","definition":"One or more individuals are seen caught in a trap.","start_date":"1970-01-01
         00:00:00","end_date":null,"comments":null},{"definition_id":292,"dataset_id":null,"phenophase_id":292,"phenophase_name":"Active
         individuals","definition":"One or more individuals are seen moving about or
-        at rest.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":293,"dataset_id":null,"phenophase_id":293,"phenophase_name":"Calls
+        at rest.","start_date":"1970-01-01 00:00:00","end_date":"2021-01-31 00:00:00","comments":null},{"definition_id":293,"dataset_id":null,"phenophase_id":293,"phenophase_name":"Calls
         or song","definition":"One or more individuals are heard calling or singing.","start_date":"1970-01-01
         00:00:00","end_date":null,"comments":null},{"definition_id":294,"dataset_id":null,"phenophase_id":294,"phenophase_name":"Singing
         males","definition":"One or more singing males are heard. Singing refers to
@@ -389,11 +388,11 @@ http_interactions:
         plumage","definition":"One or more individuals are seen in full summer (breeding)
         plumage.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":315,"dataset_id":null,"phenophase_id":315,"phenophase_name":"Dead
         individuals","definition":"One or more dead individuals are seen, including
-        those found on roads.","start_date":"1970-01-01 00:00:00","end_date":"2019-02-03
+        those found on roads.","start_date":"1970-01-01 00:00:00","end_date":"2019-02-04
         00:00:00","comments":"Changed def from \"A dead individual is seen...\" to
         \"One or more dead individuals are seen...\" -EGD 2011-01-24"},{"definition_id":316,"dataset_id":null,"phenophase_id":316,"phenophase_name":"Dead
         nestlings or fledglings","definition":"One ore more dead nestlings or young
-        are seen, including those found on roads.","start_date":"1970-01-01 00:00:00","end_date":"2019-02-03
+        are seen, including those found on roads.","start_date":"1970-01-01 00:00:00","end_date":"2019-02-04
         00:00:00","comments":null},{"definition_id":317,"dataset_id":null,"phenophase_id":458,"phenophase_name":"Individuals
         at a feeder","definition":"One or more individuals are seen visiting a feeder
         or food placed by a person.","start_date":"1970-01-01 00:00:00","end_date":"2011-03-20
@@ -428,17 +427,18 @@ http_interactions:
         on a hook","definition":"One or more individuals are seen caught on a hook.","start_date":"1970-01-01
         00:00:00","end_date":null,"comments":null},{"definition_id":327,"dataset_id":null,"phenophase_id":327,"phenophase_name":"Active
         adults","definition":"One or more adults are seen moving about or at rest.","start_date":"1970-01-01
-        00:00:00","end_date":null,"comments":null},{"definition_id":330,"dataset_id":null,"phenophase_id":330,"phenophase_name":"Mating","definition":"A
+        00:00:00","end_date":"2021-01-31 00:00:00","comments":null},{"definition_id":330,"dataset_id":null,"phenophase_id":330,"phenophase_name":"Mating","definition":"A
         male and female are seen coupled in a mating position, usually end to end.
         This can occur at rest or in flight.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":331,"dataset_id":null,"phenophase_id":331,"phenophase_name":"Egg
         laying","definition":"A female is seen laying eggs on a plant. If possible,
         record the name of the plant or describe it in the comments field.","start_date":"1970-01-01
-        00:00:00","end_date":"2020-02-06 00:00:00","comments":null},{"definition_id":333,"dataset_id":null,"phenophase_id":333,"phenophase_name":"Active
+        00:00:00","end_date":"2020-02-16 00:00:00","comments":null},{"definition_id":333,"dataset_id":null,"phenophase_id":333,"phenophase_name":"Active
         caterpillars","definition":"One or more caterpillars (larvae) are seen moving
         about or at rest. When seen on a plant, if possible, record the name of the
-        plant or describe it in the comments field.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":336,"dataset_id":null,"phenophase_id":336,"phenophase_name":"Dead
+        plant or describe it in the comments field.","start_date":"1970-01-01 00:00:00","end_date":"2021-01-31
+        00:00:00","comments":null},{"definition_id":336,"dataset_id":null,"phenophase_id":336,"phenophase_name":"Dead
         caterpillars","definition":"One or more dead caterpillars are seen, including
-        those found on roads.","start_date":"1970-01-01 00:00:00","end_date":"2019-02-03
+        those found on roads.","start_date":"1970-01-01 00:00:00","end_date":"2019-02-04
         00:00:00","comments":"Changed def from \"A dead caterpillar is seen...\" to
         \"One or more dead caterpillars are seen...\" -EGD 2011-01-24"},{"definition_id":337,"dataset_id":null,"phenophase_id":337,"phenophase_name":"Individuals
         at a light","definition":"One or more individuals are seen at a light, whether
@@ -475,12 +475,7 @@ http_interactions:
         surface, or attached to aquatic plants.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":350,"dataset_id":null,"phenophase_id":350,"phenophase_name":"Mating","definition":"A
         male and female are seen coupled in a mating position, usually forming what
         looks like a circle with their bodies. This can be at rest or in flight.","start_date":"1970-01-01
-        00:00:00","end_date":null,"comments":null},{"definition_id":351,"dataset_id":null,"phenophase_id":351,"phenophase_name":"Larvae
-        in water","definition":"One or more larvae (nymphs) are seen in water.","start_date":"1970-01-01
-        00:00:00","end_date":null,"comments":null},{"definition_id":352,"dataset_id":null,"phenophase_id":352,"phenophase_name":"Cast-off
-        skins","definition":"One or more cast-off skins or exoskeletons shed during
-        transformation from aquatic larva to free-flying adult are seen. These may
-        be difficult to identify to species level.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":353,"dataset_id":null,"phenophase_id":353,"phenophase_name":"Recently
+        00:00:00","end_date":null,"comments":null},{"definition_id":353,"dataset_id":null,"phenophase_id":353,"phenophase_name":"Recently
         emerged adults","definition":"One or more adults (teneral adults) are seen
         just following emergence from the larval stage. They have a soft exoskeleton
         and a pale appearance.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":354,"dataset_id":null,"phenophase_id":354,"phenophase_name":"Migrating
@@ -513,17 +508,14 @@ http_interactions:
         male and female are seen coupled in a mating position, usually one on top
         of the other.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":367,"dataset_id":null,"phenophase_id":367,"phenophase_name":"Active
         larvae","definition":"One or more larvae are seen moving about or at rest.
-        ","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":369,"dataset_id":null,"phenophase_id":369,"phenophase_name":"Cast-off
-        skins","definition":"One or more cast-off skins or exoskeletons shed during
-        transformation from larva to adult are seen. These may be difficult to identify
-        to species level.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":370,"dataset_id":null,"phenophase_id":370,"phenophase_name":"Male
+        ","start_date":"1970-01-01 00:00:00","end_date":"2021-01-31 00:00:00","comments":null},{"definition_id":370,"dataset_id":null,"phenophase_id":370,"phenophase_name":"Male
         adults","definition":"One or more adult males are seen moving about or at
         rest.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":371,"dataset_id":null,"phenophase_id":371,"phenophase_name":"Breaking
         leaf buds","definition":"One or more breaking leaf buds are visible on the
         plant.  A leaf bud is considered \"breaking\" once a green leaf tip is visible
         at the end of the bud, but before the first leaf from the bud has unfolded
         to expose the leaf stalk (petiole) or leaf base.","start_date":"2011-03-21
-        00:00:00","end_date":null,"comments":null},{"definition_id":373,"dataset_id":null,"phenophase_id":373,"phenophase_name":"Breaking
+        00:00:00","end_date":"2022-03-09 00:00:00","comments":null},{"definition_id":373,"dataset_id":null,"phenophase_id":373,"phenophase_name":"Breaking
         leaf buds","definition":"In at least 3 locations on the plant, a breaking
         leaf bud is visible.  A leaf bud is considered \"breaking\" once the widest
         part of the newly emerging leaf has grown beyond the ends of its opening winter
@@ -725,12 +717,12 @@ http_interactions:
         or dying adults","definition":"One or more dead or dying adults are seen.","start_date":"2011-03-21
         00:00:00","end_date":null,"comments":null},{"definition_id":449,"dataset_id":null,"phenophase_id":449,"phenophase_name":"Active
         nymphs","definition":"One or more nymphs are seen moving about or at rest.","start_date":"1970-01-01
-        00:00:00","end_date":null,"comments":null},{"definition_id":450,"dataset_id":null,"phenophase_id":450,"phenophase_name":"Nymphs
+        00:00:00","end_date":"2021-01-31 00:00:00","comments":null},{"definition_id":450,"dataset_id":null,"phenophase_id":450,"phenophase_name":"Nymphs
         feeding","definition":"One or more nymphs are seen feeding. If possible, record
         the name of the species or substance being eaten or describe it in the comments
         field.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":451,"dataset_id":null,"phenophase_id":451,"phenophase_name":"Dead
         nymphs","definition":"One or more dead nymphs are seen, including those found
-        on roads.","start_date":"1970-01-01 00:00:00","end_date":"2019-02-03 00:00:00","comments":null},{"definition_id":452,"dataset_id":null,"phenophase_id":452,"phenophase_name":"Individuals
+        on roads.","start_date":"1970-01-01 00:00:00","end_date":"2019-02-04 00:00:00","comments":null},{"definition_id":452,"dataset_id":null,"phenophase_id":452,"phenophase_name":"Individuals
         on land","definition":"One or more individuals are seen active or at rest
         on land.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":453,"dataset_id":null,"phenophase_id":453,"phenophase_name":"Individuals
         in water","definition":"One or more individuals are seen active or at rest
@@ -771,9 +763,11 @@ http_interactions:
         fallen from the plant) have turned to their late-season colors.","start_date":"1970-01-01
         00:00:00","end_date":"2012-02-27 00:00:00","comments":null},{"definition_id":471,"dataset_id":null,"phenophase_id":471,"phenophase_name":"Falling
         leaves","definition":"One or more leaves are falling or have recently fallen
-        from the plant.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":472,"dataset_id":null,"phenophase_id":472,"phenophase_name":"Falling
+        from the plant.","start_date":"1970-01-01 00:00:00","end_date":"2021-01-31
+        00:00:00","comments":null},{"definition_id":472,"dataset_id":null,"phenophase_id":472,"phenophase_name":"Falling
         needles","definition":"One or more needles are falling or have recently fallen
-        from the plant.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":473,"dataset_id":null,"phenophase_id":500,"phenophase_name":"Flowers","definition":"One
+        from the plant.","start_date":"1970-01-01 00:00:00","end_date":"2022-03-09
+        00:00:00","comments":null},{"definition_id":473,"dataset_id":null,"phenophase_id":500,"phenophase_name":"Flowers","definition":"One
         or more fresh flowers or flower heads (inflorescences) are visible on the
         plant. Flower heads include many small flowers that usually do not open all
         at once. Do not include wilted or dried flowers that remain on the plant,
@@ -925,7 +919,7 @@ http_interactions:
         the name of the plant on which the tent is built or describe it in the comments
         field.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":507,"dataset_id":null,"phenophase_id":507,"phenophase_name":"Active
         subadults","definition":"One or more subadults are seen moving about or at
-        rest.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":508,"dataset_id":null,"phenophase_id":508,"phenophase_name":"Initial
+        rest.","start_date":"1970-01-01 00:00:00","end_date":"2021-01-31 00:00:00","comments":null},{"definition_id":508,"dataset_id":null,"phenophase_id":508,"phenophase_name":"Initial
         growth","definition":"New growth of the plant is visible after a period of
         no growth (winter or drought) as new green shoots breaking through the soil
         surface. For each shoot, growth is considered \"initial\" until the exposed,
@@ -1032,14 +1026,16 @@ http_interactions:
         \"unfolded\" once its entire length has emerged from a breaking bud, stem
         node or growing stem tip, so that the leaf stalk (petiole) or leaf base is
         visible at its point of attachment to the stem. Do not include fully dried
-        or dead leaves.","start_date":"2015-03-10 00:00:00","end_date":null,"comments":null},{"definition_id":542,"dataset_id":null,"phenophase_id":484,"phenophase_name":"Young
+        or dead leaves.","start_date":"2015-03-10 00:00:00","end_date":"2022-03-09
+        00:00:00","comments":null},{"definition_id":542,"dataset_id":null,"phenophase_id":484,"phenophase_name":"Young
         leaves","definition":"One or more young, unfolded leaves are visible on the
         plant. A leaf is considered \"young\" and \"unfolded\" once its entire length
         has emerged from a breaking bud, stem node or growing stem tip, so that the
         leaf stalk (petiole) or leaf base is visible at its point of attachment to
         the stem, but before the leaf has reached full size or turned the darker green
         color or tougher texture of mature leaves on the plant. Do not include fully
-        dried or dead leaves.","start_date":"2015-03-10 00:00:00","end_date":null,"comments":null},{"definition_id":543,"dataset_id":null,"phenophase_id":525,"phenophase_name":"Winged
+        dried or dead leaves.","start_date":"2015-03-10 00:00:00","end_date":"2022-03-09
+        00:00:00","comments":null},{"definition_id":543,"dataset_id":null,"phenophase_id":525,"phenophase_name":"Winged
         adults","definition":"One or more adults bearing wings are seen moving about
         or at rest.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":544,"dataset_id":null,"phenophase_id":526,"phenophase_name":"Dead
         nymphs","definition":"One or more dead nymphs are seen.","start_date":"1970-01-01
@@ -1081,16 +1077,16 @@ http_interactions:
         transformation from nymph to adult are seen. These may be difficult to identify
         to species level.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":553,"dataset_id":null,"phenophase_id":531,"phenophase_name":"Eggs","definition":"One
         or more eggs are seen on a plant. If possible, record the name of the plant
-        or describe it in the comments field.","start_date":"1970-01-01 00:00:00","end_date":"2020-02-06
+        or describe it in the comments field.","start_date":"1970-01-01 00:00:00","end_date":"2020-02-16
         00:00:00","comments":null},{"definition_id":554,"dataset_id":null,"phenophase_id":532,"phenophase_name":"Larvae
         feeding","definition":"One or more larvae are seen feeding. If possible, record
         the name of the species or substance being eaten or describe it in the comments
         field.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":555,"dataset_id":null,"phenophase_id":533,"phenophase_name":"Dead
         larvae","definition":"One or more dead larvae are seen, including those found
-        on roads.","start_date":"1970-01-01 00:00:00","end_date":"2019-02-03 00:00:00","comments":null},{"definition_id":556,"dataset_id":null,"phenophase_id":529,"phenophase_name":"Recent
+        on roads.","start_date":"1970-01-01 00:00:00","end_date":"2019-02-04 00:00:00","comments":null},{"definition_id":556,"dataset_id":null,"phenophase_id":529,"phenophase_name":"Recent
         egg laying","definition":"A female is seen depositing eggs, or evidence of
         recent egg laying is seen on a plant. If possible, record the name of the
-        plant or describe it in the comments field.","start_date":"1970-01-01 00:00:00","end_date":"2020-02-06
+        plant or describe it in the comments field.","start_date":"1970-01-01 00:00:00","end_date":"2020-02-16
         00:00:00","comments":null},{"definition_id":557,"dataset_id":15,"phenophase_id":371,"phenophase_name":"Emerging
         leaves","definition":"In at least 3 locations on the plant, an emerging leaf
         is visible. A leaf is considered \"emerging\" once the green tip is visible
@@ -1152,7 +1148,7 @@ http_interactions:
         It does not include relatively simple calls used for other forms of communication.","start_date":"2017-02-06
         00:00:00","end_date":null,"comments":null},{"definition_id":578,"dataset_id":null,"phenophase_id":544,"phenophase_name":"Inactive
         nymphs","definition":"One or more nymphs are seen in a dormant state.","start_date":"1970-01-01
-        00:00:00","end_date":null,"comments":null},{"definition_id":579,"dataset_id":null,"phenophase_id":545,"phenophase_name":"Post-dormant
+        00:00:00","end_date":"2021-01-31 00:00:00","comments":null},{"definition_id":579,"dataset_id":null,"phenophase_id":545,"phenophase_name":"Post-dormant
         nymphs","definition":"One or more nymphs have come out of their dormant state.","start_date":"1970-01-01
         00:00:00","end_date":null,"comments":null},{"definition_id":580,"dataset_id":9,"phenophase_id":182,"phenophase_name":"All
         leaves colored","definition":"For the whole plant, virtually all (95-100%)
@@ -1259,26 +1255,77 @@ http_interactions:
         or song","definition":"One or more individuals are heard calling or singing.","start_date":"1970-01-01
         00:00:00","end_date":null,"comments":null},{"definition_id":610,"dataset_id":null,"phenophase_id":546,"phenophase_name":"Active
         crawlers","definition":"One or more crawlers are seen moving about or at rest.","start_date":"1970-01-01
-        00:00:00","end_date":null,"comments":null},{"definition_id":611,"dataset_id":null,"phenophase_id":547,"phenophase_name":"Egg
+        00:00:00","end_date":"2021-01-31 00:00:00","comments":null},{"definition_id":611,"dataset_id":null,"phenophase_id":547,"phenophase_name":"Egg
         laying","definition":"A female is seen laying eggs. If possible, record the
         name of the species or substance on which the eggs are being deposited or
         describe it in the comments field.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":612,"dataset_id":null,"phenophase_id":289,"phenophase_name":"Dead
-        adults","definition":"One or more dead adults are seen.","start_date":"2019-02-04
+        adults","definition":"One or more dead adults are seen.","start_date":"2019-02-05
         00:00:00","end_date":null,"comments":null},{"definition_id":613,"dataset_id":null,"phenophase_id":336,"phenophase_name":"Dead
-        caterpillars","definition":"One or more dead caterpillars are seen.","start_date":"2019-02-04
+        caterpillars","definition":"One or more dead caterpillars are seen.","start_date":"2019-02-05
         00:00:00","end_date":null,"comments":null},{"definition_id":614,"dataset_id":null,"phenophase_id":315,"phenophase_name":"Dead
-        individuals","definition":"One or more dead individuals are seen.","start_date":"2019-02-04
+        individuals","definition":"One or more dead individuals are seen.","start_date":"2019-02-05
         00:00:00","end_date":null,"comments":null},{"definition_id":615,"dataset_id":null,"phenophase_id":533,"phenophase_name":"Dead
-        larvae","definition":"One or more dead larvae are seen.","start_date":"2019-02-04
+        larvae","definition":"One or more dead larvae are seen.","start_date":"2019-02-05
         00:00:00","end_date":null,"comments":null},{"definition_id":616,"dataset_id":null,"phenophase_id":316,"phenophase_name":"Dead
         nestlings or fledglings","definition":"One ore more dead nestlings or young
-        are seen.","start_date":"2019-02-04 00:00:00","end_date":null,"comments":null},{"definition_id":617,"dataset_id":null,"phenophase_id":451,"phenophase_name":"Dead
-        nymphs","definition":"One or more dead nymphs are seen.","start_date":"2019-02-04
+        are seen.","start_date":"2019-02-05 00:00:00","end_date":null,"comments":null},{"definition_id":617,"dataset_id":null,"phenophase_id":451,"phenophase_name":"Dead
+        nymphs","definition":"One or more dead nymphs are seen.","start_date":"2019-02-05
         00:00:00","end_date":null,"comments":null},{"definition_id":618,"dataset_id":null,"phenophase_id":331,"phenophase_name":"Egg
-        laying","definition":"Egg laying (on plant)","start_date":"2020-02-07 00:00:00","end_date":null,"comments":null},{"definition_id":619,"dataset_id":null,"phenophase_id":529,"phenophase_name":"Recent
-        egg laying","definition":"Recent egg laying (on plant)","start_date":"2020-02-07
-        00:00:00","end_date":null,"comments":null},{"definition_id":620,"dataset_id":null,"phenophase_id":531,"phenophase_name":"Eggs","definition":"Eggs
-        (on plant)","start_date":"2020-02-07 00:00:00","end_date":null,"comments":null},{"definition_id":621,"dataset_id":null,"phenophase_id":548,"phenophase_name":"Egg
-        laying","definition":"Egg laying (in soil)","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null}]'
-  recorded_at: 2020-11-12 23:03:09 GMT
-  recorded_with: vcr/0.5.4, webmockr/0.7.0
+        laying","definition":"A female is seen laying eggs on a plant or other surface.
+        If possible, record the name of the plant or describe it in the comments field.","start_date":"2020-02-17
+        00:00:00","end_date":null,"comments":null},{"definition_id":619,"dataset_id":null,"phenophase_id":529,"phenophase_name":"Recent
+        egg laying","definition":"A female is seen depositing eggs, or evidence of
+        recent egg laying is seen on a plant or other surface. If possible, record
+        the name of the plant or describe it in the comments field.","start_date":"2020-02-17
+        00:00:00","end_date":null,"comments":null},{"definition_id":620,"dataset_id":null,"phenophase_id":531,"phenophase_name":"Eggs","definition":"One
+        or more eggs are seen on a plant or other surface. If possible, record the
+        name of the plant or describe it in the comments field.","start_date":"2020-02-17
+        00:00:00","end_date":null,"comments":null},{"definition_id":621,"dataset_id":null,"phenophase_id":548,"phenophase_name":"Egg
+        laying","definition":"A female is seen laying eggs on or below the soil surface.","start_date":"1970-01-01
+        00:00:00","end_date":null,"comments":null},{"definition_id":622,"dataset_id":null,"phenophase_id":471,"phenophase_name":"Falling
+        leaves","definition":"One or more leaves with typical late-season color, or
+        yellow or brown due to other stresses, are falling or have recently fallen
+        from the plant. Do not include fully dried or dead leaves that remain on the
+        plant for many days before falling.","start_date":"2021-02-01 00:00:00","end_date":null,"comments":null},{"definition_id":623,"dataset_id":null,"phenophase_id":327,"phenophase_name":"Adults","definition":"One
+        or more adults are seen or heard moving about or at rest.","start_date":"2021-02-01
+        00:00:00","end_date":null,"comments":null},{"definition_id":624,"dataset_id":null,"phenophase_id":333,"phenophase_name":"Caterpillars","definition":"One
+        or more caterpillars (larvae) are seen moving about or at rest. When seen
+        on a plant, if possible, record the name of the plant or describe it in the
+        comments field.","start_date":"2021-02-01 00:00:00","end_date":null,"comments":null},{"definition_id":625,"dataset_id":null,"phenophase_id":546,"phenophase_name":"Crawlers","definition":"One
+        or more crawlers are seen moving about or at rest.","start_date":"2021-02-01
+        00:00:00","end_date":null,"comments":null},{"definition_id":626,"dataset_id":null,"phenophase_id":292,"phenophase_name":"Live
+        individuals","definition":"One or more individuals are seen or heard moving
+        about or at rest.","start_date":"2021-02-01 00:00:00","end_date":null,"comments":null},{"definition_id":627,"dataset_id":null,"phenophase_id":367,"phenophase_name":"Larvae","definition":"One
+        or more larvae are seen moving about or at rest.","start_date":"2021-02-01
+        00:00:00","end_date":null,"comments":null},{"definition_id":628,"dataset_id":null,"phenophase_id":449,"phenophase_name":"Nymphs","definition":"One
+        or more nymphs are seen moving about or at rest.","start_date":"2021-02-01
+        00:00:00","end_date":null,"comments":null},{"definition_id":629,"dataset_id":null,"phenophase_id":507,"phenophase_name":"Subadults","definition":"One
+        or more subadults are seen moving about or at rest.","start_date":"2021-02-01
+        00:00:00","end_date":null,"comments":null},{"definition_id":630,"dataset_id":null,"phenophase_id":544,"phenophase_name":"Dormant
+        nymphs","definition":"One or more nymphs are seen in a dormant state.","start_date":"2021-02-01
+        00:00:00","end_date":null,"comments":null},{"definition_id":631,"dataset_id":null,"phenophase_id":472,"phenophase_name":"Falling
+        needles","definition":"One or more needles with typical late-season color,
+        or yellow or brown due to other stresses, are falling or have recently fallen
+        from the plant. Do not include fully dried or dead needles that remain on
+        the plant for many days before falling.","start_date":"2022-03-10 00:00:00","end_date":null,"comments":null},{"definition_id":632,"dataset_id":null,"phenophase_id":371,"phenophase_name":"Breaking
+        leaf buds","definition":"One or more breaking leaf buds are visible on the
+        plant. A leaf bud is considered \"breaking\" once a green leaf tip is visible
+        at the end of the bud, but before the first leaf from the bud has unfolded
+        to expose the leaf base at its point of attachment to the leaf stalk (petiole)
+        or stem.","start_date":"2022-03-10 00:00:00","end_date":null,"comments":null},{"definition_id":633,"dataset_id":null,"phenophase_id":483,"phenophase_name":"Leaves","definition":"One
+        or more live, unfolded leaves are visible on the plant. A leaf is considered
+        \"unfolded\" once its entire length has emerged from a breaking bud, stem
+        node or growing stem tip, so that the leaf base is visible at its point of
+        attachment to the leaf stalk (petiole) or stem. Do not include fully dried
+        or dead leaves.","start_date":"2022-03-10 00:00:00","end_date":null,"comments":null},{"definition_id":634,"dataset_id":null,"phenophase_id":484,"phenophase_name":"Young
+        leaves","definition":"One or more young, unfolded leaves are visible on the
+        plant. A leaf is considered \"young\" and \"unfolded\" once its entire length
+        has emerged from a breaking bud, stem node or growing stem tip, so that the
+        leaf base is visible at its point of attachment to the leaf stalk (petiole)
+        or stem, but before the leaf has reached full size or turned the darker green
+        color or tougher texture of mature leaves on the plant. Do not include fully
+        dried or dead leaves.","start_date":"2022-03-10 00:00:00","end_date":null,"comments":null},{"definition_id":635,"dataset_id":null,"phenophase_id":549,"phenophase_name":"Mating","definition":"A
+        male and female are seen coupled in a mating position, usually one on top
+        of the other or end to end.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null}]'
+  recorded_at: 2024-11-13 00:26:31 GMT
+  recorded_with: vcr/1.6.0, webmockr/1.0.0

@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://geoserver-dev.usanpn.org/geoserver/wcs?service=WCS&version=2.0.1&request=GetCoverage&coverageId=gdd%3Aagdd&format=application%2Fgml%2Bxml&subset=http%3A%2F%2Fwww.opengis.net%2Fdef%2Faxis%2FOGC%2F0%2FLong%28-110.5%29&subset=http%3A%2F%2Fwww.opengis.net%2Fdef%2Faxis%2FOGC%2F0%2FLat%2838.8%29&subset=http%3A%2F%2Fwww.opengis.net%2Fdef%2Faxis%2FOGC%2F0%2Ftime%28%222019-05-05T00%3A00%3A00.000Z%22%29
+    uri: https://geoserver.usanpn.org/geoserver/wcs?service=WCS&version=2.0.1&request=GetCoverage&coverageId=gdd%3Aagdd&format=application%2Fgml%2Bxml&subset=http%3A%2F%2Fwww.opengis.net%2Fdef%2Faxis%2FOGC%2F0%2FLong%28-110.5%29&subset=http%3A%2F%2Fwww.opengis.net%2Fdef%2Faxis%2FOGC%2F0%2FLat%2838.8%29&subset=http%3A%2F%2Fwww.opengis.net%2Fdef%2Faxis%2FOGC%2F0%2Ftime%28%222022-05-05T00%3A00%3A00.000Z%22%29
     body:
       encoding: ''
       string: ''
@@ -14,16 +14,15 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Thu, 12 Nov 2020 21:19:24 GMT
+      date: Tue, 12 Nov 2024 23:24:38 GMT
       server: Apache/2.4.29 (Ubuntu) mod_jk/1.2.43 OpenSSL/1.1.1
-      access-control-allow-origin: '*'
       x-frame-options: SAMEORIGIN
       content-disposition: inline; filename=gdd:agdd.gml
       content-encoding: gzip
       transfer-encoding: chunked
       content-type: application/gml+xml
     body:
-      encoding: UTF-8
+      encoding: ''
       file: no
       string: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><gml:RectifiedGridCoverage
         xmlns:wcscrs=\"http://www.opengis.net/wcs/service-extension/crs/1.0\" xmlns:int=\"http://www.opengis.net/WCS_service-extension_interpolation/1.0\"
@@ -58,8 +57,8 @@ http_interactions:
         \           <gml:sequenceRule axisOrder=\"+1 +2\">Linear</gml:sequenceRule>\n
         \           <gml:startPoint>0 1</gml:startPoint>\n        </gml:GridFunction>\n
         \   </gml:coverageFunction>\n    <gml:rangeSet>\n        <gml:DataBlock>\n
-        \           <gml:rangeParameters/>\n            <tupleList>1233.269287109375
+        \           <gml:rangeParameters/>\n            <tupleList>1199.60888671875
         \n</tupleList>\n        </gml:DataBlock>\n    </gml:rangeSet>\n    <gmlcov:metadata>\n
         \       <gmlcov:Extension/>\n    </gmlcov:metadata>\n</gml:RectifiedGridCoverage>\n"
-  recorded_at: 2020-11-12 21:19:12 GMT
-  recorded_with: vcr/0.5.4, webmockr/0.7.0
+  recorded_at: 2024-11-12 23:24:38 GMT
+  recorded_with: vcr/1.6.0, webmockr/1.0.0

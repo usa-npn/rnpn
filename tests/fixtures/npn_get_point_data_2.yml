@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://geoserver-dev.usanpn.org/geoserver/wcs?service=WCS&version=2.0.1&request=GetCoverage&coverageId=si-x%3Aaverage_leaf_prism&format=application%2Fgml%2Bxml&subset=http%3A%2F%2Fwww.opengis.net%2Fdef%2Faxis%2FOGC%2F0%2FLong%28-110.5%29&subset=http%3A%2F%2Fwww.opengis.net%2Fdef%2Faxis%2FOGC%2F0%2FLat%2838.8%29&subset=http%3A%2F%2Fwww.opengis.net%2Fdef%2Faxis%2FOGC%2F0%2Ftime%28%221990-01-01T00%3A00%3A00.000Z%22%29
+    uri: https://geoserver.usanpn.org/geoserver/wcs?service=WCS&version=2.0.1&request=GetCoverage&coverageId=si-x%3Aaverage_leaf_prism&format=application%2Fgml%2Bxml&subset=http%3A%2F%2Fwww.opengis.net%2Fdef%2Faxis%2FOGC%2F0%2FLong%28-110.5%29&subset=http%3A%2F%2Fwww.opengis.net%2Fdef%2Faxis%2FOGC%2F0%2FLat%2838.8%29&subset=http%3A%2F%2Fwww.opengis.net%2Fdef%2Faxis%2FOGC%2F0%2Ftime%28%221990-01-01T00%3A00%3A00.000Z%22%29
     body:
       encoding: ''
       string: ''
@@ -14,16 +14,15 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Thu, 12 Nov 2020 21:19:25 GMT
+      date: Tue, 12 Nov 2024 23:24:38 GMT
       server: Apache/2.4.29 (Ubuntu) mod_jk/1.2.43 OpenSSL/1.1.1
-      access-control-allow-origin: '*'
       x-frame-options: SAMEORIGIN
       content-disposition: inline; filename=si-x:average_leaf_prism.gml
       content-encoding: gzip
       transfer-encoding: chunked
       content-type: application/gml+xml
     body:
-      encoding: UTF-8
+      encoding: ''
       file: no
       string: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><gml:RectifiedGridCoverage
         xmlns:wcscrs=\"http://www.opengis.net/wcs/service-extension/crs/1.0\" xmlns:int=\"http://www.opengis.net/WCS_service-extension_interpolation/1.0\"
@@ -31,16 +30,16 @@ http_interactions:
         xmlns:swe=\"http://www.opengis.net/swe/2.0\" xmlns:xlink=\"http://www.w3.org/1999/xlink\"
         xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" gml:id=\"six_average_leaf_prism\">\n
         \   <gml:boundedBy>\n        <gml:Envelope srsName=\"http://www.opengis.net/def/crs/EPSG/0/4269\"
-        axisLabels=\"Lat Long\" uomLabels=\"Deg Deg\" srsDimension=\"2\">\n            <gml:lowerCorner>-110.52083333333184
-        38.8125000000011</gml:lowerCorner>\n            <gml:upperCorner>-110.47916666666518
-        38.85416666666777</gml:upperCorner>\n        </gml:Envelope>\n    </gml:boundedBy>\n
+        axisLabels=\"Lat Long\" uomLabels=\"Deg Deg\" srsDimension=\"2\">\n            <gml:lowerCorner>-110.52083333333218
+        38.812500000001144</gml:lowerCorner>\n            <gml:upperCorner>-110.47916666666552
+        38.854166666667815</gml:upperCorner>\n        </gml:Envelope>\n    </gml:boundedBy>\n
         \   <gml:domainSet>\n        <gml:RectifiedGrid gml:id=\"grid00__six_average_leaf_prism\"
         dimension=\"2\">\n            <gml:limits>\n                <gml:GridEnvelope>\n
         \                   <gml:low>0 0</gml:low>\n                    <gml:high>0
         0</gml:high>\n                </gml:GridEnvelope>\n            </gml:limits>\n
         \           <gml:axisLabels>i j</gml:axisLabels>\n            <gml:origin>\n
         \               <gml:Point gml:id=\"p00_six_average_leaf_prism\" srsName=\"http://www.opengis.net/def/crs/EPSG/0/4269\">\n
-        \                   <gml:pos>-110.49999999999851 38.83333333333444</gml:pos>\n
+        \                   <gml:pos>-110.49999999999885 38.83333333333448</gml:pos>\n
         \               </gml:Point>\n            </gml:origin>\n            <gml:offsetVector
         srsName=\"http://www.opengis.net/def/crs/EPSG/0/4269\">0.04166666666667 0.0</gml:offsetVector>\n
         \           <gml:offsetVector srsName=\"http://www.opengis.net/def/crs/EPSG/0/4269\">0.0
@@ -61,5 +60,5 @@ http_interactions:
         \           <gml:rangeParameters/>\n            <tupleList>83 \n</tupleList>\n
         \       </gml:DataBlock>\n    </gml:rangeSet>\n    <gmlcov:metadata>\n        <gmlcov:Extension/>\n
         \   </gmlcov:metadata>\n</gml:RectifiedGridCoverage>\n"
-  recorded_at: 2020-11-12 21:19:12 GMT
-  recorded_with: vcr/0.5.4, webmockr/0.7.0
+  recorded_at: 2024-11-12 23:24:38 GMT
+  recorded_with: vcr/1.6.0, webmockr/1.0.0
