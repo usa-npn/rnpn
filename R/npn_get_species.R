@@ -4,7 +4,7 @@
 #' the NPN database.
 #' @export
 #' @param ... Currently unused.
-#' @return A tibble with information on species in the NPN database and their
+#' @returns A tibble with information on species in the NPN database and their
 #'   IDs.
 #' @examples \dontrun{
 #' npn_species()
@@ -25,9 +25,9 @@ npn_species <- function(...) {
 #' species
 #' @export
 #' @rdname npn_species
-#' @param ids List of species ids for which to retrieve information
+#' @param ids Integer vector of species ids for which to retrieve information.
 #' @param ... Currently unused.
-#' @return A tibble with information on species in the NPN database and their
+#' @returns A tibble with information on species in the NPN database and their
 #'   IDs, filtered by the species ID parameter.
 npn_species_id <- function(ids, ...) {
   req <- base_req %>%
@@ -51,7 +51,7 @@ npn_species_id <- function(ids, ...) {
 #' @param kingdom Filters results by taxonomic kingdom. Valid values include
 #'   `'Animalia'`, `'Plantae'`.
 #' @param ... Currently unused.
-#' @return A tibble with information on species in the NPN database whose
+#' @returns A tibble with information on species in the NPN database whose
 #'   distribution includes a given state.
 #' @examples \dontrun{
 #' npn_species_state(state = "AZ")
@@ -93,7 +93,7 @@ npn_species_state <- function(state, kingdom = NULL, ...) {
 #' @param station_id filter species by a numeric vector of unique site
 #'   identifiers.
 #' @param ... Currently unused.
-#' @return A tibble with information on species in the NPN database filtered by
+#' @returns A tibble with information on species in the NPN database filtered by
 #'   partner group, dates and station/site IDs.
 #' @export
 #' @rdname npn_species
@@ -125,7 +125,7 @@ npn_species_search <- function(network = NULL,
 #'   `'Animalia'`, `'Plantae'`, or `NULL` (which returns results for both).
 #'   Defaults to `'Plantae'`.
 #' @param ... Currently unused.
-#' @return A data frame with a list of the functional types used in the NPN
+#' @returns A data frame with a list of the functional types used in the NPN
 #'   database, filtered by the specified kingdom.
 #' @export
 npn_species_types <- function(kingdom = "Plantae", ...) {

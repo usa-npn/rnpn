@@ -24,7 +24,7 @@ npn_species_search(
 \arguments{
 \item{...}{Currently unused.}
 
-\item{ids}{List of species ids for which to retrieve information}
+\item{ids}{Integer vector of species ids for which to retrieve information.}
 
 \item{state}{A US postal state code to filter results.}
 
