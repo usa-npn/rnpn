@@ -108,30 +108,30 @@ taxonomic group.</p>
 
 
 <dl><dt id="arg-family-ids">family_ids<a class="anchor" aria-label="anchor" href="#arg-family-ids"></a></dt>
-<dd><p>List of taxonomic family ids to search for.</p></dd>
+<dd><p>Integer vector of taxonomic family ids to search for.</p></dd>
 
 
 <dt id="arg-order-ids">order_ids<a class="anchor" aria-label="anchor" href="#arg-order-ids"></a></dt>
-<dd><p>List of taxonomic order ids to search for.</p></dd>
+<dd><p>Integer vector of taxonomic order ids to search for.</p></dd>
 
 
 <dt id="arg-class-ids">class_ids<a class="anchor" aria-label="anchor" href="#arg-class-ids"></a></dt>
-<dd><p>List of taxonomic class ids to search for</p></dd>
+<dd><p>Integer vector of taxonomic class ids to search for</p></dd>
 
 
 <dt id="arg-genus-ids">genus_ids<a class="anchor" aria-label="anchor" href="#arg-genus-ids"></a></dt>
-<dd><p>List of taxonomic genus ids to search for</p></dd>
+<dd><p>Integer vector of taxonomic genus ids to search for</p></dd>
 
 
 <dt id="arg-date">date<a class="anchor" aria-label="anchor" href="#arg-date"></a></dt>
 <dd><p>Specify the date of interest. For this function to return
-anything, either this value must be set or `return_all` must be 1.</p></dd>
+anything, either this value must be set or <code>return_all</code> must be <code>1</code>.</p></dd>
 
 
 <dt id="arg-return-all">return_all<a class="anchor" aria-label="anchor" href="#arg-return-all"></a></dt>
-<dd><p>Takes either 0 or 1 as input and defaults to 0. For this
-function to return anything, either this value must be set to 1 or date
-must be set.</p></dd>
+<dd><p>Takes either <code>0</code> or <code>1</code> as input and defaults to <code>0</code>. For
+this function to return anything, either this value must be set to <code>1</code> or
+<code>date</code> must be set.</p></dd>
 
 
 <dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
@@ -141,7 +141,7 @@ must be set.</p></dd>
     <div id="value">
     <h2>Value</h2>
     <p>A data frame listing phenophases in the NPN database for the
-  specified taxon and date.</p>
+specified taxon and date.</p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -151,7 +151,7 @@ interest, or to explicitly state that the function should return all
 phenophases that were ever applicable for any species belonging to the
 specified taxonomic group.</p>
 <p>When called, this function requires of these three parameters, exactly one of
-`family_ids`, `order_ids` or `class_ids` to be set.</p>
+<code>family_ids</code>, <code>order_ids</code> or <code>class_ids</code> to be set.</p>
     </div>
 
   </div>

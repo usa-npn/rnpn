@@ -93,8 +93,8 @@
 
 <dl><dt id="arg-layer">layer<a class="anchor" aria-label="anchor" href="#arg-layer"></a></dt>
 <dd><p>The coverage id (machine name) of the layer for which to
-retrieve. Applicable values can be found via the [npn_get_layer_details()]
-function under the `name` column.</p></dd>
+retrieve. Applicable values can be found via the <code><a href="npn_get_layer_details.html">npn_get_layer_details()</a></code>
+function under the <code>name</code> column.</p></dd>
 
 
 <dt id="arg-lat">lat<a class="anchor" aria-label="anchor" href="#arg-lat"></a></dt>
@@ -110,21 +110,21 @@ function under the `name` column.</p></dd>
 
 
 <dt id="arg-store-data">store_data<a class="anchor" aria-label="anchor" href="#arg-store-data"></a></dt>
-<dd><p>Boolean value. If set `TRUE` then the value retrieved will
-be stored in a global variable named `point_values` for later use.</p></dd>
+<dd><p>Boolean value. If set <code>TRUE</code> then the value retrieved will
+be stored in a global variable named <code>point_values</code> for later use.</p></dd>
 
 </dl></div>
     <div id="value">
     <h2>Value</h2>
     <p>Returns a numeric value for any NPN geospatial data layer at the
-  specified lat/long/date. If no value can be retrieved, then `-9999` is
-  returned.</p>
+specified lat/long/date. If no value can be retrieved, then <code>-9999</code> is
+returned.</p>
     </div>
     <div id="details">
     <h2>Details</h2>
     <p>Please note that this function pulls this from the NPN's WCS service so the
 data may not be totally precise. If you need precise AGDD values try using
-the [npn_get_agdd_point_data()] function.</p>
+the <code><a href="npn_get_agdd_point_data.html">npn_get_agdd_point_data()</a></code> function.</p>
     </div>
 
   </div>

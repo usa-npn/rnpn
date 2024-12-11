@@ -105,18 +105,22 @@
 
 
 <dt id="arg-download-path">download_path<a class="anchor" aria-label="anchor" href="#arg-download-path"></a></dt>
-<dd><p>String, optional file path to the file for which to output the results.</p></dd>
+<dd><p>String, optional file path to the file for which to
+output the results.</p></dd>
 
 
 <dt id="arg-always-append">always_append<a class="anchor" aria-label="anchor" href="#arg-always-append"></a></dt>
-<dd><p>Boolean flag. When set to true, then we always append data to the download path. This is used
-in the case of npn_get_data_by_year where we're making multiple requests to the same service and aggregating all
-data results in a single file. Without this flag, otherwise, each call to the service would truncate the output file.</p></dd>
+<dd><p>Boolean flag. When set to <code>TRUE</code>, then we always append
+data to the download path. This is used in the case of
+<code><a href="npn_get_data_by_year.html">npn_get_data_by_year()</a></code> where we're making multiple requests to the same
+service and aggregating all data results in a single file. Without this
+flag, otherwise, each call to the service would truncate the output file.</p></dd>
 
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>Data table of the requested data. NULL if a download_path was specified.</p>
+    <p>Data table of the requested data. <code>NULL</code> if a <code>download_path</code> was
+specified.</p>
     </div>
 
   </div>

@@ -6,9 +6,11 @@ species
 Search for species by state
 Search NPN species information using a number of different parameters, which
 can be used in conjunction with one another, including:
- - Species on which a particular group or groups are actually collecting data
- - What species were observed in a given date range
- - What species were observed at a particular station or stations"><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
+Species on which a particular group or groups are actually collecting data
+What species were observed in a given date range
+What species were observed at a particular station or stations
+
+"><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]--></head><body data-spy="scroll" data-target="#toc">
@@ -95,11 +97,10 @@ the NPN database.</p>
 species</p>
 <p>Search for species by state</p>
 <p>Search NPN species information using a number of different parameters, which
-can be used in conjunction with one another, including:
- - Species on which a particular group or groups are actually collecting data
- - What species were observed in a given date range
- - What species were observed at a particular station or stations</p>
-    </div>
+can be used in conjunction with one another, including:</p><ul><li><p>Species on which a particular group or groups are actually collecting data</p></li>
+<li><p>What species were observed in a given date range</p></li>
+<li><p>What species were observed at a particular station or stations</p></li>
+</ul></div>
 
     <div id="ref-usage">
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">npn_species</span><span class="op">(</span><span class="va">...</span><span class="op">)</span></span>
@@ -126,7 +127,7 @@ can be used in conjunction with one another, including:
 
 
 <dt id="arg-ids">ids<a class="anchor" aria-label="anchor" href="#arg-ids"></a></dt>
-<dd><p>List of species ids for which to retrieve information</p></dd>
+<dd><p>Integer vector of species ids for which to retrieve information.</p></dd>
 
 
 <dt id="arg-state">state<a class="anchor" aria-label="anchor" href="#arg-state"></a></dt>
@@ -135,7 +136,7 @@ can be used in conjunction with one another, including:
 
 <dt id="arg-kingdom">kingdom<a class="anchor" aria-label="anchor" href="#arg-kingdom"></a></dt>
 <dd><p>Filters results by taxonomic kingdom. Valid values include
-`'Animalia'`, `'Plantae'`.</p></dd>
+<code>'Animalia'</code>, <code>'Plantae'</code>.</p></dd>
 
 
 <dt id="arg-network">network<a class="anchor" aria-label="anchor" href="#arg-network"></a></dt>
@@ -145,12 +146,12 @@ actually observing data on the species. Takes a single numeric ID.</p></dd>
 
 <dt id="arg-start-date">start_date<a class="anchor" aria-label="anchor" href="#arg-start-date"></a></dt>
 <dd><p>filter species by date observed. This sets the start date
-of the date range and must be used in conjunction with `end_date`.</p></dd>
+of the date range and must be used in conjunction with <code>end_date</code>.</p></dd>
 
 
 <dt id="arg-end-date">end_date<a class="anchor" aria-label="anchor" href="#arg-end-date"></a></dt>
 <dd><p>filter species by date observed. This sets the end date of
-the date range and must be used in conjunction with `start_date`.</p></dd>
+the date range and must be used in conjunction with <code>start_date</code>.</p></dd>
 
 
 <dt id="arg-station-id">station_id<a class="anchor" aria-label="anchor" href="#arg-station-id"></a></dt>
@@ -161,13 +162,13 @@ identifiers.</p></dd>
     <div id="value">
     <h2>Value</h2>
     <p>A tibble with information on species in the NPN database and their
-  IDs.</p>
+IDs.</p>
 <p>A tibble with information on species in the NPN database and their
-  IDs, filtered by the species ID parameter.</p>
+IDs, filtered by the species ID parameter.</p>
 <p>A tibble with information on species in the NPN database whose
-  distribution includes a given state.</p>
+distribution includes a given state.</p>
 <p>A tibble with information on species in the NPN database filtered by
-  partner group, dates and station/site IDs.</p>
+partner group, dates and station/site IDs.</p>
     </div>
 
     <div id="ref-examples">

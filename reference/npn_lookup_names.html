@@ -92,21 +92,22 @@
 
 
 <dl><dt id="arg-name">name<a class="anchor" aria-label="anchor" href="#arg-name"></a></dt>
-<dd><p>A scientific or common name</p></dd>
+<dd><p>A scientific or common name.</p></dd>
 
 
 <dt id="arg-type">type<a class="anchor" aria-label="anchor" href="#arg-type"></a></dt>
-<dd><p>One of common_name, genus, or species</p></dd>
+<dd><p>One of <code>"common_name"</code>, <code>"genus"</code>, or <code>"species"</code>.</p></dd>
 
 
 <dt id="arg-fuzzy">fuzzy<a class="anchor" aria-label="anchor" href="#arg-fuzzy"></a></dt>
-<dd><p>One of TRUE or FALSE, if FALSE, uses fuzzy search via agrep, if
-FALSE, uses grep.</p></dd>
+<dd><p>Logical; if <code>TRUE</code>, uses fuzzy search via <code><a href="https://rdrr.io/r/base/agrep.html" class="external-link">agrep()</a></code>, if
+<code>FALSE</code>, uses <code><a href="https://rdrr.io/r/base/grep.html" class="external-link">grep()</a></code>.</p></dd>
 
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A data frame with species ID numbers based on the name and type parameters.</p>
+    <p>A data frame with species ID numbers based on the name and type
+parameters.</p>
     </div>
 
     <div id="ref-examples">
