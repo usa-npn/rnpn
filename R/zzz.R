@@ -100,7 +100,7 @@ check_geo_service <- function() {
 }
 
 base_req_geoserver <-
-  httr2::request("http://geoserver.usanpn.org/geoserver/v1") %>%
+  httr2::request("http://geoserver.usanpn.org/geoserver/") %>%
   httr2::req_user_agent("rnpn (https://github.com/usa-npn/rnpn/)")
 
 base <- function() {
