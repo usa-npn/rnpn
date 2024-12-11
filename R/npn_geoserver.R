@@ -591,7 +591,7 @@ npn_get_custom_agdd_raster <- function(method,
     req <- req %>%
       httr2::req_url_query(
         lowerThreshold = base_temp,
-        upperTheshold = upper_theshold
+        upperThreshold = upper_threshold
       )
   }
 
