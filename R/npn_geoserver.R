@@ -501,44 +501,41 @@ npn_get_custom_agdd_time_series <- function(method,
                                             lat,
                                             long,
                                             upper_threshold = NULL) {
-  base_url <- ""
   climate_data_source <- toupper(climate_data_source)
   temp_unit <- tolower(temp_unit)
   method <- tolower(method)
+  req <- base_req %>%
+    httr2::req_url_path("geo-services", "v1", "agdd",
+                        method, "pointTimeSeries") %>%
+    httr2::req_url_query(
+      climateProvider = climate_data_source,
+      temperatureUnit = temp_unit,
+      startDate = start_date,
+      endDate = end_date,
+      latitude = lat,
+      longitude = long
+    ) %>%
+    httr2::req_progress(type = "down")
 
   if (method == "simple") {
-    base_url <- paste0(base_data_domain(),
-                       "geo-services/v1/agdd/simple/pointTimeSeries?")
+    req <- req %>%
+      httr2::req_url_query(base = base_temp)
   } else {
-    base_url <- paste0(base_data_domain(),
-                       "geo-services/v1/agdd/double-sine/pointTimeSeries?")
+    req <- req %>%
+      httr2::req_url_query(
+        lowerThreshold = base_temp,
+        upperThreshold = upper_threshold
+      )
   }
 
-  url <- paste0(base_url, "climateProvider=", climate_data_source)
-  url <- paste0(url, "&temperatureUnit=", temp_unit)
-  url <- paste0(url, "&startDate=", start_date)
-  url <- paste0(url, "&endDate=", end_date)
-  url <- paste0(url, "&latitude=", lat)
-  url <- paste0(url, "&longitude=", long)
-
-  if (method == "simple") {
-    url <- paste0(url, "&base=", base_temp)
-
-  } else {
-    url <- paste0(url, "&lowerThreshold=", base_temp)
-    if (!is.null(upper_threshold)) {
-      url <- paste0(url, "&upperThreshold=", upper_threshold)
-    }
-  }
-
-  tryCatch({
-    data = httr::GET(url, query = list(), httr::progress())
+  tryCatch({ #TODO use httr2 to handle errors
+    resp <- httr2::req_perform(req)
   }, error = function(msg) {
     message("Service is temporarily unavailable. Please try again later.")
     return(NULL)
   })
-
-  return(jsonlite::fromJSON(httr::content(data, as = "text"))$timeSeries)
+  out <- httr2::resp_body_json(resp, simplifyVector = TRUE)$timeSeries
+  return(tibble::as_tibble(out))
 }
 
 #' Get Custom AGDD Raster Map
@@ -578,7 +575,7 @@ npn_get_custom_agdd_raster <- function(method,
 
   req <- base_req %>%
     httr2::req_url_path("geo-services", "v1", "agdd", method, "map") %>%
-    httr2::req_progress(type = "down") %>%
+    httr2::req_progress(type = "down") %>% # doesn't actually work because downloaded json is small despite taking a long time
     httr2::req_url_query(
       climateProvider = climate_data_source,
       temperatureUnit = temp_unit,

@@ -101,20 +101,20 @@ test_that("npn_custom_agdd functions",{
 
   vcr::use_cassette("npn_get_custom_agdd_time_series_1", {
     res <- npn_get_custom_agdd_time_series(
-      "double-sine",
-      "2019-01-01",
-      "2019-01-15",
-      25,
-      "NCEP",
-      "fahrenheit",
-      39.7,
-      -107.5,
-      upper_threshold=90
+      method = "double-sine",
+      start_date = "2019-01-01",
+      end_date = "2019-01-15",
+      base_temp = 25,
+      climate_data_source = "NCEP",
+      temp_unit = "fahrenheit",
+      lat = 39.7,
+      long = -107.5,
+      upper_threshold = 90
     )
   })
 
   expect_s3_class(res, "data.frame")
-  expect_equal(round(res[15, "agdd"]), 34)
+  expect_equal(round(res$agdd[15]), 34)
 })
 
 
