@@ -45,8 +45,8 @@ npn_phenophase_definitions <- function(...) {
 #' @export
 npn_phenophase_details <- function(ids = NULL, ...) {
   if (!is.null(ids) & !is.numeric(ids)) {
-      message("Invalid input, function expects a numeric vector as input")
-      return(tibble::tibble())
+    message("Invalid input, function expects a numeric vector as input")
+    return(tibble::tibble())
   }
   req <- base_req %>%
     httr2::req_url_path_append('phenophases/getPhenophaseDetails.json') %>%
@@ -146,10 +146,8 @@ npn_get_phenophases_for_taxon <- function(family_ids = NULL,
   req <- base_req %>%
     httr2::req_url_path_append('phenophases/getPhenophasesForTaxon.json') %>%
     httr2::req_url_query(
-      !!!explode_query("family_id", family_ids),
-      !!!explode_query("class_id", class_ids),
-      !!!explode_query("order_id", order_ids),
-      !!!explode_query("genus_id", genus_ids),
+      !!!explode_query("family_id", family_ids),!!!explode_query("class_id", class_ids),
+      !!!explode_query("order_id", order_ids),!!!explode_query("genus_id", genus_ids),
       date = date,
       return_all = return_all
     )

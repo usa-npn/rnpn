@@ -15,12 +15,11 @@
 #' npn_lookup_names(name='bird', type='common_name', fuzzy=TRUE)
 #' }
 npn_lookup_names <- function(name, type = 'genus', fuzzy = FALSE) {
-
-  if(is.null(pkg.env$species_list)){
-    assign("species_list",npn_species(),envir = pkg.env)
+  if (is.null(pkg.env$species_list)) {
+    assign("species_list", npn_species(), envir = pkg.env)
   }
 
-  type <- match.arg(type, choices = c('common_name','genus','species'))
+  type <- match.arg(type, choices = c('common_name', 'genus', 'species'))
 
   if (fuzzy) {
     pkg.env$species_list[agrep(name, pkg.env$species_list[, type]), ]

@@ -32,9 +32,11 @@ npn_species <- function(...) {
 npn_species_id <- function(ids, ...) {
   req <- base_req %>%
     httr2::req_url_path_append('species/getSpeciesById.json')
-  reqs <- lapply(ids, function(z) httr2::req_url_query(req, species_id = z))
+  reqs <- lapply(ids, function(z)
+    httr2::req_url_query(req, species_id = z))
   resps <- httr2::req_perform_sequential(reqs)
-  out <- lapply(resps, function(x) httr2::resp_body_json(x, simplifyVector = TRUE) %>% tibble::as_tibble())
+  out <- lapply(resps, function(x)
+    httr2::resp_body_json(x, simplifyVector = TRUE) %>% tibble::as_tibble())
 
   #return
   dplyr::bind_rows(out)
@@ -108,8 +110,7 @@ npn_species_search <- function(network = NULL,
     httr2::req_url_query(
       network = network,
       start_date = start_date,
-      end_date = end_date,
-      !!!explode_query("station_id", station_id)
+      end_date = end_date,!!!explode_query("station_id", station_id)
     )
   resp <- httr2::req_perform(req)
   out <- httr2::resp_body_json(resp, simplifyVector = TRUE)
@@ -150,7 +151,8 @@ npn_species_types <- function(kingdom = "Plantae", ...) {
   } else {
     resps <- httr2::req_perform_sequential(list(req_plant, req_animal))
     out <-
-      lapply(resps, function(x) httr2::resp_body_json(x, simplifyVector = TRUE)) %>%
+      lapply(resps, function(x)
+        httr2::resp_body_json(x, simplifyVector = TRUE)) %>%
       dplyr::bind_rows()
     #TODO add a column for `kingdom`?
     return(tibble::as_tibble(out))

@@ -11,16 +11,20 @@
 #' npn_stations()
 #' npn_stations('AZ')
 #' }
-npn_stations <- function(state_code=NULL, ...) {
+npn_stations <- function(state_code = NULL, ...) {
   req <-
     base_req %>%
     httr2::req_url_path_append('stations/getAllStations.json')
 
   if (!is.null(state_code)) {
     state_code <- rlang::arg_match(state_code, datasets::state.abb, multiple = TRUE)
-    reqs <- lapply(state_code, function(x) httr2::req_url_query(req, state_code = x))
+    reqs <- lapply(state_code, function(x) {
+      httr2::req_url_query(req, state_code = x)
+    })
     resps <- httr2::req_perform_sequential(reqs)
-    tt <- lapply(resps, function(x) httr2::resp_body_json(x, simplifyVector = TRUE))
+    tt <- lapply(resps, function(x) {
+      httr2::resp_body_json(x, simplifyVector = TRUE)
+    })
     out <- dplyr::bind_rows(tt)
   } else {
     resp <- httr2::req_perform(req)
