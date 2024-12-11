@@ -572,48 +572,52 @@ npn_get_custom_agdd_raster <- function(method,
                                        base_temp,
                                        upper_threshold = NULL) {
   rlang::check_installed("terra")
-  base_url <- ""
   climate_data_source <- toupper(climate_data_source)
   temp_unit <- tolower(temp_unit)
   method <- tolower(method)
-  ras <- NULL
+
+  req <- base_req %>%
+    httr2::req_url_path("geo-services", "v1", "agdd", method, "map") %>%
+    httr2::req_progress(type = "down") %>%
+    httr2::req_url_query(
+      climateProvider = climate_data_source,
+      temperatureUnit = temp_unit,
+      startDate = start_date,
+      endDate = end_date
+    )
 
   if (method == "simple") {
-    base_url <- paste0(base_data_domain(), "geo-services/v1/agdd/simple/map?")
+    req <- req %>%
+      httr2::req_url_query(
+        base = base_temp
+      )
   } else {
-    base_url <- paste0(base_data_domain(),
-                       "geo-services/v1/agdd/double-sine/map?")
+    req <- req %>%
+      httr2::req_url_query(
+        lowerThreshold = base_temp,
+        upperTheshold = upper_theshold
+      )
   }
 
-  url <- paste0(base_url, "climateProvider=", climate_data_source)
-  url <- paste0(url, "&temperatureUnit=", temp_unit)
-  url <- paste0(url, "&startDate=", start_date)
-  url <- paste0(url, "&endDate=", end_date)
-
-  if (method == "simple") {
-    url <- paste0(url, "&base=", base_temp)
-  } else {
-    url <- paste0(url, "&lowerThreshold=", base_temp)
-    if (!is.null(upper_threshold)) {
-      url <- paste0(url, "&upperThreshold=", upper_threshold)
-    }
-  }
-
-  tryCatch({
-    data <- httr::GET(url, query = list(), httr::progress())
+  tryCatch({ #TODO handle errors with httr2 instead
+    resp <- httr2::req_perform(req) #TODO progress bar doesn't work?
   }, error = function(msg) {
     message("Data service is currently unavailable, please try again later.")
     return(NULL)
   })
 
-  mapURL <- jsonlite::fromJSON(httr::content(data, as = "text"))$mapUrl
+  mapURL <-
+    httr2::resp_body_json(resp)$mapUrl
 
   if (!is.null(mapURL)) {
     z <- tempfile()
-    h <- function(w)
-      if (any(grepl("Discarded datum", w)))
+    h <- function(w) {
+      if (any(grepl("Discarded datum", w))) {
         invokeRestart("muffleWarning")
+      }
+    }
     download.file(mapURL, z, method = "libcurl", mode = "wb")
+    #TODO why the calling handler?
     ras <- withCallingHandlers(terra::rast(z), warning = h)
   }
   return(ras)
