@@ -617,7 +617,7 @@ npn_get_custom_agdd_raster <- function(method,
       }
     }
     download.file(mapURL, z, method = "libcurl", mode = "wb")
-    #TODO why the calling handler?
+    #TODO why the calling handler? might be a holdover from raster::raster().  Investigate and simplify if possible.
     ras <- withCallingHandlers(terra::rast(z), warning = h)
   }
   return(ras)
