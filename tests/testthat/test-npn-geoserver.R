@@ -92,7 +92,11 @@ test_that("npn_get_point_data functions", {
   expect_equal(value, 83)
 
   #No data in Canada
-  expect_error(npn_get_point_data("si-x:average_leaf_prism", 60.916600, -123.037793, "1990-01-01"))
+  expect_error(
+    vcr::use_cassette("npn_get_point_data_3", {
+      npn_get_point_data("si-x:average_leaf_prism", 60.916600, -123.037793, "1990-01-01")
+    })
+  )
 })
 
 
@@ -139,6 +143,7 @@ test_that("npn_get_agdd_point_data works",{
 
 test_that("npn_get_custom_agdd_raster works", {
   skip_on_cran()
+  skip_if(get_skip_long_tests())
   # skip_if_not(check_data_service(), "Data Service is down")
 
   res <- npn_get_custom_agdd_raster(
