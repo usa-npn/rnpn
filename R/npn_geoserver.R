@@ -98,11 +98,6 @@ npn_download_geospatial <- function (coverage_id,
                                      date,
                                      format = "geotiff",
                                      output_path = NULL) {
-  if (is.null(output_path)) {
-    z <- tempfile()
-    ## can't clean this up with on.exit() because returned SpatRaster will be broken due to missing file.  Could force spatraster into memory by adding 0
-    # on.exit(unlink(z), add = TRUE)
-  }
 
   #logic to handle `date` being possibly a date or possible an integer DOY
   if (!is.null(date) && toString(date) != "") {
@@ -129,8 +124,10 @@ npn_download_geospatial <- function (coverage_id,
   tryCatch({
     if (is.null(output_path)) {
       rlang::check_installed("terra", reason = "when `output_path` is `NULL`")
+      z <- tempfile()
       resp <- httr2::req_perform(req, path = z)
       ras <- terra::rast(z)
+      return(ras)
     } else {
       resp <- httr2::req_perform(req, path = output_path)
       #TODO return output_path?
