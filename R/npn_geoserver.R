@@ -9,10 +9,10 @@
 #' dimension range for specifying specific date values from the layer.
 #'
 #' Information about the layers can also be viewed at the getCapbilities page
-#' directly: https://geoserver.usanpn.org/geoserver/wms?request=GetCapabilities
+#' directly: <https://geoserver.usanpn.org/geoserver/wms?request=GetCapabilities>
 #'
 #'
-#' @return A tibble containing all layer details as specified in function
+#' @returns A tibble containing all layer details as specified in function
 #'   description.
 #' @export
 #' @examples \dontrun{
@@ -23,11 +23,9 @@ npn_get_layer_details <- function() {
   tryCatch({
     req <- base_req_geoserver %>%
       httr2::req_url_path_append("ows") %>%
-      httr2::req_url_query(
-        service = "wms",
-        version = "1.3.0",
-        request = "GetCapabilities"
-      )
+      httr2::req_url_query(service = "wms",
+                           version = "1.3.0",
+                           request = "GetCapabilities")
     resp <- httr2::req_perform(req)
     out <- httr2::resp_body_xml(resp, encoding = "UTF-8")
 
@@ -50,11 +48,9 @@ npn_get_layer_details <- function() {
     abstract.vector <- unnest_layer(layers, "Abstract")
     dimension.range.vector <- unnest_layer(layers, "Dimension")
 
-    dimension.name.vector <- unlist(
-      lapply(layers, function(x) {
-        attr(x[["Dimension"]], "name") %|||% NA_character_
-      })
-    )
+    dimension.name.vector <- unlist(lapply(layers, function(x) {
+      attr(x[["Dimension"]], "name") %|||% NA_character_
+    }))
 
     out <- tibble::tibble(
       name = name.vector,
@@ -64,8 +60,7 @@ npn_get_layer_details <- function() {
       dimension.range = dimension.range.vector
     )
     return(out)
-  },
-  error = function(msg) {
+  }, error = function(msg) {
     message("Geodata service not available. Please try again later")
     NULL
   })
@@ -77,113 +72,124 @@ npn_get_layer_details <- function() {
 #' the NPN Geospatial web services.
 #'
 #' Information about the layers can also be viewed at the getCapbilities page
-#' directly: https://geoserver.usanpn.org/geoserver/wms?request=GetCapabilities
+#' directly: <https://geoserver.usanpn.org/geoserver/wms?request=GetCapabilities>
 #'
 #' @param coverage_id The coverage id (machine name) of the layer for which to
 #'   retrieve. Applicable values can be found via the [npn_get_layer_details()]
-#'   function under the 'name' column.
+#'   function under the `name` column.
 #' @param date Specify the date param for the layer retrieved. This can be a
 #'   calendar date formatted YYYY-mm-dd or it could be a string integer
 #'   representing day of year. It can also be `NULL` in some cases. Which to use
 #'   depends entirely on the layer being requested. More information available
 #'   from the [npn_get_layer_details()] function.
 #' @param format The output format of the raster layer retrieved. Defaults to
-#'   GeoTIFF.
+#'   `"GeoTIFF"`.
 #' @param output_path Optional value. When set, the raster will be piped to the
-#'   file path specified. When left unset, this function will return a raster
-#'   object.
-#' @returns returns nothing when `output_path` is set, otherwise a `terra`
-#'   `SpatRaster` object meeting the `coverage_id`, `date` and `format`
+#'   file path specified. When left unset, this function will return a
+#'   [terra::SpatRaster] object.
+#' @returns returns nothing when `output_path` is set, otherwise a
+#'   [terra::SpatRaster] object meeting the `coverage_id`, `date` and `format`
 #'   parameters specified.
 #' @examples \dontrun{
 #' ras <- npn_download_geospatial("si-x:30yr_avg_six_bloom", "255")
 #' }
 #' @export
-npn_download_geospatial <- function (
-  coverage_id,
-  date,
-  format = "geotiff",
-  output_path = NULL
-) {
-  if(is.null(output_path)){
+npn_download_geospatial <- function (coverage_id,
+                                     date,
+                                     format = "geotiff",
+                                     output_path = NULL) {
+  if (is.null(output_path)) {
     z <- tempfile()
     # can't clean this up because returned SpatRaster will be broken due to missing file
     # on.exit(unlink(z), add = TRUE)
   }
-
   s <- "&"
-  if(!is.null(date) && toString(date) != ""){
+  if (!is.null(date) && toString(date) != "") {
     param <- tryCatch({
       as.Date(date)
-      paste0(s,"SUBSET=time(\"",date,"T00:00:00.000Z\")")
-    },error=function(msg){
-      paste0(s,"SUBSET=elevation(",date,")")
+      paste0(s, "SUBSET=time(\"", date, "T00:00:00.000Z\")")
+    }, error = function(msg) {
+      paste0(s, "SUBSET=elevation(", date, ")")
     })
-  }else{
+  } else {
     param <- ""
   }
 
-
-  url <- paste0(base_geoserver(), "format=", format , "&coverageId=",coverage_id,param)
+  url <- paste0(base_geoserver(),
+                "format=",
+                format ,
+                "&coverageId=",
+                coverage_id,
+                param)
   tryCatch({
-    if(is.null(output_path)){
+    if (is.null(output_path)) {
       rlang::check_installed("terra", reason = "when `output_path` is `NULL`")
-
-      download.file(url,z,method="libcurl", mode="wb")
-
+      download.file(url, z, method = "libcurl", mode = "wb")
       ras <- terra::rast(z)
-
-
-    }else{
-      download.file(url,destfile=output_path,method="libcurl", mode="wb")
+    } else {
+      download.file(url,
+                    destfile = output_path,
+                    method = "libcurl",
+                    mode = "wb")
     }
-  },error=function(msg){
-    message("There was an issue downloading data from the Geoservice. It's possible the server is temporarily down. Please try again later.")
+  }, error = function(msg) {
+    message(
+      "There was an issue downloading data from the Geoservice. It's possible the server is temporarily down. Please try again later."
+    )
   })
-
 }
-
-
-
 
 
 #' Get AGDD Point Value
 #'
-#' This function is for requesting AGDD point values. Because the NPN has a separate
-#' data service that can provide AGDD values which is more accurate than Geoserver
-#' this function is ideal when requested AGDD point values.
+#' This function is for requesting AGDD point values. Because the NPN has a
+#' separate data service that can provide AGDD values which is more accurate
+#' than Geoserver this function is ideal when requested AGDD point values.
 #'
-#' As this function only works for AGDD point values, if it's necessary to retrieve point values
-#' for other layers please try the npn_get_point_data function.
+#' As this function only works for AGDD point values, if it's necessary to
+#' retrieve point values for other layers please try the [npn_get_point_data()]
+#' function.
 #'
 #' @param layer The name of the queried layer.
 #' @param lat The latitude of the queried point.
 #' @param long The longitude of the queried point.
 #' @param date The queried date.
-#' @param store_data Boolean value. If set TRUE then the value retrieved will be stored in a global variable named point_values for
-#' later use
-#' @return Returns a numeric value of the AGDD value at the specified lat/long/date. If no value can be retrieved, then -9999 is returned.
+#' @param store_data Boolean value. If set `TRUE` then the value retrieved will
+#'   be stored in a global variable named `point_values` for later use.
+#' @returns Returns a numeric value of the AGDD value at the specified
+#'   lat/long/date. If no value can be retrieved, then `-9999` is returned.
 #' @export
 npn_get_agdd_point_data <- function(
-  layer,
-  lat,
-  long,
-  date,
-  store_data=TRUE){
-
+    layer,
+    lat,
+    long,
+    date,
+    store_data = TRUE) {
   # If we already have this value stored in global memory then
   # pull it from there.
-  cached_value <- npn_check_point_cached(layer,lat,long,date)
-  if(!is.null(cached_value)){
+  cached_value <- npn_check_point_cached(layer, lat, long, date)
+  if (!is.null(cached_value)) {
     return(cached_value)
   }
   tryCatch({
-    url <- paste0(base(), "stations/getTimeSeries.json?latitude=", lat, "&longitude=", long, "&start_date=", as.Date(date) - 1, "&end_date=", date, "&layer=", layer)
-    data = httr::GET(url,
-                     query = list(),
-                     httr::progress())
-  },error=function(msg){
-    message("Unable to download AGDD data. The service is temporarily down, please try again later.")
+    url <- paste0(
+      base(),
+      "stations/getTimeSeries.json?latitude=",
+      lat,
+      "&longitude=",
+      long,
+      "&start_date=",
+      as.Date(date) - 1,
+      "&end_date=",
+      date,
+      "&layer=",
+      layer
+    )
+    data <- httr::GET(url, query = list(), httr::progress())
+  }, error = function(msg) {
+    message(
+      "Unable to download AGDD data. The service is temporarily down, please try again later."
+    )
     return(NULL)
   })
 
@@ -191,7 +197,7 @@ npn_get_agdd_point_data <- function(
   # just return the -9999 value.
   json_data <- tryCatch({
     jsonlite::fromJSON(httr::content(data, as = "text"))
-  },error=function(msg){
+  }, error = function(msg) {
     message("Unable to parse server response. Please try again later.")
     return(-9999)
   })
@@ -199,8 +205,8 @@ npn_get_agdd_point_data <- function(
   # If the server returns an unexpected value, also return
   # -9999.
   v <- tryCatch({
-    as.numeric(json_data[json_data$date==date,"point_value"])
-  },error=function(msg){
+    as.numeric(json_data[json_data$date == date, "point_value"])
+  }, error = function(msg) {
     message("Unable to parse server response. Please try again later.")
     return(-9999)
   })
@@ -209,16 +215,29 @@ npn_get_agdd_point_data <- function(
   # data point more than once.
   #
   # TODO: Break this into it's own function
-  if(store_data){
-    if(is.null(pkg.env$point_values)){
-      pkg.env$point_values <- data.frame(layer=layer,lat=lat,long=long,date=date,value=v)
-    }else{
-      pkg.env$point_values <- rbind(pkg.env$point_values, data.frame(layer=layer,lat=lat,long=long,date=date,value=v))
+  if (store_data) {
+    if (is.null(pkg.env$point_values)) {
+      pkg.env$point_values <- data.frame(
+        layer = layer,
+        lat = lat,
+        long = long,
+        date = date,
+        value = v
+      )
+    } else {
+      pkg.env$point_values <- rbind(
+        pkg.env$point_values,
+        data.frame(
+          layer = layer,
+          lat = lat,
+          long = long,
+          date = date,
+          value = v
+        )
+      )
     }
   }
-
   return(v)
-
 }
 
 
@@ -237,16 +256,11 @@ npn_get_agdd_point_data <- function(
 #' @param date The date for which to get a value.
 #' @param store_data Boolean value. If set `TRUE` then the value retrieved will
 #'   be stored in a global variable named `point_values` for later use.
-#' @return Returns a numeric value for any NPN geospatial data layer at the
+#' @returns Returns a numeric value for any NPN geospatial data layer at the
 #'   specified lat/long/date. If no value can be retrieved, then `-9999` is
 #'   returned.
 #' @export
-npn_get_point_data <- function(layer,
-                               lat,
-                               long,
-                               date,
-                               store_data = TRUE) {
-
+npn_get_point_data <- function(layer, lat, long, date, store_data = TRUE) {
   #TODO cached value is data frame, not numeric
   cached_value <- npn_check_point_cached(layer, lat, long, date)
   if (!is.null(cached_value)) {
@@ -263,97 +277,107 @@ npn_get_point_data <- function(layer,
         format = "application/gml+xml",
         subset = paste0("http://www.opengis.net/def/axis/OGC/0/Long(", long, ")"),
         subset = paste0("http://www.opengis.net/def/axis/OGC/0/Lat(", lat, ")"),
-        subset = paste0("http://www.opengis.net/def/axis/OGC/0/time(\"", date, "T00:00:00.000Z\")")
+        subset = paste0(
+          "http://www.opengis.net/def/axis/OGC/0/time(\"",
+          date,
+          "T00:00:00.000Z\")"
+        )
       ) %>%
       httr2::req_progress("down")
     httr2::req_perform(req)
-  },
-  error = function(msg) {
+  }, error = function(msg) {
     message("Geoserver is temporarily unavailable. Please try again later.")
     return(NULL)
   })
   #Download the data as XML and store it as an XML doc
   out <- httr2::resp_body_xml(resp)
   l <-
-    xml2::xml_find_all(
-      out,
-      "//gml:RectifiedGridCoverage/gml:rangeSet/gml:DataBlock/tupleList"
-    ) %>% xml2::as_list()
+    xml2::xml_find_all(out,
+                       "//gml:RectifiedGridCoverage/gml:rangeSet/gml:DataBlock/tupleList") %>% xml2::as_list()
 
   v <- as.numeric(unlist(l))
 
   if (store_data) {
     if (!is.null(pkg.env$point_values)) {
       pkg.env$point_values <-
-        data.frame(layer = layer, lat = lat, long = long, date = date, value = v)
+        data.frame(
+          layer = layer,
+          lat = lat,
+          long = long,
+          date = date,
+          value = v
+        )
     } else {
       pkg.env$point_values <-
-        rbind(
-          pkg.env$point_values,
-          data.frame(layer = layer, lat = lat, long = long, date = date, value = v)
-        )
+        rbind(pkg.env$point_values,
+              data.frame(
+                layer = layer,
+                lat = lat,
+                long = long,
+                date = date,
+                value = v
+              ))
     }
   }
-
   return(v)
 }
 
 
 #' Resolve SIX Raster
 #'
-#' Utility function used to resolve the appropriate SI-x layer to use
-#' based on the year being retrieved, the phenophase and sub-model being
-#' requested.
+#' Utility function used to resolve the appropriate SI-x layer to use based on
+#' the year being retrieved, the phenophase and sub-model being requested.
 #'
-#' If the year being requested is more than two years older than the current year
-#' then use the prism based layers rather than the NCEP based layers.
-#' This is because the PRISM data is not available in whole until midway through
-#' the year after it was initially recorded. Hence, the 'safest' approach is to only
-#' refer to the PRISM data when we knows for sure it's available in full, i.e. two years
-#' prior.
+#' If the year being requested is more than two years older than the current
+#' year then use the prism based layers rather than the NCEP based layers. This
+#' is because the PRISM data is not available in whole until midway through the
+#' year after it was initially recorded. Hence, the 'safest' approach is to only
+#' refer to the PRISM data when we knows for sure it's available in full, i.e.
+#' two years prior.
 #'
-#' Sub-model and phenophase on the other hand are appended to the name of the layer
-#' to request, no special logic is present in making the decision which layer to retrieve
-#' based on those parameters.
+#' Sub-model and phenophase on the other hand are appended to the name of the
+#' layer to request, no special logic is present in making the decision which
+#' layer to retrieve based on those parameters.
 #'
 #' @param year String representation of the year being requested.
-#' @param phenophase The SI-x phenophase being requested, 'leaf' or 'bloom'; defaults to 'leaf'.
-#' @param sub_model The SI-x sub model to use. Defaults to NULL (no sub-model).
-#' @return Returns a raster object of the appropriate SI-x layer.
+#' @param phenophase The SI-x phenophase being requested, `'leaf'` or `'bloom'`;
+#'   defaults to `'leaf'`.
+#' @param sub_model The SI-x sub model to use. Defaults to `NULL` (no
+#'   sub-model).
+#' @returns Returns a [terra::SpatRaster] object of the appropriate SI-x layer.
 #' @keywords internal
-resolve_six_raster <- function(
-  year,
-  phenophase = "leaf",
-  sub_model = NULL
-){
+resolve_six_raster <- function(year,
+                               phenophase = "leaf",
+                               sub_model = NULL) {
   current_year <- as.numeric(format(Sys.Date(), '%Y'))
   num_year <- as.numeric(year)
   src <- NULL
   date <- NULL
 
-  if(num_year < current_year - 1){
+  if (num_year < current_year - 1) {
     src <- "prism"
-    date <- paste0(year,"-01-01")
-  }else{
+    date <- paste0(year, "-01-01")
+  } else {
     src <- "ncep"
-    if(num_year != current_year){
-      date <- paste0(year,"-12-29")
-    }else{
+    if (num_year != current_year) {
+      date <- paste0(year, "-12-29")
+    } else {
       date <- Sys.Date()
     }
   }
 
-  if(is.null(sub_model)){
+  if (is.null(sub_model)) {
     sub_model = "average"
   }
 
-  if(is.null(phenophase) || (phenophase != 'leaf'  && phenophase != 'bloom')){
+  if (is.null(phenophase) ||
+      (phenophase != 'leaf'  && phenophase != 'bloom')) {
     phenophase = 'leaf'
   }
 
   layer_name = paste0("si-x:", sub_model, "_", phenophase, "_", src)
 
-  raster <- npn_download_geospatial(layer_name, date,"tiff")
+  raster <- npn_download_geospatial(layer_name, date, "tiff")
 }
 
 #' Merge Geo Data
@@ -362,63 +386,58 @@ resolve_six_raster <- function(
 #' data values. This will take a data frame and append a new column to it.
 #' @param ras Raster containing geospatial data
 #' @param col_label The name of the column to append to the data frame
-#' @param df The data frame which to append the new column of geospatial point values. For
-#' this function to work, df must contain two columns: "longitude", and "latitude"
-#' @return The data frame, now appended with a new column for geospatial data numeric values.
+#' @param df The data frame which to append the new column of geospatial point
+#'   values. For this function to work, `df` must contain two columns:
+#'   `longitude`, and `latitude`.
+#' @returns The data frame, now appended with a new column for geospatial data
+#'   numeric values.
 #' @keywords internal
-npn_merge_geo_data <- function(
-  ras,
-  col_label,
-  df
-){
+npn_merge_geo_data <- function(ras, col_label, df) {
   rlang::check_installed("terra")
-
   # Convert the lat/long coordinates, presumed present in the input data frame
   # into coordinate objects
-  coords <- data.frame(lon = df[ , "longitude"], lat = df[ , "latitude"])
+  coords <- data.frame(lon = df[, "longitude"], lat = df[, "latitude"])
 
   # Use the raster library's extract function to pull out the relevant
   # geospatial values, then add them to the the data frame as a new column.
   values <- terra::extract(x = ras, y = coords, ID = FALSE)
   names(values) <- col_label
   out <- dplyr::bind_cols(df, values)
-
   return(out)
 }
 
 
-resolve_agdd_raster <- function(
-  agdd_layer
-){
-
-  if(!is.null(agdd_layer)){
-    if(agdd_layer == 32){
+resolve_agdd_raster <- function(agdd_layer) {
+  if (!is.null(agdd_layer)) {
+    if (agdd_layer == 32) {
       agdd_layer <- "gdd:agdd"
-    }else if(agdd_layer == 50){
+    } else if (agdd_layer == 50) {
       agdd_layer <- "gdd:agdd_50f"
     }
-  }
-
+  } #TODO explicitly return something
 }
 
 
 #' Check Point Cached
 #'
-#' Checks in the global variable "point values" to see if the exact data point being requested
-#' has already been asked for and returns the value if it's already saved.
+#' Checks in the global variable "point values" to see if the exact data point
+#' being requested has already been asked for and returns the value if it's
+#' already saved.
 #' @param layer The name of the queried layer.
 #' @param lat The latitude of the queried point.
 #' @param long The longitude of the queried point.
 #' @param date The queried date.
-#' @return The numeric value of the cell located at the specified coordinates and date if the value has been queried, otherwise NULL.
+#' @returns The numeric value of the cell located at the specified coordinates
+#'   and date if the value has been queried, otherwise `NULL`.
 #' @keywords internal
-npn_check_point_cached <- function(
-  layer,lat,long,date
-){
+npn_check_point_cached <- function(layer, lat, long, date) {
   val = NULL
-  if(!is.null(pkg.env$point_values)){
-    val <- pkg.env$point_values[pkg.env$point_values$layer == layer & pkg.env$point_values$lat == lat & pkg.env$point_values$long == long & pkg.env$point_values$date == date,]['value']
-    if(!is.null(val) && nrow(val) == 0){
+  if (!is.null(pkg.env$point_values)) {
+    val <- pkg.env$point_values[pkg.env$point_values$layer == layer &
+                                  pkg.env$point_values$lat == lat &
+                                  pkg.env$point_values$long == long &
+                                  pkg.env$point_values$date == date, ]['value']
+    if (!is.null(val) && nrow(val) == 0) {
       val <- NULL
     }
   }
@@ -428,137 +447,130 @@ npn_check_point_cached <- function(
 
 #' Get Additional Layers
 #'
-#' Utility function to easily take arbitrary layer name parameters as a data frame and
-#' return the raster data from NPN Geospatial data services.
-#' @param data Data frame with first column named 'name' and containing the names of the layer for which to retrieve data and the second column
-#' named 'param' and containing string representations of the time/elevation subset parameter to pass.
-#' @return Returns a data frame containing the raster objects related to the specified layers.
+#' Utility function to easily take arbitrary layer name parameters as a data
+#' frame and return the raster data from NPN Geospatial data services.
+#' @param data Data frame with first column named `name` and containing the
+#'   names of the layer for which to retrieve data and the second column named
+#'   `param` and containing string representations of the time/elevation subset
+#'   parameter to pass.
+#' @returns Returns a data frame containing the raster objects related to the
+#'   specified layers.
 #' @keywords internal
-get_additional_rasters <- function(data){
-
-
-
-  rasters <- apply(data,1,function(df){
-    npn_download_geospatial(df['name'],df['param'])
+get_additional_rasters <- function(data) {
+  rasters <- apply(data, 1, function(df) {
+    npn_download_geospatial(df['name'], df['param'])
   })
 }
 
 
-
-
 #' Get Custom AGDD Time Series
 #'
-#' This function takes a series of variables used in calculating AGDD and returns an AGDD time series,
-#' based on start and end date, for a given location in the continental US.
-#' This function leverages the USA-NPN geo web services
+#' This function takes a series of variables used in calculating AGDD and
+#' returns an AGDD time series, based on start and end date, for a given
+#' location in the continental US. This function leverages the USA-NPN geo web
+#' services
 #'
-#' @param method Takes "simple" or "double-sine" as input. This is the AGDD calculation method to use for each
-#' data point. Simple refers to simple averaging.
-#' @param start_date Date at which to begin the AGDD calculations
-#' @param end_date Date at which to end the AGDD calculations
-#' @param base_temp This is the lowest temperature for each day  for it to be considered in the calculation.
-#' @param upper_threshold This parameter is only applicable for the double-sine method. This sets the highest temperature
-#' to be considered in any given day's AGDD calculation
-#' @param climate_data_source Specified the climate data set to use. Takes either "PRISM" or "NCEP" as input.
-#' @param temp_unit The unit of temperature to use in the calculation. Takes either "Fahrenheit" or "Celsius" as input.
-#' @param lat The latitude of the location for which to calculate the time series
-#' @param long The longitude of the location for which to calculate the time series
-#' @return A data frame containing the numeric AGDD values for each day for the specified time period/location/method/base temp/data source.
+#' @param method Takes `"simple"` or `"double-sine"` as input. This is the AGDD
+#'   calculation method to use for each data point. Simple refers to simple
+#'   averaging.
+#' @param start_date Date at which to begin the AGDD calculations.
+#' @param end_date Date at which to end the AGDD calculations.
+#' @param base_temp This is the lowest temperature for each day for it to be
+#'   considered in the calculation.
+#' @param upper_threshold This parameter is only applicable for the double-sine
+#'   method. This sets the highest temperature to be considered in any given
+#'   day's AGDD calculation.
+#' @param climate_data_source Specified the climate data set to use. Takes
+#'   either `"PRISM"` or `"NCEP"` as input.
+#' @param temp_unit The unit of temperature to use in the calculation. Takes
+#'   either `"Fahrenheit"` or `"Celsius"` as input.
+#' @param lat The latitude of the location for which to calculate the time
+#'   series.
+#' @param long The longitude of the location for which to calculate the time
+#'   series.
+#' @returns A data frame containing the numeric AGDD values for each day for the
+#'   specified time period/location/method/base temp/data source.
 #'
 #' @export
-npn_get_custom_agdd_time_series <- function(
-  method,
-  start_date,
-  end_date,
-  base_temp,
-  climate_data_source,
-  temp_unit,
-  lat,
-  long,
-  upper_threshold=NULL
-){
-
+npn_get_custom_agdd_time_series <- function(method,
+                                            start_date,
+                                            end_date,
+                                            base_temp,
+                                            climate_data_source,
+                                            temp_unit,
+                                            lat,
+                                            long,
+                                            upper_threshold = NULL) {
   base_url <- ""
   climate_data_source <- toupper(climate_data_source)
   temp_unit <- tolower(temp_unit)
   method <- tolower(method)
 
-  if(method == "simple"){
-    base_url <- paste0(base_data_domain(), "geo-services/v1/agdd/simple/pointTimeSeries?")
-  }else{
-    base_url <- paste0(base_data_domain(), "geo-services/v1/agdd/double-sine/pointTimeSeries?")
+  if (method == "simple") {
+    base_url <- paste0(base_data_domain(),
+                       "geo-services/v1/agdd/simple/pointTimeSeries?")
+  } else {
+    base_url <- paste0(base_data_domain(),
+                       "geo-services/v1/agdd/double-sine/pointTimeSeries?")
   }
 
   url <- paste0(base_url, "climateProvider=", climate_data_source)
-
-  url <- paste0(url,"&temperatureUnit=",temp_unit)
-
-  url <- paste0(url,"&startDate=",start_date)
-
-  url <- paste0(url,"&endDate=",end_date)
-
-  url <- paste0(url, "&latitude=",lat)
-
+  url <- paste0(url, "&temperatureUnit=", temp_unit)
+  url <- paste0(url, "&startDate=", start_date)
+  url <- paste0(url, "&endDate=", end_date)
+  url <- paste0(url, "&latitude=", lat)
   url <- paste0(url, "&longitude=", long)
 
-  if(method == "simple"){
+  if (method == "simple") {
+    url <- paste0(url, "&base=", base_temp)
 
-    url <- paste0(url,"&base=",base_temp)
-
-  }else{
-
-    url <- paste0(url, "&lowerThreshold=",base_temp)
-    if(!is.null(upper_threshold)){
-
+  } else {
+    url <- paste0(url, "&lowerThreshold=", base_temp)
+    if (!is.null(upper_threshold)) {
       url <- paste0(url, "&upperThreshold=", upper_threshold)
-
     }
-
   }
 
   tryCatch({
-    data = httr::GET(url,
-                     query = list(),
-                     httr::progress())
-  },error=function(msg){
+    data = httr::GET(url, query = list(), httr::progress())
+  }, error = function(msg) {
     message("Service is temporarily unavailable. Please try again later.")
     return(NULL)
   })
 
-
   return(jsonlite::fromJSON(httr::content(data, as = "text"))$timeSeries)
-
-
-
 }
 
 #' Get Custom AGDD Raster Map
 #'
-#' This function takes a series of variables used in calculating AGDD and returns
-#' a raster of the continental USA with each pixel representing the calculated AGDD value
-#' based on start and end date.
-#' This function leverages the USA-NPN geo web services.
-
-#' @param method Takes "simple" or "double-sine" as input. This is the AGDD calculation method to use for each
-#' data point. Simple refers to simple averaging.
+#' This function takes a series of variables used in calculating AGDD and
+#' returns a raster of the continental USA with each pixel representing the
+#' calculated AGDD value based on start and end date. This function leverages
+#' the USA-NPN geo web services.
+#' @param method Takes `"simple"` or `"double-sine"` as input. This is the AGDD
+#'   calculation method to use for each data point. Simple refers to simple
+#'   averaging.
 #' @param start_date Date at which to begin the AGDD calculations.
 #' @param end_date Date at which to end the AGDD calculations.
-#' @param base_temp This is the lowest temperature for each day  for it to be considered in the calculation.
-#' @param upper_threshold This parameter is only applicable for the double-sine method. This sets the highest temperature
-#' to be considered in any given day's AGDD calculation.
-#' @param climate_data_source Specified the climate data set to use. Takes either "PRISM" or "NCEP" as input.
-#' @param temp_unit The unit of temperature to use in the calculation. Takes either "Fahrenheit" or "Celsius" as input.
-#' @return A raster object of each calculated AGDD numeric values based on specified time period/method/base temp/data source.
+#' @param base_temp This is the lowest temperature for each day  for it to be
+#'   considered in the calculation.
+#' @param upper_threshold This parameter is only applicable for the double-sine
+#'   method. This sets the highest temperature to be considered in any given
+#'   day's AGDD calculation.
+#' @param climate_data_source Specified the climate data set to use. Takes
+#'   either `"PRISM"` or `"NCEP"` as input.
+#' @param temp_unit The unit of temperature to use in the calculation. Takes
+#'   either `"Fahrenheit"` or `"Celsius"` as input.
+#' @returns A [terra::SpatRaster] object of each calculated AGDD numeric values
+#'   based on specified time period/method/base temp/data source.
 #' @export
-npn_get_custom_agdd_raster <- function(
-  method,
-  climate_data_source,
-  temp_unit,
-  start_date,
-  end_date,
-  base_temp,
-  upper_threshold=NULL
-){
+npn_get_custom_agdd_raster <- function(method,
+                                       climate_data_source,
+                                       temp_unit,
+                                       start_date,
+                                       end_date,
+                                       base_temp,
+                                       upper_threshold = NULL) {
   rlang::check_installed("terra")
   base_url <- ""
   climate_data_source <- toupper(climate_data_source)
@@ -566,61 +578,43 @@ npn_get_custom_agdd_raster <- function(
   method <- tolower(method)
   ras <- NULL
 
-  if(method == "simple"){
-    base_url <- paste0(base_data_domain(),"geo-services/v1/agdd/simple/map?")
-  }else{
-    base_url <- paste0(base_data_domain(),"geo-services/v1/agdd/double-sine/map?")
+  if (method == "simple") {
+    base_url <- paste0(base_data_domain(), "geo-services/v1/agdd/simple/map?")
+  } else {
+    base_url <- paste0(base_data_domain(),
+                       "geo-services/v1/agdd/double-sine/map?")
   }
 
-
   url <- paste0(base_url, "climateProvider=", climate_data_source)
+  url <- paste0(url, "&temperatureUnit=", temp_unit)
+  url <- paste0(url, "&startDate=", start_date)
+  url <- paste0(url, "&endDate=", end_date)
 
-  url <- paste0(url,"&temperatureUnit=",temp_unit)
-
-  url <- paste0(url,"&startDate=",start_date)
-
-  url <- paste0(url,"&endDate=",end_date)
-
-  if(method == "simple"){
-
-    url <- paste0(url,"&base=",base_temp)
-
-  }else{
-
-    url <- paste0(url, "&lowerThreshold=",base_temp)
-
-    if(!is.null(upper_threshold)){
-
+  if (method == "simple") {
+    url <- paste0(url, "&base=", base_temp)
+  } else {
+    url <- paste0(url, "&lowerThreshold=", base_temp)
+    if (!is.null(upper_threshold)) {
       url <- paste0(url, "&upperThreshold=", upper_threshold)
-
     }
-
   }
 
   tryCatch({
-    data = httr::GET(url,
-                     query = list(),
-                     httr::progress())
-  },error=function(msg){
+    data <- httr::GET(url, query = list(), httr::progress())
+  }, error = function(msg) {
     message("Data service is currently unavailable, please try again later.")
     return(NULL)
   })
 
   mapURL <- jsonlite::fromJSON(httr::content(data, as = "text"))$mapUrl
 
-  if(!is.null(mapURL)){
+  if (!is.null(mapURL)) {
     z <- tempfile()
-    h <- function(w) if( any( grepl( "Discarded datum", w) ) ) invokeRestart( "muffleWarning" )
-    download.file(mapURL,z,method="libcurl", mode="wb")
-    ras <- withCallingHandlers( terra::rast(z), warning = h )
+    h <- function(w)
+      if (any(grepl("Discarded datum", w)))
+        invokeRestart("muffleWarning")
+    download.file(mapURL, z, method = "libcurl", mode = "wb")
+    ras <- withCallingHandlers(terra::rast(z), warning = h)
   }
-
   return(ras)
-
 }
-
-
-
-
-
-

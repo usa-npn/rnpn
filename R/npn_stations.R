@@ -6,22 +6,25 @@
 #' @param state_code The postal code of the US state by which to filter the
 #'   results returned. Leave empty to get all stations.
 #' @param ... Currently unused.
-#' @return A data frame with stations' latitude and longitude, names, and ids.
+#' @returns A data frame with stations' latitude and longitude, names, and ids.
 #' @examples \dontrun{
 #' npn_stations()
 #' npn_stations('AZ')
 #' }
-
-npn_stations <- function(state_code=NULL, ...) {
+npn_stations <- function(state_code = NULL, ...) {
   req <-
     base_req %>%
     httr2::req_url_path_append('stations/getAllStations.json')
 
   if (!is.null(state_code)) {
     state_code <- rlang::arg_match(state_code, datasets::state.abb, multiple = TRUE)
-    reqs <- lapply(state_code, function(x) httr2::req_url_query(req, state_code = x))
+    reqs <- lapply(state_code, function(x) {
+      httr2::req_url_query(req, state_code = x)
+    })
     resps <- httr2::req_perform_sequential(reqs)
-    tt <- lapply(resps, function(x) httr2::resp_body_json(x, simplifyVector = TRUE))
+    tt <- lapply(resps, function(x) {
+      httr2::resp_body_json(x, simplifyVector = TRUE)
+    })
     out <- dplyr::bind_rows(tt)
   } else {
     resp <- httr2::req_perform(req)
@@ -37,7 +40,7 @@ npn_stations <- function(state_code=NULL, ...) {
 #'
 #' @export
 #' @param ... Currently unused.
-#' @return A data frame listing stations by state.
+#' @returns A data frame listing stations by state.
 #' @examples \dontrun{
 #' head(npn_stations_by_state())
 #' }
@@ -60,7 +63,7 @@ npn_stations_by_state <- function(...) {
 #' @export
 #' @param wkt Required field specifying the WKT geography to use.
 #' @param ... Currently unused.
-#' @return A data frame listing stations filtered based on the WKT geography.
+#' @returns A data frame listing stations filtered based on the WKT geography.
 #' @examples \dontrun{
 #' head( npn_stations_by_state(wkt="POLYGON((
 #' -110.94484396954107 32.23623109416672,-110.96166678448247 32.23594069208043,
@@ -88,9 +91,9 @@ npn_stations_by_location <- function(wkt, ...) {
 #'
 #' @export
 #' @param speciesid Required. Species id numbers, from 1 to infinity, potentially,
-#'    use e.g., `c(52, 53, etc.)` if more than one species desired (numeric).
+#'    use e.g., `c(52, 53)` if more than one species desired (numeric).
 #' @param ... Currently unused.
-#' @return A data frame with stations' latitude and longitude, names, and ids.
+#' @returns A data frame with stations' latitude and longitude, names, and ids.
 #' @examples \dontrun{
 #' npn_stations_with_spp(speciesid = c(52,53,54))
 #' npn_stations_with_spp(speciesid = 53)

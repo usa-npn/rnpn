@@ -18,14 +18,18 @@ npn_get_data(
 \arguments{
 \item{url}{The URL of the service endpoint to request data from}
 
-\item{download_path}{String, optional file path to the file for which to output the results.}
+\item{download_path}{String, optional file path to the file for which to
+output the results.}
 
-\item{always_append}{Boolean flag. When set to true, then we always append data to the download path. This is used
-in the case of npn_get_data_by_year where we're making multiple requests to the same service and aggregating all
-data results in a single file. Without this flag, otherwise, each call to the service would truncate the output file.}
+\item{always_append}{Boolean flag. When set to \code{TRUE}, then we always append
+data to the download path. This is used in the case of
+\code{\link[=npn_get_data_by_year]{npn_get_data_by_year()}} where we're making multiple requests to the same
+service and aggregating all data results in a single file. Without this
+flag, otherwise, each call to the service would truncate the output file.}
 }
 \value{
-Data table of the requested data. NULL if a download_path was specified.
+Data table of the requested data. \code{NULL} if a \code{download_path} was
+specified.
 }
 \description{
 Generic utility function for querying data from the NPN data services.

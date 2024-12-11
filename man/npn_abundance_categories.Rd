@@ -11,7 +11,7 @@ npn_abundance_categories(...)
 }
 \value{
 A data frame listing all abundance/intensity categories and their
-  corresponding values.
+corresponding values.
 }
 \description{
 Gets data on all abundance/intensity categories and includes a data frame of

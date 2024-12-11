@@ -58,12 +58,12 @@ npn_stationswithspp <- function (...){
 #' Defunct functions in rnpn
 #'
 #' \itemize{
-#'  \item \code{\link{npn_obsspbyday}}: Removed.
-#'  \item \code{\link{npn_allobssp}}: Removed.
-#'  \item \code{\link{npn_indspatstations}}: Removed.
-#'  \item \code{\link{npn_indsatstations}}: Removed.
-#'  \item \code{\link{npn_stationsbystate}}: Removed.
-#'  \item \code{\link{npn_stationswithspp}}: Removed.
+#'  \item [npn_obsspbyday()]: Removed.
+#'  \item [npn_allobssp()]: Removed.
+#'  \item [npn_indspatstations()]: Removed.
+#'  \item [npn_indsatstations()]: Removed.
+#'  \item [npn_stationsbystate()]: Removed.
+#'  \item [npn_stationswithspp()]: Removed.
 #' }
 #'
 #' @name rnpn-defunct

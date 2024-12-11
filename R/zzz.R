@@ -10,15 +10,15 @@ pkg.env <- new.env(parent = emptyenv())
 #' endpoints to use.
 #' @param env The environment to use. Should be "ops" or "dev"
 #' @export
-npn_set_env <- function (env = "ops"){
+npn_set_env <- function (env = "ops") {
   pkg.env$remote_env <- env
 }
 
-get_test_env <- function(){
+get_test_env <- function() {
   return("dev")
 }
 
-get_skip_long_tests <- function(){
+get_skip_long_tests <- function() {
   return(TRUE)
 }
 
@@ -38,15 +38,13 @@ check_service <- function() {
   res <- NULL
   tryCatch({
     res <- httr::GET(url, query = args)
-  },
-  error=function(msg){
+  }, error = function(msg) {
     return(FALSE)
   })
 
   if (is.null(res) || res$status_code != 200) {
     return(FALSE)
   }
-
   return(TRUE)
 }
 
@@ -56,8 +54,7 @@ check_data_service <- function() {
   res <- NULL
   tryCatch({
     res <- httr::GET(url)
-  },
-  error=function(msg){
+  }, error = function(msg) {
     return(FALSE)
   })
 
@@ -76,24 +73,22 @@ check_data_service <- function() {
 #' tests should be run
 #'
 check_geo_service <- function() {
-
-  if( !is.null(pkg.env$remote_env)){
+  if (!is.null(pkg.env$remote_env)) {
     pkg.env$remote_env <- pkg.env$remote_env
-  }else{
+  } else{
     pkg.env$remote_env <- "ops"
   }
 
-  if(pkg.env$remote_env=="ops"){
+  if (pkg.env$remote_env == "ops") {
     url <- "http://geoserver.usanpn.org/geoserver/ows?service=wms&version=1.3.0&request=GetCapabilities"
-  }else{
+  } else{
     url <- "http://geoserver-dev.usanpn.org/geoserver/ows?service=wms&version=1.3.0&request=GetCapabilities"
   }
 
   res <- NULL
   tryCatch({
     res <- httr::GET(url)
-  },
-  error=function(msg){
+  }, error = function(msg) {
     return(FALSE)
   })
 
@@ -108,18 +103,17 @@ base_req_geoserver <-
   httr2::request("http://geoserver.usanpn.org/geoserver/") %>%
   httr2::req_user_agent("rnpn (https://github.com/usa-npn/rnpn/)")
 
-base <- function(){
-
-  if( !is.null(pkg.env$remote_env)){
+base <- function() {
+  if (!is.null(pkg.env$remote_env)) {
     pkg.env$remote_env <- pkg.env$remote_env
-  }else{
+  } else{
     pkg.env$remote_env <- "ops"
   }
 
-  if(pkg.env$remote_env=="ops"){
-      return('https://services.usanpn.org/npn_portal/')
-  }else{
-      return('https://services-staging.usanpn.org/npn_portal/')
+  if (pkg.env$remote_env == "ops") {
+    return('https://services.usanpn.org/npn_portal/')
+  } else{
+    return('https://services-staging.usanpn.org/npn_portal/')
   }
 }
 
@@ -128,33 +122,30 @@ base_req <-
   httr2::request(base()) |>
   httr2::req_user_agent("rnpn (https://github.com/usa-npn/rnpn/)")
 
-
-base_data_domain <- function(){
-
-  if( !is.null(pkg.env$remote_env)){
+base_data_domain <- function() {
+  if (!is.null(pkg.env$remote_env)) {
     pkg.env$remote_env <- pkg.env$remote_env
-  }else{
+  } else{
     pkg.env$remote_env <- "ops"
   }
 
-  if(pkg.env$remote_env=="ops"){
+  if (pkg.env$remote_env == "ops") {
     return('https://services.usanpn.org/')
-  }else{
+  } else{
     return('https://services-staging.usanpn.org/')
   }
 }
 
-base_geoserver <- function(){
-
-  if( !is.null(pkg.env$remote_env)){
+base_geoserver <- function() {
+  if ( !is.null(pkg.env$remote_env)) {
     pkg.env$remote_env <- pkg.env$remote_env
-  }else{
+  } else {
     pkg.env$remote_env <- "ops"
   }
 
-  if(pkg.env$remote_env=="ops"){
+  if (pkg.env$remote_env=="ops") {
     return('https://geoserver.usanpn.org/geoserver/wcs?service=WCS&version=2.0.1&request=GetCoverage&')
-  }else{
+  } else {
     return('https://geoserver-dev.usanpn.org/geoserver/wcs?service=WCS&version=2.0.1&request=GetCoverage&')
   }
 }
@@ -182,10 +173,10 @@ base_geoserver <- function(){
 
 #TODO: eventually remove this in favor of explode_query() once httr->httr2 is complete
 # Helps create URL strings for requests to NPN data services in the format variable_name[number]=Value
-npn_createArgList <- function(arg_name, arg_list){
+npn_createArgList <- function(arg_name, arg_list) {
   args <- list()
   for (i in seq_along(arg_list)) {
-    args[paste0(arg_name,'[',i,']')] <- URLencode(toString(arg_list[i]))
+    args[paste0(arg_name, '[', i, ']')] <- URLencode(toString(arg_list[i]))
   }
   return(args)
 }

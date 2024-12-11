@@ -5,11 +5,11 @@
 \title{Defunct functions in rnpn}
 \description{
 \itemize{
- \item \code{\link{npn_obsspbyday}}: Removed.
- \item \code{\link{npn_allobssp}}: Removed.
- \item \code{\link{npn_indspatstations}}: Removed.
- \item \code{\link{npn_indsatstations}}: Removed.
- \item \code{\link{npn_stationsbystate}}: Removed.
- \item \code{\link{npn_stationswithspp}}: Removed.
+\item \code{\link[=npn_obsspbyday]{npn_obsspbyday()}}: Removed.
+\item \code{\link[=npn_allobssp]{npn_allobssp()}}: Removed.
+\item \code{\link[=npn_indspatstations]{npn_indspatstations()}}: Removed.
+\item \code{\link[=npn_indsatstations]{npn_indsatstations()}}: Removed.
+\item \code{\link[=npn_stationsbystate]{npn_stationsbystate()}}: Removed.
+\item \code{\link[=npn_stationswithspp]{npn_stationswithspp()}}: Removed.
 }
 }

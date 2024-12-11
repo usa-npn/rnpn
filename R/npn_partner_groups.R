@@ -5,9 +5,10 @@
 #' results.
 #'
 #' @param use_hierarchy Boolean indicating whether or not the list of networks
-#'   should be represented in a hierarchy. Defaults to FALSE.
+#'   should be represented in a hierarchy. Defaults to `FALSE`.
 #' @param ... Currently unused.
-#' @return A tibble of partner groups, including ID and name.
+#' @returns A tibble of partner groups, including `network_id` and
+#'   `network_name`.
 #' @export
 npn_groups <- function(use_hierarchy = FALSE, ...) {
   if (isTRUE(use_hierarchy)) {

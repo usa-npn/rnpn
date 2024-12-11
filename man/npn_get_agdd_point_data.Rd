@@ -15,18 +15,20 @@ npn_get_agdd_point_data(layer, lat, long, date, store_data = TRUE)
 
 \item{date}{The queried date.}
 
-\item{store_data}{Boolean value. If set TRUE then the value retrieved will be stored in a global variable named point_values for
-later use}
+\item{store_data}{Boolean value. If set \code{TRUE} then the value retrieved will
+be stored in a global variable named \code{point_values} for later use.}
 }
 \value{
-Returns a numeric value of the AGDD value at the specified lat/long/date. If no value can be retrieved, then -9999 is returned.
+Returns a numeric value of the AGDD value at the specified
+lat/long/date. If no value can be retrieved, then \code{-9999} is returned.
 }
 \description{
-This function is for requesting AGDD point values. Because the NPN has a separate
-data service that can provide AGDD values which is more accurate than Geoserver
-this function is ideal when requested AGDD point values.
+This function is for requesting AGDD point values. Because the NPN has a
+separate data service that can provide AGDD values which is more accurate
+than Geoserver this function is ideal when requested AGDD point values.
 }
 \details{
-As this function only works for AGDD point values, if it's necessary to retrieve point values
-for other layers please try the npn_get_point_data function.
+As this function only works for AGDD point values, if it's necessary to
+retrieve point values for other layers please try the \code{\link[=npn_get_point_data]{npn_get_point_data()}}
+function.
 }
