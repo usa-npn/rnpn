@@ -11,7 +11,7 @@ http_interactions:
       status_code: 200
       message: OK
     headers:
-      date: Wed, 11 Dec 2024 20:06:56 GMT
+      date: Wed, 11 Dec 2024 22:52:46 GMT
       content-type: application/json; charset=utf-8
       content-length: '123'
       server: Apache/2.4.62 () PHP/5.5.38
@@ -25,5 +25,5 @@ http_interactions:
       encoding: ''
       file: no
       string: '[{"point_value":133.24490356445,"doy":14,"date":"2020-01-14"},{"point_value":146.45687866211,"doy":15,"date":"2020-01-15"}]'
-  recorded_at: 2024-12-11 20:06:56 GMT
+  recorded_at: 2024-12-11 22:52:47 GMT
   recorded_with: vcr/1.6.0, webmockr/1.0.0
