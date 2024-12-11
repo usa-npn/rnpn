@@ -15,7 +15,7 @@ test_that("npn_download_geospatial works", {
   skip_on_cran()
   skip_if_not(check_geo_service(), "Geo Service is down")
 
-  ras <- npn_download_geospatial("gdd:agdd", date="2018-05-05")
+  ras <- npn_download_geospatial(coverage_id = "gdd:agdd", date = "2018-05-05")
   expect_s4_class(ras, "SpatRaster")
 
   withr::with_tempfile("test_tiff", {
@@ -121,8 +121,14 @@ test_that("npn_custom_agdd functions",{
 test_that("npn_get_agdd_point_data works",{
   skip_on_cran()
   skip_if_not(check_service(), "Data Service is down")
-
-  res <- npn_get_agdd_point_data("gdd:agdd", 32.4, -110, "2020-01-15")
+  vcr::use_cassette("npn_get_agdd_point_data", {
+    res <- npn_get_agdd_point_data(
+      layer = "gdd:agdd",
+      lat = 32.4,
+      long = -110,
+      date = "2020-01-15"
+    )
+  })
 
   expect_type(res, "double")
   if(res > 0){
@@ -133,7 +139,7 @@ test_that("npn_get_agdd_point_data works",{
 
 test_that("npn_get_custom_agdd_raster works", {
   skip_on_cran()
-  skip_if_not(check_data_service(), "Data Service is down")
+  # skip_if_not(check_data_service(), "Data Service is down")
 
   res <- npn_get_custom_agdd_raster(
     method = "simple",
