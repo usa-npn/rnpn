@@ -11,7 +11,7 @@ http_interactions:
       status_code: 200
       message: OK
     headers:
-      Date: Wed, 27 Nov 2024 19:02:33 GMT
+      Date: Wed, 11 Dec 2024 22:52:44 GMT
       Server: Apache/2.4.29 (Ubuntu) mod_jk/1.2.43 OpenSSL/1.1.1
       X-Frame-Options: SAMEORIGIN
       Content-Disposition: inline; filename=si-x:average_leaf_prism.gml
@@ -57,5 +57,5 @@ http_interactions:
         \           <gml:rangeParameters/>\n            <tupleList>83 \n</tupleList>\n
         \       </gml:DataBlock>\n    </gml:rangeSet>\n    <gmlcov:metadata>\n        <gmlcov:Extension/>\n
         \   </gmlcov:metadata>\n</gml:RectifiedGridCoverage>\n"
-  recorded_at: 2024-11-27 19:02:33 GMT
+  recorded_at: 2024-12-11 22:52:45 GMT
   recorded_with: vcr/1.6.0, webmockr/1.0.0
