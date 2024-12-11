@@ -100,39 +100,42 @@ npn_download_geospatial <- function (coverage_id,
                                      output_path = NULL) {
   if (is.null(output_path)) {
     z <- tempfile()
-    # can't clean this up because returned SpatRaster will be broken due to missing file
+    ## can't clean this up with on.exit() because returned SpatRaster will be broken due to missing file.  Could force spatraster into memory by adding 0
     # on.exit(unlink(z), add = TRUE)
   }
-  s <- "&"
+
+  #logic to handle `date` being possibly a date or possible an integer DOY
   if (!is.null(date) && toString(date) != "") {
     param <- tryCatch({
       as.Date(date)
-      paste0(s, "SUBSET=time(\"", date, "T00:00:00.000Z\")")
+      paste0("time(\"", date, "T00:00:00.000Z\")")
     }, error = function(msg) {
-      paste0(s, "SUBSET=elevation(", date, ")")
+      paste0("elevation(", date, ")")
     })
   } else {
-    param <- ""
+    param <- NULL
   }
+  req <- base_req_geoserver %>%
+    httr2::req_url_path_append("wcs") %>%
+    httr2::req_url_query(
+      service = "WCS",
+      version = "2.0.1",
+      request = "GetCoverage",
+      format = format,
+      coverageId = coverage_id,
+      SUBSET = param
+    )
 
-  url <- paste0(base_geoserver(),
-                "format=",
-                format ,
-                "&coverageId=",
-                coverage_id,
-                param)
   tryCatch({
     if (is.null(output_path)) {
       rlang::check_installed("terra", reason = "when `output_path` is `NULL`")
-      download.file(url, z, method = "libcurl", mode = "wb")
+      resp <- httr2::req_perform(req, path = z)
       ras <- terra::rast(z)
     } else {
-      download.file(url,
-                    destfile = output_path,
-                    method = "libcurl",
-                    mode = "wb")
+      resp <- httr2::req_perform(req, path = output_path)
+      #TODO return output_path?
     }
-  }, error = function(msg) {
+  }, error = function(msg) { #TODO use httr2 for error handling
     message(
       "There was an issue downloading data from the Geoservice. It's possible the server is temporarily down. Please try again later."
     )
@@ -172,21 +175,17 @@ npn_get_agdd_point_data <- function(
     return(cached_value)
   }
   tryCatch({
-    url <- paste0(
-      base(),
-      "stations/getTimeSeries.json?latitude=",
-      lat,
-      "&longitude=",
-      long,
-      "&start_date=",
-      as.Date(date) - 1,
-      "&end_date=",
-      date,
-      "&layer=",
-      layer
-    )
-    data <- httr::GET(url, query = list(), httr::progress())
-  }, error = function(msg) {
+    req <- base_req %>%
+      httr2::req_url_path_append("stations/getTimeSeries.json") %>%
+      httr2::req_url_query(
+        latitude = lat,
+        longitude = long,
+        start_date = as.Date(date) - 1,
+        end_date = date,
+        layer = layer
+      )
+    resp <- httr2::req_perform(req)
+  }, error = function(msg) { #TODO: use httr2 to handle errors
     message(
       "Unable to download AGDD data. The service is temporarily down, please try again later."
     )
@@ -195,8 +194,8 @@ npn_get_agdd_point_data <- function(
 
   # If the server returns an error then in that case,
   # just return the -9999 value.
-  json_data <- tryCatch({
-    jsonlite::fromJSON(httr::content(data, as = "text"))
+  json_data <- tryCatch({ #TODO use httr2 to handle errors
+    httr2::resp_body_json(resp, simplifyVector = TRUE)
   }, error = function(msg) {
     message("Unable to parse server response. Please try again later.")
     return(-9999)
@@ -215,7 +214,7 @@ npn_get_agdd_point_data <- function(
   # data point more than once.
   #
   # TODO: Break this into it's own function
-  if (store_data) {
+  if (isTRUE(store_data)) {
     if (is.null(pkg.env$point_values)) {
       pkg.env$point_values <- data.frame(
         layer = layer,
@@ -613,7 +612,8 @@ npn_get_custom_agdd_raster <- function(method,
         invokeRestart("muffleWarning")
       }
     }
-    download.file(mapURL, z, method = "libcurl", mode = "wb")
+    httr2::request(mapURL) %>%
+      httr2::req_perform(path = z)
     #TODO why the calling handler? might be a holdover from raster::raster().  Investigate and simplify if possible.
     ras <- withCallingHandlers(terra::rast(z), warning = h)
   }
