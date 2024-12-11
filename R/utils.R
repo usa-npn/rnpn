@@ -1,3 +1,30 @@
+
+
+# TODO: remove completely once we're sure error handling is equivalent or better
+# Remember to remove from importFrom in rnpn-package.R also
+# npn_GET <- function(url, args, parse = FALSE, ...) {
+#   res <- tryCatch(
+#     {
+#       tmp <- httr::GET(url, query = args, ...)
+#       httr::stop_for_status(tmp)
+#       tt <- httr::content(tmp, as = "text", encoding = "UTF-8")
+#       if (nchar(tt) == 0) tt else jsonlite::fromJSON(tt, parse, flatten = TRUE)
+#     },
+#     error=function(cond){
+#       # If the service is down for some reason give the user
+#       # a message and return an empty list with n = 0
+#       message("Service is unavailable. Try again later!")
+#       tt <- "{\"nodata\":\"servicedown\"}"
+#       if (nchar(tt) == 0) tt else jsonlite::fromJSON(tt, parse, flatten = TRUE)
+#     }
+#   )
+#
+# }
+
+
+
+
+
 #TODO: eventually remove this in favor of explode_query() once httr->httr2 is complete
 # Helps create URL strings for requests to NPN data services in the format variable_name[number]=Value
 npn_createArgList <- function(arg_name, arg_list) {
