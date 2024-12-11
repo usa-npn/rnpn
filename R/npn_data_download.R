@@ -639,7 +639,7 @@ npn_get_data_by_year <- function(endpoint,
       # no previous iteration / the results were empty
       if (!is.null(data) && is.null(download_path)) {
         if (!is.null(all_data)) {
-          all_data <- rbindlist(list(all_data, data))
+          all_data <- data.table::rbindlist(list(all_data, data))
         } else {
           all_data = data
         }
