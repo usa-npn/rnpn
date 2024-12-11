@@ -8,12 +8,13 @@ npn_groups(use_hierarchy = FALSE, ...)
 }
 \arguments{
 \item{use_hierarchy}{Boolean indicating whether or not the list of networks
-should be represented in a hierarchy. Defaults to FALSE.}
+should be represented in a hierarchy. Defaults to \code{FALSE}.}
 
 \item{...}{Currently unused.}
 }
 \value{
-A tibble of partner groups, including ID and name.
+A tibble of partner groups, including \code{network_id} and
+\code{network_name}.
 }
 \description{
 Returns a list of all groups participating in the NPN's data collection

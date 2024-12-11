@@ -15,20 +15,20 @@ npn_get_phenophases_for_taxon(
 )
 }
 \arguments{
-\item{family_ids}{List of taxonomic family ids to search for.}
+\item{family_ids}{Integer vector of taxonomic family ids to search for.}
 
-\item{order_ids}{List of taxonomic order ids to search for.}
+\item{order_ids}{Integer vector of taxonomic order ids to search for.}
 
-\item{class_ids}{List of taxonomic class ids to search for}
+\item{class_ids}{Integer vector of taxonomic class ids to search for}
 
-\item{genus_ids}{List of taxonomic genus ids to search for}
+\item{genus_ids}{Integer vector of taxonomic genus ids to search for}
 
 \item{date}{Specify the date of interest. For this function to return
-anything, either this value must be set or \code{return_all} must be 1.}
+anything, either this value must be set or \code{return_all} must be \code{1}.}
 
-\item{return_all}{Takes either 0 or 1 as input and defaults to 0. For this
-function to return anything, either this value must be set to 1 or date
-must be set.}
+\item{return_all}{Takes either \code{0} or \code{1} as input and defaults to \code{0}. For
+this function to return anything, either this value must be set to \code{1} or
+\code{date} must be set.}
 
 \item{...}{Currently unused.}
 }

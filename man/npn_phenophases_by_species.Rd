@@ -7,7 +7,7 @@
 npn_phenophases_by_species(species_ids, date, ...)
 }
 \arguments{
-\item{species_ids}{List of species_ids for which to get phenophase
+\item{species_ids}{Integer vector of species IDs for which to get phenophase
 information.}
 
 \item{date}{The applicable date for which to retrieve phenophases for the
