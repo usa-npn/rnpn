@@ -69,3 +69,8 @@ check_geo_service <- function() {
 
   return(TRUE)
 }
+
+#TODO do this a different way with an env var
+get_skip_long_tests <- function() {
+  return(TRUE)
+}
