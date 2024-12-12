@@ -68,4 +68,19 @@ where data should only be retrieved on an annual basis, or otherwise
 automatically be delineated in some way. Results in a data table that's a
 combined set of the results from each request to the data service.
 }
+\examples{
+\dontrun{
+res <- npn_get_data_by_year(
+  "/observations/getObservations.ndjson?",
+  query,
+  years,
+  download_path,
+  six_leaf_layer,
+  six_bloom_layer,
+  agdd_layer,
+  six_sub_model,
+  additional_layers
+)
+}
+}
 \keyword{internal}

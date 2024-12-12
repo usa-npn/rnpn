@@ -201,6 +201,7 @@ npn_get_phenophases_for_taxon <- function(family_ids = NULL,
 #' @examples \dontrun {
 #' ac <- npn_abundance_categories()
 #' }
+#'
 npn_abundance_categories <- function(...) {
   req <- base_req %>%
     httr2::req_url_path_append('phenophases/getAbundanceCategories.json')

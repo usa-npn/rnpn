@@ -583,7 +583,19 @@ npn_download_magnitude_phenometrics <- function(request_source,
 #' @returns Data table—a data table combining each requests results from the
 #'   service.
 #' @keywords internal
-#'
+#' @examples \dontrun{
+#' res <- npn_get_data_by_year(
+#'   "/observations/getObservations.ndjson?",
+#'   query,
+#'   years,
+#'   download_path,
+#'   six_leaf_layer,
+#'   six_bloom_layer,
+#'   agdd_layer,
+#'   six_sub_model,
+#'   additional_layers
+#' )
+#' }
 npn_get_data_by_year <- function(endpoint,
                                  query,
                                  years,
@@ -808,6 +820,9 @@ npn_get_data <- function(url,
 #'
 #' @return The URL, as a string.
 #' @keywords internal
+#' @examples \dontrun{
+#' url <- npn_get_download_url("/observations/getMagnitudeData.ndjson")
+#' }
 npn_get_download_url <- function(endpoint) {
   url <- paste0(base(), endpoint)
 #  query_str <- paste(names(query_vars),"=",query_vars,sep="",collapse = '&')
