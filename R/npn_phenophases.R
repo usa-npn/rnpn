@@ -198,7 +198,7 @@ npn_get_phenophases_for_taxon <- function(family_ids = NULL,
 #' @returns A data frame listing all abundance/intensity categories and their
 #'   corresponding values.
 #' @export
-#' @examples \dontrun {
+#' @examples \dontrun{
 #' ac <- npn_abundance_categories()
 #' }
 #'

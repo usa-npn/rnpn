@@ -18,7 +18,8 @@ Gets data on all abundance/intensity categories and includes a data frame of
 applicable abundance/intensity values for each category
 }
 \examples{
-\dontrun {
+\dontrun{
 ac <- npn_abundance_categories()
 }
+
 }
