@@ -46,3 +46,15 @@ returns a raster of the continental USA with each pixel representing the
 calculated AGDD value based on start and end date. This function leverages
 the USA-NPN geo web services.
 }
+\examples{
+\dontrun{
+res <- npn_get_custom_agdd_raster(
+  method = "simple",
+  climate_data_source = "NCEP",
+  temp_unit = "Fahrenheit",
+  start_date = "2020-01-01",
+  end_date = "2020-01-15",
+  base_temp = 32
+)
+}
+}

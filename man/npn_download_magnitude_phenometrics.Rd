@@ -169,10 +169,10 @@ Metadata on all fields can be found in the following Excel sheet:
 \dontrun{
 #Download book all saguaro data for 2013
 npn_download_magnitude_phenometrics(
-  request_source="Your Name or Org Here",
-  years=c(2013),
-  species_id=c(210),
-  download_path="saguaro_data_2013.json"
+  request_source = "Your Name or Org Here",
+  years = c(2013),
+  species_id = c(210),
+  download_path = "saguaro_data_2013.json"
 )
 }
 }

@@ -21,7 +21,7 @@ set of species.
 }
 \examples{
 \dontrun{
-npn_stations_with_spp(speciesid = c(52,53,54))
+npn_stations_with_spp(speciesid = c(52, 53, 54))
 npn_stations_with_spp(speciesid = 53)
 }
 }

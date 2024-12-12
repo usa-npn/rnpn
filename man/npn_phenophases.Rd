@@ -15,3 +15,8 @@ A tibble listing all phenophases available in the NPN database.
 \description{
 Retrieves a complete list of all phenophases in the NPN database.
 }
+\examples{
+\dontrun{
+phenophases <- npn_phenophases()
+}
+}

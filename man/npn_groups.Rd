@@ -21,3 +21,9 @@ Returns a list of all groups participating in the NPN's data collection
 program. These details can be used to further filter other service endpoints'
 results.
 }
+\examples{
+\dontrun{
+npn_groups()
+npn_groups(use_heirarchy = TRUE)
+}
+}

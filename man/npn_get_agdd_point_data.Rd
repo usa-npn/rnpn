@@ -32,3 +32,14 @@ As this function only works for AGDD point values, if it's necessary to
 retrieve point values for other layers please try the \code{\link[=npn_get_point_data]{npn_get_point_data()}}
 function.
 }
+\examples{
+\dontrun{
+npn_get_agdd_point_data(
+  layer = "gdd:agdd",
+  lat = 32.4,
+  long = -110,
+  date = "2020-01-15"
+)
+}
+
+}

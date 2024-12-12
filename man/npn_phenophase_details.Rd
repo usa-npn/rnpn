@@ -20,3 +20,8 @@ information for each, filtered by the phenophase ID.
 Retrieves additional details for select phenophases, including full list of
 applicable phenophase definition IDs and phenophase revision notes over time
 }
+\examples{
+\dontrun{
+pd <- npn_phenophase_details(c(56, 57))
+}
+}

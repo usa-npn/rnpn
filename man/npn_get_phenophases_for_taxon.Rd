@@ -53,3 +53,20 @@ specified taxonomic group.
 When called, this function requires of these three parameters, exactly one of
 \code{family_ids}, \code{order_ids} or \code{class_ids} to be set.
 }
+\examples{
+\dontrun{
+npn_get_phenophases_for_taxon(class_ids = c(5, 6), date = "2018-05-05")
+npn_get_phenophases_for_taxon(family_ids = c(267, 268), date = "2018-05-05")
+
+#if you supply two or more "ids" arguments, the highest classification takes precedence
+pheno <- npn_get_phenophases_for_taxon(
+  class_ids = 4,
+  family_ids = c(103, 104),
+  genus_ids = c(409, 957, 610),
+  date = "2018-05-05"
+)
+
+colnames(pheno)
+# [1] "family_id"   "family_name" "phenophases"
+}
+}

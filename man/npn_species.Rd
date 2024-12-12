@@ -76,10 +76,18 @@ can be used in conjunction with one another, including:
 \examples{
 \dontrun{
 npn_species()
+}
+\dontrun{
 npn_species_id(ids = 3)
 }
 \dontrun{
 npn_species_state(state = "AZ")
 npn_species_state(state = "AZ", kingdom = "Plantae")
+}
+\dontrun{
+species <- npn_species_search(
+  start_date = "2013-01-01",
+  end_date = "2013-05-15"
+)
 }
 }

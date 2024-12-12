@@ -24,3 +24,8 @@ Retrieves the phenophases applicable to species for a given date. It's
 important to specify a date since protocols/phenophases for any given species
 can change from year to year.
 }
+\examples{
+\dontrun{
+pp <- npn_phenophases_by_species(3, "2018-05-05")
+}
+}
