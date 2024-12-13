@@ -6,8 +6,8 @@ Authors@R: c(
     person("Scott", "Chamberlain", role = "aut"),
     person("Lee", "Marsh", role = "aut"),
     person("Kevin", "Wong", role = "aut"),
-    person("David", "LeBauer", role = "ctb"),
-    person("Eric R", "Scott", role = "ctb")
+    person("Eric R", "Scott", role = "aut"),
+    person("David", "LeBauer", role = "ctb")
   )
 Description: Programmatic interface to the Web Service methods provided by
     the National 'Phenology' Network (<https://usanpn.org/>), which
