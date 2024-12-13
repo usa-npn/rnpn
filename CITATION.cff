@@ -28,6 +28,7 @@ authors:
 repository: https://CRAN.R-project.org/package=rnpn
 repository-code: https://github.com/usa-npn/rnpn
 url: http://usa-npn.github.io/rnpn/
+date-released: '2024-12-13'
 contact:
 - family-names: Switzer
   given-names: Jeff
