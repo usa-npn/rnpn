@@ -610,6 +610,7 @@ npn_get_custom_agdd_raster <- function(method,
       }
     }
     httr2::request(mapURL) %>%
+      httr2::req_user_agent("rnpn (https://github.com/usa-npn/rnpn/)") %>%
       httr2::req_perform(path = z)
     #TODO why the calling handler? might be a holdover from raster::raster().  Investigate and simplify if possible.
     ras <- withCallingHandlers(terra::rast(z), warning = h)

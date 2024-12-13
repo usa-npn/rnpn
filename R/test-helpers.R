@@ -19,6 +19,7 @@ check_service <- function() {
 #' @noRd
 check_geo_service <- function() {
   req <- httr2::request(base_geoserver_url) %>%
+    httr2::req_user_agent("rnpn (https://github.com/usa-npn/rnpn/)") %>%
     httr2::req_url_path_append("ows") %>%
     httr2::req_url_query(
       service = "wms",
