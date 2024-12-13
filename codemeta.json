@@ -4,7 +4,7 @@
   "identifier": "rnpn",
   "description": "Programmatic interface to the Web Service methods provided by the National 'Phenology' Network (<https://usanpn.org/>), which includes data on various life history events that occur at specific times.",
   "name": "rnpn: Interface to the National 'Phenology' Network 'API'",
-  "relatedLink": ["http://usa-npn.github.io/rnpn/", "https://CRAN.R-project.org/package=rnpn"],
+  "relatedLink": "http://usa-npn.github.io/rnpn/",
   "codeRepository": "https://github.com/usa-npn/rnpn",
   "issueTracker": "https://github.com/usa-npn/rnpn/issues",
   "license": "https://spdx.org/licenses/MIT",
@@ -331,10 +331,44 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "13068.329KB",
-  "releaseNotes": "https://github.com/usa-npn/rnpn/blob/master/NEWS.md",
-  "readme": "https://github.com/usa-npn/rnpn/blob/master/README.md",
-  "contIntegration": ["https://github.com/usa-npn/rnpn/actions/workflows/R-CMD-check.yaml", "https://app.codecov.io/gh/usa-npn/rnpn"],
-  "developmentStatus": "https://www.repostatus.org/",
-  "keywords": ["web-api", "species", "data", "rstats", "r", "national-phenology-network", "phenology", "r-package"]
+  "fileSize": "13070.051KB",
+  "citation": [
+    {
+      "@type": "CreativeWork",
+      "datePublished": "2024",
+      "author": [
+        {
+          "@type": "Person",
+          "givenName": "Jeff",
+          "familyName": "Switzer",
+          "email": "jeff@usanpn.org"
+        },
+        {
+          "@type": "Person",
+          "givenName": "Scott",
+          "familyName": "Chamberlain"
+        },
+        {
+          "@type": "Person",
+          "givenName": "Lee",
+          "familyName": "Marsh"
+        },
+        {
+          "@type": "Person",
+          "givenName": "Kevin",
+          "familyName": "Wong"
+        },
+        {
+          "@type": "Person",
+          "givenName": "Eric R",
+          "familyName": "Scott"
+        }
+      ],
+      "name": "rnpn: Interface to the National 'Phenology' Network 'API'",
+      "identifier": "10.32614/CRAN.package.rnpn",
+      "url": "http://usa-npn.github.io/rnpn/",
+      "@id": "https://doi.org/10.32614/CRAN.package.rnpn",
+      "sameAs": "https://doi.org/10.32614/CRAN.package.rnpn"
+    }
+  ]
 }
