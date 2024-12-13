@@ -9,6 +9,6 @@
 
 ## usethis namespace: start
 #' @importFrom magrittr %>%
-#' @importFrom utils URLencode download.file write.table
+#' @importFrom utils URLencode write.table
 ## usethis namespace: end
 NULL

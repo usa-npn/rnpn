@@ -1,0 +1,30 @@
+http_interactions:
+- request:
+    method: get
+    uri: http://geoserver.usanpn.org/geoserver/wcs?service=WCS&version=2.0.1&request=GetCoverage&coverageId=si-x%3Aaverage_leaf_prism&format=application%2Fgml%2Bxml&subset=http%3A%2F%2Fwww.opengis.net%2Fdef%2Faxis%2FOGC%2F0%2FLong%28-123.037793%29&subset=http%3A%2F%2Fwww.opengis.net%2Fdef%2Faxis%2FOGC%2F0%2FLat%2860.9166%29&subset=http%3A%2F%2Fwww.opengis.net%2Fdef%2Faxis%2FOGC%2F0%2Ftime%28%221990-01-01T00%3A00%3A00.000Z%22%29
+    body:
+      encoding: ''
+      string: ''
+    headers: []
+  response:
+    status:
+      status_code: 404
+      message: Not Found
+    headers:
+      Date: Wed, 11 Dec 2024 23:01:58 GMT
+      Server: Apache/2.4.29 (Ubuntu) mod_jk/1.2.43 OpenSSL/1.1.1
+      X-Frame-Options: SAMEORIGIN
+      Content-Encoding: gzip
+      Transfer-Encoding: chunked
+      Content-Type: application/xml
+    body:
+      encoding: ''
+      file: no
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?><ows:ExceptionReport xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ows="http://www.opengis.net/ows/2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0.0" xsi:schemaLocation="http://www.opengis.net/ows/2.0 http://schemas.opengis.net/ows/2.0/owsExceptionReport.xsd">
+        <ows:Exception exceptionCode="InvalidSubsetting" locator="60.9166">
+        <ows:ExceptionText>SlicePoint outside coverage envelope</ows:ExceptionText>
+        </ows:Exception>
+        </ows:ExceptionReport>
+  recorded_at: 2024-12-11 23:01:58 GMT
+  recorded_with: vcr/1.6.0, webmockr/1.0.0
