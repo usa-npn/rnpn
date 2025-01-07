@@ -13,6 +13,7 @@
 * `rnpn` now has `dplyr` as a dependency instead of `plyr`
 * `rnpn` now uses `httr2` instead of `httr` internally for functions that get observational data
 * `...` is no longer used for functions that get observational data
+* Fixed a bug (#42) where returned value of `npn_get_agdd_point_data()` was inconsistent depending on whether it was cached or not.
 
 # rnpn 1.2.9 (2024-08-18)
 
