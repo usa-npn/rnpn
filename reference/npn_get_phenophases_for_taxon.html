@@ -154,6 +154,25 @@ specified taxonomic group.</p>
 <code>family_ids</code>, <code>order_ids</code> or <code>class_ids</code> to be set.</p>
     </div>
 
+    <div id="ref-examples">
+    <h2>Examples</h2>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># \dontrun{</span></span></span>
+<span class="r-in"><span><span class="fu">npn_get_phenophases_for_taxon</span><span class="op">(</span>class_ids <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">6</span><span class="op">)</span>, date <span class="op">=</span> <span class="st">"2018-05-05"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">npn_get_phenophases_for_taxon</span><span class="op">(</span>family_ids <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">267</span>, <span class="fl">268</span><span class="op">)</span>, date <span class="op">=</span> <span class="st">"2018-05-05"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">#if you supply two or more "ids" arguments, the highest classification takes precedence</span></span></span>
+<span class="r-in"><span><span class="va">pheno</span> <span class="op">&lt;-</span> <span class="fu">npn_get_phenophases_for_taxon</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  class_ids <span class="op">=</span> <span class="fl">4</span>,</span></span>
+<span class="r-in"><span>  family_ids <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">103</span>, <span class="fl">104</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  genus_ids <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">409</span>, <span class="fl">957</span>, <span class="fl">610</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  date <span class="op">=</span> <span class="st">"2018-05-05"</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">pheno</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># [1] "family_id"   "family_name" "phenophases"</span></span></span>
+<span class="r-in"><span><span class="op">}</span> <span class="co"># }</span></span></span>
+</code></pre></div>
+    </div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top"><h2 data-toc-skip>Contents</h2>
