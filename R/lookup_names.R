@@ -10,9 +10,9 @@
 #' @return A data frame with species ID numbers based on the name and type
 #'   parameters.
 #' @examples \dontrun{
-#' npn_lookup_names(name='Pinus', type='genus')
-#' npn_lookup_names(name='pine', type='common_name')
-#' npn_lookup_names(name='bird', type='common_name', fuzzy=TRUE)
+#' npn_lookup_names(name = 'Pinus', type = 'genus')
+#' npn_lookup_names(name = 'pine', type = 'common_name')
+#' npn_lookup_names(name = 'bird', type = 'common_name', fuzzy = TRUE)
 #' }
 npn_lookup_names <- function(name, type = 'genus', fuzzy = FALSE) {
   if (is.null(pkg.env$species_list)) {

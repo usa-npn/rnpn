@@ -33,3 +33,14 @@ Please note that this function pulls this from the NPN's WCS service so the
 data may not be totally precise. If you need precise AGDD values try using
 the \code{\link[=npn_get_agdd_point_data]{npn_get_agdd_point_data()}} function.
 }
+\examples{
+\dontrun{
+value <-
+  npn_get_point_data(
+    layer = "gdd:agdd",
+    lat = 38.8,
+    long = -110.5,
+    date = "2022-05-05"
+  )
+}
+}

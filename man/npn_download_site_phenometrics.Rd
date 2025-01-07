@@ -201,10 +201,10 @@ Metadata on all fields can be found in the following Excel sheet:
 \dontrun{
 #Download all saguaro data for 2013 and 2014
 npn_download_site_phenometrics(
-  request_source="Your Name or Org Here",
-  years=c('2013','2014'),
-  species_id=c(210),
-  download_path="saguaro_data_2013_2014.json"
+  request_source = "Your Name or Org Here",
+  years = c('2013','2014'),
+  species_id = c(210),
+  download_path = "saguaro_data_2013_2014.json"
 )
 }
 }

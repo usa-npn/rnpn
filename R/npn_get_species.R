@@ -8,7 +8,6 @@
 #'   IDs.
 #' @examples \dontrun{
 #' npn_species()
-#' npn_species_id(ids = 3)
 #' }
 npn_species <- function(...) {
   req <- base_req %>%
@@ -29,6 +28,9 @@ npn_species <- function(...) {
 #' @param ... Currently unused.
 #' @returns A tibble with information on species in the NPN database and their
 #'   IDs, filtered by the species ID parameter.
+#' @examples \dontrun{
+#' npn_species_id(ids = 3)
+#' }
 npn_species_id <- function(ids, ...) {
   req <- base_req %>%
     httr2::req_url_path_append('species/getSpeciesById.json')
@@ -99,6 +101,12 @@ npn_species_state <- function(state, kingdom = NULL, ...) {
 #'   partner group, dates and station/site IDs.
 #' @export
 #' @rdname npn_species
+#' @examples \dontrun{
+#' species <- npn_species_search(
+#'   start_date = "2013-01-01",
+#'   end_date = "2013-05-15"
+#' )
+#' }
 npn_species_search <- function(network = NULL,
                                start_date = NULL,
                                end_date = NULL,
@@ -129,6 +137,9 @@ npn_species_search <- function(network = NULL,
 #' @returns A data frame with a list of the functional types used in the NPN
 #'   database, filtered by the specified kingdom.
 #' @export
+#' @examples \dontrun{
+#' npn_species_types("Plantae")
+#' }
 npn_species_types <- function(kingdom = "Plantae", ...) {
   # if (!is.null(kingdom)) {
   #   kingdom <- rlang::arg_match0(kingdom, values = c("Plantae", "Animalia"))

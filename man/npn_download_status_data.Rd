@@ -169,10 +169,10 @@ Metadata on all fields can be found in the following Excel sheet:
 \dontrun{
 #Download all saguaro data for 2016
 npn_download_status_data(
-  request_source="Your Name or Org Here",
-  years=c(2016),
-  species_id=c(210),
-  download_path="saguaro_data_2016.json"
+  request_source = "Your Name or Org Here",
+  years = c(2016),
+  species_id = c(210),
+  download_path = "saguaro_data_2016.json"
 )
 }
 }
