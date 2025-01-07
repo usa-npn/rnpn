@@ -68,4 +68,18 @@ where data should only be retrieved on an annual basis, or otherwise
 automatically be delineated in some way. Results in a data table that's a
 combined set of the results from each request to the data service.
 }
+\examples{
+\dontrun{
+endpoint <- "/observations/getObservations.ndjson?"
+query <- list(
+  request_src = "Unit\%20Test",
+  climate_data = "0",
+  `species_id[1]` = "6"
+)
+
+npn_get_data_by_year(endpoint = endpoint,
+                     query = query,
+                     years = 2013)
+}
+}
 \keyword{internal}

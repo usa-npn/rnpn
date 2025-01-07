@@ -4,6 +4,9 @@
 #' @param ... Currently unused.
 #' @returns A tibble listing all phenophases available in the NPN database.
 #' @export
+#' @examples \dontrun{
+#' phenophases <- npn_phenophases()
+#' }
 npn_phenophases <- function(...) {
   req <-
     base_req %>%
@@ -22,6 +25,9 @@ npn_phenophases <- function(...) {
 #' @returns A tibble listing all phenophases in the NPN database and their
 #'   definitions.
 #' @export
+#' @examples \dontrun{
+#' pp <- npn_phenophase_definitions()
+#' }
 npn_phenophase_definitions <- function(...) {
   req <- base_req %>%
     httr2::req_url_path_append('phenophases/getPhenophaseDefinitionDetails.json')
@@ -43,6 +49,9 @@ npn_phenophase_definitions <- function(...) {
 #' @returns A tibble listing phenophases in the NPN database, including detailed
 #'   information for each, filtered by the phenophase ID.
 #' @export
+#' @examples \dontrun{
+#' pd <- npn_phenophase_details(c(56, 57))
+#' }
 npn_phenophase_details <- function(ids = NULL, ...) {
   if (!is.null(ids) & !is.numeric(ids)) {
     message("Invalid input, function expects a numeric vector as input")
@@ -72,6 +81,9 @@ npn_phenophase_details <- function(ids = NULL, ...) {
 #' @returns A tibble listing phenophases in the NPN database for the specified
 #'   species and date.
 #' @export
+#' @examples \dontrun{
+#' pp <- npn_phenophases_by_species(3, "2018-05-05")
+#' }
 npn_phenophases_by_species <- function(species_ids, date, ...) {
   species_ids <- npn_createArgList("species_id", species_ids)
   req <- base_req %>%
@@ -96,6 +108,9 @@ npn_phenophases_by_species <- function(species_ids, date, ...) {
 #' @param ... Currently unused.
 #' @returns A tibble listing the pheno classes in the NPN database.
 #' @export
+#' @examples \dontrun{
+#' pc <- npn_pheno_classes()
+#' }
 npn_pheno_classes <- function(...) {
   req <- base_req %>%
     httr2::req_url_path_append('phenophases/getPhenoClasses.json')
@@ -136,6 +151,21 @@ npn_pheno_classes <- function(...) {
 #' @returns A data frame listing phenophases in the NPN database for the
 #'   specified taxon and date.
 #' @export
+#' @examples \dontrun{
+#' npn_get_phenophases_for_taxon(class_ids = c(5, 6), date = "2018-05-05")
+#' npn_get_phenophases_for_taxon(family_ids = c(267, 268), date = "2018-05-05")
+#'
+#' #if you supply two or more "ids" arguments, the highest classification takes precedence
+#' pheno <- npn_get_phenophases_for_taxon(
+#'   class_ids = 4,
+#'   family_ids = c(103, 104),
+#'   genus_ids = c(409, 957, 610),
+#'   date = "2018-05-05"
+#' )
+#'
+#' colnames(pheno)
+#' # [1] "family_id"   "family_name" "phenophases"
+#' }
 npn_get_phenophases_for_taxon <- function(family_ids = NULL,
                                           order_ids = NULL,
                                           class_ids = NULL,
@@ -168,6 +198,10 @@ npn_get_phenophases_for_taxon <- function(family_ids = NULL,
 #' @returns A data frame listing all abundance/intensity categories and their
 #'   corresponding values.
 #' @export
+#' @examples \dontrun{
+#' ac <- npn_abundance_categories()
+#' }
+#'
 npn_abundance_categories <- function(...) {
   req <- base_req %>%
     httr2::req_url_path_append('phenophases/getAbundanceCategories.json')

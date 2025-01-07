@@ -10,6 +10,10 @@
 #' @returns A tibble of partner groups, including `network_id` and
 #'   `network_name`.
 #' @export
+#' @examples \dontrun{
+#' npn_groups()
+#' npn_groups(use_heirarchy = TRUE)
+#' }
 npn_groups <- function(use_hierarchy = FALSE, ...) {
   if (isTRUE(use_hierarchy)) {
     req <- base_req %>%
