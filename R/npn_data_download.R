@@ -584,17 +584,16 @@ npn_download_magnitude_phenometrics <- function(request_source,
 #'   service.
 #' @keywords internal
 #' @examples \dontrun{
-#' res <- npn_get_data_by_year(
-#'   "/observations/getObservations.ndjson?",
-#'   query,
-#'   years,
-#'   download_path,
-#'   six_leaf_layer,
-#'   six_bloom_layer,
-#'   agdd_layer,
-#'   six_sub_model,
-#'   additional_layers
+#' endpoint <- "/observations/getObservations.ndjson?"
+#' query <- list(
+#'   request_src = "Unit%20Test",
+#'   climate_data = "0",
+#'   `species_id[1]` = "6"
 #' )
+#'
+#' npn_get_data_by_year(endpoint = endpoint,
+#'                      query = query,
+#'                      years = 2013)
 #' }
 npn_get_data_by_year <- function(endpoint,
                                  query,
