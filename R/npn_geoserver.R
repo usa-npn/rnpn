@@ -178,7 +178,7 @@ npn_get_agdd_point_data <- function(
   # pull it from there.
   cached_value <- npn_check_point_cached(layer, lat, long, date)
   if (!is.null(cached_value)) {
-    return(cached_value)
+    return(cached_value$value)
   }
   tryCatch({
     url <- paste0(
@@ -223,7 +223,7 @@ npn_get_agdd_point_data <- function(
   # Once the value is known, then cache it in global memory so the script doesn't try to ask for the same
   # data point more than once.
   #
-  # TODO: Break this into it's own function
+  # TODO: Break this into it's own function or possibly cache the whole response with `httr2::req_cache()`
   if (store_data) {
     if (is.null(pkg.env$point_values)) {
       pkg.env$point_values <- data.frame(
