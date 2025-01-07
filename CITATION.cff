@@ -25,10 +25,11 @@ authors:
   given-names: Kevin
 - family-names: Scott
   given-names: Eric R
+  orcid: https://orcid.org/0000-0002-7430-7879
 repository: https://CRAN.R-project.org/package=rnpn
 repository-code: https://github.com/usa-npn/rnpn
 url: http://usa-npn.github.io/rnpn/
-date-released: '2024-12-13'
+date-released: '2025-01-07'
 contact:
 - family-names: Switzer
   given-names: Jeff

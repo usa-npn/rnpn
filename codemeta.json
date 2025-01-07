@@ -46,7 +46,8 @@
     {
       "@type": "Person",
       "givenName": "Eric R",
-      "familyName": "Scott"
+      "familyName": "Scott",
+      "@id": "https://orcid.org/0000-0002-7430-7879"
     }
   ],
   "contributor": [
@@ -331,11 +332,11 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "13070.051KB",
+  "fileSize": "13070.293KB",
   "citation": [
     {
       "@type": "CreativeWork",
-      "datePublished": "2024",
+      "datePublished": "2025",
       "author": [
         {
           "@type": "Person",
@@ -361,7 +362,8 @@
         {
           "@type": "Person",
           "givenName": "Eric R",
-          "familyName": "Scott"
+          "familyName": "Scott",
+          "@id": "https://orcid.org/0000-0002-7430-7879"
         }
       ],
       "name": "rnpn: Interface to the National 'Phenology' Network 'API'",

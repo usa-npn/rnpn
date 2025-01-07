@@ -6,7 +6,7 @@ Authors@R: c(
     person("Scott", "Chamberlain", role = "aut"),
     person("Lee", "Marsh", role = "aut"),
     person("Kevin", "Wong", role = "aut"),
-    person("Eric R", "Scott", role = "aut"),
+    person("Eric R", "Scott", role = "aut", comment = c(ORCID = "0000-0002-7430-7879")),
     person("David", "LeBauer", role = "ctb")
   )
 Description: Programmatic interface to the Web Service methods provided by
