@@ -189,8 +189,8 @@ npn_get_agdd_point_data <- function(
     return(NULL)
   })
 
-  # If the server returns an error then in that case,
-  # just return the -9999 value.
+  # If the server returns an error then in that case, just return the -9999
+  # value.
   json_data <- tryCatch({ #TODO use httr2 to handle errors
     httr2::resp_body_json(resp, simplifyVector = TRUE)
   }, error = function(msg) {
@@ -198,8 +198,7 @@ npn_get_agdd_point_data <- function(
     return(-9999)
   })
 
-  # If the server returns an unexpected value, also return
-  # -9999.
+  # If the server returns an unexpected value, also return -9999.
   v <- tryCatch({
     as.numeric(json_data[json_data$date == date, "point_value"])
   }, error = function(msg) {
@@ -207,9 +206,9 @@ npn_get_agdd_point_data <- function(
     return(-9999)
   })
 
-  # Once the value is known, then cache it in global memory so the script doesn't try to ask for the same
-  # data point more than once.
-  #
+  # Once the value is known, then cache it in global memory so the script
+  # doesn't try to ask for the same data point more than once.
+
   # TODO: Break this into it's own function
   if (isTRUE(store_data)) {
     if (is.null(pkg.env$point_values)) {
@@ -500,9 +499,8 @@ npn_get_custom_agdd_time_series <- function(method,
   climate_data_source <- toupper(climate_data_source)
   temp_unit <- tolower(temp_unit)
   method <- tolower(method)
-  req <- base_req %>%
-    httr2::req_url_path("geo-services", "v1", "agdd",
-                        method, "pointTimeSeries") %>%
+  req <- base_req_geoservices %>%
+    httr2::req_url_path_append("agdd", method, "pointTimeSeries") %>%
     httr2::req_url_query(
       climateProvider = climate_data_source,
       temperatureUnit = temp_unit,
@@ -569,9 +567,9 @@ npn_get_custom_agdd_raster <- function(method,
   temp_unit <- tolower(temp_unit)
   method <- tolower(method)
 
-  req <- base_req %>%
-    httr2::req_url_path("geo-services", "v1", "agdd", method, "map") %>%
-    httr2::req_progress(type = "down") %>% # doesn't actually work because downloaded json is small despite taking a long time
+  req <- base_req_geoservices %>%
+    httr2::req_url_path_append("agdd", method, "map") %>%
+    httr2::req_progress(type = "down") %>% # doesn't actually work because downloaded json is small despite taking a long time to generate on server
     httr2::req_url_query(
       climateProvider = climate_data_source,
       temperatureUnit = temp_unit,
@@ -593,7 +591,7 @@ npn_get_custom_agdd_raster <- function(method,
   }
 
   tryCatch({ #TODO handle errors with httr2 instead
-    resp <- httr2::req_perform(req) #TODO progress bar doesn't work?
+    resp <- httr2::req_perform(req)
   }, error = function(msg) {
     message("Data service is currently unavailable, please try again later.")
     return(NULL)
@@ -604,16 +602,21 @@ npn_get_custom_agdd_raster <- function(method,
 
   if (!is.null(mapURL)) {
     z <- tempfile()
-    h <- function(w) {
-      if (any(grepl("Discarded datum", w))) {
-        invokeRestart("muffleWarning")
-      }
-    }
     httr2::request(mapURL) %>%
       httr2::req_user_agent("rnpn (https://github.com/usa-npn/rnpn/)") %>%
       httr2::req_perform(path = z)
-    #TODO why the calling handler? might be a holdover from raster::raster().  Investigate and simplify if possible.
-    ras <- withCallingHandlers(terra::rast(z), warning = h)
+
+    # "Discarded datum" seems to be a PROJ error that pops up in raster and
+    # terra. Not sure if wrapping in withCallingHandlers() is still necessary
+    # after migrating to terra, but I'll leave it in just in case.
+    ras <- withCallingHandlers(
+      terra::rast(z),
+      warning = function(w) {
+        if (any(grepl("Discarded datum", w))) {
+          invokeRestart("muffleWarning")
+        }
+      }
+    )
   }
   return(ras)
 }
