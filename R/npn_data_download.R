@@ -74,8 +74,9 @@
 #' @param wkt WKT geometry by which filter data. Specifying a valid WKT within
 #'   the contiguous US will filter data based on the locations which fall within
 #'   that WKT.
-#' @returns Data table of all status records returned as per the search
-#'   parameters. `NULL` if output directed to file.
+#' @returns A tibble of all status records returned as per the search
+#'   parameters. If `download_path` is specified, the file path is returned
+#'   instead.
 #' @export
 #' @examples \dontrun{
 #' #Download all saguaro data for 2016
@@ -466,8 +467,8 @@ npn_download_site_phenometrics <- function(request_source,
 #'   delineate the period of time by the calendar months regardless of how many
 #'   days are in each month. Defaults to `30` if omitted.
 #' @inheritParams npn_download_site_phenometrics
-#' @returns Data table of all status records returned as per the search
-#'   parameters. `NULL` if output directed to file.
+#' @returns A tibble of the requested data. If a `download_path` was specified,
+#'   the file path is returned.
 #' @export
 #' @examples \dontrun{
 #' #Download book all saguaro data for 2013
@@ -475,7 +476,7 @@ npn_download_site_phenometrics <- function(request_source,
 #'   request_source="Your Name or Org Here",
 #'   years=c(2013),
 #'   species_id=c(210),
-#'   download_path="saguaro_data_2013.json"
+#'   download_path="saguaro_data_2013.csv"
 #' )
 #' }
 npn_download_magnitude_phenometrics <- function(request_source,
@@ -580,8 +581,8 @@ npn_download_magnitude_phenometrics <- function(request_source,
 #'   additional geospatial layer data fields to the results, such that the date
 #'   of observation in each row will resolve to a value from the specified
 #'   layers, given the location of the observation.
-#' @returns Data table—a data table combining each requests results from the
-#'   service.
+#' @returns A tibble combining each requests results from the service. If
+#'   `download_path` is specified, the file path is returned instead.
 #' @keywords internal
 #'
 npn_get_data_by_year <- function(endpoint,
@@ -623,10 +624,10 @@ npn_get_data_by_year <- function(endpoint,
       # for the changes in the start/end date
       url <- npn_get_download_url(endpoint)
       data <- npn_get_data(
-        url,
-        query,
-        download_path,
-        !first_year,
+        url = url,
+        query = query,
+        download_path = download_path,
+        always_append = !first_year,
         six_leaf_raster = six_leaf_raster,
         six_bloom_raster = six_bloom_raster,
         agdd_layer = agdd_layer,
@@ -641,15 +642,19 @@ npn_get_data_by_year <- function(endpoint,
         if (!is.null(all_data)) {
           all_data <- dplyr::bind_rows(all_data, data)
         } else {
-          all_data = data
+          all_data <- data
         }
       }
       if (!is.null(data)) {
-        first_year = FALSE
+        first_year <- FALSE
       }
     }
   }
-  return(all_data)
+  if (is.null(download_path)) {
+    return(all_data)
+  } else {
+    return(download_path)
+  }
 }
 
 
@@ -668,8 +673,8 @@ npn_get_data_by_year <- function(endpoint,
 #'   service and aggregating all data results in a single file. Without this
 #'   flag, otherwise, each call to the service would truncate the output file.
 #'
-#' @return Data table of the requested data. `NULL` if a `download_path` was
-#'   specified.
+#' @returns A tibble of the requested data. If a `download_path` was specified,
+#'   the file path is returned.
 #' @keywords internal
 npn_get_data <- function(url,
                          query,
@@ -684,7 +689,7 @@ npn_get_data <- function(url,
   curl::handle_setform(h, .list = query)
 
   con <- curl::curl(url, handle = h)
-  current_data <- NULL
+
   dtm <- tibble::tibble()
   set_has_data <- FALSE
   i <- 0
@@ -760,22 +765,15 @@ npn_get_data <- function(url,
         dtm <<- dplyr::bind_rows(dtm, df) #TODO why do you need <<-?
       } else {
         if (length(df) > 0) {
-          set_has_data <- TRUE
+          set_has_data <- TRUE #this actually never worked because it would have needed <<-
           write.table(
             df,
             download_path,
-            append = if (i == 0 &&
-                         !always_append)
-              FALSE
-            else
-              TRUE,
+            append = !(i == 0 && isFALSE(always_append)),
             sep = ",",
             eol = "\n",
             row.names = FALSE,
-            col.names = if (i == 0 && !always_append)
-              TRUE
-            else
-              FALSE
+            col.names = i == 0 && isFALSE(always_append)
           )
         }
       }
@@ -794,7 +792,7 @@ npn_get_data <- function(url,
   if (is.null(download_path)) {
     return(dtm)
   } else {
-    return(set_has_data)
+    return(download_path)
   }
 }
 
