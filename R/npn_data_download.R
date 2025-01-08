@@ -864,13 +864,15 @@ npn_get_common_query_vars <- function(
   family_ids = NULL,
   order_ids = NULL,
   class_ids = NULL,
-  pheno_class_ids= NULL,
-  taxonomy_aggregate=NULL,
-  pheno_class_aggregate=NULL,
-  wkt=NULL,
+  pheno_class_ids = NULL,
+  taxonomy_aggregate = NULL,
+  pheno_class_aggregate = NULL,
+  wkt = NULL,
   email = NULL
 ) {
-
+  if (missing(request_source) || is.null(request_source)) {
+    rlang::abort("`request_source` is a required argument")
+  }
   if (!is.null(family_ids)) {
     species_ids = NULL
     genus_ids = NULL
