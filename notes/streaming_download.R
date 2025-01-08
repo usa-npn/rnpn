@@ -21,7 +21,8 @@ six_bloom_raster <- NULL
 agdd_layer <- NULL
 additional_layers <- NULL
 
-req <- request(url) |>
+req <- base_req |>
+  httr2::req_url_path_append("observations", "getObservations.ndjson") %>%
   httr2::req_method("POST") %>%
   httr2::req_body_form(!!!query)
 
