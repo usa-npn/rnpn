@@ -84,7 +84,7 @@
 #'   request_source = "Your Name or Org Here",
 #'   years = c(2016),
 #'   species_id = c(210),
-#'   download_path = "saguaro_data_2016.json"
+#'   download_path = "saguaro_data_2016.csv"
 #' )
 #' }
 npn_download_status_data = function(request_source,
@@ -193,8 +193,9 @@ npn_download_status_data = function(request_source,
 #' @inheritParams npn_download_status_data
 #' @param individual_ids Comma-separated string of unique IDs for individual
 #'   plants/animal species by which to filter the data.
-#' @returns Data table of all status records returned as per the search
-#'   parameters. `NULL` if output directed to file.
+#' @returns A tibble of all status records returned as per the search
+#'   parameters. If `download_path` is specified, the file path is returned
+#'   instead.
 #' @export
 #' @examples \dontrun{
 #' #Download all saguaro data for 2013 and 2014
@@ -202,7 +203,7 @@ npn_download_status_data = function(request_source,
 #'   request_source = "Your Name or Org Here",
 #'   years = c('2013','2014'),
 #'   species_id = c(210),
-#'   download_path = "saguaro_data_2013_2014.json"
+#'   download_path = "saguaro_data_2013_2014.csv"
 #' )
 #' }
 npn_download_individual_phenometrics <- function(request_source,
@@ -332,8 +333,9 @@ npn_download_individual_phenometrics <- function(request_source,
 #'   `pheno_class_ids` value is not set, then this parameter is ignored. This
 #'   can be used in conjunction with `taxonomy_aggregate` and higher taxonomic
 #'   level data filtering.
-#' @returns Data table of all status records returned as per the search
-#'   parameters. `NULL` if output directed to file.
+#' @returns A tibble of all status records returned as per the search
+#'   parameters. If `download_path` is specified, the file path is returned
+#'   instead.
 #' @export
 #' @examples \dontrun{
 #' #Download all saguaro data for 2013 and 2014
@@ -341,7 +343,7 @@ npn_download_individual_phenometrics <- function(request_source,
 #'   request_source = "Your Name or Org Here",
 #'   years = c('2013','2014'),
 #'   species_id = c(210),
-#'   download_path = "saguaro_data_2013_2014.json"
+#'   download_path = "saguaro_data_2013_2014.csv"
 #' )
 #' }
 npn_download_site_phenometrics <- function(request_source,
