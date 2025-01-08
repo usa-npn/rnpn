@@ -125,8 +125,8 @@ the contiguous US will filter data based on the locations which fall within
 that WKT.}
 }
 \value{
-Data table of all status records returned as per the search
-parameters. \code{NULL} if output directed to file.
+A tibble of the requested data. If a \code{download_path} was specified,
+the file path is returned.
 }
 \description{
 This function allows for a parameterized search of all magnitude phenometrics
@@ -169,10 +169,10 @@ Metadata on all fields can be found in the following Excel sheet:
 \dontrun{
 #Download book all saguaro data for 2013
 npn_download_magnitude_phenometrics(
-  request_source = "Your Name or Org Here",
-  years = c(2013),
-  species_id = c(210),
-  download_path = "saguaro_data_2013.json"
+  request_source="Your Name or Org Here",
+  years=c(2013),
+  species_id=c(210),
+  download_path="saguaro_data_2013.csv"
 )
 }
 }
