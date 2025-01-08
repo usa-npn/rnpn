@@ -697,108 +697,115 @@ npn_get_data <- function(url,
                          six_bloom_raster = NULL,
                          agdd_layer = NULL,
                          additional_layers = NULL) {
-  h <- curl::new_handle()
-  query = c(query, customrequest = "POST")
-  curl::handle_setform(h, .list = query)
+  req <- httr2::request(url) %>%
+    httr2::req_user_agent("rnpn (https://github.com/usa-npn/rnpn/)") %>%
+    httr2::req_method("POST") %>%
+    httr2::req_body_form(!!!query)
 
-  con <- curl::curl(url, handle = h)
+  con <- httr2::req_perform_connection(req)
+  on.exit(close(con), add = TRUE)
 
+  continue <- TRUE
   dtm <- tibble::tibble()
-  set_has_data <- FALSE
   i <- 0
+  while (isTRUE(continue)) {
+    resp <- httr2::resp_stream_lines(con, lines = 5000)
+    continue <- length(resp) > 0
 
-  # Read the data 8MB at a time. This might be further optimized with the backing service.
-  tryCatch({
-    jsonlite::stream_in(con, function(df) {
-      # Reconcile all the points in the frame with the SIX leaf raster,
-      # if it's been requested.
+    if (isFALSE(continue)) break
 
-      if (!is.null(six_leaf_raster)) {
-        df <- npn_merge_geo_data(six_leaf_raster, "SI-x_Leaf_Value", df)
+    df <-
+      #paste lines into single string
+      paste0(resp[nzchar(resp) != 0], collapse = "\n") %>%
+      #default to character when mixed numeric and character
+      yyjsonr::read_ndjson_str(type = "df",
+                               nprobe = -1,
+                               promote_num_to_string = TRUE) %>%
+      tibble::as_tibble() %>%
+      #replace missing data indicator with NA
+      dplyr::mutate(dplyr::across(where(is.numeric),
+                                  \(x) ifelse(x == -9999, NA_real_, x))) %>%
+      dplyr::mutate(dplyr::across(where(is.character),
+                                  \(x) ifelse(x == "-9999", NA_character_, x)))
+
+    # Reconcile all the points in the frame with the SIX leaf raster,
+    # if it's been requested.
+    if (!is.null(six_leaf_raster)) {
+      df <- npn_merge_geo_data(six_leaf_raster, "SI-x_Leaf_Value", df)
+    }
+
+    # Reconcile all the points in the frame with the SIX bloom raster,
+    # if it's been requested.
+    if (!is.null(six_bloom_raster)) {
+      df <- npn_merge_geo_data(six_bloom_raster, "SI-x_Bloom_Value", df)
+    }
+
+    if (!is.null(additional_layers)) {
+      for (j in rownames(additional_layers)) {
+        df <- npn_merge_geo_data(
+          additional_layers[j, ][['raster']][[1]],
+          as.character(additional_layers[j, ][['name']][[1]]),
+          df
+        )
+      }
+    }
+
+    # Reconcile the AGDD point values with the data points if that
+    # was requested.
+    if (!is.null(agdd_layer)) {
+      date_col <- NULL
+
+      if ("observation_date" %in% colnames(df)) {
+        date_col <- "observation_date"
+      } else if ("mean_first_yes_doy" %in% colnames(df)) {
+        df$cal_date <-
+          as.Date(df[, "mean_first_yes_doy"],
+                  origin = paste0(df[, "mean_first_yes_year"], "-01-01")) - 1
+        date_col <- "cal_date"
+      } else if ("first_yes_day" %in% colnames(df)) {
+        df$cal_date <-
+          as.Date(df[, "first_yes_doy"],
+                  origin = paste0(df[, "first_yes_year"], "-01-01")) - 1
+        date_col <- "cal_date"
       }
 
-      # Reconcile all the points in the frame with the SIX bloom raster,
-      # if it's been requested.
-      if (!is.null(six_bloom_raster)) {
-        df <- npn_merge_geo_data(six_bloom_raster, "SI-x_Bloom_Value", df)
+      pt_values <-
+        apply(df[, c('latitude', 'longitude', date_col)], 1,
+              function(x) {
+                rnpn::npn_get_agdd_point_data(
+                  layer = agdd_layer,
+                  lat = as.numeric(x['latitude']),
+                  long = as.numeric(x['longitude']),
+                  date = x[date_col]
+                )
+              })
+
+      pt_values <- t(as.data.frame(pt_values))
+      colnames(pt_values) <- agdd_layer
+      df <- cbind(df, pt_values)
+
+      if ("cal_date" %in% colnames(df)) {
+        df$cal_date <- NULL
       }
+    }
 
-      if (!is.null(additional_layers)) {
-        for (j in rownames(additional_layers)) {
-          df <- npn_merge_geo_data(
-            additional_layers[j, ][['raster']][[1]],
-            as.character(additional_layers[j, ][['name']][[1]]),
-            df
-          )
-        }
+    if (is.null(download_path)) {
+      dtm <- dplyr::bind_rows(dtm, df)
+    } else {
+      if (nrow(df) > 0) {
+        write.table(
+          df,
+          download_path,
+          append = !(i == 0 && isFALSE(always_append)),
+          sep = ",",
+          eol = "\n",
+          row.names = FALSE,
+          col.names = i == 0 && isFALSE(always_append)
+        )
       }
-
-      # Reconcile the AGDD point values with the data points if that
-      # was requested.
-      if (!is.null(agdd_layer)) {
-        date_col <- NULL
-
-        if ("observation_date" %in% colnames(df)) {
-          date_col <- "observation_date"
-        } else if ("mean_first_yes_doy" %in% colnames(df)) {
-          df$cal_date <-
-            as.Date(df[, "mean_first_yes_doy"],
-                    origin = paste0(df[, "mean_first_yes_year"], "-01-01")) - 1
-          date_col <- "cal_date"
-        } else if ("first_yes_day" %in% colnames(df)) {
-          df$cal_date <-
-            as.Date(df[, "first_yes_doy"],
-                    origin = paste0(df[, "first_yes_year"], "-01-01")) - 1
-          date_col <- "cal_date"
-        }
-
-        pvalues <-
-          apply(df[, c('latitude', 'longitude', date_col)], 1,
-                function(x) {
-                  rnpn::npn_get_agdd_point_data(
-                    layer = agdd_layer,
-                    lat = as.numeric(x['latitude']),
-                    long = as.numeric(x['longitude']),
-                    date = x[date_col]
-                  )
-                })
-
-        pvalues <- t(as.data.frame(pvalues))
-        colnames(pvalues) <- agdd_layer
-        df <- cbind(df, pvalues)
-
-        if ("cal_date" %in% colnames(df)) {
-          df$cal_date <- NULL
-        }
-      }
-
-      # If the user asked for the data to be saved to file, then do that
-      # otherwise append the frame to the dtm (master data table) variable
-      if (is.null(download_path)) {
-        dtm <<- dplyr::bind_rows(dtm, df) #TODO why do you need <<-?
-      } else {
-        if (length(df) > 0) {
-          set_has_data <- TRUE #this actually never worked because it would have needed <<-
-          write.table(
-            df,
-            download_path,
-            append = !(i == 0 && isFALSE(always_append)),
-            sep = ",",
-            eol = "\n",
-            row.names = FALSE,
-            col.names = i == 0 && isFALSE(always_append)
-          )
-        }
-      }
-
-      i <<- i + 1
-
-    }, pagesize = 5000)
-  }, error = function(cond) {
-    message("Service is currently unavailable. Please try again later!")
-    set_has_data <- FALSE
-    dtm <- tibble::tibble()
-  })
+    }
+    i <- i + 1
+  }
 
   # If the user asks for the data to be saved to file then
   # there is nothing to return.
