@@ -15,6 +15,7 @@
 * `...` is no longer used for functions that get observational data
 * data download functions now return tibbles instead of `data.table` objects.  `rnpn` no longer depends on `data.table`
 * Missing values returned by download functions are now automatically converted from -9999 to `NA`
+* Fixed a bug (#42) where returned value of `npn_get_agdd_point_data()` was inconsistent depending on whether it was cached or not.
 
 # rnpn 1.2.9 (2024-08-18)
 

@@ -16,3 +16,8 @@ definitions.
 \description{
 Retrieves a complete list of all phenophase definitions.
 }
+\examples{
+\dontrun{
+pp <- npn_phenophase_definitions()
+}
+}

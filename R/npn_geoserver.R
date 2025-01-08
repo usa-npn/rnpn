@@ -159,6 +159,15 @@ npn_download_geospatial <- function (coverage_id,
 #' @returns Returns a numeric value of the AGDD value at the specified
 #'   lat/long/date. If no value can be retrieved, then `-9999` is returned.
 #' @export
+#' @examples \dontrun{
+#' npn_get_agdd_point_data(
+#'   layer = "gdd:agdd",
+#'   lat = 32.4,
+#'   long = -110,
+#'   date = "2020-01-15"
+#' )
+#' }
+#'
 npn_get_agdd_point_data <- function(
     layer,
     lat,
@@ -169,7 +178,7 @@ npn_get_agdd_point_data <- function(
   # pull it from there.
   cached_value <- npn_check_point_cached(layer, lat, long, date)
   if (!is.null(cached_value)) {
-    return(cached_value)
+    return(cached_value$value)
   }
   tryCatch({
     url <- paste0(
@@ -214,7 +223,7 @@ npn_get_agdd_point_data <- function(
   # Once the value is known, then cache it in global memory so the script doesn't try to ask for the same
   # data point more than once.
   #
-  # TODO: Break this into it's own function
+  # TODO: Break this into it's own function or possibly cache the whole response with `httr2::req_cache()`
   if (store_data) {
     if (is.null(pkg.env$point_values)) {
       pkg.env$point_values <- data.frame(
@@ -260,6 +269,15 @@ npn_get_agdd_point_data <- function(
 #'   specified lat/long/date. If no value can be retrieved, then `-9999` is
 #'   returned.
 #' @export
+#' @examples \dontrun{
+#' value <-
+#'   npn_get_point_data(
+#'     layer = "gdd:agdd",
+#'     lat = 38.8,
+#'     long = -110.5,
+#'     date = "2022-05-05"
+#'   )
+#' }
 npn_get_point_data <- function(layer, lat, long, date, store_data = TRUE) {
   #TODO cached value is data frame, not numeric
   cached_value <- npn_check_point_cached(layer, lat, long, date)
@@ -492,6 +510,20 @@ get_additional_rasters <- function(data) {
 #'   specified time period/location/method/base temp/data source.
 #'
 #' @export
+#' @examples \dontrun{
+#' res <- npn_get_custom_agdd_time_series(
+#'   method = "double-sine",
+#'   start_date = "2019-01-01",
+#'   end_date = "2019-01-15",
+#'   base_temp = 25,
+#'   climate_data_source = "NCEP",
+#'   temp_unit = "fahrenheit",
+#'   lat = 39.7,
+#'   long = -107.5,
+#'   upper_threshold = 90
+#' )
+#' }
+#'
 npn_get_custom_agdd_time_series <- function(method,
                                             start_date,
                                             end_date,
@@ -564,6 +596,16 @@ npn_get_custom_agdd_time_series <- function(method,
 #' @returns A [terra::SpatRaster] object of each calculated AGDD numeric values
 #'   based on specified time period/method/base temp/data source.
 #' @export
+#' @examples \dontrun{
+#' res <- npn_get_custom_agdd_raster(
+#'   method = "simple",
+#'   climate_data_source = "NCEP",
+#'   temp_unit = "Fahrenheit",
+#'   start_date = "2020-01-01",
+#'   end_date = "2020-01-15",
+#'   base_temp = 32
+#' )
+#' }
 npn_get_custom_agdd_raster <- function(method,
                                        climate_data_source,
                                        temp_unit,

@@ -20,3 +20,8 @@ database, filtered by the specified kingdom.
 \description{
 Return all plant or animal functional types used in the NPN database.
 }
+\examples{
+\dontrun{
+npn_species_types("Plantae")
+}
+}

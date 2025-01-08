@@ -54,3 +54,19 @@ returns an AGDD time series, based on start and end date, for a given
 location in the continental US. This function leverages the USA-NPN geo web
 services
 }
+\examples{
+\dontrun{
+res <- npn_get_custom_agdd_time_series(
+  method = "double-sine",
+  start_date = "2019-01-01",
+  end_date = "2019-01-15",
+  base_temp = 25,
+  climate_data_source = "NCEP",
+  temp_unit = "fahrenheit",
+  lat = 39.7,
+  long = -107.5,
+  upper_threshold = 90
+)
+}
+
+}

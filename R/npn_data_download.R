@@ -81,10 +81,10 @@
 #' @examples \dontrun{
 #' #Download all saguaro data for 2016
 #' npn_download_status_data(
-#'   request_source="Your Name or Org Here",
-#'   years=c(2016),
-#'   species_id=c(210),
-#'   download_path="saguaro_data_2016.json"
+#'   request_source = "Your Name or Org Here",
+#'   years = c(2016),
+#'   species_id = c(210),
+#'   download_path = "saguaro_data_2016.json"
 #' )
 #' }
 npn_download_status_data = function(request_source,
@@ -199,10 +199,10 @@ npn_download_status_data = function(request_source,
 #' @examples \dontrun{
 #' #Download all saguaro data for 2013 and 2014
 #' npn_download_individual_phenometrics(
-#'   request_source="Your Name or Org Here",
-#'   years=c('2013','2014'),
-#'   species_id=c(210),
-#'   download_path="saguaro_data_2013_2014.json"
+#'   request_source = "Your Name or Org Here",
+#'   years = c('2013','2014'),
+#'   species_id = c(210),
+#'   download_path = "saguaro_data_2013_2014.json"
 #' )
 #' }
 npn_download_individual_phenometrics <- function(request_source,
@@ -338,10 +338,10 @@ npn_download_individual_phenometrics <- function(request_source,
 #' @examples \dontrun{
 #' #Download all saguaro data for 2013 and 2014
 #' npn_download_site_phenometrics(
-#'   request_source="Your Name or Org Here",
-#'   years=c('2013','2014'),
-#'   species_id=c(210),
-#'   download_path="saguaro_data_2013_2014.json"
+#'   request_source = "Your Name or Org Here",
+#'   years = c('2013','2014'),
+#'   species_id = c(210),
+#'   download_path = "saguaro_data_2013_2014.json"
 #' )
 #' }
 npn_download_site_phenometrics <- function(request_source,
@@ -584,7 +584,18 @@ npn_download_magnitude_phenometrics <- function(request_source,
 #' @returns A tibble combining each requests results from the service. If
 #'   `download_path` is specified, the file path is returned instead.
 #' @keywords internal
+#' @examples \dontrun{
+#' endpoint <- "/observations/getObservations.ndjson?"
+#' query <- list(
+#'   request_src = "Unit%20Test",
+#'   climate_data = "0",
+#'   `species_id[1]` = "6"
+#' )
 #'
+#' npn_get_data_by_year(endpoint = endpoint,
+#'                      query = query,
+#'                      years = 2013)
+#' }
 npn_get_data_by_year <- function(endpoint,
                                  query,
                                  years,
@@ -807,6 +818,9 @@ npn_get_data <- function(url,
 #'
 #' @return The URL, as a string.
 #' @keywords internal
+#' @examples \dontrun{
+#' url <- npn_get_download_url("/observations/getMagnitudeData.ndjson")
+#' }
 npn_get_download_url <- function(endpoint) {
   url <- paste0(base(), endpoint)
 #  query_str <- paste(names(query_vars),"=",query_vars,sep="",collapse = '&')
