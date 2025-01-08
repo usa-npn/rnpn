@@ -1,4 +1,3 @@
-context("npn_observations")
 # Important to note that these test make up the bulk of the package's functionality
 # And yet many of these tests are skipped by default.
 # Because these all make HTTP requests to the npn data services, they are either

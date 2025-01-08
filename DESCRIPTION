@@ -26,7 +26,8 @@ Imports:
     magrittr,
     rlang,
     tibble,
-    xml2
+    xml2,
+    yyjsonr
 Suggests:
     covr,
     ggplot2,
