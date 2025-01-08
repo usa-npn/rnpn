@@ -20,7 +20,6 @@ Depends:
     R (>= 3.5.0)
 Imports:
     curl,
-    data.table (>= 1.9.6),
     dplyr,
     httr (>= 1.1.0),
     httr2,

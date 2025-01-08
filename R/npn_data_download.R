@@ -639,7 +639,7 @@ npn_get_data_by_year <- function(endpoint,
       # no previous iteration / the results were empty
       if (!is.null(data) && is.null(download_path)) {
         if (!is.null(all_data)) {
-          all_data <- data.table::rbindlist(list(all_data, data))
+          all_data <- dplyr::bind_rows(all_data, data)
         } else {
           all_data = data
         }
@@ -685,7 +685,7 @@ npn_get_data <- function(url,
 
   con <- curl::curl(url, handle = h)
   current_data <- NULL
-  dtm <- data.table::data.table()
+  dtm <- tibble::tibble()
   set_has_data <- FALSE
   i <- 0
 
@@ -694,6 +694,7 @@ npn_get_data <- function(url,
     jsonlite::stream_in(con, function(df) {
       # Reconcile all the points in the frame with the SIX leaf raster,
       # if it's been requested.
+
       if (!is.null(six_leaf_raster)) {
         df <- npn_merge_geo_data(six_leaf_raster, "SI-x_Leaf_Value", df)
       }
@@ -745,7 +746,7 @@ npn_get_data <- function(url,
                 })
 
         pvalues <- t(as.data.frame(pvalues))
-        colnames(pvalues) <- c(agdd_layer)
+        colnames(pvalues) <- agdd_layer
         df <- cbind(df, pvalues)
 
         if ("cal_date" %in% colnames(df)) {
@@ -756,7 +757,7 @@ npn_get_data <- function(url,
       # If the user asked for the data to be saved to file, then do that
       # otherwise append the frame to the dtm (master data table) variable
       if (is.null(download_path)) {
-        dtm <<- rbind(dtm, data.table::as.data.table(df))
+        dtm <<- dplyr::bind_rows(dtm, df) #TODO why do you need <<-?
       } else {
         if (length(df) > 0) {
           set_has_data <- TRUE
@@ -785,7 +786,7 @@ npn_get_data <- function(url,
   }, error = function(cond) {
     message("Service is currently unavailable. Please try again later!")
     set_has_data <- FALSE
-    dtm <- data.table::data.table()
+    dtm <- tibble::tibble()
   })
 
   # If the user asks for the data to be saved to file then
