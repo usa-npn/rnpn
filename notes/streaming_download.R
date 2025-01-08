@@ -22,15 +22,15 @@ agdd_layer <- NULL
 additional_layers <- NULL
 
 req <- request(url) |>
-  req_method("POST") %>%
-  req_body_form(!!!query)
+  httr2::req_method("POST") %>%
+  httr2::req_body_form(!!!query)
 
-con <- req_perform_connection(req)
+con <- httr2::req_perform_connection(req)
 
 continue <- TRUE
 out <- tibble::tibble()
 while(isTRUE(continue)) {
-  resp <- resp_stream_lines(con, lines = 5000)
+  resp <- httr2::resp_stream_lines(con, lines = 5000)
   continue <- length(resp) > 0
 
   if (continue) {
@@ -40,7 +40,8 @@ while(isTRUE(continue)) {
       #default to character when mixed numeric and character
       yyjsonr::read_ndjson_str(type = "df", nprobe = -1, promote_num_to_string = TRUE) %>%
       #replace missing data indicator with NA
-      mutate(across(where(is.numeric), \(x) ifelse(x == -9999, NA_real_, x)))
+      dplyr::mutate(dplyr::across(where(is.numeric), \(x) ifelse(x == -9999, NA_real_, x))) %>%
+      dplyr::mutate(dplyr::across(where(is.character), \(x) ifelse(x == "-9999", NA_character_, x)))
     out <- dplyr::bind_rows(out, df_chunk)
   }
 }
