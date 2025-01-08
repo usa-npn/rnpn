@@ -723,9 +723,9 @@ npn_get_data <- function(url,
                                promote_num_to_string = TRUE) %>%
       tibble::as_tibble() %>%
       #replace missing data indicator with NA
-      dplyr::mutate(dplyr::across(where(is.numeric),
+      dplyr::mutate(dplyr::across(dplyr::where(is.numeric),
                                   \(x) ifelse(x == -9999, NA_real_, x))) %>%
-      dplyr::mutate(dplyr::across(where(is.character),
+      dplyr::mutate(dplyr::across(dplyr::where(is.character),
                                   \(x) ifelse(x == "-9999", NA_character_, x)))
 
     # Reconcile all the points in the frame with the SIX leaf raster,
