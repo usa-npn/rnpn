@@ -14,6 +14,7 @@
 * `rnpn` now uses `httr2` instead of `httr` internally for functions that get observational data
 * `...` is no longer used for functions that get observational data
 * data download functions now return tibbles instead of `data.table` objects.  `rnpn` no longer depends on `data.table`
+* Missing values returned by download functions are now automatically converted from -9999 to `NA`
 
 # rnpn 1.2.9 (2024-08-18)
 
