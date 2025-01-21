@@ -823,7 +823,7 @@ npn_get_data <- function(url,
 #' url <- npn_get_download_url("/observations/getMagnitudeData.ndjson")
 #' }
 npn_get_download_url <- function(endpoint) {
-  url <- paste0(base(), endpoint)
+  url <- paste0(base_portal_url, endpoint)
 #  query_str <- paste(names(query_vars),"=",query_vars,sep="",collapse = '&')
   return(paste0(url))
 }

@@ -22,7 +22,6 @@ Imports:
     curl,
     data.table (>= 1.9.6),
     dplyr,
-    httr (>= 1.1.0),
     httr2,
     jsonlite (>= 0.9.19),
     magrittr,
