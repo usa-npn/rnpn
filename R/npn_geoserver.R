@@ -98,41 +98,41 @@ npn_download_geospatial <- function (coverage_id,
                                      date,
                                      format = "geotiff",
                                      output_path = NULL) {
-  if (is.null(output_path)) {
-    z <- tempfile()
-    # can't clean this up because returned SpatRaster will be broken due to missing file
-    # on.exit(unlink(z), add = TRUE)
-  }
-  s <- "&"
+
+  #logic to handle `date` being possibly a date or possible an integer DOY
   if (!is.null(date) && toString(date) != "") {
     param <- tryCatch({
       as.Date(date)
-      paste0(s, "SUBSET=time(\"", date, "T00:00:00.000Z\")")
+      paste0("time(\"", date, "T00:00:00.000Z\")")
     }, error = function(msg) {
-      paste0(s, "SUBSET=elevation(", date, ")")
+      paste0("elevation(", date, ")")
     })
   } else {
-    param <- ""
+    param <- NULL
   }
+  req <- base_req_geoserver %>%
+    httr2::req_url_path_append("wcs") %>%
+    httr2::req_url_query(
+      service = "WCS",
+      version = "2.0.1",
+      request = "GetCoverage",
+      format = format,
+      coverageId = coverage_id,
+      SUBSET = param
+    )
 
-  url <- paste0(base_geoserver(),
-                "format=",
-                format ,
-                "&coverageId=",
-                coverage_id,
-                param)
   tryCatch({
     if (is.null(output_path)) {
       rlang::check_installed("terra", reason = "when `output_path` is `NULL`")
-      download.file(url, z, method = "libcurl", mode = "wb")
+      z <- tempfile()
+      resp <- httr2::req_perform(req, path = z)
       ras <- terra::rast(z)
+      return(ras)
     } else {
-      download.file(url,
-                    destfile = output_path,
-                    method = "libcurl",
-                    mode = "wb")
+      resp <- httr2::req_perform(req, path = output_path)
+      #TODO return output_path?
     }
-  }, error = function(msg) {
+  }, error = function(msg) { #TODO use httr2 for error handling
     message(
       "There was an issue downloading data from the Geoservice. It's possible the server is temporarily down. Please try again later."
     )
@@ -181,38 +181,33 @@ npn_get_agdd_point_data <- function(
     return(cached_value$value)
   }
   tryCatch({
-    url <- paste0(
-      base(),
-      "stations/getTimeSeries.json?latitude=",
-      lat,
-      "&longitude=",
-      long,
-      "&start_date=",
-      as.Date(date) - 1,
-      "&end_date=",
-      date,
-      "&layer=",
-      layer
-    )
-    data <- httr::GET(url, query = list(), httr::progress())
-  }, error = function(msg) {
+    req <- base_req %>%
+      httr2::req_url_path_append("stations/getTimeSeries.json") %>%
+      httr2::req_url_query(
+        latitude = lat,
+        longitude = long,
+        start_date = as.Date(date) - 1,
+        end_date = date,
+        layer = layer
+      )
+    resp <- httr2::req_perform(req)
+  }, error = function(msg) { #TODO: use httr2 to handle errors
     message(
       "Unable to download AGDD data. The service is temporarily down, please try again later."
     )
     return(NULL)
   })
 
-  # If the server returns an error then in that case,
-  # just return the -9999 value.
-  json_data <- tryCatch({
-    jsonlite::fromJSON(httr::content(data, as = "text"))
+  # If the server returns an error then in that case, just return the -9999
+  # value.
+  json_data <- tryCatch({ #TODO use httr2 to handle errors
+    httr2::resp_body_json(resp, simplifyVector = TRUE)
   }, error = function(msg) {
     message("Unable to parse server response. Please try again later.")
     return(-9999)
   })
 
-  # If the server returns an unexpected value, also return
-  # -9999.
+  # If the server returns an unexpected value, also return -9999.
   v <- tryCatch({
     as.numeric(json_data[json_data$date == date, "point_value"])
   }, error = function(msg) {
@@ -220,11 +215,12 @@ npn_get_agdd_point_data <- function(
     return(-9999)
   })
 
-  # Once the value is known, then cache it in global memory so the script doesn't try to ask for the same
-  # data point more than once.
+  # Once the value is known, then cache it in global memory so the script
+  # doesn't try to ask for the same data point more than once.
   #
-  # TODO: Break this into it's own function or possibly cache the whole response with `httr2::req_cache()`
-  if (store_data) {
+  # TODO: Break this into it's own function or possibly cache the whole response
+  # with `httr2::req_cache()`
+  if (isTRUE(store_data)) {
     if (is.null(pkg.env$point_values)) {
       pkg.env$point_values <- data.frame(
         layer = layer,
@@ -533,44 +529,40 @@ npn_get_custom_agdd_time_series <- function(method,
                                             lat,
                                             long,
                                             upper_threshold = NULL) {
-  base_url <- ""
   climate_data_source <- toupper(climate_data_source)
   temp_unit <- tolower(temp_unit)
   method <- tolower(method)
+  req <- base_req_geoservices %>%
+    httr2::req_url_path_append("agdd", method, "pointTimeSeries") %>%
+    httr2::req_url_query(
+      climateProvider = climate_data_source,
+      temperatureUnit = temp_unit,
+      startDate = start_date,
+      endDate = end_date,
+      latitude = lat,
+      longitude = long
+    ) %>%
+    httr2::req_progress(type = "down")
 
   if (method == "simple") {
-    base_url <- paste0(base_data_domain(),
-                       "geo-services/v1/agdd/simple/pointTimeSeries?")
+    req <- req %>%
+      httr2::req_url_query(base = base_temp)
   } else {
-    base_url <- paste0(base_data_domain(),
-                       "geo-services/v1/agdd/double-sine/pointTimeSeries?")
+    req <- req %>%
+      httr2::req_url_query(
+        lowerThreshold = base_temp,
+        upperThreshold = upper_threshold
+      )
   }
 
-  url <- paste0(base_url, "climateProvider=", climate_data_source)
-  url <- paste0(url, "&temperatureUnit=", temp_unit)
-  url <- paste0(url, "&startDate=", start_date)
-  url <- paste0(url, "&endDate=", end_date)
-  url <- paste0(url, "&latitude=", lat)
-  url <- paste0(url, "&longitude=", long)
-
-  if (method == "simple") {
-    url <- paste0(url, "&base=", base_temp)
-
-  } else {
-    url <- paste0(url, "&lowerThreshold=", base_temp)
-    if (!is.null(upper_threshold)) {
-      url <- paste0(url, "&upperThreshold=", upper_threshold)
-    }
-  }
-
-  tryCatch({
-    data = httr::GET(url, query = list(), httr::progress())
+  tryCatch({ #TODO use httr2 to handle errors
+    resp <- httr2::req_perform(req)
   }, error = function(msg) {
     message("Service is temporarily unavailable. Please try again later.")
     return(NULL)
   })
-
-  return(jsonlite::fromJSON(httr::content(data, as = "text"))$timeSeries)
+  out <- httr2::resp_body_json(resp, simplifyVector = TRUE)$timeSeries
+  return(tibble::as_tibble(out))
 }
 
 #' Get Custom AGDD Raster Map
@@ -614,49 +606,60 @@ npn_get_custom_agdd_raster <- function(method,
                                        base_temp,
                                        upper_threshold = NULL) {
   rlang::check_installed("terra")
-  base_url <- ""
   climate_data_source <- toupper(climate_data_source)
   temp_unit <- tolower(temp_unit)
   method <- tolower(method)
-  ras <- NULL
+
+  req <- base_req_geoservices %>%
+    httr2::req_url_path_append("agdd", method, "map") %>%
+    httr2::req_progress(type = "down") %>% # doesn't actually work because downloaded json is small despite taking a long time to generate on server
+    httr2::req_url_query(
+      climateProvider = climate_data_source,
+      temperatureUnit = temp_unit,
+      startDate = start_date,
+      endDate = end_date
+    )
 
   if (method == "simple") {
-    base_url <- paste0(base_data_domain(), "geo-services/v1/agdd/simple/map?")
+    req <- req %>%
+      httr2::req_url_query(
+        base = base_temp
+      )
   } else {
-    base_url <- paste0(base_data_domain(),
-                       "geo-services/v1/agdd/double-sine/map?")
+    req <- req %>%
+      httr2::req_url_query(
+        lowerThreshold = base_temp,
+        upperThreshold = upper_threshold
+      )
   }
 
-  url <- paste0(base_url, "climateProvider=", climate_data_source)
-  url <- paste0(url, "&temperatureUnit=", temp_unit)
-  url <- paste0(url, "&startDate=", start_date)
-  url <- paste0(url, "&endDate=", end_date)
-
-  if (method == "simple") {
-    url <- paste0(url, "&base=", base_temp)
-  } else {
-    url <- paste0(url, "&lowerThreshold=", base_temp)
-    if (!is.null(upper_threshold)) {
-      url <- paste0(url, "&upperThreshold=", upper_threshold)
-    }
-  }
-
-  tryCatch({
-    data <- httr::GET(url, query = list(), httr::progress())
+  tryCatch({ #TODO handle errors with httr2 instead
+    resp <- httr2::req_perform(req)
   }, error = function(msg) {
     message("Data service is currently unavailable, please try again later.")
     return(NULL)
   })
 
-  mapURL <- jsonlite::fromJSON(httr::content(data, as = "text"))$mapUrl
+  mapURL <-
+    httr2::resp_body_json(resp)$mapUrl
 
   if (!is.null(mapURL)) {
     z <- tempfile()
-    h <- function(w)
-      if (any(grepl("Discarded datum", w)))
-        invokeRestart("muffleWarning")
-    download.file(mapURL, z, method = "libcurl", mode = "wb")
-    ras <- withCallingHandlers(terra::rast(z), warning = h)
+    httr2::request(mapURL) %>%
+      httr2::req_user_agent("rnpn (https://github.com/usa-npn/rnpn/)") %>%
+      httr2::req_perform(path = z)
+
+    # "Discarded datum" seems to be a PROJ error that pops up in raster and
+    # terra. Not sure if wrapping in withCallingHandlers() is still necessary
+    # after migrating to terra, but I'll leave it in just in case.
+    ras <- withCallingHandlers(
+      terra::rast(z),
+      warning = function(w) {
+        if (any(grepl("Discarded datum", w))) {
+          invokeRestart("muffleWarning")
+        }
+      }
+    )
   }
   return(ras)
 }

@@ -15,7 +15,7 @@ test_that("npn_download_geospatial works", {
   skip_on_cran()
   skip_if_not(check_geo_service(), "Geo Service is down")
 
-  ras <- npn_download_geospatial("gdd:agdd", date="2018-05-05")
+  ras <- npn_download_geospatial(coverage_id = "gdd:agdd", date = "2018-05-05")
   expect_s4_class(ras, "SpatRaster")
 
   withr::with_tempfile("test_tiff", {
@@ -92,7 +92,11 @@ test_that("npn_get_point_data functions", {
   expect_equal(value, 83)
 
   #No data in Canada
-  expect_error(npn_get_point_data("si-x:average_leaf_prism", 60.916600, -123.037793, "1990-01-01"))
+  expect_error(
+    vcr::use_cassette("npn_get_point_data_3", {
+      npn_get_point_data("si-x:average_leaf_prism", 60.916600, -123.037793, "1990-01-01")
+    })
+  )
 })
 
 
@@ -101,28 +105,34 @@ test_that("npn_custom_agdd functions",{
 
   vcr::use_cassette("npn_get_custom_agdd_time_series_1", {
     res <- npn_get_custom_agdd_time_series(
-      "double-sine",
-      "2019-01-01",
-      "2019-01-15",
-      25,
-      "NCEP",
-      "fahrenheit",
-      39.7,
-      -107.5,
-      upper_threshold=90
+      method = "double-sine",
+      start_date = "2019-01-01",
+      end_date = "2019-01-15",
+      base_temp = 25,
+      climate_data_source = "NCEP",
+      temp_unit = "fahrenheit",
+      lat = 39.7,
+      long = -107.5,
+      upper_threshold = 90
     )
   })
 
   expect_s3_class(res, "data.frame")
-  expect_equal(round(res[15, "agdd"]), 34)
+  expect_equal(round(res$agdd[15]), 34)
 })
 
 
 test_that("npn_get_agdd_point_data works",{
   skip_on_cran()
   skip_if_not(check_service(), "Data Service is down")
-
-  res <- npn_get_agdd_point_data("gdd:agdd", 32.4, -110, "2020-01-15")
+  vcr::use_cassette("npn_get_agdd_point_data", {
+    res <- npn_get_agdd_point_data(
+      layer = "gdd:agdd",
+      lat = 32.4,
+      long = -110,
+      date = "2020-01-15"
+    )
+  })
 
   expect_type(res, "double")
   if(res > 0){
@@ -133,7 +143,8 @@ test_that("npn_get_agdd_point_data works",{
 
 test_that("npn_get_custom_agdd_raster works", {
   skip_on_cran()
-  skip_if_not(check_data_service(), "Data Service is down")
+  skip_if(get_skip_long_tests())
+  # skip_if_not(check_data_service(), "Data Service is down")
 
   res <- npn_get_custom_agdd_raster(
     method = "simple",
