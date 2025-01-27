@@ -14,6 +14,8 @@
 * `rnpn` now uses `httr2` instead of `httr`
 * `...` is no longer used for functions that get observational data
 * Fixed a bug (#42) where returned value of `npn_get_agdd_point_data()` was inconsistent depending on whether it was cached or not.
+* `npn_abundance_categories()`, `npn_phenophases_by_species()`, and `npn_get_phenophases_for_taxon()` no longer return a data frames containing list-columns.  The results are now unnested automatically.
+* `npn_groups(use_hierarchy = TRUE)` now returns a nested list rather than a tibble with a list-column.
 
 # rnpn 1.2.9 (2024-08-18)
 
