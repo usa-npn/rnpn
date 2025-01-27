@@ -554,6 +554,9 @@ npn_download_magnitude_phenometrics <- function(request_source,
 #'   generated and added.
 #' @param years Character vector; the years for which to retrieve data. There
 #'   will be one request to the service for each year
+#' @param year_start,year_end Character vectors of the form "MM-DD".  Use these
+#'   parameters to provide a custom window for blah blah blah blah. If not
+#'   provided, they will default to "01-01" and "12-31", respectively.
 #' @param download_path Character, optional file path to the file for which to
 #'   output the results.
 #' @param six_leaf_layer Boolean value when set to `TRUE` will attempt to
@@ -598,12 +601,18 @@ npn_download_magnitude_phenometrics <- function(request_source,
 npn_get_data_by_year <- function(endpoint,
                                  query,
                                  years,
+                                 year_start = "01-01",
+                                 year_end = "12-31",
                                  download_path = NULL,
                                  six_leaf_layer = FALSE,
                                  six_bloom_layer = FALSE,
                                  agdd_layer = NULL,
                                  six_sub_model = NULL,
                                  additional_layers = NULL) {
+  #validate year_start and year_end
+  validate_mmdd(year_start)
+  validate_mmdd(year_end)
+
   all_data <- NULL
   first_year <- TRUE
   six_leaf_raster <- NULL
@@ -619,8 +628,8 @@ npn_get_data_by_year <- function(endpoint,
     for (i in years) {
       # This is where the start/end dates are automatically created
       # based on the input years.
-      query['start_date'] <- paste0(i, "-01-01")
-      query['end_date'] <- paste0(i, "-12-31")
+      query['start_date'] <- paste0(i, year_start)
+      query['end_date'] <- paste0(i, year_end)
 
       if (isTRUE(six_leaf_layer)) {
         six_leaf_raster <- resolve_six_raster(i, "leaf", six_sub_model)

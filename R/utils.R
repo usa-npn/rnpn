@@ -81,3 +81,16 @@ explode_query <- function(arg_name, arg_vals) {
     NULL
   }
 }
+
+# year_start <- "12-315"
+# validate_mmdd(year_start)
+validate_mmdd <- function(x) {
+  x_name <- deparse(substitute(x))
+  mm_dd_check <- grepl("^\\d{2}-\\d{2}$", x)
+  valid_date <- try(as.Date(paste0("2000-", x)), silent = TRUE)
+  if (inherits(valid_date, "try-error") | isFALSE(mm_dd_check)) {
+    stop("Please provide `", x_name, "` as 'MM-DD'.")
+  }
+}
+
+

@@ -8,6 +8,8 @@ npn_get_data_by_year(
   endpoint,
   query,
   years,
+  year_start = "01-01",
+  year_end = "12-31",
   download_path = NULL,
   six_leaf_layer = FALSE,
   six_bloom_layer = FALSE,
@@ -25,6 +27,10 @@ generated and added.}
 
 \item{years}{Character vector; the years for which to retrieve data. There
 will be one request to the service for each year}
+
+\item{year_start, year_end}{Character vectors of the form "MM-DD".  Use these
+parameters to provide a custom window for blah blah blah blah. If not
+provided, they will default to "01-01" and "12-31", respectively.}
 
 \item{download_path}{Character, optional file path to the file for which to
 output the results.}
