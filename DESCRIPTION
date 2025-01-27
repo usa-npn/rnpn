@@ -20,7 +20,7 @@ Depends:
     R (>= 3.5.0)
 Imports:
     dplyr,
-    httr2,
+    httr2 (>= 1.1.0),
     magrittr,
     rlang,
     tibble,
