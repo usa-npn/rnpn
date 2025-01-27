@@ -26,12 +26,12 @@ Authors:
   \item Scott Chamberlain
   \item Lee Marsh
   \item Kevin Wong
+  \item Eric R Scott (\href{https://orcid.org/0000-0002-7430-7879}{ORCID})
 }
 
 Other contributors:
 \itemize{
   \item David LeBauer [contributor]
-  \item Eric R Scott [contributor]
 }
 
 }

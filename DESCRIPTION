@@ -27,6 +27,7 @@ Imports:
     magrittr,
     rlang,
     tibble,
+    tidyr,
     xml2
 Suggests:
     covr,
