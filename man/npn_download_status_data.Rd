@@ -136,8 +136,9 @@ the contiguous US will filter data based on the locations which fall within
 that WKT.}
 }
 \value{
-Data table of all status records returned as per the search
-parameters. \code{NULL} if output directed to file.
+A tibble of all status records returned as per the search
+parameters. If \code{download_path} is specified, the file path is returned
+instead.
 }
 \description{
 This function allows for a parameterized search of all status records in the
@@ -172,7 +173,7 @@ npn_download_status_data(
   request_source = "Your Name or Org Here",
   years = c(2016),
   species_id = c(210),
-  download_path = "saguaro_data_2016.json"
+  download_path = "saguaro_data_2016.csv"
 )
 }
 }
