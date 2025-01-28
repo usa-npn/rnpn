@@ -28,8 +28,8 @@ service and aggregating all data results in a single file. Without this
 flag, otherwise, each call to the service would truncate the output file.}
 }
 \value{
-Data table of the requested data. \code{NULL} if a \code{download_path} was
-specified.
+A tibble of the requested data. If a \code{download_path} was specified,
+the file path is returned.
 }
 \description{
 Generic utility function for querying data from the NPN data services.
