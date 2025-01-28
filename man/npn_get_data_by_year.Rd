@@ -8,8 +8,8 @@ npn_get_data_by_year(
   endpoint,
   query,
   years,
-  year_start = "01-01",
-  year_end = "12-31",
+  period_start = "01-01",
+  period_end = "12-31",
   download_path = NULL,
   six_leaf_layer = FALSE,
   six_bloom_layer = FALSE,
@@ -26,11 +26,14 @@ parameters but doesn't include start/end date which will be automatically
 generated and added.}
 
 \item{years}{Character vector; the years for which to retrieve data. There
-will be one request to the service for each year}
+will be one request to the service for each year.  If the period
+(determined by \code{period_start} and \code{period_end}) crosses a year boundary,
+\code{years} determines the start years.}
 
-\item{year_start, year_end}{Character vectors of the form "MM-DD".  Use these
-parameters to provide a custom window for blah blah blah blah. If not
-provided, they will default to "01-01" and "12-31", respectively.}
+\item{period_start, period_end}{Character vectors of the form "MM-DD". Used to
+determine the period over which phenophase status records are summarized.
+If not provided, they will default to "01-01" and "12-31", respectively, to
+encompass the entire year.}
 
 \item{download_path}{Character, optional file path to the file for which to
 output the results.}
