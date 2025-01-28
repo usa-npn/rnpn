@@ -272,8 +272,8 @@ that WKT.</p></dd>
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>Data table of all status records returned as per the search
-parameters. <code>NULL</code> if output directed to file.</p>
+    <p>A tibble of the requested data. If a <code>download_path</code> was specified,
+the file path is returned.</p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -308,10 +308,10 @@ Metadata on all fields can be found in the following Excel sheet:
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># \dontrun{</span></span></span>
 <span class="r-in"><span><span class="co">#Download book all saguaro data for 2013</span></span></span>
 <span class="r-in"><span><span class="fu">npn_download_magnitude_phenometrics</span><span class="op">(</span></span></span>
-<span class="r-in"><span>  request_source <span class="op">=</span> <span class="st">"Your Name or Org Here"</span>,</span></span>
-<span class="r-in"><span>  years <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2013</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>  species_id <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">210</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>  download_path <span class="op">=</span> <span class="st">"saguaro_data_2013.json"</span></span></span>
+<span class="r-in"><span>  request_source<span class="op">=</span><span class="st">"Your Name or Org Here"</span>,</span></span>
+<span class="r-in"><span>  years<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2013</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  species_id<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">210</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  download_path<span class="op">=</span><span class="st">"saguaro_data_2013.csv"</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span> <span class="co"># }</span></span></span>
 </code></pre></div>

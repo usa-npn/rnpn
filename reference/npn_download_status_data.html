@@ -289,8 +289,9 @@ that WKT.</p></dd>
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>Data table of all status records returned as per the search
-parameters. <code>NULL</code> if output directed to file.</p>
+    <p>A tibble of all status records returned as per the search
+parameters. If <code>download_path</code> is specified, the file path is returned
+instead.</p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -317,7 +318,7 @@ Metadata on all fields can be found in the following Excel sheet:
 <span class="r-in"><span>  request_source <span class="op">=</span> <span class="st">"Your Name or Org Here"</span>,</span></span>
 <span class="r-in"><span>  years <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2016</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>  species_id <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">210</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>  download_path <span class="op">=</span> <span class="st">"saguaro_data_2016.json"</span></span></span>
+<span class="r-in"><span>  download_path <span class="op">=</span> <span class="st">"saguaro_data_2016.csv"</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span> <span class="co"># }</span></span></span>
 </code></pre></div>
