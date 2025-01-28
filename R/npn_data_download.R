@@ -691,8 +691,15 @@ npn_get_data_by_year <- function(endpoint,
 #' @keywords internal
 #' @examples \dontrun{
 #' npn_get_data(
-#'  url = "https://services.usanpn.org/npn_portal//observations/getObservations.ndjson?",
-#'  query = list(request_src = "Unit%20Test", climate_data = "0", `species_id[1]` = "6", start_date = "2010-01-01", end_date = "2010-12-31")
+#'   url = "https://services.usanpn.org/npn_portal//observations/getObservations.ndjson?",
+#'   query = list(
+#'     request_src = "Unit%20Test",
+#'     climate_data = "0",
+#'     `species_id[1]` = "6",
+#'     start_date = "2010-01-01",
+#'     end_date = "2010-12-31"
+#'   )
+#' )
 #' }
 npn_get_data <- function(url,
                          query,
