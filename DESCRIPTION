@@ -24,6 +24,7 @@ Imports:
     magrittr,
     rlang,
     tibble,
+    tidyr,
     xml2,
     yyjsonr
 Suggests:

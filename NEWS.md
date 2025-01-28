@@ -16,6 +16,8 @@
 * data download functions now return tibbles instead of `data.table` objects.  `rnpn` no longer depends on `data.table`
 * Missing values returned by download functions are now automatically converted from -9999 to `NA`
 * Fixed a bug (#42) where returned value of `npn_get_agdd_point_data()` was inconsistent depending on whether it was cached or not.
+* `npn_abundance_categories()`, `npn_phenophases_by_species()`, and `npn_get_phenophases_for_taxon()` no longer return a data frames containing list-columns.  The results are now unnested automatically.
+* `npn_groups(use_hierarchy = TRUE)` now returns a nested list rather than a tibble with a list-column.
 
 # rnpn 1.2.9 (2024-08-18)
 

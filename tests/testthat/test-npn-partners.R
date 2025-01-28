@@ -9,7 +9,6 @@ test_that("npn_groups works", {
   expect_type(groups$network_name, "character")
   expect_gt(nrow(groups),50)
 
-  groups <- npn_groups(TRUE)
-  expect_s3_class(groups, "data.frame")
-  expect_type(groups$network_name, "character")
+  groups <- npn_groups(use_hierarchy = TRUE)
+  expect_type(groups, "list")
 })
