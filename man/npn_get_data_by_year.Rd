@@ -68,8 +68,8 @@ of observation in each row will resolve to a value from the specified
 layers, given the location of the observation.}
 }
 \value{
-Data table—a data table combining each requests results from the
-service.
+A tibble combining each requests results from the service. If
+\code{download_path} is specified, the file path is returned instead.
 }
 \description{
 Utility function to chain multiple requests to \link{npn_get_data} for requests
