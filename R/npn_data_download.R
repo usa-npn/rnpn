@@ -722,13 +722,7 @@ npn_get_data <- function(url,
       dplyr::mutate(dplyr::across(dplyr::where(is.numeric),
                                   \(x) ifelse(x == -9999, NA_real_, x))) %>%
       dplyr::mutate(dplyr::across(dplyr::where(is.character),
-                                  \(x) ifelse(x == "-9999", NA_character_, x))) %>%
-      #ensure column types are correct even when all NAs
-      dplyr::mutate(
-        update_datetime = as.POSIXct(update_datetime, tz = "GMT"),
-        observation_date = as.Date(observation_date),
-        intensity_value = as.character(intensity_value)
-      )
+                                  \(x) ifelse(x == "-9999", NA_character_, x)))
 
     # Reconcile all the points in the frame with the SIX leaf raster,
     # if it's been requested.
