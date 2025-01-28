@@ -724,12 +724,21 @@ npn_get_data <- function(url,
                                promote_num_to_string = TRUE) %>%
       tibble::as_tibble() %>%
       #replace missing data indicator with NA
-      dplyr::mutate(dplyr::across(dplyr::where(is.numeric),
-                                  \(x) ifelse(x == -9999, NA_real_, x))) %>%
-      dplyr::mutate(dplyr::across(dplyr::where(is.character),
-                                  \(x) ifelse(x == "-9999", NA_character_, x))) %>%
-      dplyr::mutate(update_datetime = as.POSIXct(update_datetime),
-                    intensity_value = as.character(intensity_value))
+      dplyr::mutate(
+        dplyr::across(dplyr::where(is.numeric),
+                      function(x) ifelse(x == -9999, NA_real_, x))
+      ) %>%
+      dplyr::mutate(
+        dplyr::across(dplyr::where(is.character),
+                      function(x) ifelse(x == "-9999", NA_character_, x))
+      ) %>%
+      #handle some columns that may be read in as the wrong type if they happen
+      #to be all NAs (#87). `any_of()` is used because not all endpoints will
+      #return these columns!
+      dplyr::mutate(
+        dplyr::across(dplyr::any_of("update_datetime"), as.POSIXct),
+        dplyr::across(dplyr::any_of("intensity_value"), as.character)
+      )
 
     # Reconcile all the points in the frame with the SIX leaf raster,
     # if it's been requested.
