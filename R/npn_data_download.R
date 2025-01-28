@@ -743,7 +743,8 @@ npn_get_data <- function(url,
       #to be all NAs (#87). `any_of()` is used because not all endpoints will
       #return these columns!
       dplyr::mutate(
-        dplyr::across(dplyr::any_of("update_datetime"), as.POSIXct),
+        dplyr::across(dplyr::any_of("update_datetime"),
+                      function(x) as.POSIXct(x, tz = "UTC")),
         dplyr::across(dplyr::any_of("intensity_value"), as.character)
       )
 
