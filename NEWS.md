@@ -11,9 +11,13 @@
 * Documented a behavior of `npn_species_type()` where setting `kingdom` to `NULL` returns results for *both* `Plantae` and `Animalia`. 
 * Missing values returned by `npn_stations_by_state()` previously returned as the string `"emptyvalue"` are now returned as `NA`s.
 * `rnpn` now has `dplyr` as a dependency instead of `plyr`
-* `rnpn` now uses `httr2` instead of `httr`
+* `rnpn` now uses `httr2` instead of `httr` and `curl` internally for functions that get observational data
 * `...` is no longer used for functions that get observational data
+* data download functions now return tibbles instead of `data.table` objects.  `rnpn` no longer depends on `data.table`
+* Missing values returned by download functions are now automatically converted from -9999 to `NA`
 * Fixed a bug (#42) where returned value of `npn_get_agdd_point_data()` was inconsistent depending on whether it was cached or not.
+* `npn_abundance_categories()`, `npn_phenophases_by_species()`, and `npn_get_phenophases_for_taxon()` no longer return a data frames containing list-columns.  The results are now unnested automatically.
+* `npn_groups(use_hierarchy = TRUE)` now returns a nested list rather than a tibble with a list-column.
 
 # rnpn 1.2.9 (2024-08-18)
 

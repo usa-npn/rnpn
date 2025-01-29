@@ -91,7 +91,7 @@ test_that("npn_get_phenophases_for_taxon works", {
 
   expect_s3_class(pp, "data.frame")
   expect_type(pp$class_name, "character")
-  expect_equal(nrow(pp), 1)
+  expect_equal(nrow(pp), 21)
 
   vcr::use_cassette("npn_get_phenophases_for_taxon_2", {
     pp <- npn_get_phenophases_for_taxon(class_ids=c(5,6), date="2018-05-05")
@@ -99,7 +99,7 @@ test_that("npn_get_phenophases_for_taxon works", {
 
   expect_s3_class(pp, "data.frame")
   expect_type(pp$class_name, "character")
-  expect_equal(nrow(pp), 2)
+  expect_equal(nrow(pp), 28)
 
   vcr::use_cassette("npn_get_phenophases_for_taxon_3", {
     pp <- npn_get_phenophases_for_taxon(family_ids=c(267,268),date="2018-05-05")
@@ -107,7 +107,7 @@ test_that("npn_get_phenophases_for_taxon works", {
 
   expect_s3_class(pp, "data.frame")
   expect_type(pp$family_name, "character")
-  expect_equal(nrow(pp), 2)
+  expect_equal(nrow(pp), 24)
 
   vcr::use_cassette("npn_get_phenophases_for_taxon_4", {
     pp <- npn_get_phenophases_for_taxon(order_ids=c(74,75), date="2018-05-05", return_all = 0)
@@ -115,7 +115,7 @@ test_that("npn_get_phenophases_for_taxon works", {
 
   expect_s3_class(pp, "data.frame")
   expect_type(pp$order_name, "character")
-  expect_equal(nrow(pp), 2)
+  expect_equal(nrow(pp), 21)
 
 
   vcr::use_cassette("npn_get_phenophases_for_taxon_5", {
@@ -124,7 +124,7 @@ test_that("npn_get_phenophases_for_taxon works", {
 
   expect_s3_class(pp, "data.frame")
   expect_type(pp$order_name, "character")
-  expect_equal(nrow(pp), 2)
+  expect_equal(nrow(pp), 155)
 
   skip("unclear if this last one is supposed to work or error")
   vcr::use_cassette("npn_get_phenophases_for_taxon_6", {

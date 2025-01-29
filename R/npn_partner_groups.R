@@ -5,10 +5,11 @@
 #' results.
 #'
 #' @param use_hierarchy Boolean indicating whether or not the list of networks
-#'   should be represented in a hierarchy. Defaults to `FALSE`.
+#'   should be represented in a hierarchy. If `TRUE`, the result will be
+#'   returned as a nested list rather than a tibble. Defaults to `FALSE`.
 #' @param ... Currently unused.
-#' @returns A tibble of partner groups, including `network_id` and
-#'   `network_name`.
+#' @returns A tibble (or nested list if `use_hierarchy = TRUE`) of partner
+#'   groups, including `network_id` and `network_name`.
 #' @export
 #' @examples \dontrun{
 #' npn_groups()
@@ -24,8 +25,11 @@ npn_groups <- function(use_hierarchy = FALSE, ...) {
   }
 
   resp <- httr2::req_perform(req)
-  out <- httr2::resp_body_json(resp, simplifyVector = TRUE)
+  out <- httr2::resp_body_json(resp, simplifyVector = !use_hierarchy)
   #return:
-  tibble::as_tibble(out)
-  #TODO output contains list column that cannot be easily unnested.
+  if (inherits(out, "data.frame")) {
+    return(tibble::as_tibble(out))
+  } else {
+    return(out)
+  }
 }

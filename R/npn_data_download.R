@@ -74,8 +74,9 @@
 #' @param wkt WKT geometry by which filter data. Specifying a valid WKT within
 #'   the contiguous US will filter data based on the locations which fall within
 #'   that WKT.
-#' @returns Data table of all status records returned as per the search
-#'   parameters. `NULL` if output directed to file.
+#' @returns A tibble of all status records returned as per the search
+#'   parameters. If `download_path` is specified, the file path is returned
+#'   instead.
 #' @export
 #' @examples \dontrun{
 #' #Download all saguaro data for 2016
@@ -83,7 +84,7 @@
 #'   request_source = "Your Name or Org Here",
 #'   years = c(2016),
 #'   species_id = c(210),
-#'   download_path = "saguaro_data_2016.json"
+#'   download_path = "saguaro_data_2016.csv"
 #' )
 #' }
 npn_download_status_data = function(request_source,
@@ -192,8 +193,9 @@ npn_download_status_data = function(request_source,
 #' @inheritParams npn_download_status_data
 #' @param individual_ids Comma-separated string of unique IDs for individual
 #'   plants/animal species by which to filter the data.
-#' @returns Data table of all status records returned as per the search
-#'   parameters. `NULL` if output directed to file.
+#' @returns A tibble of all status records returned as per the search
+#'   parameters. If `download_path` is specified, the file path is returned
+#'   instead.
 #' @export
 #' @examples \dontrun{
 #' #Download all saguaro data for 2013 and 2014
@@ -201,7 +203,7 @@ npn_download_status_data = function(request_source,
 #'   request_source = "Your Name or Org Here",
 #'   years = c('2013','2014'),
 #'   species_id = c(210),
-#'   download_path = "saguaro_data_2013_2014.json"
+#'   download_path = "saguaro_data_2013_2014.csv"
 #' )
 #' }
 npn_download_individual_phenometrics <- function(request_source,
@@ -331,8 +333,9 @@ npn_download_individual_phenometrics <- function(request_source,
 #'   `pheno_class_ids` value is not set, then this parameter is ignored. This
 #'   can be used in conjunction with `taxonomy_aggregate` and higher taxonomic
 #'   level data filtering.
-#' @returns Data table of all status records returned as per the search
-#'   parameters. `NULL` if output directed to file.
+#' @returns A tibble of all status records returned as per the search
+#'   parameters. If `download_path` is specified, the file path is returned
+#'   instead.
 #' @export
 #' @examples \dontrun{
 #' #Download all saguaro data for 2013 and 2014
@@ -340,7 +343,7 @@ npn_download_individual_phenometrics <- function(request_source,
 #'   request_source = "Your Name or Org Here",
 #'   years = c('2013','2014'),
 #'   species_id = c(210),
-#'   download_path = "saguaro_data_2013_2014.json"
+#'   download_path = "saguaro_data_2013_2014.csv"
 #' )
 #' }
 npn_download_site_phenometrics <- function(request_source,
@@ -466,16 +469,16 @@ npn_download_site_phenometrics <- function(request_source,
 #'   delineate the period of time by the calendar months regardless of how many
 #'   days are in each month. Defaults to `30` if omitted.
 #' @inheritParams npn_download_site_phenometrics
-#' @returns Data table of all status records returned as per the search
-#'   parameters. `NULL` if output directed to file.
+#' @returns A tibble of the requested data. If a `download_path` was specified,
+#'   the file path is returned.
 #' @export
 #' @examples \dontrun{
 #' #Download book all saguaro data for 2013
 #' npn_download_magnitude_phenometrics(
-#'   request_source = "Your Name or Org Here",
-#'   years = c(2013),
-#'   species_id = c(210),
-#'   download_path = "saguaro_data_2013.json"
+#'   request_source="Your Name or Org Here",
+#'   years=c(2013),
+#'   species_id=c(210),
+#'   download_path="saguaro_data_2013.csv"
 #' )
 #' }
 npn_download_magnitude_phenometrics <- function(request_source,
@@ -586,8 +589,8 @@ npn_download_magnitude_phenometrics <- function(request_source,
 #'   additional geospatial layer data fields to the results, such that the date
 #'   of observation in each row will resolve to a value from the specified
 #'   layers, given the location of the observation.
-#' @returns Data table—a data table combining each requests results from the
-#'   service.
+#' @returns A tibble combining each requests results from the service. If
+#'   `download_path` is specified, the file path is returned instead.
 #' @keywords internal
 #' @examples \dontrun{
 #' endpoint <- "/observations/getObservations.ndjson?"
@@ -646,10 +649,10 @@ npn_get_data_by_year <- function(endpoint,
       # for the changes in the start/end date
       url <- npn_get_download_url(endpoint)
       data <- npn_get_data(
-        url,
-        query,
-        download_path,
-        !first_year,
+        url = url,
+        query = query,
+        download_path = download_path,
+        always_append = !first_year,
         six_leaf_raster = six_leaf_raster,
         six_bloom_raster = six_bloom_raster,
         agdd_layer = agdd_layer,
@@ -662,17 +665,21 @@ npn_get_data_by_year <- function(endpoint,
       # no previous iteration / the results were empty
       if (!is.null(data) && is.null(download_path)) {
         if (!is.null(all_data)) {
-          all_data <- data.table::rbindlist(list(all_data, data))
+          all_data <- dplyr::bind_rows(all_data, data)
         } else {
-          all_data = data
+          all_data <- data
         }
       }
       if (!is.null(data)) {
-        first_year = FALSE
+        first_year <- FALSE
       }
     }
   }
-  return(all_data)
+  if (is.null(download_path)) {
+    return(all_data)
+  } else {
+    return(download_path)
+  }
 }
 
 
@@ -691,8 +698,8 @@ npn_get_data_by_year <- function(endpoint,
 #'   service and aggregating all data results in a single file. Without this
 #'   flag, otherwise, each call to the service would truncate the output file.
 #'
-#' @return Data table of the requested data. `NULL` if a `download_path` was
-#'   specified.
+#' @returns A tibble of the requested data. If a `download_path` was specified,
+#'   the file path is returned.
 #' @keywords internal
 npn_get_data <- function(url,
                          query,
@@ -702,121 +709,118 @@ npn_get_data <- function(url,
                          six_bloom_raster = NULL,
                          agdd_layer = NULL,
                          additional_layers = NULL) {
-  h <- curl::new_handle()
-  query = c(query, customrequest = "POST")
-  curl::handle_setform(h, .list = query)
+  req <- httr2::request(url) %>%
+    httr2::req_user_agent("rnpn (https://github.com/usa-npn/rnpn/)") %>%
+    httr2::req_method("POST") %>%
+    httr2::req_body_form(!!!query)
 
-  con <- curl::curl(url, handle = h)
-  current_data <- NULL
-  dtm <- data.table::data.table()
-  set_has_data <- FALSE
+  con <- httr2::req_perform_connection(req)
+  on.exit(close(con), add = TRUE)
+
+  dtm <- tibble::tibble()
   i <- 0
+  while (!httr2::resp_stream_is_complete(con)) {
+    resp <- httr2::resp_stream_lines(con, lines = 5000)
 
-  # Read the data 8MB at a time. This might be further optimized with the backing service.
-  tryCatch({
-    jsonlite::stream_in(con, function(df) {
-      # Reconcile all the points in the frame with the SIX leaf raster,
-      # if it's been requested.
-      if (!is.null(six_leaf_raster)) {
-        df <- npn_merge_geo_data(six_leaf_raster, "SI-x_Leaf_Value", df)
+    df <-
+      #paste lines into single string
+      paste0(resp[nzchar(resp) != 0], collapse = "\n") %>%
+      #default to character when mixed numeric and character
+      yyjsonr::read_ndjson_str(type = "df",
+                               nprobe = -1,
+                               promote_num_to_string = TRUE) %>%
+      tibble::as_tibble() %>%
+      #replace missing data indicator with NA
+      dplyr::mutate(dplyr::across(dplyr::where(is.numeric),
+                                  \(x) ifelse(x == -9999, NA_real_, x))) %>%
+      dplyr::mutate(dplyr::across(dplyr::where(is.character),
+                                  \(x) ifelse(x == "-9999", NA_character_, x)))
+
+    # Reconcile all the points in the frame with the SIX leaf raster,
+    # if it's been requested.
+    if (!is.null(six_leaf_raster)) {
+      df <- npn_merge_geo_data(six_leaf_raster, "SI-x_Leaf_Value", df)
+    }
+
+    # Reconcile all the points in the frame with the SIX bloom raster,
+    # if it's been requested.
+    if (!is.null(six_bloom_raster)) {
+      df <- npn_merge_geo_data(six_bloom_raster, "SI-x_Bloom_Value", df)
+    }
+
+    if (!is.null(additional_layers)) {
+      for (j in rownames(additional_layers)) {
+        df <- npn_merge_geo_data(
+          additional_layers[j, ][['raster']][[1]],
+          as.character(additional_layers[j, ][['name']][[1]]),
+          df
+        )
+      }
+    }
+
+    # Reconcile the AGDD point values with the data points if that
+    # was requested.
+    if (!is.null(agdd_layer)) {
+      date_col <- NULL
+
+      if ("observation_date" %in% colnames(df)) {
+        date_col <- "observation_date"
+      } else if ("mean_first_yes_doy" %in% colnames(df)) {
+        df$cal_date <-
+          as.Date(df[, "mean_first_yes_doy"],
+                  origin = paste0(df[, "mean_first_yes_year"], "-01-01")) - 1
+        date_col <- "cal_date"
+      } else if ("first_yes_day" %in% colnames(df)) {
+        df$cal_date <-
+          as.Date(df[, "first_yes_doy"],
+                  origin = paste0(df[, "first_yes_year"], "-01-01")) - 1
+        date_col <- "cal_date"
       }
 
-      # Reconcile all the points in the frame with the SIX bloom raster,
-      # if it's been requested.
-      if (!is.null(six_bloom_raster)) {
-        df <- npn_merge_geo_data(six_bloom_raster, "SI-x_Bloom_Value", df)
+      pt_values <-
+        apply(df[, c('latitude', 'longitude', date_col)], 1,
+              function(x) {
+                rnpn::npn_get_agdd_point_data(
+                  layer = agdd_layer,
+                  lat = as.numeric(x['latitude']),
+                  long = as.numeric(x['longitude']),
+                  date = x[date_col]
+                )
+              })
+
+      pt_values <- t(as.data.frame(pt_values))
+      colnames(pt_values) <- agdd_layer
+      df <- cbind(df, pt_values)
+
+      if ("cal_date" %in% colnames(df)) {
+        df$cal_date <- NULL
       }
+    }
 
-      if (!is.null(additional_layers)) {
-        for (j in rownames(additional_layers)) {
-          df <- npn_merge_geo_data(
-            additional_layers[j, ][['raster']][[1]],
-            as.character(additional_layers[j, ][['name']][[1]]),
-            df
-          )
-        }
+    if (is.null(download_path)) {
+      dtm <- dplyr::bind_rows(dtm, df)
+    } else {
+      if (nrow(df) > 0) {
+        write.table(
+          df,
+          download_path,
+          append = !(i == 0 && isFALSE(always_append)),
+          sep = ",",
+          eol = "\n",
+          row.names = FALSE,
+          col.names = i == 0 && isFALSE(always_append)
+        )
       }
-
-      # Reconcile the AGDD point values with the data points if that
-      # was requested.
-      if (!is.null(agdd_layer)) {
-        date_col <- NULL
-
-        if ("observation_date" %in% colnames(df)) {
-          date_col <- "observation_date"
-        } else if ("mean_first_yes_doy" %in% colnames(df)) {
-          df$cal_date <-
-            as.Date(df[, "mean_first_yes_doy"],
-                    origin = paste0(df[, "mean_first_yes_year"], "-01-01")) - 1
-          date_col <- "cal_date"
-        } else if ("first_yes_day" %in% colnames(df)) {
-          df$cal_date <-
-            as.Date(df[, "first_yes_doy"],
-                    origin = paste0(df[, "first_yes_year"], "-01-01")) - 1
-          date_col <- "cal_date"
-        }
-
-        pvalues <-
-          apply(df[, c('latitude', 'longitude', date_col)], 1,
-                function(x) {
-                  rnpn::npn_get_agdd_point_data(
-                    layer = agdd_layer,
-                    lat = as.numeric(x['latitude']),
-                    long = as.numeric(x['longitude']),
-                    date = x[date_col]
-                  )
-                })
-
-        pvalues <- t(as.data.frame(pvalues))
-        colnames(pvalues) <- c(agdd_layer)
-        df <- cbind(df, pvalues)
-
-        if ("cal_date" %in% colnames(df)) {
-          df$cal_date <- NULL
-        }
-      }
-
-      # If the user asked for the data to be saved to file, then do that
-      # otherwise append the frame to the dtm (master data table) variable
-      if (is.null(download_path)) {
-        dtm <<- rbind(dtm, data.table::as.data.table(df))
-      } else {
-        if (length(df) > 0) {
-          set_has_data <- TRUE
-          write.table(
-            df,
-            download_path,
-            append = if (i == 0 &&
-                         !always_append)
-              FALSE
-            else
-              TRUE,
-            sep = ",",
-            eol = "\n",
-            row.names = FALSE,
-            col.names = if (i == 0 && !always_append)
-              TRUE
-            else
-              FALSE
-          )
-        }
-      }
-
-      i <<- i + 1
-
-    }, pagesize = 5000)
-  }, error = function(cond) {
-    message("Service is currently unavailable. Please try again later!")
-    set_has_data <- FALSE
-    dtm <- data.table::data.table()
-  })
+    }
+    i <- i + 1
+  }
 
   # If the user asks for the data to be saved to file then
   # there is nothing to return.
   if (is.null(download_path)) {
     return(dtm)
   } else {
-    return(set_has_data)
+    return(download_path)
   }
 }
 
@@ -868,13 +872,15 @@ npn_get_common_query_vars <- function(
   family_ids = NULL,
   order_ids = NULL,
   class_ids = NULL,
-  pheno_class_ids= NULL,
-  taxonomy_aggregate=NULL,
-  pheno_class_aggregate=NULL,
-  wkt=NULL,
+  pheno_class_ids = NULL,
+  taxonomy_aggregate = NULL,
+  pheno_class_aggregate = NULL,
+  wkt = NULL,
   email = NULL
 ) {
-
+  if (missing(request_source) || is.null(request_source)) {
+    rlang::abort("`request_source` is a required argument")
+  }
   if (!is.null(family_ids)) {
     species_ids = NULL
     genus_ids = NULL

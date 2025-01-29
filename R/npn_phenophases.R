@@ -93,11 +93,10 @@ npn_phenophases_by_species <- function(species_ids, date, ...) {
 
   resp <- httr2::req_perform(req)
   out <- httr2::resp_body_json(resp, simplifyVector = TRUE)
-
+  #unnest
+  out <- tidyr::unnest(out, tidyr::any_of("phenophases"))
   #return:
   tibble::as_tibble(out)
-  #TODO this data frame has a list-column.  Consider unnesting?
-  # tidyr::unnest(tibble::as_tibble(out), phenophases)
 }
 
 #' Get Pheno Classes
@@ -183,11 +182,10 @@ npn_get_phenophases_for_taxon <- function(family_ids = NULL,
     )
   resp <- httr2::req_perform(req)
   out <- httr2::resp_body_json(resp, simplifyVector = TRUE)
-
+  #unnest
+  out <- tidyr::unnest(out, tidyr::any_of("phenophases"))
   #return:
   tibble::as_tibble(out)
-  #TODO this data frame has a list-column.  Consider unnesting?
-  # tidyr::unnest(tibble::as_tibble(out), phenophases)
 }
 
 #' Get Abundance Categories
@@ -207,9 +205,9 @@ npn_abundance_categories <- function(...) {
     httr2::req_url_path_append('phenophases/getAbundanceCategories.json')
   resp <- httr2::req_perform(req)
   out <- httr2::resp_body_json(resp, simplifyVector = TRUE)
+  #unnest list column
+  out <- tidyr::unnest(out, tidyr::any_of("category_values"))
   #return:
   tibble::as_tibble(out)
-  #TODO: consider unnesting
-  #tibble::as_tibble(out) %>% tidyr::unnest(category_values)
 }
 
