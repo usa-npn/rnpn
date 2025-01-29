@@ -141,15 +141,15 @@ npn_download_status_data = function(request_source,
 
   years <- sort(unlist(years))
   res <- npn_get_data_by_year(
-    "/observations/getObservations.ndjson?",
-    query,
-    years,
-    download_path,
-    six_leaf_layer,
-    six_bloom_layer,
-    agdd_layer,
-    six_sub_model,
-    additional_layers
+    endpoint = "/observations/getObservations.ndjson?",
+    query = query,
+    years = years,
+    download_path = download_path,
+    six_leaf_layer = six_leaf_layer,
+    six_bloom_layer = six_bloom_layer,
+    agdd_layer = agdd_layer,
+    six_sub_model = six_sub_model,
+    additional_layers = additional_layers
   )
 
   return(res)
@@ -410,15 +410,15 @@ npn_download_site_phenometrics <- function(request_source,
 
   return(
     npn_get_data_by_year(
-      "/observations/getSiteLevelData.ndjson?",
-      query,
-      years,
-      download_path,
-      six_leaf_layer,
-      six_bloom_layer,
-      agdd_layer,
-      six_sub_model,
-      additional_layers
+      endpoint = "/observations/getSiteLevelData.ndjson?",
+      query = query,
+      years = years,
+      download_path = download_path,
+      six_leaf_layer = six_leaf_layer,
+      six_bloom_layer = six_bloom_layer,
+      agdd_layer = agdd_layer,
+      six_sub_model = six_sub_model,
+      additional_layers = additional_layers
     )
   )
 }
@@ -646,7 +646,7 @@ npn_get_data_by_year <- function(endpoint,
       additional_layers$raster <- get_additional_rasters(additional_layers)
     }
 
-    for (i in years) {
+    for (year in years) {
       # This is where the start/end dates are automatically created
       # based on the input years.
       start_date <- as.Date(paste(year, period_start, sep = "-"))
@@ -660,11 +660,17 @@ npn_get_data_by_year <- function(endpoint,
       query['end_date'] <- as.character(end_date)
 
       if (isTRUE(six_leaf_layer)) {
-        six_leaf_raster <- resolve_six_raster(i, "leaf", six_sub_model)
+        six_leaf_raster <-
+          resolve_six_raster(year = year,
+                             phenophase =  "leaf",
+                             sub_model = six_sub_model)
       }
 
       if (isTRUE(six_bloom_layer)) {
-        six_bloom_raster <- resolve_six_raster(i, "bloom", six_sub_model)
+        six_bloom_raster <-
+          resolve_six_raster(year =  year,
+                             phenophase = "bloom",
+                             sub_model = six_sub_model)
       }
 
       # We also have to generate a unique URL on each request to account
