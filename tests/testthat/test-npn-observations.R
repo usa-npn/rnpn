@@ -4,7 +4,7 @@
 # https://github.com/ropensci/vcr/issues/273 and
 # https://github.com/r-lib/httr2/issues/651
 
-skip_long_tests <- get_skip_long_tests()
+skip_long_tests <- as.logical(Sys.getenv("RNPN_SKIP_LONG_TESTS", unset = "true"))
 
 test_that("no request source blocked", {
   skip_on_cran()
