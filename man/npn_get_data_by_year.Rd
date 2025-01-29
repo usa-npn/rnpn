@@ -32,8 +32,9 @@ will be one request to the service for each year.  If the period
 
 \item{period_start, period_end}{Character vectors of the form "MM-DD". Used to
 determine the period over which phenophase status records are summarized.
-If not provided, they will default to "01-01" and "12-31", respectively, to
-encompass the entire year.}
+For example, to use a "water year" set \code{period_start = "10-01"} and
+\code{period_end = "09-30"}. If not provided, they will default to "01-01" and
+"12-31", respectively, to use the calendar year.}
 
 \item{download_path}{Character, optional file path to the file for which to
 output the results.}
@@ -88,7 +89,16 @@ query <- list(
 
 npn_get_data_by_year(endpoint = endpoint,
                      query = query,
-                     years = 2013)
+                     years = c(2013, 2014))
+
+#Set a custom period from October through September
+# This will return data for 2013-10-01 through 2014-09-30 and from 2014-10-01
+# through 2015-09-30
+npn_get_data_by_year(endpoint = endpoint,
+                     query = query,
+                     years = c(2013, 2014),
+                     period_start = "10-01",
+                     period_end = "09-30")
 }
 }
 \keyword{internal}

@@ -191,6 +191,7 @@ npn_download_status_data = function(request_source,
 #' Metadata on all fields can be found in the following Excel sheet:
 #' <http://www.usanpn.org/files/metadata/individual_phenometrics_datafield_descriptions.xlsx>
 #' @inheritParams npn_download_status_data
+#' @inheritParams npn_get_data_by_year
 #' @param individual_ids Comma-separated string of unique IDs for individual
 #'   plants/animal species by which to filter the data.
 #' @returns A tibble of all status records returned as per the search
@@ -208,6 +209,8 @@ npn_download_status_data = function(request_source,
 #' }
 npn_download_individual_phenometrics <- function(request_source,
                                                  years,
+                                                 period_start = "01-01",
+                                                 period_end = "12-31",
                                                  coords = NULL,
                                                  individual_ids = NULL,
                                                  species_ids = NULL,
@@ -268,6 +271,8 @@ npn_download_individual_phenometrics <- function(request_source,
       "/observations/getSummarizedData.ndjson?",
       query,
       years,
+      period_start,
+      period_end,
       download_path,
       six_leaf_layer,
       six_bloom_layer,
@@ -561,8 +566,9 @@ npn_download_magnitude_phenometrics <- function(request_source,
 #'   `years` determines the start years.
 #' @param period_start,period_end Character vectors of the form "MM-DD". Used to
 #'   determine the period over which phenophase status records are summarized.
-#'   If not provided, they will default to "01-01" and "12-31", respectively, to
-#'   encompass the entire year.
+#'   For example, to use a "water year" set `period_start = "10-01"` and
+#'   `period_end = "09-30"`. If not provided, they will default to "01-01" and
+#'   "12-31", respectively, to use the calendar year.
 #' @param download_path Character, optional file path to the file for which to
 #'   output the results.
 #' @param six_leaf_layer Boolean value when set to `TRUE` will attempt to
@@ -602,7 +608,16 @@ npn_download_magnitude_phenometrics <- function(request_source,
 #'
 #' npn_get_data_by_year(endpoint = endpoint,
 #'                      query = query,
-#'                      years = 2013)
+#'                      years = c(2013, 2014))
+#'
+#' #Set a custom period from October through September
+#' # This will return data for 2013-10-01 through 2014-09-30 and from 2014-10-01
+#' # through 2015-09-30
+#' npn_get_data_by_year(endpoint = endpoint,
+#'                      query = query,
+#'                      years = c(2013, 2014),
+#'                      period_start = "10-01",
+#'                      period_end = "09-30")
 #' }
 npn_get_data_by_year <- function(endpoint,
                                  query,
@@ -634,8 +649,15 @@ npn_get_data_by_year <- function(endpoint,
     for (i in years) {
       # This is where the start/end dates are automatically created
       # based on the input years.
-      query['start_date'] <- paste0(i, period_start)
-      query['end_date'] <- paste0(i, period_start) #TODO figure out if i needs to be i+1 when period_end goes into the next year!
+      start_date <- as.Date(paste(year, period_start, sep = "-"))
+      end_date <- as.Date(paste(year, period_end, sep = "-"))
+
+      #assume if end_date is before start_date that it should actually be the period_end of the next year
+      if (end_date < start_date) {
+        end_date <- as.Date(paste(year + 1, period_end, sep = "-"))
+      }
+      query['start_date'] <- as.character(start_date)
+      query['end_date'] <- as.character(end_date)
 
       if (isTRUE(six_leaf_layer)) {
         six_leaf_raster <- resolve_six_raster(i, "leaf", six_sub_model)
@@ -657,7 +679,8 @@ npn_get_data_by_year <- function(endpoint,
         six_bloom_raster = six_bloom_raster,
         agdd_layer = agdd_layer,
         additional_layers = additional_layers
-      )
+      ) %>%
+        dplyr::mutate(start_date = start_date, end_date = end_date, .before = 1)
 
       # First if statement checks whether this is the results returned is empty.
       # Second if statement checks if we've made a previous request that's
