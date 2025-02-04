@@ -30,7 +30,7 @@ test_that("basic function works", {
   expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 1000)
   expect_type(some_data$species_id, "integer")
-  expect_equal(some_data[1,]$species_id, 6)
+  expect_equal(some_data[1, ]$species_id, 6)
 
   # vcr::use_cassette("npn_download_individual_phenometrics_basic_1", {
   some_data <- npn_download_individual_phenometrics(
@@ -43,7 +43,7 @@ test_that("basic function works", {
   expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 10)
   expect_type(some_data$species_id, "integer")
-  expect_equal(some_data[1,]$species_id, 6)
+  expect_equal(some_data[1, ]$species_id, 6)
 
   # vcr::use_cassette("npn_download_site_phenometrics_basic_1", {
   some_data <- npn_download_site_phenometrics(
@@ -57,7 +57,7 @@ test_that("basic function works", {
   expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 10)
   expect_type(some_data$species_id, "integer")
-  expect_equal(some_data[1,]$species_id, 6)
+  expect_equal(some_data[1, ]$species_id, 6)
 
   # vcr::use_cassette("npn_download_site_phenometrics_basic_2", {
   some_data <- npn_download_site_phenometrics(
@@ -72,7 +72,7 @@ test_that("basic function works", {
   expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 1)
   expect_type(some_data$species_id, "integer")
-  expect_equal(some_data[1,]$species_id, 6)
+  expect_equal(some_data[1, ]$species_id, 6)
   expect_gt(num_site_default, num_site_custom)
 
   # vcr::use_cassette("npn_download_magnitude_phenometrics_basic_1", {
@@ -87,7 +87,7 @@ test_that("basic function works", {
   expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 10)
   expect_type(some_data$species_id, "integer")
-  expect_equal(some_data[1,]$species_id, 6)
+  expect_equal(some_data[1, ]$species_id, 6)
 
   # vcr::use_cassette("npn_download_magnitude_phenometrics_basic_2", {
   some_data <- npn_download_magnitude_phenometrics(
@@ -102,7 +102,7 @@ test_that("basic function works", {
   expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 25)
   expect_type(some_data$species_id, "integer")
-  expect_equal(some_data[1,]$species_id, 6)
+  expect_equal(some_data[1, ]$species_id, 6)
 
   expect_gt(num_mag_custom, num_mag_default)
 })
@@ -113,7 +113,7 @@ test_that("file download works", {
   skip_if(skip_long_tests, "Skipping long tests")
   skip_if_not(check_service(), "Service is down")
 
-  test_download_path <- "unit-test-download.csv"
+  test_download_path <- withr::local_tempfile()
 
   some_data <- npn_download_status_data(
     request_source = "Unit Test",
@@ -122,16 +122,13 @@ test_that("file download works", {
     download_path = test_download_path
   )
 
-
   expect_equal(file.exists(test_download_path), TRUE)
   some_data <- read.csv(test_download_path)
 
   expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 1000)
   expect_type(some_data$species_id, "integer")
-  expect_equal(some_data[1,]$species_id,6)
-
-  file.remove(test_download_path)
+  expect_equal(some_data[1, ]$species_id, 6)
 
 
   some_data <- npn_download_magnitude_phenometrics(
@@ -146,9 +143,7 @@ test_that("file download works", {
   expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 10)
   expect_type(some_data$species_id, "integer")
-  expect_equal(some_data[1,]$species_id,6)
-
-  file.remove(test_download_path)
+  expect_equal(some_data[1, ]$species_id, 6)
 
 })
 
@@ -221,7 +216,7 @@ test_that("higher taxonomic ordering works for status data", {
 
   less_data <- subset(some_data,species_id == 6)
   expect_lt(nrow(less_data), nrow(some_data))
-  expect_gt(nrow(less_data),0)
+  expect_gt(nrow(less_data), 0)
 
   #Order_ID
   # vcr::use_cassette("npn_download_status_data_tax_2", {
@@ -235,7 +230,7 @@ test_that("higher taxonomic ordering works for status data", {
   expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 1000)
   expect_type(some_data$order_id, "integer")
-  expect_equal(some_data[1,]$order_id,95)
+  expect_equal(some_data[1, ]$order_id, 95)
 
   less_data <- subset(some_data,species_id == 6)
   expect_lt(nrow(less_data), nrow(some_data))
@@ -323,11 +318,11 @@ test_that("higher taxonomic ordering works for individual phenometrics", {
   expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 1000)
   expect_type(some_data$class_id, "integer")
-  expect_equal(some_data[1,]$class_id,15)
+  expect_equal(some_data[1, ]$class_id, 15)
 
-  less_data <- subset(some_data,species_id==6)
+  less_data <- subset(some_data,species_id == 6)
   expect_lt(nrow(less_data), nrow(some_data))
-  expect_gt(nrow(less_data),0)
+  expect_gt(nrow(less_data), 0)
 
 
 })
@@ -353,11 +348,11 @@ test_that("higher taxonomic ordering works for site phenometrics", {
   expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 10)
   expect_type(some_data$family_id, "integer")
-  expect_equal(some_data[1,]$family_id,322)
+  expect_equal(some_data[1, ]$family_id, 322)
 
-  less_data <- subset(some_data,species_id==6)
+  less_data <- subset(some_data,species_id == 6)
   expect_lt(nrow(less_data), nrow(some_data))
-  expect_gt(nrow(less_data),0)
+  expect_gt(nrow(less_data), 0)
 
   #Order_ID
   # vcr::use_cassette("npn_download_site_phenometrics_tax_2", {
@@ -372,11 +367,11 @@ test_that("higher taxonomic ordering works for site phenometrics", {
   expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 10)
   expect_type(some_data$order_id, "integer")
-  expect_equal(some_data[1,]$order_id,95)
+  expect_equal(some_data[1, ]$order_id, 95)
 
-  less_data <- subset(some_data,species_id==6)
+  less_data <- subset(some_data,species_id == 6)
   expect_lt(nrow(less_data), nrow(some_data))
-  expect_gt(nrow(less_data),0)
+  expect_gt(nrow(less_data), 0)
 
 
   # #class_ID
@@ -392,11 +387,11 @@ test_that("higher taxonomic ordering works for site phenometrics", {
   expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 1000)
   expect_type(some_data$class_id, "integer")
-  expect_equal(some_data[1,]$class_id,15)
+  expect_equal(some_data[1, ]$class_id, 15)
 
-  less_data <- subset(some_data,species_id==6)
+  less_data <- subset(some_data,species_id == 6)
   expect_lt(nrow(less_data), nrow(some_data))
-  expect_gt(nrow(less_data),0)
+  expect_gt(nrow(less_data), 0)
 
 
 })
@@ -423,11 +418,11 @@ test_that("higher taxonomic ordering works for magnitude phenometrics", {
   expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 10)
   expect_type(some_data$family_id, "integer")
-  expect_equal(some_data[1,]$family_id,322)
+  expect_equal(some_data[1, ]$family_id, 322)
 
-  less_data <- subset(some_data,species_id==6)
+  less_data <- subset(some_data,species_id == 6)
   expect_lt(nrow(less_data), nrow(some_data))
-  expect_gt(nrow(less_data),0)
+  expect_gt(nrow(less_data) ,0)
 
   #Order_ID
   # vcr::use_cassette("npn_download_magnitude_phenometrics_tax_2", {
@@ -442,11 +437,11 @@ test_that("higher taxonomic ordering works for magnitude phenometrics", {
   expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 100)
   expect_type(some_data$order_id, "integer")
-  expect_equal(some_data[1,]$order_id,95)
+  expect_equal(some_data[1, ]$order_id, 95)
 
-  less_data <- subset(some_data,species_id==6)
+  less_data <- subset(some_data,species_id == 6)
   expect_lt(nrow(less_data), nrow(some_data))
-  expect_gt(nrow(less_data),0)
+  expect_gt(nrow(less_data), 0)
 
   # #class_ID
   # vcr::use_cassette("npn_download_magnitude_phenometrics_tax_3", {
