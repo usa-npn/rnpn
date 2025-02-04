@@ -214,7 +214,7 @@ test_that("higher taxonomic ordering works for status data", {
   expect_type(some_data$family_id, "integer")
   expect_equal(some_data[1, ]$family_id, 322)
 
-  less_data <- subset(some_data,species_id == 6)
+  less_data <- subset(some_data, species_id == 6)
   expect_lt(nrow(less_data), nrow(some_data))
   expect_gt(nrow(less_data), 0)
 
@@ -223,7 +223,7 @@ test_that("higher taxonomic ordering works for status data", {
   some_data <- npn_download_status_data(
     request_source = "Unit Test",
     years = 2013,
-    order_ids = c(95),
+    order_ids = c(95), #TODO pick a smaller order!
     additional_fields = c("Order_ID")
   )
   # })
@@ -241,7 +241,7 @@ test_that("higher taxonomic ordering works for status data", {
   some_data <- npn_download_status_data(
     request_source = "Unit Test",
     years = 2013,
-    class_ids = c(15),
+    class_ids = c(15), #TODO pick a smaller class or year with less data!
     additional_fields = c("Class_ID")
   )
   # })
@@ -254,8 +254,6 @@ test_that("higher taxonomic ordering works for status data", {
   less_data <- subset(some_data,species_id == 6)
   expect_lt(nrow(less_data), nrow(some_data))
   expect_gt(nrow(less_data), 0)
-
-
 })
 
 
@@ -422,7 +420,7 @@ test_that("higher taxonomic ordering works for magnitude phenometrics", {
 
   less_data <- subset(some_data,species_id == 6)
   expect_lt(nrow(less_data), nrow(some_data))
-  expect_gt(nrow(less_data) ,0)
+  expect_gt(nrow(less_data), 0)
 
   #Order_ID
   # vcr::use_cassette("npn_download_magnitude_phenometrics_tax_2", {
@@ -456,11 +454,11 @@ test_that("higher taxonomic ordering works for magnitude phenometrics", {
   expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 1000)
   expect_type(some_data$class_id, "integer")
-  expect_equal(some_data[1,]$class_id,15)
+  expect_equal(some_data[1, ]$class_id, 15)
 
-  less_data <- subset(some_data,species_id==6)
+  less_data <- subset(some_data, species_id == 6)
   expect_lt(nrow(less_data), nrow(some_data))
-  expect_gt(nrow(less_data),0)
+  expect_gt(nrow(less_data), 0)
 
 
 })
@@ -483,7 +481,7 @@ test_that("higher level taxonomic agg and pheno agg works for site level",{
   expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 10)
   expect_type(some_data$family_id, "integer")
-  expect_equal(some_data[1,]$family_id,322)
+  expect_equal(some_data[1, ]$family_id, 322)
   expect_null(some_data$species_id)
 
 
@@ -492,7 +490,7 @@ test_that("higher level taxonomic agg and pheno agg works for site level",{
     request_source = "Unit Test",
     years = 2013,
     family_ids = c(322),
-    pheno_class_aggregate = TRUE, pheno_class_ids = c(1,3,6)
+    pheno_class_aggregate = TRUE, pheno_class_ids = c(1, 3, 6)
   )
   # })
 
@@ -505,7 +503,7 @@ test_that("higher level taxonomic agg and pheno agg works for site level",{
     request_source = "Unit Test",
     years = 2013,
     order_ids = c(78),
-    pheno_class_ids = c(1,3,6),
+    pheno_class_ids = c(1, 3, 6),
     pheno_class_aggregate = TRUE,
     taxonomy_aggregate = TRUE
   )
@@ -537,7 +535,7 @@ test_that("higher level taxonomic agg works for magnitude", {
   expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 10)
   expect_type(some_data$family_id, "integer")
-  expect_equal(some_data[1,]$family_id,322)
+  expect_equal(some_data[1, ]$family_id, 322)
   expect_null(some_data$species_id)
 
   # vcr::use_cassette("npn_download_magnitude_phenometrics_pheno_agg_2", {
@@ -545,7 +543,7 @@ test_that("higher level taxonomic agg works for magnitude", {
     request_source = "Unit Test",
     years = 2013,
     family_ids = c(322),
-    pheno_class_aggregate = TRUE, pheno_class_ids = c(1,3,6)
+    pheno_class_aggregate = TRUE, pheno_class_ids = c(1, 3, 6)
   )
   # })
 
@@ -558,7 +556,7 @@ test_that("higher level taxonomic agg works for magnitude", {
     request_source = "Unit Test",
     years = 2013,
     order_ids = c(78),
-    pheno_class_ids = c(1,3,6),
+    pheno_class_ids = c(1, 3, 6),
     pheno_class_aggregate = TRUE,
     taxonomy_aggregate = TRUE
   )
@@ -585,7 +583,7 @@ test_that("six concordance works for status", {
     six_leaf_layer = TRUE,
     six_bloom_layer = TRUE,
     agdd_layer = 32,
-    additional_layers = data.frame(name=c("si-x:30yr_avg_4k_leaf"),param=c("365"))
+    additional_layers = data.frame(name = c("si-x:30yr_avg_4k_leaf"), param = c("365"))
   )
   # })
 
@@ -594,16 +592,16 @@ test_that("six concordance works for status", {
   expect_type(some_data$`SI-x_Leaf_Value`, "double")
   expect_type(some_data$`si-x:30yr_avg_4k_leaf`, "double")
   expect_type(some_data$`gdd:agdd`, "double")
-  expect_gt(some_data[1,"SI-x_Bloom_Value"], -1)
-  expect_lt(some_data[1,"SI-x_Bloom_Value"], 250)
+  expect_gt(some_data[1, "SI-x_Bloom_Value"], -1)
+  expect_lt(some_data[1, "SI-x_Bloom_Value"], 250)
 
-  expect_gt(some_data[1,"SI-x_Leaf_Value"], -1)
-  expect_lt(some_data[1,"SI-x_Leaf_Value"], 250)
+  expect_gt(some_data[1, "SI-x_Leaf_Value"], -1)
+  expect_lt(some_data[1, "SI-x_Leaf_Value"], 250)
 
-  expect_gt(some_data[1,"si-x:30yr_avg_4k_leaf"], -1)
-  expect_lt(some_data[1,"si-x:30yr_avg_4k_leaf"], 250)
+  expect_gt(some_data[1, "si-x:30yr_avg_4k_leaf"], -1)
+  expect_lt(some_data[1, "si-x:30yr_avg_4k_leaf"], 250)
 
-  expect_gt(some_data[1,"gdd:agdd"],-1)
+  expect_gt(some_data[1, "gdd:agdd"], -1)
 
   avg_leaf_data <- some_data$`SI-x_Leaf_Value`
 
@@ -618,9 +616,9 @@ test_that("six concordance works for status", {
   )
   # })
 
-  expect_gt(some_data[1,"SI-x_Leaf_Value"],-1)
-  expect_lt(some_data[1,"SI-x_Leaf_Value"],250)
-  expect_equal(identical(some_data$`SI-x_Leaf_Value`,avg_leaf_data),FALSE)
+  expect_gt(some_data[1, "SI-x_Leaf_Value"], -1)
+  expect_lt(some_data[1, "SI-x_Leaf_Value"], 250)
+  expect_equal(identical(some_data$`SI-x_Leaf_Value`, avg_leaf_data), FALSE)
 
 
   # This is testing that the implicit
@@ -638,8 +636,8 @@ test_that("six concordance works for status", {
   )
   # })
 
-  expect_gt(some_data[1,"SI-x_Leaf_Value"],-1)
-  expect_lt(some_data[1,"SI-x_Leaf_Value"],250)
+  expect_gt(some_data[1, "SI-x_Leaf_Value"], -1)
+  expect_lt(some_data[1, "SI-x_Leaf_Value"], 250)
 
   # In this case get PRISM data
   # vcr::use_cassette("npn_download_status_data_six_concord_4", {
@@ -652,8 +650,8 @@ test_that("six concordance works for status", {
   )
   # })
 
-  expect_gt(some_data[1,"SI-x_Leaf_Value"],-1)
-  expect_lt(some_data[1,"SI-x_Leaf_Value"],250)
+  expect_gt(some_data[1, "SI-x_Leaf_Value"], -1)
+  expect_lt(some_data[1, "SI-x_Leaf_Value"], 250)
 
 })
 
@@ -688,7 +686,7 @@ test_that("wkt filter works", {
 
   expect_s3_class(some_data, "data.frame")
   expect_type(some_data$species_id, "integer")
-  expect_equal(some_data[1,]$state,"CO")
+  expect_equal(some_data[1, ]$state, "CO")
   expect_gt(rows_wo_filter, rows_w_filter)
 
   # vcr::use_cassette("npn_download_individual_phenometrics_wkt_1", {
@@ -712,7 +710,7 @@ test_that("wkt filter works", {
 
   expect_s3_class(some_data, "data.frame")
   expect_type(some_data$species_id, "integer")
-  expect_equal(some_data[1,]$state,"CO")
+  expect_equal(some_data[1, ]$state, "CO")
   expect_gt(rows_wo_filter, rows_w_filter)
 
 
@@ -737,7 +735,7 @@ test_that("wkt filter works", {
 
   expect_s3_class(some_data, "data.frame")
   expect_type(some_data$species_id, "integer")
-  expect_equal(some_data[1,]$state,"CO")
+  expect_equal(some_data[1, ]$state, "CO")
   expect_gt(rows_wo_filter, rows_w_filter)
 
 
