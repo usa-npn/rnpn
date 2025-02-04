@@ -685,8 +685,7 @@ npn_get_data_by_year <- function(endpoint,
         six_bloom_raster = six_bloom_raster,
         agdd_layer = agdd_layer,
         additional_layers = additional_layers
-      ) %>%
-        dplyr::mutate(start_date = start_date, end_date = end_date, .before = 1)
+      )
 
       # First if statement checks whether this is the results returned is empty.
       # Second if statement checks if we've made a previous request that's
@@ -764,6 +763,16 @@ npn_get_data <- function(url,
                                   \(x) ifelse(x == -9999, NA_real_, x))) %>%
       dplyr::mutate(dplyr::across(dplyr::where(is.character),
                                   \(x) ifelse(x == "-9999", NA_character_, x)))
+
+    #if query includes start and end dates, append those
+    if (any(c("start_date", "end_date") %in% names(query))) {
+      df <- df %>%
+        dplyr::mutate(
+          start_date = query$start_date,
+          end_date = query$end_date,
+          .before = 1
+        )
+    }
 
     # Reconcile all the points in the frame with the SIX leaf raster,
     # if it's been requested.
