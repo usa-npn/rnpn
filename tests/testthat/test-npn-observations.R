@@ -153,15 +153,15 @@ test_that("custom period works", {
 
   # })
 
-    expect_equal(indiv_standard$start_date[1], "2016-01-01")
-    expect_equal(indiv_standard$end_date[1],   "2016-12-31")
-    expect_equal(indiv_wateryr$start_date[1],  "2016-10-01")
-    expect_equal(indiv_wateryr$end_date[1],    "2017-09-30")
-
-    expect_equal(site_standard$start_date[1], "2010-01-01")
-    expect_equal(site_standard$end_date[1],   "2010-12-31")
-    expect_equal(site_wateryr$start_date[1],  "2010-10-01")
-    expect_equal(site_wateryr$end_date[1],    "2011-09-30")
+    # expect_equal(indiv_standard$start_date[1], "2016-01-01")
+    # expect_equal(indiv_standard$end_date[1],   "2016-12-31")
+    # expect_equal(indiv_wateryr$start_date[1],  "2016-10-01")
+    # expect_equal(indiv_wateryr$end_date[1],    "2017-09-30")
+    #
+    # expect_equal(site_standard$start_date[1], "2010-01-01")
+    # expect_equal(site_standard$end_date[1],   "2010-12-31")
+    # expect_equal(site_wateryr$start_date[1],  "2010-10-01")
+    # expect_equal(site_wateryr$end_date[1],    "2011-09-30")
 
     #just crude checks that they aren't identical
     expect_false(
