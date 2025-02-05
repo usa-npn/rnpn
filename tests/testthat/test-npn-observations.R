@@ -163,14 +163,14 @@ test_that("custom period works", {
     expect_equal(site_wateryr$start_date[1],  "2010-10-01")
     expect_equal(site_wateryr$end_date[1],    "2011-09-30")
 
-    #just check they aren't identical
+    #just crude checks that they aren't identical
     expect_false(
       all(indiv_standard$last_yes_month[1:20] ==
             indiv_wateryr$last_yes_month[1:20])
     )
     expect_false(
-      all(site_standard$last_yes_month[1:20] ==
-            site_wateryr$last_yes_month[1:20])
+      all(site_standard$mean_last_yes_doy[1:20] ==
+            site_wateryr$mean_last_yes_doy[1:20])
     )
 })
 
