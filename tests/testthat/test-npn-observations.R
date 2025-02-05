@@ -107,6 +107,73 @@ test_that("basic function works", {
   expect_gt(num_mag_custom, num_mag_default)
 })
 
+test_that("custom period works", {
+  skip_on_cran()
+  skip_if_not(check_service(), "Service is down")
+
+  expect_error(
+    npn_download_individual_phenometrics(
+      request_source = "unit test",
+      years = 2016,
+      period_start = "20-20",
+      species_id = 201
+    ),
+    "Please provide `period_start` as 'MM-DD'."
+  )
+
+  # vcr::use_cassette("custom_period", {
+    indiv_standard <-
+      npn_download_individual_phenometrics(
+        request_source = "unit test",
+        years = 2016,
+        species_id = 201
+      )
+    indiv_wateryr <-
+      npn_download_individual_phenometrics(
+        request_source = "unit test",
+        years = 2016,
+        period_start = "10-01",
+        period_end = "09-30",
+        species_id = 201
+      )
+    site_standard <-
+      npn_download_site_phenometrics(
+        request_source = "unit test",
+        years = 2010,
+        species_id = 210
+      )
+    site_wateryr <-
+      npn_download_site_phenometrics(
+        request_source = "unit test",
+        years = 2010,
+        period_start = "10-01",
+        period_end = "09-30",
+        species_id = 210
+      )
+
+  # })
+
+    expect_equal(indiv_standard$start_date[1], "2016-01-01")
+    expect_equal(indiv_standard$end_date[1],   "2016-12-31")
+    expect_equal(indiv_wateryr$start_date[1],  "2016-10-01")
+    expect_equal(indiv_wateryr$end_date[1],    "2017-09-30")
+
+    expect_equal(site_standard$start_date[1], "2010-01-01")
+    expect_equal(site_standard$end_date[1],   "2010-12-31")
+    expect_equal(site_wateryr$start_date[1],  "2010-10-01")
+    expect_equal(site_wateryr$end_date[1],    "2011-09-30")
+
+    #just check they aren't identical
+    expect_false(
+      all(indiv_standard$last_yes_month[1:20] ==
+            indiv_wateryr$last_yes_month[1:20])
+    )
+    expect_false(
+      all(site_standard$last_yes_month[1:20] ==
+            site_wateryr$last_yes_month[1:20])
+    )
+})
+
 
 test_that("file download works", {
   skip_on_cran()
