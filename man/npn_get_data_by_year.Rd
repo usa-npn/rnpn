@@ -25,7 +25,7 @@ npn_get_data_by_year(
 parameters but doesn't include start/end date which will be automatically
 generated and added.}
 
-\item{years}{Character vector; the years for which to retrieve data. There
+\item{years}{Integer vector; the years for which to retrieve data. There
 will be one request to the service for each year.  If the period
 (determined by \code{period_start} and \code{period_end}) crosses a year boundary,
 \code{years} determines the start years.}
@@ -94,11 +94,13 @@ npn_get_data_by_year(endpoint = endpoint,
 #Set a custom period from October through September
 # This will return data for 2013-10-01 through 2014-09-30 and from 2014-10-01
 # through 2015-09-30
-npn_get_data_by_year(endpoint = endpoint,
-                     query = query,
-                     years = c(2013, 2014),
-                     period_start = "10-01",
-                     period_end = "09-30")
+npn_get_data_by_year(
+  endpoint = endpoint,
+  query = query,
+  years = c(2013, 2014),
+  period_start = "10-01",
+  period_end = "09-30"
+)
 }
 }
 \keyword{internal}

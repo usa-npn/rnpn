@@ -188,11 +188,13 @@ Metadata on all fields can be found in the following Excel sheet:
 }
 \examples{
 \dontrun{
-#Download all saguaro data for 2013 and 2014
+#Download all saguaro data for 2013 and 2014 using "water year" as the period
 npn_download_individual_phenometrics(
   request_source = "Your Name or Org Here",
-  years = c('2013','2014'),
-  species_id = c(210),
+  years = c(2013, 2014),
+  period_start = "10-01",
+  period_end = "09-30",
+  species_id = 210,
   download_path = "saguaro_data_2013_2014.csv"
 )
 }

@@ -199,11 +199,13 @@ npn_download_status_data = function(request_source,
 #'   instead.
 #' @export
 #' @examples \dontrun{
-#' #Download all saguaro data for 2013 and 2014
+#' #Download all saguaro data for 2013 and 2014 using "water year" as the period
 #' npn_download_individual_phenometrics(
 #'   request_source = "Your Name or Org Here",
-#'   years = c('2013','2014'),
-#'   species_id = c(210),
+#'   years = c(2013, 2014),
+#'   period_start = "10-01",
+#'   period_end = "09-30",
+#'   species_id = 210,
 #'   download_path = "saguaro_data_2013_2014.csv"
 #' )
 #' }
@@ -560,7 +562,7 @@ npn_download_magnitude_phenometrics <- function(request_source,
 #' @param query Base query string to use. This includes all the user selected
 #'   parameters but doesn't include start/end date which will be automatically
 #'   generated and added.
-#' @param years Character vector; the years for which to retrieve data. There
+#' @param years Integer vector; the years for which to retrieve data. There
 #'   will be one request to the service for each year.  If the period
 #'   (determined by `period_start` and `period_end`) crosses a year boundary,
 #'   `years` determines the start years.
@@ -613,11 +615,13 @@ npn_download_magnitude_phenometrics <- function(request_source,
 #' #Set a custom period from October through September
 #' # This will return data for 2013-10-01 through 2014-09-30 and from 2014-10-01
 #' # through 2015-09-30
-#' npn_get_data_by_year(endpoint = endpoint,
-#'                      query = query,
-#'                      years = c(2013, 2014),
-#'                      period_start = "10-01",
-#'                      period_end = "09-30")
+#' npn_get_data_by_year(
+#'   endpoint = endpoint,
+#'   query = query,
+#'   years = c(2013, 2014),
+#'   period_start = "10-01",
+#'   period_end = "09-30"
+#' )
 #' }
 npn_get_data_by_year <- function(endpoint,
                                  query,
@@ -633,6 +637,9 @@ npn_get_data_by_year <- function(endpoint,
   #validate period start and end
   validate_mmdd(period_start)
   validate_mmdd(period_end)
+
+  #coerce year to numeric if it was provided as legacy character vector
+  year <- as.integer(year)
 
   all_data <- NULL
   first_year <- TRUE
