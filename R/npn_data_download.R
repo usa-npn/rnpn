@@ -644,7 +644,7 @@ npn_get_data_by_year <- function(endpoint,
   validate_mmdd(period_end)
 
   #coerce year to numeric if it was provided as legacy character vector
-  year <- as.integer(year)
+  years <- as.integer(years)
 
   all_data <- NULL
   first_year <- TRUE
