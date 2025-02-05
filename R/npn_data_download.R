@@ -327,6 +327,7 @@ npn_download_individual_phenometrics <- function(request_source,
 #' <http://www.usanpn.org/files/metadata/site_phenometrics_datafield_descriptions.xlsx>
 #'
 #' @inheritParams npn_download_status_data
+#' @inheritParams npn_get_data_by_year
 #' @param num_days_quality_filter Required field, defaults to `30`. The integer
 #'   value sets the upper limit on the number of days difference between the
 #'   first Y value and the previous N value for each individual to be included
@@ -348,13 +349,15 @@ npn_download_individual_phenometrics <- function(request_source,
 #' #Download all saguaro data for 2013 and 2014
 #' npn_download_site_phenometrics(
 #'   request_source = "Your Name or Org Here",
-#'   years = c('2013','2014'),
-#'   species_id = c(210),
+#'   years = c(2013, 2014),
+#'   species_id = 210,
 #'   download_path = "saguaro_data_2013_2014.csv"
 #' )
 #' }
 npn_download_site_phenometrics <- function(request_source,
                                            years,
+                                           period_start = "01-01",
+                                           period_end = "12-31",
                                            num_days_quality_filter = "30",
                                            coords = NULL,
                                            species_ids = NULL,
@@ -384,28 +387,28 @@ npn_download_site_phenometrics <- function(request_source,
                                            pheno_class_aggregate = NULL,
                                            wkt = NULL) {
   query <- npn_get_common_query_vars(
-    request_source,
-    coords,
-    species_ids,
-    station_ids,
-    species_types,
-    network_ids,
-    states,
-    phenophase_ids,
-    functional_types,
-    additional_fields,
-    climate_data,
-    ip_address,
-    dataset_ids,
-    genus_ids,
-    family_ids,
-    order_ids,
-    class_ids,
-    pheno_class_ids,
-    taxonomy_aggregate,
-    pheno_class_aggregate,
-    wkt,
-    email
+    request_source = request_source,
+    coords = coords,
+    species_ids = species_ids,
+    station_ids = station_ids,
+    species_types = species_types,
+    network_ids = network_ids,
+    states = states,
+    phenophase_ids = phenophase_ids,
+    functional_types = functional_types,
+    additional_fields = additional_fields,
+    climate_data = climate_data,
+    ip_address = ip_address,
+    dataset_ids = dataset_ids,
+    genus_ids = genus_ids,
+    family_ids = family_ids,
+    order_ids = order_ids,
+    class_ids = class_ids,
+    pheno_class_ids = pheno_class_ids,
+    taxonomy_aggregate = taxonomy_aggregate,
+    pheno_class_aggregate = pheno_class_aggregate,
+    wkt = wkt,
+    email = email
   )
 
   query["num_days_quality_filter"] <- num_days_quality_filter
@@ -415,6 +418,8 @@ npn_download_site_phenometrics <- function(request_source,
       endpoint = "/observations/getSiteLevelData.ndjson?",
       query = query,
       years = years,
+      period_start = period_start,
+      period_end = period_end,
       download_path = download_path,
       six_leaf_layer = six_leaf_layer,
       six_bloom_layer = six_bloom_layer,
@@ -967,7 +972,10 @@ npn_get_common_query_vars <- function(
   query <- c(
     list(
       request_src = URLencode(request_source),
-      climate_data = (if(climate_data) "1" else "0") #TODO change to ifelse or as.numeric()
+      #TODO change to something like
+      # if(!is.null(climate_data)) climate_data <- as.integer(climate_data)
+      # this *might* break things if it is important that climate_date = 0 always
+      climate_data = (if (climate_data) "1" else "0")
     ),
     # All these variables take a multiplicity of possible parameters, this will help put them all together.
     npn_createArgList("species_id", species_ids),

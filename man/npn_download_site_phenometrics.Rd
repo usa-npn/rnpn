@@ -7,6 +7,8 @@
 npn_download_site_phenometrics(
   request_source,
   years,
+  period_start = "01-01",
+  period_end = "12-31",
   num_days_quality_filter = "30",
   coords = NULL,
   species_ids = NULL,
@@ -43,6 +45,12 @@ requests to the data service.}
 
 \item{years}{Required field, character vector. Specify the years to include
 in the search, e.g. \code{c('2013','2014')}. You must specify at least one year.}
+
+\item{period_start, period_end}{Character vectors of the form "MM-DD". Used to
+determine the period over which phenophase status records are summarized.
+For example, to use a "water year" set \code{period_start = "10-01"} and
+\code{period_end = "09-30"}. If not provided, they will default to "01-01" and
+"12-31", respectively, to use the calendar year.}
 
 \item{num_days_quality_filter}{Required field, defaults to \code{30}. The integer
 value sets the upper limit on the number of days difference between the
@@ -203,8 +211,8 @@ Metadata on all fields can be found in the following Excel sheet:
 #Download all saguaro data for 2013 and 2014
 npn_download_site_phenometrics(
   request_source = "Your Name or Org Here",
-  years = c('2013','2014'),
-  species_id = c(210),
+  years = c(2013, 2014),
+  species_id = 210,
   download_path = "saguaro_data_2013_2014.csv"
 )
 }
