@@ -34,4 +34,18 @@ the file path is returned.
 \description{
 Generic utility function for querying data from the NPN data services.
 }
+\examples{
+\dontrun{
+npn_get_data(
+  url = "https://services.usanpn.org/npn_portal//observations/getObservations.ndjson?",
+  query = list(
+    request_src = "Unit\%20Test",
+    climate_data = "0",
+    `species_id[1]` = "6",
+    start_date = "2010-01-01",
+    end_date = "2010-12-31"
+  )
+)
+}
+}
 \keyword{internal}

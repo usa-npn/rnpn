@@ -689,6 +689,18 @@ npn_get_data_by_year <- function(endpoint,
 #' @returns A tibble of the requested data. If a `download_path` was specified,
 #'   the file path is returned.
 #' @keywords internal
+#' @examples \dontrun{
+#' npn_get_data(
+#'   url = "https://services.usanpn.org/npn_portal//observations/getObservations.ndjson?",
+#'   query = list(
+#'     request_src = "Unit%20Test",
+#'     climate_data = "0",
+#'     `species_id[1]` = "6",
+#'     start_date = "2010-01-01",
+#'     end_date = "2010-12-31"
+#'   )
+#' )
+#' }
 npn_get_data <- function(url,
                          query,
                          download_path = NULL,
@@ -719,10 +731,22 @@ npn_get_data <- function(url,
                                promote_num_to_string = TRUE) %>%
       tibble::as_tibble() %>%
       #replace missing data indicator with NA
-      dplyr::mutate(dplyr::across(dplyr::where(is.numeric),
-                                  \(x) ifelse(x == -9999, NA_real_, x))) %>%
-      dplyr::mutate(dplyr::across(dplyr::where(is.character),
-                                  \(x) ifelse(x == "-9999", NA_character_, x)))
+      dplyr::mutate(
+        dplyr::across(dplyr::where(is.numeric),
+                      function(x) ifelse(x == -9999, NA_real_, x))
+      ) %>%
+      dplyr::mutate(
+        dplyr::across(dplyr::where(is.character),
+                      function(x) ifelse(x == "-9999", NA_character_, x))
+      ) %>%
+      #handle some columns that may be read in as the wrong type if they happen
+      #to be all NAs (#87). `any_of()` is used because not all endpoints will
+      #return these columns!
+      dplyr::mutate(
+        dplyr::across(dplyr::any_of("update_datetime"),
+                      function(x) as.POSIXct(x, tz = "UTC")),
+        dplyr::across(dplyr::any_of("intensity_value"), as.character)
+      )
 
     # Reconcile all the points in the frame with the SIX leaf raster,
     # if it's been requested.
