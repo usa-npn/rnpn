@@ -745,7 +745,8 @@ npn_get_data <- function(url,
       dplyr::mutate(
         dplyr::across(dplyr::any_of("update_datetime"),
                       function(x) as.POSIXct(x, tz = "UTC")),
-        dplyr::across(dplyr::any_of("intensity_value"), as.character)
+        dplyr::across(dplyr::any_of(c("intensity_value", "abundance_value")),
+                      as.character)
       )
 
     # Reconcile all the points in the frame with the SIX leaf raster,
