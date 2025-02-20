@@ -90,21 +90,27 @@ npn_stations_by_location <- function(wkt, ...) {
 #'    set of species.
 #'
 #' @export
-#' @param speciesid Required. Species id numbers, from 1 to infinity, potentially,
-#'    use e.g., `c(52, 53)` if more than one species desired (numeric).
+#' @param species_id Required. Species id numbers, from 1 to infinity,
+#'   potentially, use e.g., `c(52, 53)`, if more than one species desired
+#'   (numeric).
 #' @param ... Currently unused.
+#' @param speciesid Deprecated. Use `species_id` instead.
 #' @returns A data frame with stations' latitude and longitude, names, and ids.
 #' @examples \dontrun{
-#' npn_stations_with_spp(speciesid = c(52, 53, 54))
-#' npn_stations_with_spp(speciesid = 53)
+#' npn_stations_with_spp(species_id = c(52, 53, 54))
+#' npn_stations_with_spp(species_id = 53)
 #' }
 
-npn_stations_with_spp <- function(speciesid, ...) {
-  #TODO this doesn't work with speciesid = 3 (and possibly others) for some reason
+npn_stations_with_spp <- function(species_id, ..., speciesid = deprecated()) {
+  if (lifecycle::is_present(speciesid)) {
+    lifecycle::deprecate_warn("1.3.0", "npn_stations_with_spp(speciesid = )", "npn_stations_with_spp(species_id = )")
+    species_id <- speciesid
+  }
+  #TODO this doesn't work with species_id = 3 (and possibly others) for some reason
   #https://github.com/usa-npn/rnpn/issues/38
   req <- base_req %>%
     httr2::req_url_path_append('stations/getStationsWithSpecies.json') %>%
-    httr2::req_url_query(!!!explode_query("species_id", speciesid))
+    httr2::req_url_query(!!!explode_query("species_id", species_id))
   resp <- httr2::req_perform(req)
   out <- httr2::resp_body_json(resp, simplifyVector = TRUE)
 
