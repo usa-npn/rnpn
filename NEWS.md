@@ -18,6 +18,7 @@
 * Fixed a bug (#42) where returned value of `npn_get_agdd_point_data()` was inconsistent depending on whether it was cached or not.
 * `npn_abundance_categories()`, `npn_phenophases_by_species()`, and `npn_get_phenophases_for_taxon()` no longer return a data frames containing list-columns.  The results are now unnested automatically.
 * `npn_groups(use_hierarchy = TRUE)` now returns a nested list rather than a tibble with a list-column.
+* The `speciesid` argument of `npn_stations_with_spp()` has been deprecated in favor of `species_id` for uniformity.
 
 # rnpn 1.2.9 (2024-08-18)
 
