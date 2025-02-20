@@ -4,7 +4,7 @@
 \alias{npn_species_types}
 \title{Get Species Types}
 \usage{
-npn_species_types(kingdom = "Plantae", ...)
+npn_species_types(kingdom = c("Plantae", "Animalia"), ...)
 }
 \arguments{
 \item{kingdom}{Filters results by taxonomic kingdom. Valid values include
