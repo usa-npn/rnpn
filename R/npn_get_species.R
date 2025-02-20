@@ -133,9 +133,9 @@ npn_species_search <- function(network = NULL,
 #'
 #' Return all plant or animal functional types used in the NPN database.
 #'
-#' @param kingdom Filters results by taxonomic kingdom. Valid values include
-#'   `'Animalia'`, `'Plantae'`, or `NULL` (which returns results for both).
-#'   Defaults to `'Plantae'`.
+#' @param kingdom Character vector of taxonomic kingdoms to filter results by.
+#'   Valid values include `'Animalia'`, `'Plantae'`, or `c("Animalia",
+#'   "Plantae")` (default).
 #' @param ... Currently unused.
 #' @returns A data frame with a list of the functional types used in the NPN
 #'   database, filtered by the specified kingdom.
@@ -143,7 +143,7 @@ npn_species_search <- function(network = NULL,
 #' @examples \dontrun{
 #' npn_species_types("Plantae")
 #' }
-npn_species_types <- function(kingdom = c("Plantae", "Animalia"), ...) {
+npn_species_types <- function(kingdom = c("Animalia", "Plantae"), ...) {
   kingdom <- rlang::arg_match(kingdom, multiple = TRUE)
 
   req_plant <- base_req %>%
@@ -151,7 +151,7 @@ npn_species_types <- function(kingdom = c("Plantae", "Animalia"), ...) {
   req_animal <- base_req %>%
     httr2::req_url_path_append('species/getAnimalTypes.json')
 
-  req_list <- list(Plantae = req_plant, Animalia = req_animal)[kingdom]
+  req_list <- list(Animalia = req_animal, Plantae = req_plant)[kingdom]
   resps <-
     httr2::req_perform_sequential(req_list) %>%
     rlang::set_names(names(req_list))
