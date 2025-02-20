@@ -8,7 +8,6 @@
 * `npn_phenophase_details()` now takes a vector of phenophase IDs rather than a list
 * Functions that previously returned `data.frame` objects now return tibbles. Where they previously returned `NULL` on errors, they now return empty 0x0 tibbles.
 * `npn_get_phenophases_for_taxon()` now returns a tibble rather than a list.
-* Documented a behavior of `npn_species_type()` where setting `kingdom` to `NULL` returns results for *both* `Plantae` and `Animalia`. 
 * Missing values returned by `npn_stations_by_state()` previously returned as the string `"emptyvalue"` are now returned as `NA`s.
 * `rnpn` now has `dplyr` as a dependency instead of `plyr`
 * `rnpn` now uses `httr2` instead of `httr` and `curl` internally for functions that get observational data
@@ -18,6 +17,7 @@
 * Fixed a bug (#42) where returned value of `npn_get_agdd_point_data()` was inconsistent depending on whether it was cached or not.
 * `npn_abundance_categories()`, `npn_phenophases_by_species()`, and `npn_get_phenophases_for_taxon()` no longer return a data frames containing list-columns.  The results are now unnested automatically.
 * `npn_groups(use_hierarchy = TRUE)` now returns a nested list rather than a tibble with a list-column.
+* Changed behavior of `kingdom` arguments in `npn_species_state()` and `npn_species_types()`.  Now provide either `"Plantae"`, `"Animalia"`, or `c("Plantae", "Animalia")` (the default). A column for `kingdom` is added to the return value of `npn_species_types()`.
 
 # rnpn 1.2.9 (2024-08-18)
 
