@@ -193,6 +193,7 @@ npn_get_phenophases_for_taxon <- function(family_ids = NULL,
       "Please supply a single date or use `date = 'all'` to return data from all dates."
     )
   }
+
   #Check that date is Date or character
   if (!(inherits(date, "Date") | is.character(date))) {
     #TODO could to more here to ensure that date is formatted correctly
