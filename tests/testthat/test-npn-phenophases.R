@@ -84,14 +84,19 @@ test_that("npn_abundance_categories works",{
 
 test_that("npn_get_phenophases_for_taxon works", {
   skip_if_not(check_service(), "Service is down")
+  expect_error(
+    npn_get_phenophases_for_taxon(class_ids = 5, date = c("2018-05-05", "2018-05-06"))
+  )
 
   vcr::use_cassette("npn_get_phenophases_for_taxon_1", {
     pp <- npn_get_phenophases_for_taxon(class_ids = 5, date = "2018-05-05")
+    pp_date <- npn_get_phenophases_for_taxon(class_ids = 5, date = as.Date("2018-05-05"))
   })
 
   expect_s3_class(pp, "data.frame")
   expect_type(pp$class_name, "character")
   expect_equal(nrow(pp), 21)
+  expect_identical(pp, pp_date)
 
   vcr::use_cassette("npn_get_phenophases_for_taxon_2", {
     pp <- npn_get_phenophases_for_taxon(class_ids = c(5, 6), date = "2018-05-05")
