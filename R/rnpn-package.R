@@ -8,6 +8,7 @@
 "_PACKAGE"
 
 ## usethis namespace: start
+#' @importFrom lifecycle deprecated
 #' @importFrom magrittr %>%
 #' @importFrom utils URLencode write.table
 ## usethis namespace: end
