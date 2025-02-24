@@ -188,6 +188,18 @@ npn_get_phenophases_for_taxon <- function(family_ids = NULL,
       i = "Please supply a date or use `date = 'all'` to return data from all dates."
     ))
   }
+  if (length(date) > 1) {
+    rlang::abort(
+      "Please supply a single date or use `date = 'all'` to return data from all dates."
+    )
+  }
+  #Check that date is Date or character
+  if (!(inherits(date, "Date") | is.character(date))) {
+    #TODO could to more here to ensure that date is formatted correctly
+    rlang::abort(
+      "`date` must be a `Date` object, a string in the form of 'YYYY-MM-DD', or 'all'."
+    )
+  }
   return_all <- NULL
   if (date == "all") {
     return_all <- 1
