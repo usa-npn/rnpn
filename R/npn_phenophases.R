@@ -141,11 +141,10 @@ npn_pheno_classes <- function(...) {
 #' @param order_ids Integer vector of taxonomic order ids to search for.
 #' @param class_ids Integer vector of taxonomic class ids to search for
 #' @param genus_ids Integer vector of taxonomic genus ids to search for
-#' @param date Specify the date of interest. For this function to return
-#'   anything, either this value must be set or `return_all` must be `1`.
-#' @param return_all Takes either `0` or `1` as input and defaults to `0`. For
-#'   this function to return anything, either this value must be set to `1` or
-#'   `date` must be set.
+#' @param date Specify the date of interest as a `Date` or `character` of the
+#'   format `"YYYY-MM-DD"`. To return data from all dates, use `date = "all"`.
+#' @param return_all Deprecated.  Use `date = "all"` to return data from all
+#'   dates.
 #' @param ... Currently unused.
 #' @returns A data frame listing phenophases in the NPN database for the
 #'   specified taxon and date.
@@ -170,14 +169,35 @@ npn_get_phenophases_for_taxon <- function(family_ids = NULL,
                                           class_ids = NULL,
                                           genus_ids = NULL,
                                           date = NULL,
-                                          return_all = 0, #TODO switch to TRUE or FALSE?
+                                          return_all = deprecated(),
                                           ...) {
+  if (lifecycle::is_present(return_all)) {
+    lifecycle::deprecate_warn(
+      when = "1.3.0",
+      what = "npn_get_phenophases_for_taxon(return_all)",
+      details = "Please use `date = 'all'` to return data from all dates."
+    )
+    if (return_all == 1) {
+      rlang::warn("Setting `date = 'all'`")
+      date <- "all"
+    }
+  }
+  if (is.null(date)) {
+    rlang::abort(c(
+      "The `date` argument is required.",
+      i = "Please supply a date or use `date = 'all'` to return data from all dates."
+    ))
+  }
+  return_all <- NULL
+  if (date == "all") {
+    return_all <- 1
+  }
   req <- base_req %>%
     httr2::req_url_path_append('phenophases/getPhenophasesForTaxon.json') %>%
     httr2::req_url_query(
       !!!explode_query("family_id", family_ids),!!!explode_query("class_id", class_ids),
       !!!explode_query("order_id", order_ids),!!!explode_query("genus_id", genus_ids),
-      date = date,
+      date = as.character(date), #allows for Date objects as input
       return_all = return_all
     )
   resp <- httr2::req_perform(req)

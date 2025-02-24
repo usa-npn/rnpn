@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://services.usanpn.org/npn_portal/phenophases/getPhenophasesForTaxon.json?family_id%5B1%5D=267&family_id%5B2%5D=268&date=2018-05-05&return_all=0
+    uri: https://services.usanpn.org/npn_portal/phenophases/getPhenophasesForTaxon.json?family_id%5B1%5D=267&family_id%5B2%5D=268&date=2018-05-05
     body:
       encoding: ''
       string: ''
@@ -11,7 +11,7 @@ http_interactions:
       status_code: 200
       message: OK
     headers:
-      date: Wed, 20 Nov 2024 19:20:53 GMT
+      date: Mon, 24 Feb 2025 18:31:28 GMT
       content-type: application/json; charset=utf-8
       server: Apache/2.4.62 () PHP/5.5.38
       x-powered-by: PHP/5.5.38
@@ -148,5 +148,5 @@ http_interactions:
         dropped before ripening, such as in a heavy rain or wind, or empty fruits
         that had long ago dropped all of their seeds but remained on the plant.","seq_num":330,"color":"Green3","pheno_class_id":13,"pheno_class_name":"Recent
         fruit, cone or seed drop","pheno_class_sequence":130,"phenophase_definition_id":504}]}]'
-  recorded_at: 2024-11-20 19:20:53 GMT
+  recorded_at: 2025-02-24 18:31:28 GMT
   recorded_with: vcr/1.6.0, webmockr/1.0.0

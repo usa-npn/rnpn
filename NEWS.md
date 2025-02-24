@@ -18,6 +18,7 @@
 * `npn_abundance_categories()`, `npn_phenophases_by_species()`, and `npn_get_phenophases_for_taxon()` no longer return a data frames containing list-columns.  The results are now unnested automatically.
 * `npn_groups(use_hierarchy = TRUE)` now returns a nested list rather than a tibble with a list-column.
 * Changed behavior of `kingdom` arguments in `npn_species_state()` and `npn_species_types()`.  Now provide either `"Plantae"`, `"Animalia"`, or `c("Plantae", "Animalia")` (the default). A column for `kingdom` is added to the return value of `npn_species_types()`.
+* The `return_all` argument of `npn_get_phenophases_for_taxon()` has been deprecated.  Use `date = "all"` to return data for all dates instead. `return_all = 1` will continue to work (with a warning) in this version.
 
 # rnpn 1.2.9 (2024-08-18)
 
