@@ -87,7 +87,7 @@ npn_get_layer_details <- function() {
 #' @param output_path Optional value. When set, the raster will be piped to the
 #'   file path specified. When left unset, this function will return a
 #'   [terra::SpatRaster] object.
-#' @returns returns nothing when `output_path` is set, otherwise a
+#' @returns returns `outpath_path` when `output_path` is set, otherwise a
 #'   [terra::SpatRaster] object meeting the `coverage_id`, `date` and `format`
 #'   parameters specified.
 #' @examples \dontrun{
@@ -130,7 +130,7 @@ npn_download_geospatial <- function (coverage_id,
       return(ras)
     } else {
       resp <- httr2::req_perform(req, path = output_path)
-      #TODO return output_path?
+      return(output_path)
     }
   }, error = function(msg) { #TODO use httr2 for error handling
     message(
