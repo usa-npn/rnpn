@@ -19,9 +19,9 @@ test_that("npn_download_geospatial works", {
   expect_s4_class(ras, "SpatRaster")
 
   withr::with_tempfile("test_tiff", {
-    npn_download_geospatial("gdd:agdd", date="2018-05-05", output_path = test_tiff)
-    expect_true(file.exists(test_tiff))
-    file_raster <- terra::rast(test_tiff)
+    ras2 <- npn_download_geospatial("gdd:agdd", date = "2018-05-05", output_path = test_tiff)
+    expect_true(file.exists(ras2))
+    file_raster <- terra::rast(ras2)
     expect_equal(
       max(terra::values(ras), na.rm = TRUE),
       max(terra::values(file_raster), na.rm = TRUE)
@@ -33,6 +33,20 @@ test_that("npn_download_geospatial works", {
 
   ras <- npn_download_geospatial("inca:midgup_median_nad83_02deg", date = NULL)
   expect_s4_class(ras, "SpatRaster")
+
+  expect_error(npn_download_geospatial("gdd:30yr_avg_agdd", date = "hello"))
+  expect_error(npn_download_geospatial("gdd:30yr_avg_agdd", date = 500))
+
+  expect_identical(
+    npn_download_geospatial("gdd:agdd", date = "2018-05-05"),
+    npn_download_geospatial("gdd:agdd", date = as.Date("2018-05-05"))
+  )
+
+  #not sure if this is a good idea or if `"1,5"` format should be deprecated
+  expect_identical(
+    npn_download_geospatial("gdd:30yr_avg_agdd", date = "1,5"),
+    npn_download_geospatial("gdd:30yr_avg_agdd", date = c(1,5))
+  )
 })
 
 
