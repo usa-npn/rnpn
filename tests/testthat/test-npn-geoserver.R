@@ -28,7 +28,7 @@ test_that("npn_download_geospatial works", {
     )
   })
 
-  ras <- npn_download_geospatial("gdd:30yr_avg_agdd", date = "50")
+  ras <- npn_download_geospatial("gdd:30yr_avg_agdd", date = 50)
   expect_s4_class(ras, "SpatRaster")
 
   ras <- npn_download_geospatial("inca:midgup_median_nad83_02deg", date = NULL)
@@ -37,15 +37,16 @@ test_that("npn_download_geospatial works", {
   expect_error(npn_download_geospatial("gdd:30yr_avg_agdd", date = "hello"))
   expect_error(npn_download_geospatial("gdd:30yr_avg_agdd", date = 500))
 
-  expect_identical(
-    npn_download_geospatial("gdd:agdd", date = "2018-05-05"),
-    npn_download_geospatial("gdd:agdd", date = as.Date("2018-05-05"))
+  expect_equal(
+    #the pointers are different, but the data should be identical, therefore `values()`
+    terra::values(npn_download_geospatial("gdd:agdd", date = "2018-05-05")),
+    terra::values(npn_download_geospatial("gdd:agdd", date = as.Date("2018-05-05")))
   )
 
-  #not sure if this is a good idea or if `"1,5"` format should be deprecated
+  expect_warning(doy <- npn_download_geospatial("gdd:30yr_avg_agdd", date = "1,5"))
   expect_identical(
-    npn_download_geospatial("gdd:30yr_avg_agdd", date = "1,5"),
-    npn_download_geospatial("gdd:30yr_avg_agdd", date = c(1,5))
+    terra::values(doy),
+    terra::values(npn_download_geospatial("gdd:30yr_avg_agdd", date = c(1,5)))
   )
 })
 
@@ -57,14 +58,14 @@ test_that("npn_download_geospatial format param working", {
   withr::with_tempdir({
     npn_download_geospatial(
       "gdd:30yr_avg_agdd_50f",
-      date="5",
+      date = 5,
       output_path = "testing.tiff"
     )
     tiff_size <- file.size("testing.tiff")
     npn_download_geospatial(
       "gdd:30yr_avg_agdd_50f",
-      date="1,3",
-      format="application/x-netcdf",
+      date = c(1, 3),
+      format = "application/x-netcdf",
       output_path = "testing.netcdf"
     )
     netcdf_size <- file.size("testing.netcdf")
