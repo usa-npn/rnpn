@@ -19,20 +19,35 @@ test_that("npn_download_geospatial works", {
   expect_s4_class(ras, "SpatRaster")
 
   withr::with_tempfile("test_tiff", {
-    npn_download_geospatial("gdd:agdd", date="2018-05-05", output_path = test_tiff)
-    expect_true(file.exists(test_tiff))
-    file_raster <- terra::rast(test_tiff)
+    ras2 <- npn_download_geospatial("gdd:agdd", date = "2018-05-05", output_path = test_tiff)
+    expect_true(file.exists(ras2))
+    file_raster <- terra::rast(ras2)
     expect_equal(
       max(terra::values(ras), na.rm = TRUE),
       max(terra::values(file_raster), na.rm = TRUE)
     )
   })
 
-  ras <- npn_download_geospatial("gdd:30yr_avg_agdd", date = "50")
+  ras <- npn_download_geospatial("gdd:30yr_avg_agdd", date = 50)
   expect_s4_class(ras, "SpatRaster")
 
   ras <- npn_download_geospatial("inca:midgup_median_nad83_02deg", date = NULL)
   expect_s4_class(ras, "SpatRaster")
+
+  expect_error(npn_download_geospatial("gdd:30yr_avg_agdd", date = "hello"))
+  expect_error(npn_download_geospatial("gdd:30yr_avg_agdd", date = 500))
+
+  expect_equal(
+    #the pointers are different, but the data should be identical, therefore `values()`
+    terra::values(npn_download_geospatial("gdd:agdd", date = "2018-05-05")),
+    terra::values(npn_download_geospatial("gdd:agdd", date = as.Date("2018-05-05")))
+  )
+
+  expect_warning(doy <- npn_download_geospatial("gdd:30yr_avg_agdd", date = "1,5"))
+  expect_identical(
+    terra::values(doy),
+    terra::values(npn_download_geospatial("gdd:30yr_avg_agdd", date = c(1,5)))
+  )
 })
 
 
@@ -43,14 +58,14 @@ test_that("npn_download_geospatial format param working", {
   withr::with_tempdir({
     npn_download_geospatial(
       "gdd:30yr_avg_agdd_50f",
-      date="5",
+      date = 5,
       output_path = "testing.tiff"
     )
     tiff_size <- file.size("testing.tiff")
     npn_download_geospatial(
       "gdd:30yr_avg_agdd_50f",
-      date="1,3",
-      format="application/x-netcdf",
+      date = c(1, 3),
+      format = "application/x-netcdf",
       output_path = "testing.netcdf"
     )
     netcdf_size <- file.size("testing.netcdf")
