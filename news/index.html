@@ -80,41 +80,47 @@
 
     <div class="section level2">
 <h2 class="page-header" data-toc-text="development version" id="rnpn-development-version">rnpn (development version)<a class="anchor" aria-label="anchor" href="#rnpn-development-version"></a></h2>
+<div class="section level3">
+<h3 id="dependency-changes-development-version">Dependency changes<a class="anchor" aria-label="anchor" href="#dependency-changes-development-version"></a></h3>
 <ul><li>
 <code>nnpn</code> no longer depends on the <code>sp</code> or <code>raster</code> packages</li>
 <li>
 <code>terra</code> is now a suggested dependency and users will be prompted to install it only when it is needed</li>
 <li>
-<code><a href="../reference/npn_get_point_data.html">npn_get_point_data()</a></code> now uses https instead of http</li>
-<li>
-<code><a href="../reference/npn_get_layer_details.html">npn_get_layer_details()</a></code> now returns a tibble instead of a data frame</li>
-<li>
 <code>rnpn</code> now requires the <code>xml2</code> package instead of <code>XML</code>
 </li>
-<li>
-<code><a href="../reference/npn_phenophase_details.html">npn_phenophase_details()</a></code> now takes a vector of phenophase IDs rather than a list</li>
-<li>Functions that previously returned <code>data.frame</code> objects now return tibbles. Where they previously returned <code>NULL</code> on errors, they now return empty 0x0 tibbles.</li>
-<li>
-<code><a href="../reference/npn_get_phenophases_for_taxon.html">npn_get_phenophases_for_taxon()</a></code> now returns a tibble rather than a list.</li>
-<li>Documented a behavior of <code>npn_species_type()</code> where setting <code>kingdom</code> to <code>NULL</code> returns results for <em>both</em> <code>Plantae</code> and <code>Animalia</code>.</li>
-<li>Missing values returned by <code><a href="../reference/npn_stations_by_state.html">npn_stations_by_state()</a></code> previously returned as the string <code>"emptyvalue"</code> are now returned as <code>NA</code>s.</li>
 <li>
 <code>rnpn</code> now has <code>dplyr</code> as a dependency instead of <code>plyr</code>
 </li>
 <li>
 <code>rnpn</code> now uses <code>httr2</code> instead of <code>httr</code> and <code>curl</code> internally for functions that get observational data</li>
-<li>
-<code>...</code> is no longer used for functions that get observational data</li>
 <li>data download functions now return tibbles instead of <code>data.table</code> objects. <code>rnpn</code> no longer depends on <code>data.table</code>
 </li>
+</ul></div>
+<div class="section level3">
+<h3 id="changes-to-function-arguments-development-version">Changes to function arguments<a class="anchor" aria-label="anchor" href="#changes-to-function-arguments-development-version"></a></h3>
+<ul><li>
+<code><a href="../reference/npn_phenophase_details.html">npn_phenophase_details()</a></code> now takes a vector of phenophase IDs rather than a list</li>
+<li>Documented a behavior of <code>npn_species_type()</code> where setting <code>kingdom</code> to <code>NULL</code> returns results for <em>both</em> <code>Plantae</code> and <code>Animalia</code>.</li>
+<li>
+<code>...</code> is no longer used for functions that get observational data</li>
+</ul></div>
+<div class="section level3">
+<h3 id="changes-to-function-outputs-development-version">Changes to function outputs<a class="anchor" aria-label="anchor" href="#changes-to-function-outputs-development-version"></a></h3>
+<ul><li>Functions that previously returned <code>data.frame</code> objects now return tibbles. Where they previously returned <code>NULL</code> on errors, they now return empty 0x0 tibbles.</li>
 <li>Missing values returned by download functions are now automatically converted from -9999 to <code>NA</code>
 </li>
-<li>Fixed a bug (<a href="https://github.com/usa-npn/rnpn/issues/42" class="external-link">#42</a>) where returned value of <code><a href="../reference/npn_get_agdd_point_data.html">npn_get_agdd_point_data()</a></code> was inconsistent depending on whether it was cached or not.</li>
-<li>
-<code><a href="../reference/npn_abundance_categories.html">npn_abundance_categories()</a></code>, <code><a href="../reference/npn_phenophases_by_species.html">npn_phenophases_by_species()</a></code>, and <code><a href="../reference/npn_get_phenophases_for_taxon.html">npn_get_phenophases_for_taxon()</a></code> no longer return a data frames containing list-columns. The results are now unnested automatically.</li>
+<li>Missing values returned by <code><a href="../reference/npn_stations_by_state.html">npn_stations_by_state()</a></code> previously returned as the string <code>"emptyvalue"</code> are now returned as <code>NA</code>s.</li>
 <li>
 <code>npn_groups(use_hierarchy = TRUE)</code> now returns a nested list rather than a tibble with a list-column.</li>
+<li>
+<code><a href="../reference/npn_abundance_categories.html">npn_abundance_categories()</a></code>, <code><a href="../reference/npn_phenophases_by_species.html">npn_phenophases_by_species()</a></code>, and <code><a href="../reference/npn_get_phenophases_for_taxon.html">npn_get_phenophases_for_taxon()</a></code> now return tibbles with any list-columns unnested.</li>
 </ul></div>
+<div class="section level3">
+<h3 id="bug-fixes-development-version">Bug fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-development-version"></a></h3>
+<ul><li>Fixed a bug (<a href="https://github.com/usa-npn/rnpn/issues/42" class="external-link">#42</a>) where returned value of <code><a href="../reference/npn_get_agdd_point_data.html">npn_get_agdd_point_data()</a></code> was inconsistent depending on whether it was cached or not.</li>
+</ul></div>
+</div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="1.2.9" id="rnpn-129-2024-08-18">rnpn 1.2.9 (2024-08-18)<a class="anchor" aria-label="anchor" href="#rnpn-129-2024-08-18"></a></h2>
 <div class="section level4">
