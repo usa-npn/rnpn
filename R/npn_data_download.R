@@ -575,7 +575,7 @@ npn_download_magnitude_phenometrics <- function(request_source,
 #'   values. Thus setting this field will change the results of `six_leaf_layer`
 #'   and `six_bloom_layer`. Valid values include: `'lilac'`, `'zabelli'` and
 #'   `'arnoldred'`. For more information see the NPN's Spring Index Maps
-#'   documentation: <https://www.usanpn.org/data/spring_indices>.
+#'   documentation: <https://www.usanpn.org/data/maps/spring>.
 #' @param additional_layers Data frame with first column named `name` and
 #'   containing the names of the layer for which to retrieve data and the second
 #'   column named `param` and containing string representations of the
