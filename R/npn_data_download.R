@@ -23,7 +23,7 @@
 #' found in the NPN service's [companion
 #' documentation](https://docs.google.com/document/d/1yNjupricKOAXn6tY1sI7-EwkcfwdGUZ7lxYv7fcPjO8/edit#heading=h.w0nctgedhaop).
 #' Metadata on all fields can be found in the following Excel sheet:
-#' <http://www.usanpn.org/files/metadata/status_intensity_datafield_descriptions.xlsx>
+#' <https://www.usanpn.org/files/metadata/status_intensity_datafield_descriptions.xlsx>
 #'
 #' @param request_source Required field, character Self-identify who is making
 #'   requests to the data service.
@@ -189,7 +189,7 @@ npn_download_status_data = function(request_source,
 #' can be found in the NPN service's [companion
 #' documentation](https://docs.google.com/document/d/1yNjupricKOAXn6tY1sI7-EwkcfwdGUZ7lxYv7fcPjO8/edit#heading=h.7yy4i3278v7u)
 #' Metadata on all fields can be found in the following Excel sheet:
-#' <http://www.usanpn.org/files/metadata/individual_phenometrics_datafield_descriptions.xlsx>
+#' <https://www.usanpn.org/files/metadata/individual_phenometrics_datafield_descriptions.xlsx>
 #' @inheritParams npn_download_status_data
 #' @param individual_ids Comma-separated string of unique IDs for individual
 #'   plants/animal species by which to filter the data.
@@ -317,7 +317,7 @@ npn_download_individual_phenometrics <- function(request_source,
 #' can be found in the NPN service's [companion
 #' documentation](https://docs.google.com/document/d/1yNjupricKOAXn6tY1sI7-EwkcfwdGUZ7lxYv7fcPjO8/edit#heading=h.ueaexz9bczti).
 #' Metadata on all fields can be found in the following Excel sheet:
-#' <http://www.usanpn.org/files/metadata/site_phenometrics_datafield_descriptions.xlsx>
+#' <https://www.usanpn.org/files/metadata/site_phenometrics_datafield_descriptions.xlsx>
 #'
 #' @inheritParams npn_download_status_data
 #' @param num_days_quality_filter Required field, defaults to `30`. The integer
@@ -457,7 +457,7 @@ npn_download_site_phenometrics <- function(request_source,
 #' to include in the search results. A complete list of additional fields can be
 #' found in the NPN service's [companion documentation](https://docs.google.com/document/d/1yNjupricKOAXn6tY1sI7-EwkcfwdGUZ7lxYv7fcPjO8/edit#heading=h.df3zspopwq98).
 #' Metadata on all fields can be found in the following Excel sheet:
-#' <http://www.usanpn.org/files/metadata/magnitude_phenometrics_datafield_descriptions.xlsx>
+#' <https://www.usanpn.org/files/metadata/magnitude_phenometrics_datafield_descriptions.xlsx>
 #'
 #' @inheritParams npn_download_status_data
 #' @param period_frequency Required field, integer. The integer value specifies
