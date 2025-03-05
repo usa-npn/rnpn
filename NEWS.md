@@ -1,4 +1,4 @@
-# rnpn (development version)
+# rnpn 1.3.0
 
 ## Dependency changes
 
