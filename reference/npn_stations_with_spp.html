@@ -86,20 +86,25 @@ set of species.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">npn_stations_with_spp</span><span class="op">(</span><span class="va">speciesid</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">npn_stations_with_spp</span><span class="op">(</span><span class="va">species_id</span>, <span class="va">...</span>, speciesid <span class="op">=</span> <span class="fu">deprecated</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
 
 
-<dl><dt id="arg-speciesid">speciesid<a class="anchor" aria-label="anchor" href="#arg-speciesid"></a></dt>
-<dd><p>Required. Species id numbers, from 1 to infinity, potentially,
-use e.g., <code>c(52, 53)</code> if more than one species desired (numeric).</p></dd>
+<dl><dt id="arg-species-id">species_id<a class="anchor" aria-label="anchor" href="#arg-species-id"></a></dt>
+<dd><p>Required. Species id numbers, from 1 to infinity,
+potentially, use e.g., <code>c(52, 53)</code>, if more than one species desired
+(numeric).</p></dd>
 
 
 <dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
 <dd><p>Currently unused.</p></dd>
+
+
+<dt id="arg-speciesid">speciesid<a class="anchor" aria-label="anchor" href="#arg-speciesid"></a></dt>
+<dd><p>Deprecated. Use <code>species_id</code> instead.</p></dd>
 
 </dl></div>
     <div id="value">
@@ -110,8 +115,8 @@ use e.g., <code>c(52, 53)</code> if more than one species desired (numeric).</p>
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># \dontrun{</span></span></span>
-<span class="r-in"><span><span class="fu">npn_stations_with_spp</span><span class="op">(</span>speciesid <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">52</span>, <span class="fl">53</span>, <span class="fl">54</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu">npn_stations_with_spp</span><span class="op">(</span>speciesid <span class="op">=</span> <span class="fl">53</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">npn_stations_with_spp</span><span class="op">(</span>species_id <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">52</span>, <span class="fl">53</span>, <span class="fl">54</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">npn_stations_with_spp</span><span class="op">(</span>species_id <span class="op">=</span> <span class="fl">53</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span> <span class="co"># }</span></span></span>
 </code></pre></div>
     </div>
