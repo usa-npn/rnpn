@@ -21,6 +21,7 @@ Depends:
 Imports:
     dplyr,
     httr2 (>= 1.1.0),
+    lifecycle,
     magrittr,
     rlang,
     tibble,

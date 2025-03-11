@@ -1,4 +1,5 @@
 # rnpn (development version)
+* The `speciesid` argument of `npn_stations_with_spp()` has been deprecated in favor of `species_id` for uniformity.
 
 # rnpn 1.3.0
 
@@ -29,7 +30,6 @@
 ## Bug fixes
 
 * Fixed a bug (#42) where returned value of `npn_get_agdd_point_data()` was inconsistent depending on whether it was cached or not.
-
 
 # rnpn 1.2.9 (2024-08-18)
 
