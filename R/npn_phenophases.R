@@ -173,12 +173,12 @@ npn_get_phenophases_for_taxon <- function(family_ids = NULL,
                                           ...) {
   if (lifecycle::is_present(return_all)) {
     lifecycle::deprecate_warn(
-      when = "1.3.0",
+      when = "1.4.0",
       what = "npn_get_phenophases_for_taxon(return_all)",
-      details = "Please use `date = 'all'` to return data from all dates."
+      details = c("Please use `date = 'all'` to return data from all dates.")
     )
     if (return_all == 1) {
-      rlang::warn("Setting `date = 'all'`")
+      rlang::warn("Implicitly setting `date = 'all'`")
       date <- "all"
     }
   }
