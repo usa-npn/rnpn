@@ -19,10 +19,11 @@ test_that("npn_download_geospatial works", {
   ras <- npn_download_geospatial(coverage_id = "gdd:agdd", date = "2018-05-05")
   expect_s4_class(ras, "SpatRaster")
 
-  withr::with_tempfile("test_tiff", {
-    npn_download_geospatial("gdd:agdd", date = "2018-05-05", output_path = test_tiff)
-    expect_true(file.exists(test_tiff))
-    file_raster <- terra::rast(test_tiff)
+  withr::with_tempdir({
+    gdd <- npn_download_geospatial("gdd:agdd", date = "2018-05-05", output_path = "test.tiff")
+    expect_equal(gdd, normalizePath("test.tiff"))
+    expect_true(file.exists(gdd))
+    file_raster <- terra::rast(gdd)
     expect_equal(
       max(terra::values(ras), na.rm = TRUE),
       max(terra::values(file_raster), na.rm = TRUE)
@@ -47,7 +48,7 @@ test_that("npn_download_geospatial format param working", {
       date = "5",
       output_path = "testing.tiff"
     )
-    expect_equal(test_tiff, "testing.tiff")
+    expect_equal(test_tiff, normalizePath("testing.tiff"))
     tiff_size <- file.size(test_tiff)
     test_ncdf <- npn_download_geospatial(
       "gdd:30yr_avg_agdd_50f",
@@ -55,7 +56,7 @@ test_that("npn_download_geospatial format param working", {
       format = "application/x-netcdf",
       output_path = "testing.netcdf"
     )
-    expect_equal(test_ncdf, "testing.netcdf")
+    expect_equal(test_ncdf, normalizePath("testing.netcdf"))
     netcdf_size <- file.size(test_ncdf)
   })
 

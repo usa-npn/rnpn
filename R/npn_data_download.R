@@ -718,7 +718,7 @@ npn_get_data_by_year <- function(endpoint,
   if (is.null(download_path)) {
     return(all_data)
   } else {
-    return(download_path)
+    return(normalizePath(download_path))
   }
 }
 
@@ -881,11 +881,11 @@ npn_get_data <- function(url,
   }
 
   # If the user asks for the data to be saved to file then
-  # there is nothing to return.
+  # return the `download_path`
   if (is.null(download_path)) {
     return(dtm)
   } else {
-    return(download_path)
+    return(normalizePath(download_path))
   }
 }
 
