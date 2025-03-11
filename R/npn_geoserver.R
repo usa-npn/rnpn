@@ -83,7 +83,7 @@ npn_get_layer_details <- function() {
 #'   can also be `NULL` in some cases. Which to use depends entirely on the
 #'   layer being requested. More information available from the
 #'   [npn_get_layer_details()] function. Note: providing days of year as a
-#'   character input (e.g. `"1,4"`) is deprecated as of version 1.3.0.
+#'   character input (e.g. `"1,4"`) is deprecated as of version 1.4.0.
 #' @param format The output format of the raster layer retrieved. Defaults to
 #'   `"GeoTIFF"`.
 #' @param output_path Optional value. When set, the raster will be piped to the
@@ -93,7 +93,7 @@ npn_get_layer_details <- function() {
 #'   [terra::SpatRaster] object meeting the `coverage_id`, `date` and `format`
 #'   parameters specified.
 #' @examples \dontrun{
-#' ras <- npn_download_geospatial("si-x:30yr_avg_six_bloom", "255")
+#' ras <- npn_download_geospatial("si-x:30yr_avg_six_bloom", 255)
 #' }
 #' @export
 npn_download_geospatial <- function(coverage_id,
@@ -117,7 +117,7 @@ npn_download_geospatial <- function(coverage_id,
     } else if (is.character(date)) {
       # If character, could either be "YYYY-MM-DD" or legacy "1,5" format.
       # Try to detect legacy format and warn.
-      numericish <- grepl("^\\d{1,3}(,\\d{1,3})?$", date)
+      numericish <- grepl("^\\d{1,3}(,\\d{1,3})*$", date)
       if (numericish) {
         lifecycle::deprecate_warn(
           when = "1.3.0",
