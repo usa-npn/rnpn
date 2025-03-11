@@ -101,6 +101,8 @@ than can be handled at once in memory.</p>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">npn_download_site_phenometrics</span><span class="op">(</span></span>
 <span>  <span class="va">request_source</span>,</span>
 <span>  <span class="va">years</span>,</span>
+<span>  period_start <span class="op">=</span> <span class="st">"01-01"</span>,</span>
+<span>  period_end <span class="op">=</span> <span class="st">"12-31"</span>,</span>
 <span>  num_days_quality_filter <span class="op">=</span> <span class="st">"30"</span>,</span>
 <span>  coords <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  species_ids <span class="op">=</span> <span class="cn">NULL</span>,</span>
@@ -144,6 +146,14 @@ requests to the data service.</p></dd>
 <dt id="arg-years">years<a class="anchor" aria-label="anchor" href="#arg-years"></a></dt>
 <dd><p>Required field, character vector. Specify the years to include
 in the search, e.g. <code>c('2013','2014')</code>. You must specify at least one year.</p></dd>
+
+
+<dt id="arg-period-start-period-end">period_start, period_end<a class="anchor" aria-label="anchor" href="#arg-period-start-period-end"></a></dt>
+<dd><p>Character vectors of the form "MM-DD". Used to
+determine the period over which phenophase status records are summarized.
+For example, to use a "water year" set <code>period_start = "10-01"</code> and
+<code>period_end = "09-30"</code>. If not provided, they will default to "01-01" and
+"12-31", respectively, to use the calendar year.</p></dd>
 
 
 <dt id="arg-num-days-quality-filter">num_days_quality_filter<a class="anchor" aria-label="anchor" href="#arg-num-days-quality-filter"></a></dt>
@@ -353,8 +363,8 @@ Metadata on all fields can be found in the following Excel sheet:
 <span class="r-in"><span><span class="co">#Download all saguaro data for 2013 and 2014</span></span></span>
 <span class="r-in"><span><span class="fu">npn_download_site_phenometrics</span><span class="op">(</span></span></span>
 <span class="r-in"><span>  request_source <span class="op">=</span> <span class="st">"Your Name or Org Here"</span>,</span></span>
-<span class="r-in"><span>  years <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'2013'</span>,<span class="st">'2014'</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>  species_id <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">210</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  years <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2013</span>, <span class="fl">2014</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  species_id <span class="op">=</span> <span class="fl">210</span>,</span></span>
 <span class="r-in"><span>  download_path <span class="op">=</span> <span class="st">"saguaro_data_2013_2014.csv"</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span> <span class="co"># }</span></span></span>
