@@ -24,4 +24,4 @@ notes/
 ^_pkgdown\.yml$
 ^pkgdown$
 ^CITATION.cff$
-
+^CONTRIBUTING\.md$

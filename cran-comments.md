@@ -1,19 +1,16 @@
 I have read and agree to the the CRAN policies at
 http://cran.r-project.org/web/packages/policies.html
 
-## Resubmission
-
-This is a resubmission to fix failed tests due to backend server migrations.
-
 ## Test environments
 
 devtools::check and devtools::check_win_release passed.
+github actions passed for MacOS, Windows, and Ubuntu.
 
 ## R CMD check results
 
-There were no NOTEs or WARNINGs.
-
-There is an ERORR pertaining to a test, however the test is skipped on CRAN and should not present an issue. As this package is an API wrapper, many tests do not pass.
+There were zero ERRORs, zero WARNINGs, and two NOTEs. One note is unable to 
+verify current time which is out of our control. The other note is about
+possible invalid URLs, however we tested that all URLs worked.
 
 ## Downstream dependencies
 

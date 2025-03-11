@@ -23,7 +23,7 @@
 #' found in the NPN service's [companion
 #' documentation](https://docs.google.com/document/d/1yNjupricKOAXn6tY1sI7-EwkcfwdGUZ7lxYv7fcPjO8/edit#heading=h.w0nctgedhaop).
 #' Metadata on all fields can be found in the following Excel sheet:
-#' <http://www.usanpn.org/files/metadata/status_intensity_datafield_descriptions.xlsx>
+#' <https://www.usanpn.org/files/metadata/status_intensity_datafield_descriptions.xlsx>
 #'
 #' @param request_source Required field, character Self-identify who is making
 #'   requests to the data service.
@@ -189,7 +189,7 @@ npn_download_status_data = function(request_source,
 #' can be found in the NPN service's [companion
 #' documentation](https://docs.google.com/document/d/1yNjupricKOAXn6tY1sI7-EwkcfwdGUZ7lxYv7fcPjO8/edit#heading=h.7yy4i3278v7u)
 #' Metadata on all fields can be found in the following Excel sheet:
-#' <http://www.usanpn.org/files/metadata/individual_phenometrics_datafield_descriptions.xlsx>
+#' <https://www.usanpn.org/files/metadata/individual_phenometrics_datafield_descriptions.xlsx>
 #' @inheritParams npn_download_status_data
 #' @inheritParams npn_get_data_by_year
 #' @param individual_ids Comma-separated string of unique IDs for individual
@@ -324,7 +324,7 @@ npn_download_individual_phenometrics <- function(request_source,
 #' can be found in the NPN service's [companion
 #' documentation](https://docs.google.com/document/d/1yNjupricKOAXn6tY1sI7-EwkcfwdGUZ7lxYv7fcPjO8/edit#heading=h.ueaexz9bczti).
 #' Metadata on all fields can be found in the following Excel sheet:
-#' <http://www.usanpn.org/files/metadata/site_phenometrics_datafield_descriptions.xlsx>
+#' <https://www.usanpn.org/files/metadata/site_phenometrics_datafield_descriptions.xlsx>
 #'
 #' @inheritParams npn_download_status_data
 #' @inheritParams npn_get_data_by_year
@@ -469,7 +469,7 @@ npn_download_site_phenometrics <- function(request_source,
 #' to include in the search results. A complete list of additional fields can be
 #' found in the NPN service's [companion documentation](https://docs.google.com/document/d/1yNjupricKOAXn6tY1sI7-EwkcfwdGUZ7lxYv7fcPjO8/edit#heading=h.df3zspopwq98).
 #' Metadata on all fields can be found in the following Excel sheet:
-#' <http://www.usanpn.org/files/metadata/magnitude_phenometrics_datafield_descriptions.xlsx>
+#' <https://www.usanpn.org/files/metadata/magnitude_phenometrics_datafield_descriptions.xlsx>
 #'
 #' @inheritParams npn_download_status_data
 #' @param period_frequency Required field, integer. The integer value specifies
@@ -594,7 +594,7 @@ npn_download_magnitude_phenometrics <- function(request_source,
 #'   values. Thus setting this field will change the results of `six_leaf_layer`
 #'   and `six_bloom_layer`. Valid values include: `'lilac'`, `'zabelli'` and
 #'   `'arnoldred'`. For more information see the NPN's Spring Index Maps
-#'   documentation: <https://www.usanpn.org/data/spring_indices>.
+#'   documentation: <https://www.usanpn.org/data/maps/spring>.
 #' @param additional_layers Data frame with first column named `name` and
 #'   containing the names of the layer for which to retrieve data and the second
 #'   column named `param` and containing string representations of the
@@ -741,6 +741,18 @@ npn_get_data_by_year <- function(endpoint,
 #' @returns A tibble of the requested data. If a `download_path` was specified,
 #'   the file path is returned.
 #' @keywords internal
+#' @examples \dontrun{
+#' npn_get_data(
+#'   url = "https://services.usanpn.org/npn_portal//observations/getObservations.ndjson?",
+#'   query = list(
+#'     request_src = "Unit%20Test",
+#'     climate_data = "0",
+#'     `species_id[1]` = "6",
+#'     start_date = "2010-01-01",
+#'     end_date = "2010-12-31"
+#'   )
+#' )
+#' }
 npn_get_data <- function(url,
                          query,
                          download_path = NULL,
@@ -771,10 +783,23 @@ npn_get_data <- function(url,
                                promote_num_to_string = TRUE) %>%
       tibble::as_tibble() %>%
       #replace missing data indicator with NA
-      dplyr::mutate(dplyr::across(dplyr::where(is.numeric),
-                                  \(x) ifelse(x == -9999, NA_real_, x))) %>%
-      dplyr::mutate(dplyr::across(dplyr::where(is.character),
-                                  \(x) ifelse(x == "-9999", NA_character_, x)))
+      dplyr::mutate(
+        dplyr::across(dplyr::where(is.numeric),
+                      function(x) ifelse(x == -9999, NA_real_, x))
+      ) %>%
+      dplyr::mutate(
+        dplyr::across(dplyr::where(is.character),
+                      function(x) ifelse(x == "-9999", NA_character_, x))
+      ) %>%
+      #handle some columns that may be read in as the wrong type if they happen
+      #to be all NAs (#87). `any_of()` is used because not all endpoints will
+      #return these columns!
+      dplyr::mutate(
+        dplyr::across(dplyr::any_of("update_datetime"),
+                      function(x) as.POSIXct(x, tz = "UTC")),
+        dplyr::across(dplyr::any_of(c("intensity_value", "abundance_value")),
+                      as.character)
+      )
 
     # Reconcile all the points in the frame with the SIX leaf raster,
     # if it's been requested.
