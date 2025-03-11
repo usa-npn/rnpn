@@ -103,7 +103,7 @@ npn_stations_by_location <- function(wkt, ...) {
 
 npn_stations_with_spp <- function(species_id, ..., speciesid = deprecated()) {
   if (lifecycle::is_present(speciesid)) {
-    lifecycle::deprecate_warn("1.3.0", "npn_stations_with_spp(speciesid = )", "npn_stations_with_spp(species_id = )")
+    lifecycle::deprecate_warn("1.4.0", "npn_stations_with_spp(speciesid = )", "npn_stations_with_spp(species_id = )")
     species_id <- speciesid
   }
   #TODO this doesn't work with species_id = 3 (and possibly others) for some reason
