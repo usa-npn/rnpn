@@ -37,17 +37,17 @@ test_that("npn_download_geospatial works", {
   expect_error(npn_download_geospatial("gdd:30yr_avg_agdd", date = "hello"))
   expect_error(npn_download_geospatial("gdd:30yr_avg_agdd", date = 500))
 
-  expect_equal(
-    #the pointers are different, but the data should be identical, therefore `values()`
-    terra::values(npn_download_geospatial("gdd:agdd", date = "2018-05-05")),
-    terra::values(npn_download_geospatial("gdd:agdd", date = as.Date("2018-05-05")))
-  )
+  #the pointers are different, but the data should be identical, therefore `values()`
+  char <- terra::values(npn_download_geospatial("gdd:agdd", date = "2018-05-05"))
+  date <- terra::values(npn_download_geospatial("gdd:agdd", date = as.Date("2018-05-05")))
+  colnames(char) <- colnames(date) <- "gdd_agdd"
+  expect_identical(char, date)
 
   expect_warning(doy <- npn_download_geospatial("gdd:30yr_avg_agdd", date = "1,5"))
-  expect_identical(
-    terra::values(doy),
-    terra::values(npn_download_geospatial("gdd:30yr_avg_agdd", date = c(1,5)))
-  )
+  doy_char <- terra::values(doy)
+  doy_num <- terra::values(npn_download_geospatial("gdd:30yr_avg_agdd", date = c(1,5)))
+  colnames(doy_char) <- colnames(doy_num) <- "gdd_30yr_avg_agdd"
+  expect_identical(doy_char, doy_num)
 })
 
 
