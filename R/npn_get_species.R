@@ -148,6 +148,7 @@ npn_species_types <- function(kingdom = c("Animalia", "Plantae"), ...) {
 
   req_plant <- base_req %>%
     httr2::req_url_path_append('species/getPlantTypes.json')
+
   req_animal <- base_req %>%
     httr2::req_url_path_append('species/getAnimalTypes.json')
 
@@ -155,6 +156,7 @@ npn_species_types <- function(kingdom = c("Animalia", "Plantae"), ...) {
   resps <-
     httr2::req_perform_sequential(req_list) %>%
     rlang::set_names(names(req_list))
+  #iterate over responses to add a 'kindom' column and then rowbind them
   out <-
     Map(function(resp, k) {
       httr2::resp_body_json(resp, simplifyVector = TRUE) %>%
