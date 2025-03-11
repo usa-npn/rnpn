@@ -47,8 +47,8 @@ while (isTRUE(continue)) {
     yyjsonr::read_ndjson_str(type = "df", nprobe = -1, promote_num_to_string = TRUE) %>%
     tibble::as_tibble() %>%
     #replace missing data indicator with NA
-    dplyr::mutate(dplyr::across(where(is.numeric), \(x) ifelse(x == -9999, NA_real_, x))) %>%
-    dplyr::mutate(dplyr::across(where(is.character), \(x) ifelse(x == "-9999", NA_character_, x)))
+    dplyr::mutate(dplyr::across(where(is.numeric), function(x) ifelse(x == -9999, NA_real_, x))) %>%
+    dplyr::mutate(dplyr::across(where(is.character), function(x) ifelse(x == "-9999", NA_character_, x)))
 
   # Reconcile all the points in the frame with the SIX leaf raster,
   # if it's been requested.

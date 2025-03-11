@@ -27,11 +27,11 @@ wrangle_resp_chunk <- function(resp) {
     #default to character when mixed numeric and character
     yyjsonr::read_ndjson_str(type = "df", nprobe = -1, promote_num_to_string = TRUE) %>%
     #replace missing data indicator with NA
-    dplyr::mutate(dplyr::across(where(is.numeric), \(x) ifelse(x == -9999, NA_real_, x))) %>%
-    dplyr::mutate(dplyr::across(where(is.character), \(x) ifelse(x == "-9999", NA_character_, x)))
+    dplyr::mutate(dplyr::across(where(is.numeric), function(x) ifelse(x == -9999, NA_real_, x))) %>%
+    dplyr::mutate(dplyr::across(where(is.character), function(x) ifelse(x == "-9999", NA_character_, x)))
 }
 
-req <- httr2::request(url) |>
+req <- httr2::request(url) %>%
   httr2::req_user_agent("rnpn (https://github.com/usa-npn/rnpn/)") %>%
   httr2::req_method("POST") %>%
   httr2::req_body_form(!!!query)

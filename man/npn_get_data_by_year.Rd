@@ -48,7 +48,7 @@ used to specify one of three submodels used to calculate the spring index
 values. Thus setting this field will change the results of \code{six_leaf_layer}
 and \code{six_bloom_layer}. Valid values include: \code{'lilac'}, \code{'zabelli'} and
 \code{'arnoldred'}. For more information see the NPN's Spring Index Maps
-documentation: \url{https://www.usanpn.org/data/spring_indices}.}
+documentation: \url{https://www.usanpn.org/data/maps/spring}.}
 
 \item{additional_layers}{Data frame with first column named \code{name} and
 containing the names of the layer for which to retrieve data and the second
