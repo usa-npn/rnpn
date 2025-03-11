@@ -1,6 +1,8 @@
 # rnpn (development version)
 * The `speciesid` argument of `npn_stations_with_spp()` has been deprecated in favor of `species_id` for uniformity.
 
+* `npn_download_individual_phenometrics()` and `npn_download_site_phenometrics()` gain `period_start` and `period_end` arguments for defining a custom "window" or season for phenometrics.
+
 # rnpn 1.3.0
 
 ## Dependency changes

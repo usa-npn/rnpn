@@ -1,3 +1,5 @@
+skip_long_tests <- as.logical(Sys.getenv("RNPN_SKIP_LONG_TESTS", unset = "true"))
+
 test_that("npn_get_layer_details works", {
   skip_on_cran()
   skip_if_not(check_geo_service(), "Geo Service is down")
@@ -142,7 +144,7 @@ test_that("npn_get_agdd_point_data works",{
 
 test_that("npn_get_custom_agdd_raster works", {
   skip_on_cran()
-  skip_if(get_skip_long_tests())
+  skip_if(skip_long_tests)
   # skip_if_not(check_data_service(), "Data Service is down")
 
   res <- npn_get_custom_agdd_raster(
