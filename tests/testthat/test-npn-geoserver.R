@@ -20,7 +20,7 @@ test_that("npn_download_geospatial works", {
   expect_s4_class(ras, "SpatRaster")
 
   withr::with_tempfile("test_tiff", {
-    npn_download_geospatial("gdd:agdd", date="2018-05-05", output_path = test_tiff)
+    npn_download_geospatial("gdd:agdd", date = "2018-05-05", output_path = test_tiff)
     expect_true(file.exists(test_tiff))
     file_raster <- terra::rast(test_tiff)
     expect_equal(
@@ -42,19 +42,21 @@ test_that("npn_download_geospatial format param working", {
   skip_if_not(check_geo_service(), "Geo Service is down")
 
   withr::with_tempdir({
-    npn_download_geospatial(
+    test_tiff <- npn_download_geospatial(
       "gdd:30yr_avg_agdd_50f",
-      date="5",
+      date = "5",
       output_path = "testing.tiff"
     )
-    tiff_size <- file.size("testing.tiff")
-    npn_download_geospatial(
+    expect_equal(test_tiff, "testing.tiff")
+    tiff_size <- file.size(test_tiff)
+    test_ncdf <- npn_download_geospatial(
       "gdd:30yr_avg_agdd_50f",
-      date="1,3",
-      format="application/x-netcdf",
+      date = "1,3",
+      format = "application/x-netcdf",
       output_path = "testing.netcdf"
     )
-    netcdf_size <- file.size("testing.netcdf")
+    expect_equal(test_ncdf, "testing.netcdf")
+    netcdf_size <- file.size(test_ncdf)
   })
 
   #GeoTIFF and NetCDF are similar enough foramts that they
