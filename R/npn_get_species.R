@@ -67,7 +67,14 @@ npn_species_state <- function(state, kingdom = c("Animalia", "Plantae"), ...) {
   # However, it isn't clear which results belong to which state, so for now this only accepts a single state.
   # Entries other than US states appear to be valid, otherwise we could check for valid input with:
   # state <- rlang::arg_match(state, datasets::state.abb)
-
+  if (is.null(kingdom)) {
+    lifecycle::deprecate_warn(
+      "1.4.0",
+      "npn_species_state(kingdom = 'cannot be `NULL`')",
+      details = 'Implicitly setting `kingdom = c("Animalia", "Plantae")` to return all results.'
+    )
+    kingdom <- c("Animalia", "Plantae")
+  }
   kingdom <- rlang::arg_match(kingdom, multiple = TRUE)
   if (length(kingdom) == 2) {
     kingdom <- NULL #omitting kingom from API query returns results for both animals and plants
@@ -144,6 +151,14 @@ npn_species_search <- function(network = NULL,
 #' npn_species_types("Plantae")
 #' }
 npn_species_types <- function(kingdom = c("Animalia", "Plantae"), ...) {
+  if (is.null(kingdom)) {
+    lifecycle::deprecate_warn(
+      "1.4.0",
+      "npn_species_types(kingdom = 'cannot be `NULL`')",
+      details = 'Implicitly setting `kingdom = c("Animalia", "Plantae")` to return all results.'
+    )
+    kingdom <- c("Animalia", "Plantae")
+  }
   kingdom <- rlang::arg_match(kingdom, multiple = TRUE)
 
   req_plant <- base_req %>%
