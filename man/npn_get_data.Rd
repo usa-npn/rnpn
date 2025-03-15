@@ -5,7 +5,7 @@
 \title{Download NPN Data}
 \usage{
 npn_get_data(
-  url,
+  endpoint,
   query,
   download_path = NULL,
   always_append = FALSE,
@@ -16,7 +16,9 @@ npn_get_data(
 )
 }
 \arguments{
-\item{url}{The URL of the service endpoint to request data from}
+\item{endpoint}{The endpoint to request data from starting at
+'https://services.usanpn.org/npn_portal/'. E.g.
+\code{"observations/getObservations.ndjson"}}
 
 \item{download_path}{String, optional file path to the file for which to
 output the results.}
@@ -37,9 +39,9 @@ Generic utility function for querying data from the NPN data services.
 \examples{
 \dontrun{
 npn_get_data(
-  url = "https://services.usanpn.org/npn_portal//observations/getObservations.ndjson?",
+  endpoint = "observations/getObservations.ndjson",
   query = list(
-    request_src = "Unit\%20Test",
+    request_src = "Unit Test",
     climate_data = "0",
     `species_id[1]` = "6",
     start_date = "2010-01-01",

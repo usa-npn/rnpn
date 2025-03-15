@@ -21,13 +21,13 @@ Depends:
 Imports:
     dplyr,
     httr2 (>= 1.1.0),
+    jsonlite,
     lifecycle,
     magrittr,
     rlang,
     tibble,
     tidyr,
-    xml2,
-    yyjsonr
+    xml2
 Suggests:
     covr,
     ggplot2,
