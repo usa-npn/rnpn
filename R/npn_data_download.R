@@ -774,7 +774,7 @@ npn_get_data <- function(endpoint,
 
   req <- base_req %>%
     httr2::req_url_path_append(endpoint) %>%
-    httr2::req_progress() %>%
+    # httr2::req_progress(type = "down") %>% #doesn't work—only for file downloads
     httr2::req_method("POST") %>%
     httr2::req_body_form(!!!query)
 
