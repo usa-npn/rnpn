@@ -80,7 +80,7 @@ combined set of the results from each request to the data service.
 }
 \examples{
 \dontrun{
-endpoint <- "/observations/getObservations.ndjson?"
+endpoint <- "/observations/getObservations.json"
 query <- list(
   request_src = "Unit\%20Test",
   climate_data = "0",

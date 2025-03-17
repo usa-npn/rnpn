@@ -609,7 +609,7 @@ npn_download_magnitude_phenometrics <- function(request_source,
 #'   `download_path` is specified, the file path is returned instead.
 #' @keywords internal
 #' @examples \dontrun{
-#' endpoint <- "/observations/getObservations.ndjson?"
+#' endpoint <- "/observations/getObservations.json"
 #' query <- list(
 #'   request_src = "Unit%20Test",
 #'   climate_data = "0",
@@ -660,7 +660,6 @@ npn_get_data_by_year <- function(endpoint,
     if (!is.null(additional_layers)) {
       additional_layers$raster <- get_additional_rasters(additional_layers)
     }
-
     for (year in years) {
       # This is where the start/end dates are automatically created
       # based on the input years.
@@ -700,7 +699,6 @@ npn_get_data_by_year <- function(endpoint,
         agdd_layer = agdd_layer,
         additional_layers = additional_layers
       )
-
       # First if statement checks whether this is the results returned is empty.
       # Second if statement checks if we've made a previous request that's
       # returned data. The data doesn't have to be combined if there was
@@ -863,7 +861,7 @@ npn_get_data <- function(endpoint,
     }
     return(df)
   }
-  path <- withr::local_tempfile(fileext = ".json")
+  path <- withr::local_tempfile()
   resp <- httr2::req_perform(req, path = path)
 
   # If no download_path specified, just wrangle the data all at once, otherwise
