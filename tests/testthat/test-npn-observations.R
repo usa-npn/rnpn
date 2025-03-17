@@ -19,39 +19,55 @@ test_that("basic function works", {
   skip_on_cran()
   skip_if_not(check_service(), "Service is down")
 
-  # vcr::use_cassette("npn_download_status_data_basic_1", {
-  some_data <- npn_download_status_data(
+  vcr::use_cassette("npn_download_status_data_basic_1", {
+    some_data <- npn_download_status_data(
+      request_source = "Unit Test",
+      years = 2013,
+      species_ids = c(6)
+    )
+  })
+
+  ## Would be ideal to capture this with vcr, but doesn't work with httr2 downloads yet: https://github.com/ropensci/vcr/issues/270
+  some_data_file  <- npn_download_status_data(
     request_source = "Unit Test",
     years = 2013,
-    species_ids = c(6)
+    species_ids = c(6),
+    download_path = withr::local_tempfile(fileext = ".csv")
   )
-  # })
 
   expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 1000)
   expect_type(some_data$species_id, "integer")
   expect_equal(some_data[1, ]$species_id, 6)
+  expect_equal(readr::read_csv(
+    some_data_file,
+    col_types = readr::cols(
+      observation_date = readr::col_character(),
+      abundance_value = readr::col_character()
+    )
+  ),
+  some_data)
 
-  # vcr::use_cassette("npn_download_individual_phenometrics_basic_1", {
-  some_data <- npn_download_individual_phenometrics(
-    request_source = "Unit Test",
-    years = 2013,
-    species_ids = c(6)
-  )
-  # })
+  vcr::use_cassette("npn_download_individual_phenometrics_basic_1", {
+    some_data <- npn_download_individual_phenometrics(
+      request_source = "Unit Test",
+      years = 2013,
+      species_ids = c(6)
+    )
+  })
 
   expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 10)
   expect_type(some_data$species_id, "integer")
   expect_equal(some_data[1, ]$species_id, 6)
 
-  # vcr::use_cassette("npn_download_site_phenometrics_basic_1", {
-  some_data <- npn_download_site_phenometrics(
-    request_source = "Unit Test",
-    years = 2013,
-    species_ids = c(6)
-  )
-  # })
+  vcr::use_cassette("npn_download_site_phenometrics_basic_1", {
+    some_data <- npn_download_site_phenometrics(
+      request_source = "Unit Test",
+      years = 2013,
+      species_ids = c(6)
+    )
+  })
 
   num_site_default <- nrow(some_data)
   expect_s3_class(some_data, "data.frame")
@@ -59,14 +75,14 @@ test_that("basic function works", {
   expect_type(some_data$species_id, "integer")
   expect_equal(some_data[1, ]$species_id, 6)
 
-  # vcr::use_cassette("npn_download_site_phenometrics_basic_2", {
-  some_data <- npn_download_site_phenometrics(
-    request_source = "Unit Test",
-    years = 2013,
-    species_ids = c(6),
-    num_days_quality_filter = "5"
-  )
-  # })
+  vcr::use_cassette("npn_download_site_phenometrics_basic_2", {
+    some_data <- npn_download_site_phenometrics(
+      request_source = "Unit Test",
+      years = 2013,
+      species_ids = c(6),
+      num_days_quality_filter = "5"
+    )
+  })
 
   num_site_custom <- nrow(some_data)
   expect_s3_class(some_data, "data.frame")
@@ -75,13 +91,13 @@ test_that("basic function works", {
   expect_equal(some_data[1, ]$species_id, 6)
   expect_gt(num_site_default, num_site_custom)
 
-  # vcr::use_cassette("npn_download_magnitude_phenometrics_basic_1", {
-  some_data <- npn_download_magnitude_phenometrics(
-    request_source = "Unit Test",
-    years = 2013,
-    species_ids = c(6)
-  )
-  # })
+  vcr::use_cassette("npn_download_magnitude_phenometrics_basic_1", {
+    some_data <- npn_download_magnitude_phenometrics(
+      request_source = "Unit Test",
+      years = 2013,
+      species_ids = c(6)
+    )
+  })
 
   num_mag_default <- nrow(some_data)
   expect_s3_class(some_data, "data.frame")
@@ -89,14 +105,14 @@ test_that("basic function works", {
   expect_type(some_data$species_id, "integer")
   expect_equal(some_data[1, ]$species_id, 6)
 
-  # vcr::use_cassette("npn_download_magnitude_phenometrics_basic_2", {
-  some_data <- npn_download_magnitude_phenometrics(
-    request_source = "Unit Test",
-    years = 2013,
-    species_ids = c(6),
-    period_frequency = "14"
-  )
-  # })
+  vcr::use_cassette("npn_download_magnitude_phenometrics_basic_2", {
+    some_data <- npn_download_magnitude_phenometrics(
+      request_source = "Unit Test",
+      years = 2013,
+      species_ids = c(6),
+      period_frequency = "14"
+    )
+  })
 
   num_mag_custom <- nrow(some_data)
   expect_s3_class(some_data, "data.frame")
@@ -121,7 +137,7 @@ test_that("custom period works", {
     "Please provide `period_start` as 'MM-DD'."
   )
 
-  # vcr::use_cassette("custom_period", {
+  vcr::use_cassette("custom_period", {
     indiv_standard <-
       npn_download_individual_phenometrics(
         request_source = "unit test",
@@ -150,28 +166,17 @@ test_that("custom period works", {
         period_end = "09-30",
         species_id = 210
       )
+  })
 
-  # })
-
-    # expect_equal(indiv_standard$start_date[1], "2016-01-01")
-    # expect_equal(indiv_standard$end_date[1],   "2016-12-31")
-    # expect_equal(indiv_wateryr$start_date[1],  "2016-10-01")
-    # expect_equal(indiv_wateryr$end_date[1],    "2017-09-30")
-    #
-    # expect_equal(site_standard$start_date[1], "2010-01-01")
-    # expect_equal(site_standard$end_date[1],   "2010-12-31")
-    # expect_equal(site_wateryr$start_date[1],  "2010-10-01")
-    # expect_equal(site_wateryr$end_date[1],    "2011-09-30")
-
-    #just crude checks that they aren't identical
-    expect_false(
-      all(indiv_standard$last_yes_month[1:20] ==
-            indiv_wateryr$last_yes_month[1:20])
-    )
-    expect_false(
-      all(site_standard$mean_last_yes_doy[1:20] ==
-            site_wateryr$mean_last_yes_doy[1:20])
-    )
+  #just crude checks that they aren't identical
+  expect_false(
+    all(indiv_standard$last_yes_month[1:20] ==
+          indiv_wateryr$last_yes_month[1:20])
+  )
+  expect_false(
+    all(site_standard$mean_last_yes_doy[1:20] ==
+          site_wateryr$mean_last_yes_doy[1:20])
+  )
 })
 
 
@@ -180,17 +185,19 @@ test_that("file download works", {
   skip_if(skip_long_tests, "Skipping long tests")
   skip_if_not(check_service(), "Service is down")
 
-  test_download_path <- withr::local_tempfile()
+  test_download_path <- withr::local_tempfile(fileext = ".csv")
 
-  some_data <- npn_download_status_data(
-    request_source = "Unit Test",
-    years = 2013,
-    species_ids = c(6),
-    download_path = test_download_path
-  )
+  # vcr::use_cassette("downloads", {
+    status_dl_file <- npn_download_status_data(
+      request_source = "Unit Test",
+      years = 2013,
+      species_ids = c(6),
+      download_path = test_download_path
+    )
+  # })
 
-  expect_equal(file.exists(test_download_path), TRUE)
-  some_data <- read.csv(test_download_path)
+  expect_true(file.exists(status_dl_file))
+  some_data <- read.csv(status_dl_file)
 
   expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 1000)
