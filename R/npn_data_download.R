@@ -878,7 +878,6 @@ npn_get_data <- function(endpoint,
       file() %>%
       jsonlite::stream_in(handler = function(df) {
         df <- wrangle_dl_data(df)
-        i <<- i + 1
         if (nrow(df) > 0) {
           write.table(
             df,
@@ -891,6 +890,7 @@ npn_get_data <- function(endpoint,
           )
         }
       }, pagesize = 5000)
+    i <<- i + 1
     return(download_path)
   }
 }
