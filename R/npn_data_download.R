@@ -778,6 +778,8 @@ npn_get_data <- function(endpoint,
     httr2::req_method("POST") %>%
     httr2::req_body_form(!!!query)
 
+  #define data wrangling function to be run on entire df or by chunks of 5000
+  #rows
   wrangle_dl_data <- function(df) {
     df <- df %>%
       tibble::as_tibble() %>%
@@ -861,11 +863,12 @@ npn_get_data <- function(endpoint,
     }
     return(df)
   }
-  path <- withr::local_tempfile()
+  path <- withr::local_tempfile(fileext = ".json")
   resp <- httr2::req_perform(req, path = path)
 
-  # If the user asks for the data to be saved to file then
-  # there is nothing to return.
+  # If no download_path specified, just wrangle the data all at once, otherwise
+  # assume that memory could be a limitation and wrangle data 5000 rows at a
+  # time and append to the CSV file specified in `download_path`
   if (is.null(download_path)) {
     dtm <-
       httr2::resp_body_json(resp, simplifyVector = TRUE) %>%
@@ -888,9 +891,9 @@ npn_get_data <- function(endpoint,
             row.names = FALSE,
             col.names = i == 0 && isFALSE(always_append)
           )
+          i <<- i + 1
         }
       }, pagesize = 5000)
-    i <<- i + 1
     return(download_path)
   }
 }
