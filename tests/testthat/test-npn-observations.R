@@ -39,14 +39,14 @@ test_that("basic function works", {
   expect_gt(nrow(some_data), 1000)
   expect_type(some_data$species_id, "integer")
   expect_equal(some_data[1, ]$species_id, 6)
-  expect_equal(readr::read_csv(
-    some_data_file,
-    col_types = readr::cols(
-      observation_date = readr::col_character(),
-      abundance_value = readr::col_character()
-    )
-  ),
-  some_data)
+  expect_true(file.exists(some_data_file))
+  expect_equal(
+    read.csv(some_data_file) %>%
+      tibble::as_tibble() %>%
+      dplyr::mutate(update_datetime = as.POSIXct(update_datetime, tz = "UTC"),
+                    abundance_value = as.character(abundance_value)),
+    some_data
+  )
 
   vcr::use_cassette("npn_download_individual_phenometrics_basic_1", {
     some_data <- npn_download_individual_phenometrics(
