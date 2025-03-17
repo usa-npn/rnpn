@@ -549,6 +549,7 @@ npn_download_magnitude_phenometrics <- function(request_source,
   query['start_date'] <- paste0(years[1], "-01-01")
   query['end_date'] <- paste0(years[length(years)], "-12-31")
 
+  message("Downloading...")
   data <- npn_get_data(
     endpoint = "/observations/getMagnitudeData.ndjson",
     query = query,
@@ -689,6 +690,7 @@ npn_get_data_by_year <- function(endpoint,
 
       # We also have to generate a unique URL on each request to account
       # for the changes in the start/end date
+      message("Downloading...")
       data <- npn_get_data(
         endpoint = endpoint,
         query = query,
