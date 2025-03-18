@@ -85,6 +85,11 @@
 <p>You’ll want to install the <code>devtools</code> package, which will also install <code>usethis</code>—both of these packages are extremely helpful. Running <code>usethis::use_devtools()</code> will add a line to your .Rprofile file that will automatically load <code>devtools</code> when you open this project in an IDE. <code>usethis::git_sitrep()</code> will help you sort out your git situation including creating and storing a GitHub PAT, which is needed for some of the recommended steps below.</p>
 </div>
 <div class="section level2">
+<h2 id="debugging-api-requests">Debugging API requests<a class="anchor" aria-label="anchor" href="#debugging-api-requests"></a></h2>
+<ul><li>Since <code>rnpn</code> uses <code>httr2</code> to construct and perform HTTP requests, you can view debug information (such as the request URL) by wrapping any <code>rnpn</code> function in <a href="https://httr2.r-lib.org/reference/with_verbosity.html" class="external-link"><code>httr2::with_verbosity()</code></a>
+</li>
+</ul></div>
+<div class="section level2">
 <h2 id="proposing-and-making-changes">Proposing and making changes<a class="anchor" aria-label="anchor" href="#proposing-and-making-changes"></a></h2>
 <p>If you want to make a change, it’s a good idea to first file an issue and make sure the package maintainer agrees that it is needed. If you’ve found a bug, please file an issue that illustrates the bug with a minimal <a href="https://www.tidyverse.org/help/#reprex" class="external-link">reprex</a> (this will also help you write a unit test, if needed). See the tidyverse guide on <a href="https://code-review.tidyverse.org/issues/" class="external-link">how to create a great issue</a> for more advice.</p>
 <div class="section level3">
@@ -102,6 +107,7 @@
 <h3 id="tests">Tests<a class="anchor" aria-label="anchor" href="#tests"></a></h3>
 <ul><li><p>Unit tests are written using <a href="https://cran.r-project.org/package=testthat" class="external-link"><code>testthat</code></a> and can be found in <code>tests/testthat/</code>.</p></li>
 <li><p>Many of the tests use <code>vcr</code> for webmocking. The first time code wrapped in <code>vcr::use_casette({})</code> is run successfully, a “fixture” is created in <code>tests/fixtures/</code>. Subsequent runs of that code will <em>not</em> query the API but rather retrieve a cached response from <code>tets/fixtures/</code>. If the API changes or you are finding inconsistencies between tests and interactively running your code, you may want to regenerate these fixtures. You can do this by simply deleting the relevant .yml files and re-running the tests (e.g. with <code>test()</code>).</p></li>
+<li><p>Some long-running tests are skipped by default (e.g. in <code>test-npn-observations.R</code>). If you are making changes to functions covered in this skipped tests, it is recommended that you run the test suite without skipping them. You can do this by setting <code>Sys.setenv(RNPN_SKIP_LONG_TESTS = FALSE)</code> before running <code>devtools::test()</code></p></li>
 </ul></div>
 <div class="section level3">
 <h3 id="documentation">Documentation<a class="anchor" aria-label="anchor" href="#documentation"></a></h3>
