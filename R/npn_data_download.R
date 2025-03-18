@@ -141,7 +141,7 @@ npn_download_status_data = function(request_source,
 
   years <- sort(unlist(years))
   res <- npn_get_data_by_year(
-    endpoint = "/observations/getObservations.ndjson?",
+    endpoint = "/observations/getObservations.ndjson",
     query = query,
     years = years,
     download_path = download_path,
@@ -270,7 +270,7 @@ npn_download_individual_phenometrics <- function(request_source,
 
   return(
     npn_get_data_by_year(
-      "/observations/getSummarizedData.ndjson?",
+      "/observations/getSummarizedData.ndjson",
       query = query,
       years = years,
       period_start = period_start,
@@ -415,7 +415,7 @@ npn_download_site_phenometrics <- function(request_source,
 
   return(
     npn_get_data_by_year(
-      endpoint = "/observations/getSiteLevelData.ndjson?",
+      endpoint = "/observations/getSiteLevelData.ndjson",
       query = query,
       years = years,
       period_start = period_start,
@@ -549,9 +549,13 @@ npn_download_magnitude_phenometrics <- function(request_source,
   query['start_date'] <- paste0(years[1], "-01-01")
   query['end_date'] <- paste0(years[length(years)], "-12-31")
 
-  url <- npn_get_download_url("/observations/getMagnitudeData.ndjson")
-
-  return(npn_get_data(url, query, download_path))
+  message("Downloading...")
+  data <- npn_get_data(
+    endpoint = "/observations/getMagnitudeData.ndjson",
+    query = query,
+    download_path = download_path
+  )
+  return(data)
 }
 
 
@@ -606,7 +610,7 @@ npn_download_magnitude_phenometrics <- function(request_source,
 #'   `download_path` is specified, the file path is returned instead.
 #' @keywords internal
 #' @examples \dontrun{
-#' endpoint <- "/observations/getObservations.ndjson?"
+#' endpoint <- "/observations/getObservations.json"
 #' query <- list(
 #'   request_src = "Unit%20Test",
 #'   climate_data = "0",
@@ -657,7 +661,6 @@ npn_get_data_by_year <- function(endpoint,
     if (!is.null(additional_layers)) {
       additional_layers$raster <- get_additional_rasters(additional_layers)
     }
-
     for (year in years) {
       # This is where the start/end dates are automatically created
       # based on the input years.
@@ -687,9 +690,9 @@ npn_get_data_by_year <- function(endpoint,
 
       # We also have to generate a unique URL on each request to account
       # for the changes in the start/end date
-      url <- npn_get_download_url(endpoint)
+      message("Downloading...")
       data <- npn_get_data(
-        url = url,
+        endpoint = endpoint,
         query = query,
         download_path = download_path,
         always_append = !first_year,
@@ -698,7 +701,6 @@ npn_get_data_by_year <- function(endpoint,
         agdd_layer = agdd_layer,
         additional_layers = additional_layers
       )
-
       # First if statement checks whether this is the results returned is empty.
       # Second if statement checks if we've made a previous request that's
       # returned data. The data doesn't have to be combined if there was
@@ -729,7 +731,9 @@ npn_get_data_by_year <- function(endpoint,
 #'
 #' Generic utility function for querying data from the NPN data services.
 #'
-#' @param url The URL of the service endpoint to request data from
+#' @param endpoint The endpoint to request data from starting at
+#'   'https://services.usanpn.org/npn_portal/'. E.g.
+#'   `"observations/getObservations.ndjson"`
 #' @param download_path String, optional file path to the file for which to
 #'   output the results.
 #' @param always_append Boolean flag. When set to `TRUE`, then we always append
@@ -743,9 +747,9 @@ npn_get_data_by_year <- function(endpoint,
 #' @keywords internal
 #' @examples \dontrun{
 #' npn_get_data(
-#'   url = "https://services.usanpn.org/npn_portal//observations/getObservations.ndjson?",
+#'   endpoint = "observations/getObservations.ndjson",
 #'   query = list(
-#'     request_src = "Unit%20Test",
+#'     request_src = "Unit Test",
 #'     climate_data = "0",
 #'     `species_id[1]` = "6",
 #'     start_date = "2010-01-01",
@@ -753,7 +757,7 @@ npn_get_data_by_year <- function(endpoint,
 #'   )
 #' )
 #' }
-npn_get_data <- function(url,
+npn_get_data <- function(endpoint,
                          query,
                          download_path = NULL,
                          always_append = FALSE,
@@ -761,28 +765,23 @@ npn_get_data <- function(url,
                          six_bloom_raster = NULL,
                          agdd_layer = NULL,
                          additional_layers = NULL) {
-  req <- httr2::request(url) %>%
-    httr2::req_user_agent("rnpn (https://github.com/usa-npn/rnpn/)") %>%
+
+  if (is.null(download_path)) { #use JSON
+    endpoint <- sub("(?<=\\.)\\w+$", "json", endpoint, perl = TRUE)
+  } else { #use NDJSON
+    endpoint <- sub("(?<=\\.)\\w+$", "ndjson", endpoint, perl = TRUE)
+  }
+
+  req <- base_req %>%
+    httr2::req_url_path_append(endpoint) %>%
+    # httr2::req_progress(type = "down") %>% #doesn't work—only for file downloads
     httr2::req_method("POST") %>%
     httr2::req_body_form(!!!query)
 
-  con <- httr2::req_perform_connection(req)
-  on.exit(close(con), add = TRUE)
-
-  dtm <- tibble::tibble()
-  i <- 0
-  while (!httr2::resp_stream_is_complete(con)) {
-    resp <- httr2::resp_stream_lines(con, lines = 5000)
-
-    df <-
-      #paste lines into single string
-      paste0(resp[nzchar(resp) != 0], collapse = "\n") %>%
-      #default to character when mixed numeric and character
-      yyjsonr::read_ndjson_str(type = "df",
-                               nprobe = -1,
-                               promote_num_to_string = TRUE) %>%
-      tibble::as_tibble() %>%
-      #replace missing data indicator with NA
+  #define data wrangling function to be run on entire df or by chunks of 5000
+  #rows
+  wrangle_dl_data <- function(df) {
+    df <- df %>%
       dplyr::mutate(
         dplyr::across(dplyr::where(is.numeric),
                       function(x) ifelse(x == -9999, NA_real_, x))
@@ -852,61 +851,49 @@ npn_get_data <- function(url,
                   date = x[date_col]
                 )
               })
-
-      pt_values <- t(as.data.frame(pt_values))
-      colnames(pt_values) <- agdd_layer
+      pt_values <-
+        tibble::as_tibble_col(pt_values, column_name = agdd_layer)
       df <- cbind(df, pt_values)
 
       if ("cal_date" %in% colnames(df)) {
         df$cal_date <- NULL
       }
     }
-
-    if (is.null(download_path)) {
-      dtm <- dplyr::bind_rows(dtm, df)
-    } else {
-      if (nrow(df) > 0) {
-        write.table(
-          df,
-          download_path,
-          append = !(i == 0 && isFALSE(always_append)),
-          sep = ",",
-          eol = "\n",
-          row.names = FALSE,
-          col.names = i == 0 && isFALSE(always_append)
-        )
-      }
-    }
-    i <- i + 1
+    return(tibble::as_tibble(df))
   }
+  path <- withr::local_tempfile()
+  resp <- httr2::req_perform(req, path = path)
 
-  # If the user asks for the data to be saved to file then
-  # there is nothing to return.
+  # If no download_path specified, just wrangle the data all at once, otherwise
+  # assume that memory could be a limitation and wrangle data 5000 rows at a
+  # time and append to the CSV file specified in `download_path`
   if (is.null(download_path)) {
+    dtm <-
+      httr2::resp_body_json(resp, simplifyVector = TRUE) %>%
+      wrangle_dl_data()
     return(dtm)
   } else {
+    #resp$body is a path to an .ndjson file
+    i <- 0
+    resp$body %>%
+      file() %>%
+      jsonlite::stream_in(handler = function(df) {
+        df <- wrangle_dl_data(df)
+        if (nrow(df) > 0) {
+          write.table(
+            df,
+            download_path,
+            append = !(i == 0 && isFALSE(always_append)),
+            sep = ",",
+            eol = "\n",
+            row.names = FALSE,
+            col.names = i == 0 && isFALSE(always_append)
+          )
+          i <<- i + 1
+        }
+      }, pagesize = 5000)
     return(download_path)
   }
-}
-
-
-#' Generate Download URL
-#'
-#' Utility function to create the service point URL. Base URL comes from zzz.R,
-#' endpoint is specified in the code. This function will manually put those
-#' query parameters into the proper GET syntax.
-#'
-#' @param endpoint The service point, e.g. "observations/getObservations.json?"
-#'
-#' @return The URL, as a string.
-#' @keywords internal
-#' @examples \dontrun{
-#' url <- npn_get_download_url("/observations/getMagnitudeData.ndjson")
-#' }
-npn_get_download_url <- function(endpoint) {
-  url <- paste0(base_portal_url, endpoint)
-#  query_str <- paste(names(query_vars),"=",query_vars,sep="",collapse = '&')
-  return(paste0(url))
 }
 
 

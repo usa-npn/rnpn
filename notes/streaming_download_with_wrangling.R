@@ -34,11 +34,8 @@ on.exit(close(con), add = TRUE)
 continue <- TRUE
 dtm <- tibble::tibble()
 i <- 0
-while (isTRUE(continue)) {
+while (!httr2::resp_stream_is_complete(con)) {
   resp <- httr2::resp_stream_lines(con, lines = 5000)
-  continue <- length(resp) > 0
-
-  if (isFALSE(continue)) break
 
   df <-
     #paste lines into single string
