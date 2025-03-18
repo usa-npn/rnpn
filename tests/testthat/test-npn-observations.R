@@ -1,9 +1,3 @@
-# Important to note that these test make up the bulk of the package's
-# functionality. `vcr` doesn't currently work with the streaming requests that
-# power these functions, but that will be fixed in the future.  See:
-# https://github.com/ropensci/vcr/issues/273 and
-# https://github.com/r-lib/httr2/issues/651
-
 skip_long_tests <- as.logical(Sys.getenv("RNPN_SKIP_LONG_TESTS", unset = "true"))
 
 test_that("no request source blocked", {
@@ -15,10 +9,7 @@ test_that("no request source blocked", {
   expect_error(npn_download_magnitude_phenometrics(request_source = NULL, years = 2013))
 })
 
-test_that("basic function works", {
-  skip_on_cran()
-  skip_if_not(check_service(), "Service is down")
-
+test_that("npn_download_status_data() works", {
   vcr::use_cassette("npn_download_status_data_basic_1", {
     some_data <- npn_download_status_data(
       request_source = "Unit Test",
@@ -26,7 +17,12 @@ test_that("basic function works", {
       species_ids = c(6)
     )
   })
+  expect_s3_class(some_data, "data.frame")
+  expect_gt(nrow(some_data), 1000)
+  expect_type(some_data$species_id, "integer")
 
+  skip_on_cran()
+  skip_if_not(check_service(), "Service is down")
   ## Would be ideal to capture this with vcr, but doesn't work with httr2 downloads yet: https://github.com/ropensci/vcr/issues/270
   some_data_file  <- npn_download_status_data(
     request_source = "Unit Test",
@@ -35,9 +31,6 @@ test_that("basic function works", {
     download_path = withr::local_tempfile(fileext = ".csv")
   )
 
-  expect_s3_class(some_data, "data.frame")
-  expect_gt(nrow(some_data), 1000)
-  expect_type(some_data$species_id, "integer")
   expect_equal(some_data[1, ]$species_id, 6)
   expect_true(file.exists(some_data_file))
   expect_equal(
@@ -47,7 +40,9 @@ test_that("basic function works", {
                     abundance_value = as.character(abundance_value)),
     some_data
   )
+})
 
+test_that("phenometrics downloads work", {
   vcr::use_cassette("npn_download_individual_phenometrics_basic_1", {
     some_data <- npn_download_individual_phenometrics(
       request_source = "Unit Test",
@@ -121,12 +116,10 @@ test_that("basic function works", {
   expect_equal(some_data[1, ]$species_id, 6)
 
   expect_gt(num_mag_custom, num_mag_default)
+
 })
 
 test_that("custom period works", {
-  skip_on_cran()
-  skip_if_not(check_service(), "Service is down")
-
   expect_error(
     npn_download_individual_phenometrics(
       request_source = "unit test",
