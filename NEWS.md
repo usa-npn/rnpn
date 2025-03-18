@@ -10,6 +10,7 @@
 
 ## Bug fixes
 
+* Fixed bug that caused an error when `agdd_layer` was used in download functions.
 * Download times and memory requirements had increased drastically with changes to phenometrics functions in v1.3.0 (#104).  This is now fixed with #105.  The only user-facing difference should be that there is no longer a progress indicator when retrieving data (sorry about that).
 
 # rnpn 1.3.0

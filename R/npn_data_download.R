@@ -782,7 +782,6 @@ npn_get_data <- function(endpoint,
   #rows
   wrangle_dl_data <- function(df) {
     df <- df %>%
-      tibble::as_tibble() %>%
       dplyr::mutate(
         dplyr::across(dplyr::where(is.numeric),
                       function(x) ifelse(x == -9999, NA_real_, x))
@@ -852,16 +851,15 @@ npn_get_data <- function(endpoint,
                   date = x[date_col]
                 )
               })
-
-      pt_values <- t(as.data.frame(pt_values))
-      colnames(pt_values) <- agdd_layer
+      pt_values <-
+        tibble::as_tibble_col(pt_values, column_name = agdd_layer)
       df <- cbind(df, pt_values)
 
       if ("cal_date" %in% colnames(df)) {
         df$cal_date <- NULL
       }
     }
-    return(df)
+    return(tibble::as_tibble(df))
   }
   path <- withr::local_tempfile()
   resp <- httr2::req_perform(req, path = path)
