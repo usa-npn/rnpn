@@ -774,9 +774,9 @@ npn_get_data <- function(endpoint,
 
   req <- base_req %>%
     httr2::req_url_path_append(endpoint) %>%
-    # httr2::req_progress(type = "down") %>% #doesn't work—only for file downloads
     httr2::req_method("POST") %>%
-    httr2::req_body_form(!!!query)
+    httr2::req_body_form(!!!query) %>%
+    httr2::req_progress() #adds progress bar for long downloads
 
   #define data wrangling function to be run on entire df or by chunks of 5000
   #rows
