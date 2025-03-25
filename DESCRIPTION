@@ -1,6 +1,6 @@
 Package: rnpn
 Title: Interface to the National 'Phenology' Network 'API'
-Version: 1.3.0.9000
+Version: 1.4.0
 Authors@R: c(
     person("Jeff", "Switzer", , "jeff@usanpn.org", role = c("aut", "cre")),
     person("Scott", "Chamberlain", role = "aut"),

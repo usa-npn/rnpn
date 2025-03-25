@@ -8,9 +8,7 @@ github actions passed for MacOS, Windows, and Ubuntu.
 
 ## R CMD check results
 
-There were zero ERRORs, zero WARNINGs, and two NOTEs. One note is unable to 
-verify current time which is out of our control. The other note is about
-possible invalid URLs, however we tested that all URLs worked.
+There were zero ERRORs, zero WARNINGs, and Zero NOTEs.
 
 ## Downstream dependencies
 
