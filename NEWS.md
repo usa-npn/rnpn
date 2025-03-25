@@ -1,24 +1,49 @@
 # rnpn (development version)
 
-* `nnpn` no longer depends on the `sp` or `raster` packages
-* `terra` is now a suggested dependency and users will be prompted to install it only when it is needed
-* `npn_get_point_data()` now uses https instead of http
-* `npn_get_layer_details()` now returns a tibble instead of a data frame
-* `rnpn` now requires the `xml2` package instead of `XML`
-* `npn_phenophase_details()` now takes a vector of phenophase IDs rather than a list
-* Functions that previously returned `data.frame` objects now return tibbles. Where they previously returned `NULL` on errors, they now return empty 0x0 tibbles.
-* `npn_get_phenophases_for_taxon()` now returns a tibble rather than a list.
-* Missing values returned by `npn_stations_by_state()` previously returned as the string `"emptyvalue"` are now returned as `NA`s.
-* `rnpn` now has `dplyr` as a dependency instead of `plyr`
-* `rnpn` now uses `httr2` instead of `httr` and `curl` internally for functions that get observational data
-* `...` is no longer used for functions that get observational data
-* data download functions now return tibbles instead of `data.table` objects.  `rnpn` no longer depends on `data.table`
-* Missing values returned by download functions are now automatically converted from -9999 to `NA`
-* Fixed a bug (#42) where returned value of `npn_get_agdd_point_data()` was inconsistent depending on whether it was cached or not.
-* `npn_abundance_categories()`, `npn_phenophases_by_species()`, and `npn_get_phenophases_for_taxon()` no longer return a data frames containing list-columns.  The results are now unnested automatically.
-* `npn_groups(use_hierarchy = TRUE)` now returns a nested list rather than a tibble with a list-column.
+## New features
+
+* `npn_download_individual_phenometrics()` and `npn_download_site_phenometrics()` gain `period_start` and `period_end` arguments for defining a custom "window" or season for phenometrics.
+
+## Deprcations & changes
+
+* The `speciesid` argument of `npn_stations_with_spp()` has been deprecated in favor of `species_id` for uniformity.
 * Changed behavior of `kingdom` arguments in `npn_species_state()` and `npn_species_types()`.  Now provide either `"Plantae"`, `"Animalia"`, or `c("Plantae", "Animalia")` (the default). A column for `kingdom` is added to the return value of `npn_species_types()`.
 * The `return_all` argument of `npn_get_phenophases_for_taxon()` has been deprecated.  Use `date = "all"` to return data for all dates instead. `return_all = 1` will continue to work (with a warning) in this version.
+
+## Bug fixes
+
+* Fixed bug that caused an error when `agdd_layer` was used in download functions.
+* Download times and memory requirements had increased drastically with changes to phenometrics functions in v1.3.0 (#104).  This is now fixed with #105.  The only user-facing difference should be that there is no longer a progress indicator when retrieving data (sorry about that).
+
+# rnpn 1.3.0
+
+## Dependency changes
+
+* `nnpn` no longer depends on the `sp` or `raster` packages
+* `terra` is now a suggested dependency and users will be prompted to install it only when it is needed
+* `rnpn` now requires the `xml2` package instead of `XML`
+* `rnpn` now has `dplyr` as a dependency instead of `plyr`
+* `rnpn` now uses `httr2` instead of `httr` and `curl` internally for functions that get observational data
+* data download functions now return tibbles instead of `data.table` objects.  `rnpn` no longer depends on `data.table`
+
+## Changes to function arguments
+
+* `npn_phenophase_details()` now takes a vector of phenophase IDs rather than a list
+* Documented a behavior of `npn_species_type()` where setting `kingdom` to `NULL` returns results for *both* `Plantae` and `Animalia`. 
+* `...` is no longer used for functions that get observational data
+
+## Changes to function outputs
+
+* Functions that previously returned `data.frame` objects now return tibbles. Where they previously returned `NULL` on errors, they now return empty 0x0 tibbles.
+* Missing values returned by download functions are now automatically converted from -9999 to `NA`
+* Missing values returned by `npn_stations_by_state()` previously returned as the string `"emptyvalue"` are now returned as `NA`s.
+* `npn_groups(use_hierarchy = TRUE)` now returns a nested list rather than a tibble with a list-column.
+* `npn_abundance_categories()`, `npn_phenophases_by_species()`, and `npn_get_phenophases_for_taxon()` now return tibbles with any list-columns unnested.
+
+
+## Bug fixes
+
+* Fixed a bug (#42) where returned value of `npn_get_agdd_point_data()` was inconsistent depending on whether it was cached or not.
 
 # rnpn 1.2.9 (2024-08-18)
 

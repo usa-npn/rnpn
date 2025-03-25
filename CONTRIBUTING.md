@@ -10,6 +10,10 @@ You'll want to install the `devtools` package, which will also install `usethis`
 Running `usethis::use_devtools()` will add a line to your .Rprofile file that will automatically load `devtools` when you open this project in an IDE.
 `usethis::git_sitrep()` will help you sort out your git situation including creating and storing a GitHub PAT, which is needed for some of the recommended steps below.
 
+## Debugging API requests
+
+-   Since `rnpn` uses `httr2` to construct and perform HTTP requests, you can view debug information (such as the request URL) by wrapping any `rnpn` function in [`httr2::with_verbosity()`](https://httr2.r-lib.org/reference/with_verbosity.html)
+
 ## Proposing and making changes
 
 If you want to make a change, it's a good idea to first file an issue and make sure the package maintainer agrees that it is needed.
@@ -35,6 +39,10 @@ See the tidyverse guide on [how to create a great issue](https://code-review.tid
     Subsequent runs of that code will *not* query the API but rather retrieve a cached response from `tets/fixtures/`.
     If the API changes or you are finding inconsistencies between tests and interactively running your code, you may want to regenerate these fixtures.
     You can do this by simply deleting the relevant .yml files and re-running the tests (e.g. with `test()`).
+
+-   Some long-running tests are skipped by default (e.g. in `test-npn-observations.R`).
+    If you are making changes to functions covered in this skipped tests, it is recommended that you run the test suite without skipping them.
+    You can do this by setting `Sys.setenv(RNPN_SKIP_LONG_TESTS = FALSE)` before running `devtools::test()`
 
 ### Documentation
 

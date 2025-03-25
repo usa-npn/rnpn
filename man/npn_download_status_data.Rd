@@ -117,7 +117,7 @@ used to specify one of three submodels used to calculate the spring index
 values. Thus setting this field will change the results of \code{six_leaf_layer}
 and \code{six_bloom_layer}. Valid values include: \code{'lilac'}, \code{'zabelli'} and
 \code{'arnoldred'}. For more information see the NPN's Spring Index Maps
-documentation: \url{https://www.usanpn.org/data/spring_indices}.}
+documentation: \url{https://www.usanpn.org/data/maps/spring}.}
 
 \item{additional_layers}{Data frame with first column named \code{name} and
 containing the names of the layer for which to retrieve data and the second
@@ -164,7 +164,7 @@ Additional fields provides the ability to specify more, non-critical fields
 to include in the search results. A complete list of additional fields can be
 found in the NPN service's \href{https://docs.google.com/document/d/1yNjupricKOAXn6tY1sI7-EwkcfwdGUZ7lxYv7fcPjO8/edit#heading=h.w0nctgedhaop}{companion documentation}.
 Metadata on all fields can be found in the following Excel sheet:
-\url{http://www.usanpn.org/files/metadata/status_intensity_datafield_descriptions.xlsx}
+\url{https://www.usanpn.org/files/metadata/status_intensity_datafield_descriptions.xlsx}
 }
 \examples{
 \dontrun{

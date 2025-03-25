@@ -8,6 +8,8 @@ npn_get_data_by_year(
   endpoint,
   query,
   years,
+  period_start = "01-01",
+  period_end = "12-31",
   download_path = NULL,
   six_leaf_layer = FALSE,
   six_bloom_layer = FALSE,
@@ -23,8 +25,16 @@ npn_get_data_by_year(
 parameters but doesn't include start/end date which will be automatically
 generated and added.}
 
-\item{years}{Character vector; the years for which to retrieve data. There
-will be one request to the service for each year}
+\item{years}{Integer vector; the years for which to retrieve data. There
+will be one request to the service for each year.  If the period
+(determined by \code{period_start} and \code{period_end}) crosses a year boundary,
+\code{years} determines the start years.}
+
+\item{period_start, period_end}{Character vectors of the form "MM-DD". Used to
+determine the period over which phenophase status records are summarized.
+For example, to use a "water year" set \code{period_start = "10-01"} and
+\code{period_end = "09-30"}. If not provided, they will default to "01-01" and
+"12-31", respectively, to use the calendar year.}
 
 \item{download_path}{Character, optional file path to the file for which to
 output the results.}
@@ -48,7 +58,7 @@ used to specify one of three submodels used to calculate the spring index
 values. Thus setting this field will change the results of \code{six_leaf_layer}
 and \code{six_bloom_layer}. Valid values include: \code{'lilac'}, \code{'zabelli'} and
 \code{'arnoldred'}. For more information see the NPN's Spring Index Maps
-documentation: \url{https://www.usanpn.org/data/spring_indices}.}
+documentation: \url{https://www.usanpn.org/data/maps/spring}.}
 
 \item{additional_layers}{Data frame with first column named \code{name} and
 containing the names of the layer for which to retrieve data and the second
@@ -70,7 +80,7 @@ combined set of the results from each request to the data service.
 }
 \examples{
 \dontrun{
-endpoint <- "/observations/getObservations.ndjson?"
+endpoint <- "/observations/getObservations.json"
 query <- list(
   request_src = "Unit\%20Test",
   climate_data = "0",
@@ -79,7 +89,18 @@ query <- list(
 
 npn_get_data_by_year(endpoint = endpoint,
                      query = query,
-                     years = 2013)
+                     years = c(2013, 2014))
+
+#Set a custom period from October through September
+# This will return data for 2013-10-01 through 2014-09-30 and from 2014-10-01
+# through 2015-09-30
+npn_get_data_by_year(
+  endpoint = endpoint,
+  query = query,
+  years = c(2013, 2014),
+  period_start = "10-01",
+  period_end = "09-30"
+)
 }
 }
 \keyword{internal}

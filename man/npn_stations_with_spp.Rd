@@ -4,13 +4,16 @@
 \alias{npn_stations_with_spp}
 \title{Get Stations with Species}
 \usage{
-npn_stations_with_spp(speciesid, ...)
+npn_stations_with_spp(species_id, ..., speciesid = deprecated())
 }
 \arguments{
-\item{speciesid}{Required. Species id numbers, from 1 to infinity, potentially,
-use e.g., \code{c(52, 53)} if more than one species desired (numeric).}
+\item{species_id}{Required. Species id numbers, from 1 to infinity,
+potentially, use e.g., \code{c(52, 53)}, if more than one species desired
+(numeric).}
 
 \item{...}{Currently unused.}
+
+\item{speciesid}{Deprecated. Use \code{species_id} instead.}
 }
 \value{
 A data frame with stations' latitude and longitude, names, and ids.
@@ -21,7 +24,7 @@ set of species.
 }
 \examples{
 \dontrun{
-npn_stations_with_spp(speciesid = c(52, 53, 54))
-npn_stations_with_spp(speciesid = 53)
+npn_stations_with_spp(species_id = c(52, 53, 54))
+npn_stations_with_spp(species_id = 53)
 }
 }

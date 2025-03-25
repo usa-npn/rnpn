@@ -163,7 +163,7 @@ Additional fields provides the ability to specify more, non-critical fields
 to include in the search results. A complete list of additional fields can be
 found in the NPN service's \href{https://docs.google.com/document/d/1yNjupricKOAXn6tY1sI7-EwkcfwdGUZ7lxYv7fcPjO8/edit#heading=h.df3zspopwq98}{companion documentation}.
 Metadata on all fields can be found in the following Excel sheet:
-\url{http://www.usanpn.org/files/metadata/magnitude_phenometrics_datafield_descriptions.xlsx}
+\url{https://www.usanpn.org/files/metadata/magnitude_phenometrics_datafield_descriptions.xlsx}
 }
 \examples{
 \dontrun{
