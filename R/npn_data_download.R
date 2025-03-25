@@ -688,6 +688,13 @@ npn_get_data_by_year <- function(endpoint,
                              sub_model = six_sub_model)
       }
 
+      # TODO: perhaps instead of using npn_get_data() in a loop, a better option
+      # might be to construct a list of requests and then perform them
+      # iteratively or in parallel with req_perform_iterative() ro
+      # req_perform_parallel(). Then the same wrangling could be applied to one
+      # year or a collection of years of data either in memory or streaming from
+      # ndjson saved to a temporarly file on disk
+
       # We also have to generate a unique URL on each request to account
       # for the changes in the start/end date
       message("Downloading...")
