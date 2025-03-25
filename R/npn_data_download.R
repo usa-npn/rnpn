@@ -962,6 +962,10 @@ npn_get_common_query_vars <- function(
     species_ids = NULL
   }
 
+  if (!(is.logical(climate_data) & length(climate_data) == 1)) {
+    stop("`climate_data` must be `TRUE` or `FALSE`")
+  }
+
   if (!is.null(wkt)) {
     station_ids_shape <- tryCatch({
       shape_stations <- npn_stations_by_location(wkt)
@@ -981,10 +985,7 @@ npn_get_common_query_vars <- function(
   query <- c(
     list(
       request_src = URLencode(request_source),
-      #TODO change to something like
-      # if(!is.null(climate_data)) climate_data <- as.integer(climate_data)
-      # this *might* break things if it is important that climate_date = 0 always
-      climate_data = (if (climate_data) "1" else "0")
+      climate_data = as.integer(climate_data) #convert from logical
     ),
     # All these variables take a multiplicity of possible parameters, this will help put them all together.
     explode_query("species_id", species_ids),
