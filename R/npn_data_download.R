@@ -789,6 +789,7 @@ npn_get_data <- function(endpoint,
   #rows
   wrangle_dl_data <- function(df) {
     df <- df %>%
+      dplyr::as_tibble() %>% #important to handle empty list
       dplyr::mutate(
         dplyr::across(dplyr::where(is.numeric),
                       function(x) ifelse(x == -9999, NA_real_, x))

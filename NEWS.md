@@ -13,6 +13,7 @@
 * Fixed bug that caused an error when `agdd_layer` was used in download functions.
 * Download times and memory requirements had increased drastically with changes to phenometrics functions in v1.3.0 (#104).  This is now fixed with #105.  The only user-facing difference should be that there is no longer a progress indicator when retrieving data (sorry about that).
 * Fixed a bug where returned value of `npn_get_point_data()` was inconsistent depending on whether it was cached or not (same bug and solution as #42)
+* Fixed a bug in data download functions that errored uniformatively if no data was returned.  Now an empty tibble is returned.
 
 # rnpn 1.3.0
 
