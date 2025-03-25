@@ -30,26 +30,3 @@ check_geo_service <- function() {
   !httr2::resp_is_error(resp)
 }
 
-# #TODO this no longer works.  This endpoint doesn't exist
-# check_data_service <- function() {
-#   url <- paste0('https://services.usanpn.org/', 'web-services/geo.html')
-#   res <- NULL
-#   tryCatch({
-#     res <- httr::GET(url)
-#   }, error = function(msg) {
-#     return(FALSE)
-#   })
-#
-#   if (is.null(res) || res$status_code != 200) {
-#     return(FALSE)
-#   }
-#
-#   return(TRUE)
-# }
-
-
-
-#TODO do this a different way with an env var
-get_skip_long_tests <- function() {
-  return(TRUE)
-}
