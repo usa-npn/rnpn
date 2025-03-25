@@ -980,20 +980,20 @@ npn_get_common_query_vars <- function(
       climate_data = (if (climate_data) "1" else "0")
     ),
     # All these variables take a multiplicity of possible parameters, this will help put them all together.
-    npn_createArgList("species_id", species_ids),
-    npn_createArgList("station_id", station_ids),
-    npn_createArgList("species_type", species_types),
-    npn_createArgList("network_id", network_ids),
-    npn_createArgList("dataset_ids", dataset_ids),
-    npn_createArgList("state", states),
-    npn_createArgList("phenophase_id", phenophase_ids),
-    npn_createArgList("functional_type", functional_types),
-    npn_createArgList("additional_field", additional_fields),
-    npn_createArgList("genus_id", genus_ids),
-  	npn_createArgList("family_id", family_ids),
-    npn_createArgList("order_id", order_ids),
-  	npn_createArgList("class_id", class_ids),
-    npn_createArgList("pheno_class_id", pheno_class_ids)
+    explode_query("species_id", species_ids),
+    explode_query("station_id", station_ids),
+    explode_query("species_type", species_types),
+    explode_query("network_id", network_ids),
+    explode_query("dataset_ids", dataset_ids),
+    explode_query("state", states),
+    explode_query("phenophase_id", phenophase_ids),
+    explode_query("functional_type", functional_types),
+    explode_query("additional_field", additional_fields),
+    explode_query("genus_id", genus_ids),
+  	explode_query("family_id", family_ids),
+    explode_query("order_id", order_ids),
+  	explode_query("class_id", class_ids),
+    explode_query("pheno_class_id", pheno_class_ids)
   )
 
   if (!is.null(coords) && length(coords) == 4) {
