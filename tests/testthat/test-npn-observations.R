@@ -266,7 +266,7 @@ test_that("climate data flag works", {
 
 test_that("higher taxonomic ordering works for status data", {
   skip_on_cran()
-  skip_if(skip_long_tests, "Skipping long tests")
+  # skip_if(skip_long_tests, "Skipping long tests")
   skip_if_not(check_service(), "Service is down")
 
   #Check the different taxonomic levels for
@@ -277,16 +277,16 @@ test_that("higher taxonomic ordering works for status data", {
     some_data <- npn_download_status_data(
       request_source = "Unit Test",
       years = 2013,
-      family_ids = c(322),
+      family_ids = c(109),
       additional_fields = c("Family_ID")
     )
   })
   expect_s3_class(some_data, "data.frame")
-  expect_gt(nrow(some_data), 1000)
+  expect_gt(nrow(some_data), 100)
   expect_type(some_data$family_id, "integer")
-  expect_equal(some_data[1, ]$family_id, 322)
+  expect_equal(some_data[1, ]$family_id, 109)
 
-  less_data <- subset(some_data, species_id == 6)
+  less_data <- subset(some_data, species_id == 229)
   expect_lt(nrow(less_data), nrow(some_data))
   expect_gt(nrow(less_data), 0)
 
@@ -295,16 +295,16 @@ test_that("higher taxonomic ordering works for status data", {
     some_data <- npn_download_status_data(
       request_source = "Unit Test",
       years = 2013,
-      order_ids = c(95), #TODO pick a smaller order!
+      order_ids = c(94),
       additional_fields = c("Order_ID")
     )
   })
   expect_s3_class(some_data, "data.frame")
-  expect_gt(nrow(some_data), 1000)
+  expect_gt(nrow(some_data), 500)
   expect_type(some_data$order_id, "integer")
-  expect_equal(some_data[1, ]$order_id, 95)
+  expect_equal(some_data[1, ]$order_id, 94)
 
-  less_data <- subset(some_data,species_id == 6)
+  less_data <- subset(some_data,species_id == 1211)
   expect_lt(nrow(less_data), nrow(some_data))
   expect_gt(nrow(less_data), 0)
 
@@ -313,17 +313,17 @@ test_that("higher taxonomic ordering works for status data", {
     some_data <- npn_download_status_data(
       request_source = "Unit Test",
       years = 2013,
-      class_ids = c(15), #TODO pick a smaller class or year with less data!
+      class_ids = c(11),
       additional_fields = c("Class_ID")
     )
   })
 
   expect_s3_class(some_data, "data.frame")
-  expect_gt(nrow(some_data), 1000)
+  expect_gt(nrow(some_data), 100)
   expect_type(some_data$class_id, "integer")
-  expect_equal(some_data[1, ]$class_id, 15)
+  expect_equal(some_data[1, ]$class_id, 11)
 
-  less_data <- subset(some_data,species_id == 6)
+  less_data <- subset(some_data,species_id == 390)
   expect_lt(nrow(less_data), nrow(some_data))
   expect_gt(nrow(less_data), 0)
 })
