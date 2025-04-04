@@ -1,5 +1,9 @@
 # rnpn (development version)
 
+## Bug fixes
+
+* fixed bug that caused some `npn_download_*()` functions to error when sections of the data were `NA` (#107 reported by @ezylstra)
+
 # rnpn 1.4.0
 
 ## New features
