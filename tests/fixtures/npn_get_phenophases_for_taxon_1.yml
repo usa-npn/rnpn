@@ -1,7 +1,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://services.usanpn.org/npn_portal/phenophases/getPhenophasesForTaxon.json?class_id%5B1%5D=5&date=2018-05-05&return_all=0
+    uri: https://services.usanpn.org/npn_portal/phenophases/getPhenophasesForTaxon.json?class_id%5B1%5D=5&date=2018-05-05
     body:
       encoding: ''
       string: ''
@@ -11,7 +11,7 @@ http_interactions:
       status_code: 200
       message: OK
     headers:
-      date: Tue, 04 Feb 2025 17:26:23 GMT
+      date: Tue, 25 Mar 2025 16:06:18 GMT
       content-type: application/json; charset=utf-8
       server: Apache/2.4.62 () PHP/5.5.38
       x-powered-by: PHP/5.5.38
@@ -25,7 +25,7 @@ http_interactions:
       file: no
       string: '[{"class_id":5,"class_name":"Aves","phenophases":[{"phenophase_id":292,"phenophase_name":"Active
         individuals","phenophase_category":"Activity","phenophase_definition":"One
-        or more individuals are seen moving about or at rest.","seq_num":10010,"color":"Brown1","pheno_class_id":62,"pheno_class_name":"Active
+        or more individuals are seen moving about or at rest.","seq_num":10010,"color":"Brown1","pheno_class_id":62,"pheno_class_name":"Live
         individuals","pheno_class_sequence":10,"phenophase_definition_id":292},{"phenophase_id":542,"phenophase_name":"Feeding","phenophase_category":"Activity","phenophase_definition":"One
         or more individuals are seen feeding or foraging. If possible, record the
         name of the species or substance being eaten or describe it in the comments
@@ -105,5 +105,113 @@ http_interactions:
         or more individuals are seen visiting a feeder, feeding station, or food placed
         by a person.","seq_num":10770,"color":"Brown4","pheno_class_id":135,"pheno_class_name":"Baited
         or captured individuals","pheno_class_sequence":740,"phenophase_definition_id":458}]}]'
-  recorded_at: 2025-02-04 17:26:23 GMT
+  recorded_at: 2025-03-25 16:06:18 GMT
+  recorded_with: vcr/1.6.0, webmockr/1.0.0
+- request:
+    method: get
+    uri: https://services.usanpn.org/npn_portal/phenophases/getPhenophasesForTaxon.json?class_id%5B1%5D=5&date=2018-05-05
+    body:
+      encoding: ''
+      string: ''
+    headers: []
+  response:
+    status:
+      status_code: 200
+      message: OK
+    headers:
+      date: Tue, 25 Mar 2025 16:06:18 GMT
+      content-type: application/json; charset=utf-8
+      server: Apache/2.4.62 () PHP/5.5.38
+      x-powered-by: PHP/5.5.38
+      pragma: no-cache
+      cache-control: no-store, no-cache, max-age=0, must-revalidate
+      access-control-allow-origin: '*'
+      access-control-allow-headers: origin, x-requested-with, content-type
+      access-control-allow-methods: PUT, GET, POST, DELETE, OPTIONS
+    body:
+      encoding: ''
+      file: no
+      string: '[{"class_id":5,"class_name":"Aves","phenophases":[{"phenophase_id":292,"phenophase_name":"Active
+        individuals","phenophase_category":"Activity","phenophase_definition":"One
+        or more individuals are seen moving about or at rest.","seq_num":10010,"color":"Brown1","pheno_class_id":62,"pheno_class_name":"Live
+        individuals","pheno_class_sequence":10,"phenophase_definition_id":292},{"phenophase_id":542,"phenophase_name":"Feeding","phenophase_category":"Activity","phenophase_definition":"One
+        or more individuals are seen feeding or foraging. If possible, record the
+        name of the species or substance being eaten or describe it in the comments
+        field.","seq_num":10100,"color":"Brown1","pheno_class_id":68,"pheno_class_name":"Feeding","pheno_class_sequence":70,"phenophase_definition_id":575},{"phenophase_id":310,"phenophase_name":"Fruit\/seed
+        consumption","phenophase_category":"Activity","phenophase_definition":"One
+        or more individuals are seen eating the fleshy fruits, seeds, or cones of
+        a plant. If possible, record the name of the plant or describe it in the comments
+        field.","seq_num":10120,"color":"Brown1","pheno_class_id":70,"pheno_class_name":"Fruit\/seed
+        consumption","pheno_class_sequence":90,"phenophase_definition_id":310},{"phenophase_id":457,"phenophase_name":"Insect
+        consumption","phenophase_category":"Activity","phenophase_definition":"One
+        or more individuals are seen eating insects. If possible, record the name
+        of the insect or describe it in the comments field.","seq_num":10130,"color":"Brown1","pheno_class_id":69,"pheno_class_name":"Insect
+        consumption","pheno_class_sequence":80,"phenophase_definition_id":457},{"phenophase_id":311,"phenophase_name":"Nut
+        gathering","phenophase_category":"Activity","phenophase_definition":"One or
+        more individuals are seen taking acorns or other nuts from a plant or from
+        on the ground. If possible, record the name of the plant or describe it in
+        the comments field.","seq_num":10140,"color":"Brown1","pheno_class_id":72,"pheno_class_name":"Nut
+        gathering","pheno_class_sequence":110,"phenophase_definition_id":311},{"phenophase_id":312,"phenophase_name":"Flower
+        visitation","phenophase_category":"Activity","phenophase_definition":"One
+        or more individuals are seen visiting flowers or flying from flower to flower.
+        If possible, record the name of the plant or describe it in the comments field.","seq_num":10160,"color":"Brown1","pheno_class_id":71,"pheno_class_name":"Flower
+        visitation","pheno_class_sequence":100,"phenophase_definition_id":312},{"phenophase_id":293,"phenophase_name":"Calls
+        or song","phenophase_category":"Activity","phenophase_definition":"One or
+        more individuals are heard calling or singing.","seq_num":10200,"color":"Brown1","pheno_class_id":67,"pheno_class_name":"Vocalizing","pheno_class_sequence":60,"phenophase_definition_id":293},{"phenophase_id":294,"phenophase_name":"Singing
+        individuals","phenophase_category":"Activity","phenophase_definition":"One
+        or more individuals are heard singing. Singing refers to stereotypical, simple
+        or elaborate vocalizations (most commonly by males) used as part of territorial
+        proclamation or defense, or mate attraction. It does not include relatively
+        simple calls used for other forms of communication.","seq_num":10210,"color":"Brown1","pheno_class_id":84,"pheno_class_name":"Singing
+        individuals","pheno_class_sequence":230,"phenophase_definition_id":576},{"phenophase_id":295,"phenophase_name":"Territorial
+        individuals","phenophase_category":"Activity","phenophase_definition":"One
+        or more individuals are seen or heard defending a territory. This may be indicated
+        by calls or song used as part of a territorial proclamation, chasing of an
+        individual of the same species from a breeding area (but do not confuse this
+        with courtship behavior, which in some species may involve chasing), or calls
+        or displays directed at individuals of the same or a different species to
+        defend a feeding area.","seq_num":10220,"color":"Brown1","pheno_class_id":83,"pheno_class_name":"Territorial
+        behavior","pheno_class_sequence":220,"phenophase_definition_id":295},{"phenophase_id":340,"phenophase_name":"Courtship
+        ","phenophase_category":"Reproduction","phenophase_definition":"A male and
+        female are seen near one another and are engaged in courtship behavior. Do
+        not include male displays in the absence of a female.","seq_num":10300,"color":"Brown2","pheno_class_id":77,"pheno_class_name":"Courtship","pheno_class_sequence":160,"phenophase_definition_id":340},{"phenophase_id":296,"phenophase_name":"Mating","phenophase_category":"Reproduction","phenophase_definition":"A
+        male and female are seen coupled in a mating position, usually with the male
+        on top of the female.","seq_num":10320,"color":"Brown2","pheno_class_id":82,"pheno_class_name":"Mating","pheno_class_sequence":210,"phenophase_definition_id":296},{"phenophase_id":297,"phenophase_name":"Nest
+        building","phenophase_category":"Reproduction","phenophase_definition":"One
+        or more adults are seen constructing a nest or carrying nesting material.","seq_num":10340,"color":"Brown2","pheno_class_id":86,"pheno_class_name":"Nest
+        building","pheno_class_sequence":250,"phenophase_definition_id":297},{"phenophase_id":298,"phenophase_name":"Occupied
+        nest","phenophase_category":"Reproduction","phenophase_definition":"One or
+        more adults are seen sitting on a nest, entering or leaving a nest site under
+        circumstances indicating its use for nesting (including nest defense behavior),
+        or live eggs or nestlings are seen in a nest.","seq_num":10400,"color":"Brown2","pheno_class_id":94,"pheno_class_name":"Occupied
+        nest","pheno_class_sequence":330,"phenophase_definition_id":298},{"phenophase_id":539,"phenophase_name":"Downy
+        young","phenophase_category":"Development","phenophase_definition":"One or
+        more young are seen covered with fluffy down feathers and not yet any smooth
+        contour feathers.","seq_num":10500,"color":"Brown3","pheno_class_id":100,"pheno_class_name":"Downy
+        young","pheno_class_sequence":390,"phenophase_definition_id":572},{"phenophase_id":304,"phenophase_name":"Nestlings","phenophase_category":"Development","phenophase_definition":"One
+        or more young are seen or heard in a nest.","seq_num":10500,"color":"Brown3","pheno_class_id":99,"pheno_class_name":"Nestlings","pheno_class_sequence":380,"phenophase_definition_id":304},{"phenophase_id":540,"phenophase_name":"Partially-fledged
+        young","phenophase_category":"Development","phenophase_definition":"One or
+        more young are seen with a mix of fluffy down and smooth contour feathers,
+        and often have an unkempt or ragged appearance.","seq_num":10575,"color":"Brown3","pheno_class_id":101,"pheno_class_name":"Partially-fledged
+        young","pheno_class_sequence":400,"phenophase_definition_id":573},{"phenophase_id":541,"phenophase_name":"Fledged
+        young","phenophase_category":"Development","phenophase_definition":"One or
+        more young are seen covered with smooth contour feathers and no longer any
+        fluffy, natal down feathers. This includes young incapable of sustained flight
+        and young which are still dependent on adults.","seq_num":10640,"color":"Brown3","pheno_class_id":102,"pheno_class_name":"Fledged
+        young","pheno_class_sequence":410,"phenophase_definition_id":574},{"phenophase_id":308,"phenophase_name":"Fledged
+        young","phenophase_category":"Development","phenophase_definition":"One or
+        more young are seen recently departed from the nest. This includes young incapable
+        of sustained flight and young which are still dependent on adults.","seq_num":10640,"color":"Brown3","pheno_class_id":102,"pheno_class_name":"Fledged
+        young","pheno_class_sequence":410,"phenophase_definition_id":308},{"phenophase_id":315,"phenophase_name":"Dead
+        individuals","phenophase_category":"Development","phenophase_definition":"One
+        or more dead individuals are seen, including those found on roads.","seq_num":10740,"color":"Brown3","pheno_class_id":130,"pheno_class_name":"Dead
+        individuals","pheno_class_sequence":690,"phenophase_definition_id":315},{"phenophase_id":316,"phenophase_name":"Dead
+        nestlings or fledglings","phenophase_category":"Development","phenophase_definition":"One
+        ore more dead nestlings or young are seen, including those found on roads.","seq_num":10760,"color":"Brown3","pheno_class_id":131,"pheno_class_name":"Dead
+        nestlings or fledglings","pheno_class_sequence":700,"phenophase_definition_id":316},{"phenophase_id":458,"phenophase_name":"Individuals
+        at a feeding station","phenophase_category":"Method","phenophase_definition":"One
+        or more individuals are seen visiting a feeder, feeding station, or food placed
+        by a person.","seq_num":10770,"color":"Brown4","pheno_class_id":135,"pheno_class_name":"Baited
+        or captured individuals","pheno_class_sequence":740,"phenophase_definition_id":458}]}]'
+  recorded_at: 2025-03-25 16:06:18 GMT
   recorded_with: vcr/1.6.0, webmockr/1.0.0

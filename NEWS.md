@@ -6,9 +6,11 @@
 
 * `npn_download_individual_phenometrics()` and `npn_download_site_phenometrics()` gain `period_start` and `period_end` arguments for defining a custom "window" or season for phenometrics.
 
-## Deprcations
+## Deprcations & changes
 
 * The `speciesid` argument of `npn_stations_with_spp()` has been deprecated in favor of `species_id` for uniformity.
+* Changed behavior of `kingdom` arguments in `npn_species_state()` and `npn_species_types()`.  Now provide either `"Plantae"`, `"Animalia"`, or `c("Plantae", "Animalia")` (the default). A column for `kingdom` is added to the return value of `npn_species_types()`.
+* The `return_all` argument of `npn_get_phenophases_for_taxon()` has been deprecated.  Use `date = "all"` to return data for all dates instead. `return_all = 1` will continue to work (with a warning) in this version.
 
 ## Bug fixes
 

@@ -52,23 +52,33 @@ npn_species_id <- function(ids, ...) {
 #' @export
 #' @rdname npn_species
 #' @param state A US postal state code to filter results.
-#' @param kingdom Filters results by taxonomic kingdom. Valid values include
-#'   `'Animalia'`, `'Plantae'`.
+#' @param kingdom Character vector of taxonomic kingdoms to filter results by.
+#'   Valid values include `'Animalia'` and `'Plantae'`.
 #' @param ... Currently unused.
 #' @returns A tibble with information on species in the NPN database whose
 #'   distribution includes a given state.
 #' @examples \dontrun{
 #' npn_species_state(state = "AZ")
+#' # only return plants
 #' npn_species_state(state = "AZ", kingdom = "Plantae")
 #' }
-npn_species_state <- function(state, kingdom = NULL, ...) {
+npn_species_state <- function(state, kingdom = c("Animalia", "Plantae"), ...) {
   # The API does accept multiple states in the form `?state[1]=CA&state[2]=AZ`.
   # However, it isn't clear which results belong to which state, so for now this only accepts a single state.
   # Entries other than US states appear to be valid, otherwise we could check for valid input with:
   # state <- rlang::arg_match(state, datasets::state.abb)
-  # TODO:
-  # set kingdom default to something other than NULL
-  # kingdom <- rlang::arg_match0(kingdom, values = c("Plantae", "Animalia"))
+  if (is.null(kingdom)) {
+    lifecycle::deprecate_warn(
+      "1.4.0",
+      "npn_species_state(kingdom = 'cannot be `NULL`')",
+      details = 'Implicitly setting `kingdom = c("Animalia", "Plantae")` to return all results.'
+    )
+    kingdom <- c("Animalia", "Plantae")
+  }
+  kingdom <- rlang::arg_match(kingdom, multiple = TRUE)
+  if (length(kingdom) == 2) {
+    kingdom <- NULL #omitting kingom from API query returns results for both animals and plants
+  }
   req <- base_req %>%
     httr2::req_url_path_append('species/getSpeciesByState.json') %>%
     httr2::req_url_query(state = state, kingdom = kingdom)
@@ -130,9 +140,9 @@ npn_species_search <- function(network = NULL,
 #'
 #' Return all plant or animal functional types used in the NPN database.
 #'
-#' @param kingdom Filters results by taxonomic kingdom. Valid values include
-#'   `'Animalia'`, `'Plantae'`, or `NULL` (which returns results for both).
-#'   Defaults to `'Plantae'`.
+#' @param kingdom Character vector of taxonomic kingdoms to filter results by.
+#'   Valid values include `'Animalia'`, `'Plantae'`, or `c("Animalia",
+#'   "Plantae")` (default).
 #' @param ... Currently unused.
 #' @returns A data frame with a list of the functional types used in the NPN
 #'   database, filtered by the specified kingdom.
@@ -140,32 +150,33 @@ npn_species_search <- function(network = NULL,
 #' @examples \dontrun{
 #' npn_species_types("Plantae")
 #' }
-npn_species_types <- function(kingdom = "Plantae", ...) {
-  # if (!is.null(kingdom)) {
-  #   kingdom <- rlang::arg_match0(kingdom, values = c("Plantae", "Animalia"))
-  # }
+npn_species_types <- function(kingdom = c("Animalia", "Plantae"), ...) {
+  if (is.null(kingdom)) {
+    lifecycle::deprecate_warn(
+      "1.4.0",
+      "npn_species_types(kingdom = 'cannot be `NULL`')",
+      details = 'Implicitly setting `kingdom = c("Animalia", "Plantae")` to return all results.'
+    )
+    kingdom <- c("Animalia", "Plantae")
+  }
+  kingdom <- rlang::arg_match(kingdom, multiple = TRUE)
+
   req_plant <- base_req %>%
     httr2::req_url_path_append('species/getPlantTypes.json')
+
   req_animal <- base_req %>%
     httr2::req_url_path_append('species/getAnimalTypes.json')
 
-  resp <- NULL
-  if (kingdom == "Plantae") {
-    resp <- httr2::req_perform(req_plant)
-  } else if (kingdom == "Animalia") {
-    resp <- httr2::req_perform(req_animal)
-  }
-
-  if (!is.null(resp)) {
-    out <- httr2::resp_body_json(resp, simplifyVector = TRUE)
-    return(tibble::as_tibble(out))
-  } else {
-    resps <- httr2::req_perform_sequential(list(req_plant, req_animal))
-    out <-
-      lapply(resps, function(x)
-        httr2::resp_body_json(x, simplifyVector = TRUE)) %>%
-      dplyr::bind_rows()
-    #TODO add a column for `kingdom`?
-    return(tibble::as_tibble(out))
-  }
+  req_list <- list(Animalia = req_animal, Plantae = req_plant)[kingdom]
+  resps <-
+    httr2::req_perform_sequential(req_list) %>%
+    rlang::set_names(names(req_list))
+  #iterate over responses to add a 'kindom' column and then rowbind them
+  out <-
+    Map(function(resp, k) {
+      httr2::resp_body_json(resp, simplifyVector = TRUE) %>%
+        dplyr::mutate(kingdom = k, .before = 1)
+  }, resps, names(resps)) %>%
+    dplyr::bind_rows()
+  return(tibble::as_tibble(out))
 }

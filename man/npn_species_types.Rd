@@ -4,12 +4,11 @@
 \alias{npn_species_types}
 \title{Get Species Types}
 \usage{
-npn_species_types(kingdom = "Plantae", ...)
+npn_species_types(kingdom = c("Animalia", "Plantae"), ...)
 }
 \arguments{
-\item{kingdom}{Filters results by taxonomic kingdom. Valid values include
-\code{'Animalia'}, \code{'Plantae'}, or \code{NULL} (which returns results for both).
-Defaults to \code{'Plantae'}.}
+\item{kingdom}{Character vector of taxonomic kingdoms to filter results by.
+Valid values include \code{'Animalia'}, \code{'Plantae'}, or \code{c("Animalia", "Plantae")} (default).}
 
 \item{...}{Currently unused.}
 }
