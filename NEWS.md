@@ -1,5 +1,7 @@
 # rnpn (development version)
 
+* Functions that download files now return the path to the downloaded file for convenience.
+
 # rnpn 1.4.0
 
 ## New features
