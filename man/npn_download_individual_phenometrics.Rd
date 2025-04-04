@@ -7,6 +7,8 @@
 npn_download_individual_phenometrics(
   request_source,
   years,
+  period_start = "01-01",
+  period_end = "12-31",
   coords = NULL,
   individual_ids = NULL,
   species_ids = NULL,
@@ -41,6 +43,12 @@ requests to the data service.}
 
 \item{years}{Required field, character vector. Specify the years to include
 in the search, e.g. \code{c('2013','2014')}. You must specify at least one year.}
+
+\item{period_start, period_end}{Character vectors of the form "MM-DD". Used to
+determine the period over which phenophase status records are summarized.
+For example, to use a "water year" set \code{period_start = "10-01"} and
+\code{period_end = "09-30"}. If not provided, they will default to "01-01" and
+"12-31", respectively, to use the calendar year.}
 
 \item{coords}{Numeric vector, used to specify a bounding box as a search
 parameter, e.g. \code{c(lower_left_lat, lower_left_long, upper_right, lat,upper_right_long)}.}
@@ -125,7 +133,7 @@ used to specify one of three submodels used to calculate the spring index
 values. Thus setting this field will change the results of \code{six_leaf_layer}
 and \code{six_bloom_layer}. Valid values include: \code{'lilac'}, \code{'zabelli'} and
 \code{'arnoldred'}. For more information see the NPN's Spring Index Maps
-documentation: \url{https://www.usanpn.org/data/spring_indices}.}
+documentation: \url{https://www.usanpn.org/data/maps/spring}.}
 
 \item{additional_layers}{Data frame with first column named \code{name} and
 containing the names of the layer for which to retrieve data and the second
@@ -176,15 +184,17 @@ Additional fields provides the ability to specify additional, non-critical
 fields to include in the search results. A complete list of additional fields
 can be found in the NPN service's \href{https://docs.google.com/document/d/1yNjupricKOAXn6tY1sI7-EwkcfwdGUZ7lxYv7fcPjO8/edit#heading=h.7yy4i3278v7u}{companion documentation}
 Metadata on all fields can be found in the following Excel sheet:
-\url{http://www.usanpn.org/files/metadata/individual_phenometrics_datafield_descriptions.xlsx}
+\url{https://www.usanpn.org/files/metadata/individual_phenometrics_datafield_descriptions.xlsx}
 }
 \examples{
 \dontrun{
-#Download all saguaro data for 2013 and 2014
+#Download all saguaro data for 2013 and 2014 using "water year" as the period
 npn_download_individual_phenometrics(
   request_source = "Your Name or Org Here",
-  years = c('2013','2014'),
-  species_id = c(210),
+  years = c(2013, 2014),
+  period_start = "10-01",
+  period_end = "09-30",
+  species_id = 210,
   download_path = "saguaro_data_2013_2014.csv"
 )
 }

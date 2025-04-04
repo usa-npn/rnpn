@@ -232,6 +232,8 @@ npn_get_agdd_point_data <- function(
   })
 
   # If the server returns an unexpected value, also return -9999.
+  # TODO this triggers if the response is an empty list (`"[]"` in JSON).
+  # "please try again later" is not an appropriate message.
   v <- tryCatch({
     as.numeric(json_data[json_data$date == date, "point_value"])
   }, error = function(msg) {

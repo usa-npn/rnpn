@@ -23,7 +23,7 @@
 #' found in the NPN service's [companion
 #' documentation](https://docs.google.com/document/d/1yNjupricKOAXn6tY1sI7-EwkcfwdGUZ7lxYv7fcPjO8/edit#heading=h.w0nctgedhaop).
 #' Metadata on all fields can be found in the following Excel sheet:
-#' <http://www.usanpn.org/files/metadata/status_intensity_datafield_descriptions.xlsx>
+#' <https://www.usanpn.org/files/metadata/status_intensity_datafield_descriptions.xlsx>
 #'
 #' @param request_source Required field, character Self-identify who is making
 #'   requests to the data service.
@@ -141,15 +141,15 @@ npn_download_status_data = function(request_source,
 
   years <- sort(unlist(years))
   res <- npn_get_data_by_year(
-    "/observations/getObservations.ndjson?",
-    query,
-    years,
-    download_path,
-    six_leaf_layer,
-    six_bloom_layer,
-    agdd_layer,
-    six_sub_model,
-    additional_layers
+    endpoint = "/observations/getObservations.ndjson",
+    query = query,
+    years = years,
+    download_path = download_path,
+    six_leaf_layer = six_leaf_layer,
+    six_bloom_layer = six_bloom_layer,
+    agdd_layer = agdd_layer,
+    six_sub_model = six_sub_model,
+    additional_layers = additional_layers
   )
 
   return(res)
@@ -189,8 +189,9 @@ npn_download_status_data = function(request_source,
 #' can be found in the NPN service's [companion
 #' documentation](https://docs.google.com/document/d/1yNjupricKOAXn6tY1sI7-EwkcfwdGUZ7lxYv7fcPjO8/edit#heading=h.7yy4i3278v7u)
 #' Metadata on all fields can be found in the following Excel sheet:
-#' <http://www.usanpn.org/files/metadata/individual_phenometrics_datafield_descriptions.xlsx>
+#' <https://www.usanpn.org/files/metadata/individual_phenometrics_datafield_descriptions.xlsx>
 #' @inheritParams npn_download_status_data
+#' @inheritParams npn_get_data_by_year
 #' @param individual_ids Comma-separated string of unique IDs for individual
 #'   plants/animal species by which to filter the data.
 #' @returns A tibble of all status records returned as per the search
@@ -198,16 +199,20 @@ npn_download_status_data = function(request_source,
 #'   instead.
 #' @export
 #' @examples \dontrun{
-#' #Download all saguaro data for 2013 and 2014
+#' #Download all saguaro data for 2013 and 2014 using "water year" as the period
 #' npn_download_individual_phenometrics(
 #'   request_source = "Your Name or Org Here",
-#'   years = c('2013','2014'),
-#'   species_id = c(210),
+#'   years = c(2013, 2014),
+#'   period_start = "10-01",
+#'   period_end = "09-30",
+#'   species_id = 210,
 #'   download_path = "saguaro_data_2013_2014.csv"
 #' )
 #' }
 npn_download_individual_phenometrics <- function(request_source,
                                                  years,
+                                                 period_start = "01-01",
+                                                 period_end = "12-31",
                                                  coords = NULL,
                                                  individual_ids = NULL,
                                                  species_ids = NULL,
@@ -235,28 +240,28 @@ npn_download_individual_phenometrics <- function(request_source,
                                                  additional_layers = NULL,
                                                  wkt = NULL) {
   query <- npn_get_common_query_vars(
-    request_source,
-    coords,
-    species_ids,
-    station_ids,
-    species_types,
-    network_ids,
-    states,
-    phenophase_ids,
-    functional_types,
-    additional_fields,
-    climate_data,
-    ip_address,
-    dataset_ids,
-    genus_ids,
-    family_ids,
-    order_ids,
-    class_ids,
-    pheno_class_ids,
+    request_source = request_source,
+    coords = coords,
+    species_ids = species_ids,
+    station_ids = station_ids,
+    species_types = species_types,
+    network_ids = network_ids,
+    states = states,
+    phenophase_ids = phenophase_ids,
+    functional_types = functional_types,
+    additional_fields = additional_fields,
+    climate_data = climate_data,
+    ip_address = ip_address,
+    dataset_ids = dataset_ids,
+    genus_ids = genus_ids,
+    family_ids = family_ids,
+    order_ids = order_ids,
+    class_ids = class_ids,
+    pheno_class_ids = pheno_class_ids,
     taxonomy_aggregate = NULL,
     pheno_class_aggregate = NULL,
-    wkt,
-    email
+    wkt = wkt,
+    email = email
   )
 
   if (!is.null(individual_ids)) {
@@ -265,15 +270,17 @@ npn_download_individual_phenometrics <- function(request_source,
 
   return(
     npn_get_data_by_year(
-      "/observations/getSummarizedData.ndjson?",
-      query,
-      years,
-      download_path,
-      six_leaf_layer,
-      six_bloom_layer,
-      agdd_layer,
-      six_sub_model,
-      additional_layers
+      "/observations/getSummarizedData.ndjson",
+      query = query,
+      years = years,
+      period_start = period_start,
+      period_end = period_end,
+      download_path = download_path,
+      six_leaf_layer = six_leaf_layer,
+      six_bloom_layer = six_bloom_layer,
+      agdd_layer = agdd_layer,
+      six_sub_model = six_sub_model,
+      additional_layers = additional_layers
     )
   )
 }
@@ -317,9 +324,10 @@ npn_download_individual_phenometrics <- function(request_source,
 #' can be found in the NPN service's [companion
 #' documentation](https://docs.google.com/document/d/1yNjupricKOAXn6tY1sI7-EwkcfwdGUZ7lxYv7fcPjO8/edit#heading=h.ueaexz9bczti).
 #' Metadata on all fields can be found in the following Excel sheet:
-#' <http://www.usanpn.org/files/metadata/site_phenometrics_datafield_descriptions.xlsx>
+#' <https://www.usanpn.org/files/metadata/site_phenometrics_datafield_descriptions.xlsx>
 #'
 #' @inheritParams npn_download_status_data
+#' @inheritParams npn_get_data_by_year
 #' @param num_days_quality_filter Required field, defaults to `30`. The integer
 #'   value sets the upper limit on the number of days difference between the
 #'   first Y value and the previous N value for each individual to be included
@@ -341,13 +349,15 @@ npn_download_individual_phenometrics <- function(request_source,
 #' #Download all saguaro data for 2013 and 2014
 #' npn_download_site_phenometrics(
 #'   request_source = "Your Name or Org Here",
-#'   years = c('2013','2014'),
-#'   species_id = c(210),
+#'   years = c(2013, 2014),
+#'   species_id = 210,
 #'   download_path = "saguaro_data_2013_2014.csv"
 #' )
 #' }
 npn_download_site_phenometrics <- function(request_source,
                                            years,
+                                           period_start = "01-01",
+                                           period_end = "12-31",
                                            num_days_quality_filter = "30",
                                            coords = NULL,
                                            species_ids = NULL,
@@ -377,43 +387,45 @@ npn_download_site_phenometrics <- function(request_source,
                                            pheno_class_aggregate = NULL,
                                            wkt = NULL) {
   query <- npn_get_common_query_vars(
-    request_source,
-    coords,
-    species_ids,
-    station_ids,
-    species_types,
-    network_ids,
-    states,
-    phenophase_ids,
-    functional_types,
-    additional_fields,
-    climate_data,
-    ip_address,
-    dataset_ids,
-    genus_ids,
-    family_ids,
-    order_ids,
-    class_ids,
-    pheno_class_ids,
-    taxonomy_aggregate,
-    pheno_class_aggregate,
-    wkt,
-    email
+    request_source = request_source,
+    coords = coords,
+    species_ids = species_ids,
+    station_ids = station_ids,
+    species_types = species_types,
+    network_ids = network_ids,
+    states = states,
+    phenophase_ids = phenophase_ids,
+    functional_types = functional_types,
+    additional_fields = additional_fields,
+    climate_data = climate_data,
+    ip_address = ip_address,
+    dataset_ids = dataset_ids,
+    genus_ids = genus_ids,
+    family_ids = family_ids,
+    order_ids = order_ids,
+    class_ids = class_ids,
+    pheno_class_ids = pheno_class_ids,
+    taxonomy_aggregate = taxonomy_aggregate,
+    pheno_class_aggregate = pheno_class_aggregate,
+    wkt = wkt,
+    email = email
   )
 
   query["num_days_quality_filter"] <- num_days_quality_filter
 
   return(
     npn_get_data_by_year(
-      "/observations/getSiteLevelData.ndjson?",
-      query,
-      years,
-      download_path,
-      six_leaf_layer,
-      six_bloom_layer,
-      agdd_layer,
-      six_sub_model,
-      additional_layers
+      endpoint = "/observations/getSiteLevelData.ndjson",
+      query = query,
+      years = years,
+      period_start = period_start,
+      period_end = period_end,
+      download_path = download_path,
+      six_leaf_layer = six_leaf_layer,
+      six_bloom_layer = six_bloom_layer,
+      agdd_layer = agdd_layer,
+      six_sub_model = six_sub_model,
+      additional_layers = additional_layers
     )
   )
 }
@@ -457,7 +469,7 @@ npn_download_site_phenometrics <- function(request_source,
 #' to include in the search results. A complete list of additional fields can be
 #' found in the NPN service's [companion documentation](https://docs.google.com/document/d/1yNjupricKOAXn6tY1sI7-EwkcfwdGUZ7lxYv7fcPjO8/edit#heading=h.df3zspopwq98).
 #' Metadata on all fields can be found in the following Excel sheet:
-#' <http://www.usanpn.org/files/metadata/magnitude_phenometrics_datafield_descriptions.xlsx>
+#' <https://www.usanpn.org/files/metadata/magnitude_phenometrics_datafield_descriptions.xlsx>
 #'
 #' @inheritParams npn_download_status_data
 #' @param period_frequency Required field, integer. The integer value specifies
@@ -537,9 +549,13 @@ npn_download_magnitude_phenometrics <- function(request_source,
   query['start_date'] <- paste0(years[1], "-01-01")
   query['end_date'] <- paste0(years[length(years)], "-12-31")
 
-  url <- npn_get_download_url("/observations/getMagnitudeData.ndjson")
-
-  return(npn_get_data(url, query, download_path))
+  message("Downloading...")
+  data <- npn_get_data(
+    endpoint = "/observations/getMagnitudeData.ndjson",
+    query = query,
+    download_path = download_path
+  )
+  return(data)
 }
 
 
@@ -555,8 +571,15 @@ npn_download_magnitude_phenometrics <- function(request_source,
 #' @param query Base query string to use. This includes all the user selected
 #'   parameters but doesn't include start/end date which will be automatically
 #'   generated and added.
-#' @param years Character vector; the years for which to retrieve data. There
-#'   will be one request to the service for each year
+#' @param years Integer vector; the years for which to retrieve data. There
+#'   will be one request to the service for each year.  If the period
+#'   (determined by `period_start` and `period_end`) crosses a year boundary,
+#'   `years` determines the start years.
+#' @param period_start,period_end Character vectors of the form "MM-DD". Used to
+#'   determine the period over which phenophase status records are summarized.
+#'   For example, to use a "water year" set `period_start = "10-01"` and
+#'   `period_end = "09-30"`. If not provided, they will default to "01-01" and
+#'   "12-31", respectively, to use the calendar year.
 #' @param download_path Character, optional file path to the file for which to
 #'   output the results.
 #' @param six_leaf_layer Boolean value when set to `TRUE` will attempt to
@@ -575,7 +598,7 @@ npn_download_magnitude_phenometrics <- function(request_source,
 #'   values. Thus setting this field will change the results of `six_leaf_layer`
 #'   and `six_bloom_layer`. Valid values include: `'lilac'`, `'zabelli'` and
 #'   `'arnoldred'`. For more information see the NPN's Spring Index Maps
-#'   documentation: <https://www.usanpn.org/data/spring_indices>.
+#'   documentation: <https://www.usanpn.org/data/maps/spring>.
 #' @param additional_layers Data frame with first column named `name` and
 #'   containing the names of the layer for which to retrieve data and the second
 #'   column named `param` and containing string representations of the
@@ -587,7 +610,7 @@ npn_download_magnitude_phenometrics <- function(request_source,
 #'   `download_path` is specified, the file path is returned instead.
 #' @keywords internal
 #' @examples \dontrun{
-#' endpoint <- "/observations/getObservations.ndjson?"
+#' endpoint <- "/observations/getObservations.json"
 #' query <- list(
 #'   request_src = "Unit%20Test",
 #'   climate_data = "0",
@@ -596,17 +619,37 @@ npn_download_magnitude_phenometrics <- function(request_source,
 #'
 #' npn_get_data_by_year(endpoint = endpoint,
 #'                      query = query,
-#'                      years = 2013)
+#'                      years = c(2013, 2014))
+#'
+#' #Set a custom period from October through September
+#' # This will return data for 2013-10-01 through 2014-09-30 and from 2014-10-01
+#' # through 2015-09-30
+#' npn_get_data_by_year(
+#'   endpoint = endpoint,
+#'   query = query,
+#'   years = c(2013, 2014),
+#'   period_start = "10-01",
+#'   period_end = "09-30"
+#' )
 #' }
 npn_get_data_by_year <- function(endpoint,
                                  query,
                                  years,
+                                 period_start = "01-01",
+                                 period_end = "12-31",
                                  download_path = NULL,
                                  six_leaf_layer = FALSE,
                                  six_bloom_layer = FALSE,
                                  agdd_layer = NULL,
                                  six_sub_model = NULL,
                                  additional_layers = NULL) {
+  #validate period start and end
+  validate_mmdd(period_start)
+  validate_mmdd(period_end)
+
+  #coerce year to numeric if it was provided as legacy character vector
+  years <- as.integer(years)
+
   all_data <- NULL
   first_year <- TRUE
   six_leaf_raster <- NULL
@@ -618,26 +661,38 @@ npn_get_data_by_year <- function(endpoint,
     if (!is.null(additional_layers)) {
       additional_layers$raster <- get_additional_rasters(additional_layers)
     }
-
-    for (i in years) {
+    for (year in years) {
       # This is where the start/end dates are automatically created
       # based on the input years.
-      query['start_date'] <- paste0(i, "-01-01")
-      query['end_date'] <- paste0(i, "-12-31")
+      start_date <- as.Date(paste(year, period_start, sep = "-"))
+      end_date <- as.Date(paste(year, period_end, sep = "-"))
+
+      #assume if end_date is before start_date that it should actually be the period_end of the next year
+      if (end_date < start_date) {
+        end_date <- as.Date(paste(year + 1, period_end, sep = "-"))
+      }
+      query['start_date'] <- as.character(start_date)
+      query['end_date'] <- as.character(end_date)
 
       if (isTRUE(six_leaf_layer)) {
-        six_leaf_raster <- resolve_six_raster(i, "leaf", six_sub_model)
+        six_leaf_raster <-
+          resolve_six_raster(year = year,
+                             phenophase =  "leaf",
+                             sub_model = six_sub_model)
       }
 
       if (isTRUE(six_bloom_layer)) {
-        six_bloom_raster <- resolve_six_raster(i, "bloom", six_sub_model)
+        six_bloom_raster <-
+          resolve_six_raster(year =  year,
+                             phenophase = "bloom",
+                             sub_model = six_sub_model)
       }
 
       # We also have to generate a unique URL on each request to account
       # for the changes in the start/end date
-      url <- npn_get_download_url(endpoint)
+      message("Downloading...")
       data <- npn_get_data(
-        url = url,
+        endpoint = endpoint,
         query = query,
         download_path = download_path,
         always_append = !first_year,
@@ -646,7 +701,6 @@ npn_get_data_by_year <- function(endpoint,
         agdd_layer = agdd_layer,
         additional_layers = additional_layers
       )
-
       # First if statement checks whether this is the results returned is empty.
       # Second if statement checks if we've made a previous request that's
       # returned data. The data doesn't have to be combined if there was
@@ -677,7 +731,9 @@ npn_get_data_by_year <- function(endpoint,
 #'
 #' Generic utility function for querying data from the NPN data services.
 #'
-#' @param url The URL of the service endpoint to request data from
+#' @param endpoint The endpoint to request data from starting at
+#'   'https://services.usanpn.org/npn_portal/'. E.g.
+#'   `"observations/getObservations.ndjson"`
 #' @param download_path String, optional file path to the file for which to
 #'   output the results.
 #' @param always_append Boolean flag. When set to `TRUE`, then we always append
@@ -691,9 +747,9 @@ npn_get_data_by_year <- function(endpoint,
 #' @keywords internal
 #' @examples \dontrun{
 #' npn_get_data(
-#'   url = "https://services.usanpn.org/npn_portal//observations/getObservations.ndjson?",
+#'   endpoint = "observations/getObservations.ndjson",
 #'   query = list(
-#'     request_src = "Unit%20Test",
+#'     request_src = "Unit Test",
 #'     climate_data = "0",
 #'     `species_id[1]` = "6",
 #'     start_date = "2010-01-01",
@@ -701,7 +757,7 @@ npn_get_data_by_year <- function(endpoint,
 #'   )
 #' )
 #' }
-npn_get_data <- function(url,
+npn_get_data <- function(endpoint,
                          query,
                          download_path = NULL,
                          always_append = FALSE,
@@ -709,28 +765,23 @@ npn_get_data <- function(url,
                          six_bloom_raster = NULL,
                          agdd_layer = NULL,
                          additional_layers = NULL) {
-  req <- httr2::request(url) %>%
-    httr2::req_user_agent("rnpn (https://github.com/usa-npn/rnpn/)") %>%
+
+  if (is.null(download_path)) { #use JSON
+    endpoint <- sub("(?<=\\.)\\w+$", "json", endpoint, perl = TRUE)
+  } else { #use NDJSON
+    endpoint <- sub("(?<=\\.)\\w+$", "ndjson", endpoint, perl = TRUE)
+  }
+
+  req <- base_req %>%
+    httr2::req_url_path_append(endpoint) %>%
+    # httr2::req_progress(type = "down") %>% #doesn't work—only for file downloads
     httr2::req_method("POST") %>%
     httr2::req_body_form(!!!query)
 
-  con <- httr2::req_perform_connection(req)
-  on.exit(close(con), add = TRUE)
-
-  dtm <- tibble::tibble()
-  i <- 0
-  while (!httr2::resp_stream_is_complete(con)) {
-    resp <- httr2::resp_stream_lines(con, lines = 5000)
-
-    df <-
-      #paste lines into single string
-      paste0(resp[nzchar(resp) != 0], collapse = "\n") %>%
-      #default to character when mixed numeric and character
-      yyjsonr::read_ndjson_str(type = "df",
-                               nprobe = -1,
-                               promote_num_to_string = TRUE) %>%
-      tibble::as_tibble() %>%
-      #replace missing data indicator with NA
+  #define data wrangling function to be run on entire df or by chunks of 5000
+  #rows
+  wrangle_dl_data <- function(df) {
+    df <- df %>%
       dplyr::mutate(
         dplyr::across(dplyr::where(is.numeric),
                       function(x) ifelse(x == -9999, NA_real_, x))
@@ -800,61 +851,49 @@ npn_get_data <- function(url,
                   date = x[date_col]
                 )
               })
-
-      pt_values <- t(as.data.frame(pt_values))
-      colnames(pt_values) <- agdd_layer
+      pt_values <-
+        tibble::as_tibble_col(pt_values, column_name = agdd_layer)
       df <- cbind(df, pt_values)
 
       if ("cal_date" %in% colnames(df)) {
         df$cal_date <- NULL
       }
     }
-
-    if (is.null(download_path)) {
-      dtm <- dplyr::bind_rows(dtm, df)
-    } else {
-      if (nrow(df) > 0) {
-        write.table(
-          df,
-          download_path,
-          append = !(i == 0 && isFALSE(always_append)),
-          sep = ",",
-          eol = "\n",
-          row.names = FALSE,
-          col.names = i == 0 && isFALSE(always_append)
-        )
-      }
-    }
-    i <- i + 1
+    return(tibble::as_tibble(df))
   }
+  path <- withr::local_tempfile()
+  resp <- httr2::req_perform(req, path = path)
 
-  # If the user asks for the data to be saved to file then
-  # there is nothing to return.
+  # If no download_path specified, just wrangle the data all at once, otherwise
+  # assume that memory could be a limitation and wrangle data 5000 rows at a
+  # time and append to the CSV file specified in `download_path`
   if (is.null(download_path)) {
+    dtm <-
+      httr2::resp_body_json(resp, simplifyVector = TRUE) %>%
+      wrangle_dl_data()
     return(dtm)
   } else {
+    #resp$body is a path to an .ndjson file
+    i <- 0
+    resp$body %>%
+      file() %>%
+      jsonlite::stream_in(handler = function(df) {
+        df <- wrangle_dl_data(df)
+        if (nrow(df) > 0) {
+          write.table(
+            df,
+            download_path,
+            append = !(i == 0 && isFALSE(always_append)),
+            sep = ",",
+            eol = "\n",
+            row.names = FALSE,
+            col.names = i == 0 && isFALSE(always_append)
+          )
+          i <<- i + 1
+        }
+      }, pagesize = 5000)
     return(download_path)
   }
-}
-
-
-#' Generate Download URL
-#'
-#' Utility function to create the service point URL. Base URL comes from zzz.R,
-#' endpoint is specified in the code. This function will manually put those
-#' query parameters into the proper GET syntax.
-#'
-#' @param endpoint The service point, e.g. "observations/getObservations.json?"
-#'
-#' @return The URL, as a string.
-#' @keywords internal
-#' @examples \dontrun{
-#' url <- npn_get_download_url("/observations/getMagnitudeData.ndjson")
-#' }
-npn_get_download_url <- function(endpoint) {
-  url <- paste0(base_portal_url, endpoint)
-#  query_str <- paste(names(query_vars),"=",query_vars,sep="",collapse = '&')
-  return(paste0(url))
 }
 
 
@@ -935,7 +974,10 @@ npn_get_common_query_vars <- function(
   query <- c(
     list(
       request_src = URLencode(request_source),
-      climate_data = (if(climate_data) "1" else "0") #TODO change to ifelse or as.numeric()
+      #TODO change to something like
+      # if(!is.null(climate_data)) climate_data <- as.integer(climate_data)
+      # this *might* break things if it is important that climate_date = 0 always
+      climate_data = (if (climate_data) "1" else "0")
     ),
     # All these variables take a multiplicity of possible parameters, this will help put them all together.
     npn_createArgList("species_id", species_ids),

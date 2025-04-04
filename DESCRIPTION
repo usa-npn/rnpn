@@ -1,6 +1,6 @@
 Package: rnpn
 Title: Interface to the National 'Phenology' Network 'API'
-Version: 1.2.9.9000
+Version: 1.4.0.9000
 Authors@R: c(
     person("Jeff", "Switzer", , "jeff@usanpn.org", role = c("aut", "cre")),
     person("Scott", "Chamberlain", role = "aut"),
@@ -21,13 +21,13 @@ Depends:
 Imports:
     dplyr,
     httr2 (>= 1.1.0),
+    jsonlite,
     lifecycle,
     magrittr,
     rlang,
     tibble,
     tidyr,
-    xml2,
-    yyjsonr
+    xml2
 Suggests:
     covr,
     ggplot2,

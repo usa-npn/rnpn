@@ -3,6 +3,6 @@
 #https://usethis.r-lib.org/reference/use_release_issue.html
 release_bullets <- function() {
 c(
- "Run code in inst/release-tasks.R"
+ "Run code in inst/release-tasks.R after usethis::use_version()"
 )
 }
