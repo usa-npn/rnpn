@@ -19,4 +19,4 @@ bibentry(bibtype = "Misc",
          url = "http://usa-npn.github.io/rnpn/",
          abstract = "Programmatic interface to the Web Service methods provided by the National 'Phenology' Network (<https://usanpn.org/>), which includes data on various life history events that occur at specific times.",
          keywords = "data,national-phenology-network,phenology,r,r-package,rstats,species,web-api",
-         version = "1.3.0")
+         version = "1.4.0")
