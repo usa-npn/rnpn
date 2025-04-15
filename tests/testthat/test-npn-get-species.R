@@ -44,7 +44,8 @@ test_that("npn_species_state works", {
   expect_gt(nrow(species_state), 10)
   expect_type(species_state$species, "character")
 
-  expect_identical(npn_species_state("AZ", "Something else"), tibble::tibble())
+  expect_error(npn_species_state("AZ", "Something else"))
+  #TODO would be ideal if this was an error, but currently not easy to validate state (more than just state.abb are allowed)
   expect_identical(npn_species_state("ZZ"), tibble::tibble())
 })
 
@@ -82,7 +83,7 @@ test_that("npn_species_types", {
   })
 
   expect_s3_class(t, "data.frame")
-  expect_gt(nrow(t), 15)
+  expect_gt(nrow(t), 30)
 
   vcr::use_cassette("npn_species_types_2", {
     t <- npn_species_types("Plantae")
@@ -97,11 +98,5 @@ test_that("npn_species_types", {
   expect_s3_class(t, "data.frame")
   expect_gt(nrow(t), 15)
 
-  #Actually, combine the animal/plant list if input is something else
-  vcr::use_cassette("npn_species_types_4", {
-    t <- npn_species_types("foo")
-  })
-
-  expect_s3_class(t, "data.frame")
-  expect_gt(nrow(t), 30)
+  expect_error(npn_species_types("foo"))
 })

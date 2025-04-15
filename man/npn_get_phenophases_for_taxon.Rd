@@ -10,7 +10,7 @@ npn_get_phenophases_for_taxon(
   class_ids = NULL,
   genus_ids = NULL,
   date = NULL,
-  return_all = 0,
+  return_all = deprecated(),
   ...
 )
 }
@@ -23,12 +23,11 @@ npn_get_phenophases_for_taxon(
 
 \item{genus_ids}{Integer vector of taxonomic genus ids to search for}
 
-\item{date}{Specify the date of interest. For this function to return
-anything, either this value must be set or \code{return_all} must be \code{1}.}
+\item{date}{Specify the date of interest as a \code{Date} or \code{character} of the
+format \code{"YYYY-MM-DD"}. To return data from all dates, use \code{date = "all"}.}
 
-\item{return_all}{Takes either \code{0} or \code{1} as input and defaults to \code{0}. For
-this function to return anything, either this value must be set to \code{1} or
-\code{date} must be set.}
+\item{return_all}{Deprecated.  Use \code{date = "all"} to return data from all
+dates.}
 
 \item{...}{Currently unused.}
 }
