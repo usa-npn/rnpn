@@ -89,8 +89,10 @@
 <code><a href="../reference/npn_download_individual_phenometrics.html">npn_download_individual_phenometrics()</a></code> and <code><a href="../reference/npn_download_site_phenometrics.html">npn_download_site_phenometrics()</a></code> gain <code>period_start</code> and <code>period_end</code> arguments for defining a custom “window” or season for phenometrics.</li>
 </ul></div>
 <div class="section level3">
-<h3 id="deprcations-1-4-0">Deprcations<a class="anchor" aria-label="anchor" href="#deprcations-1-4-0"></a></h3>
+<h3 id="deprcations--changes-1-4-0">Deprcations &amp; changes<a class="anchor" aria-label="anchor" href="#deprcations--changes-1-4-0"></a></h3>
 <ul><li>The <code>speciesid</code> argument of <code><a href="../reference/npn_stations_with_spp.html">npn_stations_with_spp()</a></code> has been deprecated in favor of <code>species_id</code> for uniformity.</li>
+<li>Changed behavior of <code>kingdom</code> arguments in <code><a href="../reference/npn_species.html">npn_species_state()</a></code> and <code><a href="../reference/npn_species_types.html">npn_species_types()</a></code>. Now provide either <code>"Plantae"</code>, <code>"Animalia"</code>, or <code>c("Plantae", "Animalia")</code> (the default). A column for <code>kingdom</code> is added to the return value of <code><a href="../reference/npn_species_types.html">npn_species_types()</a></code>.</li>
+<li>The <code>return_all</code> argument of <code><a href="../reference/npn_get_phenophases_for_taxon.html">npn_get_phenophases_for_taxon()</a></code> has been deprecated. Use <code>date = "all"</code> to return data for all dates instead. <code>return_all = 1</code> will continue to work (with a warning) in this version.</li>
 </ul></div>
 <div class="section level3">
 <h3 id="bug-fixes-1-4-0">Bug fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-1-4-0"></a></h3>

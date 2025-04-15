@@ -98,7 +98,7 @@ taxonomic group.</p>
 <span>  class_ids <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  genus_ids <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  date <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  return_all <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>  return_all <span class="op">=</span> <span class="fu">deprecated</span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  <span class="va">...</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
@@ -124,14 +124,13 @@ taxonomic group.</p>
 
 
 <dt id="arg-date">date<a class="anchor" aria-label="anchor" href="#arg-date"></a></dt>
-<dd><p>Specify the date of interest. For this function to return
-anything, either this value must be set or <code>return_all</code> must be <code>1</code>.</p></dd>
+<dd><p>Specify the date of interest as a <code>Date</code> or <code>character</code> of the
+format <code>"YYYY-MM-DD"</code>. To return data from all dates, use <code>date = "all"</code>.</p></dd>
 
 
 <dt id="arg-return-all">return_all<a class="anchor" aria-label="anchor" href="#arg-return-all"></a></dt>
-<dd><p>Takes either <code>0</code> or <code>1</code> as input and defaults to <code>0</code>. For
-this function to return anything, either this value must be set to <code>1</code> or
-<code>date</code> must be set.</p></dd>
+<dd><p>Deprecated.  Use <code>date = "all"</code> to return data from all
+dates.</p></dd>
 
 
 <dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
