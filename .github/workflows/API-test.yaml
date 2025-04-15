@@ -1,0 +1,37 @@
+on:
+  schedule:
+    cron: '0 12 1 * *' #at noon on the first of the month
+# for testing only:
+  pull_request:
+    branches: [main, master]
+
+name: API-test
+
+jobs:
+  API-test:
+    runs-on: ubuntu-latest
+    env:
+        GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+        R_KEEP_PKG_SOURCE: yes
+        RNPN_SKIP_LONG_TEST: false #don't skip long-running tests
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: 'release'
+          use-public-rspm: true
+
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          extra-packages: any::rcmdcheck
+          needs: check
+
+      - name: Remove `vcr` fixtures
+        run: rm -rf ./tests/fixtures
+        shell: bash
+
+      #TODO: maybe just run test() and not all of check()?
+      - uses: r-lib/actions/check-r-package@v2
+        with:
+          upload-snapshots: true
