@@ -8,11 +8,8 @@ on:
       skip_long:
         description: "Skip long-running tests?"
         required: true
-        default: 'false'
-        type: choice
-        options:
-          - false
-          - true
+        default: false
+        type: boolean
 
 # for testing only:
   pull_request:
@@ -27,7 +24,7 @@ jobs:
         GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
         R_KEEP_PKG_SOURCE: yes
         #don't skip long-running tests unless specified otherwise in input of workflow dispatch
-        RNPN_SKIP_LONG_TESTS: ${{ inputs.skip_long || false }} 
+        RNPN_SKIP_LONG_TESTS: ${{ inputs.skip_long || 'false' }} 
     steps:
       - uses: actions/checkout@v4
 
