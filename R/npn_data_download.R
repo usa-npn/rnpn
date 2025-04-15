@@ -785,9 +785,9 @@ npn_get_data <- function(
 
   req <- base_req %>%
     httr2::req_url_path_append(endpoint) %>%
-    # httr2::req_progress(type = "down") %>% #doesn't work—only for file downloads
     httr2::req_method("POST") %>%
-    httr2::req_body_form(!!!query)
+    httr2::req_body_form(!!!query) %>%
+    httr2::req_progress() #adds progress bar for long downloads
 
   #define data wrangling function to be run on entire df or by chunks of 5000
   #rows
@@ -805,16 +805,34 @@ npn_get_data <- function(
           function(x) ifelse(x == "-9999", NA_character_, x)
         )
       ) %>%
-      #handle some columns that may be read in as the wrong type if they happen
-      #to be all NAs (#87). `any_of()` is used because not all endpoints will
-      #return these columns!
+      # handle some columns that may be read in as the wrong type if they happen
+      # to be all NAs (#87, #107). `any_of()` is used because not all endpoints
+      # will return these columns!
       dplyr::mutate(
         dplyr::across(
           dplyr::any_of("update_datetime"),
           function(x) as.POSIXct(x, tz = "UTC")
         ),
         dplyr::across(
-          dplyr::any_of(c("intensity_value", "abundance_value")),
+          dplyr::any_of(c(
+            "partner_group",
+            "species_category",
+            "lifecycle_duration",
+            "growth_habit",
+            "usda_plants_symbol",
+            "observers_status_conflict_flag",
+            "dataset_id",
+            "intensity_value",
+            "observation_comments",
+            "status_conflict_related_records",
+            "multiple_firsty_individual_ids",
+            "observer_status_conflict_flag_individual_ids",
+            "in-phase_search_method",
+            "in-phase_per_hr_search",
+            #sometimes get parsed as numeric:
+            "intensity_value",
+            "abundance_value"
+          )),
           as.character
         )
       )

@@ -11,7 +11,7 @@ npn_species(...)
 
 npn_species_id(ids, ...)
 
-npn_species_state(state, kingdom = NULL, ...)
+npn_species_state(state, kingdom = c("Animalia", "Plantae"), ...)
 
 npn_species_search(
   network = NULL,
@@ -28,8 +28,8 @@ npn_species_search(
 
 \item{state}{A US postal state code to filter results.}
 
-\item{kingdom}{Filters results by taxonomic kingdom. Valid values include
-\code{'Animalia'}, \code{'Plantae'}.}
+\item{kingdom}{Character vector of taxonomic kingdoms to filter results by.
+Valid values include \code{'Animalia'} and \code{'Plantae'}.}
 
 \item{network}{filter species based on identifiers of NPN groups that are
 actually observing data on the species. Takes a single numeric ID.}
@@ -82,6 +82,7 @@ npn_species_id(ids = 3)
 }
 \dontrun{
 npn_species_state(state = "AZ")
+# only return plants
 npn_species_state(state = "AZ", kingdom = "Plantae")
 }
 \dontrun{
