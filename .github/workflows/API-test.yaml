@@ -1,6 +1,6 @@
 on:
   schedule:
-    cron: '0 12 1 * *' #at noon on the first of the month
+    - cron: '0 12 1 * *' #at noon on the first of the month
 # for testing only:
   pull_request:
     branches: [main, master]
