@@ -1,6 +1,19 @@
 on:
+ # run at noon on the first of the month
   schedule:
-    - cron: '0 12 1 * *' #at noon on the first of the month
+    - cron: '0 12 1 * *' 
+ # or when button is clicked in the Actions tab on GitHub
+  workflow_dispatch: 
+    inputs:
+      skip_long:
+        description: "Skip long-running tests?"
+        required: true
+        default: 'false'
+        type: choice
+        options:
+          - false
+          - true
+
 # for testing only:
   pull_request:
     branches: [main, master]
@@ -13,7 +26,8 @@ jobs:
     env:
         GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
         R_KEEP_PKG_SOURCE: yes
-        RNPN_SKIP_LONG_TESTS: false #don't skip long-running tests
+        #don't skip long-running tests unless specified otherwise in input of workflow dispatch
+        RNPN_SKIP_LONG_TESTS: ${{ inputs.skip_long || false }} 
     steps:
       - uses: actions/checkout@v4
 
