@@ -2,15 +2,27 @@
 # mocked and are skipped
 # https://github.com/ropensci/vcr/issues/270
 
-skip_long_tests <- as.logical(Sys.getenv("RNPN_SKIP_LONG_TESTS", unset = "true"))
+skip_long_tests <- as.logical(Sys.getenv(
+  "RNPN_SKIP_LONG_TESTS",
+  unset = "true"
+))
 
 test_that("no request source blocked", {
   skip_on_cran()
 
   expect_error(npn_download_status_data(request_source = NULL, years = 2013))
-  expect_error(npn_download_individual_phenometrics(request_source = NULL, years = 2013))
-  expect_error(npn_download_site_phenometrics(request_source = NULL, years = 2013))
-  expect_error(npn_download_magnitude_phenometrics(request_source = NULL, years = 2013))
+  expect_error(npn_download_individual_phenometrics(
+    request_source = NULL,
+    years = 2013
+  ))
+  expect_error(npn_download_site_phenometrics(
+    request_source = NULL,
+    years = 2013
+  ))
+  expect_error(npn_download_magnitude_phenometrics(
+    request_source = NULL,
+    years = 2013
+  ))
 })
 
 test_that("npn_download_status_data() works", {
@@ -29,7 +41,7 @@ test_that("npn_download_status_data() works", {
   skip_if_not(check_service(), "Service is down")
 
   ## Would be ideal to capture this with vcr, but doesn't work with httr2 downloads yet: https://github.com/ropensci/vcr/issues/270
-  some_data_file  <- npn_download_status_data(
+  some_data_file <- npn_download_status_data(
     request_source = "Unit Test",
     years = 2013,
     species_ids = c(6),
@@ -41,8 +53,10 @@ test_that("npn_download_status_data() works", {
   expect_equal(
     read.csv(some_data_file) %>%
       tibble::as_tibble() %>%
-      dplyr::mutate(update_datetime = as.POSIXct(update_datetime, tz = "UTC"),
-                    abundance_value = as.character(abundance_value)),
+      dplyr::mutate(
+        update_datetime = as.POSIXct(update_datetime, tz = "UTC"),
+        abundance_value = as.character(abundance_value)
+      ),
     some_data
   )
 })
@@ -121,7 +135,6 @@ test_that("phenometrics downloads work", {
   expect_equal(some_data[1, ]$species_id, 6)
 
   expect_gt(num_mag_custom, num_mag_default)
-
 })
 
 test_that("custom period works", {
@@ -168,12 +181,15 @@ test_that("custom period works", {
 
   #just crude checks that they aren't identical
   expect_false(
-    all(indiv_standard$last_yes_month[1:20] ==
-          indiv_wateryr$last_yes_month[1:20])
+    all(
+      indiv_standard$last_yes_month[1:20] == indiv_wateryr$last_yes_month[1:20]
+    )
   )
   expect_false(
-    all(site_standard$mean_last_yes_doy[1:20] ==
-          site_wateryr$mean_last_yes_doy[1:20])
+    all(
+      site_standard$mean_last_yes_doy[1:20] ==
+        site_wateryr$mean_last_yes_doy[1:20]
+    )
   )
 })
 
@@ -181,43 +197,39 @@ test_that("custom period works", {
 # these can't be mocked currently due to limitations of vcr
 test_that("file download works", {
   skip_on_cran()
-  skip_if(skip_long_tests, "Skipping long tests")
   skip_if_not(check_service(), "Service is down")
 
-  test_download_path <- withr::local_tempfile(fileext = ".csv")
-
-  # vcr::use_cassette("downloads", {
-    status_dl_file <- npn_download_status_data(
+  withr::with_tempdir({
+    status_dl <- npn_download_status_data(
       request_source = "Unit Test",
       years = 2013,
       species_ids = c(6),
-      download_path = test_download_path
+      download_path = "test_status.csv"
     )
-  # })
+    expect_equal(status_dl, normalizePath("test_status.csv"))
+    expect_true(file.exists(status_dl))
+    status_data <- read.csv(status_dl)
 
-  expect_true(file.exists(status_dl_file))
-  some_data <- read.csv(status_dl_file)
+    expect_s3_class(status_data, "data.frame")
+    expect_gt(nrow(status_data), 1000)
+    expect_type(status_data$species_id, "integer")
+    expect_equal(status_data[1, ]$species_id, 6)
 
-  expect_s3_class(some_data, "data.frame")
-  expect_gt(nrow(some_data), 1000)
-  expect_type(some_data$species_id, "integer")
-  expect_equal(some_data[1, ]$species_id, 6)
+    magnitude_dl <- npn_download_magnitude_phenometrics(
+      request_source = "Unit Test",
+      years = 2013,
+      species_ids = c(6),
+      download_path = "test_magnitude.csv"
+    )
+    expect_equal(magnitude_dl, normalizePath("test_magnitude.csv"))
+    expect_true(file.exists(magnitude_dl))
+    magnitude_data <- read.csv(magnitude_dl)
 
-
-  some_data <- npn_download_magnitude_phenometrics(
-    request_source = "Unit Test",
-    years = 2013,
-    species_ids = c(6),
-    download_path = test_download_path
-  )
-  expect_equal(file.exists(test_download_path), TRUE)
-  some_data <- read.csv(test_download_path)
-
-  expect_s3_class(some_data, "data.frame")
-  expect_gt(nrow(some_data), 10)
-  expect_type(some_data$species_id, "integer")
-  expect_equal(some_data[1, ]$species_id, 6)
-
+    expect_s3_class(magnitude_data, "data.frame")
+    expect_gt(nrow(magnitude_data), 10)
+    expect_type(magnitude_data$species_id, "integer")
+    expect_equal(magnitude_data[1, ]$species_id, 6)
+  })
 })
 
 test_that("climate data flag works", {
@@ -260,7 +272,6 @@ test_that("climate data flag works", {
 
   expect_s3_class(some_data, "data.frame")
   expect_null(some_data$tmin_winter)
-
 })
 
 
@@ -304,7 +315,7 @@ test_that("higher taxonomic ordering works for status data", {
   expect_type(some_data$order_id, "integer")
   expect_equal(some_data[1, ]$order_id, 95)
 
-  less_data <- subset(some_data,species_id == 6)
+  less_data <- subset(some_data, species_id == 6)
   expect_lt(nrow(less_data), nrow(some_data))
   expect_gt(nrow(less_data), 0)
 
@@ -323,7 +334,7 @@ test_that("higher taxonomic ordering works for status data", {
   expect_type(some_data$class_id, "integer")
   expect_equal(some_data[1, ]$class_id, 15)
 
-  less_data <- subset(some_data,species_id == 6)
+  less_data <- subset(some_data, species_id == 6)
   expect_lt(nrow(less_data), nrow(some_data))
   expect_gt(nrow(less_data), 0)
 })
@@ -351,7 +362,7 @@ test_that("higher taxonomic ordering works for individual phenometrics", {
   expect_type(some_data$family_id, "integer")
   expect_equal(some_data[1, ]$family_id, 322)
 
-  less_data <- subset(some_data,species_id == 6)
+  less_data <- subset(some_data, species_id == 6)
   expect_lt(nrow(less_data), nrow(some_data))
   expect_gt(nrow(less_data), 0)
 
@@ -370,10 +381,9 @@ test_that("higher taxonomic ordering works for individual phenometrics", {
   expect_type(some_data$order_id, "integer")
   expect_equal(some_data[1, ]$order_id, 95)
 
-  less_data <- subset(some_data,species_id == 6)
+  less_data <- subset(some_data, species_id == 6)
   expect_lt(nrow(less_data), nrow(some_data))
   expect_gt(nrow(less_data), 0)
-
 
   # #class_ID
   vcr::use_cassette("npn_download_individual_phenometrics_tax_3", {
@@ -390,10 +400,9 @@ test_that("higher taxonomic ordering works for individual phenometrics", {
   expect_type(some_data$class_id, "integer")
   expect_equal(some_data[1, ]$class_id, 15)
 
-  less_data <- subset(some_data,species_id == 6)
+  less_data <- subset(some_data, species_id == 6)
   expect_lt(nrow(less_data), nrow(some_data))
   expect_gt(nrow(less_data), 0)
-
 })
 
 
@@ -419,7 +428,7 @@ test_that("higher taxonomic ordering works for site phenometrics", {
   expect_type(some_data$family_id, "integer")
   expect_equal(some_data[1, ]$family_id, 322)
 
-  less_data <- subset(some_data,species_id == 6)
+  less_data <- subset(some_data, species_id == 6)
   expect_lt(nrow(less_data), nrow(some_data))
   expect_gt(nrow(less_data), 0)
 
@@ -438,10 +447,9 @@ test_that("higher taxonomic ordering works for site phenometrics", {
   expect_type(some_data$order_id, "integer")
   expect_equal(some_data[1, ]$order_id, 95)
 
-  less_data <- subset(some_data,species_id == 6)
+  less_data <- subset(some_data, species_id == 6)
   expect_lt(nrow(less_data), nrow(some_data))
   expect_gt(nrow(less_data), 0)
-
 
   # #class_ID
   vcr::use_cassette("npn_download_site_phenometrics_tax_3", {
@@ -458,11 +466,9 @@ test_that("higher taxonomic ordering works for site phenometrics", {
   expect_type(some_data$class_id, "integer")
   expect_equal(some_data[1, ]$class_id, 15)
 
-  less_data <- subset(some_data,species_id == 6)
+  less_data <- subset(some_data, species_id == 6)
   expect_lt(nrow(less_data), nrow(some_data))
   expect_gt(nrow(less_data), 0)
-
-
 })
 
 
@@ -489,7 +495,7 @@ test_that("higher taxonomic ordering works for magnitude phenometrics", {
   expect_type(some_data$family_id, "integer")
   expect_equal(some_data[1, ]$family_id, 322)
 
-  less_data <- subset(some_data,species_id == 6)
+  less_data <- subset(some_data, species_id == 6)
   expect_lt(nrow(less_data), nrow(some_data))
   expect_gt(nrow(less_data), 0)
 
@@ -508,7 +514,7 @@ test_that("higher taxonomic ordering works for magnitude phenometrics", {
   expect_type(some_data$order_id, "integer")
   expect_equal(some_data[1, ]$order_id, 95)
 
-  less_data <- subset(some_data,species_id == 6)
+  less_data <- subset(some_data, species_id == 6)
   expect_lt(nrow(less_data), nrow(some_data))
   expect_gt(nrow(less_data), 0)
 
@@ -530,12 +536,10 @@ test_that("higher taxonomic ordering works for magnitude phenometrics", {
   less_data <- subset(some_data, species_id == 6)
   expect_lt(nrow(less_data), nrow(some_data))
   expect_gt(nrow(less_data), 0)
-
-
 })
 
 
-test_that("higher level taxonomic agg and pheno agg works for site level",{
+test_that("higher level taxonomic agg and pheno agg works for site level", {
   skip_on_cran()
   skip_if(skip_long_tests, "Skipping long tests")
   skip_if_not(check_service(), "Service is down")
@@ -555,13 +559,13 @@ test_that("higher level taxonomic agg and pheno agg works for site level",{
   expect_equal(some_data[1, ]$family_id, 322)
   expect_null(some_data$species_id)
 
-
   vcr::use_cassette("npn_download_site_phenometrics_pheno_agg_2", {
     some_data <- npn_download_site_phenometrics(
       request_source = "Unit Test",
       years = 2013,
       family_ids = c(322),
-      pheno_class_aggregate = TRUE, pheno_class_ids = c(1, 3, 6)
+      pheno_class_aggregate = TRUE,
+      pheno_class_ids = c(1, 3, 6)
     )
   })
 
@@ -585,8 +589,6 @@ test_that("higher level taxonomic agg and pheno agg works for site level",{
   expect_type(some_data$pheno_class_name, "character")
   expect_type(some_data$order_id, "integer")
   expect_null(some_data$phenophase_id)
-
-
 })
 
 test_that("higher level taxonomic agg works for magnitude", {
@@ -614,7 +616,8 @@ test_that("higher level taxonomic agg works for magnitude", {
       request_source = "Unit Test",
       years = 2013,
       family_ids = c(322),
-      pheno_class_aggregate = TRUE, pheno_class_ids = c(1, 3, 6)
+      pheno_class_aggregate = TRUE,
+      pheno_class_ids = c(1, 3, 6)
     )
   })
 
@@ -638,7 +641,6 @@ test_that("higher level taxonomic agg works for magnitude", {
   expect_type(some_data$pheno_class_name, "character")
   expect_type(some_data$order_id, "integer")
   expect_null(some_data$phenophase_id)
-
 })
 
 test_that("six concordance works for status", {
@@ -654,7 +656,10 @@ test_that("six concordance works for status", {
       six_leaf_layer = TRUE,
       six_bloom_layer = TRUE,
       agdd_layer = 32,
-      additional_layers = data.frame(name = c("si-x:30yr_avg_4k_leaf"), param = c("365"))
+      additional_layers = data.frame(
+        name = c("si-x:30yr_avg_4k_leaf"),
+        param = c("365")
+      )
     )
   })
 
@@ -691,7 +696,6 @@ test_that("six concordance works for status", {
   expect_lt(some_data[1, "SI-x_Leaf_Value"], 250)
   expect_false(identical(some_data$`SI-x_Leaf_Value`, avg_leaf_data))
 
-
   # This is testing that the implicit
   # reconciliation with different SI-x
   # layers is happening based on the date
@@ -723,7 +727,6 @@ test_that("six concordance works for status", {
 
   expect_gt(some_data[1, "SI-x_Leaf_Value"], -1)
   expect_lt(some_data[1, "SI-x_Leaf_Value"], 250)
-
 })
 
 
@@ -784,7 +787,6 @@ test_that("wkt filter works", {
   expect_equal(some_data[1, ]$state, "CO")
   expect_gt(rows_wo_filter, rows_w_filter)
 
-
   vcr::use_cassette("npn_download_site_phenometrics_wkt_1", {
     some_data <- npn_download_site_phenometrics(
       request_source = "Unit Test",
@@ -809,7 +811,6 @@ test_that("wkt filter works", {
   expect_equal(some_data[1, ]$state, "CO")
   expect_gt(rows_wo_filter, rows_w_filter)
 
-
   vcr::use_cassette("npn_download_magnitude_phenometrics_wkt_1", {
     some_data <- npn_download_magnitude_phenometrics(
       request_source = "Unit Test",
@@ -832,7 +833,6 @@ test_that("wkt filter works", {
   expect_s3_class(some_data, "data.frame")
   expect_type(some_data$species_id, "integer")
   expect_gt(rows_wo_filter, rows_w_filter)
-
 })
 
 
@@ -845,7 +845,8 @@ test_that("frequency params work", {
     some_data <- npn_download_site_phenometrics(
       request_source = "Unit Test",
       years = 2013,
-      family_ids = c(322), num_days_quality_filter = "30"
+      family_ids = c(322),
+      num_days_quality_filter = "30"
     )
   })
 
@@ -855,7 +856,8 @@ test_that("frequency params work", {
     some_data <- npn_download_site_phenometrics(
       request_source = "Unit Test",
       years = 2013,
-      family_ids = c(322), num_days_quality_filter = "15"
+      family_ids = c(322),
+      num_days_quality_filter = "15"
     )
   })
 
@@ -867,7 +869,8 @@ test_that("frequency params work", {
     some_data <- npn_download_magnitude_phenometrics(
       request_source = "Unit Test",
       years = 2013,
-      family_ids = c(322), period_frequency = "months"
+      family_ids = c(322),
+      period_frequency = "months"
     )
   })
 
@@ -877,11 +880,11 @@ test_that("frequency params work", {
     some_data <- npn_download_magnitude_phenometrics(
       request_source = "Unit Test",
       years = 2013,
-      family_ids = c(322), period_frequency = "14"
+      family_ids = c(322),
+      period_frequency = "14"
     )
   })
   rows_fortnight_freq <- nrow(some_data)
 
   expect_gt(rows_fortnight_freq, rows_month_freq)
-
 })

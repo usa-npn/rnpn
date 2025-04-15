@@ -1,8 +1,11 @@
 # rnpn (development version)
 
+* Functions that download files now return the path to the downloaded file for convenience.
+
 ## Bug fixes
 
 * fixed bug that caused some `npn_download_*()` functions to error when sections of the data were `NA` (#107 reported by @ezylstra)
+
 
 # rnpn 1.4.0
 
