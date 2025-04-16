@@ -272,7 +272,7 @@ test_that("climate data flag works", {
   })
 
   expect_s3_class(some_data, "data.frame")
-  expect_null(some_data$tmin_winter)
+  expect_false("tmin_winter" %in% colnames(some_data))
 })
 
 
@@ -553,7 +553,7 @@ test_that("higher level taxonomic agg and pheno agg works for site level", {
   expect_gt(nrow(some_data), 10)
   expect_type(some_data$family_id, "integer")
   expect_equal(some_data[1, ]$family_id, 322)
-  expect_null(some_data$species_id)
+  expect_false("species_id" %in% colnames(some_data))
 
   vcr::use_cassette("npn_download_site_phenometrics_pheno_agg_2", {
     some_data <- npn_download_site_phenometrics(
@@ -567,7 +567,7 @@ test_that("higher level taxonomic agg and pheno agg works for site level", {
 
   expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 10)
-  expect_null(some_data$phenophase_id)
+  expect_false("phenophase_id" %in% colnames(some_data))
 
   vcr::use_cassette("npn_download_site_phenometrics_pheno_agg_3", {
     some_data <- npn_download_site_phenometrics(
@@ -584,7 +584,7 @@ test_that("higher level taxonomic agg and pheno agg works for site level", {
   expect_gt(nrow(some_data), 100)
   expect_type(some_data$pheno_class_name, "character")
   expect_type(some_data$order_id, "integer")
-  expect_null(some_data$phenophase_id)
+  expect_false("phenophase_id" %in% colnames(some_data))
 })
 
 test_that("higher level taxonomic agg works for magnitude", {
@@ -604,7 +604,7 @@ test_that("higher level taxonomic agg works for magnitude", {
   expect_gt(nrow(some_data), 10)
   expect_type(some_data$family_id, "integer")
   expect_equal(some_data[1, ]$family_id, 322)
-  expect_null(some_data$species_id)
+  expect_false("species_id" %in% colnames(some_data))
 
   vcr::use_cassette("npn_download_magnitude_phenometrics_pheno_agg_2", {
     some_data <- npn_download_magnitude_phenometrics(
@@ -618,7 +618,7 @@ test_that("higher level taxonomic agg works for magnitude", {
 
   expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 10)
-  expect_null(some_data$phenophase_id)
+  expect_false("phenophase_id" %in% colnames(some_data))
 
   vcr::use_cassette("npn_download_magnitude_phenometrics_pheno_agg_3", {
     some_data <- npn_download_magnitude_phenometrics(
@@ -635,7 +635,7 @@ test_that("higher level taxonomic agg works for magnitude", {
   expect_gt(nrow(some_data), 10)
   expect_type(some_data$pheno_class_name, "character")
   expect_type(some_data$order_id, "integer")
-  expect_null(some_data$phenophase_id)
+  expect_false("phenophase_id" %in% colnames(some_data))
 })
 
 test_that("six concordance works for status", {
