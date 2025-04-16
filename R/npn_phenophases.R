@@ -85,7 +85,7 @@ npn_phenophase_details <- function(ids = NULL, ...) {
 #' pp <- npn_phenophases_by_species(3, "2018-05-05")
 #' }
 npn_phenophases_by_species <- function(species_ids, date, ...) {
-  species_ids <- npn_createArgList("species_id", species_ids)
+  species_ids <- explode_query("species_id", species_ids)
   req <- base_req %>%
     httr2::req_url_path_append('phenophases/getPhenophasesForSpecies.json') %>%
     httr2::req_url_query(!!!species_ids) %>%

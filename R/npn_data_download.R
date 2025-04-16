@@ -698,6 +698,13 @@ npn_get_data_by_year <- function(
           )
       }
 
+      # TODO: perhaps instead of using npn_get_data() in a loop, a better option
+      # might be to construct a list of requests and then perform them
+      # iteratively or in parallel with req_perform_iterative() ro
+      # req_perform_parallel(). Then the same wrangling could be applied to one
+      # year or a collection of years of data either in memory or streaming from
+      # ndjson saved to a temporarly file on disk
+
       # We also have to generate a unique URL on each request to account
       # for the changes in the start/end date
       message("Downloading...")
@@ -793,6 +800,7 @@ npn_get_data <- function(
   #rows
   wrangle_dl_data <- function(df) {
     df <- df %>%
+      dplyr::as_tibble() %>% #important to handle empty list
       dplyr::mutate(
         dplyr::across(
           dplyr::where(is.numeric),
@@ -1000,6 +1008,10 @@ npn_get_common_query_vars <- function(
     species_ids = NULL
   }
 
+  if (!(is.logical(climate_data) & length(climate_data) == 1)) {
+    stop("`climate_data` must be `TRUE` or `FALSE`")
+  }
+
   if (!is.null(wkt)) {
     station_ids_shape <- tryCatch(
       {
@@ -1022,26 +1034,23 @@ npn_get_common_query_vars <- function(
   query <- c(
     list(
       request_src = URLencode(request_source),
-      #TODO change to something like
-      # if(!is.null(climate_data)) climate_data <- as.integer(climate_data)
-      # this *might* break things if it is important that climate_date = 0 always
-      climate_data = (if (climate_data) "1" else "0")
+      climate_data = as.integer(climate_data) #convert from logical
     ),
     # All these variables take a multiplicity of possible parameters, this will help put them all together.
-    npn_createArgList("species_id", species_ids),
-    npn_createArgList("station_id", station_ids),
-    npn_createArgList("species_type", species_types),
-    npn_createArgList("network_id", network_ids),
-    npn_createArgList("dataset_ids", dataset_ids),
-    npn_createArgList("state", states),
-    npn_createArgList("phenophase_id", phenophase_ids),
-    npn_createArgList("functional_type", functional_types),
-    npn_createArgList("additional_field", additional_fields),
-    npn_createArgList("genus_id", genus_ids),
-    npn_createArgList("family_id", family_ids),
-    npn_createArgList("order_id", order_ids),
-    npn_createArgList("class_id", class_ids),
-    npn_createArgList("pheno_class_id", pheno_class_ids)
+    explode_query("species_id", species_ids),
+    explode_query("station_id", station_ids),
+    explode_query("species_type", species_types),
+    explode_query("network_id", network_ids),
+    explode_query("dataset_ids", dataset_ids),
+    explode_query("state", states),
+    explode_query("phenophase_id", phenophase_ids),
+    explode_query("functional_type", functional_types),
+    explode_query("additional_field", additional_fields),
+    explode_query("genus_id", genus_ids),
+    explode_query("family_id", family_ids),
+    explode_query("order_id", order_ids),
+    explode_query("class_id", class_ids),
+    explode_query("pheno_class_id", pheno_class_ids)
   )
 
   if (!is.null(coords) && length(coords) == 4) {
