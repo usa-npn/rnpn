@@ -392,7 +392,7 @@ resolve_six_raster <- function(year,
 
   layer_name = paste0("si-x:", sub_model, "_", phenophase, "_", src)
 
-  raster <- npn_download_geospatial(layer_name, date, "tiff")
+  raster <- npn_download_geospatial(coverage_id = layer_name, date = date)
 }
 
 #' Merge Geo Data
