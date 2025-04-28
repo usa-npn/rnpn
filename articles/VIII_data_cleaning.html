@@ -102,7 +102,7 @@
                         <h4 data-toc-skip class="author">Alyssa
 Rosemartin</h4>
             
-            <h4 data-toc-skip class="date">2025-04-15</h4>
+            <h4 data-toc-skip class="date">2025-04-28</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/usa-npn/rnpn/blob/master/vignettes/VIII_data_cleaning.Rmd" class="external-link"><code>vignettes/VIII_data_cleaning.Rmd</code></a></small>
       <div class="hidden name"><code>VIII_data_cleaning.Rmd</code></div>
@@ -176,7 +176,7 @@ ggplot2.</p>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html" class="external-link">geom_bar</a></span><span class="op">(</span>stat <span class="op">=</span> <span class="st">"identity"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rspatial.github.io/terra/reference/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">p</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Percent Multi and One Observer Status Conflict by Phenophase"</span><span class="op">)</span></span>
 <span>     <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_y_continuous</a></span><span class="op">(</span>labels <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org/reference/percent_format.html" class="external-link">percent_format</a></span><span class="op">(</span>scale <span class="op">=</span> <span class="fl">100</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="figures%2Fconflicts-by-site.png" width="75%"></p>
+<p><img src="figures/conflicts-by-site.png" width="75%"></p>
 <p>Note that the prior two steps can be repeated, replacing “site_id”
 with “phenophase_description” to view conflicts by phenophase.</p>
 </div>
@@ -262,7 +262,7 @@ no, for all the first yes records in this dataset:</p>
 <span><span class="fu"><a href="https://rspatial.github.io/terra/reference/quantile.html" class="external-link">quantile</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">df</span><span class="op">$</span><span class="va">numdays_since_prior_no</span>,</span>
 <span>         probs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.01</span>, <span class="fl">0.05</span>, <span class="fl">0.25</span>, <span class="fl">0.75</span>, <span class="fl">0.95</span>, <span class="fl">0.99</span><span class="op">)</span>,</span>
 <span>         na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
-<p><img src="figures%2FHistogramPriorNo.png" width="75%"></p>
+<p><img src="figures/HistogramPriorNo.png" width="75%"></p>
 </div>
 <div class="section level4">
 <h4 id="filtering-data-by-prior-no">Filtering Data by Prior No<a class="anchor" aria-label="anchor" href="#filtering-data-by-prior-no"></a>
@@ -335,7 +335,7 @@ wrap by phenophase, in ggplot2.</p>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html" class="external-link">geom_bar</a></span><span class="op">(</span>stat <span class="op">=</span> <span class="st">"identity"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rspatial.github.io/terra/reference/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">p</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Frequency of Multiple First Yeses by Phenophase (Flowering Dogwood, 2021)"</span><span class="op">)</span></span>
 <span>     <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_y_continuous</a></span><span class="op">(</span>labels <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org/reference/percent_format.html" class="external-link">percent_format</a></span><span class="op">(</span>scale <span class="op">=</span> <span class="fl">100</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="figures%2FMFY-byPhenophase.png" width="75%"></p>
+<p><img src="figures/MFY-byPhenophase.png" width="75%"></p>
 <p>In this example, there is a high frequency of series with multiple
 first yeses! To examine what is happening in cases like this one, users
 can look at the multiple_observer field to see how many of the series
@@ -388,7 +388,7 @@ Bud (Phenophase ID 371) data, in the Individual Phenometrics format:</p>
 <span>  ylab<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Day of Year"</span><span class="op">)</span>, xlab<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Year"</span><span class="op">)</span>, ylim<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">350</span><span class="op">)</span>,</span>
 <span>  cex<span class="op">=</span><span class="fl">2</span>,  cex.axis<span class="op">=</span><span class="fl">1.5</span>, cex.lab<span class="op">=</span><span class="fl">1.5</span>, pch<span class="op">=</span><span class="fl">21</span></span>
 <span><span class="op">)</span></span></code></pre></div>
-<p><img src="figures%2FRedOak1.png" width="75%"></p>
+<p><img src="figures/RedOak1.png" width="75%"></p>
 <p>Remove individual oak trees with less than 8 years of data:</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df_8Y</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
@@ -424,7 +424,7 @@ interquartile range for the individual plant.</p>
 <span>  ylab<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Day of Year"</span><span class="op">)</span>, xlab<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Year"</span><span class="op">)</span>, ylim<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">350</span><span class="op">)</span>,</span>
 <span>  cex<span class="op">=</span><span class="fl">2</span>,  cex.axis<span class="op">=</span><span class="fl">1.5</span>, cex.lab<span class="op">=</span><span class="fl">1.5</span>, pch<span class="op">=</span><span class="fl">21</span></span>
 <span><span class="op">)</span></span></code></pre></div>
-<p><img src="figures%2FRedOak3.png" width="75%"></p>
+<p><img src="figures/RedOak3.png" width="75%"></p>
 <p>Huge thanks to Amanda Gallinat and Jeff Oliver for very helpful
 review of this vignette.</p>
 </div>
@@ -445,7 +445,7 @@ review of this vignette.</p>
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.2.</p>
 </div>
 
       </footer>
