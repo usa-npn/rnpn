@@ -1,7 +1,5 @@
 # rnpn (development version)
 
-* -9999 is now converted to `NA` for all columns in data returned by `npn_download_*()` functions (#119, #121).
-
 ## Bug fixes
 
 * fixed bug that caused some `npn_download_*()` functions to error when sections of the data were `NA` (#107 reported by @ezylstra)
