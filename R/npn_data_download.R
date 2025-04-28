@@ -793,25 +793,16 @@ npn_get_data <- function(
   #rows
   wrangle_dl_data <- function(df) {
     df <- df %>%
-      dplyr::mutate(
-        dplyr::across(
-          dplyr::where(is.numeric),
-          function(x) ifelse(x == -9999, NA_real_, x)
-        )
-      ) %>%
-      dplyr::mutate(
-        dplyr::across(
-          dplyr::where(is.character),
-          function(x) ifelse(x == "-9999", NA_character_, x)
-        )
-      ) %>%
       # handle some columns that may be read in as the wrong type if they happen
       # to be all NAs (#87, #107). `any_of()` is used because not all endpoints
       # will return these columns!
       dplyr::mutate(
         dplyr::across(
           dplyr::any_of("update_datetime"),
-          function(x) as.POSIXct(x, tz = "UTC")
+          function(x) {
+            x <- ifelse(x == -9999, NA, x)
+            as.POSIXct(x, tz = "UTC")
+          }
         ),
         dplyr::across(
           dplyr::any_of(c(
@@ -901,6 +892,20 @@ npn_get_data <- function(
         df$cal_date <- NULL
       }
     }
+
+    df <- df %>%
+      dplyr::mutate(
+        dplyr::across(
+          dplyr::where(is.numeric),
+          function(x) ifelse(x == -9999, NA_real_, x)
+        )
+      ) %>%
+      dplyr::mutate(
+        dplyr::across(
+          dplyr::where(is.character),
+          function(x) ifelse(x == "-9999", NA_character_, x)
+        )
+      )
     return(tibble::as_tibble(df))
   }
   path <- withr::local_tempfile()
