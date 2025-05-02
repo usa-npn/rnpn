@@ -130,7 +130,9 @@ npn_download_geospatial <- function (coverage_id,
       return(ras)
     } else {
       resp <- httr2::req_perform(req, path = output_path)
-      #TODO return output_path?
+      if (!httr2::resp_is_error(resp)) {
+        return(normalizePath(output_path))
+      }
     }
   }, error = function(msg) { #TODO use httr2 for error handling
     message(
