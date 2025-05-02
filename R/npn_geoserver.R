@@ -277,10 +277,9 @@ npn_get_agdd_point_data <- function(
 #'   )
 #' }
 npn_get_point_data <- function(layer, lat, long, date, store_data = TRUE) {
-  #TODO cached value is data frame, not numeric
   cached_value <- npn_check_point_cached(layer, lat, long, date)
   if (!is.null(cached_value)) {
-    return(cached_value)
+    return(cached_value$value)
   }
   resp <- tryCatch({
     req <- base_req_geoserver %>%
@@ -393,7 +392,7 @@ resolve_six_raster <- function(year,
 
   layer_name = paste0("si-x:", sub_model, "_", phenophase, "_", src)
 
-  raster <- npn_download_geospatial(layer_name, date, "tiff")
+  raster <- npn_download_geospatial(coverage_id = layer_name, date = date)
 }
 
 #' Merge Geo Data
