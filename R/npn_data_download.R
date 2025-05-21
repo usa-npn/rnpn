@@ -912,10 +912,10 @@ npn_get_data <- function(
   # time and append to the CSV file specified in `download_path`
   if (is.null(download_path)) {
     dtm <- httr2::resp_body_json(resp, simplifyVector = TRUE)
-    # If dtm is an empty list because there are no records, set equal to NULL
-    # and print message
+    # If dtm is an empty list because there are no records, convert it into an
+    # empty tibble
     if (is.null(dim(dtm))) {
-      dtm <- NULL
+      dtm <- dplyr::tibble()
       message(paste0("No records in ", substring(query$start_date, 1, 4)))
     } else {
       dtm <- wrangle_dl_data(dtm)

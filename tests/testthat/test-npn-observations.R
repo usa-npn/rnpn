@@ -149,7 +149,6 @@ test_that("phenometrics downloads work", {
 
   #remove one of these depending on which you decide to return on this error
   expect_equal(dl, dplyr::tibble())
-  expect_null(dl)
 })
 
 test_that("custom period works", {
