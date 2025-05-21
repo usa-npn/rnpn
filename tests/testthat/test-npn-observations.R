@@ -136,14 +136,16 @@ test_that("phenometrics downloads work", {
 
   expect_gt(num_mag_custom, num_mag_default)
 
-  expect_message(
-    dl <- npn_download_individual_phenometrics(
-      request_source = 'erinz',
-      years = 2009,
-      species_ids = 1612
-    ),
-    "No records in 2009"
-  )
+  vcr::use_cassette("npn_download_no_records", {
+    expect_message(
+      dl <- npn_download_individual_phenometrics(
+        request_source = 'erinz',
+        years = 2009,
+        species_ids = 1612
+      ),
+      "No records in 2009"
+    )
+  })
 
   #remove one of these depending on which you decide to return on this error
   expect_equal(dl, dplyr::tibble())

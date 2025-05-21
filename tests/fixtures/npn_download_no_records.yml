@@ -1,0 +1,27 @@
+http_interactions:
+- request:
+    method: post
+    uri: https://services.usanpn.org/npn_portal/observations/getSummarizedData.json
+    body:
+      encoding: ''
+      string: ''
+    headers: []
+  response:
+    status:
+      status_code: 200
+      message: OK
+    headers:
+      date: Wed, 21 May 2025 15:39:06 GMT
+      content-type: application/json
+      content-length: '2'
+      server: Apache/2.4.62 () PHP/5.5.38
+      x-powered-by: PHP/5.5.38
+      access-control-allow-origin: '*'
+      access-control-allow-headers: origin, x-requested-with, content-type
+      access-control-allow-methods: PUT, GET, POST, DELETE, OPTIONS
+    body:
+      encoding: ''
+      file: no
+      string: '[]'
+  recorded_at: 2025-05-21 15:39:06 GMT
+  recorded_with: vcr/1.6.0, webmockr/1.0.0
