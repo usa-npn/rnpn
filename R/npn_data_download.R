@@ -830,6 +830,7 @@ npn_get_data <- function(
             "observer_status_conflict_flag_individual_ids",
             "in-phase_search_method",
             "in-phase_per_hr_search",
+            "state",
             #sometimes get parsed as numeric:
             "intensity_value",
             "abundance_value"
