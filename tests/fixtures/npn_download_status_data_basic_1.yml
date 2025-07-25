@@ -7,7 +7,7 @@ http_interactions:
   response:
     status: 200
     headers:
-      date: Fri, 25 Jul 2025 21:33:08 GMT
+      date: Fri, 25 Jul 2025 22:18:52 GMT
       content-type: application/json
       server: Apache/2.4.62 () PHP/5.5.38
       x-powered-by: PHP/5.5.38
@@ -3667,5 +3667,5 @@ http_interactions:
         marsh marigold","kingdom":"Plantae","individual_id":37705,"phenophase_id":516,"phenophase_description":"Fruits","observation_date":"2013-06-12","day_of_year":163,"phenophase_status":0,"intensity_category_id":57,"intensity_value":-9999,"abundance_value":-9999},{"observation_id":2304169,"update_datetime":-9999,"site_id":9812,"latitude":41.325417,"longitude":-73.395576,"elevation_in_meters":195,"state":"CT","species_id":6,"genus":"Caltha","species":"palustris","common_name":"yellow
         marsh marigold","kingdom":"Plantae","individual_id":37705,"phenophase_id":516,"phenophase_description":"Fruits","observation_date":"2013-06-19","day_of_year":170,"phenophase_status":0,"intensity_category_id":57,"intensity_value":-9999,"abundance_value":-9999},{"observation_id":2617877,"update_datetime":-9999,"site_id":9812,"latitude":41.325417,"longitude":-73.395576,"elevation_in_meters":195,"state":"CT","species_id":6,"genus":"Caltha","species":"palustris","common_name":"yellow
         marsh marigold","kingdom":"Plantae","individual_id":37705,"phenophase_id":516,"phenophase_description":"Fruits","observation_date":"2013-09-04","day_of_year":247,"phenophase_status":0,"intensity_category_id":57,"intensity_value":-9999,"abundance_value":-9999}]'
-  recorded_at: 2025-07-25 21:33:08
+  recorded_at: 2025-07-25 22:18:53
 recorded_with: VCR-vcr/2.0.0
