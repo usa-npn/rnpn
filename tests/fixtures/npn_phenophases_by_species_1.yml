@@ -1,17 +1,11 @@
 http_interactions:
 - request:
-    method: get
+    method: GET
     uri: https://services.usanpn.org/npn_portal/phenophases/getPhenophasesForSpecies.json?species_id%5B1%5D=3&date=2018-05-05
-    body:
-      encoding: ''
-      string: ''
-    headers: []
   response:
-    status:
-      status_code: 200
-      message: OK
+    status: 200
     headers:
-      date: Wed, 20 Nov 2024 19:11:26 GMT
+      date: Fri, 25 Jul 2025 21:41:13 GMT
       content-type: application/json; charset=utf-8
       content-length: '6161'
       server: Apache/2.4.62 () PHP/5.5.38
@@ -22,8 +16,6 @@ http_interactions:
       access-control-allow-headers: origin, x-requested-with, content-type
       access-control-allow-methods: PUT, GET, POST, DELETE, OPTIONS
     body:
-      encoding: ''
-      file: no
       string: '[{"species_id":3,"species_name":"red maple","phenophases":[{"phenophase_id":371,"phenophase_name":"Breaking
         leaf buds","phenophase_category":"Leaves","phenophase_definition":"One or
         more breaking leaf buds are visible on the plant.  A leaf bud is considered
@@ -84,5 +76,5 @@ http_interactions:
         dropped before ripening, such as in a heavy rain or wind, or empty fruits
         that had long ago dropped all of their seeds but remained on the plant.","phenophase_additional_definition":"","seq_num":330,"color":"Green3","pheno_class_id":13,"pheno_class_name":"Recent
         fruit, cone or seed drop","pheno_class_sequence":130,"abundance_category":59,"raw_abundance":false}]}]'
-  recorded_at: 2024-11-20 19:11:26 GMT
-  recorded_with: vcr/1.6.0, webmockr/1.0.0
+  recorded_at: 2025-07-25 21:41:12
+recorded_with: VCR-vcr/2.0.0

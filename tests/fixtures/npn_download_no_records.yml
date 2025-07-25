@@ -1,17 +1,13 @@
 http_interactions:
 - request:
-    method: post
+    method: POST
     uri: https://services.usanpn.org/npn_portal/observations/getSummarizedData.json
     body:
-      encoding: ''
-      string: ''
-    headers: []
+      string: request_src=erinz&climate_data=0&species_id[1]=1612&start_date=2009-01-01&end_date=2009-12-31
   response:
-    status:
-      status_code: 200
-      message: OK
+    status: 200
     headers:
-      date: Wed, 21 May 2025 15:39:06 GMT
+      date: Fri, 25 Jul 2025 21:33:10 GMT
       content-type: application/json
       content-length: '2'
       server: Apache/2.4.62 () PHP/5.5.38
@@ -20,8 +16,6 @@ http_interactions:
       access-control-allow-headers: origin, x-requested-with, content-type
       access-control-allow-methods: PUT, GET, POST, DELETE, OPTIONS
     body:
-      encoding: ''
-      file: no
       string: '[]'
-  recorded_at: 2025-05-21 15:39:06 GMT
-  recorded_with: vcr/1.6.0, webmockr/1.0.0
+  recorded_at: 2025-07-25 21:33:10
+recorded_with: VCR-vcr/2.0.0
