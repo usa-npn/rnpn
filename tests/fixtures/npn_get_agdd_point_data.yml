@@ -1,19 +1,13 @@
 http_interactions:
 - request:
-    method: get
+    method: GET
     uri: https://services.usanpn.org/npn_portal/stations/getTimeSeries.json?latitude=32.4&longitude=-110&start_date=2020-01-14&end_date=2020-01-15&layer=gdd%3Aagdd
-    body:
-      encoding: ''
-      string: ''
-    headers: []
   response:
-    status:
-      status_code: 200
-      message: OK
+    status: 200
     headers:
-      date: Wed, 11 Dec 2024 22:52:46 GMT
+      date: Fri, 25 Jul 2025 21:29:07 GMT
       content-type: application/json; charset=utf-8
-      content-length: '123'
+      content-length: '2'
       server: Apache/2.4.62 () PHP/5.5.38
       x-powered-by: PHP/5.5.38
       pragma: no-cache
@@ -22,8 +16,6 @@ http_interactions:
       access-control-allow-headers: origin, x-requested-with, content-type
       access-control-allow-methods: PUT, GET, POST, DELETE, OPTIONS
     body:
-      encoding: ''
-      file: no
-      string: '[{"point_value":133.24490356445,"doy":14,"date":"2020-01-14"},{"point_value":146.45687866211,"doy":15,"date":"2020-01-15"}]'
-  recorded_at: 2024-12-11 22:52:47 GMT
-  recorded_with: vcr/1.6.0, webmockr/1.0.0
+      string: '[]'
+  recorded_at: 2025-07-25 21:29:07
+recorded_with: VCR-vcr/2.0.0

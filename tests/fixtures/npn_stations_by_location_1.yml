@@ -1,17 +1,11 @@
 http_interactions:
 - request:
-    method: get
-    uri: https://services.usanpn.org/npn_portal/stations/getStationsByLocation.json?wkt=POLYGON%28%28-110.94484396954107%2032.23623109416672%2C-110.96166678448247%2032.23594069208043%2C-110.95960684795904%2032.21328646993733%2C-110.94244071026372%2032.21343170728929%2C-110.93935080547857%2032.23216538049456%2C-110.94484396954107%2032.23623109416672%29%29
-    body:
-      encoding: ''
-      string: ''
-    headers: []
+    method: GET
+    uri: https://services.usanpn.org/npn_portal/stations/getStationsByLocation.json?wkt=POLYGON%28%28-110.94484396954107+32.23623109416672%2C-110.96166678448247+32.23594069208043%2C-110.95960684795904+32.21328646993733%2C-110.94244071026372+32.21343170728929%2C-110.93935080547857+32.23216538049456%2C-110.94484396954107+32.23623109416672%29%29
   response:
-    status:
-      status_code: 200
-      message: OK
+    status: 200
     headers:
-      date: Wed, 20 Nov 2024 17:59:18 GMT
+      date: Fri, 25 Jul 2025 21:41:21 GMT
       content-type: application/json
       server: Apache/2.4.62 () PHP/5.5.38
       x-powered-by: PHP/5.5.38
@@ -19,8 +13,6 @@ http_interactions:
       access-control-allow-headers: origin, x-requested-with, content-type
       access-control-allow-methods: PUT, GET, POST, DELETE, OPTIONS
     body:
-      encoding: ''
-      file: no
       string: '[{"latitude":32.228123,"longitude":-110.942818,"station_name":"Demo","station_id":18},{"latitude":32.223789,"longitude":-110.947220,"station_name":"Home","station_id":28},{"latitude":32.228146,"longitude":-110.942749,"station_name":"Office
         of Arid Land Studies","station_id":1573},{"latitude":32.228123,"longitude":-110.942818,"station_name":"Work","station_id":2631},{"latitude":32.215366,"longitude":-110.954544,"station_name":"Home","station_id":5069},{"latitude":32.235649,"longitude":-110.950851,"station_name":"work","station_id":5360},{"latitude":32.228123,"longitude":-110.942818,"station_name":"Work","station_id":5935},{"latitude":32.227734,"longitude":-110.943512,"station_name":"Work","station_id":6036},{"latitude":32.231880,"longitude":-110.951012,"station_name":"Joseph
         Wood Krutch Garden U Arizona mall","station_id":6102},{"latitude":32.228535,"longitude":-110.943207,"station_name":"TPT
@@ -60,7 +52,7 @@ http_interactions:
         Wood Krutch Garden","station_id":18528},{"latitude":32.234688,"longitude":-110.958412,"station_name":"home","station_id":19419},{"latitude":32.222012,"longitude":-110.953629,"station_name":"My
         Yard","station_id":19440},{"latitude":32.228123,"longitude":-110.942818,"station_name":"NNsite2","station_id":19476},{"latitude":32.228123,"longitude":-110.942818,"station_name":"1955
         E. 6th Street","station_id":20124},{"latitude":32.223225,"longitude":-110.958115,"station_name":"My
-        Yard","station_id":20314},{"latitude":32.228104,"longitude":-110.942757,"station_name":"test","station_id":20700},{"latitude":32.228104,"longitude":-110.942757,"station_name":"office","station_id":21203},{"latitude":32.228104,"longitude":-110.942757,"station_name":"testoffice","station_id":21368},{"latitude":32.230099,"longitude":-110.951790,"station_name":"rc
+        Yard","station_id":20314},{"latitude":32.228104,"longitude":-110.942757,"station_name":"office","station_id":21203},{"latitude":32.228104,"longitude":-110.942757,"station_name":"testoffice","station_id":21368},{"latitude":32.230099,"longitude":-110.951790,"station_name":"rc
         online","station_id":21571},{"latitude":32.230103,"longitude":-110.951630,"station_name":"rc
         again","station_id":21574},{"latitude":32.230061,"longitude":-110.951721,"station_name":"zip","station_id":21582},{"latitude":32.230087,"longitude":-110.951584,"station_name":"dip","station_id":21583},{"latitude":32.219196,"longitude":-110.948067,"station_name":"The
         Yurt","station_id":21601},{"latitude":32.230087,"longitude":-110.951591,"station_name":"rc
@@ -198,6 +190,8 @@ http_interactions:
         backyard","station_id":53210},{"latitude":32.230240,"longitude":-110.949959,"station_name":"Dorm","station_id":53213},{"latitude":32.228901,"longitude":-110.953300,"station_name":"TheearthwormUA","station_id":53216},{"latitude":32.231636,"longitude":-110.949326,"station_name":"University
         of Arizona","station_id":53223},{"latitude":32.230499,"longitude":-110.952400,"station_name":"W
         Rush Desert Milkweed W of BSE","station_id":53597},{"latitude":32.230862,"longitude":-110.951500,"station_name":"Campus","station_id":53872},{"latitude":32.231899,"longitude":-110.950897,"station_name":"Tucson","station_id":53962},{"latitude":32.230427,"longitude":-110.951363,"station_name":"My
-        backyard","station_id":54230},{"latitude":32.228352,"longitude":-110.955147,"station_name":"Theearthworm","station_id":54783}]'
-  recorded_at: 2024-11-20 17:59:18 GMT
-  recorded_with: vcr/1.6.0, webmockr/1.0.0
+        backyard","station_id":54230},{"latitude":32.228352,"longitude":-110.955147,"station_name":"Theearthworm","station_id":54783},{"latitude":32.230206,"longitude":-110.951927,"station_name":"test10","station_id":56465},{"latitude":32.230305,"longitude":-110.951454,"station_name":"Testing25","station_id":56519},{"latitude":32.230206,"longitude":-110.952141,"station_name":"Test
+        site","station_id":56721},{"latitude":32.228844,"longitude":-110.954651,"station_name":"Pollinator
+        Garden N of ENR2","station_id":57858}]'
+  recorded_at: 2025-07-25 21:41:21
+recorded_with: VCR-vcr/2.0.0

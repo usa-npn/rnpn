@@ -8,8 +8,7 @@ state and is being actively
 developed.](http://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/rnpn)](https://CRAN.R-project.org/package=rnpn)
-[![R build
-status](https://github.com/usa-npn/rnpn//workflows/R-CMD-check/badge.svg)](https://github.com/usa-npn/rnpn/actions/workflows/R-CMD-check.yaml)
+[![R-CMD-check](https://github.com/usa-npn/rnpn/actions/workflows/R-CMD-check.yaml/badge.svg?branch=master)](https://github.com/usa-npn/rnpn/actions/workflows/R-CMD-check.yaml)
 [![Codecov test
 coverage](https://codecov.io/gh/usa-npn/rnpn/graph/badge.svg)](https://app.codecov.io/gh/usa-npn/rnpn)
 <!-- badges: end -->
