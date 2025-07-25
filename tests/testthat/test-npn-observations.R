@@ -210,42 +210,39 @@ test_that("custom period works", {
 # these can't be mocked currently due to limitations of vcr
 test_that("file download works", {
   skip_on_cran()
-  skip_if(skip_long_tests, "Skipping long tests")
   skip_if_not(check_service(), "Service is down")
 
-  test_download_path <- withr::local_tempfile(fileext = ".csv")
+  withr::with_tempdir({
+    status_dl <- npn_download_status_data(
+      request_source = "Unit Test",
+      years = 2013,
+      species_ids = c(6),
+      download_path = "test_status.csv"
+    )
+    expect_equal(status_dl, normalizePath("test_status.csv"))
+    expect_true(file.exists(status_dl))
+    status_data <- read.csv(status_dl)
 
-  # vcr::use_cassette("downloads", {
-  status_dl_file <- npn_download_status_data(
-    request_source = "Unit Test",
-    years = 2013,
-    species_ids = c(6),
-    download_path = test_download_path
-  )
-  # })
+    expect_s3_class(status_data, "data.frame")
+    expect_gt(nrow(status_data), 1000)
+    expect_type(status_data$species_id, "integer")
+    expect_equal(status_data[1, ]$species_id, 6)
 
-  expect_true(file.exists(status_dl_file))
-  some_data <- read.csv(status_dl_file)
+    magnitude_dl <- npn_download_magnitude_phenometrics(
+      request_source = "Unit Test",
+      years = 2013,
+      species_ids = c(6),
+      download_path = "test_magnitude.csv"
+    )
+    expect_equal(magnitude_dl, normalizePath("test_magnitude.csv"))
+    expect_true(file.exists(magnitude_dl))
+    magnitude_data <- read.csv(magnitude_dl)
 
-  expect_s3_class(some_data, "data.frame")
-  expect_gt(nrow(some_data), 1000)
-  expect_type(some_data$species_id, "integer")
-  expect_equal(some_data[1, ]$species_id, 6)
-
-  some_data <- npn_download_magnitude_phenometrics(
-    request_source = "Unit Test",
-    years = 2013,
-    species_ids = c(6),
-    download_path = test_download_path
-  )
-  expect_equal(file.exists(test_download_path), TRUE)
-  some_data <- read.csv(test_download_path)
-
-  expect_s3_class(some_data, "data.frame")
-  expect_gt(nrow(some_data), 10)
-  expect_type(some_data$species_id, "integer")
-  expect_equal(some_data[1, ]$species_id, 6)
-})
+    expect_s3_class(magnitude_data, "data.frame")
+    expect_gt(nrow(magnitude_data), 10)
+    expect_type(magnitude_data$species_id, "integer")
+    expect_equal(magnitude_data[1, ]$species_id, 6)
+  })
 
 test_that("climate data flag works", {
   skip_on_cran()

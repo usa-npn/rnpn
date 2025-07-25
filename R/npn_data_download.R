@@ -731,7 +731,7 @@ npn_get_data_by_year <- function(
   if (is.null(download_path)) {
     return(all_data)
   } else {
-    return(download_path)
+    return(normalizePath(download_path))
   }
 }
 
@@ -950,7 +950,9 @@ npn_get_data <- function(
         },
         pagesize = 5000
       )
-    return(download_path)
+    # If the user asks for the data to be saved to file then
+    # return the `download_path`
+    return(normalizePath(download_path))
   }
 }
 

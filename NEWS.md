@@ -1,11 +1,13 @@
 # rnpn (development version)
 
+* Functions that download files now return the path to the downloaded file for convenience.
 * -9999 is now converted to `NA` for all columns in data returned by `npn_download_*()` functions (#119, #121).
 * compatibility with vcr v2.0.0 (fixed in #125 by @skott)
 
 ## Bug fixes
 
 * fixed bug that caused some `npn_download_*()` functions to error when sections of the data were `NA` (#107 reported by @ezylstra)
+
 
 # rnpn 1.4.0
 
