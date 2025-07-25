@@ -1,20 +1,11 @@
 http_interactions:
 - request:
-    method: get
+    method: GET
     uri: https://services.usanpn.org/npn_portal/phenophases/getAbundanceCategories.json
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      Accept: application/json, text/xml, application/xml, */*
   response:
-    status:
-      status_code: 200
-      category: Success
-      reason: OK
-      message: 'Success: (200) OK'
+    status: 200
     headers:
-      date: Wed, 13 Nov 2024 00:26:33 GMT
+      date: Fri, 25 Jul 2025 21:41:13 GMT
       content-type: application/json; charset=utf-8
       server: Apache/2.4.62 () PHP/5.5.38
       x-powered-by: PHP/5.5.38
@@ -24,8 +15,6 @@ http_interactions:
       access-control-allow-headers: origin, x-requested-with, content-type
       access-control-allow-methods: PUT, GET, POST, DELETE, OPTIONS
     body:
-      encoding: ''
-      file: no
       string: '[{"category_id":10,"category_name":"Frog vocalizing","category_description":"What
         is the intensity of vocalizing?","category_values":[{"value_id":20,"value_description":"There
         is space between calls and individuals can be counted.","value_name":"Single
@@ -314,5 +303,5 @@ http_interactions:
         calls"},{"value_id":21,"value_description":"Calls of individuals can be distinguished
         but there is some overlapping of calls.","value_name":"Overlapping calls"},{"value_id":22,"value_description":"Calls
         are constant and overlapping.","value_name":"Full chorus"}]},{"category_id":77,"category_name":"","category_description":"","category_values":[]}]'
-  recorded_at: 2024-11-13 00:26:33 GMT
-  recorded_with: vcr/1.6.0, webmockr/1.0.0
+  recorded_at: 2025-07-25 21:41:13
+recorded_with: VCR-vcr/2.0.0

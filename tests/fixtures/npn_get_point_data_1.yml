@@ -1,61 +1,57 @@
 http_interactions:
 - request:
-    method: get
-    uri: http://geoserver.usanpn.org/geoserver/wcs?service=WCS&version=2.0.1&request=GetCoverage&coverageId=gdd%3Aagdd&format=application%2Fgml%2Bxml&subset=http%3A%2F%2Fwww.opengis.net%2Fdef%2Faxis%2FOGC%2F0%2FLong%28-110.5%29&subset=http%3A%2F%2Fwww.opengis.net%2Fdef%2Faxis%2FOGC%2F0%2FLat%2838.8%29&subset=http%3A%2F%2Fwww.opengis.net%2Fdef%2Faxis%2FOGC%2F0%2Ftime%28%222022-05-05T00%3A00%3A00.000Z%22%29
-    body:
-      encoding: ''
-      string: ''
-    headers: []
+    method: GET
+    uri: http://geoserver.usanpn.org/geoserver/wcs?service=WCS&version=2.0.1&request=GetCoverage&coverageId=gdd%3Aagdd&format=application%2Fgml%2Bxml&subset=http%3A%2F%2Fwww.opengis.net%2Fdef%2Faxis%2FOGC%2F0%2FLong%28-110.5%29
   response:
-    status:
-      status_code: 200
-      message: OK
+    status: 200
     headers:
-      Date: Wed, 11 Dec 2024 22:52:44 GMT
-      Server: Apache/2.4.29 (Ubuntu) mod_jk/1.2.43 OpenSSL/1.1.1
+      Cache-Control: private
+      X-Content-Type-Options: nosniff
       X-Frame-Options: SAMEORIGIN
+      Content-Security-Policy: base-uri 'self'; form-action 'self'; default-src 'none';
+        child-src 'self'; connect-src 'self'; font-src 'self'; img-src 'self' data:;
+        style-src 'self' 'unsafe-inline'; script-src 'self';, frame-ancestors 'self';
       Content-Disposition: inline; filename=gdd:agdd.gml
       Content-Encoding: gzip
-      Transfer-Encoding: chunked
       Content-Type: application/gml+xml
+      Transfer-Encoding: chunked
+      Date: Fri, 25 Jul 2025 21:29:03 GMT
     body:
-      encoding: ''
-      file: no
-      string: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><gml:RectifiedGridCoverage
-        xmlns:wcscrs=\"http://www.opengis.net/wcs/service-extension/crs/1.0\" xmlns:int=\"http://www.opengis.net/WCS_service-extension_interpolation/1.0\"
-        xmlns:gml=\"http://www.opengis.net/gml/3.2\" xmlns:gmlcov=\"http://www.opengis.net/gmlcov/1.0\"
-        xmlns:swe=\"http://www.opengis.net/swe/2.0\" xmlns:xlink=\"http://www.w3.org/1999/xlink\"
-        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" gml:id=\"agdd\">\n
-        \   <gml:boundedBy>\n        <gml:Envelope srsName=\"http://www.opengis.net/def/crs/EPSG/0/4269\"
-        axisLabels=\"Lat Long\" uomLabels=\"Deg Deg\" srsDimension=\"2\">\n            <gml:lowerCorner>-110.50896966853418
-        38.79102198697067</gml:lowerCorner>\n            <gml:upperCorner>-110.48650548334615
-        38.81209283387621</gml:upperCorner>\n        </gml:Envelope>\n    </gml:boundedBy>\n
-        \   <gml:domainSet>\n        <gml:RectifiedGrid gml:id=\"grid00__agdd\" dimension=\"2\">\n
-        \           <gml:limits>\n                <gml:GridEnvelope>\n                    <gml:low>0
-        1</gml:low>\n                    <gml:high>0 1</gml:high>\n                </gml:GridEnvelope>\n
-        \           </gml:limits>\n            <gml:axisLabels>i j</gml:axisLabels>\n
-        \           <gml:origin>\n                <gml:Point gml:id=\"p00_agdd\" srsName=\"http://www.opengis.net/def/crs/EPSG/0/4269\">\n
-        \                   <gml:pos>-110.49773757594016 38.82262825732897</gml:pos>\n
-        \               </gml:Point>\n            </gml:origin>\n            <gml:offsetVector
-        srsName=\"http://www.opengis.net/def/crs/EPSG/0/4269\">0.0224641851880276
-        0.0</gml:offsetVector>\n            <gml:offsetVector srsName=\"http://www.opengis.net/def/crs/EPSG/0/4269\">0.0
-        -0.0210708469055375</gml:offsetVector>\n        </gml:RectifiedGrid>\n    </gml:domainSet>\n
-        \   <gml:rangeType>\n        <swe:DataRecord>\n            <swe:field name=\"AGDD\">\n
-        \               <swe:Quantity>\n                    <swe:description>AGDD</swe:description>\n
-        \                   <swe:uom code=\"W.m-2.Sr-1\"/>\n                    <swe:constraint>\n
-        \                       <swe:AllowedValues>\n                            <swe:interval>-3.4028235E38
-        3.4028235E38</swe:interval>\n                        </swe:AllowedValues>\n
-        \                   </swe:constraint>\n                    <swe:nilValues>\n
-        \                       <swe:NilValues>\n                            <swe:nilValue
-        reason=\"http://www.opengis.net/def/nil/OGC/0/unknown\">-9999.0</swe:nilValue>\n
-        \                       </swe:NilValues>\n                    </swe:nilValues>\n
-        \               </swe:Quantity>\n            </swe:field>\n        </swe:DataRecord>\n
-        \   </gml:rangeType>\n    <gml:coverageFunction>\n        <gml:GridFunction>\n
-        \           <gml:sequenceRule axisOrder=\"+1 +2\">Linear</gml:sequenceRule>\n
-        \           <gml:startPoint>0 1</gml:startPoint>\n        </gml:GridFunction>\n
-        \   </gml:coverageFunction>\n    <gml:rangeSet>\n        <gml:DataBlock>\n
-        \           <gml:rangeParameters/>\n            <tupleList>1199.60888671875
-        \n</tupleList>\n        </gml:DataBlock>\n    </gml:rangeSet>\n    <gmlcov:metadata>\n
-        \       <gmlcov:Extension/>\n    </gmlcov:metadata>\n</gml:RectifiedGridCoverage>\n"
-  recorded_at: 2024-12-11 22:52:44 GMT
-  recorded_with: vcr/1.6.0, webmockr/1.0.0
+      raw_gzip: |-
+        eJy1V01z2zYQvftXYHjNiAD4JVIjMZNYji9q4tpp0psHIdc0ahJQAUiU/32HpExRFCk16fSo
+        3Ye3uw+
+        7S2j+flfkaAtKcykWFrWJhUAkMuUiW1h/fP00Ca338Twr8tk9JIY/cUhvFU+v5RYU
+        ywDtilzoWVbkC+
+        vZmPUM47IsbbkGkXFtCzA4K3Ls2o61h5aJTpQeRZeJxhrUlicwgZ0BUSWG
+        E6VxnVvDwYUZJfh+/fB4Q
+        vDIhQG1ljkzFV2HKivyRG7PJZ/IbfeALmEUrUvAzgG6y7l4OQKX
+        ri1VhmkURbj2tlDNh4AOIRT/+dvq
+        IXmGgk240IaJBCxUXQhPFxbL0tSKrxBCqL6kH3IjUkg/
+        vja21n4jtpDLNSCt9GdWjJeQwlOt9s3dwy0
+        m2HOCyEJsx/WK/YBcL6wVM2glRWahjSzejEvI
+        0BIyq6Jf8qIRfWE51iGNNpVclqCupRKg4gmlxPZJGA
+        VREIS+69EQuaE9jShxaBQG0ZQE0znu
+        Hzsl3azXx6ReGPjE90LX9QLqV6QhdUjkhK4bTgOn4eyeOuiFu
+        4LttcUD4taBU1kwLh7A9AQ/
+        mpb2ujLFU0IeH+trQ+klpXjBjT52tM6K9zjJQVguy5gi0mp4BvrMs+cD
+        tv51Ghqfj72PM5B4
+        HeLQSDFHfzXgju30gFQ842JEgjvJhWm1XROy1/VXevyMLmup943qEIfQaUCpE9K
+        o7ilCfX/q
+        UeI5ruf6TUEVfkS4OuMhxYbqbAR4etJgvkFipPq1wohNHMcLPBr6NAyJMw0QsfeX3GX/v4
+        Kj
+        SZUBJVMSekFEfN+d+ueiN76j+ekOYW/g5s2GnikmMvj6uoaf3uudyLqE2ZIZdg+JVOlPLPye
+        dhXP
+        E4c8RaJW7MPtcjnQYTXu9w0ThpvXkQasICnoRPF19emKK6o57lvHz25kgRKZwsL6bhcT
+        x35QE2rhMwc
+        SKbRR7KRPT4Af8molp99YvgE9jm3x9Sd4y/J44toecULH9W/cEHV/NIW1wPH4
+        +F8m0AAvlVSnJ3h+qZ
+        Qa9/kyDvU5kQKmqzV/ZnQEz/GX22tM8Ea8CFkKK55EURRVo9rluqTK
+        hfyOyQYX1XhXNr66s7vzejw2n
+        WE9GszDvM6S/evx00Ykx/3bftpOXa1bw98bEAncb3KonyZf
+        VApqYb2j6J1jxSsugKlmWXShQ0yGKdPs
+        5Pa717H1VtJpWo19uJo6QF386eOgEutjLpOXgZzq
+        I3dMsQIMKI17ELNZ57Di2sSURpEdkDAMgykNpz6
+        6muODt5d7L2JjPM7ubZMWYFjKDPsvi3RP
+        ddM+4HtN8RYjvhrY9m//LeKrfwCGOp5G
+  recorded_at: 2025-07-25 21:29:03
+recorded_with: VCR-vcr/2.0.0
