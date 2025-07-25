@@ -335,11 +335,13 @@ test_that("higher taxonomic ordering works for status data", {
   expect_gt(nrow(less_data), 0)
 
   #class_ID
+  #TODO pick a smaller class or year with less data! This fixture is too big for GitHub!
+  skip("Fixture too big!")
   vcr::use_cassette("npn_download_status_data_tax_3", {
     some_data <- npn_download_status_data(
       request_source = "Unit Test",
       years = 2013,
-      class_ids = c(15), #TODO pick a smaller class or year with less data!
+      class_ids = c(15), 
       additional_fields = c("Class_ID")
     )
   })

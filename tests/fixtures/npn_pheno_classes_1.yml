@@ -1,19 +1,13 @@
 http_interactions:
 - request:
-    method: get
+    method: GET
     uri: https://services.usanpn.org/npn_portal/phenophases/getPhenoClasses.json
-    body:
-      encoding: ''
-      string: ''
-    headers: []
   response:
-    status:
-      status_code: 200
-      message: OK
+    status: 200
     headers:
-      date: Wed, 20 Nov 2024 19:11:26 GMT
+      date: Fri, 25 Jul 2025 21:41:13 GMT
       content-type: application/json; charset=utf-8
-      content-length: '6544'
+      content-length: '6471'
       server: Apache/2.4.62 () PHP/5.5.38
       x-powered-by: PHP/5.5.38
       pragma: no-cache
@@ -22,8 +16,6 @@ http_interactions:
       access-control-allow-headers: origin, x-requested-with, content-type
       access-control-allow-methods: PUT, GET, POST, DELETE, OPTIONS
     body:
-      encoding: ''
-      file: no
       string: '[{"id":1,"name":"Initial shoot or leaf growth","description":"Initiation
         of seasonal vegetative growth","sequence":10},{"id":2,"name":"Young leaves
         or needles","description":"Presence of foliage still in process of maturing","sequence":20},{"id":3,"name":"Leaves
@@ -38,11 +30,11 @@ http_interactions:
         fruits or seed cones","description":"Presence of immature fruiting structures","sequence":110},{"id":12,"name":"Ripe
         fruits or seed cones","description":"Presence of mature fruiting structures","sequence":120},{"id":13,"name":"Recent
         fruit, cone or seed drop","description":"Dropping of mature fruits, cones
-        or seeds","sequence":130},{"id":62,"name":"Active individuals","description":"","sequence":10},{"id":63,"name":"Active
-        individuals in freshwater","description":"","sequence":20},{"id":64,"name":"Active
-        individuals in saltwater","description":"","sequence":30},{"id":65,"name":"Active
-        individuals in water","description":"","sequence":40},{"id":66,"name":"Active
-        individuals on land","description":"","sequence":50},{"id":67,"name":"Vocalizing","description":"","sequence":60},{"id":68,"name":"Feeding","description":"","sequence":70},{"id":69,"name":"Insect
+        or seeds","sequence":130},{"id":62,"name":"Live individuals","description":"","sequence":10},{"id":63,"name":"Individuals
+        in freshwater","description":"","sequence":20},{"id":64,"name":"Individuals
+        in saltwater","description":"","sequence":30},{"id":65,"name":"Individuals
+        in water","description":"","sequence":40},{"id":66,"name":"Individuals on
+        land","description":"","sequence":50},{"id":67,"name":"Vocalizing","description":"","sequence":60},{"id":68,"name":"Feeding","description":"","sequence":70},{"id":69,"name":"Insect
         consumption","description":"","sequence":80},{"id":70,"name":"Fruit\/seed
         consumption","description":"","sequence":90},{"id":71,"name":"Flower visitation","description":"","sequence":100},{"id":72,"name":"Nut
         gathering","description":"","sequence":110},{"id":73,"name":"Cone cutting","description":"","sequence":120},{"id":74,"name":"Larvae
@@ -56,18 +48,15 @@ http_interactions:
         egg laying","description":"","sequence":300},{"id":92,"name":"Well-developed
         embryos","description":"","sequence":310},{"id":93,"name":"Drone cells","description":"","sequence":320},{"id":94,"name":"Occupied
         nest","description":"","sequence":330},{"id":95,"name":"Nest provisioning","description":"","sequence":340},{"id":96,"name":"Pregnant
-        females","description":"","sequence":350},{"id":97,"name":"Recent birth","description":"","sequence":360},{"id":98,"name":"Active
-        juveniles","description":"","sequence":370},{"id":99,"name":"Nestlings","description":"","sequence":380},{"id":100,"name":"Downy
+        females","description":"","sequence":350},{"id":97,"name":"Recent birth","description":"","sequence":360},{"id":98,"name":"Juveniles","description":"","sequence":370},{"id":99,"name":"Nestlings","description":"","sequence":380},{"id":100,"name":"Downy
         young","description":"","sequence":390},{"id":101,"name":"Partially-fledged
         young","description":"","sequence":400},{"id":102,"name":"Fledged young","description":"","sequence":410},{"id":103,"name":"Fry
         in water","description":"","sequence":420},{"id":104,"name":"Larvae in water","description":"","sequence":430},{"id":105,"name":"Metamorphosing
         larvae in water","description":"","sequence":440},{"id":106,"name":"Metamorphosing
         individuals on land","description":"","sequence":450},{"id":107,"name":"Hatchling
-        emergence","description":"","sequence":460},{"id":108,"name":"Active larvae","description":"","sequence":470},{"id":109,"name":"Active
-        caterpillars","description":"","sequence":480},{"id":110,"name":"Caterpillars
-        in tent","description":"","sequence":490},{"id":111,"name":"Active nymphs","description":"","sequence":500},{"id":112,"name":"Active
-        crawlers","description":"","sequence":510},{"id":113,"name":"Post-dormant
-        nymphs","description":"","sequence":520},{"id":114,"name":"Active subadults","description":"","sequence":530},{"id":115,"name":"Pupae","description":"","sequence":540},{"id":116,"name":"Recently
+        emergence","description":"","sequence":460},{"id":108,"name":"Larvae","description":"","sequence":470},{"id":109,"name":"Caterpillars","description":"","sequence":480},{"id":110,"name":"Caterpillars
+        in tent","description":"","sequence":490},{"id":111,"name":"Nymphs","description":"","sequence":500},{"id":112,"name":"Crawlers","description":"","sequence":510},{"id":113,"name":"Post-dormant
+        nymphs","description":"","sequence":520},{"id":114,"name":"Subadults","description":"","sequence":530},{"id":115,"name":"Pupae","description":"","sequence":540},{"id":116,"name":"Recently
         emerged adults","description":"","sequence":550},{"id":117,"name":"Cast-off
         skins","description":"","sequence":560},{"id":118,"name":"Nonbreeding plumage","description":"","sequence":570},{"id":119,"name":"Breeding
         plumage","description":"","sequence":580},{"id":120,"name":"Antler growth","description":"","sequence":590},{"id":121,"name":"Antler
@@ -76,11 +65,11 @@ http_interactions:
         adults","description":"","sequence":640},{"id":126,"name":"Adults migrating
         upstream","description":"","sequence":650},{"id":127,"name":"Adults migrating
         downstream","description":"","sequence":660},{"id":128,"name":"Juveniles moving
-        upstream","description":"","sequence":670},{"id":129,"name":"Inactive nymphs","description":"","sequence":680},{"id":130,"name":"Dead
+        upstream","description":"","sequence":670},{"id":129,"name":"Dormant nymphs","description":"","sequence":680},{"id":130,"name":"Dead
         individuals","description":"","sequence":690},{"id":131,"name":"Dead nestlings
         or fledglings","description":"","sequence":700},{"id":132,"name":"Dead larvae","description":"","sequence":710},{"id":133,"name":"Dead
         caterpillars","description":"","sequence":720},{"id":134,"name":"Dead nymphs","description":"","sequence":730},{"id":135,"name":"Baited
         or captured individuals","description":"","sequence":740},{"id":136,"name":"Egg
         laying","description":"","sequence":285}]'
-  recorded_at: 2024-11-20 19:11:26 GMT
-  recorded_with: vcr/1.6.0, webmockr/1.0.0
+  recorded_at: 2025-07-25 21:41:13
+recorded_with: VCR-vcr/2.0.0
