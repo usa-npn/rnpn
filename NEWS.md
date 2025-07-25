@@ -1,5 +1,7 @@
 # rnpn (development version)
 
+* compatibility with vcr v2.0.0 (fixed in #125 by @skott)
+
 ## Bug fixes
 
 * fixed bug that caused some `npn_download_*()` functions to error when sections of the data were `NA` (#107 reported by @ezylstra)

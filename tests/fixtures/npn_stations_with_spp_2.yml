@@ -1,17 +1,11 @@
 http_interactions:
 - request:
-    method: get
+    method: GET
     uri: https://services.usanpn.org/npn_portal/stations/getStationsWithSpecies.json?species_id%5B1%5D=9000
-    body:
-      encoding: ''
-      string: ''
-    headers: []
   response:
-    status:
-      status_code: 200
-      message: OK
+    status: 200
     headers:
-      date: Wed, 20 Nov 2024 17:59:22 GMT
+      date: Fri, 25 Jul 2025 21:41:24 GMT
       content-type: application/json; charset=utf-8
       content-length: '2'
       server: Apache/2.4.62 () PHP/5.5.38
@@ -22,8 +16,6 @@ http_interactions:
       access-control-allow-headers: origin, x-requested-with, content-type
       access-control-allow-methods: PUT, GET, POST, DELETE, OPTIONS
     body:
-      encoding: ''
-      file: no
       string: '[]'
-  recorded_at: 2024-11-20 17:59:22 GMT
-  recorded_with: vcr/1.6.0, webmockr/1.0.0
+  recorded_at: 2025-07-25 21:41:24
+recorded_with: VCR-vcr/2.0.0

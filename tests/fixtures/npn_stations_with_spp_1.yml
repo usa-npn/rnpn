@@ -1,17 +1,11 @@
 http_interactions:
 - request:
-    method: get
+    method: GET
     uri: https://services.usanpn.org/npn_portal/stations/getStationsWithSpecies.json?species_id%5B1%5D=100
-    body:
-      encoding: ''
-      string: ''
-    headers: []
   response:
-    status:
-      status_code: 200
-      message: OK
+    status: 200
     headers:
-      date: Wed, 20 Nov 2024 17:59:21 GMT
+      date: Fri, 25 Jul 2025 21:41:24 GMT
       content-type: application/json; charset=utf-8
       server: Apache/2.4.62 () PHP/5.5.38
       x-powered-by: PHP/5.5.38
@@ -21,8 +15,6 @@ http_interactions:
       access-control-allow-headers: origin, x-requested-with, content-type
       access-control-allow-methods: PUT, GET, POST, DELETE, OPTIONS
     body:
-      encoding: ''
-      file: no
       string: '[{"latitude":41.329971,"longitude":-80.741478,"station_name":"PPN_9339927","station_id":560},{"latitude":44.34095,"longitude":-72.46122,"station_name":"Frizzle
         Mountain","station_id":637},{"latitude":37.32526,"longitude":-79.055511,"station_name":"PPN_9440008","station_id":644},{"latitude":40.033203,"longitude":-75.310753,"station_name":"Harriton
         Park","station_id":866},{"latitude":39.816456,"longitude":-83.858879,"station_name":"home","station_id":949},{"latitude":42.285683,"longitude":-84.128387,"station_name":"Home","station_id":973},{"latitude":39.367615,"longitude":-85.242989,"station_name":"Wilcox
@@ -223,7 +215,8 @@ http_interactions:
         of Louisville","station_id":28065},{"latitude":38.217285,"longitude":-85.758865,"station_name":"University
         of Louisville  ","station_id":28066},{"latitude":44.564568,"longitude":-123.262047,"station_name":"Finley
         Wildlife Refuge","station_id":28345},{"latitude":38.216595,"longitude":-85.761871,"station_name":"Quad","station_id":28351},{"latitude":38.730068,"longitude":-75.365211,"station_name":"Jefferson
-        School","station_id":28549},{"latitude":38.699406,"longitude":-90.304901,"station_name":"UMSL
+        School","station_id":28549},{"latitude":42.287708,"longitude":-85.617592,"station_name":"bird
+        station 4 pond","station_id":28614},{"latitude":38.699406,"longitude":-90.304901,"station_name":"UMSL
         South Campus","station_id":28664},{"latitude":45.046383,"longitude":-93.224602,"station_name":"Silverwood
         Park VS Oak Savanna","station_id":28898},{"latitude":38.215801,"longitude":-85.761482,"station_name":"uofl
         Campus","station_id":29035},{"latitude":38.21722,"longitude":-85.758911,"station_name":"uoflcampus","station_id":29115},{"latitude":38.217304,"longitude":-85.75882,"station_name":"u
@@ -252,7 +245,9 @@ http_interactions:
         Greene Park","station_id":32385},{"latitude":39.90163,"longitude":-86.175911,"station_name":"my
         backyard","station_id":32443},{"latitude":39.936066,"longitude":-86.118439,"station_name":"Frontyard","station_id":32607},{"latitude":35.977894,"longitude":-79.016479,"station_name":"NHC-South
         Transect - Gate 26","station_id":32634},{"latitude":35.994949,"longitude":-79.008698,"station_name":"NHC-North
-        Transect - Gate 21","station_id":32635},{"latitude":39.771435,"longitude":-86.484055,"station_name":"Yard&BackField","station_id":32872},{"latitude":34.842617,"longitude":-83.135689,"station_name":"OC
+        Transect - Gate 21","station_id":32635},{"latitude":40.73082,"longitude":-73.99733,"station_name":"Wash
+        Sq Park Trees","station_id":32789},{"latitude":39.771435,"longitude":-86.484055,"station_name":"Yard&BackField","station_id":32872},{"latitude":41.124557,"longitude":-73.730301,"station_name":"Calder
+        Center","station_id":33269},{"latitude":34.842617,"longitude":-83.135689,"station_name":"OC
         Site 1","station_id":33354},{"latitude":41.742821,"longitude":-111.809052,"station_name":"Utah
         State University","station_id":33394},{"latitude":41.380959,"longitude":-78.203339,"station_name":"backyard
         week 3","station_id":33670},{"latitude":43.230736,"longitude":-70.757347,"station_name":"Home
@@ -402,7 +397,8 @@ http_interactions:
         KD RSH Project","station_id":47882},{"latitude":42.31424,"longitude":-72.648468,"station_name":"Summit
         Oak Park","station_id":48055},{"latitude":42.314152,"longitude":-72.649925,"station_name":"Oak
         Park","station_id":48056},{"latitude":37.538925,"longitude":-77.109032,"station_name":"Backyard","station_id":48380},{"latitude":35.251904,"longitude":-81.224945,"station_name":"Dream
-        Center Academy","station_id":48497},{"latitude":35.907684,"longitude":-93.517242,"station_name":"OZF","station_id":48533},{"latitude":37.342861,"longitude":-77.420914,"station_name":"Yard","station_id":48660},{"latitude":35.775093,"longitude":-78.816956,"station_name":"105
+        Center Academy","station_id":48497},{"latitude":35.907684,"longitude":-93.517242,"station_name":"OZF","station_id":48533},{"latitude":33.813538,"longitude":-84.28347,"station_name":"our
+        yard","station_id":48555},{"latitude":37.342861,"longitude":-77.420914,"station_name":"Yard","station_id":48660},{"latitude":35.775093,"longitude":-78.816956,"station_name":"105
         S Becket","station_id":48690},{"latitude":33.879177,"longitude":-83.443703,"station_name":"Woodlands","station_id":48694},{"latitude":35.874306,"longitude":-78.736305,"station_name":"Home","station_id":48703},{"latitude":42.373653,"longitude":-71.143356,"station_name":"MAC-GREEN
         TRAIL","station_id":48749},{"latitude":42.374542,"longitude":-71.146736,"station_name":"MAC-BLUE
         TRAIL","station_id":48750},{"latitude":38.038628,"longitude":-84.504692,"station_name":"POT
@@ -418,7 +414,8 @@ http_interactions:
         High School","station_id":49815},{"latitude":35.785114,"longitude":-78.678169,"station_name":"Leah
         new site","station_id":49868},{"latitude":35.785679,"longitude":-78.674355,"station_name":"School","station_id":49972},{"latitude":38.938599,"longitude":-77.177887,"station_name":"Holy
         Comforter Vienna VA","station_id":50040},{"latitude":35.785965,"longitude":-78.673798,"station_name":"Bowen","station_id":50042},{"latitude":35.78606,"longitude":-78.674019,"station_name":"NCSU","station_id":50047},{"latitude":35.786339,"longitude":-78.684929,"station_name":"NC
-        State","station_id":50048},{"latitude":35.785679,"longitude":-78.674355,"station_name":"School","station_id":50051},{"latitude":43.220783,"longitude":-85.310768,"station_name":"Home","station_id":50344},{"latitude":34.808964,"longitude":-80.154732,"station_name":"Fireworks
+        State","station_id":50048},{"latitude":35.785679,"longitude":-78.674355,"station_name":"School","station_id":50051},{"latitude":44.953388,"longitude":-93.057167,"station_name":"Our
+        Patch","station_id":50102},{"latitude":43.220783,"longitude":-85.310768,"station_name":"Home","station_id":50344},{"latitude":34.808964,"longitude":-80.154732,"station_name":"Fireworks
         Transect","station_id":50473},{"latitude":37.590187,"longitude":-81.108215,"station_name":"Mavis
         Farmacy Lab","station_id":50478},{"latitude":34.80901,"longitude":-80.157257,"station_name":"Woodland
         Transect","station_id":50497},{"latitude":33.879177,"longitude":-83.443703,"station_name":"Woodland","station_id":50509},{"latitude":39.932301,"longitude":-75.163902,"station_name":"East
@@ -470,18 +467,41 @@ http_interactions:
         Stupas","station_id":54560},{"latitude":43.044495,"longitude":-89.427544,"station_name":"Longenecker
         Garden Slope","station_id":54634},{"latitude":44.975464,"longitude":-93.321022,"station_name":"White
         Oak Hill - Eloise Butler Wildflower Garden","station_id":54706},{"latitude":34.672016,"longitude":-81.641556,"station_name":"High
-        Top","station_id":55070},{"latitude":40.329937,"longitude":-74.939156,"station_name":"BHWP
-        Total","station_id":55213},{"latitude":39.060555,"longitude":-94.581932,"station_name":"Hyde
+        Top","station_id":55070},{"latitude":39.060555,"longitude":-94.581932,"station_name":"Hyde
         Park ","station_id":55290},{"latitude":39.060173,"longitude":-94.581482,"station_name":"Hyde
         Park","station_id":55347},{"latitude":39.063354,"longitude":-94.582893,"station_name":"Hyde
         Park","station_id":55376},{"latitude":35.873138,"longitude":-78.923859,"station_name":"Lyons
         Farm Elementary","station_id":55554},{"latitude":35.785694,"longitude":-78.674026,"station_name":"White
         Oak by Harris Hall and Tucker Hall","station_id":55607},{"latitude":35.781036,"longitude":-78.672462,"station_name":"Wood
         Hall","station_id":55672},{"latitude":35.27816,"longitude":-81.090729,"station_name":"Lowell
-        Elementary","station_id":55728},{"latitude":37.377354,"longitude":-80.526581,"station_name":"MLBS_077.phenology.phe
-        - primary","station_id":55824},{"latitude":35.96397,"longitude":-84.286339,"station_name":"ORNL_064.phenology.phe
-        - primary","station_id":55825},{"latitude":32.542336,"longitude":-87.806023,"station_name":"DELA_057.phenology.phe
-        - primary","station_id":55828},{"latitude":32.542931,"longitude":-87.803902,"station_name":"DELA_058.phenology.phe
-        - phenocam","station_id":55829}]'
-  recorded_at: 2024-11-20 17:59:21 GMT
-  recorded_with: vcr/1.6.0, webmockr/1.0.0
+        Elementary","station_id":55728},{"latitude":44.477852,"longitude":-73.196465,"station_name":"NR
+        Phenology Walk","station_id":55887},{"latitude":35.754341,"longitude":-78.88343,"station_name":"North
+        Carolina State University","station_id":55937},{"latitude":39.099728,"longitude":-94.578568,"station_name":"Hyde
+        Park","station_id":56167},{"latitude":39.060467,"longitude":-94.581688,"station_name":"Hyde
+        Park","station_id":56180},{"latitude":45.601425,"longitude":-122.560875,"station_name":"Home-Columbia
+        point","station_id":56218},{"latitude":45.730705,"longitude":-122.635559,"station_name":"WSU
+        Vancouver","station_id":56219},{"latitude":30.395105,"longitude":-84.303589,"station_name":"NFSandhills","station_id":56252},{"latitude":38.027603,"longitude":-84.493233,"station_name":"Melrose
+        woodland","station_id":56406},{"latitude":42.619869,"longitude":-87.821167,"station_name":"Carthage
+        College","station_id":56421},{"latitude":35.759575,"longitude":-79.019302,"station_name":"Estes
+        Elementary","station_id":56432},{"latitude":42.619869,"longitude":-87.821167,"station_name":"Carthage
+        College","station_id":56434},{"latitude":41.257023,"longitude":-73.455482,"station_name":"Wagon
+        Road Trail - Forest","station_id":56456},{"latitude":44.760986,"longitude":-93.265869,"station_name":"Drum
+        Circle","station_id":56554},{"latitude":36.634457,"longitude":-78.771889,"station_name":"Hudson
+        Road oaks","station_id":56606},{"latitude":37.497513,"longitude":-77.63755,"station_name":"Glengate","station_id":56610},{"latitude":40.329544,"longitude":-74.942245,"station_name":"Penns
+        Woods","station_id":56657},{"latitude":40.052708,"longitude":-75.687523,"station_name":"home","station_id":56856},{"latitude":37.377354,"longitude":-80.526581,"station_name":"MLBS_077.phenology.phe
+        - primary","station_id":57068},{"latitude":35.96397,"longitude":-84.286339,"station_name":"ORNL_064.phenology.phe
+        - primary","station_id":57069},{"latitude":32.542336,"longitude":-87.806023,"station_name":"DELA_057.phenology.phe
+        - primary","station_id":57072},{"latitude":32.542931,"longitude":-87.803902,"station_name":"DELA_058.phenology.phe
+        - phenocam","station_id":57073},{"latitude":39.037086,"longitude":-84.459587,"station_name":"Maple
+        White Land","station_id":57129},{"latitude":46.556442,"longitude":-87.401115,"station_name":"Geopark","station_id":57139},{"latitude":44.476299,"longitude":-73.195099,"station_name":"White
+        oak ","station_id":57209},{"latitude":42.6236,"longitude":-87.820374,"station_name":"Carthage","station_id":57225},{"latitude":38.585293,"longitude":-90.264259,"station_name":"Green
+        Wave - Home","station_id":57399},{"latitude":44.476269,"longitude":-73.195114,"station_name":"White
+        oak","station_id":57416},{"latitude":42.885025,"longitude":-89.882797,"station_name":"North
+        Section","station_id":57424},{"latitude":42.884689,"longitude":-89.883125,"station_name":"Original
+        Homesite","station_id":57425},{"latitude":37.296284,"longitude":-78.387291,"station_name":"My
+        Back Yard","station_id":57641},{"latitude":30.446932,"longitude":-81.67337,"station_name":"Seaton
+        Creek Preservation","station_id":57871},{"latitude":39.776138,"longitude":-75.496925,"station_name":"Bellevue
+        State Park","station_id":57887},{"latitude":44.9646,"longitude":-93.164597,"station_name":"midway","station_id":57924},{"latitude":40.480484,"longitude":-74.43766,"station_name":"Cook
+        Campus","station_id":58019}]'
+  recorded_at: 2025-07-25 21:41:24
+recorded_with: VCR-vcr/2.0.0

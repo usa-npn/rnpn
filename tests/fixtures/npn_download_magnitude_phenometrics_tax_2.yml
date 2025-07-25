@@ -1,17 +1,13 @@
 http_interactions:
 - request:
-    method: post
+    method: POST
     uri: https://services.usanpn.org/npn_portal/observations/getMagnitudeData.json
     body:
-      encoding: ''
-      string: ''
-    headers: []
+      string: request_src=Unit%2520Test&climate_data=0&additional_field[1]=Order_ID&order_id[1]=95&frequency=30&start_date=2013-01-01&end_date=2013-12-31
   response:
-    status:
-      status_code: 200
-      message: OK
+    status: 200
     headers:
-      date: Fri, 04 Apr 2025 22:15:23 GMT
+      date: Fri, 25 Jul 2025 22:32:19 GMT
       content-type: application/json
       server: Apache/2.4.62 () PHP/5.5.38
       x-powered-by: PHP/5.5.38
@@ -19,8 +15,6 @@ http_interactions:
       access-control-allow-headers: origin, x-requested-with, content-type
       access-control-allow-methods: PUT, GET, POST, DELETE, OPTIONS
     body:
-      encoding: ''
-      file: no
       string: '[{"species_id":6,"genus":"Caltha","species":"palustris","common_name":"yellow
         marsh marigold","kingdom":"Plantae","order_id":95,"phenophase_id":390,"phenophase_description":"Ripe
         fruits","year":2013,"start_date":"2013-01-01","end_date":"2013-01-30","status_records_sample_size":15,"individuals_sample_size":3,"sites_sample_size":1,"num_yes_records":0,"numindividuals_with_yes_record":0,"numsites_with_yes_record":-9999,"proportion_yes_records":0,"proportion_individuals_with_yes_record":0,"proportion_sites_with_yes_record":-9999,"in-phase_sites_sample_size":-9999,"in-phase_site_visits_sample_size":-9999,"total_numanimals_in-phase":-9999,"mean_numanimals_in-phase":-9999,"se_numanimals_in-phase":-9999,"in-phase_per_hr_sites_sample_size":-9999,"in-phase_per_hr_site_visits_sample_size":-9999,"mean_numanimals_in-phase_per_hr":-9999,"se_numanimals_in-phase_per_hr":-9999,"in-phase_per_hr_per_acre_sites_sample_size":-9999,"in-phase_per_hr_per_acre_site_visits_sample_size":-9999,"mean_numanimals_in-phase_per_hr_per_acre":-9999,"se_numanimals_in-phase_per_hr_per_acre":-9999},{"species_id":26,"genus":"Podophyllum","species":"peltatum","common_name":"mayapple","kingdom":"Plantae","order_id":95,"phenophase_id":390,"phenophase_description":"Ripe
@@ -1284,5 +1278,5 @@ http_interactions:
         pasqueflower","kingdom":"Plantae","order_id":95,"phenophase_id":516,"phenophase_description":"Fruits","year":2013,"start_date":"2013-11-27","end_date":"2013-12-31","status_records_sample_size":32,"individuals_sample_size":4,"sites_sample_size":1,"num_yes_records":0,"numindividuals_with_yes_record":0,"numsites_with_yes_record":-9999,"proportion_yes_records":0,"proportion_individuals_with_yes_record":0,"proportion_sites_with_yes_record":-9999,"in-phase_sites_sample_size":-9999,"in-phase_site_visits_sample_size":-9999,"total_numanimals_in-phase":-9999,"mean_numanimals_in-phase":-9999,"se_numanimals_in-phase":-9999,"in-phase_per_hr_sites_sample_size":-9999,"in-phase_per_hr_site_visits_sample_size":-9999,"mean_numanimals_in-phase_per_hr":-9999,"se_numanimals_in-phase_per_hr":-9999,"in-phase_per_hr_per_acre_sites_sample_size":-9999,"in-phase_per_hr_per_acre_site_visits_sample_size":-9999,"mean_numanimals_in-phase_per_hr_per_acre":-9999,"se_numanimals_in-phase_per_hr_per_acre":-9999},{"species_id":924,"genus":"Berberis","species":"aquifolium","common_name":"hollyleaved
         barberry","kingdom":"Plantae","order_id":95,"phenophase_id":516,"phenophase_description":"Fruits","year":2013,"start_date":"2013-11-27","end_date":"2013-12-31","status_records_sample_size":8,"individuals_sample_size":5,"sites_sample_size":1,"num_yes_records":0,"numindividuals_with_yes_record":0,"numsites_with_yes_record":-9999,"proportion_yes_records":0,"proportion_individuals_with_yes_record":0,"proportion_sites_with_yes_record":-9999,"in-phase_sites_sample_size":-9999,"in-phase_site_visits_sample_size":-9999,"total_numanimals_in-phase":-9999,"mean_numanimals_in-phase":-9999,"se_numanimals_in-phase":-9999,"in-phase_per_hr_sites_sample_size":-9999,"in-phase_per_hr_site_visits_sample_size":-9999,"mean_numanimals_in-phase_per_hr":-9999,"se_numanimals_in-phase_per_hr":-9999,"in-phase_per_hr_per_acre_sites_sample_size":-9999,"in-phase_per_hr_per_acre_site_visits_sample_size":-9999,"mean_numanimals_in-phase_per_hr_per_acre":-9999,"se_numanimals_in-phase_per_hr_per_acre":-9999},{"species_id":1016,"genus":"Sanguinaria","species":"canadensis","common_name":"bloodroot","kingdom":"Plantae","order_id":95,"phenophase_id":516,"phenophase_description":"Fruits","year":2013,"start_date":"2013-11-27","end_date":"2013-12-31","status_records_sample_size":7,"individuals_sample_size":1,"sites_sample_size":1,"num_yes_records":0,"numindividuals_with_yes_record":0,"numsites_with_yes_record":-9999,"proportion_yes_records":0,"proportion_individuals_with_yes_record":0,"proportion_sites_with_yes_record":-9999,"in-phase_sites_sample_size":-9999,"in-phase_site_visits_sample_size":-9999,"total_numanimals_in-phase":-9999,"mean_numanimals_in-phase":-9999,"se_numanimals_in-phase":-9999,"in-phase_per_hr_sites_sample_size":-9999,"in-phase_per_hr_site_visits_sample_size":-9999,"mean_numanimals_in-phase_per_hr":-9999,"se_numanimals_in-phase_per_hr":-9999,"in-phase_per_hr_per_acre_sites_sample_size":-9999,"in-phase_per_hr_per_acre_site_visits_sample_size":-9999,"mean_numanimals_in-phase_per_hr_per_acre":-9999,"se_numanimals_in-phase_per_hr_per_acre":-9999},{"species_id":1039,"genus":"Thalictrum","species":"thalictroides","common_name":"rue
         anemone","kingdom":"Plantae","order_id":95,"phenophase_id":516,"phenophase_description":"Fruits","year":2013,"start_date":"2013-11-27","end_date":"2013-12-31","status_records_sample_size":21,"individuals_sample_size":1,"sites_sample_size":1,"num_yes_records":0,"numindividuals_with_yes_record":0,"numsites_with_yes_record":-9999,"proportion_yes_records":0,"proportion_individuals_with_yes_record":0,"proportion_sites_with_yes_record":-9999,"in-phase_sites_sample_size":-9999,"in-phase_site_visits_sample_size":-9999,"total_numanimals_in-phase":-9999,"mean_numanimals_in-phase":-9999,"se_numanimals_in-phase":-9999,"in-phase_per_hr_sites_sample_size":-9999,"in-phase_per_hr_site_visits_sample_size":-9999,"mean_numanimals_in-phase_per_hr":-9999,"se_numanimals_in-phase_per_hr":-9999,"in-phase_per_hr_per_acre_sites_sample_size":-9999,"in-phase_per_hr_per_acre_site_visits_sample_size":-9999,"mean_numanimals_in-phase_per_hr_per_acre":-9999,"se_numanimals_in-phase_per_hr_per_acre":-9999}]'
-  recorded_at: 2025-04-04 22:15:23 GMT
-  recorded_with: vcr/1.6.0, webmockr/1.0.0
+  recorded_at: 2025-07-25 22:32:19
+recorded_with: VCR-vcr/2.0.0

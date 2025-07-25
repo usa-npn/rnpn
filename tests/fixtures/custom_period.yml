@@ -1,17 +1,13 @@
 http_interactions:
 - request:
-    method: post
+    method: POST
     uri: https://services.usanpn.org/npn_portal/observations/getSummarizedData.json
     body:
-      encoding: ''
-      string: ''
-    headers: []
+      string: request_src=unit%2520test&climate_data=0&species_id[1]=201&start_date=2016-01-01&end_date=2016-12-31
   response:
-    status:
-      status_code: 200
-      message: OK
+    status: 200
     headers:
-      date: Mon, 17 Mar 2025 20:56:36 GMT
+      date: Fri, 25 Jul 2025 21:33:11 GMT
       content-type: application/json
       server: Apache/2.4.62 () PHP/5.5.38
       x-powered-by: PHP/5.5.38
@@ -19,8 +15,6 @@ http_interactions:
       access-control-allow-headers: origin, x-requested-with, content-type
       access-control-allow-methods: PUT, GET, POST, DELETE, OPTIONS
     body:
-      encoding: ''
-      file: no
       string: '[{"site_id":5206,"latitude":36.902622,"longitude":-76.206039,"elevation_in_meters":3,"state":"VA","species_id":201,"genus":"Cephalanthus","species":"occidentalis","common_name":"common
         buttonbush","kingdom":"Plantae","individual_id":10212,"phenophase_id":371,"phenophase_description":"Breaking
         leaf buds","first_yes_year":2016,"first_yes_month":4,"first_yes_day":20,"first_yes_doy":111,"first_yes_julian_date":2457499,"numdays_since_prior_no":9,"last_yes_year":2016,"last_yes_month":5,"last_yes_day":23,"last_yes_doy":144,"last_yes_julian_date":2457532,"numdays_until_next_no":12},{"site_id":5206,"latitude":36.902622,"longitude":-76.206039,"elevation_in_meters":3,"state":"VA","species_id":201,"genus":"Cephalanthus","species":"occidentalis","common_name":"common
@@ -150,21 +144,16 @@ http_interactions:
         buttonbush","kingdom":"Plantae","individual_id":103311,"phenophase_id":504,"phenophase_description":"Recent
         fruit or seed drop","first_yes_year":2016,"first_yes_month":9,"first_yes_day":22,"first_yes_doy":266,"first_yes_julian_date":2457654,"numdays_since_prior_no":128,"last_yes_year":2016,"last_yes_month":10,"last_yes_day":18,"last_yes_doy":292,"last_yes_julian_date":2457680,"numdays_until_next_no":-9999},{"site_id":22872,"latitude":39.980976,"longitude":-82.411469,"elevation_in_meters":299,"state":"OH","species_id":201,"genus":"Cephalanthus","species":"occidentalis","common_name":"common
         buttonbush","kingdom":"Plantae","individual_id":103311,"phenophase_id":516,"phenophase_description":"Fruits","first_yes_year":2016,"first_yes_month":9,"first_yes_day":22,"first_yes_doy":266,"first_yes_julian_date":2457654,"numdays_since_prior_no":128,"last_yes_year":2016,"last_yes_month":10,"last_yes_day":18,"last_yes_doy":292,"last_yes_julian_date":2457680,"numdays_until_next_no":-9999}]'
-  recorded_at: 2025-03-17 20:56:38 GMT
-  recorded_with: vcr/1.6.0, webmockr/1.0.0
+  recorded_at: 2025-07-25 21:33:11
 - request:
-    method: post
+    method: POST
     uri: https://services.usanpn.org/npn_portal/observations/getSummarizedData.json
     body:
-      encoding: ''
-      string: ''
-    headers: []
+      string: request_src=unit%2520test&climate_data=0&species_id[1]=201&start_date=2016-10-01&end_date=2017-09-30
   response:
-    status:
-      status_code: 200
-      message: OK
+    status: 200
     headers:
-      date: Mon, 17 Mar 2025 20:56:36 GMT
+      date: Fri, 25 Jul 2025 21:33:11 GMT
       content-type: application/json
       server: Apache/2.4.62 () PHP/5.5.38
       x-powered-by: PHP/5.5.38
@@ -172,8 +161,6 @@ http_interactions:
       access-control-allow-headers: origin, x-requested-with, content-type
       access-control-allow-methods: PUT, GET, POST, DELETE, OPTIONS
     body:
-      encoding: ''
-      file: no
       string: '[{"site_id":5206,"latitude":36.902622,"longitude":-76.206039,"elevation_in_meters":3,"state":"VA","species_id":201,"genus":"Cephalanthus","species":"occidentalis","common_name":"common
         buttonbush","kingdom":"Plantae","individual_id":10212,"phenophase_id":371,"phenophase_description":"Breaking
         leaf buds","first_yes_year":2017,"first_yes_month":4,"first_yes_day":7,"first_yes_doy":97,"first_yes_julian_date":2457851,"numdays_since_prior_no":5,"last_yes_year":2017,"last_yes_month":4,"last_yes_day":29,"last_yes_doy":119,"last_yes_julian_date":2457873,"numdays_until_next_no":6},{"site_id":5206,"latitude":36.902622,"longitude":-76.206039,"elevation_in_meters":3,"state":"VA","species_id":201,"genus":"Cephalanthus","species":"occidentalis","common_name":"common
@@ -324,21 +311,16 @@ http_interactions:
         buttonbush","kingdom":"Plantae","individual_id":145269,"phenophase_id":498,"phenophase_description":"Colored
         leaves","first_yes_year":2017,"first_yes_month":9,"first_yes_day":30,"first_yes_doy":273,"first_yes_julian_date":2458027,"numdays_since_prior_no":-9999,"last_yes_year":2017,"last_yes_month":9,"last_yes_day":30,"last_yes_doy":273,"last_yes_julian_date":2458027,"numdays_until_next_no":-9999},{"site_id":28081,"latitude":34.777111,"longitude":-92.380379,"elevation_in_meters":134,"state":"AR","species_id":201,"genus":"Cephalanthus","species":"occidentalis","common_name":"common
         buttonbush","kingdom":"Plantae","individual_id":145269,"phenophase_id":516,"phenophase_description":"Fruits","first_yes_year":2017,"first_yes_month":9,"first_yes_day":30,"first_yes_doy":273,"first_yes_julian_date":2458027,"numdays_since_prior_no":-9999,"last_yes_year":2017,"last_yes_month":9,"last_yes_day":30,"last_yes_doy":273,"last_yes_julian_date":2458027,"numdays_until_next_no":-9999}]'
-  recorded_at: 2025-03-17 20:56:38 GMT
-  recorded_with: vcr/1.6.0, webmockr/1.0.0
+  recorded_at: 2025-07-25 21:33:11
 - request:
-    method: post
+    method: POST
     uri: https://services.usanpn.org/npn_portal/observations/getSiteLevelData.json
     body:
-      encoding: ''
-      string: ''
-    headers: []
+      string: request_src=unit%2520test&climate_data=0&species_id[1]=210&num_days_quality_filter=30&start_date=2010-01-01&end_date=2010-12-31
   response:
-    status:
-      status_code: 200
-      message: OK
+    status: 200
     headers:
-      date: Mon, 17 Mar 2025 20:56:37 GMT
+      date: Fri, 25 Jul 2025 21:33:11 GMT
       content-type: application/json
       content-length: '4318'
       server: Apache/2.4.62 () PHP/5.5.38
@@ -347,8 +329,6 @@ http_interactions:
       access-control-allow-headers: origin, x-requested-with, content-type
       access-control-allow-methods: PUT, GET, POST, DELETE, OPTIONS
     body:
-      encoding: ''
-      file: no
       string: '[{"site_id":2205,"latitude":34.048927,"longitude":-111.093735,"elevation_in_meters":1527,"state":"AZ","species_id":210,"genus":"Carnegiea","species":"gigantea","common_name":"saguaro","kingdom":"Plantae","phenophase_id":256,"phenophase_description":"Flower
         buds (1 location)","first_yes_sample_size":3,"mean_first_yes_year":2010,"mean_first_yes_doy":121,"mean_first_yes_julian_date":2455318,"se_first_yes_in_days":2,"mean_numdays_since_prior_no":12,"se_numdays_since_prior_no":3,"last_yes_sample_size":0,"mean_last_yes_year":-9999,"mean_last_yes_doy":-9999,"mean_last_yes_julian_date":-9999,"se_last_yes_in_days":-9999,"mean_numdays_until_next_no":-9999,"se_numdays_until_next_no":-9999},{"site_id":2329,"latitude":32.354759,"longitude":-110.939194,"elevation_in_meters":961,"state":"AZ","species_id":210,"genus":"Carnegiea","species":"gigantea","common_name":"saguaro","kingdom":"Plantae","phenophase_id":201,"phenophase_description":"Open
         flowers (1 location)","first_yes_sample_size":3,"mean_first_yes_year":2010,"mean_first_yes_doy":133,"mean_first_yes_julian_date":2455330,"se_first_yes_in_days":14.169607537888,"mean_numdays_since_prior_no":7.3333333333333,"se_numdays_since_prior_no":0.66666666666667,"last_yes_sample_size":3,"mean_last_yes_year":2010,"mean_last_yes_doy":154,"mean_last_yes_julian_date":2455351,"se_last_yes_in_days":12.978614889288,"mean_numdays_until_next_no":7,"se_numdays_until_next_no":0.57735026918963},{"site_id":2329,"latitude":32.354759,"longitude":-110.939194,"elevation_in_meters":961,"state":"AZ","species_id":210,"genus":"Carnegiea","species":"gigantea","common_name":"saguaro","kingdom":"Plantae","phenophase_id":202,"phenophase_description":"Ripe
@@ -356,21 +336,16 @@ http_interactions:
         buds (1 location)","first_yes_sample_size":3,"mean_first_yes_year":2010,"mean_first_yes_doy":152,"mean_first_yes_julian_date":2455349,"se_first_yes_in_days":27.284509239575,"mean_numdays_since_prior_no":5.6666666666667,"se_numdays_since_prior_no":0.8819171036882,"last_yes_sample_size":3,"mean_last_yes_year":2010,"mean_last_yes_doy":203,"mean_last_yes_julian_date":2455400,"se_last_yes_in_days":50.386285612037,"mean_numdays_until_next_no":21,"se_numdays_until_next_no":5.5075705472861},{"site_id":5124,"latitude":32.197659,"longitude":-111.029831,"elevation_in_meters":785,"state":"AZ","species_id":210,"genus":"Carnegiea","species":"gigantea","common_name":"saguaro","kingdom":"Plantae","phenophase_id":201,"phenophase_description":"Open
         flowers (1 location)","first_yes_sample_size":7,"mean_first_yes_year":2010,"mean_first_yes_doy":140,"mean_first_yes_julian_date":2455337,"se_first_yes_in_days":2.0287055622991,"mean_numdays_since_prior_no":10.714285714286,"se_numdays_since_prior_no":0.18442777839083,"last_yes_sample_size":4,"mean_last_yes_year":2010,"mean_last_yes_doy":143,"mean_last_yes_julian_date":2455340,"se_last_yes_in_days":0,"mean_numdays_until_next_no":21,"se_numdays_until_next_no":0},{"site_id":5124,"latitude":32.197659,"longitude":-111.029831,"elevation_in_meters":785,"state":"AZ","species_id":210,"genus":"Carnegiea","species":"gigantea","common_name":"saguaro","kingdom":"Plantae","phenophase_id":256,"phenophase_description":"Flower
         buds (1 location)","first_yes_sample_size":6,"mean_first_yes_year":2010,"mean_first_yes_doy":125,"mean_first_yes_julian_date":2455322,"se_first_yes_in_days":2.1081851067789,"mean_numdays_since_prior_no":12.666666666667,"se_numdays_since_prior_no":0.84327404271157,"last_yes_sample_size":8,"mean_last_yes_year":2010,"mean_last_yes_doy":139,"mean_last_yes_julian_date":2455336,"se_last_yes_in_days":2.783882181415,"mean_numdays_until_next_no":18.375,"se_numdays_until_next_no":1.721061757006}]'
-  recorded_at: 2025-03-17 20:56:38 GMT
-  recorded_with: vcr/1.6.0, webmockr/1.0.0
+  recorded_at: 2025-07-25 21:33:11
 - request:
-    method: post
+    method: POST
     uri: https://services.usanpn.org/npn_portal/observations/getSiteLevelData.json
     body:
-      encoding: ''
-      string: ''
-    headers: []
+      string: request_src=unit%2520test&climate_data=0&species_id[1]=210&num_days_quality_filter=30&start_date=2010-10-01&end_date=2011-09-30
   response:
-    status:
-      status_code: 200
-      message: OK
+    status: 200
     headers:
-      date: Mon, 17 Mar 2025 20:56:38 GMT
+      date: Fri, 25 Jul 2025 21:33:12 GMT
       content-type: application/json
       content-length: '5429'
       server: Apache/2.4.62 () PHP/5.5.38
@@ -379,8 +354,6 @@ http_interactions:
       access-control-allow-headers: origin, x-requested-with, content-type
       access-control-allow-methods: PUT, GET, POST, DELETE, OPTIONS
     body:
-      encoding: ''
-      file: no
       string: '[{"site_id":2329,"latitude":32.354759,"longitude":-110.939194,"elevation_in_meters":961,"state":"AZ","species_id":210,"genus":"Carnegiea","species":"gigantea","common_name":"saguaro","kingdom":"Plantae","phenophase_id":256,"phenophase_description":"Flower
         buds (1 location)","first_yes_sample_size":0,"mean_first_yes_year":-9999,"mean_first_yes_doy":-9999,"mean_first_yes_julian_date":-9999,"se_first_yes_in_days":-9999,"mean_numdays_since_prior_no":-9999,"se_numdays_since_prior_no":-9999,"last_yes_sample_size":1,"mean_last_yes_year":2010,"mean_last_yes_doy":304,"mean_last_yes_julian_date":2455501,"se_last_yes_in_days":-9999,"mean_numdays_until_next_no":11,"se_numdays_until_next_no":-9999},{"site_id":2329,"latitude":32.354759,"longitude":-110.939194,"elevation_in_meters":961,"state":"AZ","species_id":210,"genus":"Carnegiea","species":"gigantea","common_name":"saguaro","kingdom":"Plantae","phenophase_id":390,"phenophase_description":"Ripe
         fruits","first_yes_sample_size":1,"mean_first_yes_year":2011,"mean_first_yes_doy":156,"mean_first_yes_julian_date":2455718,"se_first_yes_in_days":-9999,"mean_numdays_since_prior_no":6,"se_numdays_since_prior_no":-9999,"last_yes_sample_size":2,"mean_last_yes_year":2011,"mean_last_yes_doy":193,"mean_last_yes_julian_date":2455755,"se_last_yes_in_days":4,"mean_numdays_until_next_no":14.5,"se_numdays_until_next_no":6.5},{"site_id":2329,"latitude":32.354759,"longitude":-110.939194,"elevation_in_meters":961,"state":"AZ","species_id":210,"genus":"Carnegiea","species":"gigantea","common_name":"saguaro","kingdom":"Plantae","phenophase_id":500,"phenophase_description":"Flowers
@@ -389,5 +362,5 @@ http_interactions:
         flowers","first_yes_sample_size":1,"mean_first_yes_year":2011,"mean_first_yes_doy":129,"mean_first_yes_julian_date":2455691,"se_first_yes_in_days":-9999,"mean_numdays_since_prior_no":1,"se_numdays_since_prior_no":-9999,"last_yes_sample_size":1,"mean_last_yes_year":2011,"mean_last_yes_doy":131,"mean_last_yes_julian_date":2455693,"se_last_yes_in_days":-9999,"mean_numdays_until_next_no":1,"se_numdays_until_next_no":-9999},{"site_id":6102,"latitude":32.231880,"longitude":-110.951012,"elevation_in_meters":743,"state":"AZ","species_id":210,"genus":"Carnegiea","species":"gigantea","common_name":"saguaro","kingdom":"Plantae","phenophase_id":500,"phenophase_description":"Flowers
         or flower buds","first_yes_sample_size":2,"mean_first_yes_year":2011,"mean_first_yes_doy":263,"mean_first_yes_julian_date":2455825,"se_first_yes_in_days":0,"mean_numdays_since_prior_no":7,"se_numdays_since_prior_no":0,"last_yes_sample_size":1,"mean_last_yes_year":2011,"mean_last_yes_doy":263,"mean_last_yes_julian_date":2455825,"se_last_yes_in_days":-9999,"mean_numdays_until_next_no":9,"se_numdays_until_next_no":-9999},{"site_id":6102,"latitude":32.231880,"longitude":-110.951012,"elevation_in_meters":743,"state":"AZ","species_id":210,"genus":"Carnegiea","species":"gigantea","common_name":"saguaro","kingdom":"Plantae","phenophase_id":501,"phenophase_description":"Open
         flowers","first_yes_sample_size":1,"mean_first_yes_year":2011,"mean_first_yes_doy":272,"mean_first_yes_julian_date":2455834,"se_first_yes_in_days":-9999,"mean_numdays_since_prior_no":9,"se_numdays_since_prior_no":-9999,"last_yes_sample_size":0,"mean_last_yes_year":-9999,"mean_last_yes_doy":-9999,"mean_last_yes_julian_date":-9999,"se_last_yes_in_days":-9999,"mean_numdays_until_next_no":-9999,"se_numdays_until_next_no":-9999}]'
-  recorded_at: 2025-03-17 20:56:38 GMT
-  recorded_with: vcr/1.6.0, webmockr/1.0.0
+  recorded_at: 2025-07-25 21:33:11
+recorded_with: VCR-vcr/2.0.0

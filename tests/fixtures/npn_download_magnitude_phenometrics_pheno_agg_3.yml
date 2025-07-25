@@ -1,17 +1,13 @@
 http_interactions:
 - request:
-    method: post
+    method: POST
     uri: https://services.usanpn.org/npn_portal/observations/getMagnitudeData.json
     body:
-      encoding: ''
-      string: ''
-    headers: []
+      string: request_src=Unit%2520Test&climate_data=0&order_id[1]=78&pheno_class_id[1]=1&pheno_class_id[2]=3&pheno_class_id[3]=6&taxonomy_aggregate=1&pheno_class_aggregate=1&frequency=30&start_date=2013-01-01&end_date=2013-12-31
   response:
-    status:
-      status_code: 200
-      message: OK
+    status: 200
     headers:
-      date: Fri, 04 Apr 2025 22:15:59 GMT
+      date: Fri, 25 Jul 2025 22:33:21 GMT
       content-type: application/json
       server: Apache/2.4.62 () PHP/5.5.38
       x-powered-by: PHP/5.5.38
@@ -19,8 +15,6 @@ http_interactions:
       access-control-allow-headers: origin, x-requested-with, content-type
       access-control-allow-methods: PUT, GET, POST, DELETE, OPTIONS
     body:
-      encoding: ''
-      file: no
       string: '[{"kingdom":"Plantae","order_id":78,"order_name":"Fabales","order_common_name":"Pea
         and Milkwort Families","pheno_class_id":1,"pheno_class_name":"Initial shoot
         or leaf growth","year":2013,"start_date":"2013-01-01","end_date":"2013-01-30","status_records_sample_size":58,"individuals_sample_size":17,"sites_sample_size":12,"num_yes_records":3,"numindividuals_with_yes_record":3,"numsites_with_yes_record":-9999,"proportion_yes_records":0.05,"proportion_individuals_with_yes_record":0.18,"proportion_sites_with_yes_record":-9999,"in-phase_sites_sample_size":-9999,"in-phase_site_visits_sample_size":-9999,"total_numanimals_in-phase":-9999,"mean_numanimals_in-phase":-9999,"se_numanimals_in-phase":-9999,"in-phase_per_hr_sites_sample_size":-9999,"in-phase_per_hr_site_visits_sample_size":-9999,"mean_numanimals_in-phase_per_hr":-9999,"se_numanimals_in-phase_per_hr":-9999,"in-phase_per_hr_per_acre_sites_sample_size":-9999,"in-phase_per_hr_per_acre_site_visits_sample_size":-9999,"mean_numanimals_in-phase_per_hr_per_acre":-9999,"se_numanimals_in-phase_per_hr_per_acre":-9999},{"kingdom":"Plantae","order_id":78,"order_name":"Fabales","order_common_name":"Pea
@@ -82,5 +76,5 @@ http_interactions:
         and Milkwort Families","pheno_class_id":3,"pheno_class_name":"Leaves or needles","year":2013,"start_date":"2013-11-27","end_date":"2013-12-31","status_records_sample_size":185,"individuals_sample_size":70,"sites_sample_size":41,"num_yes_records":88,"numindividuals_with_yes_record":44,"numsites_with_yes_record":-9999,"proportion_yes_records":0.48,"proportion_individuals_with_yes_record":0.63,"proportion_sites_with_yes_record":-9999,"in-phase_sites_sample_size":-9999,"in-phase_site_visits_sample_size":-9999,"total_numanimals_in-phase":-9999,"mean_numanimals_in-phase":-9999,"se_numanimals_in-phase":-9999,"in-phase_per_hr_sites_sample_size":-9999,"in-phase_per_hr_site_visits_sample_size":-9999,"mean_numanimals_in-phase_per_hr":-9999,"se_numanimals_in-phase_per_hr":-9999,"in-phase_per_hr_per_acre_sites_sample_size":-9999,"in-phase_per_hr_per_acre_site_visits_sample_size":-9999,"mean_numanimals_in-phase_per_hr_per_acre":-9999,"se_numanimals_in-phase_per_hr_per_acre":-9999},{"kingdom":"Plantae","order_id":78,"order_name":"Fabales","order_common_name":"Pea
         and Milkwort Families","pheno_class_id":6,"pheno_class_name":"Flowers or pollen
         cones","year":2013,"start_date":"2013-11-27","end_date":"2013-12-31","status_records_sample_size":188,"individuals_sample_size":73,"sites_sample_size":42,"num_yes_records":1,"numindividuals_with_yes_record":1,"numsites_with_yes_record":-9999,"proportion_yes_records":0.01,"proportion_individuals_with_yes_record":0.01,"proportion_sites_with_yes_record":-9999,"in-phase_sites_sample_size":-9999,"in-phase_site_visits_sample_size":-9999,"total_numanimals_in-phase":-9999,"mean_numanimals_in-phase":-9999,"se_numanimals_in-phase":-9999,"in-phase_per_hr_sites_sample_size":-9999,"in-phase_per_hr_site_visits_sample_size":-9999,"mean_numanimals_in-phase_per_hr":-9999,"se_numanimals_in-phase_per_hr":-9999,"in-phase_per_hr_per_acre_sites_sample_size":-9999,"in-phase_per_hr_per_acre_site_visits_sample_size":-9999,"mean_numanimals_in-phase_per_hr_per_acre":-9999,"se_numanimals_in-phase_per_hr_per_acre":-9999}]'
-  recorded_at: 2025-04-04 22:15:59 GMT
-  recorded_with: vcr/1.6.0, webmockr/1.0.0
+  recorded_at: 2025-07-25 22:33:21
+recorded_with: VCR-vcr/2.0.0
