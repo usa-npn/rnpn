@@ -17,10 +17,12 @@ retrieve. Applicable values can be found via the \code{\link[=npn_get_layer_deta
 function under the \code{name} column.}
 
 \item{date}{Specify the date param for the layer retrieved. This can be a
-calendar date formatted YYYY-mm-dd or it could be a string integer
-representing day of year. It can also be \code{NULL} in some cases. Which to use
-depends entirely on the layer being requested. More information available
-from the \code{\link[=npn_get_layer_details]{npn_get_layer_details()}} function.}
+calendar date represented with a \code{Date} object or as a string formatted
+YYYY-mm-dd or it could be an integer vector representing days of year. It
+can also be \code{NULL} in some cases. Which to use depends entirely on the
+layer being requested. More information available from the
+\code{\link[=npn_get_layer_details]{npn_get_layer_details()}} function. Note: providing days of year as a
+character input (e.g. \code{"1,4"}) is deprecated as of version 1.3.0.}
 
 \item{format}{The output format of the raster layer retrieved. Defaults to
 \code{"GeoTIFF"}.}
@@ -30,7 +32,7 @@ file path specified. When left unset, this function will return a
 \link[terra:SpatRaster-class]{terra::SpatRaster} object.}
 }
 \value{
-returns nothing when \code{output_path} is set, otherwise a
+returns \code{outpath_path} when \code{output_path} is set, otherwise a
 \link[terra:SpatRaster-class]{terra::SpatRaster} object meeting the \code{coverage_id}, \code{date} and \code{format}
 parameters specified.
 }

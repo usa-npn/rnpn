@@ -668,14 +668,14 @@ test_that("six concordance works for status", {
   vcr::use_cassette("npn_download_status_data_six_concord_1", {
     some_data <- npn_download_status_data(
       request_source = "Unit Test",
-      c(2016),
-      species_ids = c(6),
+      years = 2016,
+      species_ids = 6,
       six_leaf_layer = TRUE,
       six_bloom_layer = TRUE,
       agdd_layer = 32,
       additional_layers = data.frame(
         name = c("si-x:30yr_avg_4k_leaf"),
-        param = c("365")
+        param = 365
       )
     )
   })

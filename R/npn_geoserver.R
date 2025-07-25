@@ -78,35 +78,59 @@ npn_get_layer_details <- function() {
 #'   retrieve. Applicable values can be found via the [npn_get_layer_details()]
 #'   function under the `name` column.
 #' @param date Specify the date param for the layer retrieved. This can be a
-#'   calendar date formatted YYYY-mm-dd or it could be a string integer
-#'   representing day of year. It can also be `NULL` in some cases. Which to use
-#'   depends entirely on the layer being requested. More information available
-#'   from the [npn_get_layer_details()] function.
+#'   calendar date represented with a `Date` object or as a string formatted
+#'   YYYY-mm-dd or it could be an integer vector representing days of year. It
+#'   can also be `NULL` in some cases. Which to use depends entirely on the
+#'   layer being requested. More information available from the
+#'   [npn_get_layer_details()] function. Note: providing days of year as a
+#'   character input (e.g. `"1,4"`) is deprecated as of version 1.4.0.
 #' @param format The output format of the raster layer retrieved. Defaults to
 #'   `"GeoTIFF"`.
 #' @param output_path Optional value. When set, the raster will be piped to the
 #'   file path specified. When left unset, this function will return a
 #'   [terra::SpatRaster] object.
-#' @returns returns nothing when `output_path` is set, otherwise a
+#' @returns returns `outpath_path` when `output_path` is set, otherwise a
 #'   [terra::SpatRaster] object meeting the `coverage_id`, `date` and `format`
 #'   parameters specified.
 #' @examples \dontrun{
-#' ras <- npn_download_geospatial("si-x:30yr_avg_six_bloom", "255")
+#' ras <- npn_download_geospatial("si-x:30yr_avg_six_bloom", 255)
 #' }
 #' @export
-npn_download_geospatial <- function (coverage_id,
+npn_download_geospatial <- function(coverage_id,
                                      date,
                                      format = "geotiff",
                                      output_path = NULL) {
 
   #logic to handle `date` being possibly a date or possible an integer DOY
   if (!is.null(date) && toString(date) != "") {
-    param <- tryCatch({
-      as.Date(date)
-      paste0("time(\"", date, "T00:00:00.000Z\")")
-    }, error = function(msg) {
-      paste0("elevation(", date, ")")
-    })
+    if (is.numeric(date)) {
+      #additional checks for interger-ish-ness and 0-365
+      valid <- rlang::is_integerish(date) & (all(date > 0) & all(date <= 365))
+      if (isFALSE(valid)) {
+        rlang::abort(
+          "Numeric inputs to `date` must be integer days of year between 0 and 365."
+        )
+      }
+      param <- paste0("elevation(", paste(date, collapse = ","), ")")
+    } else if (inherits(date, "Date")) {
+      param <- paste0("time(\"", as.character(date), "T00:00:00.000Z\")")
+    } else if (is.character(date)) {
+      # If character, could either be "YYYY-MM-DD" or legacy "1,5" format.
+      # Try to detect legacy format and warn.
+      numericish <- grepl("^\\d{1,3}(,\\d{1,3})*$", date)
+      if (numericish) {
+        lifecycle::deprecate_warn(
+          when = "1.3.0",
+          what = I('Providing a character input to `date` for days of year (e.g. "1,5")'),
+          with = I('use a numeric vector instead (e.g. `c(1,5)`)')
+        )
+        param <- paste0("elevation(", date, ")")
+      } else {
+        # assume correctly formatted as YYYY-MM-DD and coerce to date as a check
+        date <- as.Date(date)
+        param <- paste0("time(\"", as.character(date), "T00:00:00.000Z\")")
+      }
+    }
   } else {
     param <- NULL
   }
@@ -130,7 +154,7 @@ npn_download_geospatial <- function (coverage_id,
       return(ras)
     } else {
       resp <- httr2::req_perform(req, path = output_path)
-      #TODO return output_path?
+      return(output_path)
     }
   }, error = function(msg) { #TODO use httr2 for error handling
     message(
