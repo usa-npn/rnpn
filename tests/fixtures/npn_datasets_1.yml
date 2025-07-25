@@ -1,20 +1,11 @@
 http_interactions:
 - request:
-    method: get
+    method: GET
     uri: https://services.usanpn.org/npn_portal/observations/getDatasetDetails.json
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      Accept: application/json, text/xml, application/xml, */*
   response:
-    status:
-      status_code: 200
-      category: Success
-      reason: OK
-      message: 'Success: (200) OK'
+    status: 200
     headers:
-      date: Wed, 13 Nov 2024 00:52:12 GMT
+      date: Fri, 25 Jul 2025 21:28:32 GMT
       content-type: application/json; charset=utf-8
       content-length: '6339'
       server: Apache/2.4.62 () PHP/5.5.38
@@ -25,8 +16,6 @@ http_interactions:
       access-control-allow-headers: origin, x-requested-with, content-type
       access-control-allow-methods: PUT, GET, POST, DELETE, OPTIONS
     body:
-      encoding: ''
-      file: no
       string: '[{"dataset_id":1,"dataset_name":"Legacy Lilac Data","dataset_description":"Legacy
         lilac phenology data for Eastern US (SCSV) and Western US","contact_name":"Mark
         D. Schwarz","contact_institution":"USA NPN","contact_email":"mds@uwm.edu","contact_phone":"(414)
@@ -74,5 +63,5 @@ http_interactions:
         NWR 2012-2019","dataset_description":"Patuxent National Wildlife Refuge phenology
         using Project Budburst protocols, 2012-2019","contact_name":"Ken Lavish","contact_institution":"Patuxent
         National Wildlife Refuge ","contact_email":"kalavish@hotmail.com","contact_phone":null,"contact_address":null,"dataset_comments":null,"dataset_documentation_url":"https:\/\/docs.google.com\/document\/d\/e\/2PACX-1vTJlxNy5k8x3gzKBksCa0NpFQ88SC7qwMlmmjcD4MVnzMPLSQpp5_hm56BOeIOq1hJAdzfq7UmFtWZe\/pub"}]'
-  recorded_at: 2024-11-13 00:52:12 GMT
-  recorded_with: vcr/1.6.0, webmockr/1.0.0
+  recorded_at: 2025-07-25 21:28:32
+recorded_with: VCR-vcr/2.0.0

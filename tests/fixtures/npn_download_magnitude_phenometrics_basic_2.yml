@@ -1,17 +1,13 @@
 http_interactions:
 - request:
-    method: post
+    method: POST
     uri: https://services.usanpn.org/npn_portal/observations/getMagnitudeData.json
     body:
-      encoding: ''
-      string: ''
-    headers: []
+      string: request_src=Unit%2520Test&climate_data=0&species_id[1]=6&frequency=14&start_date=2013-01-01&end_date=2013-12-31
   response:
-    status:
-      status_code: 200
-      message: OK
+    status: 200
     headers:
-      date: Mon, 17 Mar 2025 20:54:19 GMT
+      date: Fri, 25 Jul 2025 21:33:10 GMT
       content-type: application/json
       server: Apache/2.4.62 () PHP/5.5.38
       x-powered-by: PHP/5.5.38
@@ -19,8 +15,6 @@ http_interactions:
       access-control-allow-headers: origin, x-requested-with, content-type
       access-control-allow-methods: PUT, GET, POST, DELETE, OPTIONS
     body:
-      encoding: ''
-      file: no
       string: '[{"species_id":6,"genus":"Caltha","species":"palustris","common_name":"yellow
         marsh marigold","kingdom":"Plantae","phenophase_id":390,"phenophase_description":"Ripe
         fruits","year":2013,"start_date":"2013-01-01","end_date":"2013-01-14","status_records_sample_size":6,"individuals_sample_size":3,"sites_sample_size":1,"num_yes_records":0,"numindividuals_with_yes_record":0,"numsites_with_yes_record":-9999,"proportion_yes_records":0,"proportion_individuals_with_yes_record":0,"proportion_sites_with_yes_record":-9999,"in-phase_sites_sample_size":-9999,"in-phase_site_visits_sample_size":-9999,"total_numanimals_in-phase":-9999,"mean_numanimals_in-phase":-9999,"se_numanimals_in-phase":-9999,"in-phase_per_hr_sites_sample_size":-9999,"in-phase_per_hr_site_visits_sample_size":-9999,"mean_numanimals_in-phase_per_hr":-9999,"se_numanimals_in-phase_per_hr":-9999,"in-phase_per_hr_per_acre_sites_sample_size":-9999,"in-phase_per_hr_per_acre_site_visits_sample_size":-9999,"mean_numanimals_in-phase_per_hr_per_acre":-9999,"se_numanimals_in-phase_per_hr_per_acre":-9999},{"species_id":6,"genus":"Caltha","species":"palustris","common_name":"yellow
@@ -360,5 +354,5 @@ http_interactions:
         marsh marigold","kingdom":"Plantae","phenophase_id":504,"phenophase_description":"Recent
         fruit or seed drop","year":2013,"start_date":"2013-12-17","end_date":"2013-12-31","status_records_sample_size":9,"individuals_sample_size":3,"sites_sample_size":1,"num_yes_records":0,"numindividuals_with_yes_record":0,"numsites_with_yes_record":-9999,"proportion_yes_records":0,"proportion_individuals_with_yes_record":0,"proportion_sites_with_yes_record":-9999,"in-phase_sites_sample_size":-9999,"in-phase_site_visits_sample_size":-9999,"total_numanimals_in-phase":-9999,"mean_numanimals_in-phase":-9999,"se_numanimals_in-phase":-9999,"in-phase_per_hr_sites_sample_size":-9999,"in-phase_per_hr_site_visits_sample_size":-9999,"mean_numanimals_in-phase_per_hr":-9999,"se_numanimals_in-phase_per_hr":-9999,"in-phase_per_hr_per_acre_sites_sample_size":-9999,"in-phase_per_hr_per_acre_site_visits_sample_size":-9999,"mean_numanimals_in-phase_per_hr_per_acre":-9999,"se_numanimals_in-phase_per_hr_per_acre":-9999},{"species_id":6,"genus":"Caltha","species":"palustris","common_name":"yellow
         marsh marigold","kingdom":"Plantae","phenophase_id":516,"phenophase_description":"Fruits","year":2013,"start_date":"2013-12-17","end_date":"2013-12-31","status_records_sample_size":9,"individuals_sample_size":3,"sites_sample_size":1,"num_yes_records":0,"numindividuals_with_yes_record":0,"numsites_with_yes_record":-9999,"proportion_yes_records":0,"proportion_individuals_with_yes_record":0,"proportion_sites_with_yes_record":-9999,"in-phase_sites_sample_size":-9999,"in-phase_site_visits_sample_size":-9999,"total_numanimals_in-phase":-9999,"mean_numanimals_in-phase":-9999,"se_numanimals_in-phase":-9999,"in-phase_per_hr_sites_sample_size":-9999,"in-phase_per_hr_site_visits_sample_size":-9999,"mean_numanimals_in-phase_per_hr":-9999,"se_numanimals_in-phase_per_hr":-9999,"in-phase_per_hr_per_acre_sites_sample_size":-9999,"in-phase_per_hr_per_acre_site_visits_sample_size":-9999,"mean_numanimals_in-phase_per_hr_per_acre":-9999,"se_numanimals_in-phase_per_hr_per_acre":-9999}]'
-  recorded_at: 2025-03-17 20:54:19 GMT
-  recorded_with: vcr/1.6.0, webmockr/1.0.0
+  recorded_at: 2025-07-25 21:33:10
+recorded_with: VCR-vcr/2.0.0

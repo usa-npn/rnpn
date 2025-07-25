@@ -1,15 +1,11 @@
 http_interactions:
 - request:
-    method: post
+    method: POST
     uri: https://services.usanpn.org/npn_portal/observations/getObservations.json
     body:
-      encoding: ''
-      string: ''
-    headers: []
+      string: request_src=Unit%2520Test&climate_data=0&species_id[1]=6&start_date=2013-01-01&end_date=2013-12-31
   response:
-    status:
-      status_code: 200
-      message: OK
+    status: 200
     headers:
       date: Mon, 28 Apr 2025 20:42:12 GMT
       content-type: application/json

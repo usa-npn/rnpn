@@ -716,13 +716,14 @@ npn_get_data_by_year <- function(
       # returned data. The data doesn't have to be combined if there was
       # no previous iteration / the results were empty
       if (!is.null(data) && is.null(download_path)) {
+        first_year <- FALSE
         if (!is.null(all_data)) {
           all_data <- dplyr::bind_rows(all_data, data)
         } else {
           all_data <- data
         }
       }
-      if (!is.null(data)) {
+      if (!is.null(data) && !is.null(download_path) && file.exists(data)) {
         first_year <- FALSE
       }
     }
@@ -820,6 +821,7 @@ npn_get_data <- function(
             "observer_status_conflict_flag_individual_ids",
             "in-phase_search_method",
             "in-phase_per_hr_search",
+            "state",
             #sometimes get parsed as numeric:
             "intensity_value",
             "abundance_value"
@@ -915,9 +917,15 @@ npn_get_data <- function(
   # assume that memory could be a limitation and wrangle data 5000 rows at a
   # time and append to the CSV file specified in `download_path`
   if (is.null(download_path)) {
-    dtm <-
-      httr2::resp_body_json(resp, simplifyVector = TRUE) %>%
-      wrangle_dl_data()
+    dtm <- httr2::resp_body_json(resp, simplifyVector = TRUE)
+    # If dtm is an empty list because there are no records, convert it into an
+    # empty tibble
+    if (is.null(dim(dtm))) {
+      dtm <- dplyr::tibble()
+      message(paste0("No records in ", substring(query$start_date, 1, 4)))
+    } else {
+      dtm <- wrangle_dl_data(dtm)
+    }
     return(dtm)
   } else {
     #resp$body is a path to an .ndjson file

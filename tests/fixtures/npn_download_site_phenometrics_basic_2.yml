@@ -1,17 +1,13 @@
 http_interactions:
 - request:
-    method: post
+    method: POST
     uri: https://services.usanpn.org/npn_portal/observations/getSiteLevelData.json
     body:
-      encoding: ''
-      string: ''
-    headers: []
+      string: request_src=Unit%2520Test&climate_data=0&species_id[1]=6&num_days_quality_filter=5&start_date=2013-01-01&end_date=2013-12-31
   response:
-    status:
-      status_code: 200
-      message: OK
+    status: 200
     headers:
-      date: Mon, 17 Mar 2025 20:54:19 GMT
+      date: Fri, 25 Jul 2025 21:33:10 GMT
       content-type: application/json
       content-length: '4156'
       server: Apache/2.4.62 () PHP/5.5.38
@@ -20,8 +16,6 @@ http_interactions:
       access-control-allow-headers: origin, x-requested-with, content-type
       access-control-allow-methods: PUT, GET, POST, DELETE, OPTIONS
     body:
-      encoding: ''
-      file: no
       string: '[{"site_id":38,"latitude":45.407852,"longitude":-93.200974,"elevation_in_meters":281,"state":"MN","species_id":6,"genus":"Caltha","species":"palustris","common_name":"yellow
         marsh marigold","kingdom":"Plantae","phenophase_id":516,"phenophase_description":"Fruits","first_yes_sample_size":1,"mean_first_yes_year":2013,"mean_first_yes_doy":149,"mean_first_yes_julian_date":2456442,"se_first_yes_in_days":-9999,"mean_numdays_since_prior_no":5,"se_numdays_since_prior_no":-9999,"last_yes_sample_size":0,"mean_last_yes_year":-9999,"mean_last_yes_doy":-9999,"mean_last_yes_julian_date":-9999,"se_last_yes_in_days":-9999,"mean_numdays_until_next_no":-9999,"se_numdays_until_next_no":-9999},{"site_id":678,"latitude":45.177551,"longitude":-89.848251,"elevation_in_meters":432,"state":"WI","species_id":6,"genus":"Caltha","species":"palustris","common_name":"yellow
         marsh marigold","kingdom":"Plantae","phenophase_id":482,"phenophase_description":"Initial
@@ -33,5 +27,5 @@ http_interactions:
         marsh marigold","kingdom":"Plantae","phenophase_id":501,"phenophase_description":"Open
         flowers","first_yes_sample_size":0,"mean_first_yes_year":-9999,"mean_first_yes_doy":-9999,"mean_first_yes_julian_date":-9999,"se_first_yes_in_days":-9999,"mean_numdays_since_prior_no":-9999,"se_numdays_since_prior_no":-9999,"last_yes_sample_size":1,"mean_last_yes_year":2013,"mean_last_yes_doy":144,"mean_last_yes_julian_date":2456437,"se_last_yes_in_days":-9999,"mean_numdays_until_next_no":5,"se_numdays_until_next_no":-9999},{"site_id":5952,"latitude":45.407852,"longitude":-93.200974,"elevation_in_meters":281,"state":"MN","species_id":6,"genus":"Caltha","species":"palustris","common_name":"yellow
         marsh marigold","kingdom":"Plantae","phenophase_id":516,"phenophase_description":"Fruits","first_yes_sample_size":1,"mean_first_yes_year":2013,"mean_first_yes_doy":149,"mean_first_yes_julian_date":2456442,"se_first_yes_in_days":-9999,"mean_numdays_since_prior_no":5,"se_numdays_since_prior_no":-9999,"last_yes_sample_size":0,"mean_last_yes_year":-9999,"mean_last_yes_doy":-9999,"mean_last_yes_julian_date":-9999,"se_last_yes_in_days":-9999,"mean_numdays_until_next_no":-9999,"se_numdays_until_next_no":-9999}]'
-  recorded_at: 2025-03-17 20:54:18 GMT
-  recorded_with: vcr/1.6.0, webmockr/1.0.0
+  recorded_at: 2025-07-25 21:33:09
+recorded_with: VCR-vcr/2.0.0
