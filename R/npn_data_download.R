@@ -820,7 +820,10 @@ npn_get_data <- function(
       dplyr::mutate(
         dplyr::across(
           dplyr::any_of("update_datetime"),
-          function(x) as.POSIXct(x, tz = "UTC")
+          function(x) {
+            x <- ifelse(x == -9999, NA, x)
+            as.POSIXct(x, tz = "UTC")
+          }
         ),
         dplyr::across(
           dplyr::any_of(c(
@@ -911,6 +914,20 @@ npn_get_data <- function(
         df$cal_date <- NULL
       }
     }
+
+    df <- df %>%
+      dplyr::mutate(
+        dplyr::across(
+          dplyr::where(is.numeric),
+          function(x) ifelse(x == -9999, NA_real_, x)
+        )
+      ) %>%
+      dplyr::mutate(
+        dplyr::across(
+          dplyr::where(is.character),
+          function(x) ifelse(x == "-9999", NA_character_, x)
+        )
+      )
     return(tibble::as_tibble(df))
   }
   path <- withr::local_tempfile()
