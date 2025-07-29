@@ -79,11 +79,11 @@
 #'   instead.
 #' @export
 #' @examples \dontrun{
-#' #Download all saguaro data for 2016
+#' #Download all saguaro data for 2015 and 2016
 #' npn_download_status_data(
 #'   request_source = "Your Name or Org Here",
-#'   years = c(2016),
-#'   species_id = c(210),
+#'   years = c(2015, 2016),
+#'   species_id = 210,
 #'   download_path = "saguaro_data_2016.csv"
 #' )
 #' }
@@ -802,18 +802,6 @@ npn_get_data <- function(
   wrangle_dl_data <- function(df) {
     df <- df %>%
       dplyr::as_tibble() %>% #important to handle empty list
-      dplyr::mutate(
-        dplyr::across(
-          dplyr::where(is.numeric),
-          function(x) ifelse(x == -9999, NA_real_, x)
-        )
-      ) %>%
-      dplyr::mutate(
-        dplyr::across(
-          dplyr::where(is.character),
-          function(x) ifelse(x == "-9999", NA_character_, x)
-        )
-      ) %>%
       # handle some columns that may be read in as the wrong type if they happen
       # to be all NAs (#87, #107). `any_of()` is used because not all endpoints
       # will return these columns!
@@ -821,7 +809,7 @@ npn_get_data <- function(
         dplyr::across(
           dplyr::any_of("update_datetime"),
           function(x) {
-            x <- ifelse(x == -9999, NA, x)
+            x <- dplyr::if_else(x == -9999, NA, x)
             as.POSIXct(x, tz = "UTC")
           }
         ),
@@ -848,7 +836,7 @@ npn_get_data <- function(
           )),
           as.character
         )
-      )
+      ) 
 
     # Reconcile all the points in the frame with the SIX leaf raster,
     # if it's been requested.
@@ -918,16 +906,20 @@ npn_get_data <- function(
     df <- df %>%
       dplyr::mutate(
         dplyr::across(
-          dplyr::where(is.numeric),
-          function(x) ifelse(x == -9999, NA_real_, x)
-        )
-      ) %>%
-      dplyr::mutate(
+          #numeric columns except datetimes
+          c(dplyr::where(\(x) is.double(x)), -dplyr::matches("update_datetime")),
+          function(x) dplyr::if_else(x == -9999, NA_real_, x)
+        ),
+        dplyr::across(
+          c(dplyr::where(is.integer), -dplyr::matches("update_datetime")),
+          function(x) dplyr::if_else(x == -9999, NA_integer_, x)
+        ),
         dplyr::across(
           dplyr::where(is.character),
-          function(x) ifelse(x == "-9999", NA_character_, x)
+          function(x) dplyr::if_else(x == "-9999", NA_character_, x)
         )
       )
+
     return(tibble::as_tibble(df))
   }
   path <- withr::local_tempfile()
