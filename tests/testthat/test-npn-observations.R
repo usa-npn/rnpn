@@ -26,7 +26,10 @@ test_that("no request source blocked", {
 })
 
 test_that("npn_download_status_data() works", {
-  vcr::use_cassette("npn_download_status_data_basic_1", {
+  # Can't use local_casette here because `vcr` doesn't work with downloads yet
+  # (https://github.com/ropensci/vcr/issues/270) so it would error when
+  # download_path is set
+  vcr::use_cassette("npn_download_status_data", {
     some_data <- npn_download_status_data(
       request_source = "Unit Test",
       years = 2013,
@@ -62,42 +65,35 @@ test_that("npn_download_status_data() works", {
 })
 
 test_that("phenometrics downloads work", {
-  vcr::use_cassette("npn_download_individual_phenometrics_basic_1", {
-    some_data <- npn_download_individual_phenometrics(
-      request_source = "Unit Test",
-      years = 2013,
-      species_ids = c(6)
-    )
-  })
+  vcr::local_cassette("npn_download_x_phenometrics")
 
+  some_data <- npn_download_individual_phenometrics(
+    request_source = "Unit Test",
+    years = 2013,
+    species_ids = c(6)
+  )
   expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 10)
   expect_type(some_data$species_id, "integer")
   expect_equal(some_data[1, ]$species_id, 6)
 
-  vcr::use_cassette("npn_download_site_phenometrics_basic_1", {
-    some_data <- npn_download_site_phenometrics(
-      request_source = "Unit Test",
-      years = 2013,
-      species_ids = c(6)
-    )
-  })
-
+  some_data <- npn_download_site_phenometrics(
+    request_source = "Unit Test",
+    years = 2013,
+    species_ids = c(6)
+  )
   num_site_default <- nrow(some_data)
   expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 10)
   expect_type(some_data$species_id, "integer")
   expect_equal(some_data[1, ]$species_id, 6)
 
-  vcr::use_cassette("npn_download_site_phenometrics_basic_2", {
-    some_data <- npn_download_site_phenometrics(
-      request_source = "Unit Test",
-      years = 2013,
-      species_ids = c(6),
-      num_days_quality_filter = "5"
-    )
-  })
-
+  some_data <- npn_download_site_phenometrics(
+    request_source = "Unit Test",
+    years = 2013,
+    species_ids = c(6),
+    num_days_quality_filter = "5"
+  )
   num_site_custom <- nrow(some_data)
   expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 1)
@@ -105,29 +101,23 @@ test_that("phenometrics downloads work", {
   expect_equal(some_data[1, ]$species_id, 6)
   expect_gt(num_site_default, num_site_custom)
 
-  vcr::use_cassette("npn_download_magnitude_phenometrics_basic_1", {
-    some_data <- npn_download_magnitude_phenometrics(
-      request_source = "Unit Test",
-      years = 2013,
-      species_ids = c(6)
-    )
-  })
-
+  some_data <- npn_download_magnitude_phenometrics(
+    request_source = "Unit Test",
+    years = 2013,
+    species_ids = c(6)
+  )
   num_mag_default <- nrow(some_data)
   expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 10)
   expect_type(some_data$species_id, "integer")
   expect_equal(some_data[1, ]$species_id, 6)
 
-  vcr::use_cassette("npn_download_magnitude_phenometrics_basic_2", {
-    some_data <- npn_download_magnitude_phenometrics(
-      request_source = "Unit Test",
-      years = 2013,
-      species_ids = c(6),
-      period_frequency = "14"
-    )
-  })
-
+  some_data <- npn_download_magnitude_phenometrics(
+    request_source = "Unit Test",
+    years = 2013,
+    species_ids = c(6),
+    period_frequency = "14"
+  )
   num_mag_custom <- nrow(some_data)
   expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 25)
@@ -136,21 +126,20 @@ test_that("phenometrics downloads work", {
 
   expect_gt(num_mag_custom, num_mag_default)
 
-  vcr::use_cassette("npn_download_no_records", {
-    expect_message(
-      dl <- npn_download_individual_phenometrics(
-        request_source = 'erinz',
-        years = 2009,
-        species_ids = 1612
-      ),
-      "No records in 2009"
-    )
-  })
+  expect_message(
+    dl <- npn_download_individual_phenometrics(
+      request_source = 'erinz',
+      years = 2009,
+      species_ids = 1612
+    ),
+    "No records in 2009"
+  )
 
   expect_equal(dl, dplyr::tibble())
 })
 
 test_that("custom period works", {
+  vcr::local_cassette("custom_period")
   expect_error(
     npn_download_individual_phenometrics(
       request_source = "unit test",
@@ -161,36 +150,34 @@ test_that("custom period works", {
     "Please provide `period_start` as 'MM-DD'."
   )
 
-  vcr::use_cassette("custom_period", {
-    indiv_standard <-
-      npn_download_individual_phenometrics(
-        request_source = "unit test",
-        years = 2016,
-        species_id = 201
-      )
-    indiv_wateryr <-
-      npn_download_individual_phenometrics(
-        request_source = "unit test",
-        years = 2016,
-        period_start = "10-01",
-        period_end = "09-30",
-        species_id = 201
-      )
-    site_standard <-
-      npn_download_site_phenometrics(
-        request_source = "unit test",
-        years = 2010,
-        species_id = 210
-      )
-    site_wateryr <-
-      npn_download_site_phenometrics(
-        request_source = "unit test",
-        years = 2010,
-        period_start = "10-01",
-        period_end = "09-30",
-        species_id = 210
-      )
-  })
+  indiv_standard <-
+    npn_download_individual_phenometrics(
+      request_source = "unit test",
+      years = 2016,
+      species_id = 201
+    )
+  indiv_wateryr <-
+    npn_download_individual_phenometrics(
+      request_source = "unit test",
+      years = 2016,
+      period_start = "10-01",
+      period_end = "09-30",
+      species_id = 201
+    )
+  site_standard <-
+    npn_download_site_phenometrics(
+      request_source = "unit test",
+      years = 2010,
+      species_id = 210
+    )
+  site_wateryr <-
+    npn_download_site_phenometrics(
+      request_source = "unit test",
+      years = 2010,
+      period_start = "10-01",
+      period_end = "09-30",
+      species_id = 210
+    )
 
   #just crude checks that they aren't identical
   expect_false(
@@ -207,22 +194,20 @@ test_that("custom period works", {
 })
 
 
-# these can't be mocked currently due to limitations of vcr
 test_that("file download works", {
   skip_on_cran()
   skip_if(skip_long_tests, "Skipping long tests")
   skip_if_not(check_service(), "Service is down")
-
+  # these can't be mocked currently due to limitations of vcr
+  # vcr::local_cassette("downloads")
   test_download_path <- withr::local_tempfile(fileext = ".csv")
 
-  # vcr::use_cassette("downloads", {
   status_dl_file <- npn_download_status_data(
     request_source = "Unit Test",
     years = 2013,
     species_ids = c(6),
     download_path = test_download_path
   )
-  # })
 
   expect_true(file.exists(status_dl_file))
   some_data <- read.csv(status_dl_file)
@@ -250,61 +235,51 @@ test_that("file download works", {
 test_that("climate data flag works", {
   skip_on_cran()
   skip_if_not(check_service(), "Service is down")
+  vcr::local_cassette("npn_download_x_climate")
 
-  vcr::use_cassette("npn_download_status_data_climate_flag_1", {
-    some_data <- npn_download_status_data(
-      request_source = "Unit Test",
-      years = 2013,
-      species_ids = c(6),
-      climate_data = TRUE
-    )
-  })
-
+  some_data <- npn_download_status_data(
+    request_source = "Unit Test",
+    years = 2013,
+    species_ids = c(6),
+    climate_data = TRUE
+  )
   expect_s3_class(some_data, "data.frame")
   expect_type(some_data$tmin_winter, "double")
 
-  vcr::use_cassette("npn_download_individual_phenometrics_climate_flag_1", {
-    some_data <- npn_download_individual_phenometrics(
-      request_source = "Unit Test",
-      years = 2013,
-      species_ids = c(6),
-      climate_data = TRUE
-    )
-  })
-
+  some_data <- npn_download_individual_phenometrics(
+    request_source = "Unit Test",
+    years = 2013,
+    species_ids = c(6),
+    climate_data = TRUE
+  )
   expect_s3_class(some_data, "data.frame")
   expect_type(some_data$tmin_winter, "double")
 
-  vcr::use_cassette("npn_download_magnitude_phenometrics_climate_flag_1", {
-    some_data <- npn_download_magnitude_phenometrics(
-      request_source = "Unit Test",
-      years = 2013,
-      species_ids = c(6),
-      climate_data = TRUE
-    )
-  })
-
+  some_data <- npn_download_magnitude_phenometrics(
+    request_source = "Unit Test",
+    years = 2013,
+    species_ids = c(6),
+    climate_data = TRUE
+  )
   expect_s3_class(some_data, "data.frame")
   expect_false("tmin_winter" %in% colnames(some_data))
 })
 
-
 test_that("higher taxonomic ordering works for status data", {
   skip_on_cran()
   skip_if_not(check_service(), "Service is down")
+  vcr::local_cassette("npn_download_status_data_taxa")
 
   #Check the different taxonomic levels for
   #status data
 
   #Family_ID
-  vcr::use_cassette("npn_download_status_data_tax_1", {
-    some_data <- npn_download_status_data(
-      request_source = "Unit Test",
-      years = 2013,
-      family_ids = c(109),
-      additional_fields = c("Family_ID")
-    )
-  })
+  some_data <- npn_download_status_data(
+    request_source = "Unit Test",
+    years = 2013,
+    family_ids = c(109),
+    additional_fields = c("Family_ID")
+  )
   expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 100)
   expect_type(some_data$family_id, "integer")
@@ -315,14 +290,12 @@ test_that("higher taxonomic ordering works for status data", {
   expect_gt(nrow(less_data), 0)
 
   #Order_ID
-  vcr::use_cassette("npn_download_status_data_tax_2", {
-    some_data <- npn_download_status_data(
-      request_source = "Unit Test",
-      years = 2013,
-      order_ids = c(94),
-      additional_fields = c("Order_ID")
-    )
-  })
+  some_data <- npn_download_status_data(
+    request_source = "Unit Test",
+    years = 2013,
+    order_ids = c(94),
+    additional_fields = c("Order_ID")
+  )
   expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 500)
   expect_type(some_data$order_id, "integer")
@@ -333,15 +306,12 @@ test_that("higher taxonomic ordering works for status data", {
   expect_gt(nrow(less_data), 0)
 
   #class_ID
-  vcr::use_cassette("npn_download_status_data_tax_3", {
-    some_data <- npn_download_status_data(
-      request_source = "Unit Test",
-      years = 2013,
-      class_ids = c(11),
-      additional_fields = c("Class_ID")
-    )
-  })
-
+  some_data <- npn_download_status_data(
+    request_source = "Unit Test",
+    years = 2013,
+    class_ids = c(11),
+    additional_fields = c("Class_ID")
+  )
   expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 100)
   expect_type(some_data$class_id, "integer")
@@ -356,19 +326,18 @@ test_that("higher taxonomic ordering works for status data", {
 test_that("higher taxonomic ordering works for individual phenometrics", {
   skip_on_cran()
   skip_if_not(check_service(), "Service is down")
+  vcr::local_cassette("npn_download_individual_phenometrics_taxa")
 
   #Check the different taxonomic levels for
   #status data
 
   #Family_ID
-  vcr::use_cassette("npn_download_individual_phenometrics_tax_1", {
-    some_data <- npn_download_individual_phenometrics(
-      request_source = "Unit Test",
-      years = 2013,
-      family_ids = c(322),
-      additional_fields = c("Family_ID")
-    )
-  })
+  some_data <- npn_download_individual_phenometrics(
+    request_source = "Unit Test",
+    years = 2013,
+    family_ids = c(322),
+    additional_fields = c("Family_ID")
+  )
   expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 100)
   expect_type(some_data$family_id, "integer")
@@ -379,15 +348,12 @@ test_that("higher taxonomic ordering works for individual phenometrics", {
   expect_gt(nrow(less_data), 0)
 
   #Order_ID
-  vcr::use_cassette("npn_download_individual_phenometrics_tax_2", {
-    some_data <- npn_download_individual_phenometrics(
-      request_source = "Unit Test",
-      years = 2013,
-      order_ids = c(95),
-      additional_fields = c("Order_ID")
-    )
-  })
-
+  some_data <- npn_download_individual_phenometrics(
+    request_source = "Unit Test",
+    years = 2013,
+    order_ids = c(95),
+    additional_fields = c("Order_ID")
+  )
   expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 100)
   expect_type(some_data$order_id, "integer")
@@ -398,15 +364,12 @@ test_that("higher taxonomic ordering works for individual phenometrics", {
   expect_gt(nrow(less_data), 0)
 
   # #class_ID
-  vcr::use_cassette("npn_download_individual_phenometrics_tax_3", {
-    some_data <- npn_download_individual_phenometrics(
-      request_source = "Unit Test",
-      years = 2013,
-      class_ids = c(15),
-      additional_fields = c("Class_ID")
-    )
-  })
-
+  some_data <- npn_download_individual_phenometrics(
+    request_source = "Unit Test",
+    years = 2013,
+    class_ids = c(15),
+    additional_fields = c("Class_ID")
+  )
   expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 1000)
   expect_type(some_data$class_id, "integer")
@@ -421,19 +384,18 @@ test_that("higher taxonomic ordering works for individual phenometrics", {
 test_that("higher taxonomic ordering works for site phenometrics", {
   skip_on_cran()
   skip_if_not(check_service(), "Service is down")
+  vcr::local_cassette("npn_download_site_phenometrics_taxa")
 
   #Check the different taxonomic levels for
   #status data
 
   #Family_ID
-  vcr::use_cassette("npn_download_site_phenometrics_tax_1", {
-    some_data <- npn_download_site_phenometrics(
-      request_source = "Unit Test",
-      years = 2013,
-      family_ids = c(322),
-      additional_fields = c("Family_ID")
-    )
-  })
+  some_data <- npn_download_site_phenometrics(
+    request_source = "Unit Test",
+    years = 2013,
+    family_ids = c(322),
+    additional_fields = c("Family_ID")
+  )
   expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 10)
   expect_type(some_data$family_id, "integer")
@@ -444,15 +406,12 @@ test_that("higher taxonomic ordering works for site phenometrics", {
   expect_gt(nrow(less_data), 0)
 
   #Order_ID
-  vcr::use_cassette("npn_download_site_phenometrics_tax_2", {
-    some_data <- npn_download_site_phenometrics(
-      request_source = "Unit Test",
-      years = 2013,
-      order_ids = c(95),
-      additional_fields = c("Order_ID")
-    )
-  })
-
+  some_data <- npn_download_site_phenometrics(
+    request_source = "Unit Test",
+    years = 2013,
+    order_ids = c(95),
+    additional_fields = c("Order_ID")
+  )
   expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 10)
   expect_type(some_data$order_id, "integer")
@@ -463,15 +422,12 @@ test_that("higher taxonomic ordering works for site phenometrics", {
   expect_gt(nrow(less_data), 0)
 
   # #class_ID
-  vcr::use_cassette("npn_download_site_phenometrics_tax_3", {
-    some_data <- npn_download_site_phenometrics(
-      request_source = "Unit Test",
-      years = 2013,
-      class_ids = c(15),
-      additional_fields = c("Class_ID")
-    )
-  })
-
+  some_data <- npn_download_site_phenometrics(
+    request_source = "Unit Test",
+    years = 2013,
+    class_ids = c(15),
+    additional_fields = c("Class_ID")
+  )
   expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 1000)
   expect_type(some_data$class_id, "integer")
@@ -486,20 +442,18 @@ test_that("higher taxonomic ordering works for site phenometrics", {
 test_that("higher taxonomic ordering works for magnitude phenometrics", {
   skip_on_cran()
   skip_if_not(check_service(), "Service is down")
+  vcr::local_cassette("npn_download_magnitude_phenometrics_taxa")
 
   #Check the different taxonomic levels for
   #status data
 
   #Family_ID
-  vcr::use_cassette("npn_download_magnitude_phenometrics_tax_1", {
-    some_data <- npn_download_magnitude_phenometrics(
-      request_source = "Unit Test",
-      years = 2013,
-      family_ids = c(322),
-      additional_fields = c("Family_ID")
-    )
-  })
-
+  some_data <- npn_download_magnitude_phenometrics(
+    request_source = "Unit Test",
+    years = 2013,
+    family_ids = c(322),
+    additional_fields = c("Family_ID")
+  )
   expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 10)
   expect_type(some_data$family_id, "integer")
@@ -510,15 +464,12 @@ test_that("higher taxonomic ordering works for magnitude phenometrics", {
   expect_gt(nrow(less_data), 0)
 
   #Order_ID
-  vcr::use_cassette("npn_download_magnitude_phenometrics_tax_2", {
-    some_data <- npn_download_magnitude_phenometrics(
-      request_source = "Unit Test",
-      years = 2013,
-      order_ids = c(95),
-      additional_fields = c("Order_ID")
-    )
-  })
-
+  some_data <- npn_download_magnitude_phenometrics(
+    request_source = "Unit Test",
+    years = 2013,
+    order_ids = c(95),
+    additional_fields = c("Order_ID")
+  )
   expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 100)
   expect_type(some_data$order_id, "integer")
@@ -529,15 +480,12 @@ test_that("higher taxonomic ordering works for magnitude phenometrics", {
   expect_gt(nrow(less_data), 0)
 
   # #class_ID
-  vcr::use_cassette("npn_download_magnitude_phenometrics_tax_3", {
-    some_data <- npn_download_magnitude_phenometrics(
-      request_source = "Unit Test",
-      years = 2013,
-      class_ids = c(15),
-      additional_fields = c("Class_ID")
-    )
-  })
-
+  some_data <- npn_download_magnitude_phenometrics(
+    request_source = "Unit Test",
+    years = 2013,
+    class_ids = c(15),
+    additional_fields = c("Class_ID")
+  )
   expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 1000)
   expect_type(some_data$class_id, "integer")
@@ -552,47 +500,39 @@ test_that("higher taxonomic ordering works for magnitude phenometrics", {
 test_that("higher level taxonomic agg and pheno agg works for site level", {
   skip_on_cran()
   skip_if_not(check_service(), "Service is down")
+  vcr::local_cassette("npn_download_site_phenometrics_agg")
 
-  vcr::use_cassette("npn_download_site_phenometrics_pheno_agg_1", {
-    some_data <- npn_download_site_phenometrics(
-      request_source = "Unit Test",
-      years = 2013,
-      family_ids = c(322),
-      taxonomy_aggregate = TRUE
-    )
-  })
-
+  some_data <- npn_download_site_phenometrics(
+    request_source = "Unit Test",
+    years = 2013,
+    family_ids = c(322),
+    taxonomy_aggregate = TRUE
+  )
   expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 10)
   expect_type(some_data$family_id, "integer")
   expect_equal(some_data[1, ]$family_id, 322)
   expect_false("species_id" %in% colnames(some_data))
 
-  vcr::use_cassette("npn_download_site_phenometrics_pheno_agg_2", {
-    some_data <- npn_download_site_phenometrics(
-      request_source = "Unit Test",
-      years = 2013,
-      family_ids = c(322),
-      pheno_class_aggregate = TRUE,
-      pheno_class_ids = c(1, 3, 6)
-    )
-  })
-
+  some_data <- npn_download_site_phenometrics(
+    request_source = "Unit Test",
+    years = 2013,
+    family_ids = c(322),
+    pheno_class_aggregate = TRUE,
+    pheno_class_ids = c(1, 3, 6)
+  )
   expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 10)
   expect_false("phenophase_id" %in% colnames(some_data))
 
-  vcr::use_cassette("npn_download_site_phenometrics_pheno_agg_3", {
-    some_data <- npn_download_site_phenometrics(
-      request_source = "Unit Test",
-      years = 2013,
-      order_ids = c(78),
-      pheno_class_ids = c(1, 3, 6),
-      pheno_class_aggregate = TRUE,
-      taxonomy_aggregate = TRUE
-    )
-  })
-
+  some_data <- npn_download_site_phenometrics(
+    request_source = "Unit Test",
+    years = 2013,
+    order_ids = c(78),
+    pheno_class_ids = c(1, 3, 6),
+    pheno_class_aggregate = TRUE,
+    taxonomy_aggregate = TRUE
+  )
   expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 100)
   expect_type(some_data$pheno_class_name, "character")
@@ -603,47 +543,39 @@ test_that("higher level taxonomic agg and pheno agg works for site level", {
 test_that("higher level taxonomic agg works for magnitude", {
   skip_on_cran()
   skip_if_not(check_service(), "Service is down")
+  vcr::local_cassette("npn_download_magnitude_phenometrics_agg")
 
-  vcr::use_cassette("npn_download_magnitude_phenometrics_pheno_agg_1", {
-    some_data <- npn_download_magnitude_phenometrics(
-      request_source = "Unit Test",
-      years = 2013,
-      family_ids = c(322),
-      taxonomy_aggregate = TRUE
-    )
-  })
-
+  some_data <- npn_download_magnitude_phenometrics(
+    request_source = "Unit Test",
+    years = 2013,
+    family_ids = c(322),
+    taxonomy_aggregate = TRUE
+  )
   expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 10)
   expect_type(some_data$family_id, "integer")
   expect_equal(some_data[1, ]$family_id, 322)
   expect_false("species_id" %in% colnames(some_data))
 
-  vcr::use_cassette("npn_download_magnitude_phenometrics_pheno_agg_2", {
-    some_data <- npn_download_magnitude_phenometrics(
-      request_source = "Unit Test",
-      years = 2013,
-      family_ids = c(322),
-      pheno_class_aggregate = TRUE,
-      pheno_class_ids = c(1, 3, 6)
-    )
-  })
-
+  some_data <- npn_download_magnitude_phenometrics(
+    request_source = "Unit Test",
+    years = 2013,
+    family_ids = c(322),
+    pheno_class_aggregate = TRUE,
+    pheno_class_ids = c(1, 3, 6)
+  )
   expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 10)
   expect_false("phenophase_id" %in% colnames(some_data))
 
-  vcr::use_cassette("npn_download_magnitude_phenometrics_pheno_agg_3", {
-    some_data <- npn_download_magnitude_phenometrics(
-      request_source = "Unit Test",
-      years = 2013,
-      order_ids = c(78),
-      pheno_class_ids = c(1, 3, 6),
-      pheno_class_aggregate = TRUE,
-      taxonomy_aggregate = TRUE
-    )
-  })
-
+  some_data <- npn_download_magnitude_phenometrics(
+    request_source = "Unit Test",
+    years = 2013,
+    order_ids = c(78),
+    pheno_class_ids = c(1, 3, 6),
+    pheno_class_aggregate = TRUE,
+    taxonomy_aggregate = TRUE
+  )
   expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 10)
   expect_type(some_data$pheno_class_name, "character")
@@ -657,7 +589,7 @@ test_that("six concordance works for status", {
   skip_if(skip_long_tests)
 
   #doesn't use vcr just because I suspect the fixture file will be very large
-  # vcr::use_cassette("npn_download_status_data_six_concord_1", {
+  # vcr::local_casette("npn_download_status_data_six_concord_1")
   some_data <- npn_download_status_data(
     request_source = "Unit Test",
     c(2016),
@@ -670,7 +602,6 @@ test_that("six concordance works for status", {
       param = c("365")
     )
   )
-  # })
 
   expect_s3_class(some_data, "data.frame")
   expect_type(some_data$`SI-x_Bloom_Value`, "double")
@@ -691,7 +622,6 @@ test_that("six concordance works for status", {
   avg_leaf_data <- some_data$`SI-x_Leaf_Value`
 
   # Test sub-model functionality
-  # vcr::use_cassette("npn_download_status_data_six_concord_2", {
   some_data <- npn_download_status_data(
     request_source = "Unit Test",
     c(2016),
@@ -699,7 +629,6 @@ test_that("six concordance works for status", {
     six_leaf_layer = TRUE,
     six_sub_model = "lilac"
   )
-  # })
 
   expect_gt(some_data[1, "SI-x_Leaf_Value"], -1)
   expect_lt(some_data[1, "SI-x_Leaf_Value"], 250)
@@ -710,7 +639,6 @@ test_that("six concordance works for status", {
   # layers is happening based on the date
   #
   # In this case get NCEP data
-  # vcr::use_cassette("npn_download_status_data_six_concord_3", {
   some_data <- npn_download_status_data(
     request_source = "Unit Test",
     c(2019),
@@ -718,13 +646,10 @@ test_that("six concordance works for status", {
     six_leaf_layer = TRUE,
     six_sub_model = "lilac"
   )
-  # })
-
   expect_gt(some_data[1, "SI-x_Leaf_Value"], -1)
   expect_lt(some_data[1, "SI-x_Leaf_Value"], 250)
 
   # In this case get PRISM data
-  # vcr::use_cassette("npn_download_status_data_six_concord_4", {
   some_data <- npn_download_status_data(
     request_source = "Unit Test",
     c(2009),
@@ -732,35 +657,32 @@ test_that("six concordance works for status", {
     six_leaf_layer = TRUE,
     six_sub_model = "lilac"
   )
-  # })
-
   expect_gt(some_data[1, "SI-x_Leaf_Value"], -1)
   expect_lt(some_data[1, "SI-x_Leaf_Value"], 250)
 })
 
 
 test_that("wkt filter works", {
+  skip_if_not(check_service(), "Service is down")
+  vcr::local_cassette("npn_download_x_wkt")
   #wkt is for CO
   wkt_def <- "POLYGON ((-102.04224 36.993083,-109.045223 36.999084,-109.050076 41.000659,-102.051614 41.002377,-102.04224 36.993083))"
 
-  vcr::use_cassette("npn_download_status_data_wkt_1", {
-    some_data <- npn_download_status_data(
-      request_source = "Unit Test",
-      c(2016),
-      species_ids = c(35)
-    )
-  })
+  some_data <- npn_download_status_data(
+    request_source = "Unit Test",
+    c(2016),
+    species_ids = c(35)
+  )
 
   rows_wo_filter <- nrow(some_data)
 
-  vcr::use_cassette("npn_download_status_data_wkt_2", {
-    some_data <- npn_download_status_data(
-      request_source = "Unit Test",
-      c(2016),
-      species_ids = c(35),
-      wkt = wkt_def
-    )
-  })
+  some_data <- npn_download_status_data(
+    request_source = "Unit Test",
+    c(2016),
+    species_ids = c(35),
+    wkt = wkt_def
+  )
+
   rows_w_filter <- nrow(some_data)
 
   expect_s3_class(some_data, "data.frame")
@@ -768,23 +690,19 @@ test_that("wkt filter works", {
   expect_equal(some_data[1, ]$state, "CO")
   expect_gt(rows_wo_filter, rows_w_filter)
 
-  vcr::use_cassette("npn_download_individual_phenometrics_wkt_1", {
-    some_data <- npn_download_individual_phenometrics(
-      request_source = "Unit Test",
-      c(2016),
-      species_ids = c(35)
-    )
-  })
+  some_data <- npn_download_individual_phenometrics(
+    request_source = "Unit Test",
+    c(2016),
+    species_ids = c(35)
+  )
   rows_wo_filter <- nrow(some_data)
 
-  vcr::use_cassette("npn_download_individual_phenometrics_wkt_2", {
-    some_data <- npn_download_individual_phenometrics(
-      request_source = "Unit Test",
-      c(2016),
-      species_ids = c(35),
-      wkt = wkt_def
-    )
-  })
+  some_data <- npn_download_individual_phenometrics(
+    request_source = "Unit Test",
+    c(2016),
+    species_ids = c(35),
+    wkt = wkt_def
+  )
   rows_w_filter <- nrow(some_data)
 
   expect_s3_class(some_data, "data.frame")
@@ -792,47 +710,39 @@ test_that("wkt filter works", {
   expect_equal(some_data[1, ]$state, "CO")
   expect_gt(rows_wo_filter, rows_w_filter)
 
-  vcr::use_cassette("npn_download_site_phenometrics_wkt_1", {
-    some_data <- npn_download_site_phenometrics(
-      request_source = "Unit Test",
-      c(2016),
-      species_ids = c(35)
-    )
-  })
+  some_data <- npn_download_site_phenometrics(
+    request_source = "Unit Test",
+    c(2016),
+    species_ids = c(35)
+  )
   rows_wo_filter <- nrow(some_data)
 
-  vcr::use_cassette("npn_download_site_phenometrics_wkt_2", {
-    some_data <- npn_download_site_phenometrics(
-      request_source = "Unit Test",
-      c(2016),
-      species_ids = c(35),
-      wkt = wkt_def
-    )
-    rows_w_filter <- nrow(some_data)
-  })
-
+  some_data <- npn_download_site_phenometrics(
+    request_source = "Unit Test",
+    c(2016),
+    species_ids = c(35),
+    wkt = wkt_def
+  )
+  rows_w_filter <- nrow(some_data)
   expect_s3_class(some_data, "data.frame")
   expect_type(some_data$species_id, "integer")
   expect_equal(some_data[1, ]$state, "CO")
   expect_gt(rows_wo_filter, rows_w_filter)
 
-  vcr::use_cassette("npn_download_magnitude_phenometrics_wkt_1", {
-    some_data <- npn_download_magnitude_phenometrics(
-      request_source = "Unit Test",
-      c(2016),
-      species_ids = c(35)
-    )
-  })
+  some_data <- npn_download_magnitude_phenometrics(
+    request_source = "Unit Test",
+    c(2016),
+    species_ids = c(35)
+  )
+
   rows_wo_filter <- nrow(some_data)
 
-  vcr::use_cassette("npn_download_magnitude_phenometrics_wkt_2", {
-    some_data <- npn_download_magnitude_phenometrics(
-      request_source = "Unit Test",
-      c(2016),
-      species_ids = c(35),
-      wkt = wkt_def
-    )
-  })
+  some_data <- npn_download_magnitude_phenometrics(
+    request_source = "Unit Test",
+    c(2016),
+    species_ids = c(35),
+    wkt = wkt_def
+  )
   rows_w_filter <- nrow(some_data)
 
   expect_s3_class(some_data, "data.frame")
@@ -842,50 +752,39 @@ test_that("wkt filter works", {
 
 
 test_that("frequency params work", {
-  vcr::use_cassette("npn_download_site_phenometrics_frequency_1", {
-    some_data <- npn_download_site_phenometrics(
-      request_source = "Unit Test",
-      years = 2013,
-      family_ids = c(322),
-      num_days_quality_filter = "30"
-    )
-  })
+  vcr::local_cassette("npn_download_x_frequency")
 
+  some_data <- npn_download_site_phenometrics(
+    request_source = "Unit Test",
+    years = 2013,
+    family_ids = c(322),
+    num_days_quality_filter = "30"
+  )
   rows_month_filter <- nrow(some_data)
 
-  vcr::use_cassette("npn_download_site_phenometrics_frequency_2", {
-    some_data <- npn_download_site_phenometrics(
-      request_source = "Unit Test",
-      years = 2013,
-      family_ids = c(322),
-      num_days_quality_filter = "15"
-    )
-  })
-
+  some_data <- npn_download_site_phenometrics(
+    request_source = "Unit Test",
+    years = 2013,
+    family_ids = c(322),
+    num_days_quality_filter = "15"
+  )
   rows_fortnight_filter <- nrow(some_data)
-
   expect_gt(rows_month_filter, rows_fortnight_filter)
 
-  vcr::use_cassette("npn_download_magnitude_phenometrics_frequency_1", {
-    some_data <- npn_download_magnitude_phenometrics(
-      request_source = "Unit Test",
-      years = 2013,
-      family_ids = c(322),
-      period_frequency = "months"
-    )
-  })
-
+  some_data <- npn_download_magnitude_phenometrics(
+    request_source = "Unit Test",
+    years = 2013,
+    family_ids = c(322),
+    period_frequency = "months"
+  )
   rows_month_freq <- nrow(some_data)
 
-  vcr::use_cassette("npn_download_magnitude_phenometrics_frequency_2", {
-    some_data <- npn_download_magnitude_phenometrics(
-      request_source = "Unit Test",
-      years = 2013,
-      family_ids = c(322),
-      period_frequency = "14"
-    )
-  })
+  some_data <- npn_download_magnitude_phenometrics(
+    request_source = "Unit Test",
+    years = 2013,
+    family_ids = c(322),
+    period_frequency = "14"
+  )
   rows_fortnight_freq <- nrow(some_data)
-
   expect_gt(rows_fortnight_freq, rows_month_freq)
 })
