@@ -85,6 +85,8 @@
 </ul><div class="section level3">
 <h3 id="bug-fixes-development-version">Bug fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-development-version"></a></h3>
 <ul><li>fixed bug that caused some <code>npn_download_*()</code> functions to error when sections of the data were <code>NA</code> (<a href="https://github.com/usa-npn/rnpn/issues/107" class="external-link">#107</a> reported by <a href="https://github.com/ezylstra" class="external-link">@ezylstra</a>)</li>
+<li>Fixed a bug where returned value of <code><a href="../reference/npn_get_point_data.html">npn_get_point_data()</a></code> was inconsistent depending on whether it was cached or not (same bug and solution as <a href="https://github.com/usa-npn/rnpn/issues/42" class="external-link">#42</a>)</li>
+<li>Fixed a bug in data download functions that errored uniformatively if no data was returned. Now an empty tibble is returned.</li>
 </ul></div>
 </div>
     <div class="section level2">
