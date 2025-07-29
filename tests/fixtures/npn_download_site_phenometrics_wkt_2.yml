@@ -5,7 +5,7 @@ http_interactions:
   response:
     status: 200
     headers:
-      date: Fri, 25 Jul 2025 21:40:56 GMT
+      date: Fri, 25 Jul 2025 22:35:16 GMT
       content-type: application/json
       server: Apache/2.4.62 () PHP/5.5.38
       x-powered-by: PHP/5.5.38
@@ -830,7 +830,7 @@ http_interactions:
         and Petal Patrol - North","station_id":57952},{"latitude":40.447460,"longitude":-106.744957,"station_name":"Pika
         and Petal Patrol - South","station_id":57953},{"latitude":39.761600,"longitude":-105.052002,"station_name":"Home
         Base","station_id":57991},{"latitude":40.030323,"longitude":-105.270180,"station_name":"Home","station_id":58016}]'
-  recorded_at: 2025-07-25 21:40:56
+  recorded_at: 2025-07-25 22:35:16
 - request:
     method: POST
     uri: https://services.usanpn.org/npn_portal/observations/getSiteLevelData.json
@@ -839,7 +839,7 @@ http_interactions:
   response:
     status: 200
     headers:
-      date: Fri, 25 Jul 2025 21:40:58 GMT
+      date: Fri, 25 Jul 2025 22:35:17 GMT
       content-type: application/json
       server: Apache/2.4.62 () PHP/5.5.38
       x-powered-by: PHP/5.5.38
@@ -878,5 +878,5 @@ http_interactions:
         leaf buds (lilac/honeysuckle)","first_yes_sample_size":1,"mean_first_yes_year":2016,"mean_first_yes_doy":74,"mean_first_yes_julian_date":2457462,"se_first_yes_in_days":-9999,"mean_numdays_since_prior_no":6,"se_numdays_since_prior_no":-9999,"last_yes_sample_size":2,"mean_last_yes_year":2016,"mean_last_yes_doy":88,"mean_last_yes_julian_date":2457476,"se_last_yes_in_days":0,"mean_numdays_until_next_no":16,"se_numdays_until_next_no":0},{"site_id":8309,"latitude":39.731804,"longitude":-104.961166,"elevation_in_meters":1639,"state":"CO","species_id":35,"genus":"Syringa","species":"chinensis","common_name":"Red
         Rothomagensis lilac","kingdom":"Plantae","phenophase_id":374,"phenophase_description":"All
         leaf buds broken (lilac/honeysuckle)","first_yes_sample_size":2,"mean_first_yes_year":2016,"mean_first_yes_doy":93,"mean_first_yes_julian_date":2457481,"se_first_yes_in_days":11.5,"mean_numdays_since_prior_no":11.5,"se_numdays_since_prior_no":4.5,"last_yes_sample_size":0,"mean_last_yes_year":-9999,"mean_last_yes_doy":-9999,"mean_last_yes_julian_date":-9999,"se_last_yes_in_days":-9999,"mean_numdays_until_next_no":-9999,"se_numdays_until_next_no":-9999}]'
-  recorded_at: 2025-07-25 21:40:58
+  recorded_at: 2025-07-25 22:35:17
 recorded_with: VCR-vcr/2.0.0

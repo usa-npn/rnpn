@@ -7,7 +7,7 @@ http_interactions:
   response:
     status: 200
     headers:
-      date: Fri, 25 Jul 2025 21:40:58 GMT
+      date: Fri, 25 Jul 2025 22:35:18 GMT
       content-type: application/json
       server: Apache/2.4.62 () PHP/5.5.38
       x-powered-by: PHP/5.5.38
@@ -136,5 +136,5 @@ http_interactions:
         leaf buds (lilac/honeysuckle)","year":2016,"start_date":"2016-11-26","end_date":"2016-12-31","status_records_sample_size":29,"individuals_sample_size":13,"sites_sample_size":8,"num_yes_records":0,"numindividuals_with_yes_record":0,"numsites_with_yes_record":-9999,"proportion_yes_records":0,"proportion_individuals_with_yes_record":0,"proportion_sites_with_yes_record":-9999,"in-phase_sites_sample_size":-9999,"in-phase_site_visits_sample_size":-9999,"total_numanimals_in-phase":-9999,"mean_numanimals_in-phase":-9999,"se_numanimals_in-phase":-9999,"in-phase_per_hr_sites_sample_size":-9999,"in-phase_per_hr_site_visits_sample_size":-9999,"mean_numanimals_in-phase_per_hr":-9999,"se_numanimals_in-phase_per_hr":-9999,"in-phase_per_hr_per_acre_sites_sample_size":-9999,"in-phase_per_hr_per_acre_site_visits_sample_size":-9999,"mean_numanimals_in-phase_per_hr_per_acre":-9999,"se_numanimals_in-phase_per_hr_per_acre":-9999},{"species_id":35,"genus":"Syringa","species":"chinensis","common_name":"Red
         Rothomagensis lilac","kingdom":"Plantae","phenophase_id":374,"phenophase_description":"All
         leaf buds broken (lilac/honeysuckle)","year":2016,"start_date":"2016-11-26","end_date":"2016-12-31","status_records_sample_size":29,"individuals_sample_size":13,"sites_sample_size":8,"num_yes_records":4,"numindividuals_with_yes_record":4,"numsites_with_yes_record":-9999,"proportion_yes_records":0.14,"proportion_individuals_with_yes_record":0.31,"proportion_sites_with_yes_record":-9999,"in-phase_sites_sample_size":-9999,"in-phase_site_visits_sample_size":-9999,"total_numanimals_in-phase":-9999,"mean_numanimals_in-phase":-9999,"se_numanimals_in-phase":-9999,"in-phase_per_hr_sites_sample_size":-9999,"in-phase_per_hr_site_visits_sample_size":-9999,"mean_numanimals_in-phase_per_hr":-9999,"se_numanimals_in-phase_per_hr":-9999,"in-phase_per_hr_per_acre_sites_sample_size":-9999,"in-phase_per_hr_per_acre_site_visits_sample_size":-9999,"mean_numanimals_in-phase_per_hr_per_acre":-9999,"se_numanimals_in-phase_per_hr_per_acre":-9999}]'
-  recorded_at: 2025-07-25 21:40:58
+  recorded_at: 2025-07-25 22:35:18
 recorded_with: VCR-vcr/2.0.0

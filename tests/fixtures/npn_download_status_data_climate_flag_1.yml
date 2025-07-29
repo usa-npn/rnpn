@@ -7,7 +7,7 @@ http_interactions:
   response:
     status: 200
     headers:
-      date: Fri, 25 Jul 2025 21:33:13 GMT
+      date: Fri, 25 Jul 2025 22:30:05 GMT
       content-type: application/json
       server: Apache/2.4.62 () PHP/5.5.38
       x-powered-by: PHP/5.5.38
@@ -3667,5 +3667,5 @@ http_interactions:
         marsh marigold","kingdom":"Plantae","individual_id":37705,"phenophase_id":516,"phenophase_description":"Fruits","observation_date":"2013-06-12","day_of_year":163,"phenophase_status":0,"intensity_category_id":57,"intensity_value":-9999,"abundance_value":-9999,"gdd":1039.50,"gddf":1871.10,"tmax_winter":3.66,"tmax_spring":13.55,"tmax_summer":26.40,"tmax_fall":15.74,"tmax":24.00,"tmaxf":75.20,"tmin_winter":-4.48,"tmin_spring":2.80,"tmin_summer":16.28,"tmin_fall":6.36,"tmin":14.00,"tminf":57.20,"prcp_winter":337.00,"prcp_spring":338.00,"prcp_summer":492.00,"prcp_fall":343.00,"prcp":0.00,"acc_prcp":685.00,"daylength":53914},{"observation_id":2304169,"update_datetime":-9999,"site_id":9812,"latitude":41.325417,"longitude":-73.395576,"elevation_in_meters":195,"state":"CT","species_id":6,"genus":"Caltha","species":"palustris","common_name":"yellow
         marsh marigold","kingdom":"Plantae","individual_id":37705,"phenophase_id":516,"phenophase_description":"Fruits","observation_date":"2013-06-19","day_of_year":170,"phenophase_status":0,"intensity_category_id":57,"intensity_value":-9999,"abundance_value":-9999,"gdd":1164.50,"gddf":2096.10,"tmax_winter":3.66,"tmax_spring":13.55,"tmax_summer":26.40,"tmax_fall":15.74,"tmax":25.50,"tmaxf":77.90,"tmin_winter":-4.48,"tmin_spring":2.80,"tmin_summer":16.28,"tmin_fall":6.36,"tmin":12.50,"tminf":54.50,"prcp_winter":337.00,"prcp_spring":338.00,"prcp_summer":492.00,"prcp_fall":343.00,"prcp":15.00,"acc_prcp":747.00,"daylength":53914},{"observation_id":2617877,"update_datetime":-9999,"site_id":9812,"latitude":41.325417,"longitude":-73.395576,"elevation_in_meters":195,"state":"CT","species_id":6,"genus":"Caltha","species":"palustris","common_name":"yellow
         marsh marigold","kingdom":"Plantae","individual_id":37705,"phenophase_id":516,"phenophase_description":"Fruits","observation_date":"2013-09-04","day_of_year":247,"phenophase_status":0,"intensity_category_id":57,"intensity_value":-9999,"abundance_value":-9999,"gdd":2865.50,"gddf":5157.90,"tmax_winter":3.66,"tmax_spring":13.55,"tmax_summer":26.40,"tmax_fall":15.74,"tmax":24.50,"tmaxf":76.10,"tmin_winter":-4.48,"tmin_spring":2.80,"tmin_summer":16.28,"tmin_fall":6.36,"tmin":12.00,"tminf":53.60,"prcp_winter":337.00,"prcp_spring":338.00,"prcp_summer":492.00,"prcp_fall":343.00,"prcp":0.00,"acc_prcp":1056.00,"daylength":45965}]'
-  recorded_at: 2025-07-25 21:33:13
+  recorded_at: 2025-07-25 22:30:05
 recorded_with: VCR-vcr/2.0.0

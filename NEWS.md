@@ -6,6 +6,9 @@
 ## Bug fixes
 
 * fixed bug that caused some `npn_download_*()` functions to error when sections of the data were `NA` (#107 reported by @ezylstra)
+* Fixed a bug where returned value of `npn_get_point_data()` was inconsistent depending on whether it was cached or not (same bug and solution as #42)
+* Fixed a bug in data download functions that errored uniformatively if no data was returned.  Now an empty tibble is returned.
+
 
 # rnpn 1.4.0
 

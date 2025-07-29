@@ -5,7 +5,7 @@ http_interactions:
   response:
     status: 200
     headers:
-      date: Fri, 25 Jul 2025 21:40:59 GMT
+      date: Fri, 25 Jul 2025 22:35:18 GMT
       content-type: application/json
       server: Apache/2.4.62 () PHP/5.5.38
       x-powered-by: PHP/5.5.38
@@ -830,7 +830,7 @@ http_interactions:
         and Petal Patrol - North","station_id":57952},{"latitude":40.447460,"longitude":-106.744957,"station_name":"Pika
         and Petal Patrol - South","station_id":57953},{"latitude":39.761600,"longitude":-105.052002,"station_name":"Home
         Base","station_id":57991},{"latitude":40.030323,"longitude":-105.270180,"station_name":"Home","station_id":58016}]'
-  recorded_at: 2025-07-25 21:40:59
+  recorded_at: 2025-07-25 22:35:18
 - request:
     method: POST
     uri: https://services.usanpn.org/npn_portal/observations/getMagnitudeData.json
@@ -839,7 +839,7 @@ http_interactions:
   response:
     status: 200
     headers:
-      date: Fri, 25 Jul 2025 21:41:01 GMT
+      date: Fri, 25 Jul 2025 22:35:19 GMT
       content-type: application/json
       server: Apache/2.4.62 () PHP/5.5.38
       x-powered-by: PHP/5.5.38
@@ -948,5 +948,5 @@ http_interactions:
         leaf buds (lilac/honeysuckle)","year":2016,"start_date":"2016-11-26","end_date":"2016-12-31","status_records_sample_size":2,"individuals_sample_size":2,"sites_sample_size":1,"num_yes_records":0,"numindividuals_with_yes_record":0,"numsites_with_yes_record":-9999,"proportion_yes_records":0,"proportion_individuals_with_yes_record":0,"proportion_sites_with_yes_record":-9999,"in-phase_sites_sample_size":-9999,"in-phase_site_visits_sample_size":-9999,"total_numanimals_in-phase":-9999,"mean_numanimals_in-phase":-9999,"se_numanimals_in-phase":-9999,"in-phase_per_hr_sites_sample_size":-9999,"in-phase_per_hr_site_visits_sample_size":-9999,"mean_numanimals_in-phase_per_hr":-9999,"se_numanimals_in-phase_per_hr":-9999,"in-phase_per_hr_per_acre_sites_sample_size":-9999,"in-phase_per_hr_per_acre_site_visits_sample_size":-9999,"mean_numanimals_in-phase_per_hr_per_acre":-9999,"se_numanimals_in-phase_per_hr_per_acre":-9999},{"species_id":35,"genus":"Syringa","species":"chinensis","common_name":"Red
         Rothomagensis lilac","kingdom":"Plantae","phenophase_id":374,"phenophase_description":"All
         leaf buds broken (lilac/honeysuckle)","year":2016,"start_date":"2016-11-26","end_date":"2016-12-31","status_records_sample_size":2,"individuals_sample_size":2,"sites_sample_size":1,"num_yes_records":2,"numindividuals_with_yes_record":2,"numsites_with_yes_record":-9999,"proportion_yes_records":1,"proportion_individuals_with_yes_record":1,"proportion_sites_with_yes_record":-9999,"in-phase_sites_sample_size":-9999,"in-phase_site_visits_sample_size":-9999,"total_numanimals_in-phase":-9999,"mean_numanimals_in-phase":-9999,"se_numanimals_in-phase":-9999,"in-phase_per_hr_sites_sample_size":-9999,"in-phase_per_hr_site_visits_sample_size":-9999,"mean_numanimals_in-phase_per_hr":-9999,"se_numanimals_in-phase_per_hr":-9999,"in-phase_per_hr_per_acre_sites_sample_size":-9999,"in-phase_per_hr_per_acre_site_visits_sample_size":-9999,"mean_numanimals_in-phase_per_hr_per_acre":-9999,"se_numanimals_in-phase_per_hr_per_acre":-9999}]'
-  recorded_at: 2025-07-25 21:41:00
+  recorded_at: 2025-07-25 22:35:19
 recorded_with: VCR-vcr/2.0.0

@@ -46,18 +46,18 @@ test_that("npn_phenophase_details works", {
 })
 
 
-test_that("npn_phenophases_by_species works",{
+test_that("npn_phenophases_by_species works", {
   skip_if_not(check_service(), "Service is down")
 
   vcr::use_cassette("npn_phenophases_by_species_1", {
     pp <- npn_phenophases_by_species(species_ids = 3, date = "2018-05-05")
   })
 
-  expect_s3_class(pp,"data.frame")
-  expect_type(pp$species_name,"character")
+  expect_s3_class(pp, "data.frame")
+  expect_type(pp$species_name, "character")
 })
 
-test_that("npn_pheno_classes works",{
+test_that("npn_pheno_classes works", {
   skip_if_not(check_service(), "Service is down")
 
   vcr::use_cassette("npn_pheno_classes_1", {
@@ -69,7 +69,7 @@ test_that("npn_pheno_classes works",{
   expect_gt(nrow(pc), 50)
 })
 
-test_that("npn_abundance_categories works",{
+test_that("npn_abundance_categories works", {
   skip_if_not(check_service(), "Service is down")
 
   vcr::use_cassette("npn_abundance_categories_1", {
@@ -84,12 +84,18 @@ test_that("npn_abundance_categories works",{
 test_that("npn_get_phenophases_for_taxon works", {
   skip_if_not(check_service(), "Service is down")
   expect_error(
-    npn_get_phenophases_for_taxon(class_ids = 5, date = c("2018-05-05", "2018-05-06"))
+    npn_get_phenophases_for_taxon(
+      class_ids = 5,
+      date = c("2018-05-05", "2018-05-06")
+    )
   )
 
   vcr::use_cassette("npn_get_phenophases_for_taxon_1", {
     pp <- npn_get_phenophases_for_taxon(class_ids = 5, date = "2018-05-05")
-    pp_date <- npn_get_phenophases_for_taxon(class_ids = 5, date = as.Date("2018-05-05"))
+    pp_date <- npn_get_phenophases_for_taxon(
+      class_ids = 5,
+      date = as.Date("2018-05-05")
+    )
   })
 
   expect_s3_class(pp, "data.frame")
@@ -98,7 +104,10 @@ test_that("npn_get_phenophases_for_taxon works", {
   expect_identical(pp, pp_date)
 
   vcr::use_cassette("npn_get_phenophases_for_taxon_2", {
-    pp <- npn_get_phenophases_for_taxon(class_ids = c(5, 6), date = "2018-05-05")
+    pp <- npn_get_phenophases_for_taxon(
+      class_ids = c(5, 6),
+      date = "2018-05-05"
+    )
   })
 
   expect_s3_class(pp, "data.frame")
@@ -106,7 +115,10 @@ test_that("npn_get_phenophases_for_taxon works", {
   expect_equal(nrow(pp), 28)
 
   vcr::use_cassette("npn_get_phenophases_for_taxon_3", {
-    pp <- npn_get_phenophases_for_taxon(family_ids = c(267, 268), date = "2018-05-05")
+    pp <- npn_get_phenophases_for_taxon(
+      family_ids = c(267, 268),
+      date = "2018-05-05"
+    )
   })
 
   expect_s3_class(pp, "data.frame")

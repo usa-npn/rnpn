@@ -25,3 +25,4 @@ notes/
 ^pkgdown$
 ^CITATION.cff$
 ^CONTRIBUTING\.md$
+.vscode/

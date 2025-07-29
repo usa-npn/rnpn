@@ -7,7 +7,7 @@ http_interactions:
   response:
     status: 200
     headers:
-      date: Fri, 25 Jul 2025 21:33:13 GMT
+      date: Fri, 25 Jul 2025 22:30:06 GMT
       content-type: application/json
       server: Apache/2.4.62 () PHP/5.5.38
       x-powered-by: PHP/5.5.38
@@ -139,5 +139,5 @@ http_interactions:
         marsh marigold","kingdom":"Plantae","individual_id":37705,"phenophase_id":501,"phenophase_description":"Open
         flowers","first_yes_year":2013,"first_yes_month":4,"first_yes_day":17,"first_yes_doy":107,"first_yes_julian_date":2456400,"numdays_since_prior_no":7,"last_yes_year":2013,"last_yes_month":5,"last_yes_day":1,"last_yes_doy":121,"last_yes_julian_date":2456414,"numdays_until_next_no":9,"gdd":246.75,"gddf":444.15,"tmax_winter":3.66,"tmax_spring":13.55,"tmax_summer":26.40,"tmax_fall":15.74,"tmax":17.00,"tmaxf":62.60,"tmin_winter":-4.48,"tmin_spring":2.80,"tmin_summer":16.28,"tmin_fall":6.36,"tmin":6.50,"tminf":43.70,"prcp_winter":337.00,"prcp_spring":338.00,"prcp_summer":492.00,"prcp_fall":343.00,"prcp":1.00,"acc_prcp":308.00,"daylength":47693},{"site_id":9812,"latitude":41.325417,"longitude":-73.395576,"elevation_in_meters":195,"state":"CT","species_id":6,"genus":"Caltha","species":"palustris","common_name":"yellow
         marsh marigold","kingdom":"Plantae","individual_id":37705,"phenophase_id":516,"phenophase_description":"Fruits","first_yes_year":2013,"first_yes_month":5,"first_yes_day":10,"first_yes_doy":130,"first_yes_julian_date":2456423,"numdays_since_prior_no":9,"last_yes_year":2013,"last_yes_month":5,"last_yes_day":30,"last_yes_doy":150,"last_yes_julian_date":2456443,"numdays_until_next_no":7,"gdd":498.75,"gddf":897.75,"tmax_winter":3.66,"tmax_spring":13.55,"tmax_summer":26.40,"tmax_fall":15.74,"tmax":21.00,"tmaxf":69.80,"tmin_winter":-4.48,"tmin_spring":2.80,"tmin_summer":16.28,"tmin_fall":6.36,"tmin":8.50,"tminf":47.30,"prcp_winter":337.00,"prcp_spring":338.00,"prcp_summer":492.00,"prcp_fall":343.00,"prcp":6.00,"acc_prcp":351.00,"daylength":50803}]'
-  recorded_at: 2025-07-25 21:33:13
+  recorded_at: 2025-07-25 22:30:06
 recorded_with: VCR-vcr/2.0.0

@@ -7,7 +7,7 @@ http_interactions:
   response:
     status: 200
     headers:
-      date: Fri, 25 Jul 2025 21:37:55 GMT
+      date: Fri, 25 Jul 2025 22:31:06 GMT
       content-type: application/json
       server: Apache/2.4.62 () PHP/5.5.38
       x-powered-by: PHP/5.5.38
@@ -596,5 +596,5 @@ http_interactions:
         poppy","kingdom":"Plantae","order_id":95,"order_name":"Ranunculales","order_common_name":"Barberry,
         Poppy and Buttercup Families","phenophase_id":504,"phenophase_description":"Recent
         fruit or seed drop","first_yes_sample_size":6,"mean_first_yes_year":2013,"mean_first_yes_doy":136,"mean_first_yes_julian_date":2456429,"se_first_yes_in_days":4.0166320883712,"mean_numdays_since_prior_no":1.8333333333333,"se_numdays_since_prior_no":0.40138648595974,"last_yes_sample_size":6,"mean_last_yes_year":2013,"mean_last_yes_doy":152,"mean_last_yes_julian_date":2456445,"se_last_yes_in_days":4.7778423768243,"mean_numdays_until_next_no":1.8333333333333,"se_numdays_until_next_no":0.16666666666667}]'
-  recorded_at: 2025-07-25 21:37:55
+  recorded_at: 2025-07-25 22:31:07
 recorded_with: VCR-vcr/2.0.0

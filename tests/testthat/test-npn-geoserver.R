@@ -1,9 +1,9 @@
-skip_long_tests <- as.logical(Sys.getenv("RNPN_SKIP_LONG_TESTS", unset = "true"))
+skip_long_tests <- as.logical(Sys.getenv(
+  "RNPN_SKIP_LONG_TESTS",
+  unset = "true"
+))
 
 test_that("npn_get_layer_details works", {
-  skip_on_cran()
-  skip_if_not(check_geo_service(), "Geo Service is down")
-
   vcr::use_cassette("npn_get_layer_details_1", {
     layers <- npn_get_layer_details()
   })
@@ -20,7 +20,11 @@ test_that("npn_download_geospatial works", {
   expect_s4_class(ras, "SpatRaster")
 
   withr::with_tempfile("test_tiff", {
-    npn_download_geospatial("gdd:agdd", date="2018-05-05", output_path = test_tiff)
+    npn_download_geospatial(
+      "gdd:agdd",
+      date = "2018-05-05",
+      output_path = test_tiff
+    )
     expect_true(file.exists(test_tiff))
     file_raster <- terra::rast(test_tiff)
     expect_equal(
@@ -44,14 +48,14 @@ test_that("npn_download_geospatial format param working", {
   withr::with_tempdir({
     npn_download_geospatial(
       "gdd:30yr_avg_agdd_50f",
-      date="5",
+      date = "5",
       output_path = "testing.tiff"
     )
     tiff_size <- file.size("testing.tiff")
     npn_download_geospatial(
       "gdd:30yr_avg_agdd_50f",
-      date="1,3",
-      format="application/x-netcdf",
+      date = "1,3",
+      format = "application/x-netcdf",
       output_path = "testing.netcdf"
     )
     netcdf_size <- file.size("testing.netcdf")
@@ -78,9 +82,6 @@ test_that("npn_download_geospatial format param working", {
 
 
 test_that("npn_get_point_data functions", {
-  skip_on_cran()
-  skip_if_not(check_geo_service(), "Geo Service is down")
-
   vcr::use_cassette("npn_get_point_data_1", {
     value <- npn_get_point_data("gdd:agdd", 38.8, -110.5, "2022-05-05")
   })
@@ -88,22 +89,30 @@ test_that("npn_get_point_data functions", {
   expect_gt(round(value), 1198)
 
   vcr::use_cassette("npn_get_point_data_2", {
-    value <- npn_get_point_data("si-x:average_leaf_prism", 38.8, -110.5, "1990-01-01")
+    value <- npn_get_point_data(
+      "si-x:average_leaf_prism",
+      38.8,
+      -110.5,
+      "1990-01-01"
+    )
   })
   expect_equal(value, 83, tolerance = 5) #close enough?
 
   #No data in Canada
   expect_error(
     vcr::use_cassette("npn_get_point_data_3", {
-      npn_get_point_data("si-x:average_leaf_prism", 60.916600, -123.037793, "1990-01-01")
+      npn_get_point_data(
+        "si-x:average_leaf_prism",
+        60.916600,
+        -123.037793,
+        "1990-01-01"
+      )
     })
   )
 })
 
 
-test_that("npn_custom_agdd functions",{
-  skip_on_cran()
-
+test_that("npn_custom_agdd functions", {
   vcr::use_cassette("npn_get_custom_agdd_time_series_1", {
     res <- npn_get_custom_agdd_time_series(
       method = "double-sine",
@@ -123,9 +132,7 @@ test_that("npn_custom_agdd functions",{
 })
 
 
-test_that("npn_get_agdd_point_data works",{
-  skip_on_cran()
-  skip_if_not(check_service(), "Data Service is down")
+test_that("npn_get_agdd_point_data works", {
   vcr::use_cassette("npn_get_agdd_point_data", {
     res <- npn_get_agdd_point_data(
       layer = "gdd:agdd",
@@ -136,17 +143,17 @@ test_that("npn_get_agdd_point_data works",{
   })
 
   expect_type(res, "double")
-  if(res > 0){
+  if (res > 0) {
     expect_equal(round(res), 146)
   }
 })
 
-
 test_that("npn_get_custom_agdd_raster works", {
   skip_on_cran()
+  skip_if_not(check_geo_service(), "Service is down")
   skip_if(skip_long_tests)
-  # skip_if_not(check_data_service(), "Data Service is down")
-
+  #doesn't use vcr just because I suspect the fixture will be very large
+  # vcr::use_cassette("npn_get_custom_agdd_raster", {
   res <- npn_get_custom_agdd_raster(
     method = "simple",
     climate_data_source = "NCEP",
@@ -155,8 +162,7 @@ test_that("npn_get_custom_agdd_raster works", {
     end_date = "2020-01-15",
     base_temp = 32
   )
+  # })
 
   expect_s4_class(res, "SpatRaster")
 })
-
-

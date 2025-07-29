@@ -7,7 +7,7 @@ http_interactions:
   response:
     status: 200
     headers:
-      date: Fri, 25 Jul 2025 21:40:37 GMT
+      date: Fri, 25 Jul 2025 22:33:16 GMT
       content-type: application/json
       server: Apache/2.4.62 () PHP/5.5.38
       x-powered-by: PHP/5.5.38
@@ -64,5 +64,5 @@ http_interactions:
         Family","pheno_class_id":6,"pheno_class_name":"Flowers or pollen cones","first_yes_sample_size":1,"mean_first_yes_year":2013,"mean_first_yes_doy":122,"mean_first_yes_julian_date":2456415,"se_first_yes_in_days":-9999,"mean_numdays_since_prior_no":14,"se_numdays_since_prior_no":-9999,"last_yes_sample_size":0,"mean_last_yes_year":-9999,"mean_last_yes_doy":-9999,"mean_last_yes_julian_date":-9999,"se_last_yes_in_days":-9999,"mean_numdays_until_next_no":-9999,"se_numdays_until_next_no":-9999},{"site_id":10779,"latitude":41.662807,"longitude":-86.211967,"elevation_in_meters":216,"state":"IN","kingdom":"Plantae","family_id":322,"family_name":"Ranunculaceae","family_common_name":"Buttercup
         Family","pheno_class_id":6,"pheno_class_name":"Flowers or pollen cones","first_yes_sample_size":1,"mean_first_yes_year":2013,"mean_first_yes_doy":124,"mean_first_yes_julian_date":2456417,"se_first_yes_in_days":-9999,"mean_numdays_since_prior_no":7,"se_numdays_since_prior_no":-9999,"last_yes_sample_size":0,"mean_last_yes_year":-9999,"mean_last_yes_doy":-9999,"mean_last_yes_julian_date":-9999,"se_last_yes_in_days":-9999,"mean_numdays_until_next_no":-9999,"se_numdays_until_next_no":-9999},{"site_id":10936,"latitude":38.802597,"longitude":-76.691757,"elevation_in_meters":17,"state":"MD","kingdom":"Plantae","family_id":322,"family_name":"Ranunculaceae","family_common_name":"Buttercup
         Family","pheno_class_id":6,"pheno_class_name":"Flowers or pollen cones","first_yes_sample_size":0,"mean_first_yes_year":-9999,"mean_first_yes_doy":-9999,"mean_first_yes_julian_date":-9999,"se_first_yes_in_days":-9999,"mean_numdays_since_prior_no":-9999,"se_numdays_since_prior_no":-9999,"last_yes_sample_size":1,"mean_last_yes_year":2013,"mean_last_yes_doy":142,"mean_last_yes_julian_date":2456435,"se_last_yes_in_days":-9999,"mean_numdays_until_next_no":7,"se_numdays_until_next_no":-9999}]'
-  recorded_at: 2025-07-25 21:40:37
+  recorded_at: 2025-07-25 22:33:16
 recorded_with: VCR-vcr/2.0.0

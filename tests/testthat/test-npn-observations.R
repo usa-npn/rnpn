@@ -249,7 +249,6 @@ test_that("file download works", {
 
 test_that("climate data flag works", {
   skip_on_cran()
-  skip_if(skip_long_tests, "Skipping long tests")
   skip_if_not(check_service(), "Service is down")
 
   vcr::use_cassette("npn_download_status_data_climate_flag_1", {
@@ -286,13 +285,12 @@ test_that("climate data flag works", {
   })
 
   expect_s3_class(some_data, "data.frame")
-  expect_null(some_data$tmin_winter)
+  expect_false("tmin_winter" %in% colnames(some_data))
 })
 
 
 test_that("higher taxonomic ordering works for status data", {
   skip_on_cran()
-  skip_if(skip_long_tests, "Skipping long tests")
   skip_if_not(check_service(), "Service is down")
 
   #Check the different taxonomic levels for
@@ -303,16 +301,16 @@ test_that("higher taxonomic ordering works for status data", {
     some_data <- npn_download_status_data(
       request_source = "Unit Test",
       years = 2013,
-      family_ids = c(322),
+      family_ids = c(109),
       additional_fields = c("Family_ID")
     )
   })
   expect_s3_class(some_data, "data.frame")
-  expect_gt(nrow(some_data), 1000)
+  expect_gt(nrow(some_data), 100)
   expect_type(some_data$family_id, "integer")
-  expect_equal(some_data[1, ]$family_id, 322)
+  expect_equal(some_data[1, ]$family_id, 109)
 
-  less_data <- subset(some_data, species_id == 6)
+  less_data <- subset(some_data, species_id == 229)
   expect_lt(nrow(less_data), nrow(some_data))
   expect_gt(nrow(less_data), 0)
 
@@ -321,37 +319,35 @@ test_that("higher taxonomic ordering works for status data", {
     some_data <- npn_download_status_data(
       request_source = "Unit Test",
       years = 2013,
-      order_ids = c(95), #TODO pick a smaller order!
+      order_ids = c(94),
       additional_fields = c("Order_ID")
     )
   })
   expect_s3_class(some_data, "data.frame")
-  expect_gt(nrow(some_data), 1000)
+  expect_gt(nrow(some_data), 500)
   expect_type(some_data$order_id, "integer")
-  expect_equal(some_data[1, ]$order_id, 95)
+  expect_equal(some_data[1, ]$order_id, 94)
 
-  less_data <- subset(some_data, species_id == 6)
+  less_data <- subset(some_data, species_id == 1211)
   expect_lt(nrow(less_data), nrow(some_data))
   expect_gt(nrow(less_data), 0)
 
   #class_ID
-  #TODO pick a smaller class or year with less data! This fixture is too big for GitHub!
-  skip("Fixture too big!")
   vcr::use_cassette("npn_download_status_data_tax_3", {
     some_data <- npn_download_status_data(
       request_source = "Unit Test",
       years = 2013,
-      class_ids = c(15), 
+      class_ids = c(11),
       additional_fields = c("Class_ID")
     )
   })
 
   expect_s3_class(some_data, "data.frame")
-  expect_gt(nrow(some_data), 1000)
+  expect_gt(nrow(some_data), 100)
   expect_type(some_data$class_id, "integer")
-  expect_equal(some_data[1, ]$class_id, 15)
+  expect_equal(some_data[1, ]$class_id, 11)
 
-  less_data <- subset(some_data, species_id == 6)
+  less_data <- subset(some_data, species_id == 390)
   expect_lt(nrow(less_data), nrow(some_data))
   expect_gt(nrow(less_data), 0)
 })
@@ -359,7 +355,6 @@ test_that("higher taxonomic ordering works for status data", {
 
 test_that("higher taxonomic ordering works for individual phenometrics", {
   skip_on_cran()
-  skip_if(skip_long_tests, "Skipping long tests")
   skip_if_not(check_service(), "Service is down")
 
   #Check the different taxonomic levels for
@@ -425,7 +420,6 @@ test_that("higher taxonomic ordering works for individual phenometrics", {
 
 test_that("higher taxonomic ordering works for site phenometrics", {
   skip_on_cran()
-  skip_if(skip_long_tests, "Skipping long tests")
   skip_if_not(check_service(), "Service is down")
 
   #Check the different taxonomic levels for
@@ -491,7 +485,6 @@ test_that("higher taxonomic ordering works for site phenometrics", {
 
 test_that("higher taxonomic ordering works for magnitude phenometrics", {
   skip_on_cran()
-  skip_if(skip_long_tests, "Skipping long tests")
   skip_if_not(check_service(), "Service is down")
 
   #Check the different taxonomic levels for
@@ -558,7 +551,6 @@ test_that("higher taxonomic ordering works for magnitude phenometrics", {
 
 test_that("higher level taxonomic agg and pheno agg works for site level", {
   skip_on_cran()
-  skip_if(skip_long_tests, "Skipping long tests")
   skip_if_not(check_service(), "Service is down")
 
   vcr::use_cassette("npn_download_site_phenometrics_pheno_agg_1", {
@@ -574,7 +566,7 @@ test_that("higher level taxonomic agg and pheno agg works for site level", {
   expect_gt(nrow(some_data), 10)
   expect_type(some_data$family_id, "integer")
   expect_equal(some_data[1, ]$family_id, 322)
-  expect_null(some_data$species_id)
+  expect_false("species_id" %in% colnames(some_data))
 
   vcr::use_cassette("npn_download_site_phenometrics_pheno_agg_2", {
     some_data <- npn_download_site_phenometrics(
@@ -588,7 +580,7 @@ test_that("higher level taxonomic agg and pheno agg works for site level", {
 
   expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 10)
-  expect_null(some_data$phenophase_id)
+  expect_false("phenophase_id" %in% colnames(some_data))
 
   vcr::use_cassette("npn_download_site_phenometrics_pheno_agg_3", {
     some_data <- npn_download_site_phenometrics(
@@ -605,12 +597,11 @@ test_that("higher level taxonomic agg and pheno agg works for site level", {
   expect_gt(nrow(some_data), 100)
   expect_type(some_data$pheno_class_name, "character")
   expect_type(some_data$order_id, "integer")
-  expect_null(some_data$phenophase_id)
+  expect_false("phenophase_id" %in% colnames(some_data))
 })
 
 test_that("higher level taxonomic agg works for magnitude", {
   skip_on_cran()
-  skip_if(skip_long_tests, "Skipping long tests")
   skip_if_not(check_service(), "Service is down")
 
   vcr::use_cassette("npn_download_magnitude_phenometrics_pheno_agg_1", {
@@ -626,7 +617,7 @@ test_that("higher level taxonomic agg works for magnitude", {
   expect_gt(nrow(some_data), 10)
   expect_type(some_data$family_id, "integer")
   expect_equal(some_data[1, ]$family_id, 322)
-  expect_null(some_data$species_id)
+  expect_false("species_id" %in% colnames(some_data))
 
   vcr::use_cassette("npn_download_magnitude_phenometrics_pheno_agg_2", {
     some_data <- npn_download_magnitude_phenometrics(
@@ -640,7 +631,7 @@ test_that("higher level taxonomic agg works for magnitude", {
 
   expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 10)
-  expect_null(some_data$phenophase_id)
+  expect_false("phenophase_id" %in% colnames(some_data))
 
   vcr::use_cassette("npn_download_magnitude_phenometrics_pheno_agg_3", {
     some_data <- npn_download_magnitude_phenometrics(
@@ -657,28 +648,29 @@ test_that("higher level taxonomic agg works for magnitude", {
   expect_gt(nrow(some_data), 10)
   expect_type(some_data$pheno_class_name, "character")
   expect_type(some_data$order_id, "integer")
-  expect_null(some_data$phenophase_id)
+  expect_false("phenophase_id" %in% colnames(some_data))
 })
 
 test_that("six concordance works for status", {
   skip_on_cran()
-  skip_if(skip_long_tests, "Skipping long tests")
   skip_if_not(check_service(), "Service is down")
+  skip_if(skip_long_tests)
 
-  vcr::use_cassette("npn_download_status_data_six_concord_1", {
-    some_data <- npn_download_status_data(
-      request_source = "Unit Test",
-      c(2016),
-      species_ids = c(6),
-      six_leaf_layer = TRUE,
-      six_bloom_layer = TRUE,
-      agdd_layer = 32,
-      additional_layers = data.frame(
-        name = c("si-x:30yr_avg_4k_leaf"),
-        param = c("365")
-      )
+  #doesn't use vcr just because I suspect the fixture file will be very large
+  # vcr::use_cassette("npn_download_status_data_six_concord_1", {
+  some_data <- npn_download_status_data(
+    request_source = "Unit Test",
+    c(2016),
+    species_ids = c(6),
+    six_leaf_layer = TRUE,
+    six_bloom_layer = TRUE,
+    agdd_layer = 32,
+    additional_layers = data.frame(
+      name = c("si-x:30yr_avg_4k_leaf"),
+      param = c("365")
     )
-  })
+  )
+  # })
 
   expect_s3_class(some_data, "data.frame")
   expect_type(some_data$`SI-x_Bloom_Value`, "double")
@@ -699,15 +691,15 @@ test_that("six concordance works for status", {
   avg_leaf_data <- some_data$`SI-x_Leaf_Value`
 
   # Test sub-model functionality
-  vcr::use_cassette("npn_download_status_data_six_concord_2", {
-    some_data <- npn_download_status_data(
-      request_source = "Unit Test",
-      c(2016),
-      species_ids = c(6),
-      six_leaf_layer = TRUE,
-      six_sub_model = "lilac"
-    )
-  })
+  # vcr::use_cassette("npn_download_status_data_six_concord_2", {
+  some_data <- npn_download_status_data(
+    request_source = "Unit Test",
+    c(2016),
+    species_ids = c(6),
+    six_leaf_layer = TRUE,
+    six_sub_model = "lilac"
+  )
+  # })
 
   expect_gt(some_data[1, "SI-x_Leaf_Value"], -1)
   expect_lt(some_data[1, "SI-x_Leaf_Value"], 250)
@@ -718,29 +710,29 @@ test_that("six concordance works for status", {
   # layers is happening based on the date
   #
   # In this case get NCEP data
-  vcr::use_cassette("npn_download_status_data_six_concord_3", {
-    some_data <- npn_download_status_data(
-      request_source = "Unit Test",
-      c(2019),
-      species_ids = c(3),
-      six_leaf_layer = TRUE,
-      six_sub_model = "lilac"
-    )
-  })
+  # vcr::use_cassette("npn_download_status_data_six_concord_3", {
+  some_data <- npn_download_status_data(
+    request_source = "Unit Test",
+    c(2019),
+    species_ids = c(3),
+    six_leaf_layer = TRUE,
+    six_sub_model = "lilac"
+  )
+  # })
 
   expect_gt(some_data[1, "SI-x_Leaf_Value"], -1)
   expect_lt(some_data[1, "SI-x_Leaf_Value"], 250)
 
   # In this case get PRISM data
-  vcr::use_cassette("npn_download_status_data_six_concord_4", {
-    some_data <- npn_download_status_data(
-      request_source = "Unit Test",
-      c(2009),
-      species_ids = c(3),
-      six_leaf_layer = TRUE,
-      six_sub_model = "lilac"
-    )
-  })
+  # vcr::use_cassette("npn_download_status_data_six_concord_4", {
+  some_data <- npn_download_status_data(
+    request_source = "Unit Test",
+    c(2009),
+    species_ids = c(3),
+    six_leaf_layer = TRUE,
+    six_sub_model = "lilac"
+  )
+  # })
 
   expect_gt(some_data[1, "SI-x_Leaf_Value"], -1)
   expect_lt(some_data[1, "SI-x_Leaf_Value"], 250)
@@ -748,10 +740,6 @@ test_that("six concordance works for status", {
 
 
 test_that("wkt filter works", {
-  skip_on_cran()
-  skip_if(skip_long_tests, "Skipping long tests")
-  skip_if_not(check_service(), "Service is down")
-
   #wkt is for CO
   wkt_def <- "POLYGON ((-102.04224 36.993083,-109.045223 36.999084,-109.050076 41.000659,-102.051614 41.002377,-102.04224 36.993083))"
 
@@ -854,10 +842,6 @@ test_that("wkt filter works", {
 
 
 test_that("frequency params work", {
-  skip_on_cran()
-  skip_if(skip_long_tests, "Skipping long tests")
-  skip_if_not(check_service(), "Service is down")
-
   vcr::use_cassette("npn_download_site_phenometrics_frequency_1", {
     some_data <- npn_download_site_phenometrics(
       request_source = "Unit Test",

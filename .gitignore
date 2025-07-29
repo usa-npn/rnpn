@@ -12,3 +12,4 @@ Meta
 docs
 notes/*.tiff
 nohup.out
+.vscode/settings.json
