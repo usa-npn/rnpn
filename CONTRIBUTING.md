@@ -34,9 +34,9 @@ See the tidyverse guide on [how to create a great issue](https://code-review.tid
 
 -   Unit tests are written using [`testthat`](https://cran.r-project.org/package=testthat) and can be found in `tests/testthat/`.
 
--   Many of the tests use `vcr` for webmocking.
-    The first time code wrapped in `vcr::use_casette({})` is run successfully, a "fixture" is created in `tests/fixtures/`.
-    Subsequent runs of that code will *not* query the API but rather retrieve a cached response from `tets/fixtures/`.
+-   Many of the tests use `vcr` for webmocking with `vcr::local_casette()`.
+    The first time a mocked test is run successfully, the API response is recorded in `tests/testthat/_vcr/`.
+    Subsequent runs of that test will *not* query the API but rather retrieve a cached response from `tets/testthat/_vcr/`.
     If the API changes or you are finding inconsistencies between tests and interactively running your code, you may want to regenerate these fixtures.
     You can do this by simply deleting the relevant .yml files and re-running the tests (e.g. with `test()`).
 
