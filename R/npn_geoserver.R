@@ -281,6 +281,7 @@ npn_get_point_data <- function(layer, lat, long, date, store_data = TRUE) {
   if (!is.null(cached_value)) {
     return(cached_value$value)
   }
+
   resp <- tryCatch({
     req <- base_req_geoserver %>%
       httr2::req_url_path_append("wcs") %>%
@@ -611,6 +612,11 @@ npn_get_custom_agdd_raster <- function(method,
   temp_unit <- tolower(temp_unit)
   method <- tolower(method)
 
+  if (!check_geo_service()) {
+    message("Data service is currently unavailable, please try again later.")
+    return(NULL)
+  }
+
   req <- base_req_geoservices %>%
     httr2::req_url_path_append("agdd", method, "map") %>%
     httr2::req_progress(type = "down") %>% # doesn't actually work because downloaded json is small despite taking a long time to generate on server
@@ -619,7 +625,8 @@ npn_get_custom_agdd_raster <- function(method,
       temperatureUnit = temp_unit,
       startDate = start_date,
       endDate = end_date
-    )
+    ) |> 
+    httr2::req_timeout(10*60) #this is slow, so increase timeout to 10 min
 
   if (method == "simple") {
     req <- req %>%
@@ -634,33 +641,17 @@ npn_get_custom_agdd_raster <- function(method,
       )
   }
 
-  tryCatch({ #TODO handle errors with httr2 instead
-    resp <- httr2::req_perform(req)
-  }, error = function(msg) {
-    message("Data service is currently unavailable, please try again later.")
-    return(NULL)
-  })
+  z <- tempfile()
+  resp <- httr2::req_perform(req, path = z)
 
-  mapURL <-
-    httr2::resp_body_json(resp)$mapUrl
-
-  if (!is.null(mapURL)) {
-    z <- tempfile()
-    httr2::request(mapURL) %>%
-      httr2::req_user_agent("rnpn (https://github.com/usa-npn/rnpn/)") %>%
-      httr2::req_perform(path = z)
-
-    # "Discarded datum" seems to be a PROJ error that pops up in raster and
-    # terra. Not sure if wrapping in withCallingHandlers() is still necessary
-    # after migrating to terra, but I'll leave it in just in case.
-    ras <- withCallingHandlers(
-      terra::rast(z),
-      warning = function(w) {
-        if (any(grepl("Discarded datum", w))) {
-          invokeRestart("muffleWarning")
-        }
+  ras <- withCallingHandlers(
+    terra::rast(z),
+    warning = function(w) {
+      if (any(grepl("Discarded datum", w))) {
+        invokeRestart("muffleWarning")
       }
-    )
-  }
+    }
+  )
+  
   return(ras)
 }

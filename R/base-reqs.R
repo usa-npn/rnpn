@@ -1,7 +1,7 @@
 #base url for NPN Portal
 base_portal_url <- "https://services.usanpn.org/npn_portal/"
 #base url for geoserver
-base_geoserver_url <- "http://geoserver.usanpn.org/geoserver/"
+base_geoserver_url <- "https://geoserver.usanpn.org/geoserver/"
 #base url for geoservices
 base_geoservices_url <- "https://services.usanpn.org/geo-services/v1/"
 
