@@ -1,4 +1,4 @@
-# rnpn (development version)
+# rnpn 1.4.1
 
 * -9999 is now converted to `NA` for all columns in data returned by `npn_download_*()` functions (#119, #121).
 * compatibility with vcr v2.0.0 (fixed in #125 by @skott)
