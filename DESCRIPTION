@@ -38,7 +38,7 @@ Suggests:
     sf,
     terra,
     testthat (>= 3.0.0),
-    vcr,
+    vcr (>= 2.0.0),
     withr
 VignetteBuilder: 
     knitr

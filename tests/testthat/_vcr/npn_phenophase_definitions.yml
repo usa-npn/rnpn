@@ -1,0 +1,1320 @@
+http_interactions:
+- request:
+    method: GET
+    uri: https://services.usanpn.org/npn_portal/phenophases/getPhenophaseDefinitionDetails.json
+  response:
+    status: 200
+    headers:
+      date: Tue, 29 Jul 2025 22:16:47 GMT
+      content-type: application/json; charset=utf-8
+      server: Apache/2.4.62 () PHP/5.5.38
+      x-powered-by: PHP/5.5.38
+      pragma: no-cache
+      cache-control: no-store, no-cache, max-age=0, must-revalidate
+      access-control-allow-origin: '*'
+      access-control-allow-headers: origin, x-requested-with, content-type
+      access-control-allow-methods: PUT, GET, POST, DELETE, OPTIONS
+    body:
+      string: '[{"definition_id":56,"dataset_id":12,"phenophase_id":56,"phenophase_name":"First
+        leaf","definition":"In at least 3 locations on the plant, the very first green
+        tip of a young leaf has visibly moved out of the leaf bud.","start_date":"2008-08-25
+        00:00:00","end_date":"2009-03-01 00:00:00","comments":null},{"definition_id":57,"dataset_id":12,"phenophase_id":57,"phenophase_name":"75%
+        leaf elongation","definition":"The majority of young leaves have unfolded
+        completely and have expanded to three-quarters (75%) of their mature size.
+        Leaf elongation may also be estimated by viewing the canopy as a whole. At
+        75% leaf elongation, the canopy appears to be approximately three-quarters
+        (75%) full. ","start_date":"2008-08-25 00:00:00","end_date":"2009-03-01 00:00:00","comments":null},{"definition_id":58,"dataset_id":12,"phenophase_id":58,"phenophase_name":"First
+        flower","definition":"In at least 3 locations on the plant, a flower has opened
+        completely. Flowers are considered ''opened'' when the reproductive parts
+        are visible between unfolded or opened flower parts.","start_date":"2008-08-25
+        00:00:00","end_date":"2009-03-01 00:00:00","comments":null},{"definition_id":59,"dataset_id":12,"phenophase_id":59,"phenophase_name":"Last
+        flower","definition":"The last visible flower has opened completely and is
+        still fresh.","start_date":"2008-08-25 00:00:00","end_date":"2009-03-01 00:00:00","comments":null},{"definition_id":60,"dataset_id":12,"phenophase_id":60,"phenophase_name":"First
+        fruit ripe","definition":"In at least 3 locations on the plant, a fruit has
+        become ripe. ","start_date":"2008-08-25 00:00:00","end_date":"2009-03-01 00:00:00","comments":null},{"definition_id":61,"dataset_id":12,"phenophase_id":61,"phenophase_name":"50%
+        of leaves colored","definition":"For the whole plant, half (50%) of the leaves
+        (including any that have fallen to the ground) have changed to their late
+        season colors.","start_date":"2008-08-25 00:00:00","end_date":"2009-03-01
+        00:00:00","comments":null},{"definition_id":62,"dataset_id":12,"phenophase_id":182,"phenophase_name":"All
+        leaves colored","definition":"For the whole plant, virtually all (95-100%)
+        of the leaves (including any that have fallen to the ground) have changed
+        to their late season colors and there is virtually no green left in the leaves.","start_date":"2008-08-25
+        00:00:00","end_date":"2009-03-01 00:00:00","comments":null},{"definition_id":63,"dataset_id":12,"phenophase_id":63,"phenophase_name":"50%
+        of leaves fallen","definition":"For the whole plant, half (50%) of the leaves
+        have fallen. ","start_date":"2008-08-25 00:00:00","end_date":"2009-03-01 00:00:00","comments":null},{"definition_id":64,"dataset_id":12,"phenophase_id":184,"phenophase_name":"All
+        leaves fallen","definition":"For the whole plant, virtually all (95-100%)
+        of the leaves have fallen.  ","start_date":"2008-08-25 00:00:00","end_date":"2009-03-01
+        00:00:00","comments":null},{"definition_id":71,"dataset_id":12,"phenophase_id":71,"phenophase_name":"Emergence
+        above ground","definition":"New growth of the plant has begun above the soil
+        surface, with aboveground buds showing green tips, or new shoots breaking
+        through the soil surface.","start_date":"2008-08-25 00:00:00","end_date":"2009-03-01
+        00:00:00","comments":null},{"definition_id":72,"dataset_id":12,"phenophase_id":72,"phenophase_name":"First
+        flower","definition":"At least one flower on the plant has opened completely.
+        Flowers are considered ''opened'' when the reproductive parts are visible
+        between unfolded or opened flower parts.","start_date":"2008-08-25 00:00:00","end_date":"2009-03-01
+        00:00:00","comments":null},{"definition_id":73,"dataset_id":12,"phenophase_id":73,"phenophase_name":"First
+        fruit ripe","definition":"At least one fruit on the plant has become ripe.
+        ","start_date":"2008-08-25 00:00:00","end_date":"2009-03-01 00:00:00","comments":null},{"definition_id":74,"dataset_id":12,"phenophase_id":200,"phenophase_name":"All
+        leaves senesced","definition":"Of the leaves that developed this season, virtually
+        all (95-100%) are dried and dead.","start_date":"2008-08-25 00:00:00","end_date":"2009-03-01
+        00:00:00","comments":null},{"definition_id":75,"dataset_id":7,"phenophase_id":75,"phenophase_name":"Full
+        leaf out","definition":"This event occurs when nearly all (at least 95%) of
+        the actively growing leaf buds have already reached the first leaf event.","start_date":"2005-01-01
+        00:00:00","end_date":null,"comments":null},{"definition_id":76,"dataset_id":7,"phenophase_id":76,"phenophase_name":"First
+        leaf","definition":"This event occurs when the widest part of the newly emerging
+        leaf has grown beyond the ends of its opening winter bud scales in at least
+        three places on the plant under observation.  The leaf is distinguished by
+        its prominent midrib and veins.","start_date":"2005-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":77,"dataset_id":7,"phenophase_id":77,"phenophase_name":"First
+        bloom","definition":"This event occurs when at least 50% of the flower clusters
+        have at least one open flower.  The lilac flower cluster is a grouping of
+        many, small individual flowers.","start_date":"2005-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":78,"dataset_id":7,"phenophase_id":78,"phenophase_name":"Full
+        bloom","definition":"This event occurs when 95% of the flower clusters no
+        longer have any unopened flowers, but before many of the flowers have withered.","start_date":"2005-01-01
+        00:00:00","end_date":null,"comments":null},{"definition_id":79,"dataset_id":7,"phenophase_id":79,"phenophase_name":"End
+        bloom","definition":"This event occurs when at least 95% of the flowers have
+        withered or dried up and the floral display has ended.","start_date":"2005-01-01
+        00:00:00","end_date":null,"comments":null},{"definition_id":105,"dataset_id":12,"phenophase_id":105,"phenophase_name":"Budburst","definition":"In
+        at least 3 locations on the plant, a bud has broken and the newly developing
+        stem (candle) has begun to push through the bud scales.","start_date":"2008-08-25
+        00:00:00","end_date":"2009-03-01 00:00:00","comments":null},{"definition_id":106,"dataset_id":12,"phenophase_id":106,"phenophase_name":"First
+        needles","definition":"In at least 3 locations on the plant, the young needles
+        have begun to visibly emerge or unfold along the developing stem.","start_date":"2008-08-25
+        00:00:00","end_date":"2009-03-01 00:00:00","comments":null},{"definition_id":107,"dataset_id":12,"phenophase_id":107,"phenophase_name":"First
+        male cone","definition":"In at least 3 locations on the plant, a male cone
+        (strobilus) has emerged. A few to many individual pollen sacs (which look
+        tiny balloons) have visibly emerged from the bud (though they may be quite
+        small).","start_date":"2008-08-25 00:00:00","end_date":"2009-03-01 00:00:00","comments":null},{"definition_id":108,"dataset_id":12,"phenophase_id":108,"phenophase_name":"First
+        pollen released","definition":"In at least 3 locations on the plant, the pollen
+        sacs on a male cone (strobilus) have broken and pollen is released when the
+        cone is gently shaken or blown.","start_date":"2008-08-25 00:00:00","end_date":"2009-03-01
+        00:00:00","comments":null},{"definition_id":109,"dataset_id":12,"phenophase_id":109,"phenophase_name":"First
+        needles fallen","definition":"In at least 3 locations on the plant, needles
+        from previous years'' growth have yellowed and fallen or fall from the stem
+        upon gentle handling.  Leaf fall may also be indicated by the presence of
+        at least 3 needles or needle clusters on the ground below the plant and appear
+        to have newly fallen from it.","start_date":"2008-08-25 00:00:00","end_date":"2009-03-01
+        00:00:00","comments":null},{"definition_id":121,"dataset_id":12,"phenophase_id":121,"phenophase_name":"First
+        flower bud","definition":"In at least one location on the plant, an unopened
+        flower bud is visible. ","start_date":"2008-08-25 00:00:00","end_date":"2009-03-01
+        00:00:00","comments":null},{"definition_id":124,"dataset_id":12,"phenophase_id":124,"phenophase_name":"First
+        fruit","definition":"At least one developing fruit is visible on the plant.
+        ","start_date":"2008-08-25 00:00:00","end_date":"2009-03-01 00:00:00","comments":null},{"definition_id":127,"dataset_id":12,"phenophase_id":127,"phenophase_name":"First
+        leaf","definition":"In at least 3 locations on the plant, the very first green
+        tip of a new young leaf has visibly moved out of a leaf bud. New leaves are
+        generally located at branch tips, and are a lighter shade of green than the
+        older leaves on the plant. ","start_date":"2008-08-25 00:00:00","end_date":"2009-03-01
+        00:00:00","comments":null},{"definition_id":128,"dataset_id":12,"phenophase_id":128,"phenophase_name":"75%
+        leaf elongation","definition":"The majority of new young leaves have unfolded
+        completely and have expanded to three-quarters (75%) of the size of older
+        leaves on the plant.","start_date":"2008-08-25 00:00:00","end_date":"2009-03-01
+        00:00:00","comments":null},{"definition_id":137,"dataset_id":12,"phenophase_id":137,"phenophase_name":"First
+        leaf fallen","definition":"In at least 3 locations on the plant, a leaf from
+        previous years'' growth has yellowed and fallen or falls from the stem upon
+        gentle handling.  Leaf fall may also be indicated by the presence of at least
+        3 leaves on the ground below the plant and appear to have newly fallen from
+        it.","start_date":"2008-08-25 00:00:00","end_date":"2009-03-01 00:00:00","comments":null},{"definition_id":178,"dataset_id":null,"phenophase_id":371,"phenophase_name":"Emerging
+        leaves","definition":"In at least 3 locations on the plant, an emerging leaf
+        is visible.  A leaf is considered \"emerging\" once the green tip is visible
+        at the end of the leaf bud, but before it has fully unfolded to expose the
+        petiole (leaf stalk) or leaf base.","start_date":"1970-01-01 00:00:00","end_date":"2011-03-20
+        00:00:00","comments":null},{"definition_id":179,"dataset_id":null,"phenophase_id":483,"phenophase_name":"Unfolded
+        leaves","definition":"In at least 3 locations on the plant, an unfolded leaf
+        is visible. A leaf is considered \"unfolded\" when the petiole (leaf stalk)
+        or leaf base is visible. The leaf may need to be bent backwards to see whether
+        the petiole or leaf base is visible.","start_date":"1970-01-01 00:00:00","end_date":"2011-03-20
+        00:00:00","comments":null},{"definition_id":180,"dataset_id":null,"phenophase_id":180,"phenophase_name":">=75%
+        of full leaf size","definition":"For the whole plant, the majority of leaves
+        are unfolded and have elongated to at least three-quarters (75%) of their
+        mature size. Leaf size may also be estimated by viewing the canopy as a whole.  At
+        75% of full leaf size, the canopy appears to be approximately three-quarters
+        (75%) full.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":181,"dataset_id":null,"phenophase_id":181,"phenophase_name":">=50%
+        of leaves colored","definition":"For the whole plant, at least half (50%)
+        of the leaves (including any that have fallen to the ground) have changed
+        to their late-season colors.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":182,"dataset_id":null,"phenophase_id":182,"phenophase_name":"All
+        leaves colored","definition":"For the whole plant, virtually all (95-100%)
+        of the leaves (including any that have fallen to the ground) have changed
+        to their late-season colors, and virtually no green is left in the leaves.","start_date":"1970-01-01
+        00:00:00","end_date":null,"comments":null},{"definition_id":183,"dataset_id":null,"phenophase_id":183,"phenophase_name":">=50%
+        of leaves fallen","definition":"For the whole plant, at least half (50%) of
+        the leaves have fallen.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":184,"dataset_id":null,"phenophase_id":184,"phenophase_name":"All
+        leaves fallen","definition":"For the whole plant, virtually all (95-100%)
+        of the leaves have fallen.  ","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":185,"dataset_id":null,"phenophase_id":501,"phenophase_name":"Open
+        flowers","definition":"In at least 3 locations on the plant, an open fresh
+        flower is visible. Flowers are considered \"open\" when the reproductive parts
+        are visible between unfolded or open flower parts. Do not include spent (wilted)
+        flowers that remain on the plant. ","start_date":"1970-01-01 00:00:00","end_date":"2011-03-20
+        00:00:00","comments":null},{"definition_id":186,"dataset_id":null,"phenophase_id":186,"phenophase_name":"Full
+        flowering","definition":"For the whole plant, at least half (50%) of the flowers
+        are open and still fresh.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":187,"dataset_id":null,"phenophase_id":390,"phenophase_name":"Ripe
+        fruits","definition":"In at least 3 locations on the plant, a ripe fruit is
+        visible. ","start_date":"1970-01-01 00:00:00","end_date":"2011-03-20 00:00:00","comments":null},{"definition_id":195,"dataset_id":null,"phenophase_id":502,"phenophase_name":"Pollen
+        release","definition":"In at least 3 locations on the plant, pollen is released
+        from an inflorescence when gently shaken or blown.","start_date":"1970-01-01
+        00:00:00","end_date":"2011-03-20 00:00:00","comments":null},{"definition_id":196,"dataset_id":null,"phenophase_id":196,"phenophase_name":"Full
+        pollen release","definition":"For the whole plant, at least half (50%) of
+        the inflorescences release pollen when gently shaken or blown.","start_date":"1970-01-01
+        00:00:00","end_date":null,"comments":null},{"definition_id":198,"dataset_id":null,"phenophase_id":482,"phenophase_name":"Emerging
+        growth","definition":"New bright green growth of the plant is visible above
+        the soil surface, either from above-ground buds with green tips, or new green
+        or white shoots breaking through the soil surface. Growth is considered \"emerging\"
+        until the first leaf has fully unfolded from that bud or shoot.","start_date":"1970-01-01
+        00:00:00","end_date":"2011-03-20 00:00:00","comments":null},{"definition_id":199,"dataset_id":null,"phenophase_id":488,"phenophase_name":"Unfolded
+        leaves","definition":"In at least one location on the plant, a fully unfolded
+        leaf is visible. For seedlings, consider only true leaves and do not count
+        the cotyledons (one or two small, round leaves) that are found on the stem
+        almost immediately after the seedling emerges.","start_date":"1970-01-01 00:00:00","end_date":"2011-03-20
+        00:00:00","comments":null},{"definition_id":200,"dataset_id":null,"phenophase_id":200,"phenophase_name":"All
+        leaves withered","definition":"Of the leaves that developed this season, virtually
+        all (95-100%) are dried and dead.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":201,"dataset_id":null,"phenophase_id":201,"phenophase_name":"Open
+        flowers","definition":"In at least one location on the plant, an open fresh
+        flower is visible. Flowers are considered \"open\" when the reproductive parts
+        are visible between unfolded or open flower parts. Do not include spent (wilted)
+        flowers that remain on the plant. ","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":202,"dataset_id":null,"phenophase_id":202,"phenophase_name":"Ripe
+        fruits","definition":"In at least one location on the plant, a ripe fruit
+        is visible.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":203,"dataset_id":null,"phenophase_id":373,"phenophase_name":"Emerging
+        leaves","definition":"In at least 3 locations on the plant, an emerging leaf
+        is visible.  A leaf is considered \"emerging\" once the widest part of the
+        newly emerging leaf has grown beyond the ends of its opening winter bud scales,
+        but before it has fully emerged to expose the petiole (leaf stalk) or leaf
+        base.  The leaf is distinguished by its prominent midrib and veins. <i>(This
+        phenophase was previously called \"First leaf\".)<\/i>","start_date":"1970-01-01
+        00:00:00","end_date":"2011-03-20 00:00:00","comments":null},{"definition_id":204,"dataset_id":null,"phenophase_id":374,"phenophase_name":"All
+        leaves emerged","definition":"For the whole plant, the widest part of a new
+        leaf has emerged from virtually all (95-100%) of the actively growing leaf
+        buds. <i>(This phenophase was previously called \"Full leaf out\".)<\/i>","start_date":"1970-01-01
+        00:00:00","end_date":"2011-03-20 00:00:00","comments":null},{"definition_id":205,"dataset_id":null,"phenophase_id":205,"phenophase_name":"Open
+        flowers","definition":"For the whole plant, at least half (50%) of the flower
+        clusters have at least one open fresh flower.  The lilac flower cluster is
+        a grouping of many, small individual flowers. <i>(This phenophase was previously
+        called \"First bloom\".)<\/i>","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":206,"dataset_id":null,"phenophase_id":206,"phenophase_name":"Full
+        flowering","definition":"For the whole plant, virtually all (95-100%) of the
+        flower clusters no longer have any unopened flowers, but many of the flowers
+        are still fresh and have not withered. <i>(This phenophase was previously
+        called \"Full bloom\".)<\/i>","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":207,"dataset_id":null,"phenophase_id":207,"phenophase_name":"End
+        of flowering","definition":"For the whole plant, virtually all (95-100%) of
+        the flowers have withered or dried up and the floral display has ended. <i>(This
+        phenophase was previously called \"End of bloom\".)<\/i>","start_date":"1970-01-01
+        00:00:00","end_date":null,"comments":null},{"definition_id":210,"dataset_id":null,"phenophase_id":210,"phenophase_name":"Open
+        flowers","definition":"For the whole plant, at least 5% of the flowers are
+        open and still fresh. <i>(This phenophase was previously called \"First bloom\".)<\/i>","start_date":"1970-01-01
+        00:00:00","end_date":null,"comments":null},{"definition_id":211,"dataset_id":null,"phenophase_id":211,"phenophase_name":"Full
+        flowering","definition":"For the whole plant, virtually all (95-100%) of the
+        flowers have opened, and many of the flowers are still fresh and have not
+        withered. <i>(This phenophase was previously called \"Full bloom\".)<\/i>","start_date":"1970-01-01
+        00:00:00","end_date":null,"comments":null},{"definition_id":214,"dataset_id":null,"phenophase_id":484,"phenophase_name":"Young
+        unfolded leaves","definition":"In at least 3 locations on the plant, a young
+        unfolded leaf is visible. A leaf is considered \"young\" and \"unfolded\"
+        once the petiole (leaf stalk) or leaf base is visible, but before the leaf
+        has reached full size or turned the darker green color of mature leaves on
+        the plant. The leaf may need to be bent backwards to see whether the petiole
+        or leaf base is visible.","start_date":"1970-01-01 00:00:00","end_date":"2011-03-20
+        00:00:00","comments":null},{"definition_id":218,"dataset_id":null,"phenophase_id":480,"phenophase_name":"Emerging
+        needles","definition":"In at least 3 locations on the plant, an emerging needle
+        is visible. A needle is considered \"emerging\" once the green tip is visible
+        at the end of the bud, but before the needle has unfolded and spread away
+        from the developing stem.","start_date":"1970-01-01 00:00:00","end_date":"2011-03-20
+        00:00:00","comments":null},{"definition_id":219,"dataset_id":null,"phenophase_id":485,"phenophase_name":"Young
+        unfolded needles","definition":"In at least 3 locations on the plant, a young
+        unfolded needle is visible. A needle is considered \"young\" and \"unfolded\"
+        once it has spread away from the developing stem enough that its point of
+        attachment to the stem is visible, but before it has reached full size and
+        turned the darker green color of mature needles on the plant.","start_date":"1970-01-01
+        00:00:00","end_date":"2011-03-20 00:00:00","comments":null},{"definition_id":220,"dataset_id":null,"phenophase_id":503,"phenophase_name":"Pollen
+        release","definition":"In at least 3 locations on the plant, pollen is released
+        from a male cone when it is gently shaken or blown.","start_date":"1970-01-01
+        00:00:00","end_date":"2011-03-20 00:00:00","comments":null},{"definition_id":221,"dataset_id":null,"phenophase_id":221,"phenophase_name":"Full
+        pollen release","definition":"For the whole plant, at least half (50%) of
+        the male cones release pollen when gently shaken or blown.","start_date":"1970-01-01
+        00:00:00","end_date":null,"comments":null},{"definition_id":222,"dataset_id":null,"phenophase_id":393,"phenophase_name":"Ripe
+        seed cones","definition":"In at least 3 locations on the plant, a ripe seed
+        cone is visible.","start_date":"1970-01-01 00:00:00","end_date":"2011-03-20
+        00:00:00","comments":null},{"definition_id":223,"dataset_id":null,"phenophase_id":492,"phenophase_name":"Emerging
+        growth","definition":"New growth of the plant is visible above the soil surface
+        with the appearance of fresh green shoots that show no signs of aging. For
+        each shoot, growth is considered \"emerging\" until the first leaf has unfolded.","start_date":"1970-01-01
+        00:00:00","end_date":"2011-03-20 00:00:00","comments":null},{"definition_id":224,"dataset_id":null,"phenophase_id":489,"phenophase_name":"Unfolded
+        leaves","definition":"In at least one location on the plant, an unfolded leaf
+        is visible. A leaf is considered \"unfolded\" when it unrolls slightly from
+        around the stem and begins to fall away at an angle.","start_date":"1970-01-01
+        00:00:00","end_date":"2011-03-20 00:00:00","comments":null},{"definition_id":226,"dataset_id":null,"phenophase_id":494,"phenophase_name":"Open
+        flowers","definition":"In at least one location on the plant, an open fresh
+        flower is visible. Flowers are considered \"open\" when the reproductive parts
+        are visible between open flower parts. Do not include dried flower parts that
+        remain on the plant.","start_date":"1970-01-01 00:00:00","end_date":"2011-03-20
+        00:00:00","comments":null},{"definition_id":227,"dataset_id":null,"phenophase_id":227,"phenophase_name":"Ripe
+        seeds","definition":"In at least one location on the plant, a ripe seed is
+        present. A ripe seed is hard when squeezed and is difficult to divide with
+        a fingernail. Seeds may also be considered ripe when they fall into your hand
+        when the plant is handled.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":232,"dataset_id":null,"phenophase_id":232,"phenophase_name":"Emerging
+        leaves","definition":"In at least one location on the plant, an emerging leaf
+        is visible.  A leaf is considered \"emerging\" once the green tip is visible
+        at the end of the leaf bud, but before it has fully unfolded to expose the
+        petiole (leaf stalk) or leaf base.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":233,"dataset_id":null,"phenophase_id":233,"phenophase_name":"Young
+        unfolded leaves","definition":"In at least one location on the plant, a young
+        unfolded leaf is visible. A leaf is considered \"young\" and \"unfolded\"
+        once the leaf stalk (petiole) or leaf base is visible, but before the leaf
+        has reached full size or turned the darker green color of mature leaves on
+        the plant. The leaf may need to be bent backwards to see whether the petiole
+        or leaf base is visible.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":248,"dataset_id":null,"phenophase_id":496,"phenophase_name":"Emerging
+        needles","definition":"In at least 3 locations on the plant, an emerging needle
+        or needle bundle is visible. A needle or needle bundle is considered \"emerging\"
+        once the green tip is visible along the newly developing stem (candle), but
+        before the needles have begun to unfold and spread away from others in the
+        bundle.","start_date":"1970-01-01 00:00:00","end_date":"2011-03-20 00:00:00","comments":null},{"definition_id":249,"dataset_id":null,"phenophase_id":486,"phenophase_name":"Young
+        unfolded needles","definition":"In at least 3 locations on the plant, a young
+        unfolded needle is visible. A needle is considered \"young\" and \"unfolded\"
+        once it begins to spread away from other needles in the bundle (and is no
+        longer pressed flat against them), but before it has reached full size and
+        turned the darker green color of mature needles on the plant.","start_date":"1970-01-01
+        00:00:00","end_date":"2011-03-20 00:00:00","comments":null},{"definition_id":256,"dataset_id":null,"phenophase_id":256,"phenophase_name":"Flower
+        buds","definition":"In at least one location on the plant, a flower bud or
+        unopened flower is visible. A flower is considered \"unopened\" up until the
+        point when reproductive parts are visible between unfolded or open flower
+        parts.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":259,"dataset_id":null,"phenophase_id":481,"phenophase_name":"Emerging
+        needles","definition":"In at least 3 locations on the plant, an emerging needle
+        bundle is visible. A needle bundle is considered \"emerging\" once green needle
+        tips are visible at the end of the bud, but before the needles have begun
+        to unfold and spread away from others in the bundle.","start_date":"1970-01-01
+        00:00:00","end_date":"2011-03-20 00:00:00","comments":null},{"definition_id":260,"dataset_id":null,"phenophase_id":487,"phenophase_name":"Unfolded
+        needles","definition":"In at least 3 locations on the plant, an unfolded needle
+        is visible. A needle is considered \"unfolded\" once it begins to spread away
+        from other needles in the bundle and is no longer pressed flat against them.","start_date":"1970-01-01
+        00:00:00","end_date":"2011-03-20 00:00:00","comments":null},{"definition_id":261,"dataset_id":null,"phenophase_id":261,"phenophase_name":">=50%
+        of needles colored","definition":"For the whole plant, at least half (50%)
+        of the needles (including any that have fallen to the ground) have changed
+        to their late-season colors.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":262,"dataset_id":null,"phenophase_id":262,"phenophase_name":"All
+        needles colored","definition":"For the whole plant, virtually all (95-100%)
+        of the needles (including any that have fallen to the ground) have changed
+        to their late-season colors, and there is virtually no green left in the needles.","start_date":"1970-01-01
+        00:00:00","end_date":null,"comments":null},{"definition_id":263,"dataset_id":null,"phenophase_id":263,"phenophase_name":">=50%
+        of needles fallen","definition":"For the whole plant, at least half (50%)
+        of the needles have fallen.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":264,"dataset_id":null,"phenophase_id":264,"phenophase_name":"All
+        needles fallen","definition":"For the whole plant, virtually all (95-100%)
+        of the needles have fallen.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":274,"dataset_id":null,"phenophase_id":274,"phenophase_name":"Adults
+        on land","definition":"One or more adults are seen at rest or active on land.","start_date":"1970-01-01
+        00:00:00","end_date":null,"comments":null},{"definition_id":275,"dataset_id":null,"phenophase_id":275,"phenophase_name":"Adults
+        in water","definition":"One or more adults are seen at rest or active in water.","start_date":"1970-01-01
+        00:00:00","end_date":null,"comments":null},{"definition_id":276,"dataset_id":null,"phenophase_id":276,"phenophase_name":"Vocalizing","definition":"One
+        or more individuals are heard vocalizing.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":277,"dataset_id":null,"phenophase_id":277,"phenophase_name":"Vocalizing
+        at breeding site","definition":"One or more individuals are heard vocalizing
+        in water or near the edge of water or a wetland.","start_date":"1970-01-01
+        00:00:00","end_date":null,"comments":null},{"definition_id":278,"dataset_id":null,"phenophase_id":278,"phenophase_name":"Vocalizing
+        away from breeding site","definition":"One or more individuals are heard vocalizing
+        more than 10 meters (11 yards) from water or a wetland.","start_date":"1970-01-01
+        00:00:00","end_date":null,"comments":null},{"definition_id":279,"dataset_id":null,"phenophase_id":279,"phenophase_name":"Mating","definition":"A
+        female is seen grasped and held by a male.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":280,"dataset_id":null,"phenophase_id":280,"phenophase_name":"Spermatophores","definition":"One
+        or more spermatophores (mass of sperm) are seen on a pool or pond bottom.","start_date":"1970-01-01
+        00:00:00","end_date":null,"comments":null},{"definition_id":281,"dataset_id":null,"phenophase_id":281,"phenophase_name":"Fresh
+        eggs","definition":"Eggs are seen being extruded, an egg mass is seen with
+        jelly not expanded to full size, or embryos that are more or less spherical
+        are seen.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":282,"dataset_id":null,"phenophase_id":282,"phenophase_name":"Well-developed
+        embryos","definition":"One or more jelly masses are seen containing elongate
+        embryos (straight or curved).","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":283,"dataset_id":null,"phenophase_id":283,"phenophase_name":"Larvae
+        in water ","definition":"One or more salamanders with obvious gills are seen.","start_date":"1970-01-01
+        00:00:00","end_date":null,"comments":null},{"definition_id":284,"dataset_id":null,"phenophase_id":284,"phenophase_name":"Larvae
+        in water ","definition":"One or more tadpoles with a large tail fin and tiny
+        or no limbs are seen.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":285,"dataset_id":null,"phenophase_id":285,"phenophase_name":"Metamorphosing
+        larvae in water ","definition":"One or more salamanders with gills obviously
+        smaller than their maximum size are seen.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":286,"dataset_id":null,"phenophase_id":286,"phenophase_name":"Metamorphosing
+        larvae in water ","definition":"One or more tadpoles with front limbs or a
+        tail fin obviously smaller than its maximum size are seen.","start_date":"1970-01-01
+        00:00:00","end_date":null,"comments":null},{"definition_id":287,"dataset_id":null,"phenophase_id":287,"phenophase_name":"Metamorphosing
+        individuals on land","definition":"One or more salamanders with gill remnants
+        are seen on land.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":288,"dataset_id":null,"phenophase_id":288,"phenophase_name":"Metamorphosing
+        individuals on land","definition":"One or more individuals with a small tail
+        stub are seen on land.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":289,"dataset_id":null,"phenophase_id":289,"phenophase_name":"Dead
+        adults","definition":"One or more dead adults are seen, including those found
+        on roads.","start_date":"1970-01-01 00:00:00","end_date":"2019-02-04 00:00:00","comments":"Changed
+        def from \"A dead adult is seen...\" to \"One or more dead adults are seen...\"
+        -EGD 2011-01-24"},{"definition_id":290,"dataset_id":null,"phenophase_id":290,"phenophase_name":"Individuals
+        in a net","definition":"One or more individuals are seen caught in a net.","start_date":"1970-01-01
+        00:00:00","end_date":null,"comments":null},{"definition_id":291,"dataset_id":null,"phenophase_id":291,"phenophase_name":"Individuals
+        in a trap","definition":"One or more individuals are seen caught in a trap.","start_date":"1970-01-01
+        00:00:00","end_date":null,"comments":null},{"definition_id":292,"dataset_id":null,"phenophase_id":292,"phenophase_name":"Active
+        individuals","definition":"One or more individuals are seen moving about or
+        at rest.","start_date":"1970-01-01 00:00:00","end_date":"2021-01-31 00:00:00","comments":null},{"definition_id":293,"dataset_id":null,"phenophase_id":293,"phenophase_name":"Calls
+        or song","definition":"One or more individuals are heard calling or singing.","start_date":"1970-01-01
+        00:00:00","end_date":null,"comments":null},{"definition_id":294,"dataset_id":null,"phenophase_id":294,"phenophase_name":"Singing
+        males","definition":"One or more singing males are heard. Singing refers to
+        stereotypical, simple or elaborate vocalizations used as part of a territorial
+        proclamation or defense or mate attraction. It does not include relatively
+        simple calls used for other forms of communication.","start_date":"1970-01-01
+        00:00:00","end_date":"2017-02-05 00:00:00","comments":null},{"definition_id":295,"dataset_id":null,"phenophase_id":295,"phenophase_name":"Territorial
+        individuals","definition":"One or more individuals are seen or heard defending
+        a territory. This may be indicated by calls or song used as part of a territorial
+        proclamation, chasing of an individual of the same species from a breeding
+        area (but do not confuse this with courtship behavior, which in some species
+        may involve chasing), or calls or displays directed at individuals of the
+        same or a different species to defend a feeding area.","start_date":"1970-01-01
+        00:00:00","end_date":null,"comments":null},{"definition_id":296,"dataset_id":null,"phenophase_id":296,"phenophase_name":"Mating","definition":"A
+        male and female are seen coupled in a mating position, usually with the male
+        on top of the female.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":297,"dataset_id":null,"phenophase_id":297,"phenophase_name":"Nest
+        building","definition":"One or more adults are seen constructing a nest or
+        carrying nesting material.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":"Changed
+        def from \"An adult is seen...\" to \"One or more adults are seen...\" -EGD
+        2011-01-24"},{"definition_id":298,"dataset_id":null,"phenophase_id":298,"phenophase_name":"Occupied
+        nest","definition":"One or more adults are seen sitting on a nest, entering
+        or leaving a nest site under circumstances indicating its use for nesting
+        (including nest defense behavior), or live eggs or nestlings are seen in a
+        nest.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":304,"dataset_id":null,"phenophase_id":304,"phenophase_name":"Nestlings","definition":"One
+        or more young are seen or heard in a nest.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":308,"dataset_id":null,"phenophase_id":308,"phenophase_name":"Fledged
+        young","definition":"One or more young are seen recently departed from the
+        nest. This includes young incapable of sustained flight and young which are
+        still dependent on adults.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":310,"dataset_id":null,"phenophase_id":310,"phenophase_name":"Fruit\/seed
+        consumption","definition":"One or more individuals are seen eating the fleshy
+        fruits, seeds, or cones of a plant. If possible, record the name of the plant
+        or describe it in the comments field.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":311,"dataset_id":null,"phenophase_id":311,"phenophase_name":"Nut
+        gathering","definition":"One or more individuals are seen taking acorns or
+        other nuts from a plant or from on the ground. If possible, record the name
+        of the plant or describe it in the comments field.","start_date":"1970-01-01
+        00:00:00","end_date":null,"comments":null},{"definition_id":312,"dataset_id":null,"phenophase_id":312,"phenophase_name":"Flower
+        visitation","definition":"One or more individuals are seen visiting flowers
+        or flying from flower to flower. If possible, record the name of the plant
+        or describe it in the comments field.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":"Changed
+        title from \"Individuals visiting flowers\" -EGD 2011-01-07"},{"definition_id":313,"dataset_id":null,"phenophase_id":313,"phenophase_name":"Nonbreeding
+        plumage","definition":"One or more individuals are seen in winter (nonbreeding)
+        plumage.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":314,"dataset_id":null,"phenophase_id":314,"phenophase_name":"Breeding
+        plumage","definition":"One or more individuals are seen in full summer (breeding)
+        plumage.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":315,"dataset_id":null,"phenophase_id":315,"phenophase_name":"Dead
+        individuals","definition":"One or more dead individuals are seen, including
+        those found on roads.","start_date":"1970-01-01 00:00:00","end_date":"2019-02-04
+        00:00:00","comments":"Changed def from \"A dead individual is seen...\" to
+        \"One or more dead individuals are seen...\" -EGD 2011-01-24"},{"definition_id":316,"dataset_id":null,"phenophase_id":316,"phenophase_name":"Dead
+        nestlings or fledglings","definition":"One ore more dead nestlings or young
+        are seen, including those found on roads.","start_date":"1970-01-01 00:00:00","end_date":"2019-02-04
+        00:00:00","comments":null},{"definition_id":317,"dataset_id":null,"phenophase_id":458,"phenophase_name":"Individuals
+        at a feeder","definition":"One or more individuals are seen visiting a feeder
+        or food placed by a person.","start_date":"1970-01-01 00:00:00","end_date":"2011-03-20
+        00:00:00","comments":null},{"definition_id":318,"dataset_id":null,"phenophase_id":318,"phenophase_name":"Adults
+        in freshwater","definition":"One or more adults are seen in a freshwater stream,
+        lake, or pond.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":319,"dataset_id":null,"phenophase_id":319,"phenophase_name":"Adults
+        in saltwater","definition":"One or more adults are seen in an ocean, an estuary,
+        a saltwater or brackish wetland, or other body of saltwater.","start_date":"1970-01-01
+        00:00:00","end_date":null,"comments":null},{"definition_id":320,"dataset_id":null,"phenophase_id":320,"phenophase_name":"Spawning","definition":"Evidence
+        of spawning is seen, including redd\/nest construction, milt (sperm) release,
+        egg extrusion, covering of a nest by a female, or an egg mass containing unhatched
+        embryos.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":321,"dataset_id":null,"phenophase_id":321,"phenophase_name":"Fry
+        in water","definition":"One or more juveniles (fry) or larvae (alevins) have
+        emerged from gravel in a stream or lake, or young-of-the-year or smolts are
+        seen downstream of spawning habitat (for example, seined or in a fish-counting
+        station).","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":322,"dataset_id":null,"phenophase_id":322,"phenophase_name":"Adults
+        migrating upstream","definition":"One or more adults are seen moving upstream,
+        for example, in a river or fish ladder.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":"Changed
+        def from \"An adult is seen...\" to \"One or more adults are seen...\" -EGD
+        2011-01-24"},{"definition_id":323,"dataset_id":null,"phenophase_id":323,"phenophase_name":"Adults
+        migrating downstream","definition":"One or more adults are seen moving downstream.
+        ","start_date":"1970-01-01 00:00:00","end_date":null,"comments":"Changed def
+        from \"An adult is seen...\" to \"One or more adults are seen...\" -EGD 2011-01-24"},{"definition_id":324,"dataset_id":null,"phenophase_id":324,"phenophase_name":"Juveniles
+        moving upstream","definition":"One or more immature individuals are in or
+        entering a river mouth, moving from salt water or brackish water to freshwater
+        stream habitat, or are moving upstream, for example, through a fish ladder,
+        a counting station, or around a dam relatively near the mouth of a river.","start_date":"1970-01-01
+        00:00:00","end_date":null,"comments":"Changed def from \"An immature individual
+        is ...\" to \"One or more immature individuals are ...\" -EGD 2011-01-24"},{"definition_id":325,"dataset_id":null,"phenophase_id":448,"phenophase_name":"Dead
+        or dying adults","definition":"A recently dead or dying adult is seen. ","start_date":"1970-01-01
+        00:00:00","end_date":"2011-03-20 00:00:00","comments":null},{"definition_id":326,"dataset_id":null,"phenophase_id":326,"phenophase_name":"Individuals
+        on a hook","definition":"One or more individuals are seen caught on a hook.","start_date":"1970-01-01
+        00:00:00","end_date":null,"comments":null},{"definition_id":327,"dataset_id":null,"phenophase_id":327,"phenophase_name":"Active
+        adults","definition":"One or more adults are seen moving about or at rest.","start_date":"1970-01-01
+        00:00:00","end_date":"2021-01-31 00:00:00","comments":null},{"definition_id":330,"dataset_id":null,"phenophase_id":330,"phenophase_name":"Mating","definition":"A
+        male and female are seen coupled in a mating position, usually end to end.
+        This can occur at rest or in flight.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":331,"dataset_id":null,"phenophase_id":331,"phenophase_name":"Egg
+        laying","definition":"A female is seen laying eggs on a plant. If possible,
+        record the name of the plant or describe it in the comments field.","start_date":"1970-01-01
+        00:00:00","end_date":"2020-02-16 00:00:00","comments":null},{"definition_id":333,"dataset_id":null,"phenophase_id":333,"phenophase_name":"Active
+        caterpillars","definition":"One or more caterpillars (larvae) are seen moving
+        about or at rest. When seen on a plant, if possible, record the name of the
+        plant or describe it in the comments field.","start_date":"1970-01-01 00:00:00","end_date":"2021-01-31
+        00:00:00","comments":null},{"definition_id":336,"dataset_id":null,"phenophase_id":336,"phenophase_name":"Dead
+        caterpillars","definition":"One or more dead caterpillars are seen, including
+        those found on roads.","start_date":"1970-01-01 00:00:00","end_date":"2019-02-04
+        00:00:00","comments":"Changed def from \"A dead caterpillar is seen...\" to
+        \"One or more dead caterpillars are seen...\" -EGD 2011-01-24"},{"definition_id":337,"dataset_id":null,"phenophase_id":337,"phenophase_name":"Individuals
+        at a light","definition":"One or more individuals are seen at a light, whether
+        flying or at rest.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":338,"dataset_id":null,"phenophase_id":338,"phenophase_name":"Males
+        vocalizing","definition":"Vocal sounds produced by an adult male are heard.","start_date":"1970-01-01
+        00:00:00","end_date":null,"comments":null},{"definition_id":339,"dataset_id":null,"phenophase_id":339,"phenophase_name":"Male
+        combat","definition":"Two or more adult males are seen touching antlers or
+        horns or butting heads, or one male is seen chasing another.","start_date":"1970-01-01
+        00:00:00","end_date":null,"comments":null},{"definition_id":340,"dataset_id":null,"phenophase_id":340,"phenophase_name":"Courtship
+        ","definition":"A male and female are seen near one another and are engaged
+        in courtship behavior. Do not include male displays in the absence of a female.","start_date":"1970-01-01
+        00:00:00","end_date":null,"comments":null},{"definition_id":341,"dataset_id":null,"phenophase_id":341,"phenophase_name":"Mating","definition":"A
+        male and female are seen coupled in a mating position.","start_date":"1970-01-01
+        00:00:00","end_date":null,"comments":null},{"definition_id":342,"dataset_id":null,"phenophase_id":342,"phenophase_name":"Pregnant
+        females","definition":"One or more pregnant females are seen, often indicated
+        by their larger-than-normal body girth.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":343,"dataset_id":null,"phenophase_id":343,"phenophase_name":"Recent
+        birth","definition":"A female is seen giving birth, or an individually recognizable,
+        recently pregnant female is clearly no longer pregnant, or a newborn (less
+        than 48 hours old) is observed.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":344,"dataset_id":null,"phenophase_id":344,"phenophase_name":"Young
+        individuals","definition":"One or more recently born or young individuals
+        are seen, living or dead, including those individuals found dead on a road.","start_date":"1970-01-01
+        00:00:00","end_date":null,"comments":null},{"definition_id":345,"dataset_id":null,"phenophase_id":345,"phenophase_name":"Cone
+        cutting","definition":"One or more individuals are seen cutting cones or catkins
+        and letting them drop to the ground. If possible, record the name of the plant
+        or describe it in the comments field.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":346,"dataset_id":null,"phenophase_id":346,"phenophase_name":"Antler
+        growth","definition":"One or more individuals are seen with antlers about
+        the length of their ears or shorter.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":347,"dataset_id":null,"phenophase_id":347,"phenophase_name":"Antler
+        loss ","definition":"One or more individuals are seen without antlers but
+        with antler bases (pedicels) clearly evident.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":348,"dataset_id":null,"phenophase_id":348,"phenophase_name":"Antlers
+        at full size","definition":"One or more individuals are seen with their antler
+        velvet shedding (ragged appearance) or completely shed.","start_date":"1970-01-01
+        00:00:00","end_date":null,"comments":null},{"definition_id":349,"dataset_id":null,"phenophase_id":349,"phenophase_name":"Egg
+        laying","definition":"A female is seen laying eggs directly onto the water
+        surface, or attached to aquatic plants.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":350,"dataset_id":null,"phenophase_id":350,"phenophase_name":"Mating","definition":"A
+        male and female are seen coupled in a mating position, usually forming what
+        looks like a circle with their bodies. This can be at rest or in flight.","start_date":"1970-01-01
+        00:00:00","end_date":null,"comments":null},{"definition_id":353,"dataset_id":null,"phenophase_id":353,"phenophase_name":"Recently
+        emerged adults","definition":"One or more adults (teneral adults) are seen
+        just following emergence from the larval stage. They have a soft exoskeleton
+        and a pale appearance.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":354,"dataset_id":null,"phenophase_id":354,"phenophase_name":"Migrating
+        adults","definition":"A swarm of adults of mostly the same species is seen
+        flying overhead.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":355,"dataset_id":null,"phenophase_id":355,"phenophase_name":"Individuals
+        on land","definition":"One or more individuals are seen active or at rest
+        on land, including individuals found under cover of a rock, log, or burrow.","start_date":"1970-01-01
+        00:00:00","end_date":null,"comments":null},{"definition_id":356,"dataset_id":null,"phenophase_id":356,"phenophase_name":"Individuals
+        in water","definition":"One or more individuals are seen active or at rest
+        in water, including individuals basking on a log or rock in the water.","start_date":"1970-01-01
+        00:00:00","end_date":null,"comments":null},{"definition_id":357,"dataset_id":null,"phenophase_id":357,"phenophase_name":"Adults
+        vocalizing","definition":"Vocal sounds produced by an adult are heard.","start_date":"1970-01-01
+        00:00:00","end_date":null,"comments":null},{"definition_id":358,"dataset_id":null,"phenophase_id":358,"phenophase_name":"Mating","definition":"A
+        male''s copulatory organ is seen inserted in a female''s vent. In some cases
+        this may be difficult to distinuguish from courtship. Report this phenophase
+        only if actual copulation is observed.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":359,"dataset_id":null,"phenophase_id":359,"phenophase_name":"Recent
+        birth","definition":"A female is seen giving birth, or an individually recognizable,
+        recently pregnant female is clearly no longer pregnant, or multiple newborn
+        young are seen attended by an adult female.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":360,"dataset_id":null,"phenophase_id":360,"phenophase_name":"Recent
+        egg laying","definition":"A female is seen depositing eggs, or an individually
+        recognizable, recently egg-bearing female is clearly seen no longer bearing
+        eggs, or evidence of recent nesting is seen.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":361,"dataset_id":null,"phenophase_id":361,"phenophase_name":"Hatchling
+        emergence","definition":"One or more hatchlings are seen emerging or having
+        recently emerged from a nest.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":362,"dataset_id":null,"phenophase_id":362,"phenophase_name":"Nesting","definition":"One
+        or more adult females are seen nesting. This includes actual laying of eggs
+        or excavating the nest cavity. It does not include turtles that are likely
+        engaged only in basking.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":"Changed
+        def from \"An adult female is seen...\" to \"One or more adult females are
+        seen...\" -EGD 2011-01-24"},{"definition_id":363,"dataset_id":null,"phenophase_id":363,"phenophase_name":"Mating","definition":"A
+        male and female are seen coupled in a mating position, usually one on top
+        of the other.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":367,"dataset_id":null,"phenophase_id":367,"phenophase_name":"Active
+        larvae","definition":"One or more larvae are seen moving about or at rest.
+        ","start_date":"1970-01-01 00:00:00","end_date":"2021-01-31 00:00:00","comments":null},{"definition_id":370,"dataset_id":null,"phenophase_id":370,"phenophase_name":"Male
+        adults","definition":"One or more adult males are seen moving about or at
+        rest.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":371,"dataset_id":null,"phenophase_id":371,"phenophase_name":"Breaking
+        leaf buds","definition":"One or more breaking leaf buds are visible on the
+        plant.  A leaf bud is considered \"breaking\" once a green leaf tip is visible
+        at the end of the bud, but before the first leaf from the bud has unfolded
+        to expose the leaf stalk (petiole) or leaf base.","start_date":"2011-03-21
+        00:00:00","end_date":"2022-03-09 00:00:00","comments":null},{"definition_id":373,"dataset_id":null,"phenophase_id":373,"phenophase_name":"Breaking
+        leaf buds","definition":"In at least 3 locations on the plant, a breaking
+        leaf bud is visible.  A leaf bud is considered \"breaking\" once the widest
+        part of the newly emerging leaf has grown beyond the ends of its opening winter
+        bud scales, but before it has fully emerged to expose the leaf stalk (petiole)
+        or leaf base.  The leaf is distinguished by its prominent midrib and veins.
+        <i>(This phenophase was previously called \"First leaf\".)<\/i>","start_date":"2011-03-21
+        00:00:00","end_date":null,"comments":null},{"definition_id":374,"dataset_id":null,"phenophase_id":374,"phenophase_name":"All
+        leaf buds broken","definition":"For the whole plant, the widest part of a
+        new leaf has emerged from virtually all (95-100%) of the actively growing
+        leaf buds. <i>(This phenophase was previously called \"Full leaf out\".)<\/i>","start_date":"2011-03-21
+        00:00:00","end_date":null,"comments":null},{"definition_id":376,"dataset_id":null,"phenophase_id":480,"phenophase_name":"Breaking
+        needle buds","definition":"One or more breaking needle buds are visible on
+        the plant. A needle bud is considered \"breaking\" once a green needle tip
+        is visible at the end of the bud, but before the first needle from the bud
+        has unfolded and spread away from the developing stem.","start_date":"2011-03-21
+        00:00:00","end_date":"2012-02-27 00:00:00","comments":null},{"definition_id":377,"dataset_id":null,"phenophase_id":481,"phenophase_name":"Breaking
+        needle buds","definition":"One or more breaking needle buds are visible on
+        the plant. A needle bud is considered \"breaking\" once a green needle tip
+        is visible at the end of the bud, but before the first needle from the bud
+        has unfolded and spread away from the developing stem, or from other needles
+        in a bundle.","start_date":"2011-03-21 00:00:00","end_date":"2012-02-27 00:00:00","comments":null},{"definition_id":378,"dataset_id":null,"phenophase_id":482,"phenophase_name":"Initial
+        growth","definition":"New growth of the plant is visible, either from above-ground
+        buds with green tips, or new green or white shoots breaking through the soil
+        surface. Growth is considered \"initial\" on each bud or shoot until the first
+        leaf has fully unfolded.","start_date":"2011-03-21 00:00:00","end_date":"2012-02-27
+        00:00:00","comments":null},{"definition_id":379,"dataset_id":null,"phenophase_id":483,"phenophase_name":"Leaves","definition":"One
+        or more live unfolded leaves are visible on the plant. A leaf is considered
+        \"unfolded\" once the leaf stalk (petiole) or leaf base is visible. New small
+        leaves may need to be bent backwards to see whether the leaf stalk or leaf
+        base is visible. Do not include dried or dead leaves.","start_date":"2011-03-21
+        00:00:00","end_date":"2012-02-27 00:00:00","comments":null},{"definition_id":381,"dataset_id":null,"phenophase_id":484,"phenophase_name":"Young
+        leaves","definition":"One or more young unfolded leaves are visible on the
+        plant. A leaf is considered \"young\" and \"unfolded\" once the leaf stalk
+        (petiole) or leaf base is visible, but before the leaf has reached full size
+        or turned the darker green color of mature leaves on the plant. The leaf may
+        need to be bent backwards to see whether the leaf stalk or leaf base is visible.","start_date":"2011-03-21
+        00:00:00","end_date":"2012-02-27 00:00:00","comments":null},{"definition_id":383,"dataset_id":null,"phenophase_id":485,"phenophase_name":"Young
+        needles","definition":"One or more young unfolded needles are visible on the
+        plant. A needle is considered \"young\" and \"unfolded\" once it has spread
+        away from the developing stem enough that its point of attachment to the stem
+        is visible, but before it has reached full size and turned the darker green
+        color of mature needles on the plant.","start_date":"2011-03-21 00:00:00","end_date":"2012-02-27
+        00:00:00","comments":null},{"definition_id":384,"dataset_id":null,"phenophase_id":486,"phenophase_name":"Young
+        needles","definition":"One or more young unfolded needles are visible on the
+        plant. A needle is considered \"young\" and \"unfolded\" once it begins to
+        spread away from other needles in the bundle (and is no longer pressed flat
+        against them), but before it has reached full size and turned the darker green
+        color of mature needles on the plant.","start_date":"2011-03-21 00:00:00","end_date":"2012-02-27
+        00:00:00","comments":null},{"definition_id":385,"dataset_id":null,"phenophase_id":487,"phenophase_name":"Needles","definition":"One
+        or more live unfolded needles are visible on the plant. A needle is considered
+        \"unfolded\" once it begins to spread away from the developing stem enough
+        that its point of attachment to the stem is visible, or from other needles
+        in a bundle so that it is no longer pressed flat against them. Do not include
+        dried or dead needles.","start_date":"2011-03-21 00:00:00","end_date":"2012-02-27
+        00:00:00","comments":null},{"definition_id":386,"dataset_id":null,"phenophase_id":488,"phenophase_name":"Leaves","definition":"One
+        or more live fully unfolded leaves are visible on the plant. For seedlings,
+        consider only true leaves and do not count the one or two small, round leaves
+        (cotyledons) that are found on the stem almost immediately after the seedling
+        emerges. Do not include dried or dead leaves.","start_date":"2011-03-21 00:00:00","end_date":"2012-02-27
+        00:00:00","comments":null},{"definition_id":387,"dataset_id":null,"phenophase_id":489,"phenophase_name":"Leaves","definition":"One
+        or more live unfolded leaves are visible on the plant. A leaf is considered
+        \"unfolded\" when it unrolls slightly from around the stem and begins to fall
+        away at an angle. Do not include dried or dead leaves.","start_date":"2011-03-21
+        00:00:00","end_date":"2012-02-27 00:00:00","comments":null},{"definition_id":388,"dataset_id":null,"phenophase_id":490,"phenophase_name":"Pollen
+        cones","definition":"One or more fresh male pollen cones (strobili) are visible
+        on the plant. Cones have overlapping scales that are initially tightly closed,
+        then spread apart to open the cone and release pollen. Do not include wilted
+        or dried cones that have released all of their pollen but remain on the plant.","start_date":"1970-01-01
+        00:00:00","end_date":"2012-02-27 00:00:00","comments":null},{"definition_id":389,"dataset_id":null,"phenophase_id":516,"phenophase_name":"Fruits","definition":"One
+        or more fruits are visible on the plant.","start_date":"1970-01-01 00:00:00","end_date":"2011-03-20
+        00:00:00","comments":null},{"definition_id":390,"dataset_id":null,"phenophase_id":390,"phenophase_name":"Ripe
+        fruits","definition":"One or more ripe fruits are visible on the plant. ","start_date":"2011-03-21
+        00:00:00","end_date":null,"comments":null},{"definition_id":391,"dataset_id":null,"phenophase_id":504,"phenophase_name":"Recent
+        fruit drop","definition":"Since your last visit to the plant, there is evidence
+        that one or more mature fruits have dropped from the plant. Do not include
+        obviously immature fruits that have dropped before ripening, such as in a
+        heavy rain or wind.","start_date":"1970-01-01 00:00:00","end_date":"2011-03-20
+        00:00:00","comments":null},{"definition_id":392,"dataset_id":null,"phenophase_id":392,"phenophase_name":"Unripe
+        seed cones","definition":"One or more unripe, female seed cones are visible
+        on the plant.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":393,"dataset_id":null,"phenophase_id":393,"phenophase_name":"Ripe
+        seed cones","definition":"One or more ripe, female seed cones are visible
+        on the plant. ","start_date":"2011-03-21 00:00:00","end_date":null,"comments":null},{"definition_id":394,"dataset_id":null,"phenophase_id":491,"phenophase_name":"Recent
+        seed cone drop","definition":"One or more mature seed cones or seeds have
+        dropped or been removed from the plant since your last visit. Do not include
+        obviously immature seed cones that have dropped before ripening, such as in
+        a heavy rain or wind, or empty seed cones that had long ago dropped all seeds
+        but remained on the plant.","start_date":"1970-01-01 00:00:00","end_date":"2012-02-27
+        00:00:00","comments":null},{"definition_id":395,"dataset_id":null,"phenophase_id":395,"phenophase_name":"Seed
+        cones","definition":"One or more fresh female seed cones are visible on the
+        plant. ","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":396,"dataset_id":null,"phenophase_id":492,"phenophase_name":"Initial
+        growth","definition":"New growth of the plant is visible, either as new green
+        shoots sprouting from nodes on existing stems, or new green shoots breaking
+        through the soil surface. For each shoot, growth is considered \"initial\"
+        until the first leaf has unfolded.","start_date":"2011-03-21 00:00:00","end_date":"2012-02-27
+        00:00:00","comments":null},{"definition_id":397,"dataset_id":null,"phenophase_id":493,"phenophase_name":"Flower
+        heads","definition":"One or more fresh flower heads (inflorescences) are visible
+        on the plant. Flower heads, which include many small flowers arranged on spikelets,
+        emerge from inside the stem and gradually grow taller. Do not include heads
+        whose flowers have already opened and have all wilted or dried.","start_date":"1970-01-01
+        00:00:00","end_date":"2012-02-27 00:00:00","comments":null},{"definition_id":398,"dataset_id":null,"phenophase_id":494,"phenophase_name":"Open
+        flowers","definition":"One or more open fresh flowers are visible on the plant.
+        A flower is considered \"open\" when reproductive parts (male anthers or female
+        stigmata) can be seen protruding from the spikelet. Do not include flowers
+        with wilted or dried reproductive parts that remain on the plant.","start_date":"2011-03-21
+        00:00:00","end_date":"2012-02-27 00:00:00","comments":null},{"definition_id":399,"dataset_id":null,"phenophase_id":495,"phenophase_name":"Open
+        pollen cones","definition":"One or more open fresh male pollen cones (strobili)
+        are visible on the plant. Cones are considered \"open\" when the scales have
+        spread apart to release pollen. Do not include wilted or dried cones that
+        have released all of their pollen but remain on the plant.","start_date":"1970-01-01
+        00:00:00","end_date":"2012-02-27 00:00:00","comments":null},{"definition_id":400,"dataset_id":null,"phenophase_id":400,"phenophase_name":"Unripe
+        fruits","definition":"One or more unripe fruits are visible on the plant.","start_date":"1970-01-01
+        00:00:00","end_date":null,"comments":null},{"definition_id":410,"dataset_id":8,"phenophase_id":76,"phenophase_name":"First
+        leaf","definition":"Date when first bud has leafed. A bud is in leaf on the
+        date when you first find that the widest part of a newly emerg-ing leaf has
+        grown beyond the ends of its opening winter bud scales. The leaf is distinguished
+        by its prominent mid-ribs and veins.","start_date":"1967-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":411,"dataset_id":8,"phenophase_id":75,"phenophase_name":"Full
+        leaf","definition":"Date when nearly all (at least 95%) of the actively growing
+        buds have already leafed.","start_date":"1967-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":412,"dataset_id":8,"phenophase_id":412,"phenophase_name":"First
+        bloom","definition":"The date of opening of first bloom is the date when the
+        first flower is fully open. The lilac flower cluster is really a group-ing
+        of many small individual flowers, so the date to record is the date when one
+        of the small flowers in a cluster is fully open.","start_date":"1956-01-01
+        00:00:00","end_date":null,"comments":null},{"definition_id":413,"dataset_id":8,"phenophase_id":428,"phenophase_name":"First
+        bloom","definition":"Date of opening of first bloom is the date when the first
+        flow-er is fully open.","start_date":"1968-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":414,"dataset_id":8,"phenophase_id":78,"phenophase_name":"Full
+        bloom","definition":"Peak of full bloom is the date when nearly all of the
+        flowers on the plant are open, but before any appreciable number of them have
+        withered or dried up.","start_date":"1956-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":415,"dataset_id":8,"phenophase_id":79,"phenophase_name":"End
+        bloom","definition":"The date when nearly all (at least 95% of the flowers
+        have withered or dried up is the date when the floral display has ended, except
+        possibly for sev-eral clusters on the bush.","start_date":"1956-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":416,"dataset_id":8,"phenophase_id":416,"phenophase_name":"End
+        bloom","definition":"The date when nearly all (at least 95%) of the flowers
+        have withered or dried up is the date when the floral display has ended, except
+        possibly for just a few branches.","start_date":"1968-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":417,"dataset_id":8,"phenophase_id":417,"phenophase_name":"First
+        red berry","definition":"First red berry is the date when the first berry
+        has turned to a definite red color.","start_date":"1968-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":418,"dataset_id":8,"phenophase_id":418,"phenophase_name":"Full
+        red berries","definition":"FulI red berries is the date when nearly all (at
+        least 95%) of the berries have turned a definite red color.","start_date":"1968-01-01
+        00:00:00","end_date":null,"comments":null},{"definition_id":419,"dataset_id":8,"phenophase_id":419,"phenophase_name":"First
+        shriveled berry","definition":"First shriveled berry is the date when the
+        first berry begins to shrivel. That is, the surface of the berry is beginning
+        to wrinkle due to maturation.","start_date":"1968-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":420,"dataset_id":8,"phenophase_id":420,"phenophase_name":"Full
+        shriveled berries","definition":"Full shriveled berries is the date when nearly
+        all (at least 95%) of the berries have shriveled due to maturation.","start_date":"1968-01-01
+        00:00:00","end_date":null,"comments":null},{"definition_id":421,"dataset_id":7,"phenophase_id":76,"phenophase_name":"First
+        leaf","definition":"First leaf is the date when the widest part of the newly
+        emerging leaf has grown beyond the ends of its opening winter bud scales.
+        The leaf is distinguished by its prominent midrib and veins.","start_date":"1961-01-01
+        00:00:00","end_date":"2004-12-31 00:00:00","comments":null},{"definition_id":422,"dataset_id":7,"phenophase_id":75,"phenophase_name":"Full
+        leaf","definition":"Full or 95% leafed is the date when nearly all (at least
+        95%) of the actively growing leaf buds have already leafed.","start_date":"1961-01-01
+        00:00:00","end_date":"2004-12-31 00:00:00","comments":null},{"definition_id":423,"dataset_id":7,"phenophase_id":77,"phenophase_name":"First
+        bloom","definition":"First bloom is the date when at least 50% of the flower
+        clusters have at least one open flower. The lilac flower cluster is a grouping
+        of many, small individual flowers.","start_date":"1961-01-01 00:00:00","end_date":"2004-12-31
+        00:00:00","comments":null},{"definition_id":424,"dataset_id":7,"phenophase_id":428,"phenophase_name":"First
+        bloom","definition":"First bloom is the date when about 5% of the flowers
+        are open.","start_date":"1971-01-01 00:00:00","end_date":"2004-12-31 00:00:00","comments":null},{"definition_id":425,"dataset_id":7,"phenophase_id":78,"phenophase_name":"Full
+        bloom","definition":"Full bloom is the date when 95% of the flower clusters
+        no longer have any unopened flow-ers, but before many of the flowers have
+        withered.","start_date":"1961-01-01 00:00:00","end_date":"2004-12-31 00:00:00","comments":null},{"definition_id":426,"dataset_id":7,"phenophase_id":429,"phenophase_name":"Full
+        bloom","definition":"Full bloom is the date when 95% of the flowers are open,
+        but be-fore many have withered.","start_date":"1971-01-01 00:00:00","end_date":"2004-12-31
+        00:00:00","comments":null},{"definition_id":427,"dataset_id":7,"phenophase_id":79,"phenophase_name":"End
+        bloom","definition":"End of bloom is the date when at least 95% of the flowers
+        have withered or dried up and the floral display has ended.","start_date":"1961-01-01
+        00:00:00","end_date":"2004-12-31 00:00:00","comments":null},{"definition_id":428,"dataset_id":7,"phenophase_id":428,"phenophase_name":"First
+        bloom","definition":"This event occurs when 5% of the flowers are open.","start_date":"2005-01-01
+        00:00:00","end_date":null,"comments":null},{"definition_id":429,"dataset_id":7,"phenophase_id":429,"phenophase_name":"Full
+        bloom","definition":"This event occurs when 95% of the flower are open, but
+        before many of the flowers have withered.","start_date":"2005-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":439,"dataset_id":null,"phenophase_id":497,"phenophase_name":"Unfolded
+        leaves","definition":"In at least one location on the plant, an unfolded leaf
+        is visible. A leaf is considered \"unfolded\" when it has grown long enough
+        that the two halves of the leaf blade have begun to spread apart like an open
+        book. ","start_date":"1970-01-01 00:00:00","end_date":"2011-03-20 00:00:00","comments":null},{"definition_id":440,"dataset_id":null,"phenophase_id":440,"phenophase_name":"Juveniles
+        in saltwater","definition":"One or more juveniles are seen in a bay, an estuary,
+        or other near-shore habitat.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":441,"dataset_id":null,"phenophase_id":441,"phenophase_name":"Young
+        individuals","definition":"One or more recently hatched or young individuals
+        are seen, living or dead, including those individuals found dead on a road.","start_date":"1970-01-01
+        00:00:00","end_date":null,"comments":null},{"definition_id":442,"dataset_id":null,"phenophase_id":442,"phenophase_name":"Nest
+        building","definition":"One or more adults are seen (or heard) chewing into
+        wood to construct a nest.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":443,"dataset_id":null,"phenophase_id":443,"phenophase_name":"Adults
+        feeding","definition":"One or more adults are seen feeding with their straw-like
+        tongue (proboscis). If possible, record the substance and species on which
+        they are feeding (for example, nectar, sap, dung, or moist soil) in the comments
+        field.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":444,"dataset_id":null,"phenophase_id":444,"phenophase_name":"Migrating
+        adults","definition":"Multiple adults of the same species are seen flying
+        steadily in a uniform direction without stopping.","start_date":"1970-01-01
+        00:00:00","end_date":null,"comments":null},{"definition_id":445,"dataset_id":null,"phenophase_id":445,"phenophase_name":"Adults
+        feeding","definition":"One or more adults are seen feeding. If possible, record
+        the name of the species or substance being eaten or describe it in the comments
+        field.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":446,"dataset_id":null,"phenophase_id":446,"phenophase_name":"Feeding","definition":"One
+        or more individuals are seen feeding. If possible, record the name of the
+        species or substance being eaten or describe it in the comments field.","start_date":"1970-01-01
+        00:00:00","end_date":null,"comments":null},{"definition_id":447,"dataset_id":null,"phenophase_id":447,"phenophase_name":"Caterpillars
+        feeding","definition":"One or more caterpillars are seen feeding. If possible,
+        record the name of the species or substance being eaten or describe it in
+        the comments field.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":448,"dataset_id":null,"phenophase_id":448,"phenophase_name":"Dead
+        or dying adults","definition":"One or more dead or dying adults are seen.","start_date":"2011-03-21
+        00:00:00","end_date":null,"comments":null},{"definition_id":449,"dataset_id":null,"phenophase_id":449,"phenophase_name":"Active
+        nymphs","definition":"One or more nymphs are seen moving about or at rest.","start_date":"1970-01-01
+        00:00:00","end_date":"2021-01-31 00:00:00","comments":null},{"definition_id":450,"dataset_id":null,"phenophase_id":450,"phenophase_name":"Nymphs
+        feeding","definition":"One or more nymphs are seen feeding. If possible, record
+        the name of the species or substance being eaten or describe it in the comments
+        field.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":451,"dataset_id":null,"phenophase_id":451,"phenophase_name":"Dead
+        nymphs","definition":"One or more dead nymphs are seen, including those found
+        on roads.","start_date":"1970-01-01 00:00:00","end_date":"2019-02-04 00:00:00","comments":null},{"definition_id":452,"dataset_id":null,"phenophase_id":452,"phenophase_name":"Individuals
+        on land","definition":"One or more individuals are seen active or at rest
+        on land.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":453,"dataset_id":null,"phenophase_id":453,"phenophase_name":"Individuals
+        in water","definition":"One or more individuals are seen active or at rest
+        in water.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":454,"dataset_id":null,"phenophase_id":454,"phenophase_name":"Summer
+        coat","definition":"One or more individuals are seen with more than half of
+        their coat consisting of dark hairs.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":455,"dataset_id":null,"phenophase_id":455,"phenophase_name":"Winter
+        coat","definition":"One or more individuals are seen with more than half of
+        their coat consisting of white hairs.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":456,"dataset_id":null,"phenophase_id":456,"phenophase_name":"Male
+        combat","definition":"Two or more adult males are seen wrestling or biting,
+        or one male is seen chasing another.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":457,"dataset_id":null,"phenophase_id":457,"phenophase_name":"Insect
+        consumption","definition":"One or more individuals are seen eating insects.
+        If possible, record the name of the insect or describe it in the comments
+        field.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":458,"dataset_id":null,"phenophase_id":458,"phenophase_name":"Individuals
+        at a feeding station","definition":"One or more individuals are seen visiting
+        a feeder, feeding station, or food placed by a person.","start_date":"2011-03-21
+        00:00:00","end_date":null,"comments":null},{"definition_id":465,"dataset_id":null,"phenophase_id":496,"phenophase_name":"Emerging
+        needles","definition":"One or more emerging needles or needle bundles (fascicles)
+        are visible on the plant. A needle or needle bundle is considered \"emerging\"
+        once the green tip is visible along the newly developing stem (candle), but
+        before the needles have begun to unfold and spread away from others in the
+        bundle.","start_date":"2011-03-21 00:00:00","end_date":"2012-02-27 00:00:00","comments":null},{"definition_id":466,"dataset_id":null,"phenophase_id":497,"phenophase_name":"Leaves","definition":"One
+        or more live unfolded leaves are visible on the plant. A leaf is considered
+        \"unfolded\" when it has grown long enough that the two halves of the leaf
+        blade have begun to spread apart like an open book. Do not include dried or
+        dead leaves.","start_date":"2011-03-21 00:00:00","end_date":"2012-02-27 00:00:00","comments":null},{"definition_id":467,"dataset_id":null,"phenophase_id":467,"phenophase_name":"Increasing
+        leaf size","definition":"A majority of leaves on the plant have not yet reached
+        their full size and are still growing larger. Do not include new leaves that
+        continue to emerge at the ends of elongating stems throughout the growing
+        season. ","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":468,"dataset_id":null,"phenophase_id":468,"phenophase_name":"Elongating
+        stems","definition":"One or more elongating stems are visible on the plant.  A
+        stem is considered \"elongating\" as it continues to lengthen and sprout new
+        leaves from the end, but before the winter bud is set.","start_date":"1970-01-01
+        00:00:00","end_date":null,"comments":null},{"definition_id":469,"dataset_id":null,"phenophase_id":498,"phenophase_name":"Colored
+        leaves","definition":"One or more leaves (including any that have recently
+        fallen from the plant) have turned to their late-season colors.","start_date":"1970-01-01
+        00:00:00","end_date":"2012-02-27 00:00:00","comments":null},{"definition_id":470,"dataset_id":null,"phenophase_id":499,"phenophase_name":"Colored
+        needles","definition":"One or more needles (including any that have recently
+        fallen from the plant) have turned to their late-season colors.","start_date":"1970-01-01
+        00:00:00","end_date":"2012-02-27 00:00:00","comments":null},{"definition_id":471,"dataset_id":null,"phenophase_id":471,"phenophase_name":"Falling
+        leaves","definition":"One or more leaves are falling or have recently fallen
+        from the plant.","start_date":"1970-01-01 00:00:00","end_date":"2021-01-31
+        00:00:00","comments":null},{"definition_id":472,"dataset_id":null,"phenophase_id":472,"phenophase_name":"Falling
+        needles","definition":"One or more needles are falling or have recently fallen
+        from the plant.","start_date":"1970-01-01 00:00:00","end_date":"2022-03-09
+        00:00:00","comments":null},{"definition_id":473,"dataset_id":null,"phenophase_id":500,"phenophase_name":"Flowers","definition":"One
+        or more fresh flowers or flower heads (inflorescences) are visible on the
+        plant. Flower heads include many small flowers that usually do not open all
+        at once. Do not include wilted or dried flowers that remain on the plant,
+        or heads whose flowers have all wilted or dried.","start_date":"1970-01-01
+        00:00:00","end_date":"2012-02-27 00:00:00","comments":null},{"definition_id":474,"dataset_id":null,"phenophase_id":501,"phenophase_name":"Open
+        flowers","definition":"One or more open fresh flowers are visible on the plant.
+        Flowers are considered \"open\" when the reproductive parts (male stamens
+        or female pistils) are visible between unfolded or open flower parts. Do not
+        include wilted or dried flowers that remain on the plant. ","start_date":"2011-03-21
+        00:00:00","end_date":"2012-02-27 00:00:00","comments":null},{"definition_id":475,"dataset_id":null,"phenophase_id":502,"phenophase_name":"Pollen
+        release","definition":"One or more flowers on the plant release pollen when
+        gently shaken or blown.","start_date":"2011-03-21 00:00:00","end_date":"2012-02-27
+        00:00:00","comments":null},{"definition_id":476,"dataset_id":null,"phenophase_id":503,"phenophase_name":"Pollen
+        release","definition":"One or more male cones (strobili) on the plant release
+        pollen when gently shaken or blown.","start_date":"2011-03-21 00:00:00","end_date":"2012-02-27
+        00:00:00","comments":null},{"definition_id":477,"dataset_id":null,"phenophase_id":516,"phenophase_name":"Fruits","definition":"One
+        or more fresh fruits are visible on the plant.","start_date":"2011-03-21 00:00:00","end_date":"2012-02-27
+        00:00:00","comments":null},{"definition_id":478,"dataset_id":null,"phenophase_id":504,"phenophase_name":"Recent
+        fruit drop","definition":"One or more fresh mature fruits or seeds have dropped
+        or been removed from the plant since your last visit. Do not include obviously
+        immature fruits that have dropped before ripening, such as in a heavy rain
+        or wind.","start_date":"2011-03-21 00:00:00","end_date":"2012-02-27 00:00:00","comments":null},{"definition_id":480,"dataset_id":null,"phenophase_id":480,"phenophase_name":"Breaking
+        needle buds","definition":"One or more breaking needle buds are visible on
+        the plant. A needle bud is considered \"breaking\" once a green needle tip
+        is visible at the end of the bud, but before the first needle from the bud
+        has unfolded and spread away at an angle from the developing stem.","start_date":"2012-02-28
+        00:00:00","end_date":null,"comments":null},{"definition_id":481,"dataset_id":null,"phenophase_id":481,"phenophase_name":"Breaking
+        needle buds","definition":"One or more breaking needle buds are visible on
+        the plant. A needle bud is considered \"breaking\" once a green needle tip
+        is visible at the end of the bud, but before the first needle from the bud
+        has unfolded and spread away at an angle from the developing stem, or from
+        other needles in a bundle.","start_date":"2012-02-28 00:00:00","end_date":null,"comments":null},{"definition_id":482,"dataset_id":null,"phenophase_id":482,"phenophase_name":"Initial
+        growth","definition":"New growth of the plant is visible after a period of
+        no growth (winter or drought), either from above-ground buds with green tips,
+        or new green or white shoots breaking through the soil surface. Growth is
+        considered \"initial\" on each bud or shoot until the first leaf has fully
+        unfolded. For seedlings, \"initial\" growth includes the presence of the one
+        or two small, round or elongated leaves (cotyledons) before the first true
+        leaf has unfolded.","start_date":"2012-02-28 00:00:00","end_date":null,"comments":null},{"definition_id":483,"dataset_id":null,"phenophase_id":483,"phenophase_name":"Leaves","definition":"One
+        or more live, unfolded leaves are visible on the plant. A leaf is considered
+        \"unfolded\" once its entire length has emerged from the breaking bud so that
+        the leaf stalk (petiole) or leaf base is visible at its point of attachment
+        to the stem. Do not include fully dried or dead leaves.","start_date":"2012-02-28
+        00:00:00","end_date":"2015-03-09 00:00:00","comments":null},{"definition_id":484,"dataset_id":null,"phenophase_id":484,"phenophase_name":"Young
+        leaves","definition":"One or more young, unfolded leaves are visible on the
+        plant. A leaf is considered \"young\" and \"unfolded\" once its entire length
+        has emerged from the breaking bud so that the leaf stalk (petiole) or leaf
+        base is visible at its point of attachment to the stem, but before the leaf
+        has reached full size or turned the darker green color or tougher texture
+        of mature leaves on the plant. Do not include fully dried or dead leaves.","start_date":"2012-02-28
+        00:00:00","end_date":"2015-03-09 00:00:00","comments":null},{"definition_id":485,"dataset_id":null,"phenophase_id":485,"phenophase_name":"Young
+        needles","definition":"One or more young, unfolded needles are visible on
+        the plant. A needle is considered \"young\" and \"unfolded\" once it has spread
+        away from the developing stem enough that its point of attachment to the stem
+        is visible, but before it has reached full size or turned the darker green
+        color or tougher texture of mature needles on the plant.","start_date":"2012-02-28
+        00:00:00","end_date":null,"comments":null},{"definition_id":486,"dataset_id":null,"phenophase_id":486,"phenophase_name":"Young
+        needles","definition":"One or more young, unfolded needles are visible on
+        the plant. A needle is considered \"young\" and \"unfolded\" once it begins
+        to spread away at an angle from other needles in the bundle (and is no longer
+        pressed flat against them), but before it has reached full size or turned
+        the darker green color or tougher texture of mature needles on the plant.","start_date":"2012-02-28
+        00:00:00","end_date":null,"comments":null},{"definition_id":487,"dataset_id":null,"phenophase_id":487,"phenophase_name":"Needles","definition":"One
+        or more live, unfolded needles are visible on the plant. A needle is considered
+        \"unfolded\" once it begins to spread away at an angle from the developing
+        stem enough that its point of attachment to the stem is visible, or from other
+        needles in a bundle so that it is no longer pressed flat against them. Do
+        not include fully dried or dead needles.","start_date":"2012-02-28 00:00:00","end_date":null,"comments":null},{"definition_id":488,"dataset_id":null,"phenophase_id":488,"phenophase_name":"Leaves","definition":"One
+        or more live, fully unfolded leaves are visible on the plant. For seedlings,
+        consider only true leaves and do not count the one or two small, round or
+        elongated leaves (cotyledons) that are found on the stem almost immediately
+        after the seedling germinates. Do not include fully dried or dead leaves.","start_date":"2012-02-28
+        00:00:00","end_date":null,"comments":null},{"definition_id":489,"dataset_id":null,"phenophase_id":489,"phenophase_name":"Leaves","definition":"One
+        or more live, green, unfolded leaves are visible on the plant. A leaf is considered
+        \"unfolded\" once it unrolls slightly from around the stem and begins to fall
+        away at an angle from the stem. Do not include fully dried or dead leaves.","start_date":"2012-02-28
+        00:00:00","end_date":null,"comments":null},{"definition_id":490,"dataset_id":null,"phenophase_id":490,"phenophase_name":"Pollen
+        cones","definition":"One or more fresh, male pollen cones (strobili) are visible
+        on the plant. Cones have overlapping scales that are initially tightly closed,
+        then spread apart to open the cone and release pollen. Include cones that
+        are unopened or open, but do not include wilted or dried cones that have already
+        released all of their pollen.","start_date":"2012-02-28 00:00:00","end_date":null,"comments":null},{"definition_id":491,"dataset_id":null,"phenophase_id":491,"phenophase_name":"Recent
+        cone or seed drop","definition":"One or more seed cones or seeds have dropped
+        or been removed from the plant since your last visit. Do not include empty
+        seed cones that had long ago dropped all of their seeds but remained on the
+        plant.","start_date":"2012-02-28 00:00:00","end_date":null,"comments":null},{"definition_id":492,"dataset_id":null,"phenophase_id":492,"phenophase_name":"Initial
+        growth","definition":"New growth of the plant is visible after a period of
+        no growth (winter or drought), either as new green shoots sprouting from nodes
+        on existing stems, or new green shoots breaking through the soil surface.
+        For each shoot, growth is considered \"initial\" until the first leaf has
+        unfolded.","start_date":"2012-02-28 00:00:00","end_date":"2016-02-10 00:00:00","comments":null},{"definition_id":493,"dataset_id":null,"phenophase_id":493,"phenophase_name":"Flower
+        heads","definition":"One or more fresh flower heads (inflorescences) are visible
+        on the plant. Flower heads, which include many small flowers arranged in spikelets,
+        emerge from inside the stem and gradually grow taller. Include flower heads
+        with unopened or open flowers, but do not include heads whose flowers have
+        all wilted or dried.","start_date":"2012-02-28 00:00:00","end_date":"2016-02-10
+        00:00:00","comments":null},{"definition_id":494,"dataset_id":null,"phenophase_id":494,"phenophase_name":"Open
+        flowers","definition":"One or more open, fresh flowers are visible on the
+        plant. A flower is considered \"open\" when reproductive parts (male anthers
+        or female stigmata) can be seen protruding from the spikelet. Do not include
+        flowers with wilted or dried reproductive parts.","start_date":"2012-02-28
+        00:00:00","end_date":null,"comments":null},{"definition_id":495,"dataset_id":null,"phenophase_id":495,"phenophase_name":"Open
+        pollen cones","definition":"One or more open, fresh, male pollen cones (strobili)
+        are visible on the plant. Cones are considered \"open\" when the scales have
+        spread apart to release pollen. Do not include wilted or dried cones that
+        have already released all of their pollen.","start_date":"2012-02-28 00:00:00","end_date":null,"comments":null},{"definition_id":496,"dataset_id":null,"phenophase_id":496,"phenophase_name":"Emerging
+        needles","definition":"One or more emerging needles or needle bundles (fascicles)
+        are visible on the plant. A needle or needle bundle is considered \"emerging\"
+        once the green tip is visible along the newly developing stem (candle), but
+        before the needles have begun to unfold and spread away at an angle from others
+        in the bundle.","start_date":"2012-02-28 00:00:00","end_date":null,"comments":null},{"definition_id":497,"dataset_id":null,"phenophase_id":497,"phenophase_name":"Leaves","definition":"One
+        or more live, green, unfolded leaves are visible on the plant. A leaf is considered
+        \"unfolded\" once it has grown long enough that the two halves of the leaf
+        blade have begun to spread apart like an open book. Do not include fully dried
+        or dead leaves.","start_date":"2012-02-28 00:00:00","end_date":null,"comments":null},{"definition_id":498,"dataset_id":null,"phenophase_id":498,"phenophase_name":"Colored
+        leaves","definition":"One or more leaves (including any that have recently
+        fallen from the plant) have turned to their late-season colors. Do not include
+        fully dried or dead leaves that remain on the plant.","start_date":"2012-02-28
+        00:00:00","end_date":"2016-02-10 00:00:00","comments":null},{"definition_id":499,"dataset_id":null,"phenophase_id":499,"phenophase_name":"Colored
+        needles","definition":"One or more needles (including any that have recently
+        fallen from the plant) have turned to their late-season colors. Do not include
+        fully dried or dead needles that remain on the plant.","start_date":"2012-02-28
+        00:00:00","end_date":"2016-02-10 00:00:00","comments":null},{"definition_id":500,"dataset_id":null,"phenophase_id":500,"phenophase_name":"Flowers
+        or flower buds","definition":"One or more fresh open or unopened flowers or
+        flower buds are visible on the plant. Include flower buds that are still developing,
+        but do not include wilted or dried flowers.","start_date":"2012-02-28 00:00:00","end_date":"2016-02-10
+        00:00:00","comments":null},{"definition_id":501,"dataset_id":null,"phenophase_id":501,"phenophase_name":"Open
+        flowers","definition":"One or more open, fresh flowers are visible on the
+        plant. Flowers are considered \"open\" when the reproductive parts (male stamens
+        or female pistils) are visible between or within unfolded or open flower parts
+        (petals, floral tubes or sepals). Do not include wilted or dried flowers.
+        ","start_date":"2012-02-28 00:00:00","end_date":null,"comments":null},{"definition_id":502,"dataset_id":null,"phenophase_id":502,"phenophase_name":"Pollen
+        release","definition":"One or more flowers on the plant release visible pollen
+        grains when gently shaken or blown into your palm or onto a dark surface.","start_date":"2012-02-28
+        00:00:00","end_date":null,"comments":null},{"definition_id":503,"dataset_id":null,"phenophase_id":503,"phenophase_name":"Pollen
+        release","definition":"One or more male cones (strobili) on the plant release
+        visible pollen grains when gently shaken or blown into your palm or onto a
+        dark surface.","start_date":"2012-02-28 00:00:00","end_date":null,"comments":null},{"definition_id":504,"dataset_id":null,"phenophase_id":504,"phenophase_name":"Recent
+        fruit or seed drop","definition":"One or more mature fruits or seeds have
+        dropped or been removed from the plant since your last visit. Do not include
+        obviously immature fruits that have dropped before ripening, such as in a
+        heavy rain or wind, or empty fruits that had long ago dropped all of their
+        seeds but remained on the plant.","start_date":"2012-02-28 00:00:00","end_date":null,"comments":null},{"definition_id":505,"dataset_id":null,"phenophase_id":505,"phenophase_name":"Young
+        leaves","definition":"One or more young leaves are visible on the plant. A
+        leaf is considered \"young\" before it has reached full size or turned the
+        darker green color or tougher texture of mature leaves on the plant. Do not
+        include fully dried or dead leaves.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":506,"dataset_id":null,"phenophase_id":506,"phenophase_name":"Caterpillars
+        in tent","definition":"Caterpillars are seen in their tent. If possible, record
+        the name of the plant on which the tent is built or describe it in the comments
+        field.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":507,"dataset_id":null,"phenophase_id":507,"phenophase_name":"Active
+        subadults","definition":"One or more subadults are seen moving about or at
+        rest.","start_date":"1970-01-01 00:00:00","end_date":"2021-01-31 00:00:00","comments":null},{"definition_id":508,"dataset_id":null,"phenophase_id":508,"phenophase_name":"Initial
+        growth","definition":"New growth of the plant is visible after a period of
+        no growth (winter or drought) as new green shoots breaking through the soil
+        surface. For each shoot, growth is considered \"initial\" until the exposed,
+        green portion of the shoot has reached approximately 2 inches (5 cm) in length.","start_date":"1970-01-01
+        00:00:00","end_date":null,"comments":null},{"definition_id":509,"dataset_id":null,"phenophase_id":509,"phenophase_name":"Leaves","definition":"One
+        or more live, green, unfolded leaves are visible on the plant. A leaf is considered
+        \"unfolded\" once the exposed, green portion of the leaf (or shoot) has reached
+        approximately 2 inches (5 cm) in length. Do not include fully dried or dead
+        leaves.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":510,"dataset_id":null,"phenophase_id":510,"phenophase_name":"New
+        side branches","definition":"One or more new sides branches with smooth tips
+        are visible on the plant. Side branches are considered \"new\" until they
+        develop a receptacle, or until they reach a similar width and tough texture
+        as the mature shoot on which they are growing. Do not include side branches
+        with ragged tips, where a receptacle has recently detached.","start_date":"1970-01-01
+        00:00:00","end_date":null,"comments":null},{"definition_id":511,"dataset_id":null,"phenophase_id":511,"phenophase_name":"Receptacles","definition":"One
+        or more receptacles are visible on the plant. Receptacles are oval pods that
+        are initially flat and become inflated, changing from olive green to orange
+        or dark brown, sometimes becoming torn.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":512,"dataset_id":null,"phenophase_id":512,"phenophase_name":"Flat
+        receptacles","definition":"One or more flat, olive-green receptacles are visible
+        on the plant.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":513,"dataset_id":null,"phenophase_id":513,"phenophase_name":"Smooth
+        inflated receptacles","definition":"One or more inflated, smooth, olive-green
+        receptacles are visible on the plant.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":514,"dataset_id":null,"phenophase_id":514,"phenophase_name":"Dotted
+        inflated receptacles","definition":"One or more inflated, yellow or orange
+        receptacles studded with small, raised dots are visible on the plant. Do not
+        include receptacles that are torn or ruptured.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":515,"dataset_id":null,"phenophase_id":515,"phenophase_name":"Torn
+        receptacles","definition":"One or more torn or ruptured, orange or dark brown
+        receptacles are visible on the plant.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":516,"dataset_id":null,"phenophase_id":516,"phenophase_name":"Fruits","definition":"One
+        or more fruits are visible on the plant.","start_date":"2012-02-28 00:00:00","end_date":null,"comments":null},{"definition_id":517,"dataset_id":null,"phenophase_id":517,"phenophase_name":"Nest
+        building","definition":"One or more adults are seen digging into soil to construct
+        a nest.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":518,"dataset_id":null,"phenophase_id":518,"phenophase_name":"Nest
+        building","definition":"One or more adults are seen building a nest or hive.","start_date":"1970-01-01
+        00:00:00","end_date":null,"comments":null},{"definition_id":519,"dataset_id":null,"phenophase_id":519,"phenophase_name":"Drone
+        cells","definition":"One or more drone cells are seen in a hive.","start_date":"1970-01-01
+        00:00:00","end_date":null,"comments":null},{"definition_id":520,"dataset_id":null,"phenophase_id":520,"phenophase_name":"Nest
+        provisioning","definition":"One or more adults are seen entering the nest
+        with pollen. ","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":521,"dataset_id":null,"phenophase_id":521,"phenophase_name":"Eggs","definition":"One
+        or more eggs are seen in a nest or hive.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":522,"dataset_id":null,"phenophase_id":522,"phenophase_name":"Pupae","definition":"One
+        or more pupae are seen in a cocoon or shell (puparium).","start_date":"1970-01-01
+        00:00:00","end_date":null,"comments":null},{"definition_id":523,"dataset_id":null,"phenophase_id":523,"phenophase_name":"Dead
+        adults","definition":"One or more dead adults are seen.","start_date":"1970-01-01
+        00:00:00","end_date":null,"comments":null},{"definition_id":524,"dataset_id":null,"phenophase_id":524,"phenophase_name":"Eggs","definition":"One
+        or more eggs are seen.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":525,"dataset_id":11,"phenophase_id":483,"phenophase_name":"Unfolded
+        leaves","definition":"One or more unfolded leaves are visible. A leaf is considered
+        \"unfolded\" when the leaf stalk (petiole) or leaf base is visible. The leaf
+        may need to be bent backwards to see whether the petiole or leaf base is visible.","start_date":"2010-01-01
+        00:00:00","end_date":null,"comments":null},{"definition_id":526,"dataset_id":11,"phenophase_id":186,"phenophase_name":"Full
+        flowering","definition":"More than 50% of flowers open. For the whole plant,
+        at least half of the flowers are open and still fresh.","start_date":"2010-01-01
+        00:00:00","end_date":null,"comments":null},{"definition_id":527,"dataset_id":11,"phenophase_id":181,"phenophase_name":"Autumn
+        color","definition":"More than 50% of leaves colored. For the whole plant,
+        at least half of the leaves (including any that have fallen to the ground)
+        have changed to their late-season colors.","start_date":"2010-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":528,"dataset_id":11,"phenophase_id":504,"phenophase_name":"Acorn
+        drop","definition":"There is evidence that one or more mature acorns have
+        dropped from the plant since your last visit. Do not include obviously immature
+        acorns that have dropped before ripening, such as in a heavy rain or wind.","start_date":"2010-01-01
+        00:00:00","end_date":null,"comments":null},{"definition_id":529,"dataset_id":11,"phenophase_id":390,"phenophase_name":"Ripe
+        fruits on maple","definition":"One or more ripe fruits (samaras) are visible
+        on the plant. Ripe samaras are reddish in color and will readily fall into
+        your hand when touched.","start_date":"2010-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":530,"dataset_id":11,"phenophase_id":183,"phenophase_name":"Leaf
+        fall","definition":"For the whole plant, more than 50% of leaves have fallen.","start_date":"2010-01-01
+        00:00:00","end_date":null,"comments":null},{"definition_id":531,"dataset_id":13,"phenophase_id":371,"phenophase_name":"Emerging
+        leaves","definition":"In at least 3 locations on the plant, a leaf is considered
+        \"emerging\" once the green tip is visible at the end of the leaf bud, but
+        before it has fully unfolded to expose the leaf stalk (petiole) or leaf base.
+        Record as \"y\" upon first appearance; record as \"n\" when \"Unfolded Leaves\"
+        reached.","start_date":"2009-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":532,"dataset_id":13,"phenophase_id":483,"phenophase_name":"Unfolded
+        leaves","definition":"In at least 3 locations on the plant; a leaf is considered
+        \"unfolded\" when the leaf stalk (petiole) or leaf base is visible. Record
+        as \"y\" upon first appearance; record as \"n\" when \">75%\" reached.","start_date":"2009-01-01
+        00:00:00","end_date":null,"comments":null},{"definition_id":533,"dataset_id":13,"phenophase_id":180,"phenophase_name":">75%
+        of full leaf size","definition":"For the whole plant, the majority of leaves
+        are unfolded and have elongated to at least three- quarters (75%) of their
+        mature size. Leaf size may also be estimated by viewing the canopy as a whole.
+        At 75% of full leaf size, the canopy appears to be approximately three-quarters
+        (75%) full. Record as \"y\" upon first appearance until \"All leaves fallen\"
+        reached.","start_date":"2009-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":534,"dataset_id":13,"phenophase_id":181,"phenophase_name":">50%
+        of leaves colored","definition":"For the whole plant, half (50%) of the leaves
+        (including any that have fallen to the ground) have changed to their late
+        season colors. Record as \"y\" upon first appearance; record as \"n\" when
+        all leaves colored\" reached.","start_date":"2009-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":535,"dataset_id":13,"phenophase_id":182,"phenophase_name":"All
+        leaves colored","definition":"For the whole plant, virtually all (95-100%)
+        of the leaves (including any that have fallen to the ground) have changed
+        to their late season colors and there is virtually no green left in the leaves.
+        Record as \"y\" upon first appearance until \">50% of leaves fallen\" reached.","start_date":"2009-01-01
+        00:00:00","end_date":null,"comments":null},{"definition_id":536,"dataset_id":13,"phenophase_id":183,"phenophase_name":">50%
+        of leaves fallen","definition":"For the whole plant, half (50%) of the leaves
+        have fallen. Record as \"y\" upon first appearance until \"All leaves fallen\"
+        reached.","start_date":"2009-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":537,"dataset_id":13,"phenophase_id":184,"phenophase_name":"All
+        leaves fallen","definition":"For the whole plant, virtually all (95-100%)
+        of the leaves have fallen. Record as \"y\" upon first appearance.","start_date":"2009-01-01
+        00:00:00","end_date":null,"comments":null},{"definition_id":538,"dataset_id":13,"phenophase_id":501,"phenophase_name":"Open
+        flowers","definition":"In at least 3 locations on the plant, an open fresh
+        flower is visible. Flowers are considered \"open\" when the reproductive parts
+        are visible between unfolded or open flower parts. Do not include spent (wilted)
+        flowers that remain on the plant. Record as \"y\" upon first appearance; record
+        as \"n\" when \"Full Flowering\" reached.","start_date":"2009-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":539,"dataset_id":13,"phenophase_id":186,"phenophase_name":"Full
+        Flowering","definition":"For the whole plant, at least half (50%) of the flowers
+        are open and still fresh. Record as \"y\" upon first appearance; record as
+        \"n\" when \"Ripe Fruits\" reached.","start_date":"2009-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":540,"dataset_id":13,"phenophase_id":390,"phenophase_name":"Ripe
+        fruits","definition":"In at least 3 locations on the plant, a ripe fruit is
+        visible. Record as \"y\" upon first appearance until >90% fruits dispersed.","start_date":"2009-01-01
+        00:00:00","end_date":null,"comments":null},{"definition_id":541,"dataset_id":null,"phenophase_id":483,"phenophase_name":"Leaves","definition":"One
+        or more live, unfolded leaves are visible on the plant. A leaf is considered
+        \"unfolded\" once its entire length has emerged from a breaking bud, stem
+        node or growing stem tip, so that the leaf stalk (petiole) or leaf base is
+        visible at its point of attachment to the stem. Do not include fully dried
+        or dead leaves.","start_date":"2015-03-10 00:00:00","end_date":"2022-03-09
+        00:00:00","comments":null},{"definition_id":542,"dataset_id":null,"phenophase_id":484,"phenophase_name":"Young
+        leaves","definition":"One or more young, unfolded leaves are visible on the
+        plant. A leaf is considered \"young\" and \"unfolded\" once its entire length
+        has emerged from a breaking bud, stem node or growing stem tip, so that the
+        leaf stalk (petiole) or leaf base is visible at its point of attachment to
+        the stem, but before the leaf has reached full size or turned the darker green
+        color or tougher texture of mature leaves on the plant. Do not include fully
+        dried or dead leaves.","start_date":"2015-03-10 00:00:00","end_date":"2022-03-09
+        00:00:00","comments":null},{"definition_id":543,"dataset_id":null,"phenophase_id":525,"phenophase_name":"Winged
+        adults","definition":"One or more adults bearing wings are seen moving about
+        or at rest.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":544,"dataset_id":null,"phenophase_id":526,"phenophase_name":"Dead
+        nymphs","definition":"One or more dead nymphs are seen.","start_date":"1970-01-01
+        00:00:00","end_date":null,"comments":null},{"definition_id":545,"dataset_id":null,"phenophase_id":527,"phenophase_name":"Nest
+        provisioning","definition":"One or more adults are seen entering the nest
+        with insects or seeds. If possible, record the name of the species or substance
+        being carried or describe it in the comments field.","start_date":"1970-01-01
+        00:00:00","end_date":null,"comments":null},{"definition_id":546,"dataset_id":null,"phenophase_id":493,"phenophase_name":"Flower
+        heads","definition":"One or more fresh flower heads (inflorescences) are visible
+        on the plant. Flower heads, which include many small flowers arranged in spikelets,
+        emerge from inside the stem and gradually grow taller. Include flower heads
+        with unopened or open flowers,  but do not include heads whose flowers have
+        all wilted or dried or begun to develop into fruits (grains).","start_date":"2016-02-11
+        00:00:00","end_date":null,"comments":null},{"definition_id":547,"dataset_id":null,"phenophase_id":492,"phenophase_name":"Initial
+        growth","definition":"New growth of the plant is visible after a period of
+        no growth (winter or drought), either as new green shoots sprouting from nodes
+        on existing stems,  new green shoots breaking through the soil surface, or
+        re-greening of dried stems or leaves. For each shoot, growth is considered
+        \"initial\" until the first leaf has unfolded or has fully re-greened.","start_date":"2016-02-11
+        00:00:00","end_date":null,"comments":null},{"definition_id":548,"dataset_id":null,"phenophase_id":500,"phenophase_name":"Flowers
+        or flower buds","definition":"One or more fresh open or unopened flowers or
+        flower buds are visible on the plant. Include flower buds or inflorescences
+        that are swelling or expanding, but do not include those that are tightly
+        closed and not actively growing (dormant). Also do not include wilted or dried
+        flowers.","start_date":"2016-02-11 00:00:00","end_date":null,"comments":null},{"definition_id":549,"dataset_id":null,"phenophase_id":498,"phenophase_name":"Colored
+        leaves","definition":"One or more leaves show some of their typical late-season
+        color, or yellow or brown due to drought or other stresses. Do not include
+        small spots of color due to minor leaf damage, or dieback on branches that
+        have broken. Do not include fully dried or dead leaves that remain on the
+        plant.","start_date":"2016-02-11 00:00:00","end_date":null,"comments":null},{"definition_id":550,"dataset_id":null,"phenophase_id":499,"phenophase_name":"Colored
+        needles","definition":"One or more needles show some of their typical late-season
+        color, or yellow or brown due to drought or other stresses. Do not include
+        small spots of color due to minor needle damage, or dieback on branches that
+        have broken. Do not include fully dried or dead needles that remain on the
+        plant.","start_date":"2016-02-11 00:00:00","end_date":null,"comments":null},{"definition_id":551,"dataset_id":null,"phenophase_id":528,"phenophase_name":"Courtship
+        calling","definition":"Courtship sounds produced by an adult are heard.","start_date":"1970-01-01
+        00:00:00","end_date":null,"comments":null},{"definition_id":552,"dataset_id":null,"phenophase_id":530,"phenophase_name":"Cast-off
+        skins","definition":"One or more cast-off skins or exoskeletons shed during
+        transformation from nymph to adult are seen. These may be difficult to identify
+        to species level.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":553,"dataset_id":null,"phenophase_id":531,"phenophase_name":"Eggs","definition":"One
+        or more eggs are seen on a plant. If possible, record the name of the plant
+        or describe it in the comments field.","start_date":"1970-01-01 00:00:00","end_date":"2020-02-16
+        00:00:00","comments":null},{"definition_id":554,"dataset_id":null,"phenophase_id":532,"phenophase_name":"Larvae
+        feeding","definition":"One or more larvae are seen feeding. If possible, record
+        the name of the species or substance being eaten or describe it in the comments
+        field.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":555,"dataset_id":null,"phenophase_id":533,"phenophase_name":"Dead
+        larvae","definition":"One or more dead larvae are seen, including those found
+        on roads.","start_date":"1970-01-01 00:00:00","end_date":"2019-02-04 00:00:00","comments":null},{"definition_id":556,"dataset_id":null,"phenophase_id":529,"phenophase_name":"Recent
+        egg laying","definition":"A female is seen depositing eggs, or evidence of
+        recent egg laying is seen on a plant. If possible, record the name of the
+        plant or describe it in the comments field.","start_date":"1970-01-01 00:00:00","end_date":"2020-02-16
+        00:00:00","comments":null},{"definition_id":557,"dataset_id":15,"phenophase_id":371,"phenophase_name":"Emerging
+        leaves","definition":"In at least 3 locations on the plant, an emerging leaf
+        is visible. A leaf is considered \"emerging\" once the green tip is visible
+        at the end of the leaf bud, but before it has fully unfolded to expose the
+        petiole (leaf stalk) or leaf base.","start_date":"2010-01-01 00:00:00","end_date":null,"comments":""},{"definition_id":558,"dataset_id":15,"phenophase_id":483,"phenophase_name":"Unfolded
+        leaves","definition":"In at least 3 locations on the plant, an unfolded leaf
+        is visible. A leaf is considered \"unfolded\" when the petiole (leaf stalk)
+        or leaf base is visible. ","start_date":"2010-01-01 00:00:00","end_date":null,"comments":""},{"definition_id":559,"dataset_id":15,"phenophase_id":180,"phenophase_name":">=75%
+        of full leaf size","definition":"For the whole plant, most leaves are unfolded
+        and are about three-quarters (75%) of their mature size. Check this by viewing
+        the whole canopy. At 75% of full leaf size, the canopy appears to be about
+        three-quarters (75%) full.","start_date":"2010-01-01 00:00:00","end_date":null,"comments":""},{"definition_id":560,"dataset_id":15,"phenophase_id":181,"phenophase_name":">=50%
+        of leaves colored","definition":"For the whole plant, at least half (50%)
+        of the leaves (including any that have fallen to the ground) have changed
+        to their late-season colors. ","start_date":"2010-01-01 00:00:00","end_date":null,"comments":""},{"definition_id":561,"dataset_id":15,"phenophase_id":182,"phenophase_name":"All
+        leaves colored","definition":"For the whole plant, almost all (95-100%) of
+        the leaves (including any that have fallen to the ground) have changed to
+        their late-season colors, and there is nearly no green left in the leaves.
+        Leaves should still be in species-appropriate fall colors, and not yet turned
+        brown.","start_date":"2010-01-01 00:00:00","end_date":null,"comments":""},{"definition_id":562,"dataset_id":15,"phenophase_id":183,"phenophase_name":">=50%
+        of leaves fallen","definition":"For the whole plant, at least half (50%) of
+        the leaves have fallen.","start_date":"2010-01-01 00:00:00","end_date":null,"comments":""},{"definition_id":563,"dataset_id":15,"phenophase_id":184,"phenophase_name":"All
+        leaves fallen","definition":"For the whole plant, virtually all (95-100%)
+        of the leaves have fallen.","start_date":"2010-01-01 00:00:00","end_date":null,"comments":""},{"definition_id":564,"dataset_id":15,"phenophase_id":501,"phenophase_name":"Open
+        flowers","definition":"In at least 3 locations on the plant, an open fresh
+        flower is visible. Petals must be open, so the inside of the flower is visible
+        (reproductive parts are showing). Do not include wilted flowers that remain
+        on the plant. ","start_date":"2010-01-01 00:00:00","end_date":null,"comments":""},{"definition_id":565,"dataset_id":15,"phenophase_id":186,"phenophase_name":"Full
+        Flowering","definition":"For the whole plant, at least half (50%) of the flowers
+        are open and still fresh. ","start_date":"2010-01-01 00:00:00","end_date":null,"comments":""},{"definition_id":566,"dataset_id":15,"phenophase_id":390,"phenophase_name":"Ripe
+        fruits","definition":"In at least 3 locations on the plant, a ripe fruit is
+        visible.","start_date":"2010-01-01 00:00:00","end_date":null,"comments":""},{"definition_id":567,"dataset_id":15,"phenophase_id":467,"phenophase_name":"Increasing
+        leaf size","definition":"","start_date":"2011-03-21 00:00:00","end_date":null,"comments":"Observers
+        did not report on this phenophase directly. Data was inferred from reports
+        of other phenophase. See documentation for this dataset for more info."},{"definition_id":568,"dataset_id":15,"phenophase_id":498,"phenophase_name":"Colored
+        leaves","definition":"","start_date":"2011-03-21 00:00:00","end_date":null,"comments":"Observers
+        did not report on this phenophase directly. Data was inferred from reports
+        of other phenophase. See documentation for this dataset for more info."},{"definition_id":569,"dataset_id":15,"phenophase_id":471,"phenophase_name":"Falling
+        leaves","definition":"","start_date":"2011-03-21 00:00:00","end_date":null,"comments":"Observers
+        did not report on this phenophase directly. Data was inferred from reports
+        of other phenophase. See documentation for this dataset for more info."},{"definition_id":570,"dataset_id":15,"phenophase_id":293,"phenophase_name":"Calls
+        or song","definition":"One or more individuals are heard calling or singing.","start_date":"2010-01-01
+        00:00:00","end_date":null,"comments":""},{"definition_id":572,"dataset_id":null,"phenophase_id":539,"phenophase_name":"Downy
+        young","definition":"One or more young are seen covered with fluffy down feathers
+        and not yet any smooth contour feathers.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":573,"dataset_id":null,"phenophase_id":540,"phenophase_name":"Partially-fledged
+        young","definition":"One or more young are seen with a mix of fluffy down
+        and smooth contour feathers, and often have an unkempt or ragged appearance.","start_date":"1970-01-01
+        00:00:00","end_date":null,"comments":null},{"definition_id":574,"dataset_id":null,"phenophase_id":541,"phenophase_name":"Fledged
+        young","definition":"One or more young are seen covered with smooth contour
+        feathers and no longer any fluffy, natal down feathers. This includes young
+        incapable of sustained flight and young which are still dependent on adults.","start_date":"1970-01-01
+        00:00:00","end_date":null,"comments":null},{"definition_id":575,"dataset_id":null,"phenophase_id":542,"phenophase_name":"Feeding","definition":"One
+        or more individuals are seen feeding or foraging. If possible, record the
+        name of the species or substance being eaten or describe it in the comments
+        field.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":576,"dataset_id":null,"phenophase_id":294,"phenophase_name":"Singing
+        individuals","definition":"One or more individuals are heard singing. Singing
+        refers to stereotypical, simple or elaborate vocalizations (most commonly
+        by males) used as part of territorial proclamation or defense, or mate attraction.
+        It does not include relatively simple calls used for other forms of communication.","start_date":"2017-02-06
+        00:00:00","end_date":null,"comments":null},{"definition_id":578,"dataset_id":null,"phenophase_id":544,"phenophase_name":"Inactive
+        nymphs","definition":"One or more nymphs are seen in a dormant state.","start_date":"1970-01-01
+        00:00:00","end_date":"2021-01-31 00:00:00","comments":null},{"definition_id":579,"dataset_id":null,"phenophase_id":545,"phenophase_name":"Post-dormant
+        nymphs","definition":"One or more nymphs have come out of their dormant state.","start_date":"1970-01-01
+        00:00:00","end_date":null,"comments":null},{"definition_id":580,"dataset_id":9,"phenophase_id":182,"phenophase_name":"All
+        leaves colored","definition":"For the whole plant, virtually all (95-100%)
+        of the leaves (including any that have fallen to the ground) have changed
+        to their late-season colors, and virtually no green is left in the leaves.","start_date":"1970-01-01
+        00:00:00","end_date":null,"comments":null},{"definition_id":581,"dataset_id":9,"phenophase_id":184,"phenophase_name":"All
+        leaves fallen","definition":"For the whole plant, virtually all (95-100%)
+        of the leaves have fallen.  ","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":582,"dataset_id":9,"phenophase_id":186,"phenophase_name":"Full
+        flowering","definition":"For the whole plant, at least half (50%) of the flowers
+        are open and still fresh.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":583,"dataset_id":9,"phenophase_id":201,"phenophase_name":"Open
+        flowers","definition":"In at least one location on the plant, an open fresh
+        flower is visible. Flowers are considered \"open\" when the reproductive parts
+        are visible between unfolded or open flower parts. Do not include spent (wilted)
+        flowers that remain on the plant. ","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":584,"dataset_id":9,"phenophase_id":202,"phenophase_name":"Ripe
+        fruits","definition":"In at least one location on the plant, a ripe fruit
+        is visible.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":585,"dataset_id":9,"phenophase_id":371,"phenophase_name":"Emerging
+        leaves","definition":"In at least 3 locations on the plant, an emerging leaf
+        is visible.  A leaf is considered \"emerging\" once the green tip is visible
+        at the end of the leaf bud, but before it has fully unfolded to expose the
+        petiole (leaf stalk) or leaf base.","start_date":"1970-01-01 00:00:00","end_date":"2011-03-20
+        00:00:00","comments":null},{"definition_id":586,"dataset_id":9,"phenophase_id":371,"phenophase_name":"Breaking
+        leaf buds","definition":"One or more breaking leaf buds are visible on the
+        plant.  A leaf bud is considered \"breaking\" once a green leaf tip is visible
+        at the end of the bud, but before the first leaf from the bud has unfolded
+        to expose the leaf stalk (petiole) or leaf base.","start_date":"2011-03-21
+        00:00:00","end_date":null,"comments":null},{"definition_id":587,"dataset_id":9,"phenophase_id":390,"phenophase_name":"Ripe
+        fruits","definition":"In at least 3 locations on the plant, a ripe fruit is
+        visible. ","start_date":"1970-01-01 00:00:00","end_date":"2011-03-20 00:00:00","comments":null},{"definition_id":588,"dataset_id":9,"phenophase_id":390,"phenophase_name":"Ripe
+        fruits","definition":"One or more ripe fruits are visible on the plant. ","start_date":"2011-03-21
+        00:00:00","end_date":null,"comments":null},{"definition_id":589,"dataset_id":9,"phenophase_id":471,"phenophase_name":"Falling
+        leaves","definition":"One or more leaves are falling or have recently fallen
+        from the plant.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":590,"dataset_id":9,"phenophase_id":483,"phenophase_name":"Unfolded
+        leaves","definition":"In at least 3 locations on the plant, an unfolded leaf
+        is visible. A leaf is considered \"unfolded\" when the petiole (leaf stalk)
+        or leaf base is visible. The leaf may need to be bent backwards to see whether
+        the petiole or leaf base is visible.","start_date":"1970-01-01 00:00:00","end_date":"2011-03-20
+        00:00:00","comments":null},{"definition_id":591,"dataset_id":9,"phenophase_id":483,"phenophase_name":"Leaves","definition":"One
+        or more live unfolded leaves are visible on the plant. A leaf is considered
+        \"unfolded\" once the leaf stalk (petiole) or leaf base is visible. New small
+        leaves may need to be bent backwards to see whether the leaf stalk or leaf
+        base is visible. Do not include dried or dead leaves.","start_date":"2011-03-21
+        00:00:00","end_date":"2012-02-27 00:00:00","comments":null},{"definition_id":592,"dataset_id":9,"phenophase_id":483,"phenophase_name":"Leaves","definition":"One
+        or more live, unfolded leaves are visible on the plant. A leaf is considered
+        \"unfolded\" once its entire length has emerged from the breaking bud so that
+        the leaf stalk (petiole) or leaf base is visible at its point of attachment
+        to the stem. Do not include fully dried or dead leaves.","start_date":"2012-02-28
+        00:00:00","end_date":"2015-03-09 00:00:00","comments":null},{"definition_id":593,"dataset_id":9,"phenophase_id":483,"phenophase_name":"Leaves","definition":"One
+        or more live, unfolded leaves are visible on the plant. A leaf is considered
+        \"unfolded\" once its entire length has emerged from a breaking bud, stem
+        node or growing stem tip, so that the leaf stalk (petiole) or leaf base is
+        visible at its point of attachment to the stem. Do not include fully dried
+        or dead leaves.","start_date":"2015-03-10 00:00:00","end_date":null,"comments":null},{"definition_id":594,"dataset_id":9,"phenophase_id":498,"phenophase_name":"Colored
+        leaves","definition":"One or more leaves (including any that have recently
+        fallen from the plant) have turned to their late-season colors.","start_date":"1970-01-01
+        00:00:00","end_date":"2012-02-27 00:00:00","comments":null},{"definition_id":595,"dataset_id":9,"phenophase_id":498,"phenophase_name":"Colored
+        leaves","definition":"One or more leaves (including any that have recently
+        fallen from the plant) have turned to their late-season colors. Do not include
+        fully dried or dead leaves that remain on the plant.","start_date":"2012-02-28
+        00:00:00","end_date":"2016-02-10 00:00:00","comments":null},{"definition_id":596,"dataset_id":9,"phenophase_id":498,"phenophase_name":"Colored
+        leaves","definition":"One or more leaves show some of their typical late-season
+        color, or yellow or brown due to drought or other stresses. Do not include
+        small spots of color due to minor leaf damage, or dieback on branches that
+        have broken. Do not include fully dried or dead leaves that remain on the
+        plant.","start_date":"2016-02-11 00:00:00","end_date":null,"comments":null},{"definition_id":597,"dataset_id":9,"phenophase_id":500,"phenophase_name":"Flowers","definition":"One
+        or more fresh flowers or flower heads (inflorescences) are visible on the
+        plant. Flower heads include many small flowers that usually do not open all
+        at once. Do not include wilted or dried flowers that remain on the plant,
+        or heads whose flowers have all wilted or dried.","start_date":"1970-01-01
+        00:00:00","end_date":"2012-02-27 00:00:00","comments":null},{"definition_id":598,"dataset_id":9,"phenophase_id":500,"phenophase_name":"Flowers
+        or flower buds","definition":"One or more fresh open or unopened flowers or
+        flower buds are visible on the plant. Include flower buds that are still developing,
+        but do not include wilted or dried flowers.","start_date":"2012-02-28 00:00:00","end_date":"2016-02-10
+        00:00:00","comments":null},{"definition_id":599,"dataset_id":9,"phenophase_id":500,"phenophase_name":"Flowers
+        or flower buds","definition":"One or more fresh open or unopened flowers or
+        flower buds are visible on the plant. Include flower buds or inflorescences
+        that are swelling or expanding, but do not include those that are tightly
+        closed and not actively growing (dormant). Also do not include wilted or dried
+        flowers.","start_date":"2016-02-11 00:00:00","end_date":null,"comments":null},{"definition_id":600,"dataset_id":9,"phenophase_id":501,"phenophase_name":"Open
+        flowers","definition":"In at least 3 locations on the plant, an open fresh
+        flower is visible. Flowers are considered \"open\" when the reproductive parts
+        are visible between unfolded or open flower parts. Do not include spent (wilted)
+        flowers that remain on the plant. ","start_date":"1970-01-01 00:00:00","end_date":"2011-03-20
+        00:00:00","comments":null},{"definition_id":601,"dataset_id":9,"phenophase_id":501,"phenophase_name":"Open
+        flowers","definition":"One or more open fresh flowers are visible on the plant.
+        Flowers are considered \"open\" when the reproductive parts (male stamens
+        or female pistils) are visible between unfolded or open flower parts. Do not
+        include wilted or dried flowers that remain on the plant. ","start_date":"2011-03-21
+        00:00:00","end_date":"2012-02-27 00:00:00","comments":null},{"definition_id":602,"dataset_id":9,"phenophase_id":501,"phenophase_name":"Open
+        flowers","definition":"One or more open, fresh flowers are visible on the
+        plant. Flowers are considered \"open\" when the reproductive parts (male stamens
+        or female pistils) are visible between or within unfolded or open flower parts
+        (petals, floral tubes or sepals). Do not include wilted or dried flowers.
+        ","start_date":"2012-02-28 00:00:00","end_date":null,"comments":null},{"definition_id":603,"dataset_id":9,"phenophase_id":516,"phenophase_name":"Fruits","definition":"One
+        or more fruits are visible on the plant.","start_date":"1970-01-01 00:00:00","end_date":"2011-03-20
+        00:00:00","comments":null},{"definition_id":604,"dataset_id":9,"phenophase_id":516,"phenophase_name":"Fruits","definition":"One
+        or more fresh fruits are visible on the plant.","start_date":"2011-03-21 00:00:00","end_date":"2012-02-27
+        00:00:00","comments":null},{"definition_id":605,"dataset_id":9,"phenophase_id":516,"phenophase_name":"Fruits","definition":"One
+        or more fruits are visible on the plant.","start_date":"2012-02-28 00:00:00","end_date":null,"comments":null},{"definition_id":606,"dataset_id":9,"phenophase_id":274,"phenophase_name":"Adults
+        on land","definition":"One or more adults are seen at rest or active on land.","start_date":"1970-01-01
+        00:00:00","end_date":null,"comments":null},{"definition_id":607,"dataset_id":9,"phenophase_id":275,"phenophase_name":"Adults
+        in water","definition":"One or more adults are seen at rest or active in water.","start_date":"1970-01-01
+        00:00:00","end_date":null,"comments":null},{"definition_id":608,"dataset_id":9,"phenophase_id":276,"phenophase_name":"Vocalizing","definition":"One
+        or more individuals are heard vocalizing.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":609,"dataset_id":9,"phenophase_id":293,"phenophase_name":"Calls
+        or song","definition":"One or more individuals are heard calling or singing.","start_date":"1970-01-01
+        00:00:00","end_date":null,"comments":null},{"definition_id":610,"dataset_id":null,"phenophase_id":546,"phenophase_name":"Active
+        crawlers","definition":"One or more crawlers are seen moving about or at rest.","start_date":"1970-01-01
+        00:00:00","end_date":"2021-01-31 00:00:00","comments":null},{"definition_id":611,"dataset_id":null,"phenophase_id":547,"phenophase_name":"Egg
+        laying","definition":"A female is seen laying eggs. If possible, record the
+        name of the species or substance on which the eggs are being deposited or
+        describe it in the comments field.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null},{"definition_id":612,"dataset_id":null,"phenophase_id":289,"phenophase_name":"Dead
+        adults","definition":"One or more dead adults are seen.","start_date":"2019-02-05
+        00:00:00","end_date":null,"comments":null},{"definition_id":613,"dataset_id":null,"phenophase_id":336,"phenophase_name":"Dead
+        caterpillars","definition":"One or more dead caterpillars are seen.","start_date":"2019-02-05
+        00:00:00","end_date":null,"comments":null},{"definition_id":614,"dataset_id":null,"phenophase_id":315,"phenophase_name":"Dead
+        individuals","definition":"One or more dead individuals are seen.","start_date":"2019-02-05
+        00:00:00","end_date":null,"comments":null},{"definition_id":615,"dataset_id":null,"phenophase_id":533,"phenophase_name":"Dead
+        larvae","definition":"One or more dead larvae are seen.","start_date":"2019-02-05
+        00:00:00","end_date":null,"comments":null},{"definition_id":616,"dataset_id":null,"phenophase_id":316,"phenophase_name":"Dead
+        nestlings or fledglings","definition":"One ore more dead nestlings or young
+        are seen.","start_date":"2019-02-05 00:00:00","end_date":null,"comments":null},{"definition_id":617,"dataset_id":null,"phenophase_id":451,"phenophase_name":"Dead
+        nymphs","definition":"One or more dead nymphs are seen.","start_date":"2019-02-05
+        00:00:00","end_date":null,"comments":null},{"definition_id":618,"dataset_id":null,"phenophase_id":331,"phenophase_name":"Egg
+        laying","definition":"A female is seen laying eggs on a plant or other surface.
+        If possible, record the name of the plant or describe it in the comments field.","start_date":"2020-02-17
+        00:00:00","end_date":null,"comments":null},{"definition_id":619,"dataset_id":null,"phenophase_id":529,"phenophase_name":"Recent
+        egg laying","definition":"A female is seen depositing eggs, or evidence of
+        recent egg laying is seen on a plant or other surface. If possible, record
+        the name of the plant or describe it in the comments field.","start_date":"2020-02-17
+        00:00:00","end_date":null,"comments":null},{"definition_id":620,"dataset_id":null,"phenophase_id":531,"phenophase_name":"Eggs","definition":"One
+        or more eggs are seen on a plant or other surface. If possible, record the
+        name of the plant or describe it in the comments field.","start_date":"2020-02-17
+        00:00:00","end_date":null,"comments":null},{"definition_id":621,"dataset_id":null,"phenophase_id":548,"phenophase_name":"Egg
+        laying","definition":"A female is seen laying eggs on or below the soil surface.","start_date":"1970-01-01
+        00:00:00","end_date":null,"comments":null},{"definition_id":622,"dataset_id":null,"phenophase_id":471,"phenophase_name":"Falling
+        leaves","definition":"One or more leaves with typical late-season color, or
+        yellow or brown due to other stresses, are falling or have recently fallen
+        from the plant. Do not include fully dried or dead leaves that remain on the
+        plant for many days before falling.","start_date":"2021-02-01 00:00:00","end_date":null,"comments":null},{"definition_id":623,"dataset_id":null,"phenophase_id":327,"phenophase_name":"Adults","definition":"One
+        or more adults are seen or heard moving about or at rest.","start_date":"2021-02-01
+        00:00:00","end_date":null,"comments":null},{"definition_id":624,"dataset_id":null,"phenophase_id":333,"phenophase_name":"Caterpillars","definition":"One
+        or more caterpillars (larvae) are seen moving about or at rest. When seen
+        on a plant, if possible, record the name of the plant or describe it in the
+        comments field.","start_date":"2021-02-01 00:00:00","end_date":null,"comments":null},{"definition_id":625,"dataset_id":null,"phenophase_id":546,"phenophase_name":"Crawlers","definition":"One
+        or more crawlers are seen moving about or at rest.","start_date":"2021-02-01
+        00:00:00","end_date":null,"comments":null},{"definition_id":626,"dataset_id":null,"phenophase_id":292,"phenophase_name":"Live
+        individuals","definition":"One or more individuals are seen or heard moving
+        about or at rest.","start_date":"2021-02-01 00:00:00","end_date":null,"comments":null},{"definition_id":627,"dataset_id":null,"phenophase_id":367,"phenophase_name":"Larvae","definition":"One
+        or more larvae are seen moving about or at rest.","start_date":"2021-02-01
+        00:00:00","end_date":null,"comments":null},{"definition_id":628,"dataset_id":null,"phenophase_id":449,"phenophase_name":"Nymphs","definition":"One
+        or more nymphs are seen moving about or at rest.","start_date":"2021-02-01
+        00:00:00","end_date":null,"comments":null},{"definition_id":629,"dataset_id":null,"phenophase_id":507,"phenophase_name":"Subadults","definition":"One
+        or more subadults are seen moving about or at rest.","start_date":"2021-02-01
+        00:00:00","end_date":null,"comments":null},{"definition_id":630,"dataset_id":null,"phenophase_id":544,"phenophase_name":"Dormant
+        nymphs","definition":"One or more nymphs are seen in a dormant state.","start_date":"2021-02-01
+        00:00:00","end_date":null,"comments":null},{"definition_id":631,"dataset_id":null,"phenophase_id":472,"phenophase_name":"Falling
+        needles","definition":"One or more needles with typical late-season color,
+        or yellow or brown due to other stresses, are falling or have recently fallen
+        from the plant. Do not include fully dried or dead needles that remain on
+        the plant for many days before falling.","start_date":"2022-03-10 00:00:00","end_date":null,"comments":null},{"definition_id":632,"dataset_id":null,"phenophase_id":371,"phenophase_name":"Breaking
+        leaf buds","definition":"One or more breaking leaf buds are visible on the
+        plant. A leaf bud is considered \"breaking\" once a green leaf tip is visible
+        at the end of the bud, but before the first leaf from the bud has unfolded
+        to expose the leaf base at its point of attachment to the leaf stalk (petiole)
+        or stem.","start_date":"2022-03-10 00:00:00","end_date":null,"comments":null},{"definition_id":633,"dataset_id":null,"phenophase_id":483,"phenophase_name":"Leaves","definition":"One
+        or more live, unfolded leaves are visible on the plant. A leaf is considered
+        \"unfolded\" once its entire length has emerged from a breaking bud, stem
+        node or growing stem tip, so that the leaf base is visible at its point of
+        attachment to the leaf stalk (petiole) or stem. Do not include fully dried
+        or dead leaves.","start_date":"2022-03-10 00:00:00","end_date":null,"comments":null},{"definition_id":634,"dataset_id":null,"phenophase_id":484,"phenophase_name":"Young
+        leaves","definition":"One or more young, unfolded leaves are visible on the
+        plant. A leaf is considered \"young\" and \"unfolded\" once its entire length
+        has emerged from a breaking bud, stem node or growing stem tip, so that the
+        leaf base is visible at its point of attachment to the leaf stalk (petiole)
+        or stem, but before the leaf has reached full size or turned the darker green
+        color or tougher texture of mature leaves on the plant. Do not include fully
+        dried or dead leaves.","start_date":"2022-03-10 00:00:00","end_date":null,"comments":null},{"definition_id":635,"dataset_id":null,"phenophase_id":549,"phenophase_name":"Mating","definition":"A
+        male and female are seen coupled in a mating position, usually one on top
+        of the other or end to end.","start_date":"1970-01-01 00:00:00","end_date":null,"comments":null}]'
+  recorded_at: 2025-07-29 22:16:47
+recorded_with: VCR-vcr/2.0.0
