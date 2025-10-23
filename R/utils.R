@@ -56,4 +56,22 @@ validate_mmdd <- function(x) {
   }
 }
 
+#' Bind rows and *then* figure out column types
+#'
+#' Binds rows of dataframes safely by first converting all columns to character,
+#' then binding, then parsing column types based on combined data. Should
+#' probably be used sparingly, as there may be unwanted side affects from
+#' converting to character and then re-parsing.
+#'
+#' @param ... Data frames to combine.
+#' @param .id Passed to [dplyr::bind_rows()].
+#' @noRd
+bind_rows_safe <- function(..., .id = NULL) {
+  dots <- rlang::dots_list(..., .named = TRUE)
 
+  df_list <- lapply(dots, function(x) {
+    x %>% dplyr::mutate(dplyr::across(dplyr::everything(), as.character))
+  })
+  dplyr::bind_rows(df_list, .id = .id) %>%
+    dplyr::mutate(dplyr::across(dplyr::everything(), readr::parse_guess))
+}
