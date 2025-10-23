@@ -1,5 +1,7 @@
 # rnpn (development version)
 
+* Reverts required R version from ≥ 4.1.0 to ≥ 3.5.0.
+
 # rnpn 1.4.1
 
 * -9999 is now converted to `NA` for all columns in data returned by `npn_download_*()` functions (#119, #121).

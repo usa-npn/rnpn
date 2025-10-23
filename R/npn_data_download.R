@@ -907,7 +907,7 @@ npn_get_data <- function(
       dplyr::mutate(
         dplyr::across(
           #numeric columns except datetimes
-          c(dplyr::where(\(x) is.double(x)), -dplyr::matches("update_datetime")),
+          c(dplyr::where(is.double), -dplyr::matches("update_datetime")),
           function(x) dplyr::if_else(x == -9999, NA_real_, x)
         ),
         dplyr::across(
