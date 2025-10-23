@@ -1,0 +1,40 @@
+http_interactions:
+- request:
+    method: GET
+    uri: https://services.usanpn.org/npn_portal/phenophases/getPhenophaseDetails.json?ids=56
+  response:
+    status: 200
+    headers:
+      date: Tue, 29 Jul 2025 22:17:07 GMT
+      content-type: application/json
+      content-length: '164'
+      server: Apache/2.4.62 () PHP/5.5.38
+      x-powered-by: PHP/5.5.38
+      access-control-allow-origin: '*'
+      access-control-allow-headers: origin, x-requested-with, content-type
+      access-control-allow-methods: PUT, GET, POST, DELETE, OPTIONS
+    body:
+      string: '[{"phenophase_id":56,"phenophase_description":"First leaf (3 locations)","definition_ids":"''56''","phenophase_names":"First
+        leaf","phenophase_revision_comments":""}]'
+  recorded_at: 2025-07-29 22:17:07
+- request:
+    method: GET
+    uri: https://services.usanpn.org/npn_portal/phenophases/getPhenophaseDetails.json?ids=56%2C57
+  response:
+    status: 200
+    headers:
+      date: Tue, 29 Jul 2025 22:17:07 GMT
+      content-type: application/json
+      content-length: '339'
+      server: Apache/2.4.62 () PHP/5.5.38
+      x-powered-by: PHP/5.5.38
+      access-control-allow-origin: '*'
+      access-control-allow-headers: origin, x-requested-with, content-type
+      access-control-allow-methods: PUT, GET, POST, DELETE, OPTIONS
+    body:
+      string: '[{"phenophase_id":56,"phenophase_description":"First leaf (3 locations)","definition_ids":"''56''","phenophase_names":"First
+        leaf","phenophase_revision_comments":""},{"phenophase_id":57,"phenophase_description":"75%
+        leaf elongation (trees)","definition_ids":"''57''","phenophase_names":"75%
+        leaf elongation","phenophase_revision_comments":""}]'
+  recorded_at: 2025-07-29 22:17:07
+recorded_with: VCR-vcr/2.0.0

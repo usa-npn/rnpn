@@ -1,6 +1,6 @@
 Package: rnpn
 Title: Interface to the National 'Phenology' Network 'API'
-Version: 1.4.0.9000
+Version: 1.4.1.9000
 Authors@R: c(
     person("Jeff", "Switzer", , "jeff@usanpn.org", role = c("aut", "cre")),
     person("Scott", "Chamberlain", role = "aut"),
@@ -17,7 +17,7 @@ License: MIT + file LICENSE
 URL: https://github.com/usa-npn/rnpn, http://usa-npn.github.io/rnpn/
 BugReports: https://github.com/usa-npn/rnpn/issues
 Depends: 
-    R (>= 3.5.0)
+    R (>= 4.1.0)
 Imports:
     dplyr,
     httr2 (>= 1.1.0),
@@ -38,7 +38,7 @@ Suggests:
     sf,
     terra,
     testthat (>= 3.0.0),
-    vcr,
+    vcr (>= 2.0.0),
     withr
 VignetteBuilder: 
     knitr
