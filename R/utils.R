@@ -68,7 +68,8 @@ validate_mmdd <- function(x) {
 #' @noRd
 bind_rows_safe <- function(..., .id = NULL) {
   dots <- rlang::dots_list(..., .named = TRUE)
-  df_list <- purrr::map(dots, function(x) {
+
+  df_list <- lapply(dots, function(x) {
     x %>% dplyr::mutate(dplyr::across(dplyr::everything(), as.character))
   })
   dplyr::bind_rows(df_list, .id = .id) %>%
