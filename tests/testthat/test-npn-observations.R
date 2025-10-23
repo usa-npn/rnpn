@@ -39,7 +39,7 @@ test_that("npn_download_status_data() works", {
   })
   expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 1000)
-  expect_type(some_data$species_id, "integer")
+  expect_type(some_data$species_id, "double")
 
   skip_on_cran()
   skip_if_not(check_service(), "Service is down")
@@ -55,13 +55,8 @@ test_that("npn_download_status_data() works", {
   expect_equal(some_data[1, ]$species_id, 6)
   expect_true(file.exists(some_data_file))
   expect_equal(
-    read.csv(some_data_file) %>%
-      tibble::as_tibble() %>%
-      dplyr::arrange(observation_id, observation_date) %>%
-      dplyr::mutate(
-        update_datetime = as.POSIXct(update_datetime, tz = "UTC"),
-        abundance_value = as.character(abundance_value)
-      ),
+    readr::read_csv(some_data_file) %>%
+      dplyr::arrange(observation_id, observation_date),
     some_data
   )
 })
