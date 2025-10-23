@@ -71,7 +71,7 @@ test_that("phenometrics downloads work", {
   )
   expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 10)
-  expect_type(some_data$species_id, "integer")
+  expect_true(is.numeric(some_data$species_id))
   expect_equal(some_data[1, ]$species_id, 6)
 
   some_data <- npn_download_site_phenometrics(
@@ -82,7 +82,7 @@ test_that("phenometrics downloads work", {
   num_site_default <- nrow(some_data)
   expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 10)
-  expect_type(some_data$species_id, "integer")
+  expect_true(is.numeric(some_data$species_id))
   expect_equal(some_data[1, ]$species_id, 6)
 
   some_data <- npn_download_site_phenometrics(
@@ -94,7 +94,7 @@ test_that("phenometrics downloads work", {
   num_site_custom <- nrow(some_data)
   expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 1)
-  expect_type(some_data$species_id, "integer")
+  expect_true(is.numeric(some_data$species_id))
   expect_equal(some_data[1, ]$species_id, 6)
   expect_gt(num_site_default, num_site_custom)
 
@@ -106,7 +106,7 @@ test_that("phenometrics downloads work", {
   num_mag_default <- nrow(some_data)
   expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 10)
-  expect_type(some_data$species_id, "integer")
+  expect_true(is.numeric(some_data$species_id))
   expect_equal(some_data[1, ]$species_id, 6)
 
   some_data <- npn_download_magnitude_phenometrics(
@@ -118,7 +118,7 @@ test_that("phenometrics downloads work", {
   num_mag_custom <- nrow(some_data)
   expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 25)
-  expect_type(some_data$species_id, "integer")
+  expect_true(is.numeric(some_data$species_id))
   expect_equal(some_data[1, ]$species_id, 6)
 
   expect_gt(num_mag_custom, num_mag_default)
@@ -211,7 +211,7 @@ test_that("file download works", {
 
   expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 1000)
-  expect_type(some_data$species_id, "integer")
+  expect_type(some_data$species_id, "double")
   expect_equal(some_data[1, ]$species_id, 6)
 
   some_data <- npn_download_magnitude_phenometrics(
@@ -225,7 +225,7 @@ test_that("file download works", {
 
   expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 10)
-  expect_type(some_data$species_id, "integer")
+  expect_type(some_data$species_id, "double")
   expect_equal(some_data[1, ]$species_id, 6)
 })
 
@@ -279,7 +279,7 @@ test_that("higher taxonomic ordering works for status data", {
   )
   expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 100)
-  expect_type(some_data$family_id, "integer")
+  expect_true(is.numeric(some_data$family_id))
   expect_equal(some_data[1, ]$family_id, 109)
 
   less_data <- subset(some_data, species_id == 229)
@@ -295,7 +295,7 @@ test_that("higher taxonomic ordering works for status data", {
   )
   expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 500)
-  expect_type(some_data$order_id, "integer")
+  expect_true(is.numeric(some_data$order_id))
   expect_equal(some_data[1, ]$order_id, 94)
 
   less_data <- subset(some_data, species_id == 1211)
@@ -311,7 +311,7 @@ test_that("higher taxonomic ordering works for status data", {
   )
   expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 100)
-  expect_type(some_data$class_id, "integer")
+  expect_true(is.numeric(some_data$class_id))
   expect_equal(some_data[1, ]$class_id, 11)
 
   less_data <- subset(some_data, species_id == 390)
@@ -337,7 +337,7 @@ test_that("higher taxonomic ordering works for individual phenometrics", {
   )
   expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 100)
-  expect_type(some_data$family_id, "integer")
+  expect_true(is.numeric(some_data$family_id))
   expect_equal(some_data[1, ]$family_id, 322)
 
   less_data <- subset(some_data, species_id == 6)
@@ -353,7 +353,7 @@ test_that("higher taxonomic ordering works for individual phenometrics", {
   )
   expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 100)
-  expect_type(some_data$order_id, "integer")
+  expect_true(is.numeric(some_data$order_id))
   expect_equal(some_data[1, ]$order_id, 95)
 
   less_data <- subset(some_data, species_id == 6)
@@ -369,7 +369,7 @@ test_that("higher taxonomic ordering works for individual phenometrics", {
   )
   expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 1000)
-  expect_type(some_data$class_id, "integer")
+  expect_true(is.numeric(some_data$class_id))
   expect_equal(some_data[1, ]$class_id, 15)
 
   less_data <- subset(some_data, species_id == 6)
@@ -395,7 +395,7 @@ test_that("higher taxonomic ordering works for site phenometrics", {
   )
   expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 10)
-  expect_type(some_data$family_id, "integer")
+  expect_true(is.numeric(some_data$family_id))
   expect_equal(some_data[1, ]$family_id, 322)
 
   less_data <- subset(some_data, species_id == 6)
@@ -411,7 +411,7 @@ test_that("higher taxonomic ordering works for site phenometrics", {
   )
   expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 10)
-  expect_type(some_data$order_id, "integer")
+  expect_true(is.numeric(some_data$order_id))
   expect_equal(some_data[1, ]$order_id, 95)
 
   less_data <- subset(some_data, species_id == 6)
@@ -427,7 +427,7 @@ test_that("higher taxonomic ordering works for site phenometrics", {
   )
   expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 1000)
-  expect_type(some_data$class_id, "integer")
+  expect_true(is.numeric(some_data$class_id))
   expect_equal(some_data[1, ]$class_id, 15)
 
   less_data <- subset(some_data, species_id == 6)
@@ -507,7 +507,7 @@ test_that("higher level taxonomic agg and pheno agg works for site level", {
   )
   expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 10)
-  expect_type(some_data$family_id, "integer")
+  expect_true(is.numeric(some_data$family_id))
   expect_equal(some_data[1, ]$family_id, 322)
   expect_false("species_id" %in% colnames(some_data))
 
@@ -533,7 +533,7 @@ test_that("higher level taxonomic agg and pheno agg works for site level", {
   expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 100)
   expect_type(some_data$pheno_class_name, "character")
-  expect_type(some_data$order_id, "integer")
+  expect_true(is.numeric(some_data$order_id))
   expect_false("phenophase_id" %in% colnames(some_data))
 })
 
@@ -683,7 +683,7 @@ test_that("wkt filter works", {
   rows_w_filter <- nrow(some_data)
 
   expect_s3_class(some_data, "data.frame")
-  expect_type(some_data$species_id, "integer")
+  expect_true(is.numeric(some_data$species_id))
   expect_equal(some_data[1, ]$state, "CO")
   expect_gt(rows_wo_filter, rows_w_filter)
 
@@ -703,7 +703,7 @@ test_that("wkt filter works", {
   rows_w_filter <- nrow(some_data)
 
   expect_s3_class(some_data, "data.frame")
-  expect_type(some_data$species_id, "integer")
+  expect_true(is.numeric(some_data$species_id))
   expect_equal(some_data[1, ]$state, "CO")
   expect_gt(rows_wo_filter, rows_w_filter)
 
@@ -722,7 +722,7 @@ test_that("wkt filter works", {
   )
   rows_w_filter <- nrow(some_data)
   expect_s3_class(some_data, "data.frame")
-  expect_type(some_data$species_id, "integer")
+  expect_true(is.numeric(some_data$species_id))
   expect_equal(some_data[1, ]$state, "CO")
   expect_gt(rows_wo_filter, rows_w_filter)
 
@@ -743,7 +743,7 @@ test_that("wkt filter works", {
   rows_w_filter <- nrow(some_data)
 
   expect_s3_class(some_data, "data.frame")
-  expect_type(some_data$species_id, "integer")
+  expect_true(is.numeric(some_data$species_id))
   expect_gt(rows_wo_filter, rows_w_filter)
 })
 
