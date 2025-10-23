@@ -34,7 +34,8 @@ test_that("npn_download_status_data() works", {
       request_source = "Unit Test",
       years = 2013,
       species_ids = c(6)
-    )
+    ) %>%
+      dplyr::arrange(observation_id, observation_date)
   })
   expect_s3_class(some_data, "data.frame")
   expect_gt(nrow(some_data), 1000)
@@ -56,6 +57,7 @@ test_that("npn_download_status_data() works", {
   expect_equal(
     read.csv(some_data_file) %>%
       tibble::as_tibble() %>%
+      dplyr::arrange(observation_id, observation_date) %>%
       dplyr::mutate(
         update_datetime = as.POSIXct(update_datetime, tz = "UTC"),
         abundance_value = as.character(abundance_value)
