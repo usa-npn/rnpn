@@ -700,7 +700,7 @@ npn_get_data_by_year <- function(
 
       # TODO: perhaps instead of using npn_get_data() in a loop, a better option
       # might be to construct a list of requests and then perform them
-      # iteratively or in parallel with req_perform_iterative() ro
+      # sequentially or in parallel with req_perform_sequential() or
       # req_perform_parallel(). Then the same wrangling could be applied to one
       # year or a collection of years of data either in memory or streaming from
       # ndjson saved to a temporarly file on disk
@@ -725,9 +725,9 @@ npn_get_data_by_year <- function(
       if (!is.null(data) && is.null(download_path)) {
         first_year <- FALSE
         if (!is.null(all_data)) {
-          all_data <- dplyr::bind_rows(all_data, data)
+          all_data <- bind_rows_safe(all_data, data)
         } else {
-          all_data <- data
+          all_data <- bind_rows_safe(data)
         }
       }
       if (!is.null(data) && !is.null(download_path) && file.exists(data)) {
@@ -812,31 +812,8 @@ npn_get_data <- function(
             x <- dplyr::if_else(x == -9999, NA, x)
             as.POSIXct(x, tz = "UTC")
           }
-        ),
-        dplyr::across(
-          dplyr::any_of(c(
-            "partner_group",
-            "species_category",
-            "lifecycle_duration",
-            "growth_habit",
-            "usda_plants_symbol",
-            "observers_status_conflict_flag",
-            "dataset_id",
-            "intensity_value",
-            "observation_comments",
-            "status_conflict_related_records",
-            "multiple_firsty_individual_ids",
-            "observer_status_conflict_flag_individual_ids",
-            "in-phase_search_method",
-            "in-phase_per_hr_search",
-            "state",
-            #sometimes get parsed as numeric:
-            "intensity_value",
-            "abundance_value"
-          )),
-          as.character
         )
-      ) 
+      )
 
     # Reconcile all the points in the frame with the SIX leaf raster,
     # if it's been requested.
