@@ -1,6 +1,6 @@
 Package: rnpn
-Title: Interface to the National 'Phenology' Network 'API'
-Version: 1.4.1.9000
+Title: Interface to the USA National 'Phenology' Network 'API'
+Version: 1.4.2
 Authors@R: c(
     person("Jeff", "Switzer", , "jeff@usanpn.org", role = c("aut", "cre")),
     person("Scott", "Chamberlain", role = "aut"),
@@ -10,7 +10,7 @@ Authors@R: c(
     person("David", "LeBauer", role = "ctb")
   )
 Description: Programmatic interface to the Web Service methods provided by
-    the National 'Phenology' Network (<https://usanpn.org/>), which
+    the USA National 'Phenology' Network (<https://usanpn.org/>), which
     includes data on various life history events that occur at specific
     times.
 License: MIT + file LICENSE

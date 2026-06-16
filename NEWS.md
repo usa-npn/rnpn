@@ -1,4 +1,4 @@
-# rnpn (development version)
+# rnpn 1.4.2
 
 # rnpn 1.4.1
 
