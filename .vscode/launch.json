@@ -1,0 +1,69 @@
+{
+  "version": "0.2.0",
+
+  // NOTE ON PACKAGE DEBUGGING:
+  // `debuggedPackages` is for packages that are INSTALLED (from source, with
+  // --with-keep.source). rnpn is not installed here -- we develop it from
+  // source -- so that option would fail with "package not found".
+  //
+  // The right knob for a source package is `loadPackages`, which takes PATHS
+  // and loads them with pkgload::load_all(). Because `overwriteLoadAll` is
+  // true by default, the debugger masks load_all() with a version that
+  // installs breakpoints into the loaded package as it goes. That is what
+  // makes gutter breakpoints inside R/*.R actually fire.
+
+  "configurations": [
+    {
+      // THE ONE YOU WANT MOST OF THE TIME.
+      // Starts an R session in the package root with rnpn load_all()'d and
+      // breakpoints live inside rnpn's own functions. You get a prompt in the
+      // Debug Console: type any call, it stops at your breakpoints.
+      //
+      // Tip: in workspace mode the CALL STACK shows one dummy frame. Click it
+      // to make the VARIABLES pane show the global environment.
+      "name": "R: Workspace (rnpn loaded)",
+      "type": "R-Debugger",
+      "request": "launch",
+      "debugMode": "workspace",
+      "workingDirectory": "${workspaceFolder}",
+      "allowGlobalDebugging": true,
+      "loadPackages": ["${workspaceFolder}"],
+      "overwriteLoadAll": true,
+      // flip to true to list rnpn's exported objects in the VARIABLES pane
+      "includePackageScopes": false
+    },
+    {
+      // Runs dev/harness.R top-to-bottom under the debugger, then leaves the
+      // session open so you can keep typing in the Debug Console.
+      "name": "R: Run harness.R",
+      "type": "R-Debugger",
+      "request": "launch",
+      "debugMode": "file",
+      "file": "${workspaceFolder}/dev/harness.R",
+      "workingDirectory": "${workspaceFolder}",
+      "allowGlobalDebugging": true,
+      "loadPackages": ["${workspaceFolder}"],
+      "overwriteLoadAll": true
+    },
+    {
+      // Runs whatever .R file is focused in the editor.
+      "name": "R: Debug current file",
+      "type": "R-Debugger",
+      "request": "launch",
+      "debugMode": "file",
+      "file": "${file}",
+      "workingDirectory": "${workspaceFolder}",
+      "allowGlobalDebugging": true,
+      "loadPackages": ["${workspaceFolder}"],
+      "overwriteLoadAll": true
+    },
+    {
+      // Attach to an R session you started yourself in a terminal.
+      // In that session run:  vscDebugger::.vsc.listenForDAP()
+      "name": "R: Attach",
+      "type": "R-Debugger",
+      "request": "attach",
+      "splitOverwrittenOutput": true
+    }
+  ]
+}
