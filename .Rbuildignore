@@ -27,3 +27,5 @@ notes/
 ^CONTRIBUTING\.md$
 .vscode/
 ^dev$
+^design$
+^output\.(sql|tsv)$

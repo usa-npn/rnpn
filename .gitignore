@@ -13,3 +13,5 @@ docs
 notes/*.tiff
 nohup.out
 .vscode/settings.json
+dev/
+.vscode/launch.json
