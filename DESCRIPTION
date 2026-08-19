@@ -31,6 +31,9 @@ Imports:
     xml2
 Suggests:
     covr,
+    DBI,
+    dbplyr,
+    duckdb,
     ggplot2,
     knitr,
     markdown,
@@ -45,5 +48,5 @@ VignetteBuilder:
     knitr
 Config/testthat/edition: 3
 Encoding: UTF-8
-RoxygenNote: 7.3.2
 Roxygen: list(markdown = TRUE)
+Config/roxygen2/version: 8.0.0

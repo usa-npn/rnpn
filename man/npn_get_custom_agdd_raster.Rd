@@ -37,7 +37,7 @@ method. This sets the highest temperature to be considered in any given
 day's AGDD calculation.}
 }
 \value{
-A \link[terra:SpatRaster-class]{terra::SpatRaster} object of each calculated AGDD numeric values
+A \link[terra:SpatRaster]{terra::SpatRaster} object of each calculated AGDD numeric values
 based on specified time period/method/base temp/data source.
 }
 \description{

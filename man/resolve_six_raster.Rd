@@ -16,7 +16,7 @@ defaults to \code{'leaf'}.}
 sub-model).}
 }
 \value{
-Returns a \link[terra:SpatRaster-class]{terra::SpatRaster} object of the appropriate SI-x layer.
+Returns a \link[terra:SpatRaster]{terra::SpatRaster} object of the appropriate SI-x layer.
 }
 \description{
 Utility function used to resolve the appropriate SI-x layer to use based on

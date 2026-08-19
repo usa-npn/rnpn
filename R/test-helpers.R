@@ -12,6 +12,25 @@ check_service <- function() {
   !httr2::resp_is_error(resp)
 }
 
+#' Runs a basic check to see if a valid response is returned by the NPN data
+#' service that backs the async exports and returns TRUE/FALSE. This is a
+#' different host from the NPN Portal, so `check_service()` does not cover it.
+#' Used in unit tests to determine if tests should be run
+#' @returns `TRUE` if service is up, `FALSE` if service is down
+#' @noRd
+check_data_service <- function() {
+  tryCatch(
+    {
+      resp <- tb_base_req() %>%
+        httr2::req_url_path_append("v1/data/token") %>%
+        httr2::req_error(is_error = function(resp) FALSE) %>%
+        httr2::req_perform()
+      !httr2::resp_is_error(resp)
+    },
+    error = function(e) FALSE
+  )
+}
+
 #' Runs a basic check to see if a valid response is returned by Geoserver and
 #' returns TRUE/FALSE. Used in unit tests to determine if tests should be run
 #'

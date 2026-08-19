@@ -1,0 +1,212 @@
+---
+title: "IX. Large Downloads (Experimental)"
+author: "Lee Marsh"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteEngine{knitr::knitr}
+  %\VignetteIndexEntry{09. Large Downloads (Experimental)}
+  %\usepackage[UTF-8]{inputenc}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(rnpn)
+```
+
+# Large downloads
+
+`npn_export_status_data()` is an experimental alternative to
+`npn_download_status_data()`. It talks to a newer service that builds your
+download in the background instead of streaming it to you as it goes, which
+makes it much better at large requests --- a full year of every species is
+about twenty seconds of work for the server.
+
+It is a prototype. It sits alongside the existing `npn_download_*()` functions
+rather than replacing them, and its arguments may change.
+
+```{r eval=FALSE}
+obs <- npn_export_status_data(
+  start_date  = "2023-01-01",
+  end_date    = "2023-12-31",
+  species_ids = c(3, 6, 12, 61, 82, 100)
+)
+```
+
+## Dates are a span, not a list of years
+
+There is no `years` argument. Give the span you actually want:
+
+```{r eval=FALSE}
+# spring 2020, every species
+npn_export_status_data(start_date = "2020-03-01", end_date = "2020-05-31")
+```
+
+Both bounds are optional, and both accept `Date` objects or `"YYYY-MM-DD"`
+strings. Omitting them asks for everything, which is a very large request.
+
+## Choosing what you get back
+
+The `as` argument, and nothing else, decides what comes back.
+
+| `as` | you get |
+|------|---------|
+| `"data"` (default) | a tibble |
+| `"path"` | the path to the downloaded `.csv.gz` file |
+| `"lazy"` | a table you can query with dplyr without loading it |
+
+Nothing else changes the return type --- not how much data matched, not
+whether the download was already cached. A call that asks for a tibble either
+returns a tibble or raises an error.
+
+### `as = "path"`
+
+Useful when you want the file itself, or when the result is too big to want in
+memory at all. Nothing is read or parsed.
+
+```{r eval=FALSE}
+f <- npn_export_status_data(
+  start_date  = "2023-01-01",
+  end_date    = "2023-12-31",
+  species_ids = 3,
+  as          = "path"
+)
+```
+
+### `as = "lazy"`
+
+A lazy table lets you use dplyr verbs on data that stays on disk. Only the
+answer comes back into R, when you call `collect()`:
+
+```{r eval=FALSE}
+library(dplyr)
+
+d <- npn_export_status_data(
+  start_date  = "2023-01-01",
+  end_date    = "2023-12-31",
+  species_ids = c(3, 6, 12, 61, 82, 100),
+  as          = "lazy"
+)
+
+# how many distinct individuals of each species are monitored in each state?
+by_state <- d %>%
+  group_by(state, common_name) %>%
+  summarise(n_individuals = n_distinct(individual_id), .groups = "drop")
+
+by_state %>%
+  group_by(common_name) %>%
+  summarise(
+    states        = n(),
+    avg_per_state = round(mean(n_individuals), 1),
+    total         = sum(n_individuals)
+  ) %>%
+  arrange(desc(avg_per_state)) %>%
+  collect()                      # <- nothing moves until here
+```
+
+This requires the `duckdb` and `dbplyr` packages. They are checked for before
+the download is submitted, so you find out immediately rather than after a long
+wait.
+
+### Reading without duckdb
+
+`as = "data"` uses duckdb to parse the download, because it is considerably
+faster on large files. If you would rather not use it --- it is a large package,
+and it loads a multi-threaded C++ library that does not always play well with
+debuggers --- you can switch to a pure-R reader:
+
+```{r eval=FALSE}
+options(rnpn.engine = "readr")
+```
+
+You get the same tibble, with the same columns and the same types; it is just
+slower on large files. Nothing else changes, and duckdb is then never loaded at
+all. `as = "lazy"` still needs duckdb, since a lazy table *is* a database
+connection.
+
+**A lazy table cannot be saved and reopened later.** It is a live connection to
+a file, not data, so `saveRDS()` produces something that reloads and then errors
+with `Invalid connection`. This is how dplyr behaves against every database
+backend. To keep results, either `collect()` into a tibble first or use
+`as = "path"` and keep the file.
+
+## Keeping a copy of the file
+
+`file_path` is independent of `as`. It says *where the download is kept*, not
+*what you get back*, so you can ask for both:
+
+```{r eval=FALSE}
+obs <- npn_export_status_data(
+  start_date  = "2023-01-01",
+  end_date    = "2023-12-31",
+  species_ids = 3,
+  file_path   = "~/project/status-2023.csv.gz"
+)
+```
+
+The file is a gzipped CSV, so name it `.csv.gz`. Note that it contains two
+extra columns, `request_id` and `product`, that are dropped from the tibble;
+they identify the download rather than describing an observation.
+
+## Very large requests
+
+When you ask for a tibble, the number of matching records is checked first, and
+you get a warning if the result is unlikely to fit comfortably in memory:
+
+```
+This query matches 19,263,424 records — about 3.2 GB as a tibble, and roughly
+6.0 GB while dplyr works on it. That may exceed available memory. Consider
+as = "path" to download without loading, as = "lazy" to query it in place, or
+narrowing your filters.
+```
+
+It is only a warning. Your download proceeds either way, and if the check
+cannot be made it is skipped silently.
+
+## Long jobs
+
+A call waits up to `timeout` seconds (300 by default). Running out of time is
+an error, but it does not cancel anything --- the server keeps working, and the
+error tells you how to come back for the result:
+
+```
+Error: Job did not finish within 300s.
+i It has not failed — the server is still working on it.
+i Collect it later with: npn_get_job("49e2e7a8-...")
+```
+
+You can also choose not to wait at all:
+
+```{r eval=FALSE}
+job <- npn_export_status_data(start_date = "2020-01-01", wait = FALSE)
+
+# ...later, in the same session or a different one
+obs <- npn_get_job(job)
+```
+
+Results stay available on the server for about a week.
+
+## Repeated queries
+
+Downloads are cached, so re-running a script does not re-download the same data
+or re-queue the same job. Two calls with the same filters produce the same
+result even if the filters are written in a different order.
+
+The cache lives in the session's temporary directory and disappears when R
+exits. To keep it across sessions, point it somewhere durable:
+
+```{r eval=FALSE}
+options(rnpn.cache_dir = "~/npn-cache")
+```
+
+Cached files are reused for a day. To force a fresh download, pass
+`refresh = TRUE`; to empty the cache, call `npn_cache_clear()`.
+
+## A note on empty results
+
+A filter *value* the service does not recognize returns zero rows rather than
+an error --- a misspelled phenophase category gives you an empty tibble that
+looks exactly like a query which genuinely matched nothing. Many legitimate
+searches do return nothing, so an empty result is not by itself evidence of a
+mistake. Column types are the same either way, so code that works on a full
+result also works on an empty one.

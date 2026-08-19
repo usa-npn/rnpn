@@ -1,5 +1,26 @@
 # rnpn (development version)
 
+## New features
+
+* Experimental `npn_export_status_data()` downloads status and intensity data
+  through the new asynchronous export service. It takes a `start_date`/`end_date`
+  span rather than `years`, and its `as` argument returns a tibble
+  (`"data"`), a file path (`"path"`), or a lazy duckdb-backed table (`"lazy"`)
+  that can be queried with dplyr without loading the data into memory. `duckdb`
+  and `dbplyr` are needed only for `"data"` and `"lazy"`, and are checked for
+  before a download is submitted. See `vignette("IX_async_exports")`.
+* `npn_get_job()` collects an export submitted earlier with `wait = FALSE`, or
+  one whose call timed out. Timing out does not cancel the job.
+* `npn_cache_clear()` empties the download cache. The cache lives in the session
+  temp directory by default; set `options(rnpn.cache_dir = )` to keep downloads
+  across sessions.
+* `options(rnpn.engine = "readr")` parses downloads with readr instead of
+  duckdb, returning the same tibble without loading duckdb at all. Useful when
+  duckdb is unavailable or unwelcome, such as under a debugger, where its
+  native lock can deadlock. `as = "lazy"` still requires duckdb.
+
+The existing `npn_download_*()` functions are unchanged.
+
 * Reverts required R version from ≥ 4.1.0 to ≥ 3.5.0.
 
 # rnpn 1.4.1

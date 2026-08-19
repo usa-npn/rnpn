@@ -23,6 +23,7 @@ Useful links:
 
 Authors:
 \itemize{
+  \item Jeff Switzer \email{jeff@usanpn.org}
   \item Scott Chamberlain
   \item Lee Marsh
   \item Kevin Wong

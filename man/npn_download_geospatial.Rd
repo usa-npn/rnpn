@@ -27,11 +27,11 @@ from the \code{\link[=npn_get_layer_details]{npn_get_layer_details()}} function.
 
 \item{output_path}{Optional value. When set, the raster will be piped to the
 file path specified. When left unset, this function will return a
-\link[terra:SpatRaster-class]{terra::SpatRaster} object.}
+\link[terra:SpatRaster]{terra::SpatRaster} object.}
 }
 \value{
 returns nothing when \code{output_path} is set, otherwise a
-\link[terra:SpatRaster-class]{terra::SpatRaster} object meeting the \code{coverage_id}, \code{date} and \code{format}
+\link[terra:SpatRaster]{terra::SpatRaster} object meeting the \code{coverage_id}, \code{date} and \code{format}
 parameters specified.
 }
 \description{
