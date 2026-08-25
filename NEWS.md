@@ -9,8 +9,52 @@
   that can be queried with dplyr without loading the data into memory. `duckdb`
   and `dbplyr` are needed only for `"data"` and `"lazy"`, and are checked for
   before a download is submitted. See `vignette("IX_async_exports")`.
+* Experimental `npn_export_individual_phenometrics()`,
+  `npn_export_site_phenometrics()` and `npn_export_magnitude_phenometrics()`
+  download the three derived data products through the same asynchronous
+  service, with the same `as` contract, cache and job handling.
+  * `start_date` and `end_date` are **required** for all three, and are checked
+    before anything is submitted.
+  * For individual and site phenometrics the date range is decomposed by the
+    service into one window per phenological year, anchored on the **month-day**
+    of the two dates. `start_date = "2019-01-01", end_date = "2021-06-30"`
+    returns January to June of 2019, of 2020 and of 2021 — not the continuous
+    span between them. This is the legacy `period_start` / `period_end`
+    behavior arriving through the date arguments. Magnitude phenometrics is
+    never windowed.
+  * The service emits these three products' columns in legacy `PascalCase`;
+    `as = "data"` and `as = "lazy"` return them lowercased, matching the legacy
+    downloads and the vignettes. `as = "path"` hands over the raw file
+    unchanged. Magnitude's hyphenated names are preserved, as in the legacy
+    download, and need backticks: ``df$`total_numanimals_in-phase` ``. The
+    lowercased names were verified column-for-column against a legacy download
+    of the same query, for all three products.
+  * Legacy `taxonomy_aggregate` and `pheno_class_aggregate` are superseded by
+    `taxon` and `phenophase_grain`, which name the grain rather than toggling
+    it; `period_frequency` is now `frequency`. Values are validated locally,
+    because the service falls back to its default on an unrecognized one rather
+    than erroring.
+  * The geospatial arguments of the legacy functions (`six_leaf_layer`,
+    `agdd_layer`, `additional_layers`, `wkt`) have no equivalent here.
+* `vignette("V_magnitude_phenometrics")` referred to two columns by names the
+  service does not return (`proportion_yes_record` and
+  `mean_num_animals_in-phase`); corrected to `proportion_yes_records` and
+  `mean_numanimals_in-phase`.
 * `npn_get_job()` collects an export submitted earlier with `wait = FALSE`, or
-  one whose call timed out. Timing out does not cancel the job.
+  one whose call timed out. Timing out does not cancel the job. It works out
+  which data product a job was for on its own; the new `product` argument names
+  it for the one case that defeats that, a zero-row result collected in a
+  session that did not submit it.
+* The size warning issued for `as = "data"` now covers all four products. Only
+  status data has a count endpoint, so the other three report an estimate and
+  say so. `options(rnpn.preflight = FALSE)` switches the check off, and
+  `options(rnpn.preflight_ratios = )` corrects the ratios the estimates use.
+* Filters passed through `...` are now checked against the fields *each
+  product* accepts, rather than one shared list. Nine fields that no data
+  product forwards (`species_names`, `additionalFields`, `ancillary_data` and
+  others) are no longer accepted, since they silently did nothing. The
+  states-versus-bounding-box and all-four-coordinates rules are now checked
+  locally rather than costing a round trip.
 * `npn_cache_clear()` empties the download cache. The cache lives in the session
   temp directory by default; set `options(rnpn.cache_dir = )` to keep downloads
   across sessions.

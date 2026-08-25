@@ -82,3 +82,43 @@ plot(
 
 ```{r, echo=FALSE, out.width = "50%", fig.pos="h"}
 knitr::include_graphics("figures/individual-phenometrics.png")
+
+
+## An experimental alternative
+
+`npn_export_individual_phenometrics()` requests the same data product through
+the newer asynchronous export service, which is much better at large requests.
+It is experimental and sits alongside `npn_download_individual_phenometrics()`
+rather than replacing it; see `vignette("IX_async_exports")`.
+
+```{r eval=FALSE}
+ipm <- npn_export_individual_phenometrics(
+  start_date  = "2013-01-01",
+  end_date    = "2016-12-31",
+  species_ids = 210
+)
+```
+
+### Seasonal windows
+
+`start_date` and `end_date` are required, and they are **not** one continuous
+span. The service decomposes the range into one window per phenological year,
+anchored on the **month-day** of the two dates:
+
+```{r eval=FALSE}
+npn_export_individual_phenometrics(
+  start_date = "2019-01-01",
+  end_date   = "2021-06-30"
+)
+# returns Jan 1 - Jun 30 of 2019, of 2020, and of 2021.
+# July through December of 2019 and 2020 are NOT in the result.
+```
+
+This is what the legacy function's `period_start` / `period_end` arguments did,
+arriving through the date arguments instead of through two more of them. A
+range whose `end_date` falls no later in the year than its `start_date` wraps
+the turn of the year and must span at least a full year, or it contains no
+complete window and is an error.
+
+`npn_export_magnitude_phenometrics()` is never windowed --- do not carry this
+conclusion across to it.

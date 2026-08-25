@@ -9,7 +9,8 @@ npn_get_job(
   as = c("data", "path", "lazy"),
   file_path = NULL,
   timeout = 300,
-  refresh = FALSE
+  refresh = FALSE,
+  product = NULL
 )
 }
 \arguments{
@@ -18,6 +19,9 @@ timeout error message.}
 
 \item{as, file_path, timeout, refresh}{As documented in
 \code{\link[=npn_export_status_data]{npn_export_status_data()}}.}
+
+\item{product}{Which data product the job was for: one of \code{"status"},
+\code{"individual"}, \code{"site"} or \code{"magnitude"}. Rarely needed --- see Details.}
 }
 \value{
 A tibble, a file path, or a lazy table, according to \code{as}.
@@ -29,8 +33,16 @@ job: the server keeps building it and the result stays available for about a
 week.
 }
 \details{
-The large-query warning is not issued here. It counts the records a \emph{filter}
-matches, and a job id does not carry the filters that produced it.
+A job id does not carry its data product, and the four products have four
+sets of column types. This function works it out for itself: it remembers
+every job this session submitted, and failing that it reads the \code{product}
+column that every export carries. \code{product} is only needed when neither
+applies --- a zero-row result, collected in a session that did not submit it
+--- and the error message says so when that happens. \code{as = "path"} never
+needs it at all, since nothing is read.
+
+The large-query warning is not issued here. It describes the records a
+\emph{filter} matches, and a job id does not carry the filters that produced it.
 }
 \examples{
 \dontrun{

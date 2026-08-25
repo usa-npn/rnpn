@@ -112,13 +112,21 @@ tb_describe_cols <- function(con, source) {
 #' Unknown columns pass through untouched, which is the point: a strict list
 #' enumerating an exact set would have broken on 2026-08-14.
 #'
+#' The rename lives here rather than in R, so that three things fall out for
+#' free: the lazy path gets it too, which an R-side `names()<-` cannot reach;
+#' the persisted parquet sibling is written with the output names, so it needs
+#' no second pass; and the type lookup and the rename happen in one place,
+#' against one list of file columns.
+#'
+#' @param product The product entry. Supplies the type table and the naming
+#'   convention.
 #' @param cast Whether to apply the declared types in SQL. The eager path casts
 #'   in R through `coerce_known_cols()`; the lazy path has to cast here, because
-#'   R cannot reach into the table. Both read the same `status_col_types`.
+#'   R cannot reach into the table. Both read the same table.
 #' @noRd
 tb_select_list <- function(
   cols,
-  types = status_col_types,
+  product,
   cast = FALSE,
   exclude = character()
 ) {
@@ -126,16 +134,25 @@ tb_select_list <- function(
   if (length(cols) == 0) {
     return("*")
   }
+  types <- product$col_types
+  out <- tb_output_names(cols, product)
+
   parts <- vapply(
-    cols,
-    function(col) {
-      ident <- tb_sql_ident(col)
-      if (!cast || !col %in% names(types)) {
-        return(ident)
+    seq_along(cols),
+    function(i) {
+      src <- tb_sql_ident(cols[[i]])
+      dest <- tb_sql_ident(out[[i]])
+      known <- out[[i]] %in% names(types)
+      if (cast && known) {
+        paste0(
+          "CAST(", src, " AS ", tb_duckdb_types[[types[[out[[i]]]]]],
+          ") AS ", dest
+        )
+      } else if (!identical(cols[[i]], out[[i]])) {
+        paste0(src, " AS ", dest)
+      } else {
+        src
       }
-      paste0(
-        "CAST(", ident, " AS ", tb_duckdb_types[[types[[col]]]], ") AS ", ident
-      )
     },
     character(1)
   )
@@ -147,17 +164,17 @@ tb_select_list <- function(
 #' `request_id` and `product` are excluded in SQL rather than dropped
 #' afterwards, so their pointers are never allocated at all.
 #' @noRd
-tb_read_duckdb <- function(path, types = status_col_types) {
+tb_read_duckdb <- function(path, product) {
   con <- npn_duckdb_con()
   source <- tb_csv_source(path)
   cols <- tb_describe_cols(con, source)
   sql <- paste0(
     "SELECT ",
-    tb_select_list(cols, types, cast = FALSE, exclude = tb_metadata_cols),
+    tb_select_list(cols, product, cast = FALSE, exclude = tb_metadata_cols),
     " FROM ",
     source
   )
-  coerce_known_cols(DBI::dbGetQuery(con, sql), types)
+  coerce_known_cols(DBI::dbGetQuery(con, sql), product$col_types)
 }
 
 #' Convert a cached export to parquet, once
@@ -172,7 +189,7 @@ tb_read_duckdb <- function(path, types = status_col_types) {
 #' Persisted as a sibling cache entry so re-running the same lazy query in a
 #' script does not re-pay the ~3.1s conversion.
 #' @noRd
-tb_ensure_parquet <- function(csv_path, parquet_path, types = status_col_types) {
+tb_ensure_parquet <- function(csv_path, parquet_path, product) {
   if (
     file.exists(parquet_path) &&
       file.mtime(parquet_path) >= file.mtime(csv_path)
@@ -184,7 +201,7 @@ tb_ensure_parquet <- function(csv_path, parquet_path, types = status_col_types) 
   cols <- tb_describe_cols(con, source)
   sql <- paste0(
     "COPY (SELECT ",
-    tb_select_list(cols, types, cast = TRUE, exclude = tb_metadata_cols),
+    tb_select_list(cols, product, cast = TRUE, exclude = tb_metadata_cols),
     " FROM ",
     source,
     ") TO ",
@@ -200,11 +217,11 @@ tb_ensure_parquet <- function(csv_path, parquet_path, types = status_col_types) 
 #' One view per cache key, so two lazy tables from two different calls can be
 #' joined --- which is the whole reason the connection is shared.
 #' @noRd
-tb_lazy_tbl <- function(csv_path, key, types = status_col_types) {
+tb_lazy_tbl <- function(csv_path, key, product) {
   parquet_path <- tb_ensure_parquet(
     csv_path,
     tb_cache_path(key, ".parquet"),
-    types
+    product
   )
   con <- npn_duckdb_con()
   view <- tb_view_name(key)

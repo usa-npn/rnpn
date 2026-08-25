@@ -55,8 +55,8 @@ test_that("coerce_known_cols() declares types independent of the rows", {
     stringsAsFactors = FALSE
   )
 
-  a <- coerce_known_cols(populated)
-  b <- coerce_known_cols(unpopulated)
+  a <- coerce_known_cols(populated, status_col_types)
+  b <- coerce_known_cols(unpopulated, status_col_types)
 
   expect_equal(vapply(a, function(x) class(x)[1], character(1)),
                vapply(b, function(x) class(x)[1], character(1)))
@@ -75,7 +75,7 @@ test_that("coerce_known_cols() leaves unknown columns untouched", {
     something_new = "hello",
     stringsAsFactors = FALSE
   )
-  out <- coerce_known_cols(df)
+  out <- coerce_known_cols(df, status_col_types)
   expect_type(out$observation_id, "integer")
   expect_type(out$something_new, "character")
 })
@@ -86,19 +86,19 @@ test_that("coerce_known_cols() works on zero rows", {
     observation_date = character(0),
     stringsAsFactors = FALSE
   )
-  out <- coerce_known_cols(df)
+  out <- coerce_known_cols(df, status_col_types)
   expect_equal(nrow(out), 0)
   expect_type(out$observation_id, "integer")
   expect_s3_class(out$observation_date, "Date")
 })
 
 test_that("coerce_known_cols() returns a tibble", {
-  expect_s3_class(coerce_known_cols(data.frame(a = 1)), "tbl_df")
+  expect_s3_class(coerce_known_cols(data.frame(a = 1), status_col_types), "tbl_df")
 })
 
 test_that("the SELECT list casts only columns it knows", {
   cols <- c("observation_id", "mystery")
-  cast <- tb_select_list(cols, cast = TRUE)
+  cast <- tb_select_list(cols, tb_products$status, cast = TRUE)
   expect_match(cast, 'CAST\\("observation_id" AS INTEGER\\)')
   expect_match(cast, '"mystery"')
   expect_false(grepl('CAST\\("mystery"', cast))
@@ -107,6 +107,7 @@ test_that("the SELECT list casts only columns it knows", {
 test_that("the SELECT list can drop the bookkeeping columns", {
   sel <- tb_select_list(
     c("request_id", "product", "observation_id"),
+    tb_products$status,
     exclude = tb_metadata_cols
   )
   expect_equal(sel, '"observation_id"')
@@ -123,7 +124,7 @@ test_that("a real export reads with both null sentinels honored", {
   skip_if_not_installed("duckdb")
   withr::defer(npn_duckdb_reset())
 
-  out <- tb_read_data(sample_fixture())
+  out <- tb_read_data(sample_fixture(), tb_products$status)
 
   expect_s3_class(out, "tbl_df")
   expect_equal(nrow(out), 4)
@@ -148,7 +149,7 @@ test_that("bookkeeping columns are dropped from the tibble", {
   skip_if_not_installed("duckdb")
   withr::defer(npn_duckdb_reset())
 
-  out <- tb_read_data(sample_fixture())
+  out <- tb_read_data(sample_fixture(), tb_products$status)
   # constant for every row: sink bookkeeping, not data
   expect_false("request_id" %in% names(out))
   expect_false("product" %in% names(out))
@@ -158,8 +159,8 @@ test_that("an empty result has the same columns and types as a full one", {
   skip_if_not_installed("duckdb")
   withr::defer(npn_duckdb_reset())
 
-  full <- tb_read_data(sample_fixture())
-  empty <- tb_read_data(empty_fixture())
+  full <- tb_read_data(sample_fixture(), tb_products$status)
+  empty <- tb_read_data(empty_fixture(), tb_products$status)
 
   expect_equal(nrow(empty), 0)
   expect_equal(names(empty), names(full))
@@ -179,14 +180,14 @@ test_that("the lazy table is queryable and matches the eager read", {
   csv <- file.path(dir, "query-test.csv.gz")
   file.copy(sample_fixture(), csv)
 
-  lazy <- tb_lazy_tbl(csv, "query-test")
+  lazy <- tb_lazy_tbl(csv, "query-test", tb_products$status)
   expect_s3_class(lazy, "tbl_lazy")
   # the parquet sibling is persisted so a second lazy query is free
   expect_true(file.exists(tb_cache_path("query-test", ".parquet")))
 
   collected <- dplyr::collect(lazy)
   expect_equal(nrow(collected), 4)
-  expect_equal(names(collected), names(tb_read_data(csv)))
+  expect_equal(names(collected), names(tb_read_data(csv, tb_products$status)))
   expect_s3_class(collected$observation_date, "Date")
 })
 
@@ -194,7 +195,7 @@ test_that("the readr engine needs nothing installed and gives the same answer", 
   # the point of this engine: it never loads a threaded C++ library, so it works
   # where DuckDB's native lock deadlocks a debugger
   withr::local_options(rnpn.engine = "readr")
-  out <- tb_read_data(sample_fixture())
+  out <- tb_read_data(sample_fixture(), tb_products$status)
 
   expect_s3_class(out, "tbl_df")
   expect_equal(nrow(out), 4)
@@ -220,10 +221,10 @@ test_that("both engines agree, on data and on an empty result", {
 
   for (fixture in list(sample_fixture(), empty_fixture())) {
     duck <- withr::with_options(
-      list(rnpn.engine = "duckdb"), tb_read_data(fixture)
+      list(rnpn.engine = "duckdb"), tb_read_data(fixture, tb_products$status)
     )
     readr_out <- withr::with_options(
-      list(rnpn.engine = "readr"), tb_read_data(fixture)
+      list(rnpn.engine = "readr"), tb_read_data(fixture, tb_products$status)
     )
 
     expect_equal(names(readr_out), names(duck))
@@ -237,7 +238,7 @@ test_that("both engines agree, on data and on an empty result", {
 
 test_that("the engine option is validated", {
   withr::local_options(rnpn.engine = "arrow")
-  expect_error(tb_read_data(sample_fixture()), 'must be either "duckdb" or "readr"')
+  expect_error(tb_read_data(sample_fixture(), tb_products$status), 'must be either "duckdb" or "readr"')
 })
 
 test_that("readr engine skips the duckdb check but lazy still demands it", {
@@ -262,7 +263,7 @@ test_that("a caller-supplied connection is used instead of the session one", {
   expect_null(pkg.env$duckdb_con)
 
   # it still reads correctly through the supplied connection
-  out <- tb_read_data(sample_fixture())
+  out <- tb_read_data(sample_fixture(), tb_products$status)
   expect_equal(nrow(out), 4)
 })
 

@@ -25,6 +25,19 @@ about twenty seconds of work for the server.
 It is a prototype. It sits alongside the existing `npn_download_*()` functions
 rather than replacing them, and its arguments may change.
 
+Four data products are reachable this way, and they all behave identically ---
+same `as` contract, same cache, same `npn_get_job()`:
+
+| function | product |
+|---|---|
+| `npn_export_status_data()` | status and intensity |
+| `npn_export_individual_phenometrics()` | individual phenometrics |
+| `npn_export_site_phenometrics()` | site phenometrics |
+| `npn_export_magnitude_phenometrics()` | magnitude phenometrics |
+
+Everything below applies to all four. What differs between them is covered in
+"The three derived products", near the end.
+
 ```{r eval=FALSE}
 obs <- npn_export_status_data(
   start_date  = "2023-01-01",
@@ -150,8 +163,8 @@ they identify the download rather than describing an observation.
 
 ## Very large requests
 
-When you ask for a tibble, the number of matching records is checked first, and
-you get a warning if the result is unlikely to fit comfortably in memory:
+When you ask for a tibble, the size of the result is checked first, and you get
+a warning if it is unlikely to fit comfortably in memory:
 
 ```
 This query matches 19,263,424 records — about 3.2 GB as a tibble, and roughly
@@ -162,6 +175,19 @@ narrowing your filters.
 
 It is only a warning. Your download proceeds either way, and if the check
 cannot be made it is skipped silently.
+
+Only status data has a real count behind that number. The other three products
+have no count endpoint of their own, so their warnings are estimates and say
+so --- "estimated to return about 8,400,000 records". Three ways to change
+that:
+
+```{r eval=FALSE}
+# no size check at all, for any product
+options(rnpn.preflight = FALSE)
+
+# or correct the observations-per-row ratios the estimates use
+options(rnpn.preflight_ratios = c(individual = 30, site = 200))
+```
 
 ## Long jobs
 
@@ -185,6 +211,16 @@ obs <- npn_get_job(job)
 ```
 
 Results stay available on the server for about a week.
+
+`npn_get_job()` works out which data product a job was for by itself: it
+remembers what this session submitted, and failing that it reads the `product`
+column every export carries. The one case that defeats both --- a result with
+no rows, collected in a session that did not submit it --- gives you an error
+saying to name it:
+
+```{r eval=FALSE}
+obs <- npn_get_job(job, product = "site")
+```
 
 ## Repeated queries
 
@@ -210,3 +246,40 @@ looks exactly like a query which genuinely matched nothing. Many legitimate
 searches do return nothing, so an empty result is not by itself evidence of a
 mistake. Column types are the same either way, so code that works on a full
 result also works on an empty one.
+
+## The three derived products
+
+Individual, Site and Magnitude Phenometrics are the same flow with three
+differences.
+
+**Dates are required.** Status data can be asked for without them; these three
+cannot, and the call fails before anything is submitted if they are missing.
+
+**Individual and Site Phenometrics are windowed.** The service decomposes
+`[start_date, end_date]` into one window per phenological year, anchored on the
+month-day of the two dates, so a multi-year range gives you that *season* in
+each year rather than the continuous span:
+
+```{r eval=FALSE}
+npn_export_individual_phenometrics(
+  start_date = "2019-01-01",
+  end_date   = "2021-06-30"
+)
+# returns Jan 1 - Jun 30 of 2019, of 2020, and of 2021.
+# July through December of 2019 and 2020 are NOT in the result.
+```
+
+Magnitude Phenometrics is **never** windowed --- its buckets anchor to
+`start_date`, and `year`, `start_date` and `end_date` are columns in the
+result.
+
+**Column names are lowercased.** These three products emit legacy `PascalCase`
+on the wire (`First_Yes_DOY`). `as = "data"` and `as = "lazy"` hand them back
+lowercased (`first_yes_doy`), which is what the legacy downloads and the other
+vignettes use. `as = "path"` gives you the raw file with its header untouched.
+Magnitude keeps its hyphens, so a few columns need backticks:
+``mag$`mean_numanimals_in-phase` ``.
+
+Site and Magnitude Phenometrics also take `taxon` and `phenophase_grain`, which
+change the grain a row summarizes --- and with it the core columns. See
+`vignette("IV_site_phenometrics")` and `vignette("V_magnitude_phenometrics")`.

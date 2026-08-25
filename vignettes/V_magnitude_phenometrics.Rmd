@@ -35,7 +35,7 @@ npn_download_magnitude_phenometrics(
 ```
 
 
-In this example we're able to see all of the magnitude phenometric fields, including proportion_yes_records, and mean_num_animals_in-phase. See the [Open File Report on USA-NPN Observational Data](https://pubs.usgs.gov/of/2018/1060/ofr20181060.pdf) for full field descriptions.
+In this example we're able to see all of the magnitude phenometric fields, including proportion_yes_records, and mean_numanimals_in-phase. See the [Open File Report on USA-NPN Observational Data](https://pubs.usgs.gov/of/2018/1060/ofr20181060.pdf) for full field descriptions.
 
 
 From this dataset we can view the Proportion_Yes_Records (of all the records submitted on this species, what proportion are positive/yes records) by weekly interval:
@@ -49,7 +49,7 @@ BCC_AI<-read.csv(
 )
 
 plot(
-  BCC_AI$proportion_yes_record~as.Date(BCC_AI$start_date,"%Y-%m-%d"), 
+  BCC_AI$proportion_yes_records~as.Date(BCC_AI$start_date,"%Y-%m-%d"), 
   ylab=c("Proportion Yes Records"), 
   xlab=c("Date"),
   cex=2, 
@@ -60,7 +60,43 @@ plot(
   ylim=c(0,1)
 )
 ```
-```{r, echo=FALSE, out.width = "50%", fig.pos="h"}
+```
+{r, echo=FALSE, out.width = "50%", fig.pos="h"}
 knitr::include_graphics("figures/magnitude-phenometrics.png")
+```
 
 
+
+
+## An experimental alternative
+
+`npn_export_magnitude_phenometrics()` requests the same data product through
+the newer asynchronous export service. It is experimental and sits alongside
+`npn_download_magnitude_phenometrics()` rather than replacing it; see
+`vignette("IX_async_exports")`.
+
+The legacy `period_frequency` becomes `frequency`, and `taxonomy_aggregate` /
+`pheno_class_aggregate` become `taxon` / `phenophase_grain`:
+
+```{r eval=FALSE}
+mag <- npn_export_magnitude_phenometrics(
+  start_date  = "2018-01-01",
+  end_date    = "2018-12-31",
+  species_ids = 3,
+  frequency   = "months"
+)
+```
+
+Two things to know about the result:
+
+- `start_date` and `end_date` are required, but unlike Individual and Site
+  Phenometrics this product is **never** windowed. Its buckets anchor to
+  `start_date`, and `year`, `start_date` and `end_date` are columns in the
+  result, so the range means the continuous span it looks like it means.
+- Kingdom blanks columns. On a plant query the abundance columns and
+  `numsites_with_yes_record` are entirely `NA`; on an animal query
+  `numindividuals_with_yes_record` is. Their types are declared, so an all-`NA`
+  column still comes back numeric.
+
+The hyphenated column names are preserved as the legacy download has them, so
+reach them with backticks: ``mag$`mean_numanimals_in-phase` ``.

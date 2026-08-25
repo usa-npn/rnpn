@@ -57,3 +57,38 @@ plot(
 ```
 ```{r, echo=FALSE, out.width = "50%", fig.pos="h"}
 knitr::include_graphics("figures/site-phenometrics.png")
+```
+
+
+## An experimental alternative
+
+`npn_export_site_phenometrics()` requests the same data product through the
+newer asynchronous export service. It is experimental and sits alongside
+`npn_download_site_phenometrics()` rather than replacing it; see
+`vignette("IX_async_exports")`.
+
+The legacy `taxonomy_aggregate` and `pheno_class_aggregate` booleans become
+`taxon` and `phenophase_grain`, which name the grain rather than toggling it:
+
+```{r eval=FALSE}
+sites <- npn_export_site_phenometrics(
+  start_date       = "2013-01-01",
+  end_date         = "2013-12-31",
+  species_ids      = c(35, 36),
+  taxon            = "genus",
+  phenophase_grain = "phenophase"
+)
+```
+
+Note that the grain changes the columns you get back: at `taxon = "genus"` the
+`species_id` / `species` / `common_name` block is replaced by `genus_id` /
+`genus` / `genus_common_name`.
+
+### Seasonal windows
+
+`start_date` and `end_date` are required, and the range is decomposed into one
+window per phenological year exactly as in
+`vignette("III_individual_phenometrics")` --- see the worked example there. It
+matters more here: the service groups by site, taxon and phenophase grain with
+no year in the key, so an unwindowed three-year call would return one
+cross-year mean where the windowed call returns three rows.

@@ -72,7 +72,38 @@ tb_submit_job <- function(product, payload, call = rlang::caller_env()) {
     )
   }
   message("Export job submitted: ", job_id)
+  tb_register_job(job_id, product)
   job_id
+}
+
+#' Remember which product a job belongs to, for the rest of the session
+#'
+#' A job id does not carry its product, and with four products and four column
+#' type tables [npn_get_job()] cannot guess. This registry covers the common
+#' case entirely: `wait = FALSE` followed by `npn_get_job()` in the same script,
+#' and any call that timed out. It is in-memory only, alongside the package's
+#' other session caches, because it is an optimization over reading the
+#' `product` column out of the downloaded file --- not the only answer.
+#' @noRd
+tb_register_job <- function(job_id, product) {
+  jobs <- pkg.env$tb_jobs %|||% list()
+  jobs[[job_id]] <- product$name
+  pkg.env$tb_jobs <- jobs
+  invisible(job_id)
+}
+
+#' @rdname tb_register_job
+#' @noRd
+tb_registered_product <- function(job_id) {
+  name <- pkg.env$tb_jobs[[job_id]]
+  if (is.null(name)) NULL else tb_products[[name]]
+}
+
+#' @rdname tb_register_job
+#' @noRd
+tb_jobs_reset <- function() {
+  pkg.env$tb_jobs <- NULL
+  invisible(NULL)
 }
 
 #' Ask the service how a job is doing
