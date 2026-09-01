@@ -12,3 +12,4 @@ cff_write_citation(cff, file = "inst/CITATION")
 
 #update codemeta.json
 write_codemeta()
+

@@ -1,6 +1,6 @@
-#' Interface to the National Phenology Network API
+#' Interface to the USA National Phenology Network API
 #'
-#' @description This package allows for easy access to the National Phenology
+#' @description This package allows for easy access to the USA National Phenology
 #'   Network's Data API. To learn more, take a look at the vignettes.
 #' @name rnpn-package
 #' @aliases rnpn

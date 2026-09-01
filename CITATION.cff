@@ -7,10 +7,10 @@ cff-version: 1.2.0
 message: 'To cite package "rnpn" in publications use:'
 type: software
 license: MIT
-title: 'rnpn: Interface to the National ''Phenology'' Network ''API'''
-version: 1.4.0
+title: 'rnpn: Interface to the USA National ''Phenology'' Network ''API'''
+version: 1.4.2
 doi: 10.32614/CRAN.package.rnpn
-abstract: Programmatic interface to the Web Service methods provided by the National
+abstract: Programmatic interface to the Web Service methods provided by the USA National
   'Phenology' Network (<https://usanpn.org/>), which includes data on various life
   history events that occur at specific times.
 authors:
@@ -29,7 +29,7 @@ authors:
 repository: https://CRAN.R-project.org/package=rnpn
 repository-code: https://github.com/usa-npn/rnpn
 url: http://usa-npn.github.io/rnpn/
-date-released: '2025-03-25'
+date-released: '2026-06-16'
 contact:
 - family-names: Switzer
   given-names: Jeff

@@ -4,9 +4,9 @@
 \name{rnpn-package}
 \alias{rnpn-package}
 \alias{rnpn}
-\title{Interface to the National Phenology Network API}
+\title{Interface to the USA National Phenology Network API}
 \description{
-This package allows for easy access to the National Phenology
+This package allows for easy access to the USA National Phenology
 Network's Data API. To learn more, take a look at the vignettes.
 }
 \seealso{

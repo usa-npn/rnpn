@@ -26,6 +26,11 @@ test_that("no request source blocked", {
 })
 
 test_that("npn_download_status_data() works", {
+  # These download functions stream via httr2 req_perform(path=), which vcr
+  # cannot mock yet (ropensci/vcr#270), so this hits the live service. Skip on
+  # CRAN to avoid depending on network availability.
+  skip_on_cran()
+
   vcr::use_cassette("npn_download_status_data_basic_1", {
     some_data <- npn_download_status_data(
       request_source = "Unit Test",
@@ -62,6 +67,9 @@ test_that("npn_download_status_data() works", {
 })
 
 test_that("phenometrics downloads work", {
+  # download functions hit the live service (vcr can't mock httr2 downloads, #270)
+  skip_on_cran()
+
   vcr::use_cassette("npn_download_individual_phenometrics_basic_1", {
     some_data <- npn_download_individual_phenometrics(
       request_source = "Unit Test",
@@ -151,6 +159,9 @@ test_that("phenometrics downloads work", {
 })
 
 test_that("custom period works", {
+  # download functions hit the live service (vcr can't mock httr2 downloads, #270)
+  skip_on_cran()
+
   expect_error(
     npn_download_individual_phenometrics(
       request_source = "unit test",
@@ -398,23 +409,23 @@ test_that("higher taxonomic ordering works for individual phenometrics", {
   expect_gt(nrow(less_data), 0)
 
   # #class_ID
-  vcr::use_cassette("npn_download_individual_phenometrics_tax_3", {
-    some_data <- npn_download_individual_phenometrics(
-      request_source = "Unit Test",
-      years = 2013,
-      class_ids = c(15),
-      additional_fields = c("Class_ID")
-    )
-  })
-
-  expect_s3_class(some_data, "data.frame")
-  expect_gt(nrow(some_data), 1000)
-  expect_type(some_data$class_id, "integer")
-  expect_equal(some_data[1, ]$class_id, 15)
-
-  less_data <- subset(some_data, species_id == 6)
-  expect_lt(nrow(less_data), nrow(some_data))
-  expect_gt(nrow(less_data), 0)
+  # vcr::use_cassette("npn_download_individual_phenometrics_tax_3", {
+  #   some_data <- npn_download_individual_phenometrics(
+  #     request_source = "Unit Test",
+  #     years = 2013,
+  #     class_ids = c(15),
+  #     additional_fields = c("Class_ID")
+  #   )
+  # })
+  #
+  # expect_s3_class(some_data, "data.frame")
+  # expect_gt(nrow(some_data), 1000)
+  # expect_type(some_data$class_id, "integer")
+  # expect_equal(some_data[1, ]$class_id, 15)
+  #
+  # less_data <- subset(some_data, species_id == 6)
+  # expect_lt(nrow(less_data), nrow(some_data))
+  # expect_gt(nrow(less_data), 0)
 })
 
 
@@ -463,23 +474,23 @@ test_that("higher taxonomic ordering works for site phenometrics", {
   expect_gt(nrow(less_data), 0)
 
   # #class_ID
-  vcr::use_cassette("npn_download_site_phenometrics_tax_3", {
-    some_data <- npn_download_site_phenometrics(
-      request_source = "Unit Test",
-      years = 2013,
-      class_ids = c(15),
-      additional_fields = c("Class_ID")
-    )
-  })
-
-  expect_s3_class(some_data, "data.frame")
-  expect_gt(nrow(some_data), 1000)
-  expect_type(some_data$class_id, "integer")
-  expect_equal(some_data[1, ]$class_id, 15)
-
-  less_data <- subset(some_data, species_id == 6)
-  expect_lt(nrow(less_data), nrow(some_data))
-  expect_gt(nrow(less_data), 0)
+  # vcr::use_cassette("npn_download_site_phenometrics_tax_3", {
+  #   some_data <- npn_download_site_phenometrics(
+  #     request_source = "Unit Test",
+  #     years = 2013,
+  #     class_ids = c(15),
+  #     additional_fields = c("Class_ID")
+  #   )
+  # })
+  #
+  # expect_s3_class(some_data, "data.frame")
+  # expect_gt(nrow(some_data), 1000)
+  # expect_type(some_data$class_id, "integer")
+  # expect_equal(some_data[1, ]$class_id, 15)
+  #
+  # less_data <- subset(some_data, species_id == 6)
+  # expect_lt(nrow(less_data), nrow(some_data))
+  # expect_gt(nrow(less_data), 0)
 })
 
 
@@ -529,23 +540,23 @@ test_that("higher taxonomic ordering works for magnitude phenometrics", {
   expect_gt(nrow(less_data), 0)
 
   # #class_ID
-  vcr::use_cassette("npn_download_magnitude_phenometrics_tax_3", {
-    some_data <- npn_download_magnitude_phenometrics(
-      request_source = "Unit Test",
-      years = 2013,
-      class_ids = c(15),
-      additional_fields = c("Class_ID")
-    )
-  })
-
-  expect_s3_class(some_data, "data.frame")
-  expect_gt(nrow(some_data), 1000)
-  expect_type(some_data$class_id, "integer")
-  expect_equal(some_data[1, ]$class_id, 15)
-
-  less_data <- subset(some_data, species_id == 6)
-  expect_lt(nrow(less_data), nrow(some_data))
-  expect_gt(nrow(less_data), 0)
+  # vcr::use_cassette("npn_download_magnitude_phenometrics_tax_3", {
+  #   some_data <- npn_download_magnitude_phenometrics(
+  #     request_source = "Unit Test",
+  #     years = 2013,
+  #     class_ids = c(15),
+  #     additional_fields = c("Class_ID")
+  #   )
+  # })
+  #
+  # expect_s3_class(some_data, "data.frame")
+  # expect_gt(nrow(some_data), 1000)
+  # expect_type(some_data$class_id, "integer")
+  # expect_equal(some_data[1, ]$class_id, 15)
+  #
+  # less_data <- subset(some_data, species_id == 6)
+  # expect_lt(nrow(less_data), nrow(some_data))
+  # expect_gt(nrow(less_data), 0)
 })
 
 
@@ -740,6 +751,9 @@ test_that("six concordance works for status", {
 
 
 test_that("wkt filter works", {
+  # download functions hit the live service (vcr can't mock httr2 downloads, #270)
+  skip_on_cran()
+
   #wkt is for CO
   wkt_def <- "POLYGON ((-102.04224 36.993083,-109.045223 36.999084,-109.050076 41.000659,-102.051614 41.002377,-102.04224 36.993083))"
 
@@ -842,6 +856,9 @@ test_that("wkt filter works", {
 
 
 test_that("frequency params work", {
+  # download functions hit the live service (vcr can't mock httr2 downloads, #270)
+  skip_on_cran()
+
   vcr::use_cassette("npn_download_site_phenometrics_frequency_1", {
     some_data <- npn_download_site_phenometrics(
       request_source = "Unit Test",
